@@ -124,8 +124,8 @@ namespace Content.Server._EinsteinEngines.Abilities.Psionics
         private void OnSwapInit(EntityUid uid, MindSwappedComponent component, ComponentInit args)
         {
             _actions.AddAction(uid, ref component.MindSwapReturnActionEntity, component.MindSwapReturnActionId);
-            _actions.TryGetActionData(component.MindSwapReturnActionEntity, out var actionData);
-            if (actionData is { UseDelay: not null })
+
+            if (_actions.GetAction(component.MindSwapReturnActionEntity) is { Comp.UseDelay: not null })
                 _actions.StartUseDelay(component.MindSwapReturnActionEntity);
         }
 
@@ -181,7 +181,7 @@ namespace Content.Server._EinsteinEngines.Abilities.Psionics
 
             _popupSystem.PopupEntity(Loc.GetString("mindswap-trapped"), uid, uid, Shared.Popups.PopupType.LargeCaution);
             var perfComp = EnsureComp<MindSwappedComponent>(uid);
-            _actions.RemoveAction(uid, perfComp.MindSwapReturnActionEntity, null);
+            _actions.RemoveAction(perfComp.MindSwapReturnActionEntity);
 
             if (HasComp<TelegnosticProjectionComponent>(uid))
             {

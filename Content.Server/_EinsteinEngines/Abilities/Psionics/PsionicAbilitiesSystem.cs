@@ -13,7 +13,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Player;
-using Content.Shared._EinsteinEngines.CCVars;
+using Content.Shared.CCVar;
 using Content.Shared.NPC.Systems;
 
 namespace Content.Server._EinsteinEngines.Abilities.Psionics;
@@ -206,7 +206,7 @@ public sealed class PsionicAbilitiesSystem : EntitySystem
         var ev = new OnMindbreakEvent();
         RaiseLocalEvent(uid, ref ev);
 
-        if (_config.GetCVar(EECCVars.ScarierMindbreaking))
+        if (_config.GetCVar(CCVars.ScarierMindbreaking))
             ScarierMindbreak(uid, psionic);
     }
 

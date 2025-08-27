@@ -1,6 +1,6 @@
 using Robust.Shared.Timing;
 using Robust.Shared.Configuration;
-using Content.Shared._EinsteinEngines.CCVars;
+using Content.Shared.CCVar;
 using Content.Shared._EinsteinEngines.Psionics.Glimmer;
 
 namespace Content.Server._EinsteinEngines.Psionics.Glimmer;
@@ -26,10 +26,10 @@ public sealed class PassiveGlimmerReductionSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        _enabled = _cfg.GetCVar(EECCVars.GlimmerEnabled);
-        _cfg.OnValueChanged(EECCVars.GlimmerLinearDecayPerSecond, UpdatePassiveGlimmer, true);
-        _cfg.OnValueChanged(EECCVars.GlimmerEnabled, value => _enabled = value, true);
-        _cfg.OnValueChanged(EECCVars.GlimmerDecayUpdateInterval, value => _targetUpdatePeriod = TimeSpan.FromSeconds(value), true);
+        _enabled = _cfg.GetCVar(CCVars.GlimmerEnabled);
+        _cfg.OnValueChanged(CCVars.GlimmerLinearDecayPerSecond, UpdatePassiveGlimmer, true);
+        _cfg.OnValueChanged(CCVars.GlimmerEnabled, value => _enabled = value, true);
+        _cfg.OnValueChanged(CCVars.GlimmerDecayUpdateInterval, value => _targetUpdatePeriod = TimeSpan.FromSeconds(value), true);
     }
 
     public override void Update(float frameTime)

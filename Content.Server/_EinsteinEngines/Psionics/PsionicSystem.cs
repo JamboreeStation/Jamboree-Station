@@ -1,6 +1,6 @@
 using Content.Shared.Abilities.Psionics;
 using Content.Shared.StatusEffect;
-using Content.Shared._EinsteinEngines.CCVars;
+using Content.Shared.CCVar;
 using Content.Shared._EinsteinEngines.Damage.Events;
 using Content.Shared._EinsteinEngines.Psionics;
 using Content.Shared._EinsteinEngines.Psionics.Glimmer;
@@ -67,7 +67,7 @@ public sealed class PsionicsSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-        if (!_cfg.GetCVar(EECCVars.PsionicRollsEnabled))
+        if (!_cfg.GetCVar(CCVars.PsionicRollsEnabled))
             return;
 
         foreach (var roller in _rollers)
@@ -262,7 +262,7 @@ public sealed class PsionicsSystem : EntitySystem
     /// </summary>
     public void RollPsionics(EntityUid uid, PsionicComponent component, bool applyGlimmer = true, float rollEventMultiplier = 1f)
     {
-        if (!_cfg.GetCVar(EECCVars.PsionicRollsEnabled)
+        if (!_cfg.GetCVar(CCVars.PsionicRollsEnabled)
             || !component.Roller)
             return;
 

@@ -1,9 +1,8 @@
 using Robust.Shared.Configuration;
 
-namespace Content.Shared._EinsteinEngines.CCVars;
+namespace Content.Shared.CCVar;
 
-[CVarDefs]
-public sealed class EECCVars
+public sealed partial class CCVars
 {
     /// <summary>
     ///    Whether glimmer is enabled.

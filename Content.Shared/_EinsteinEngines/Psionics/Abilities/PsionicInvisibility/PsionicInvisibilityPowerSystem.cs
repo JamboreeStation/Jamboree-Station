@@ -45,9 +45,8 @@ public sealed class PsionicInvisibilityPowerSystem : EntitySystem
             return;
 
         ToggleInvisibility(args.Performer);
-        _actions.TryGetActionData(args.Action, out var actionData);
-        if (actionData is { UseDelay: not null })
-            _actions.SetCooldown(args.Action, actionData.UseDelay.Value / component.CurrentDampening);
+        if (_actions.GetAction(args.Action.AsNullable()) is { Comp.UseDelay: not null } action)
+            _actions.SetCooldown(args.Action.AsNullable(), action.Comp.UseDelay.Value / component.CurrentDampening);
 
         Timer.Spawn(TimeSpan.FromSeconds(args.PowerTimer * component.CurrentAmplification), () => RemComp<PsionicInvisibilityUsedComponent>(uid));
         _psionics.LogPowerUsed(uid, "psionic invisibility",

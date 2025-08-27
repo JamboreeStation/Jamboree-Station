@@ -39,10 +39,10 @@ public sealed class AnoigoPowerSystem : EntitySystem
         var ev = new AnoigoEvent();
         RaiseLocalEvent(args.Target, ev);
 
-        if (!ev.Handled || !_actions.TryGetActionData(args.Action, out var actionData))
+        if (!ev.Handled)
             return;
-        if (actionData is { UseDelay: not null })
-            _actions.SetCooldown(args.Action, actionData.UseDelay.Value / component.CurrentDampening);
+        if (_actions.GetAction(args.Action.AsNullable()) is { Comp.UseDelay: not null } action)
+            _actions.SetCooldown(args.Action.AsNullable(), action.Comp.UseDelay.Value / component.CurrentDampening);
 
         args.Handled = true;
         _psionics.LogPowerUsed(args.Performer, "anoigo");
