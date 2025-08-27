@@ -172,8 +172,8 @@
       itemIconStyle: BigAction
     - type: TargetAction
       range: 6
-    - type: EntityTargetAction
       interactOnMiss: false
+    - type: EntityTargetAction
       canTargetSelf: true
       whitelist:
         components:
@@ -214,8 +214,8 @@
       itemIconStyle: BigAction
     - type: TargetAction
       range: 2
-      canTargetSelf: true
     - type: EntityTargetAction
+      canTargetSelf: true
       whitelist:
         components:
         - Body
@@ -409,10 +409,9 @@
       useDelay: 45
       itemIconStyle: BigAction
     - type: TargetAction
-    - type: EntityTargetAction
       checkCanAccess: false
       range: 2
-      itemIconStyle: BigAction
+    - type: EntityTargetAction
       canTargetSelf: true
       blacklist:
         components:
