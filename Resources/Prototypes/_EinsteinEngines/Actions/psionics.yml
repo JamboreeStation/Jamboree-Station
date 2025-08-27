@@ -93,7 +93,7 @@
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
-      icon: _EinsteinEngines/Interface
+      icon: _EinsteinEngines/Interface/VerbIcons/pyrokinesis.png
       useDelay: 50
       itemIconStyle: BigAction
     - type: TargetAction
