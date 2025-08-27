@@ -39,7 +39,7 @@
       showExamineText: false
   - type: GenericVisualizer
     visuals:
-      enum.ToggleableVisuals.Toggled:
+      enum.ToggleableVisuals.Enabled:
         flame:
           True: { visible: true }
           False: { visible: false }
