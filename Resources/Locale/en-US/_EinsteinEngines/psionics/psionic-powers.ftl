@@ -50,6 +50,8 @@ psionic-regeneration-power-initialization-feedback =
 psionic-regeneration-power-metapsionic-feedback = {CAPITALIZE($entity)} possesses an overwhelming will to live
 
 # Healing Word
+ent-ActionHealingWord = Healing Word
+  .desc = Speak the Lesser Secret Of Life, and restore health to another.
 action-name-healing-word = Healing Word
 action-description-healing-word = Speak the Lesser Secret Of Life, and restore health to another.
 healing-word-power-description = Speak the Lesser Secret Of Life, and restore health to another.
@@ -61,6 +63,8 @@ healing-word-power-metapsionic-feedback = {CAPITALIZE($entity)} bears the Lesser
 healing-word-begin = {CAPITALIZE($entity)} mutters a word that brings both joy and pain alike to those who hear it.
 
 # Revivify
+ent-ActionRevivify = Breath of Life
+  .desc = Speak the Greater Secret of Life, and restore another to life.
 action-name-revivify = Breath of Life
 action-description-revivify = Speak the Greater Secret of Life, and restore another to life.
 revivify-power-description = Speak the Greater Secret of Life, and restore another to life.
@@ -125,6 +129,8 @@ shadeskip-power-metapsionic-feedback = {CAPITALIZE($entity)} has been claimed by
 shadeskip-overcharge-feedback = My body reels from shock as it is overwhelmed by the sheer force flowing through me.
 
 # Telekinetic Pulse
+ent-TelekineticPulse = Telekinetic Pulse
+  .desc = Force everyone around you away.
 action-name-telekinetic-pulse = Telekinetic Pulse
 action-description-telekinetic-pulse =
     Force everyone around you away.
@@ -134,6 +140,8 @@ telekinetic-pulse-power-initialization-feedback =
 telekinetic-pulse-power-metapsionic-feedback = {CAPITALIZE($entity)} has the essence of pure kinesis flowing through him.
 
 # Pyrokinetic Flare
+ent-ActionPyrokineticFlare = Pyrokinetic Flare
+  .desc = Generate a flash of firelight from Gehenna to blind your adversaries.
 action-name-pyrokinetic-flare = Pyrokinetic Flare
 action-description-pyrokinetic-flare =
     Generate a flash of firelight from Gehenna to blind your adversaries.
@@ -154,6 +162,8 @@ summon-imp-power-initialization-feedback =
     I breathe upon it, and it bursts alight with flame. Before I return, the creature thanks me and tells me its name.
 
 # Summon Remilia
+ent-ActionSummonRemilia = Summon Remilia
+  .desc = Call forth your ever-loyal familiar Remilia.
 action-name-summon-remilia = Summon Remilia
 action-description-summon-remilia =
     Call forth your ever-loyal familiar Remilia.
@@ -170,6 +180,8 @@ entity-anomaly-no-grid = There is nowhere for me to conjure beings.
 power-overwhelming-power-feedback = {CAPITALIZE($entity)} wields a vast connection to the noösphere
 
 # DarkSwap
+ent-ActionDarkSwap = DarkSwap
+  .desc = Mmra Mamm!
 action-name-darkswap = DarkSwap
 action-description-darkswap = Mmra Mamm!
 darkswap-power-initialization-feedback =
@@ -191,6 +203,8 @@ assay-power-initialization-feedback =
 assay-power-metapsionic-feedback = {CAPITALIZE($entity)} bears a spark of the divine's judgment, they have drunk deeply of the cup of knowledge.
 
 # Anoigo Power
+ent-ActionAnoigo = Anoigo
+  .desc = Open locked and bolted doors.
 action-name-anoigo = Anoigo
 action-description-anoigo = Open locked and bolted doors.
 anoigo-power-initialization-feedback=

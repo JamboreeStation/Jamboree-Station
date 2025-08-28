@@ -3,6 +3,8 @@ cage-resist-third-person = {CAPITALIZE(THE($user))} starts removing {POSS-ADJ($u
 
 cage-uncage-verb = Uncage
 
+ent-ActionMetapsionic = Metapsionic Pulse
+  .desc = Send a mental pulse through the area to see if there are any psychics nearby.
 action-name-metapsionic = Metapsionic Pulse
 action-description-metapsionic = Send a mental pulse through the area to see if there are any psychics nearby.
 
@@ -10,9 +12,13 @@ metapsionic-pulse-success = You detect psychic presence nearby.
 metapsionic-pulse-failure = You don't detect any psychic presence nearby.
 metapsionic-pulse-power = You detect that {$power} was used nearby.
 
+ent-ActionDispel = Dispel
+  .desc = Dispel summoned entities such as familiars or forcewalls.
 action-name-dispel = Dispel
 action-description-dispel = Dispel summoned entities such as familiars or forcewalls.
 
+ent-ActionMassSleep = Mass Sleep
+  .desc = Put targets in a small area to sleep.
 action-name-mass-sleep = Mass Sleep
 action-description-mass-sleep = Put targets in a small area to sleep.
 
@@ -22,21 +28,33 @@ accept-psionics-window-prompt-text-part = You rolled a psionic power!
                                          so you should consider keeping it secret.
                                          Do you still wish to be psionic?
 
+ent-ActionPsionicInvisibility = Psionic Invisibility
+  .desc = Render yourself invisible to any entity that could potentially be psychic. Borgs, animals, and so on are not affected.
 action-name-psionic-invisibility = Psionic Invisibility
 action-description-psionic-invisibility = Render yourself invisible to any entity that could potentially be psychic. Borgs, animals, and so on are not affected.
 
+ent-ActionPsionicInvisibilityUsed = Turn Off Psionic Invisibility
+  .desc = Return to visibility, and receive a stun.
 action-name-psionic-invisibility-off = Turn Off Psionic Invisibility
 action-description-psionic-invisibility-off = Return to visibility, and receive a stun.
 
+ent-ActionMindSwapPsionic = Mind Swap
+  .desc = Swap minds with the target. Either can change back after 20 seconds.
 action-name-mind-swap = Mind Swap
 action-description-mind-swap = Swap minds with the target. Either can change back after 20 seconds.
 
+ent-ActionMindSwapReturn = Reverse Mind Swap
+  .desc = Return to your original body.
 action-name-mind-swap-return = Reverse Mind Swap
 action-description-mind-swap-return = Return to your original body.
 
+ent-ActionTelegnosis = Telegnosis
+  .desc = Create a telegnostic projection to remotely observe things.
 action-name-telegnosis = Telegnosis
 action-description-telegnosis = Create a telegnostic projection to remotely observe things.
 
+ent-ActionPsionicRegeneration = Psionic Regeneration
+  .desc = Push your natural metabolism to the limit to power your body's regenerative capability.
 action-name-psionic-regeneration = Psionic Regeneration
 action-description-psionic-regeneration = Push your natural metabolism to the limit to power your body's regenerative capability.
 
@@ -56,9 +74,13 @@ telegnostic-trapped-entity-desc = Its many eyes betray sadness.
 psionic-burns-up = {CAPITALIZE(THE($item))} burns up with arcs of strange energy!
 psionic-burn-resist = Strange arcs dance across {THE($item)}!
 
+ent-ActionNoosphericZap = Noospheric Zap
+  .desc = Shocks the consciousness of the target and leaves them stunned and stuttering.
 action-name-noospheric-zap = Noospheric Zap
 action-description-noospheric-zap = Shocks the conciousness of the target and leaves them stunned and stuttering.
 
+ent-ActionPyrokinesis = Pyrokinesis
+  .desc = Light a flammable target on fire.
 action-name-pyrokinesis = Pyrokinesis
 action-description-pyrokinesis = Light a flammable target on fire.
 pyrokinesis-power-used = A wisp of flame engulfs {THE($target)}, igniting {OBJECT($target)}!
@@ -69,5 +91,7 @@ action-description-psychokinesis = Bend the fabric of space to instantly move ac
 action-name-rf-sensitivity = Toggle RF Sensitivity
 action-desc-rf-sensitivity = Toggle your ability to interpret radio waves on and off.
 
+ent-ActionAssay = Assay
+  .desc = Probe an entity at close range to glean metaphorical information about any powers they may have
 action-name-assay = Assay
 action-description-assay = Probe an entity at close range to glean metaphorical information about any powers they may have

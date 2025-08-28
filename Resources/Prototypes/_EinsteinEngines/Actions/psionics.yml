@@ -1,7 +1,7 @@
 - type: entity
   id: ActionDispel
-  name: action-name-dispel
-  description: action-description-dispel
+#  name: action-name-dispel
+#  description: action-description-dispel
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -21,8 +21,8 @@
 
 - type: entity
   id: ActionMassSleep
-  name: action-name-mass-sleep
-  description: action-description-mass-sleep
+#  name: action-name-mass-sleep
+#  description: action-description-mass-sleep
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -37,8 +37,8 @@
 
 - type: entity
   id: ActionMindSwapPsionic
-  name: action-name-mind-swap
-  description: action-description-mind-swap
+#  name: action-name-mind-swap
+#  description: action-description-mind-swap
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -55,8 +55,8 @@
 
 - type: entity
   id: ActionMindSwapReturn
-  name: action-name-mind-swap-return
-  description: action-description-mind-swap-return
+#  name: action-name-mind-swap-return
+#  description: action-description-mind-swap-return
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -68,8 +68,8 @@
 
 - type: entity
   id: ActionNoosphericZap
-  name: action-name-noospheric-zap
-  description: action-description-noospheric-zap
+#  name: action-name-noospheric-zap
+#  description: action-description-noospheric-zap
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -88,8 +88,8 @@
 
 - type: entity
   id: ActionPyrokinesis
-  name: action-name-pyrokinesis
-  description: action-description-pyrokinesis
+#  name: action-name-pyrokinesis
+#  description: action-description-pyrokinesis
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -103,8 +103,8 @@
 
 - type: entity
   id: ActionMetapsionic
-  name: action-name-metapsionic
-  description: action-description-metapsionic
+#  name: action-name-metapsionic
+#  description: action-description-metapsionic
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -115,8 +115,8 @@
 
 - type: entity
   id: ActionPsionicRegeneration
-  name: action-name-psionic-regeneration
-  description: action-description-psionic-regeneration
+#  name: action-name-psionic-regeneration
+#  description: action-description-psionic-regeneration
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -127,8 +127,8 @@
 
 - type: entity
   id: ActionTelegnosis
-  name: action-name-telegnosis
-  description: action-description-telegnosis
+#  name: action-name-telegnosis
+#  description: action-description-telegnosis
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -139,8 +139,8 @@
 
 - type: entity
   id: ActionPsionicInvisibility
-  name: action-name-psionic-invisibility
-  description: action-description-psionic-invisibility
+#  name: action-name-psionic-invisibility
+#  description: action-description-psionic-invisibility
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -151,8 +151,8 @@
 
 - type: entity
   id: ActionPsionicInvisibilityUsed
-  name: action-name-psionic-invisibility-off
-  description: action-description-psionic-invisibility-off
+#  name: action-name-psionic-invisibility-off
+#  description: action-description-psionic-invisibility-off
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -162,8 +162,8 @@
 
 - type: entity
   id: ActionHealingWord
-  name: action-name-healing-word
-  description: action-description-healing-word
+#  name: action-name-healing-word
+#  description: action-description-healing-word
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -204,8 +204,8 @@
 
 - type: entity
   id: ActionRevivify
-  name: action-name-revivify
-  description: action-description-revivify
+#  name: action-name-revivify
+#  description: action-description-revivify
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -283,8 +283,8 @@
 
 - type: entity
   id: ActionTelekineticPulse
-  name: action-name-telekinetic-pulse
-  description: action-description-telekinetic-pulse
+#  name: action-name-telekinetic-pulse
+#  description: action-description-telekinetic-pulse
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -319,8 +319,8 @@
 
 - type: entity
   id: ActionDarkSwap
-  name: action-name-darkswap
-  description: action-description-darkswap
+#  name: action-name-darkswap
+#  description: action-description-darkswap
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -332,8 +332,8 @@
 
 - type: entity
   id: ActionPyrokineticFlare
-  name: action-name-pyrokinetic-flare
-  description: action-description-pyrokinetic-flare
+#  name: action-name-pyrokinetic-flare
+#  description: action-description-pyrokinetic-flare
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -380,8 +380,8 @@
 
 - type: entity
   id: ActionSummonRemilia
-  name: action-name-summon-remilia
-  description: action-description-summon-remilia
+#  name: action-name-summon-remilia
+#  description: action-description-summon-remilia
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -400,8 +400,8 @@
 
 - type: entity
   id: ActionAssay
-  name: action-name-assay
-  description: action-description-assay
+#  name: action-name-assay
+#  description: action-description-assay
   categories: [ HideSpawnMenu ]
   components:
     - type: Action
@@ -421,8 +421,8 @@
 
 - type: entity
   id: ActionAnoigo
-  name: action-name-anoigo
-  description: action-description-anoigo
+#  name: action-name-anoigo
+#  description: action-description-anoigo
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
