@@ -138,3 +138,19 @@ Entries:
       message: Removed Yowie and Resomi guidebook entries.
   id: 20
   time: '2025-08-31T18:03:44.0000000+00:00'
+- author: 0vrseer
+  changes:
+    - type: Add
+      message: >-
+        Giant snake tails from the Harmony sector are now available in reptilian
+        customization!
+  id: 21
+  time: '2025-09-01T05:23:31.0000000+00:00'
+- author: 0vrseer
+  changes:
+    - type: Add
+      message: >-
+        Beer goggles and its derivatives now allow bartenders to sling drinks
+        without the risk of spilling!
+  id: 22
+  time: '2025-09-01T06:35:47.0000000+00:00'
