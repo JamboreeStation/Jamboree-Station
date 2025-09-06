@@ -12,6 +12,8 @@
     weight: 3
     duration: 60
   - type: VentCrittersRule
+    table: PleebnarCritterTable
+  - type: entityTable
     id: PleebnarCritterTable
     entries:
     - id: MobPleebnar
