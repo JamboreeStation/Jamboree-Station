@@ -13,8 +13,8 @@
     duration: 60
   - type: VentCrittersRule
     table: PleebnarCritterTable
-  - type: entityTable
-    id: PleebnarCritterTable
-    entries:
+- type: entityTable
+  id: PleebnarCritterTable
+  entries:
     - id: MobPleebnar
       prob: 0.05
