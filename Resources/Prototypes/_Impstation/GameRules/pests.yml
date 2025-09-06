@@ -12,6 +12,7 @@
     weight: 3
     duration: 60
   - type: VentCrittersRule
+    id: PleebnarCritterTable
     entries:
     - id: MobPleebnar
       prob: 0.05
