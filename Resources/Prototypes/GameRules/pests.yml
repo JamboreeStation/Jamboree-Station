@@ -176,3 +176,26 @@
       # Goobstation
       - id: MobSnailInstantDeath
         weight: 0.0004
+
+- type: entity
+  id: PleebnarMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 6
+    duration: 30 # DeltaV: was 50, used as a delay now
+    chaos: # Goobstation
+      Mess: 15
+      Hostile: 4
+    eventType: Neutral # Goobstation
+  # Goobstation
+  - type: GameRule
+    chaosScore: 20
+  - type: VentCrittersRule
+    table: !type:GroupSelector # DeltaV: EntityTable instead of spawn entries
+      children:
+      - id: MobPleebnar
+        weight: 0.5
