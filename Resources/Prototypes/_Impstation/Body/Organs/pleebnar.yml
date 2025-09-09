@@ -97,7 +97,6 @@
           Quantity: 5
   - type: Stomach
   - type: Metabolizer
-    maxReagents: 3
     metabolizerTypes: [ Animal ]
     groups:
     - id: Food
