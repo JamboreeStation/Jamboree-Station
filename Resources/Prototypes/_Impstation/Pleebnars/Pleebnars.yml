@@ -81,7 +81,6 @@
     baseSprintSpeed : 5
   - type: Food
   - type: Absorbable
-    biomassRestored: 0.1
   - type: FlavorProfile
     flavors:
     - meaty
@@ -115,7 +114,6 @@
   - type: Tag
     tags:
     - Trash
-    - MultitoolDefibrillatorTarget
   - type: Respirator
     damage:
       types:
@@ -144,14 +142,13 @@
       types:
         Piercing: 0
   - type: Bloodstream
-    bloodReagent: GrayBlood
+    bloodReagent: Blood
     bloodMaxVolume: 50
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
   - type: Damageable
     damageContainer: Biological
-    damageModifierSet: Mouse
   - type: PointLight
     enabled: true
     color: "#8bff82"
