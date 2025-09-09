@@ -36,8 +36,6 @@
       path: /Audio/_Impstation/Animals/pleebnar_scream.ogg
     Squeak:
       path: /Audio/_Impstation/Animals/pleebnar_squeak.ogg
-    Blink:
-      collection: Blinks
       params:
         volume: -3
         variation: 0.1
