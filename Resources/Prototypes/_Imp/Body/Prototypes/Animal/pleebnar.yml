@@ -6,12 +6,12 @@
 - type: body
   id: pleebnar
   name: "Pleebnar"
-  root: torso
+  root: chest
   slots:
-    torso:
-      part: TorsoAnimal
+    chest:
+      part: ChestAnimal
       connections:
-      - legs
+      - groin
       organs:
         stomach: OrganPleebnarStomach
         lungs: OrganPleebnarLungs
@@ -19,6 +19,10 @@
         heart: OrganPleebnarHeart
         kidneys: OrganPleebnarKidneys
         eyes: OrganPleebnarEyes
+    groin:
+      part: GroinAnimal
+      connections:
+      - legs
     legs:
       part: LegsAnimal
       connections:
