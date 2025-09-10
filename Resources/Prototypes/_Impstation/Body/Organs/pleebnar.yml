@@ -145,7 +145,6 @@
     state: heart-on
   - type: Organ
   - type: Metabolizer
-    maxReagents: 2
     metabolizerTypes: [ Animal ]
     groups:
     - id: Medicine
@@ -171,7 +170,6 @@
     - state: kidney-r
   - type: Organ
   - type: Metabolizer
-    maxReagents: 5
     metabolizerTypes: [ Animal ]
     removeEmpty: true
   - type: Tag # goob edit
