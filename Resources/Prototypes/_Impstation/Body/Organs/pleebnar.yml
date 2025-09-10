@@ -122,7 +122,6 @@
     state: liver
   - type: Organ
   - type: Metabolizer
-    maxReagents: 1
     metabolizerTypes: [ Animal ]
     groups:
     - id: Alcohol
