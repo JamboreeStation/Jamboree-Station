@@ -100,23 +100,24 @@
 - type: vendingMachineInventory
   id: NanoMedPlusInventory
   startingInventory:
-    HandheldHealthAnalyzer: 3
-    Brutepack: 5
-    Ointment: 5
-    Bloodpack: 5
-    ChemistryBottleEpinephrine: 3
-    Syringe: 5
+    HandheldHealthAnalyzer: 4
+    Brutepack: 6
+    Ointment: 6
+    Bloodpack: 6
+    Gauze: 6
+    ChemistryBottleEpinephrine: 6
+    Syringe: 6
     BoxBottle: 3
     ClothingEyesHudMedical: 2
     ClothingEyesEyepatchHudMedical: 2
-    Tourniquet: 6 # Goobstation - start
-    MedicalPatchPrefilledBicaridine: 3
-    MedicalPatchPrefilledDermaline: 3
+    Tourniquet: 10 # Goobstation - start
+    MedicalPatchPrefilledBicaridine: 4
+    MedicalPatchPrefilledDermaline: 4
     ParamedHypo: 2
-    CartridgeSaline: 4
-    CartridgeBicaridine: 4
-    CartridgeDermaline: 4
-    CartridgeAtropine: 4
+    CartridgeSaline: 6
+    CartridgeBicaridine: 6
+    CartridgeDermaline: 6
+    CartridgeAtropine: 6
     VehicleWheelchairFolded: 3
     FoodSnackLollypopWrappedMystery: 10
     FoodSnackLollypopWrappedTricordrazine: 8
