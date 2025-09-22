@@ -71,6 +71,8 @@
     cost: 750
   - id: LavalandJaunter
     cost: 750
+  - id: WeaponGrapplingGun
+    cost: 750
   - id: WeaponCrusher
     cost: 750
   - id: WeaponProtoKineticAccelerator
