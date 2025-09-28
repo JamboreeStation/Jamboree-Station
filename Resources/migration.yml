@@ -1054,3 +1054,30 @@ BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
 
 # 2025-06-21
 ClothingNeckHeadphones: ClothingMultipleHeadphones
+
+# 2025-09-27 Chibi Addition Migrations
+AirlockFreezerServiceLocked: AirlockFreezerKitchenHydroLocked
+AntiPsychicKnife: null
+Autoclave: null
+BookIanDossier: null
+ClothingNeckCloakMystagogue: ClothingNeckCloakRd
+ClothingHardsuitMystagogue: UndeterminedVoidsuitRD
+ComputerShuttleMining: ComputerShuttleMiningLavaland
+EpistemicstechFab: ScienceTechFab
+LauncherSyringe: null
+LockerSurgeonFilled: null
+LogisticsTechFab: CargoTechFab
+MiniSyringe: null
+RubberStampNotary: null
+SentientSmileCore: SpawnMobSmile
+ShotgunSafeSpawner: GunSafeShotgunKammerer
+SpawnMobSecLaikaOrShiva: SpawnMobShiva
+SpawnPointCargoAsssistant: null
+SpawnPointSurgeon: null
+SuitStorageSecDeltaV: SuitStorageSec
+SuperweaponSafeSpawner: null
+WarpPointBridge: null
+WarpPointEngineering: null
+WarpPointSecurity: null
+WarpPointLogistics: null
+WeaponShotgunKammererNonLethal: null
