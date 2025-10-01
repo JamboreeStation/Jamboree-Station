@@ -1,6 +1,9 @@
+# SPDX-FileCopyrightText: 2025 Baine Junk <wym0n@proton.me>
 # SPDX-FileCopyrightText: 2023 Colin-Tel <113523727+Colin-Tel@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 JamboreeBot <JamboreeBot@proton.me>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: gameMap
   id: Byoin
   mapName: 'Byōin'
