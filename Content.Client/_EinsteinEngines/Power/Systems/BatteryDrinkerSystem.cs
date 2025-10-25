@@ -1,3 +1,4 @@
+// SPDX-FileCopyrightText: 2025 JamboreeBot <JamboreeBot@proton.me>
 // SPDX-FileCopyrightText: 2025 X <70487315+XWasHere@users.noreply.github.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
