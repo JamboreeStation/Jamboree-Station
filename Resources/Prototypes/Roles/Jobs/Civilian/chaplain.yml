@@ -70,9 +70,9 @@
   name: job-name-chaplain
   description: job-description-chaplain
   playTimeTracker: JobChaplain
-#  requirements:
-#    - !type:OverallPlaytimeRequirement
-#      time: 18000 # 15 hours
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000 # 15 hours
   startingGear: ChaplainGear
   icon: "JobIconChaplain"
   supervisors: job-supervisors-hop
@@ -91,6 +91,7 @@
       powersToAdd:
       - HealingWordPower
       - SummonRemiliaPower
+    - type: CurseImmune # Immune to curses of wraith plaguebinger - Goobstation
 
 - type: startingGear
   id: ChaplainGear
