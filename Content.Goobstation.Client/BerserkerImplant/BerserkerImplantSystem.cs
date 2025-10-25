@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 _kote <143940725+FaDeOkno@users.noreply.github.com>
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.BerserkerImplant;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
