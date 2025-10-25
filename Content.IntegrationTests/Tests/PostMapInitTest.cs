@@ -490,7 +490,7 @@ namespace Content.IntegrationTests.Tests
             return true;
         }
 
-        [Test, TestCaseSource(nameof(GameMapsInCurrentPool))] // Goob edit - GameMapsInCurrentPool only
+        [Test, TestCaseSource(nameof(GameMaps))]
         public async Task GameMapsLoadableTest(string mapProto)
         {
             await using var pair = await PoolManager.GetServerClient(new PoolSettings
