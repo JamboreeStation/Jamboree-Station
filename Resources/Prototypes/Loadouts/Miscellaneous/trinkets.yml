@@ -318,6 +318,61 @@
     - ClothingNeckGenderfluidPin
   groupBy: "pin"
 
+# Pride Cloaks (Jamboree)
+
+- type: loadout
+  id: ClothingNeckCloakAce
+  storage:
+    back:
+    - ClothingNeckCloakAce
+
+- type: loadout
+  id: ClothingNeckCloakAro
+  storage:
+    back:
+    - ClothingNeckCloakAro
+
+- type: loadout
+  id: ClothingNeckCloakAroace
+  storage:
+    back:
+    - ClothingNeckCloakAroace
+
+- type: loadout
+  id: ClothingNeckCloakGay
+  storage:
+    back:
+    - ClothingNeckCloakBi
+
+- type: loadout
+  id: ClothingNeckCloakGay
+  storage:
+    back:
+    - ClothingNeckCloakGay
+
+- type: loadout
+  id: ClothingNeckCloakIntersex
+  storage:
+    back:
+    - ClothingNeckCloakIntersex
+
+- type: loadout
+  id: ClothingNeckCloakLesbian
+  storage:
+    back:
+    - ClothingNeckCloakLesbian
+
+- type: loadout
+  id: ClothingNeckCloakPan
+  storage:
+    back:
+    - ClothingNeckCloakPan
+
+- type: loadout
+  id: ClothingNeckCloakTrans
+  storage:
+    back:
+    - ClothingNeckCloakTrans
 
 # Playing Cards (GoobStation)
 - type: loadout
