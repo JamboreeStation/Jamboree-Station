@@ -331,55 +331,55 @@
 # Pride Cloaks (Jamboree)
 
 - type: loadout
-  id: ClothingNeckCloakAce
+  id: CloakAce
   storage:
     back:
     - ClothingNeckCloakAce
 
 - type: loadout
-  id: ClothingNeckCloakAro
+  id: CloakAro
   storage:
     back:
     - ClothingNeckCloakAro
 
 - type: loadout
-  id: ClothingNeckCloakAroace
+  id: CloakAroace
   storage:
     back:
     - ClothingNeckCloakAroace
 
 - type: loadout
-  id: ClothingNeckCloakGay
+  id: CloakGay
   storage:
     back:
     - ClothingNeckCloakBi
 
 - type: loadout
-  id: ClothingNeckCloakGay
+  id: CloakGay
   storage:
     back:
     - ClothingNeckCloakGay
 
 - type: loadout
-  id: ClothingNeckCloakIntersex
+  id: CloakIntersex
   storage:
     back:
     - ClothingNeckCloakIntersex
 
 - type: loadout
-  id: ClothingNeckCloakLesbian
+  id: CloakLesbian
   storage:
     back:
     - ClothingNeckCloakLesbian
 
 - type: loadout
-  id: ClothingNeckCloakPan
+  id: CloakPan
   storage:
     back:
     - ClothingNeckCloakPan
 
 - type: loadout
-  id: ClothingNeckCloakTrans
+  id: CloakTrans
   storage:
     back:
     - ClothingNeckCloakTrans
