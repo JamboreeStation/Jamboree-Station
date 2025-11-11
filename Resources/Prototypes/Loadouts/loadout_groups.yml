@@ -211,15 +211,15 @@
   - ClothingNeckGenderfluidPin
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
-  - ClothingNeckCloakAce
-  - ClothingNeckCloakAro
-  - ClothingNeckCloakAroace
-  - ClothingNeckCloakBi
-  - ClothingNeckCloakGay
-  - ClothingNeckCloakIntersex
-  - ClothingNeckCloakLesbian
-  - ClothingNeckCloakPan
-  - ClothingNeckCloakTrans
+  - CloakAce #Jamboree
+  - CloakAro #Jamboree
+  - CloakAroace #Jamboree
+  - CloakBi #Jamboree
+  - CloakGay #Jamboree
+  - CloakIntersex #Jamboree
+  - CloakLesbian #Jamboree
+  - CloakPan #Jamboree
+  - CloakTrans #Jamboree
   - CardBoxBlack # GoobStation
   - CardBoxNanotrasen # GoobStation
   - FoodSnackLollypopWrapped # Goobstation
