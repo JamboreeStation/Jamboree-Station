@@ -38,7 +38,6 @@
 # SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-# SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
@@ -56,6 +55,7 @@
 # SPDX-FileCopyrightText: 2025 JamboreeBot <JamboreeBot@proton.me>
 # SPDX-FileCopyrightText: 2025 Minemoder5000 <minemoder50000@gmail.com>
 # SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
 # SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
@@ -67,11 +67,11 @@
   name: job-name-intern
   description: job-description-intern
   playTimeTracker: JobMedicalIntern
-#  requirements:
-#    - !type:DepartmentTimeRequirement
-#      department: Medical
-#      time: 18000 # 5 hrs
-#      inverted: true # stop playing intern if you're good at med!
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 18000 # 5 hrs
+      inverted: true # stop playing intern if you're good at med!
   startingGear: MedicalInternGear
   icon: "JobIconMedicalIntern"
   supervisors: job-supervisors-medicine

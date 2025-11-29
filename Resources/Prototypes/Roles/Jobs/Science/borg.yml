@@ -29,6 +29,7 @@
 # SPDX-FileCopyrightText: 2025 Minemoder5000 <minemoder50000@gmail.com>
 # SPDX-FileCopyrightText: 2025 RatherUncreative <RatherUncreativeName@proton.me>
 # SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
+# SPDX-FileCopyrightText: 2025 Wachtel <garethquaile@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # No idea why it's in sci but we ball.
@@ -38,10 +39,10 @@
   name: job-name-station-ai
   description: job-description-station-ai
   playTimeTracker: JobStationAi
-#  requirements:
-#  - !type:RoleTimeRequirement
-#    role: JobBorg
-#    time: 18000  # 5 hrs
+  requirements:
+  - !type:RoleTimeRequirement
+    role: JobBorg
+    time: 18000  # 5 hrs
   canBeAntag: false
   goobcoins: 40 #Goob content
   weight: 10 # Goob Edit
@@ -56,9 +57,9 @@
   name: job-name-borg
   description: job-description-borg
   playTimeTracker: JobBorg
-#  requirements:
-#    - !type:OverallPlaytimeRequirement
-#      time: 36000 # 10 hrs
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 hrs
   canBeAntag: false
   goobcoins: 20 #Goob content
   icon: JobIconBorg
