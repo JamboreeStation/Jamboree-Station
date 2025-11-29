@@ -354,11 +354,11 @@
     back:
     - ClothingNeckCloakBi
 
-- type: loadout
-  id: CloakGay
-  storage:
-    back:
-    - ClothingNeckCloakGay
+#- type: loadout
+ # id: CloakGay
+  #storage:
+   # back:
+    #- ClothingNeckCloakGay
 
 - type: loadout
   id: CloakIntersex
