@@ -1,8 +1,10 @@
 using Content.Goobstation.Common.Bloodstream;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared._Shitmed.Body;
 using Content.Shared._Shitmed.Damage;
 using Content.Shared._Shitmed.Medical.Surgery.Consciousness;
 using Content.Shared._Shitmed.Medical.Surgery.Traumas.Components;
+using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Alert;
 using Content.Shared.Body.Components;
@@ -26,6 +28,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using System.Linq;
 
 namespace Content.Shared.Body.Systems;
 
@@ -149,18 +152,25 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             var total = FixedPoint2.Zero;
             foreach (var (bodyPart, _) in _body.GetBodyChildren(uid))
             {
+                var totalPartBleeds = FixedPoint2.Zero; // Goobstation
                 foreach (var (wound, _) in _wound.GetWoundableWounds(bodyPart))
                 {
                     if (!TryComp<BleedInflicterComponent>(wound, out var bleeds))
                         continue;
 
                     total += bleeds.BleedingAmount;
+                    totalPartBleeds = bleeds.BleedingAmount; // Goobstation
+                }
+
+                if (TryComp<WoundableComponent>(bodyPart, out var woundable)) // Goobstation
+                {
+                    woundable.Bleeds = totalPartBleeds; // Goobstation
                 }
             }
 
             var missingBlood = bloodstream.BloodMaxVolume - bloodstream.BloodSolution.Value.Comp.Solution.Volume;
 
-            bloodstream.BleedAmount = (float) total / 4;
+            bloodstream.BleedAmountFromWounds = (float) total; // why was it ever divided by 4? Goobstation
             if (!_consciousness.SetConsciousnessModifier(
                     uid,
                     nerveSys.Value,
@@ -176,6 +186,20 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
                     type: ConsciousnessModType.Pain);
             }
             // Shitmed Change End
+            // Goobstation start
+            bloodstream.BleedAmount = bloodstream.BleedAmountFromWounds + bloodstream.BleedAmountNotFromWounds;
+            bloodstream.BleedAmount = Math.Clamp(bloodstream.BleedAmount, 0, bloodstream.MaxBleedAmount);
+
+            DirtyField(uid, bloodstream, nameof(BloodstreamComponent.BleedAmount));
+
+            if (bloodstream.BleedAmount == 0)
+                _alertsSystem.ClearAlert(uid, bloodstream.BleedingAlert);
+            else
+            {
+                var severity = (short) Math.Clamp(Math.Round(bloodstream.BleedAmount, MidpointRounding.ToZero), 0, 10);
+                _alertsSystem.ShowAlert(uid, bloodstream.BleedingAlert, severity);
+            }
+            // Goobstation end
         }
 
         UpdateWounds(frameTime);
@@ -268,10 +292,11 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             return;
 
         // Does the calculation of how much bleed rate should be added/removed, then applies it
-        var oldBleedAmount = ent.Comp.BleedAmount;
+        var oldBleedAmount = ent.Comp.BleedAmountNotFromWounds; // Goobstation
         var total = bloodloss.GetTotal();
         var totalFloat = total.Float();
-        TryModifyBleedAmount(ent.AsNullable(), totalFloat);
+        if (TryComp<BodyComponent>(ent, out var body) && body.BodyType == BodyType.Simple) // Goobstation
+            TryModifyBleedAmount(ent.AsNullable(), totalFloat); // Goobstation - do not apply base bleed to woundmed supported bodies
 
         /// Critical hit. Causes target to lose blood, using the bleed rate modifier of the weapon, currently divided by 5
         /// The crit chance is currently the bleed rate modifier divided by 25.
@@ -458,6 +483,15 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
                 tempSolution.AddSolution(temp, _prototypeManager);
             }
 
+            // Goobstation start
+            // Set the freshness when the spill is created instead of every time new blood is created
+            foreach (var dna in tempSolution
+                .SelectMany(r => r.Reagent.EnsureReagentData().OfType<DnaData>()))
+            {
+                dna.Freshness = _timing.CurTime;
+            }
+            // Goobstation end
+
             _puddle.TrySpillAt(ent.Owner, tempSolution, out _, sound: false);
 
             tempSolution.RemoveAllSolution();
@@ -476,9 +510,22 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp, logMissing: false))
             return false;
 
-        ent.Comp.BleedAmount += amount;
-        ent.Comp.BleedAmount = Math.Clamp(ent.Comp.BleedAmount, 0, ent.Comp.MaxBleedAmount);
+        // Goobstation start
+        ent.Comp.BleedAmountNotFromWounds += amount;
 
+        if (ent.Comp.BleedAmountNotFromWounds <= 0 && TryComp<BodyComponent>(ent, out var body)
+            && body.BodyType == BodyType.Complex)
+        {
+            _wound.TryHealMostSevereBleedingWoundables(ent, -ent.Comp.BleedAmountNotFromWounds, out var _);
+        }
+
+        // Clamp minimum bleed to zero
+        ent.Comp.BleedAmountNotFromWounds = Math.Max(ent.Comp.BleedAmountNotFromWounds, 0);
+
+        ent.Comp.BleedAmount = Math.Clamp(ent.Comp.BleedAmountFromWounds + ent.Comp.BleedAmountNotFromWounds, 0, ent.Comp.MaxBleedAmount);
+
+        DirtyField(ent, ent.Comp, nameof(BloodstreamComponent.BleedAmountNotFromWounds));
+        // Goobstation end
         DirtyField(ent, ent.Comp, nameof(BloodstreamComponent.BleedAmount));
 
         if (ent.Comp.BleedAmount == 0)
@@ -562,7 +609,9 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
         var dnaData = new DnaData();
 
         if (TryComp<DnaComponent>(uid, out var donorComp) && donorComp.DNA != null)
+        {
             dnaData.DNA = donorComp.DNA;
+        }
         else
             dnaData.DNA = Loc.GetString("forensics-dna-unknown");
 

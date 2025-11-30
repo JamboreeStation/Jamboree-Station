@@ -5,16 +5,16 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Changeling;
-using Content.Goobstation.Shared.Bible;
+using Content.Goobstation.Common.Religion;
 using Content.Goobstation.Shared.Devil;
 using Content.Goobstation.Shared.Possession;
 using Content.Goobstation.Shared.Religion;
+using Content.Goobstation.Shared.Shadowling.Components;
 using Content.Server.Actions;
 using Content.Server.Polymorph.Components;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Stunnable;
 using Content.Shared._Goobstation.Wizard.FadingTimedDespawn;
-using Content.Shared.Actions;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Coordinates;
@@ -22,7 +22,6 @@ using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
 using Content.Shared.Heretic;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Mind;
 using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs.Systems;
@@ -35,6 +34,8 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
+using Content.Shared.Follower;
+using Content.Shared.Follower.Components;
 
 namespace Content.Goobstation.Server.Possession;
 
@@ -52,6 +53,8 @@ public sealed partial class PossessionSystem : EntitySystem
     [Dependency] private readonly ActionsSystem _action = default!;
     [Dependency] private readonly PolymorphSystem _polymorph = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly FollowerSystem _follower = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -125,6 +128,12 @@ public sealed partial class PossessionSystem : EntitySystem
 
         if (!possessed.Comp.WasWeakToHoly)
             RemComp<WeakToHolyComponent>(possessed.Comp.OriginalEntity);
+
+        // Transfer followers from possessed entity to possessor's original entity
+        if (!TerminatingOrDeleted(possessed.Comp.PossessorOriginalEntity))
+        {
+            UpdateFollowersToNewEntity(possessed.Owner, possessed.Comp.PossessorOriginalEntity);
+        }
 
         // Return the possessors mind to their body, and the target to theirs.
         if (!TerminatingOrDeleted(possessed.Comp.PossessorMindId))
@@ -204,6 +213,7 @@ public sealed partial class PossessionSystem : EntitySystem
             (typeof(SpectralComponent), "ghost"),
             (typeof(TimedDespawnComponent), "temporary"),
             (typeof(FadingTimedDespawnComponent), "temporary"),
+            (typeof(ShadowlingComponent), "shadowling"),
         ];
 
         foreach (var (item1, item2) in blockers)
@@ -219,7 +229,7 @@ public sealed partial class PossessionSystem : EntitySystem
         return true;
     }
 
-    private void DoPossess(EntityUid? possessedNullable, EntityUid possessor, TimeSpan possessionDuration,  EntityUid possessorMind, bool pacifyPossessed, bool hideActions, bool polymorphPossessor)
+    private void DoPossess(EntityUid? possessedNullable, EntityUid possessor, TimeSpan possessionDuration, EntityUid possessorMind, bool pacifyPossessed, bool hideActions, bool polymorphPossessor)
     {
         if (possessedNullable is not { } possessed)
             return;
@@ -236,8 +246,19 @@ public sealed partial class PossessionSystem : EntitySystem
         }
 
         possessedComp.PolymorphEntity = polymorphPossessor;
+
+        EntityUid currentFollowedEntity = possessor;
+
         if (polymorphPossessor)
-            _polymorph.PolymorphEntity(possessor, possessedComp.Polymorph);
+        {
+            var polymorphedEntity = _polymorph.PolymorphEntity(possessor, possessedComp.Polymorph);
+
+            if (polymorphedEntity != null && !TerminatingOrDeleted(polymorphedEntity.Value))
+            {
+                UpdateFollowersToNewEntity(possessor, polymorphedEntity.Value);
+                currentFollowedEntity = polymorphedEntity.Value;
+            }
+        }
 
         // Get the possession time.
         possessedComp.PossessionEndTime = _timing.CurTime + possessionDuration;
@@ -263,6 +284,12 @@ public sealed partial class PossessionSystem : EntitySystem
         // Transfer into target
         _mind.TransferTo(possessorMind, possessed);
 
+        // After the mind transfer, ghosts should follow the possessed entity (where the mind now is)
+        if (!TerminatingOrDeleted(currentFollowedEntity))
+        {
+            UpdateFollowersToNewEntity(currentFollowedEntity, possessed);
+        }
+
         // SFX
         _popup.PopupEntity(Loc.GetString("possession-popup-self"), possessedMind, possessedMind, PopupType.LargeCaution);
         _popup.PopupEntity(Loc.GetString("possession-popup-others", ("target", possessed)), possessed, PopupType.MediumCaution);
@@ -281,5 +308,19 @@ public sealed partial class PossessionSystem : EntitySystem
         return true;
     }
 
+    private void UpdateFollowersToNewEntity(EntityUid oldEntity, EntityUid newEntity)
+    {
+        if (!TryComp<FollowedComponent>(oldEntity, out var followed))
+            return;
 
+        var followers = new List<EntityUid>(followed.Following);
+
+        foreach (var follower in followers)
+        {
+            if (HasComp<GhostComponent>(follower))
+            {
+                _follower.StartFollowingEntity(follower, newEntity);
+            }
+        }
+    }
 }
