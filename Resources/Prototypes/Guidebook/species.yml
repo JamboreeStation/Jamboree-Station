@@ -40,7 +40,7 @@
     - Vox
     - Vulpkanin
     - Rodentia
-#    - Yowie  Jamboree
+    - Yowie  Jamboree
     - IPC
 #    - Resomi  Jamboree
     - Oni
@@ -111,10 +111,10 @@
   name: species-name-vulpkanin
   text: "/ServerInfo/Guidebook/Mobs/Vulpkanin.xml"
 
-#- type: guideEntry   Jamboree
-#  id: Yowie
-#  name: species-name-yowie
-#  text: "/ServerInfo/Guidebook/Mobs/Yowie.xml"
+- type: guideEntry   Jamboree
+  id: Yowie
+  name: species-name-yowie
+  text: "/ServerInfo/Guidebook/Mobs/Yowie.xml"
 
 - type: guideEntry
   id: IPC
