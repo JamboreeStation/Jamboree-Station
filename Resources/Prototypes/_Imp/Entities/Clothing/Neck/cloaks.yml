@@ -1,0 +1,20 @@
+﻿- type: entity
+  parent: [ClothingNeckBase, BaseCommandContraband]
+  id: ClothingNeckCloakCaptainAdmiral
+  name: admiral's cloak
+  description: "A favourite for many a naval officer"
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Neck/Cloaks/capcloakadmiral.rsi
+  - type: StealTarget
+    stealGroup: HeadCloak
+
+- type: entity
+  parent: ClothingCloakCmo
+  id: ClothingNeckCloakCmosGreatcloak
+  name: chief medical officer's greatcloak
+  description: "An ornate high collared great cloak. Good luck keeping it clean."
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Neck/Cloaks/cmogreatcloak.rsi
+

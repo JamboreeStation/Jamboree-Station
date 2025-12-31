@@ -330,6 +330,17 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+  - CaptainBeret
+  - CaptainCrusherCap
+  - CaptainTricorne
+
+- type: loadoutGroup
+  id: CaptainGlasses
+  name: loadout-group-captain-glasses
+  loadouts:
+  - CaptainSunglasses
+  - CaptainVisor
+  - CaptainEyepatch
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -351,6 +362,8 @@
   - CaptainCloakFormal
   - CaptainMantle
   - VeteranCaptainCloak # goob
+  - CaptainGreatcoat # imp
+  - CaptainAdmiralCloak # imp
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -368,6 +381,14 @@
   - CaptainOuterClothing
   - CaptainWintercoat
   - CaptainJacket # Goobstation
+  - CaptainRepeller # imp
+
+- type: loadoutGroup
+  id: CaptainGloves
+  name: loadout-group-captain-gloves
+  loadouts:
+  - CaptainGloves
+  - CaptainFlightGloves #imp
 
 - type: loadoutGroup
   id: HoPHead
@@ -384,6 +405,7 @@
   - HoPJumpskirt
   - HoPJumpsuitMilitary # goob
   - HoPSummerShirt # goob
+  - HoPPowerSuit #imp
 
 - type: loadoutGroup
   id: HoPNeck
@@ -413,14 +435,71 @@
 
 # Civilian
 - type: loadoutGroup
+  id: PassengerHead #Jamboree
+  name: loadout-group-passenger-head
+  minLimit: 0
+  loadouts:
+  - GreyHat # Jamboree
+  - BlackHat # Jamboree
+  - RedHat # Jamboree
+  - BlueHat # Jamboree
+  - YellowHat #Jamboree
+  - GreenHat #Jambo (i am just gonna do jambo from now on as i am typing these out cause lazy lmao)
+  - OrangeHat #jambo
+  - BlackBand #jambo
+  - RedBand #jambo
+  - BlueBand #jambo
+  - GreenBand #jambo
+  - CorpoHat #jambo
+  - FishHat #jambo
+  - RastaHat #jambo
+  - PropellerHat #jambo
+  - BartenderHead # Jamboree
+  - BartenderBowler # Jamboree
+  - PirateHat #Jamboree
+  - SailorCap #Impstation
+
+- type: loadoutGroup
   id: PassengerJumpsuit
   name: loadout-group-passenger-jumpsuit
   loadouts:
   - GreyJumpsuit
   - GreyJumpskirt
+ # Jamboree changes start
+  - WhiteJumpsuit
+  - WhiteJumpskirt
+  - BlackJumpsuit
+  - BlackJumpskirt
+  - RedJumpsuit
+  - RedJumpskirt
+  - BlueJumpsuit
+  - BlueJumpskirt
+  - YellowJumpsuit
+  - YellowJumpskirt
+  - GreenJumpsuit
+  - GreenJumpskirt
+  - OrangeJumpsuit
+  - OrangeJumpskirt
+  - PurpleJumpsuit
+  - PurpleJumpskirt
+  - PinkJumpsuit
+  - PinkJumpskirt
+  - TealJumpsuit
+  - TealJumpskirt
+# Jamboree Jumpsuit changes stop prt1
   - AncientJumpsuit
+  # jamboree change
+  - FlannelJumpsuit
+  # jamboree end
   - RainbowJumpsuit
   - RainbowJumpskirt
+  # jamboree change
+  - CossackSuit
+  - Loungewear
+  - PirateSlops
+ # Impstation changes begin
+  - SailorSuit
+  - CavemanHides
  # goob changes start
   - GreyMJ
   - BlackMJ
@@ -452,6 +531,17 @@
   minLimit: 0
   loadouts:
   - PassengerGloves
+  # jamboree gloves add
+  - GreyGloves
+  - WhiteGloves
+  - BlackGloves
+  - BrownGloves
+  - RedGloves
+  - BlueGloves
+  - GreenGloves
+  - OrangeGloves
+  - PurpleGloves
+  - TealGloves
 
 - type: loadoutGroup
   id: CommonBackpack
@@ -469,6 +559,15 @@
   loadouts:
   - Mantle
   - OldNeckWrap # EE
+  # jamboree
+  - BrownScarf
+  - BlackScarf
+  - RedScarf
+  - BlueScarf
+  - GreenScarf
+  - OrangeScarf
+  - PurpleScarf
+  - SailorAscot # Impstation
 
 - type: loadoutGroup
   id: PassengerOuterClothing
@@ -476,12 +575,23 @@
   minLimit: 0
   loadouts:
   - PassengerWintercoat
+  #jamboree
+  - BomberJacket
+  - PirateJacket
 
 - type: loadoutGroup
   id: PassengerShoes
   name: loadout-group-passenger-shoes
   loadouts:
   - BlackShoes
+  - BrownShoes
+  - WhiteShoes
+  - RedShoes
+  - BlueShoes
+  - YellowShoes
+  - GreenShoes
+  - OrangeShoes
+  - PurpleShoes
   - WinterBoots
 
 - type: loadoutGroup
@@ -542,6 +652,15 @@
   - ChefWintercoat
 
 - type: loadoutGroup
+  id: LibrarianHead
+  name: loadout-group-librarian-head
+  loadouts:
+  - BartenderHead #Jamboree
+  - BartenderBowler #Jamboree
+  - LibrarianBrown #Jamboree
+  - LibrarianGrey #Jamboree
+
+- type: loadoutGroup
   id: LibrarianJumpsuit
   name: loadout-group-librarian-jumpsuit
   loadouts:
@@ -584,6 +703,18 @@
   - ChaplainPlagueHat
   - ChaplainWitchHat
   - ChaplainWitchHatAlt
+  - ChaplainHeadDruid #imp
+  - ChaplainHeadMoon #imp
+  - ChaplainHeadTidal #imp
+  - ChaplainHeadSun #imp
+  - ChaplainHeadVeil #imp
+
+- type: loadoutGroup
+  id: ChaplainEyes
+  name: loadout-group-chaplain-eyes
+  minLimit: 0
+  loadouts:
+  - ChaplainBlindfold #imp
 
 - type: loadoutGroup
   id: ChaplainMask
@@ -591,6 +722,9 @@
   minLimit: 0
   loadouts:
   - ChaplainMask
+  - ChaplainMaskClayshaper #imp
+  - ChaplainMaskFire #imp
+  - ChaplainMaskSilent #imp
 
 - type: loadoutGroup
   id: ChaplainJumpsuit
@@ -600,6 +734,12 @@
   - ChaplainJumpskirt
   - ChaplainRobesLight
   - ChaplainRobesDark
+  - ChaplainSkirtClayshaper #imp
+  - ChaplainSkirtDruid #imp
+  - ChaplainSkirtMoon #imp
+  - ChaplainSkirtTidal #imp
+  - ChaplainUniformSun #imp
+  - ChaplainUniformTech #imp
   - ServiceMJ # goob
 
 - type: loadoutGroup
@@ -611,6 +751,8 @@
   - ChaplainNunRobe
   - ChaplainBlackHoodie
   - ChaplainHoodie
+  - ChaplainOuterMoon #imp
+  - ChaplainOuterSilent #imp
 
 - type: loadoutGroup
   id: ChaplainNeck
@@ -618,6 +760,12 @@
   minLimit: 0
   loadouts:
   - ChaplainNeck
+  - ChaplainNeckClayshaper #imp
+  - ChaplainNeckDruid #imp
+  - ChaplainNeckDruidMantle #imp
+  - ChaplainNeckTidal #imp
+  - ChaplainNeckSun #imp
+  - ChaplainNeckDragon #imp
 
 - type: loadoutGroup
   id: JanitorHead
@@ -701,6 +849,23 @@
   loadouts:
   - JesterHat
   - JesterAltHat
+  - EvilJesterHat #imp
+  - CircusClownHat #imp
+
+- type: loadoutGroup
+  id: ClownMask
+  name: loadout-group-clown-mask
+  minLimit: 0
+  loadouts:
+  - ClownMask
+  - ClownNose #imp
+
+- type: loadoutGroup
+  id: ClownNeck
+  name: loadout-group-clown-neck
+  minLimit: 0
+  loadouts:
+  - NeckRuffle #imp
 
 - type: loadoutGroup
   id: ClownJumpsuit
@@ -710,6 +875,9 @@
   - ClownSkirt
   - JesterSuit
   - JesterAltSuit
+  - EvilJesterSuit #imp
+  - CircusClownSuit #imp
+  - JokesterSuit #imp
 
 - type: loadoutGroup
   id: ClownBackpack
@@ -727,6 +895,7 @@
   loadouts:
   - ClownRobes
   - ClownWintercoat
+  - JokesterOuterCoat #imp
 
 - type: loadoutGroup
   id: ClownShoes
@@ -734,6 +903,9 @@
   loadouts:
   - ClownShoes
   - JesterShoes
+  - EvilJesterShoes #imp
+  - CircusClownShoes #imp
+  - JokesterShoes #imp
 
 - type: loadoutGroup
   id: SurvivalClown
@@ -812,12 +984,37 @@
   - EmergencySilicon
 
 - type: loadoutGroup
+  id: MusicianHead
+  name: loadout-group-musician-head
+  minLimit: 0
+  loadouts:
+  - MusicianShako #imp
+
+- type: loadoutGroup
+  id: MusicianNeck
+  name: loadout-group-musician-neck
+  minLimit: 0
+  loadouts:
+  - FeatherBoa #imp
+
+- type: loadoutGroup
   id: MusicianJumpsuit
   name: loadout-group-musician-jumpsuit
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
+  - ClothingUniformMrSpaceWide #imp
+  - ClothingUniformMrSpaceWideSkirt #imp
+  - MusicianMarchingBand #imp
+  - MusicianSingerDress #imp
   - ServiceMJ # goob
+
+- type: loadoutGroup
+  id: MusicianGloves
+  name: loadout-group-musician-gloves
+  minLimit: 0
+  loadouts:
+  - MusicianSingerGloves #imp
 
 - type: loadoutGroup
   id: MusicianOuterClothing
@@ -825,6 +1022,15 @@
   minLimit: 0
   loadouts:
   - MusicianWintercoat
+  - MusicianFurCoat
+
+- type: loadoutGroup
+  id: MusicianShoes
+  name: loadout-group-musician-shoes
+  minLimit: 0
+  loadouts:
+  - BlackShoes
+  - BlackHeels
 
 - type: loadoutGroup
   id: Instruments
@@ -889,6 +1095,7 @@
   loadouts:
   - QuartermasterCloak
   - QuartermasterMantle
+  - QuartermasterGreatcoat #imp
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -896,6 +1103,7 @@
   minLimit: 0
   loadouts:
   - QuartermasterWintercoat
+  - QuartermasterWintercoatXXXL #imp
 
 - type: loadoutGroup
   id: QuartermasterShoes
@@ -988,6 +1196,7 @@
   - ChiefEngineerTurtleneckSkirt
   - ChiefEngineerMJ # goob
   - CESummerShirt # goob
+  - ChiefEngineerJumpsuitForeman #imp
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
@@ -1278,6 +1487,7 @@
   - HeadofSecurityCloak
   - HeadofSecurityMantle
   - Bodycam # Goobstation - Body cameras
+  - HeadofSecurityGreatcoat #imp
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
@@ -1382,6 +1592,7 @@
   loadouts:
   - DetectiveFedora
   - DetectiveFedoraGrey
+  - ClothingHeadDeerstalker #imp
 
 - type: loadoutGroup
   id: DetectiveNeck
@@ -1455,6 +1666,7 @@
   - ChiefMedicalOfficerTurtleneckJumpsuit
   - ChiefMedicalOfficerTurtleneckJumpskirt
   - CMOMJ # goob
+  - CMOScrubs #imp
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
@@ -1463,6 +1675,7 @@
   loadouts:
   - ChiefMedicalOfficerLabCoat
   - ChiefMedicalOfficerWintercoat
+  - CMOPrestigeLabcoat #imp
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerNeck
@@ -1471,6 +1684,7 @@
   loadouts:
   - ChiefMedicalOfficerCloak
   - ChiefMedicalOfficerMantle
+  - CMOGreatCloak #imp
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes

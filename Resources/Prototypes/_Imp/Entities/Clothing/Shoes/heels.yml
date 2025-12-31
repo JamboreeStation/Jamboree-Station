@@ -1,0 +1,28 @@
+﻿- type: entity
+  parent: ClothingShoesBaseButcherable
+  id: ClothingShoesHeelsRed
+  name: red high-heels
+  description: Fancy red high-heels, great for strutting around the station in style.
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 3 # Jamboree change: damage from 6 to 3
+  - type: Sprite
+    sprite: _Impstation/Clothing/Shoes/Heels/heelsred.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Shoes/Heels/heelsred.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepHighheels
+
+- type: entity
+  parent: ClothingShoesHeelsRed
+  id: ClothingShoesHeelsBlack
+  name: black high-heels
+  description: Fancy black high-heels, great for strutting around the station in style.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Shoes/Heels/heelsblack.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Shoes/Heels/heelsblack.rsi

@@ -62,9 +62,33 @@
     ClothingHeadHatJesterAlt: 1
     ClothingUniformJumpsuitJesterAlt: 1
     ClothingShoesJester: 2
+    ClothingHeadHatCircusClown: 1 #imp
+    ClothingUniformCircusClown: 1 #imp
+    ClothingShoesCircus: 1 #imp
+    ClothingHeadJesterEvilHat: 1 #imp
+    ClothingUniformJesterEvil: 1 #imp
+    ClothingShoesJesterEvilJanglers: 1 #imp
+    ClothingUniformJokester: 1 #imp
+    ClothingOuterCoatJokester: 1 #imp
+    ClothingShoesJokester: 1 #imp
+    ClothingMaskClownNose: 2 #imp
+    ClothingNeckRuffle: 2 #imp
     ClothingOuterWinterClown: 1
     ClothingOuterWinterMime: 1
     ClothingOuterWinterMusician: 1
+    ClothingUniformCavemanHides: 1 #imp
+    ClothingHeadSailorCap: 1 #imp
+    ClothingNeckSailorAscot: 1 #imp
+    ClothingUniformSailorSuit: 1 #imp
+    ClothingMaskBurglar: 1 #imp
+    ClothingUniformBurglarJumpsuit: 1 #imp
+    ClothingHeadDevilHorns: 1 #imp
+    ClothingNeckDevilWings: 1 #imp
+    ClothingHeadHalo: 1 #imp
+    ClothingNeckAngelWings: 1 #imp
+    ClothingHandsAngelGloves: 1 #imp
+    ClothingUniformJumpskirtAngelDress: 1 #imp
+    ClothingShoesAngelSandals: 1 #imp
     ClothingMaskJoy: 2
     ClothingHeadHatCardborg: 2
     ClothingOuterCardborg: 2
@@ -97,6 +121,8 @@
     ClothingUniformJumpsuitDameDane: 2
     ClothingShoesDameDane: 2
     ClothingOuterDameDane: 2
+    ClothingUniformMrSpaceWide: 2 #imp
+    ClothingUniformMrSpaceWideSkirt: 2 #imp
     ClothingOuterClownPriest: 1
     ClothingMaskSadMime: 1
     ClothingMaskScaredMime: 1

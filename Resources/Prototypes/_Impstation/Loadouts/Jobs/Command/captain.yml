@@ -1,0 +1,75 @@
+# For the veteran captain cosmetic set
+- type: loadoutEffectGroup
+  id: VeteranCap
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobCaptain
+      time: 30h
+
+# Head
+- type: loadout
+  id: CaptainBeret
+  equipment:
+    head: ClothingHeadHatBeretCaptain
+
+- type: loadout
+  id: CaptainCrusherCap
+  equipment:
+    head: ClothingHeadHatCaptaincrushercap
+
+- type: loadout
+  id: CaptainTricorne
+  equipment:
+    head: ClothingHeadHatCaptainTricorne
+
+# Glasses
+- type: loadout
+  id: CaptainSunglasses
+  equipment:
+    eyes: ClothingEyesGlassesCommand
+
+- type: loadout
+  id: CaptainVisor
+  equipment:
+    eyes: ClothingEyesGlassesCaptainvisor
+
+- type: loadout
+  id: CaptainEyepatch
+  equipment:
+    eyes: ClothingEyesGlassesCaptaineyepatch
+
+# Neck
+- type: loadout
+  id: CaptainGreatcoat
+  equipment:
+    neck: ClothingNeckCloakCaptaingreatcoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: VeteranCap
+
+- type: loadout
+  id: CaptainAdmiralCloak
+  equipment:
+    neck: ClothingNeckCloakCaptainAdmiral
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: VeteranCap
+
+# Outer clothing
+- type: loadout
+  id: CaptainRepeller
+  equipment:
+    outerClothing: ClothingOuterArmorCaptainRepeller
+
+# Gloves
+- type: loadout
+  id: CaptainGloves
+  equipment:
+    gloves: ClothingHandsGlovesCaptain
+
+- type: loadout
+  id: CaptainFlightGloves
+  equipment:
+    gloves: ClothingHandsGlovesCaptainflightgloves

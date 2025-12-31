@@ -1,0 +1,18 @@
+# For the veteran head of security cosmetics
+- type: loadoutEffectGroup
+  id: VeteranHOS
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfSecurity
+      time: 15h # ~10 rounds, half the standard due to HoS having an extreme un
+
+# Outer clothing
+- type: loadout
+  id: HeadofSecurityGreatcoat
+  equipment:
+    neck: ClothingNeckCloakHosgreatcoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: VeteranHOS

@@ -1,0 +1,46 @@
+﻿- type: entity
+  parent: [ClothingUniformSkirtBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtHopPowerSuit
+  name: head of personnel's power suit
+  description: Rather bold and imposing. Perfect for establishing authority in the workplace.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpskirt/hop_powersuit.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpskirt/hop_powersuit.rsi
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformMrSpaceWideSkirt
+  name: mr space wide suitskirt
+  description: The unspoken attire for any hotel, motel, or branded inn activities.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpskirt/mrspacewide.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpskirt/mrspacewide.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformMusicianSingerDress
+  name: lounge singer's dress
+  description: A form-fitting silk dress, perfect for preforming at fancy nightclubs. Or at dive bars on backwater space stations.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpskirt/mus_singerdress.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpskirt/mus_singerdress.rsi
+
+- type: entity
+  parent: ClothingUniformSkirtBase
+  id: ClothingUniformJumpskirtAngelDress
+  name: angel dress
+  description: Could you stop sabotaging my business?!
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpskirt/angeldress.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpskirt/angeldress.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon

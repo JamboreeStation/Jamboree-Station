@@ -53,6 +53,28 @@
     ClothingHeadHatWitch1: 1
     ClothingOuterPlagueSuit: 1
     ClothingMaskPlague: 1
+    ClothingHeadHatVeil: 1 #imp
+    ClothingEyesChaplainBlindfold: 1 #imp
+    ClothingUniformSkirtClayshaper: 1 #imp
+    ClothingMaskClayshaper: 1 #imp
+    ClothingHeadHatDruid: 1 #imp
+    ClothingUniformSkirtDruid: 1 #imp
+    ClothingNeckDruid: 1 #imp
+    ClothingNeckDruidMantle: 1 #imp
+    ClothingHeadHatMoon: 1 #imp
+    ClothingUniformSkirtMoon: 1 #imp
+    ClothingOuterMoon: 1 #imp
+    ClothingHeadHatSun: 1 #imp
+    ClothingUniformSun: 1 #imp
+    ClothingNeckSun: 1 #imp
+    ClothingMaskFire: 1 #imp
+    ClothingHeadHatTidal: 1 #imp
+    ClothingUniformSkirtTidal: 1 #imp
+    ClothingNeckTidal: 1 #imp
+    ClothingMaskSilent: 1 #imp, moved out of contraband
+    ClothingOuterSilent: 1 #imp, moved out of contraband
+    ClothingNeckChaplainDragon: 1 #imp
+    ClothingUniformTech: 1 #imp
     ClothingHeadsetService: 2
     BoxCandle: 2
     BoxCandleSmall: 2

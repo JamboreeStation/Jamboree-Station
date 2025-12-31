@@ -1,0 +1,53 @@
+﻿- type: entity
+  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseCommandContraband]
+  id: ClothingOuterCoatCMO
+  name: chief medical officer's collared lab coat
+  description: A medical lab coat for the Chief Medical Officer. The high collar acts as a splash guard for when a patient's veins are particularly leaky.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/OuterClothing/Coats/cmoprestigecoat.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/OuterClothing/Coats/cmoprestigecoat.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatQmHuge
+  name: quartermaster's XXXL winter coat
+  description: An oversized, exorbitantly fluffy winter coat for quartermasters.
+  components:
+  - type: TemperatureProtection
+    heatingCoefficient: 1.1
+    coolingCoefficient: 0.1
+  - type: Sprite
+    sprite: _Impstation/Clothing/OuterClothing/Coats/qm_hugecoat.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/OuterClothing/Coats/qm_hugecoat.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatJokester
+  name: jokester's coat
+  description: A snazzy, striking red overcoat for professional comedians. The shoulder pads enable higher-brow humor.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/OuterClothing/Coats/clown_jokestercoat.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/OuterClothing/Coats/clown_jokestercoat.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterCoatMusicianFurCoat
+  name: musician's fur coat
+  description: Seems snazzy, but on closer inspection it's just an old coat covered in white spray-paint.
+  components:
+  - type: TemperatureProtection # Jamboree
+    heatingCoefficient: 1.1
+    coolingCoefficient: 0.1
+  - type: Sprite
+    sprite: _Impstation/Clothing/OuterClothing/Coats/mus_furcoat.rsi
+  - type: Clothing
+    slots:
+      - OUTERCLOTHING
+    sprite: _Impstation/Clothing/OuterClothing/Coats/mus_furcoat.rsi
+
+

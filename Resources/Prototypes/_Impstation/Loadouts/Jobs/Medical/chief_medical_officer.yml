@@ -1,0 +1,30 @@
+# For the veteran chief medical officer cosmetics
+- type: loadoutEffectGroup
+  id: VeteranCMO
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChiefMedicalOfficer
+      time: 30h
+
+# Neck
+- type: loadout
+  id: CMOGreatCloak
+  equipment:
+    neck: ClothingNeckCloakCmosGreatcloak
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: VeteranCMO
+
+# Outer clothing
+- type: loadout
+  id: CMOPrestigeLabcoat
+  equipment:
+    outerClothing: ClothingOuterCoatCMO
+
+# Jumpsuit
+- type: loadout
+  id: CMOScrubs
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCMOScrubs
