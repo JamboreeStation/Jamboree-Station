@@ -1,6 +1,10 @@
 # SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Gorse1 <elliotreece80@gmail.com>
+# SPDX-FileCopyrightText: 2025 JamboreeBot <JamboreeBot@proton.me>
+# SPDX-FileCopyrightText: 2025 M1tht1c <mytht1c@proton.me>
+# SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 ## See also ../settings.yml and ../spawners.yml
@@ -574,6 +578,16 @@
       settings: SyndieSoldierTeamLeader
 
 - type: entity
+  id: RandomHumanoidSyndieSoldierTeamLeaderInstigator
+  name: syndicate scout team leader ghost role
+  components:
+  - type: Sprite
+    sprite: Structures/Decoration/banner.rsi
+    state: banner_syndicate
+  - type: RandomHumanoidSpawner
+    settings: SyndieSoldierTeamLeaderInstigator
+
+- type: entity
   id: RandomHumanoidSyndieSoldier
   name: syndicate soldier ghost role
   components:
@@ -582,6 +596,16 @@
       state: banner_syndicate
     - type: RandomHumanoidSpawner
       settings: SyndieSoldier
+
+- type: entity
+  id: RandomHumanoidSyndieSoldierInstigator
+  name: syndicate scout ghost role
+  components:
+  - type: Sprite
+    sprite: Structures/Decoration/banner.rsi
+    state: banner_syndicate
+  - type: RandomHumanoidSpawner
+    settings: SyndieSoldierInstigator
 
 - type: entity
   id: RandomHumanoidSyndieVisitor

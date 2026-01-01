@@ -360,3 +360,33 @@ Entries:
       message: made changeling not round remove
   id: 47
   time: '2025-12-06T21:03:51.0000000+00:00'
+- author: Gorse1
+  changes:
+    - type: Tweak
+      message: >-
+        Reworked the instigator to be a more building/scrapping focused antag,
+        have fun!
+  id: 48
+  time: '2025-12-30T11:37:21.0000000+00:00'
+- author: Bibble-B-Boop
+  changes:
+    - type: Add
+      message: Pride Cloaks have came to the trinkets menu!
+  id: 49
+  time: '2025-12-30T11:49:17.0000000+00:00'
+- author: Bibble-B-Boop
+  changes:
+    - type: Add
+      message: Added Drip to the Roboticist loadout!
+    - type: Add
+      message: Added Animals to the Roboticist loadout!
+  id: 50
+  time: '2025-12-31T16:15:55.0000000+00:00'
+- author: Bibble-B-Boop
+  changes:
+    - type: Add
+      message: Added megaphone's to the Captain and HoS' lockers!
+    - type: Add
+      message: Added the grappling gun to the paramedic's locker!
+  id: 51
+  time: '2025-12-31T16:21:01.0000000+00:00'

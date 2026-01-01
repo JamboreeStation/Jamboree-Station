@@ -174,8 +174,10 @@
   - ScientistShoes
   - ScientistPDA
   - Glasses
+  - Animals # Jamboree, parity with other roles
   - Survival
   - Trinkets
+  - Drip # Jamboree
   - GroupSpeciesBreathTool
   # Plasmaman
   - ScientistEnvirohelm
@@ -196,7 +198,7 @@
   - SecurityNeck
   - SurvivalSecurity
   - Trinkets
-  - Animals
+  - Animals 
   - SecurityStar
   - Drip # Jamboree
   - GroupSpeciesBreathToolSecurity

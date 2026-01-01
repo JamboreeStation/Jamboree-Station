@@ -1,6 +1,9 @@
 # SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Gorse1 <elliotreece80@gmail.com>
+# SPDX-FileCopyrightText: 2025 JamboreeBot <JamboreeBot@proton.me>
+# SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 ## See also ../settings.yml and ../roles.yml
@@ -962,6 +965,20 @@
     - RandomHumanoidSyndieSoldierTeamLeader
 
 - type: entity
+  name: syndicate scout team leader spawner
+  id: SyndieSoldierTeamLeaderInstigatorSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSyndieSoldierTeamLeaderInstigator
+
+- type: entity
   name: syndicate soldier spawner
   id: SyndieSoldierSpawner
   parent: MarkerBase
@@ -974,6 +991,20 @@
   - type: RandomSpawner
     prototypes:
     - RandomHumanoidSyndieSoldier
+
+- type: entity
+  name: syndicate scout spawner
+  id: SyndieSoldierInstigatorSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Structures/Decoration/banner.rsi
+      state: banner_syndicate
+  - type: RandomSpawner
+    prototypes:
+    - RandomHumanoidSyndieSoldierInstigator
 
 - type: entity
   name: syndie disaster victim spawner
