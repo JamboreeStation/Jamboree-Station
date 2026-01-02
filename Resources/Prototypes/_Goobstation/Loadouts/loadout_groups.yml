@@ -1193,14 +1193,6 @@
   - CaptainEnvirogloves
 
 - type: loadoutGroup
-  id: CaptainGloves
-  name: loadout-group-captain-gloves
-  minLimit: 1
-  maxLimit: 1
-  loadouts:
-  - CaptainGloves
-
-- type: loadoutGroup
   id: CaptainMask
   name: loadout-group-captain-mask
   minLimit: 0

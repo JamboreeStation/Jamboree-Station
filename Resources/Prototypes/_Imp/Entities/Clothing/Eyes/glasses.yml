@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2025 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: [ClothingEyesBase, BaseCommandContraband]
+  id: ClothingEyesGlassesCaptainvisor
+  name: captain's visor
+  description: "A sleek visor, secured on your face with futuristic microgravity devices."
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Eyes/Glasses/captainvisor.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Eyes/Glasses/captainvisor.rsi
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: ShowJobIcons
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES

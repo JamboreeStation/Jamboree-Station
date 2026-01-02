@@ -181,7 +181,7 @@ loadout-group-reporter-envirogloves = Reporter envirogloves
 loadout-group-captain-envirohelm = Captain envirohelm
 loadout-group-captain-envirosuit = Captain envirosuit
 loadout-group-captain-envirogloves = Captain envirogloves
-loadout-group-captain-gloves = Captain gloves
+# loadout-group-captain-gloves = Captain gloves #jamboree change
 
 
 # Salvage Specialist

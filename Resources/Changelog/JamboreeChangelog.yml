@@ -390,3 +390,16 @@ Entries:
       message: Added the grappling gun to the paramedic's locker!
   id: 51
   time: '2025-12-31T16:21:01.0000000+00:00'
+- author: Bibble-B-Boop
+  changes:
+    - type: Add
+      message: >-
+        Added a large assortment of clothing items from Impstation! Check your
+        loadout in the lobby or you nearest Clothesmat, Autodrobe, or PietyVend
+        ;)
+    - type: Add
+      message: >-
+        Added some clothing items that already exist in Jamboree to some roles
+        loadouts! Finally... Pirate Passenger...
+  id: 52
+  time: '2026-01-01T20:09:39.0000000+00:00'

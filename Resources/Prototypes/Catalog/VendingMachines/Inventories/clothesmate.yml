@@ -99,6 +99,7 @@
     ClothingUniformJumpsuitHawaiRed: 2
     ClothingUniformJumpsuitHawaiYellow: 2
     ClothingUniformJumpsuitFlannel: 2
+    ClothingUniformBrownSuit: 2 #imp
     ClothingUniformJumpsuitCasualBlue: 2
     ClothingUniformJumpskirtCasualBlue: 2
     ClothingUniformJumpsuitCasualPurple: 2
@@ -109,6 +110,7 @@
     ClothingUniformJumpskirtCasualGreen: 2
     # DO NOT ADD MORE, USE UNIFORM DYING
     ClothingShoesColorBlack: 8
+    ClothingShoesHeelsBlack: 4 #imp
     ClothingShoesColorBrown: 4
     ClothingShoesColorWhite: 3
     ClothingShoesColorBlue: 2
@@ -116,6 +118,7 @@
     ClothingShoesColorGreen: 2
     ClothingShoesColorOrange: 2
     ClothingShoesColorRed: 2
+    ClothingShoesHeelsRed: 2 #imp
     ClothingShoesColorPurple: 2
     ClothingHeadHatGreysoft: 8
     ClothingHeadHatMimesoft: 3

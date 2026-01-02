@@ -1,0 +1,22 @@
+# Jumpsuit #putting these items in the passenger menu is a jamboree idea
+- type: loadout
+  id: CavemanHides
+  equipment:
+    jumpsuit: ClothingUniformCavemanHides
+
+- type: loadout
+  id: SailorSuit
+  equipment:
+    jumpsuit: ClothingUniformSailorSuit
+
+# Neck
+- type: loadout
+  id: SailorAscot
+  equipment:
+    neck: ClothingNeckSailorAscot
+
+# Head
+- type: loadout
+  id: SailorCap
+  equipment:
+    head: ClothingHeadSailorCap

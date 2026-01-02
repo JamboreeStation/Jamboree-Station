@@ -1,0 +1,137 @@
+﻿- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitCEForeman
+  name: foreman's jumpsuit
+  description: A more relaxed uniform for the chief engineer while supervising a worksite. Construction blue jeans and a neon long-sleeve with retroreflective safety stripes, perfect for working on wires and ordering engineers to repair evac again.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/ce_foremans.rsi
+    layers:
+    - state: icon
+    - state: icon-unshaded
+      shader: unshaded
+    - state: icon-unshaded
+      shader: shaded
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/ce_foremans.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING
+      - state: equipped-INNERCLOTHING-unshaded
+        shader: unshaded
+      - state: equipped-INNERCLOTHING-unshaded
+        shader: shaded
+  - type: Tag
+    tags:
+    - HiViz
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitCMOScrubs
+  name: chief medical officer's scrubs
+  description: Comfortable scrubs that are easy to move in and even easier to stain.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/cmo_scrubs.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/cmo_scrubs.rsi
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformCircusClown
+  name: circus clown jumpsuit
+  description: A replica of the regalia of the great Googoo Funnyball, who tragically disappeared in a mysterious circus fire.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/circusclown.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/circusclown.rsi
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJokester
+  name: jokester's jumpsuit
+  description: Now 100% more tomato-proof!
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/clown_jokester.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/clown_jokester.rsi
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformBrownSuit
+  name: brown suit
+  description: Not even the worst coffee spills will show up on this puppy, guaranteed.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/brownsuit.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/brownsuit.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpsuitMusicianMarchingBand
+  name: musician's marching uniform
+  description: For when you need to join the parade.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/mus_marchingband.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/mus_marchingband.rsi
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformMrSpaceWide
+  name: mr space wide suit
+  description: The unspoken attire for any hotel, motel, or branded inn activities.
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/mrspacewide.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/mrspacewide.rsi
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformJesterEvil
+  name: evil jester suit
+  description: Heeheehee...
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/jesterevil.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/jesterevil.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - ClothMade
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformBurglarJumpsuit
+  name: suspicious crime jumpsuit
+  description: The wearer of this is one sneaky snitch...
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/burglarjumpsuit.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/burglarjumpsuit.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - ClothMade
+
+- type: entity
+  parent: [ClothingUniformBase]
+  id: ClothingUniformSailorSuit
+  name: sailor suit
+  description: Wrong kind of ship!
+  components:
+  - type: Sprite
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/sailoruniform.rsi
+  - type: Clothing
+    sprite: _Impstation/Clothing/Uniforms/Jumpsuit/sailoruniform.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - ClothMade

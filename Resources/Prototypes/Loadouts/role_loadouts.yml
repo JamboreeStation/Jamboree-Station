@@ -124,11 +124,13 @@
   id: JobCaptain
   groups:
   - CaptainHead
+  - CaptainGlasses #Jamboree - More glasses in the future?
   - CaptainNeck
   - CaptainJumpsuit
   - CaptainMask # Goobstation - Lollypops!
   - CaptainBackpack
   - CaptainOuterClothing
+  - CaptainGloves
   - Survival
   - Trinkets
   - Animals
@@ -138,7 +140,6 @@
   - CaptainEnvirohelm
   - CaptainEnvirosuit
   - CaptainEnvirogloves
-  - CaptainGloves
 
 - type: roleLoadout
   id: JobHeadOfPersonnel
@@ -176,6 +177,7 @@
   id: JobPassenger
   groups:
   - GroupTankHarness
+  - PassengerHead
   - PassengerJumpsuit
   - CommonBackpack
   - PassengerNeck
@@ -254,6 +256,7 @@
   id: JobLibrarian
   groups:
   - GroupTankHarness
+  - LibrarianHead
   - LibrarianJumpsuit
   - CommonBackpack
   - Glasses
@@ -290,6 +293,7 @@
   groups:
   - GroupTankHarness
   - ChaplainHead
+  - ChaplainEyes
   - ChaplainMask
   - ChaplainNeck
   - ChaplainJumpsuit
@@ -352,6 +356,8 @@
   groups:
   - GroupTankHarness
   - ClownHead
+  - ClownMask
+  - ClownNeck
   - ClownJumpsuit
   - ClownBackpack
   - ClownOuterClothing
@@ -392,9 +398,13 @@
   id: JobMusician
   groups:
   - GroupTankHarness
+  - MusicianHead
+  - MusicianNeck
   - MusicianJumpsuit
+  - MusicianGloves
   - CommonBackpack
   - MusicianOuterClothing
+  - MusicianShoes
   - Glasses
   - Survival
   - Trinkets
