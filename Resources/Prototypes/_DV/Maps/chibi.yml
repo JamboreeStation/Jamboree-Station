@@ -35,6 +35,7 @@
       - type: StationJobs
         availableJobs:
           Captain: [ 1, 1 ]
+          NanotrasenRepresentative: [ 1, 1 ] # added by jamboree
 
           HeadOfSecurity: [ 1, 1 ]
           SecurityOfficer: [ 1, 2 ]

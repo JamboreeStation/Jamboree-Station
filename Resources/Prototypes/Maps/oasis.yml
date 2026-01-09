@@ -115,8 +115,8 @@
             #service
             StationAi: [ 1, 1 ]
             Captain: [ 1, 1 ]
-#            NanotrasenRepresentative: [ 1, 1 ] Jamboree - Dont want these enabled for now
-#            BlueshieldOfficer: [ 1, 1 ]
+            NanotrasenRepresentative: [ 1, 1 ]
+#            BlueshieldOfficer: [ 1, 1 ] # BSO disabled
             HeadOfPersonnel: [ 1, 1 ]
             Bartender: [ 2, 2 ]
             Botanist: [ 2, 3 ]

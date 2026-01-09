@@ -113,8 +113,8 @@
           availableJobs:
             #command
             Captain: [ 1, 1 ]
-#            NanotrasenRepresentative: [ 1, 1 ] Jamboree - Dont want these enabled for now
-#            BlueshieldOfficer: [ 1, 1 ]
+            NanotrasenRepresentative: [ 1, 1 ]
+#            BlueshieldOfficer: [ 1, 1 ] # BSO disabled
             #service
             HeadOfPersonnel: [ 1, 1 ]
             Bartender: [ 2, 2 ]

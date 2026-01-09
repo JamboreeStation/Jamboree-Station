@@ -56,8 +56,8 @@
             Chef: [ 1, 1 ]
             Janitor: [ 2, 2 ]
             Captain: [ 1, 1 ]
-#            NanotrasenRepresentative: [ 1, 1 ] Jamboree - Dont want these enabled for now
-#            BlueshieldOfficer: [ 1, 1 ]
+            NanotrasenRepresentative: [ 1, 1 ]
+#            BlueshieldOfficer: [ 1, 1 ] # BSO disabled
             HeadOfPersonnel: [ 1, 1 ]
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]

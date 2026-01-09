@@ -46,8 +46,8 @@
           emergencyShuttlePath: /Maps/Shuttles/emergency_cluster.yml
         - type: StationJobs
           availableJobs:
-#            NanotrasenRepresentative: [ 1, 1 ] # Goobstation Jamboree - Dont want these enabled for now
-#            BlueshieldOfficer: [ 1, 1 ] # Goobstation
+            NanotrasenRepresentative: [ 1, 1 ]
+#            BlueshieldOfficer: [ 1, 1 ] # BSO disabled
             Captain: [ 1, 1 ]
             HeadOfSecurity: [ 1, 1 ]
             SecurityOfficer: [ 1, 2 ]

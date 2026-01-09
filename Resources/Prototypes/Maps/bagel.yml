@@ -103,8 +103,8 @@
           availableJobs: # 60 jobs total w/o latejoins & interns, 77 jobs total w/ latejoins & interns
             #command (7)
             Captain: [ 1, 1 ]
-#            NanotrasenRepresentative: [ 1, 1 ] Jamboree- Dont want these enabled for now
-#            BlueshieldOfficer: [ 1, 1 ]
+            NanotrasenRepresentative: [ 1, 1 ]
+#            BlueshieldOfficer: [ 1, 1 ] # BSO disabled
             #service
             HeadOfPersonnel: [ 1, 1 ]
             Bartender: [ 1, 2 ]
