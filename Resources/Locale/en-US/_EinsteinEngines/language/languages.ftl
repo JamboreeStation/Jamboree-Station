@@ -8,8 +8,8 @@ language-Bubblish-name = Bubblish
 language-Bubblish-description = The language of Slimes. Being a mixture of bubbling noises and pops it's very difficult to speak for humans without the use of mechanical aids.
 
 language-RootSpeak-name = Rootspeak
-language-RootSpeak-description = The strange whistling-style language spoken by the Diona.
-
+language-RootSpeak-description = The strange whistling-style language spoken by the Diona. It is said to be ever present in the winds of Kissiae.
+# changed to fit jamboree lore
 language-Nekomimetic-name = Nekomimetic
 language-Nekomimetic-description = To the casual observer, this language is an incomprehensible mess of broken Japanese. To the Felinids, it's somehow comprehensible.
 
@@ -20,13 +20,14 @@ language-Draconic-description =
 language-Azaziba-name = Sinta'Azaziba
 language-Azaziba-description =
     A language of Moghes consisting of a combination of spoken word and gesticulation.
-    While waning since Moghes entered the galactic stage - it enjoys popular use by Unathi that never fell to the Hegemony's cultural dominance.
+    While waning since Moghes entered the galactic stage - it enjoys popular use by Unathi that never fell to the Galactic Hegemony's cultural dominance.
+# changed to fit Jamboree lore
 
 language-SolCommon-name = Sol common
 language-SolCommon-description =
     With its roots in Mandarin Chinese - Common evolved as the official language of the Sol Alliance - with officials working to tie it together with a common tongue.
-    It's spoken by state officials - taught in schools - and spoken by those who either feel a sense of national pride in the Alliance or otherwise fell sway to the culture.
-
+    It's spoken by state officials - taught in schools - and spoken by those who either feel a sense of national pride in the Sol Alliance or otherwise fell sway to the culture.
+# changed for clarity
 language-NovuNederic-name = Novu-Nederic
 language-NovuNederic-description =
     Once the language of seafarers and merchants, now the voice of spacers, terraformers, and pioneers - and great enjoyers of agriculture.
@@ -35,10 +36,10 @@ language-NovuNederic-description =
 
 language-TauCetiBasic-name = Tau-Ceti Basic
 language-TauCetiBasic-description =
-    A spiritual successor of Esperanto, established in 2404 in Tau Ceti by Ceti intellectuals.
+    A spiritual successor of Galactic Basic, established in 2XXX on Tau Ceti by Ceti intellectuals.
     Its unique, fully customized alphabet and structure allow it to be spoken even by most alien species.
-    It's the official language of Tau Ceti and has growing traction in diplomatic circles and Universalists across human space.
-
+    It's the official language of Tau Ceti and has had a growing traction amongst several factions all across the galaxy.
+# changed to fit jamboree lore
 language-Tradeband-name = Tradeband
 language-Tradeband-description =
     Descended from latin and romance languages of old Earth - Tradeband remains the main tongue of the upper class of humanity.
@@ -49,20 +50,23 @@ language-Freespeak-description =
     A language of renegades and frontiersmen descending from various languages from Earth-- like Hindi,
     combined into a multi-rooted jumble that sounds incoherent or even barbarian to non-native speakers.
     This language is the only common cultural identity for humans in the frontier. Speaking this language in itself boldly declares the speaker a free spirit.
-    It is often called 'Gutter' by Alliance citizens.
-
+    It is often called 'Gutter' by Sol Alliance citizens.
+# changed for clarity
 language-Elyran-name = Elyran Standard
 language-Elyran-description =
-    Elyran Standard is the official tongue of the Republic of Elyra. Constructed using elements of Farsi - Arabic - and Turkish.
+    Elyran Standard is the official tongue of the Republic of Elyra, once known as the planet Jupiter. Constructed using elements of Farsi - Arabic - and Turkish.
     Influence from all three of these languages can be seen throughout its grammar and vocabulary.
-
+# changed to fit jamboree lore
 language-Canilunzt-name = Canilunzt
 language-Canilunzt-description =
-    The guttural language spoken and utilized by the inhabitants of the Vazzend system,
+    The guttural language spoken and utilized by the first survivors of the destruction of the Vulpakanin's origin world. It is a language
     composed of growls, barks, yaps, and heavy utilization of ears and tail movements. Vulpkanin speak this language with ease.
-
+# changed to fit jamboree lore
 language-Moffic-name = Moffic
-language-Moffic-description = The language of the mothpeople borders on complete unintelligibility.
+language-Moffic-description =
+    The language of the mothpeople, which borders on complete unintelligibility. Despite this, or because of its lack of readability by most species,
+    it remains as the first language of many Moff.
+# changed to fit jamboree lore
 
 language-RobotTalk-name = RobotTalk
 language-RobotTalk-description = A language consisting of harsh binary chirps, whistles, hisses, and whines. Organic tongues cannot speak it without aid from special translators.
@@ -73,18 +77,21 @@ language-Calcic-description = The bone-rattling language of Skeletons and Plasma
 # Tau-Ceti Basic Sign Language - Removed prefix for better readability.
 language-Sign-name = Sign Language
 language-Sign-description =
-    Tau-Ceti Basic Sign Language.
+    Tau-Ceti Basic Sign Language, developed alongside Tau-Ceti Basic as its visual-manual counterpart. Known as
     TCB-SL for short, this sign language is prevalent among mute and deaf people.
-
+# changed to fit jamboree lore
 language-Marish-name = Marish
-language-Marish-description =  A language spoken only by Shadowkin, one that is unable to be replicated by normal tongues.
-
+language-Marish-description =
+    A language spoken only by Shadowkin, primarily due to the reserved nature of their species. Those who do learn it admire the
+    simple yet nuanced structure of the language.
+# changed to fit jamboree lore
 language-ValyrianStandard-name = Valyrian Standard
 language-ValyrianStandard-description =
-    A language descended from eastern european languages of old earth - Valyrian Standard is the commonly spoken tongue of Harpies brought up on their homeworld of Valyrian 4b
+    A language descended from a combination of eastern European languages of old Earth combined with the language of the extinct species that created them
+    - Valyrian Standard is the commonly spoken tongue of Harpies brought up on their origin world of Valyrian-B.
     It is rarely spoken outside of the worlds of its native speakers, and has in modern times been supplanted by the 'Conlangs of the Sol Alliance.
-    Its speakers are those who wish to uphold the traditions and beliefs of ancient peoples from before the colonial era.
-
+    Many of its speakers speak this language as a way to honor both ancient humanity and the ancient species which gave Harpies existence.
+# changed to fit jamboree lore
 language-Chittin-name = Chittin
 language-Chittin-description =
     A language consisting of clicks, buzzes, and some variety of harsh insect sounds.
@@ -147,12 +154,14 @@ language-Hissing-description = Hiss!
 
 language-Eldritch-name = Eldritch
 language-Eldritch-description =
-    A language that is considered to be long forgotten - now the only speakers of this profaned tongue of screeches and
-    mumbles are the followers of an ancient God of Blood.
-
+    A language that is considered to be long forgotten - the only speakers of this profaned tongue of screeches and
+    mumbles are cultists, scholars, and creatures of eldritch origin.
+# changed to fit jamboree lore
 language-Penguin-name = Penguin
-language-Penguin-description = Bwaap!
-
+language-Penguin-description =
+    The language of the noble and powerful penguin. It is said to have been constructed by penguins as to hide their plottings from other species.
+    Non-penguins who manage to learn this tongue are guranteed to learn their ancient secrets. Bwaap!
+# changed for fun
 language-DroneTalk-name = Drone
 language-DroneTalk-description = Incomprehensible to most non-drones!
 
@@ -191,7 +200,7 @@ language-Schechi-description =
     The language of Resomi, primarily featuring frontal sounds made without rounding. Fluent speakers sound quite close to birdsong.
 
 language-NewKinPidgin-name = Ka'rakk
-language-NewKinPidgin-description = A debased dialect cobbled together by lower-caste Vox, mangled beyond recognition.
-    While a primitive and clumsy attempt resulting in a dull, simplified mockery of their true language,
-    higher-caste Vox can still discern meaning within the crude approximations.
+language-NewKinPidgin-description = A language which has been developed by combining elements of various Vox languages.
+    Many Vox who speak this language lement that they cannot speak the "true" Vox language, often the one that is native to their clan.
     It sounds like chaotic shrieking to everyone else.
+# changed for jamboree lore

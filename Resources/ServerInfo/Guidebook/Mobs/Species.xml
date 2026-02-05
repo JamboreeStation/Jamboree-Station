@@ -39,12 +39,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     <GuideEntityEmbed Entity="MobShadowkin" Caption="Shadowkin"/>
     <GuideEntityEmbed Entity="MobVox" Caption="Vox"/>
     <GuideEntityEmbed Entity="MobVulpkanin" Caption="Vulpkanin"/>
-<!--    <GuideEntityEmbed Entity="MobYowie" Caption="Yowie"/>  Jamboree -->
-    <GuideEntityEmbed Entity="MobChitinid" Caption="Chitinid"/>
   </Box>
   <Box>
+    <GuideEntityEmbed Entity="MobPlasmaman" Caption="Plasmaman"/> <!-- Jamboree, doing this cause it was left out of the crew -->
+    <GuideEntityEmbed Entity="MobChitinid" Caption="Chitinid"/> <!-- Jamboree, doing this so it isn't being cut off -->
     <GuideEntityEmbed Entity="MobFeroxi" Caption="Feroxi"/>
+    <GuideEntityEmbed Entity="MobYowie" Caption="Yowie"/> <!-- Jamboree, return of the Yowie -->
 <!--    Frontier specific species -->
     <GuideEntityEmbed Entity="MobGoblin" Caption="Goblin"/>
+
   </Box>
 </Document>

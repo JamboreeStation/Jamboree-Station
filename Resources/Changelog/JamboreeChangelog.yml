@@ -576,3 +576,41 @@ Entries:
       message: Removed BSO from reach, saltern, and serpentcrest
   id: 66
   time: '2026-01-26T01:58:06.0000000+00:00'
+- author: TehFlaminTaco
+  changes:
+    - type: Add
+      message: >-
+        Goblins have arrived from the Frontier Sector! Be sure to look out for
+        them hiding in your toilets and stealing your trash!
+  id: 67
+  time: '2026-01-31T00:50:55.0000000+00:00'
+- author: Bibble-B-Boop
+  changes:
+    - type: Tweak
+      message: >-
+        Changed the Moth, Reptillian, and Voxes lore entries in the guidebook!
+        Mmmm... lore...
+    - type: Tweak
+      message: >-
+        Changed the Shadowkin guidebook entry to be accurate with them needing
+        to breath. Oops, hope you didn't suffocate!
+    - type: Add
+      message: >-
+        Added a lore section to the Tajaran and Feroxi guidebook entries!
+        Mmmm... lore.... 
+    - type: Tweak
+      message: >-
+        Changed the description of the bucket to be a TF2 reference. Was a
+        requested change!
+  id: 68
+  time: '2026-01-31T00:52:08.0000000+00:00'
+- author: Bibble-B-Boop
+  changes:
+    - type: Add
+      message: >-
+        Yowie have returned to the Jamboree Sector! Don't call them Sasquatches.
+        Don't.
+    - type: Tweak
+      message: The Goblin language has a new description.
+  id: 69
+  time: '2026-01-31T19:08:17.0000000+00:00'

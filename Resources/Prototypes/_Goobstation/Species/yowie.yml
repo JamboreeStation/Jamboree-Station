@@ -18,7 +18,7 @@
 - type: species
   id: Yowie
   name: species-name-yowie
-  roundStart: false
+  roundStart: true # jamboree: return of the yowie
   prototype: MobYowie
   sprites: MobYowieSprites
   markingLimits: MobYowieMarkingLimits

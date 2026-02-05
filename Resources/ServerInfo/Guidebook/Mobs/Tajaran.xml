@@ -15,9 +15,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   Tajara are a species of omnivorous, bipedal humanoids with features strongly resembling Terran felines.
   Their most distinguishing traits include a layer of fur, large ears atop their heads, and a tail that aids in balance.
-  They hail from the icy moon of [color=turquoise]Ahdomai[/color], only relatively recently making their debut on the galactic stage.
-  Originally a clan-centric society, Tajara endured centuries of dictatorial rule.
-  Following a civil war, their government fractured, and power returned to the clans, where it remains to this day.
 
   ## Mechanics
 
@@ -28,5 +25,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   They use their claws for unarmed attacks, dealing [color=#ec3a3a]Slashing[/color] and [color=#ec3a3a]Piercing[/color] damage.
 
   Thanks to their innate agility, they [color=#1e90ff]take reduced damage from impacts or falls[/color], and their soft feet allow them to [color=#1e90ff]walk shoeless without making noise[/color].
+
+  ## Lore
+
+  The Tajaran, hailing from their icy origin world of Ahdomai, have a long history of civil wars amongst different local clans, with many escaping into space to avoid endless strife.
+  The first known expedition from Ahdomai was led by a now defunct genetics company, which coincidentally developed the Felinid species...
 
 </Document>

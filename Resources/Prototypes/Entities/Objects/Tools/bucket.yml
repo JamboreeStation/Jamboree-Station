@@ -103,7 +103,7 @@
   parent: BaseItem
   id: Bucket
   name: bucket
-  description: It's a boring old bucket.
+  description: It's a bucket. Dear god... #jamboree, someone asked for it.
   components:
   - type: Drink
     solution: bucket
