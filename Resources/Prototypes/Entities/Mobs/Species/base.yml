@@ -587,6 +587,9 @@
     - Bacterial
     - Parasite
   - type: PotentialMutant # Jamboree - Can be mutated
+    mutateDamageThreshold:
+      types:
+        Radiation: 30
   # </Goobstation>
 
 - type: entity

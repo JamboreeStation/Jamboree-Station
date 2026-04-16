@@ -1,3 +1,4 @@
+using Content.Shared.Damage;
 using Content.Shared.Random;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -12,4 +13,10 @@ public sealed partial class PotentialMutantComponent : Component
     /// </summary>
     [DataField]
     public ProtoId<WeightedRandomPrototype> MutationPool = "RandomMutationPool";
+
+    /// <summary>
+    ///     The damage threshold from a single effect in which to gain a mutation.
+    /// </summary>
+    [DataField(required: true)]
+    public DamageSpecifier MutateDamageThreshold = default!;
 }

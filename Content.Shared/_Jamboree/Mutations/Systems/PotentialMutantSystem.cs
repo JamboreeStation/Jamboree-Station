@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Shared.Abilities.Psionics;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Damage;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Robust.Shared.Player;
@@ -17,6 +18,13 @@ public sealed partial class PotentialMutantSystem : EntitySystem
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<PotentialMutantComponent, DamageChangedEvent>(OnDamageChanged);
+    }
 
     public MutantComponent BecomeMutant(Entity<PotentialMutantComponent> ent)
     {
@@ -142,5 +150,20 @@ public sealed partial class PotentialMutantSystem : EntitySystem
     public void LogAbilityUsed(EntityUid uid, string ability)
     {
         _adminLogger.Add(Database.LogType.Psionics, Database.LogImpact.Medium, $"{ToPrettyString(uid):player} used {ability}");
+    }
+
+    public void OnDamageChanged(Entity<PotentialMutantComponent> entity, ref DamageChangedEvent args)
+    {
+        if (args.DamageDelta is not { } damageDelta)
+            return;
+        // if we have radiation damage over a threshold, gain a mutation
+        foreach (var kv in entity.Comp.MutateDamageThreshold.DamageDict) {
+            if (!damageDelta.DamageDict.TryGetValue(kv.Key, out var damageValue))
+                return; // Target did not take this kind of damage, or cannot take it.
+            if (damageValue < kv.Value)
+                return; // Target did not meet threshold
+        }
+        // Passed all thresholds
+        TryGainRandomMutation(entity);
     }
 }

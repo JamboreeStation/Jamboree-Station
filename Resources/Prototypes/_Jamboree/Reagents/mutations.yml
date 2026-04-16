@@ -17,4 +17,4 @@
         - !type:CauseMutation
           conditions:
           - !type:ReagentThreshold
-            min: 10
+            min: 30

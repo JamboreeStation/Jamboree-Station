@@ -14,10 +14,12 @@ public sealed partial class CauseMutation : EntityEffect
         // Current form only adds 1 mutation
         // May wish to change this in future to allow heaps of mutations.
 
-        var potentialMutant = args.EntityManager.System<PotentialMutantSystem>();
-        if (!args.EntityManager.TryGetComponent<PotentialMutantComponent>(args.TargetEntity, out var mutant))
+        var mutantSys = args.EntityManager.System<PotentialMutantSystem>();
+        if (!args.EntityManager.TryGetComponent<PotentialMutantComponent>(args.TargetEntity, out var potentialMutant))
             return;
-        potentialMutant.TryGainRandomMutation(new(args.TargetEntity, mutant));
+        if (args.EntityManager.HasComponent<MutantComponent>(args.TargetEntity))
+            return; // Already a mutant :(
+        mutantSys.TryGainRandomMutation(new(args.TargetEntity, potentialMutant));
     }
 
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
