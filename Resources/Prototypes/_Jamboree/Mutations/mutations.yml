@@ -1,0 +1,98 @@
+- type: mutation
+  id: MindSwapMutation
+  name: Mind Swap
+  description: Swaps minds with the target. Either can change back after 20 seconds.
+  isMental: true
+  isActive: true
+  initializeFunctions:
+    - !type:AddMutantActions
+      actions:
+        - ActionMindSwapMutation
+  removalFunctions:
+    - !type:RemoveMutantActions
+
+- type: mutation
+  id: ElectrokinesisMutation
+  name: Electrokinesis
+  description: Sends a bolt of lightning to the target, leaving them stunned and stuttering.
+  isMental: false
+  isActive: true
+  initializeFunctions:
+    - !type:AddMutantActions
+      actions:
+        - ActionElectrokinesisMutation
+  removalFunctions:
+    - !type:RemoveMutantActions
+
+- type: mutation
+  id: PyrokinesisMutation
+  name: Pyrokinesis
+  description: Light a flammable target on fire.
+  isMental: false
+  isActive: true
+  initializeFunctions:
+    - !type:AddMutantActions
+      actions:
+        - ActionPyrokinesisMutation
+  removalFunctions:
+    - !type:RemoveMutantActions
+
+- type: mutation
+  id: InvisibilityMutation
+  name: Invisibility
+  description: Render yourself invisible to normal sight.
+  isMental: false
+  isActive: true
+  initializeFunctions:
+    - !type:AddMutantActions
+      actions:
+        - ActionMutantInvisibility
+  removalFunctions:
+    - !type:RemoveMutantActions
+
+- type: mutation
+  id: TeleprojectionMutation
+  name: Teleprojection
+  description: Mentally project yourself to remotely observe things.
+  isMental: true
+  isActive: true
+  initializeFunctions:
+    - !type:AddMutantActions
+      actions:
+        - ActionTeleprojection
+    - !type:AddMutantComponents
+      components:
+        - type: TeleprojectionMutation
+  removalFunctions:
+    - !type:RemoveMutantActions
+    - !type:RemoveMutantComponents
+      components:
+        - type: TeleprojectionMutation
+
+- type: mutation
+  id: TelepathyMutation
+  name: Telepathy
+  description: Communicate to others nearby using only your mind.
+  isMental: true
+  isActive: false
+  initializeFunctions:
+    - !type:AddMutantComponents
+      components:
+        - type: Telepathy
+  removalFunctions:
+    - !type:RemoveMutantComponents
+      components:
+        - type: Telepathy
+
+- type: mutation
+  id: RevivifyMutation
+  name: Revivify
+  description: Revive the dead at a heavy personal cost.
+  isMental: false
+  isActive: true
+  initializeFunctions:
+    - !type:AddMutantActions
+      actions:
+        - ActionRevivifyMutation
+  removalFunctions:
+    - !type:RemoveMutantActions

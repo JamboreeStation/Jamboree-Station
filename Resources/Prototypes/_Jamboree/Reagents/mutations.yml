@@ -1,0 +1,20 @@
+- type: flavor
+  id: mutating
+  flavorType: Complex
+  description: flavor-complex-mutating
+
+- type: reagent
+  id: ChemicalM
+  name: reagent-name-chemicalm
+  group: Medicine
+  desc: reagent-desc-chemicalm
+  physicalDesc: reagent-physical-desc-chemicalm
+  flavor: mutating
+  color: "#222222"
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:CauseMutation
+          conditions:
+          - !type:ReagentThreshold
+            min: 10

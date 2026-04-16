@@ -1,0 +1,9 @@
+- type: reaction
+  id: ChemicalM
+  reactants:
+    Genecide:
+      amount: 1
+    UnstableMutagen:
+      amount: 1
+  products:
+    ChemicalM: 2

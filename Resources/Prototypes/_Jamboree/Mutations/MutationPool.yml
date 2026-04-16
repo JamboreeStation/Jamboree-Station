@@ -1,0 +1,10 @@
+- type: weightedRandom
+  id: RandomMutationPool
+  weights:
+    MindSwapMutation: 1
+    ElectrokinesisMutation: 1
+    PyrokinesisMutation: 1
+    InvisibilityMutation: 1
+    TeleprojectionMutation: 1
+    TelepathyMutation: 1
+    RevivifyMutation: 1

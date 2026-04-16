@@ -1,0 +1,19 @@
+- type: Interaction
+  id: SendTelepathicMessage
+  parent: BaseGlobal
+  delay: 0
+  range: {max: 10}
+  hideByRequirement: true
+  requirement:
+    !type:ComplexRequirement
+    requirements:
+    - !type:SelfWhitelistRequirement
+      whitelist:
+        components:
+        - Telepathy
+    - !type:EntityWhitelistRequirement
+      whitelist:
+        components:
+        - PotentialMutant
+  action:
+    !type:PromptTelepathicMessageAction

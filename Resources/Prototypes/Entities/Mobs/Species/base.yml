@@ -586,6 +586,7 @@
     - Viral
     - Bacterial
     - Parasite
+  - type: PotentialMutant # Jamboree - Can be mutated
   # </Goobstation>
 
 - type: entity
