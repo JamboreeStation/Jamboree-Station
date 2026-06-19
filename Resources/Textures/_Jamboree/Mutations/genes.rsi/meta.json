@@ -1,0 +1,56 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by Bibble for SS14. 'mutation' placeholder is the question-mark sprite from _NF/Markers/general.rsi (CC-BY-SA-3.0).",
+    "states": [
+        {
+            "name": "mutation"
+        },
+        {
+            "name": "pyrokinesis"
+        },
+        {
+            "name": "mind_swap"
+        },    
+        {
+            "name": "invisibility"
+        },    
+        {
+            "name": "electrokinesis"
+        },    
+        {
+            "name": "teleprojection"
+        },    
+        {
+            "name": "telepathy"
+        },    
+        {
+            "name": "reverse_swap"
+        },
+        {
+            "name": "revivify"
+        },
+        {
+            "name": "precognition"
+        },    
+        {
+            "name": "elastic_limbs"
+        },    
+        {
+            "name": "shapechange"
+        },
+        {
+            "name": "blindness"
+        },
+        {
+            "name": "mute"
+        },
+        { 
+            "name": "deaf"
+        }
+    ]
+}

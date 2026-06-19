@@ -1,8 +1,9 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerPsionicsRecords
-  name: psionics registry computer
-  description: This can be used to check psionics registry records. Only epistemics can modify them.
+  # Jamboree: rebranded to Mutant Registry (Mutations system).
+  name: mutant registry computer
+  description: Used to check mutant registry records. Only the Geneticist can modify them.
   components:
   - type: PsionicsRecordsConsole
   - type: UserInterface
@@ -26,7 +27,8 @@
   - type: PointLight
     radius: 1.5
     energy: 1.6
-    color: "#1f8c28"
+    # Jamboree: cyan to match the Mutant Registry rebrand.
+    color: "#1f8c8c"
   - type: Computer
     board: PsionicsRecordsComputerCircuitboard
   - type: AccessReader

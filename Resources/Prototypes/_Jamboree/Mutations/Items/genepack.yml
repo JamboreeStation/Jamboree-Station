@@ -1,0 +1,32 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Reused sprite: vacuum flask (Objects/Consumable/Drinks/vacuumflask.rsi).
+# When dedicated genepack art exists, swap the sprite path here.
+- type: entity
+  parent: BaseItem
+  id: Genepack
+  name: genepack
+  description: A silver vacuum flask with cyan accents that stores raw genetic material. Insert into a Recombiner to splice it into a genepack injector.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Objects/Specific/Mutant/genepack.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: Genepack
+
+# Reused sprite: implanter (Objects/Specific/Medical/implanter.rsi).
+- type: entity
+  parent: BaseItem
+  id: GenepackInjector
+  name: genepack injector
+  description: A single-use injector that imprints a set of mutations on whoever it touches. The cyan label warns that this isn't a regular implanter.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Objects/Specific/Mutant/injector.rsi
+    state: primed
+  - type: Item
+    size: Small
+  - type: GenepackInjector

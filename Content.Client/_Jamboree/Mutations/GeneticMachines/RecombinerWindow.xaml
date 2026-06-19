@@ -1,0 +1,46 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:cc="clr-namespace:Robust.Client.UserInterface.Controls"
+               Title="{Loc 'recombiner-window-title'}"
+               SetSize="720 640"
+               MinSize="600 520">
+    <BoxContainer Orientation="Vertical" Margin="6">
+        <!-- top: title row -->
+        <Label Text="{Loc 'recombiner-assemble-genes'}" StyleClasses="LabelHeading" />
+
+        <!-- selected genes -->
+        <Label Text="{Loc 'recombiner-selected-genes'}" Margin="0 6 0 2" />
+        <PanelContainer StyleClasses="Inset" MinSize="0 90">
+            <ScrollContainer HorizontalExpand="True" VerticalExpand="True" HScrollEnabled="True">
+                <GridContainer Name="SelectedGrid" Access="Public" Columns="10" Margin="4" />
+            </ScrollContainer>
+        </PanelContainer>
+
+        <!-- library, grouped per loaded genepack -->
+        <Label Text="{Loc 'recombiner-genepack-library'}" Margin="0 10 0 2" />
+        <ScrollContainer HorizontalExpand="True" VerticalExpand="True">
+            <BoxContainer Name="LibraryContainer" Access="Public" Orientation="Vertical" />
+        </ScrollContainer>
+
+        <!-- footer: stats + accept -->
+        <PanelContainer StyleClasses="Inset" Margin="0 8 0 0">
+            <BoxContainer Orientation="Vertical" Margin="6">
+                <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                    <Label Text="{Loc 'recombiner-complexity'}" />
+                    <Label Name="ComplexityLabel" Access="Public" Margin="6 0 18 0" />
+                    <Label Text="{Loc 'recombiner-metabolic-efficiency'}" />
+                    <Label Name="MetabolicLabel" Access="Public" Margin="6 0 18 0" />
+                    <Label Text="{Loc 'recombiner-balance'}" />
+                    <Label Name="BalanceLabel" Access="Public" Margin="6 0 0 0" />
+                </BoxContainer>
+                <BoxContainer Orientation="Horizontal" Margin="0 4 0 0" HorizontalExpand="True">
+                    <Label Text="{Loc 'recombiner-genotype-name'}" />
+                    <LineEdit Name="GenotypeInput" Access="Public" HorizontalExpand="True" Margin="6 0 6 0" />
+                    <Button Name="StartButton" Access="Public" Text="{Loc 'recombiner-start-button'}" />
+                </BoxContainer>
+                <Label Name="BusyLabel" Margin="0 6 0 0" Text="{Loc 'recombiner-busy'}" Visible="False" />
+                <ProgressBar Name="ProgressBar" Access="Public" Margin="0 4 0 0" HorizontalExpand="True"
+                             MinValue="0" MaxValue="1" Value="0" Visible="False" />
+            </BoxContainer>
+        </PanelContainer>
+    </BoxContainer>
+</DefaultWindow>

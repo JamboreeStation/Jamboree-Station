@@ -600,6 +600,10 @@
     tags:
     - CorgiWearable
     - WhitelistChameleon
+  # Jamboree: Mental Immunity (Mutations system).
+  - type: ClothingGrantComponent
+    component:
+    - type: PsionicInsulation
 
 #Research Director's Hardsuit
 - type: entity
@@ -1126,6 +1130,10 @@
     zombificationResistanceCoefficient: 0.75
   - type: FlashImmunity # Goobstation
   - type: FlashSoundSuppression # Goobstation
+  # Jamboree: Mental Immunity (Mutations system).
+  - type: ClothingGrantComponent
+    component:
+    - type: PsionicInsulation
 
 #Deathsquad Hardsuit
 - type: entity

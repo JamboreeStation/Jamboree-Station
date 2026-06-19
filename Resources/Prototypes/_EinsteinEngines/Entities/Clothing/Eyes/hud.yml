@@ -8,10 +8,10 @@
 - type: entity
   parent: [ClothingEyesBase, ShowPsionicsIcons]
   id: ClothingEyesHudEpistemics
-  name: epi psionics hud
-  description: A heads-up display that scans the humanoids in view and provides accurate data about their psionics records.
+  name: mutation hud # Jamboree: rebranded to Mutation Hud (Mutations system).
+  description: A cyan heads-up display that shows mutant registry data for humanoids in view. # Jamboree
   components:
   - type: Sprite
-    sprite: _EinsteinEngines/Clothing/Eyes/Hud/epi.rsi
+    sprite: _Jamboree/Clothing/Eyes/Hud/mutant.rsi # Jamboree - Mutanthud
   - type: Clothing
-    sprite: _EinsteinEngines/Clothing/Eyes/Hud/epi.rsi
+    sprite: _Jamboree/Clothing/Eyes/Hud/mutant.rsi # Jamboree - Mutanthud

@@ -6,6 +6,7 @@ using Robust.Shared.Player;
 using Robust.Server.GameObjects;
 using Content.Shared.NPC.Systems;
 using Content.Shared._EinsteinEngines.Psionics;
+using Content.Shared._Jamboree.Mutations; // Jamboree: PsionicInsulation also suppresses Mental mutations via PotentialMutantSystem.
 
 namespace Content.Server.Psionics
 {
@@ -15,6 +16,7 @@ namespace Content.Server.Psionics
         [Dependency] private readonly PsionicInvisibilityPowerSystem _invisSystem = default!;
         [Dependency] private readonly NpcFactionSystem _npcFactonSystem = default!;
         [Dependency] private readonly SharedEyeSystem _eye = default!;
+        [Dependency] private readonly PotentialMutantSystem _mutant = default!; // Jamboree: Mutations system suppression hook.
         public override void Initialize()
         {
             base.Initialize();
@@ -56,11 +58,17 @@ namespace Content.Server.Psionics
             }
 
             SetCanSeePsionicInvisiblity(uid, true);
+
+            if (!component.Passthrough && TryComp<MutantComponent>(uid, out var mutant)) // Jamboree: tell the Mutations system to suppress this wearer's Mental mutations.
+                _mutant.AddSuppressionSource((uid, mutant), PotentialMutantSystem.InsulationSourceId, MutationSuppressionFilter.Mental);
         }
 
         private void OnInsulShutdown(EntityUid uid, PsionicInsulationComponent component, ComponentShutdown args)
         {
             SetCanSeePsionicInvisiblity(uid, false);
+
+            if (TryComp<MutantComponent>(uid, out var mutant)) // Jamboree: release the Mental-mutation suppression hook.
+                _mutant.RemoveSuppressionSource((uid, mutant), PotentialMutantSystem.InsulationSourceId);
 
             if (!HasComp<PsionicComponent>(uid))
             {

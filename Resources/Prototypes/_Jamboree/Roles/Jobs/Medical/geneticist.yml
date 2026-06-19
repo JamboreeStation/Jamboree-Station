@@ -1,0 +1,47 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Jamboree Mutations system: Geneticist job + starting gear + chameleon outfit.
+
+- type: job
+  id: Geneticist
+  name: job-name-geneticist
+  description: job-description-geneticist
+  playTimeTracker: JobGeneticist
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Medical
+      time: 18000 # 5 hrs
+  startingGear: GeneticistGear
+  icon: "JobIconGeneticist"
+  supervisors: job-supervisors-cmo
+  goobcoins: 20
+  access:
+  - Medical
+  - Genetics
+  - Maintenance
+
+- type: startingGear
+  id: GeneticistGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGenetics
+    back: ClothingBackpackGenetics
+    shoes: ClothingShoesColorWhite
+    outerClothing: ClothingOuterCoatLabGene
+    id: GeneticistPDA
+    ears: ClothingHeadsetMedical
+    eyes: ClothingEyesHudEpistemics # Jamboree: rebranded Mutation Hud
+    pocket1: GeneticAnalyzer
+  # The Genedrobe (already in inventories.yml) carries the jumpskirt, satchel,
+  # duffelbag and messenger variants for players who want to swap their backpack
+  # or outfit after spawn.
+
+- type: chameleonOutfit
+  id: GeneticistChameleonOutfit
+  job: Geneticist
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGenetics
+    outerClothing: ClothingOuterCoatLabGene
+    eyes: ClothingEyesHudEpistemics
+    shoes: ClothingShoesColorWhite

@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# ID card for the Jamboree Geneticist role. Uses the existing `idgeneticist`
+# state in Resources/Textures/Objects/Misc/id_cards.rsi (already shipped).
+- type: entity
+  parent: IDCardStandard
+  id: GeneticistIDCard
+  name: geneticist ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: idgeneticist
+  - type: PresetIdCard
+    job: Geneticist

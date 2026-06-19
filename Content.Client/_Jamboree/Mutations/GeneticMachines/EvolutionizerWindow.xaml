@@ -1,0 +1,28 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc 'evolutionizer-window-title'}"
+               SetSize="440 300"
+               MinSize="440 300">
+    <BoxContainer Orientation="Vertical" Margin="6">
+        <RichTextLabel Name="StatusLabel" HorizontalExpand="True" />
+        <RichTextLabel Name="OccupantLabel" HorizontalExpand="True" Margin="0 6 0 0" />
+        <RichTextLabel Name="CannotEvolveLabel" HorizontalExpand="True" Margin="0 4 0 0"
+                       StyleClasses="LabelDanger"
+                       Visible="False" />
+        <Control MinSize="0 12" />
+        <BoxContainer Name="EmagPanel" Orientation="Vertical" Visible="False">
+            <Label Text="{Loc 'evolutionizer-dna-field'}" />
+            <LineEdit Name="DnaInput" Access="Public" HorizontalExpand="True" />
+            <Button Name="DnaSetButton" Access="Public" Text="{Loc 'evolutionizer-dna-set'}" Margin="0 4 0 4"/>
+            <RichTextLabel Name="DnaDonorMissingLabel" HorizontalExpand="True" Margin="0 0 0 8"
+                           StyleClasses="LabelDanger"
+                           Visible="False" />
+        </BoxContainer>
+        <Button Name="ActivateButton"
+                Access="Public"
+                HorizontalAlignment="Stretch"
+                Text="{Loc 'evolutionizer-button-activate'}" />
+        <Label Name="BusyLabel" Margin="0 8 0 0" Text="{Loc 'evolutionizer-busy'}" Visible="False" />
+        <ProgressBar Name="ProgressBar" Access="Public" Margin="0 4 0 0" HorizontalExpand="True"
+                     MinValue="0" MaxValue="1" Value="0" Visible="False" />
+    </BoxContainer>
+</DefaultWindow>

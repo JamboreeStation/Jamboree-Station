@@ -1,9 +1,22 @@
+# ==== Positive Mutations ====
 - type: mutation
+  abstract: true
+  id: BaseMutation
+  name: Mutation
+  description: A mutation.
+  icon:
+    sprite: _Jamboree/Mutations/genes.rsi
+    state: mutation
+
+- type: mutation
+  parent: BaseMutation
   id: MindSwapMutation
   name: Mind Swap
   description: Swaps minds with the target. Either can change back after 20 seconds.
   isMental: true
   isActive: true
+  icon:
+    state: mind_swap
   initializeFunctions:
     - !type:AddMutantActions
       actions:
@@ -12,11 +25,14 @@
     - !type:RemoveMutantActions
 
 - type: mutation
+  parent: BaseMutation
   id: ElectrokinesisMutation
   name: Electrokinesis
   description: Sends a bolt of lightning to the target, leaving them stunned and stuttering.
   isMental: false
   isActive: true
+  icon:
+    state: electrokinesis
   initializeFunctions:
     - !type:AddMutantActions
       actions:
@@ -25,11 +41,14 @@
     - !type:RemoveMutantActions
 
 - type: mutation
+  parent: BaseMutation
   id: PyrokinesisMutation
   name: Pyrokinesis
   description: Light a flammable target on fire.
   isMental: false
   isActive: true
+  icon:
+    state: pyrokinesis
   initializeFunctions:
     - !type:AddMutantActions
       actions:
@@ -38,11 +57,14 @@
     - !type:RemoveMutantActions
 
 - type: mutation
+  parent: BaseMutation
   id: InvisibilityMutation
   name: Invisibility
   description: Render yourself invisible to normal sight.
   isMental: false
   isActive: true
+  icon:
+    state: invisibility
   initializeFunctions:
     - !type:AddMutantActions
       actions:
@@ -51,11 +73,14 @@
     - !type:RemoveMutantActions
 
 - type: mutation
+  parent: BaseMutation
   id: TeleprojectionMutation
   name: Teleprojection
   description: Mentally project yourself to remotely observe things.
   isMental: true
   isActive: true
+  icon:
+    state: teleprojection
   initializeFunctions:
     - !type:AddMutantActions
       actions:
@@ -70,11 +95,14 @@
         - type: TeleprojectionMutation
 
 - type: mutation
+  parent: BaseMutation
   id: TelepathyMutation
   name: Telepathy
   description: Communicate to others nearby using only your mind.
   isMental: true
   isActive: false
+  icon:
+    state: telepathy
   initializeFunctions:
     - !type:AddMutantComponents
       components:
@@ -85,14 +113,81 @@
         - type: Telepathy
 
 - type: mutation
+  parent: BaseMutation
   id: RevivifyMutation
   name: Revivify
   description: Revive the dead at a heavy personal cost.
   isMental: false
   isActive: true
+  icon:
+    state: revivify
   initializeFunctions:
     - !type:AddMutantActions
       actions:
         - ActionRevivifyMutation
   removalFunctions:
     - !type:RemoveMutantActions
+
+# ==== Negative Mutations ====
+- type: mutation
+  abstract: true
+  parent: BaseMutation
+  id: BaseNegativeMutation
+  name: Negative Mutation
+  description: A negative mutation.
+  metabolicEfficiency: 1
+  beneficial: false
+
+- type: mutation
+  parent: BaseNegativeMutation
+  id: BlindnessMutation
+  name: Blindness
+  description: Everything, disappear!
+  isMental: true
+  isActive: false
+  icon:
+    state: blindness
+  initializeFunctions:
+    - !type:AddMutantComponents
+      components:
+        - type: PermanentBlindness
+  removalFunctions: 
+    - !type:RemoveMutantComponents
+      components:
+        - type: PermanentBlindness
+
+- type: mutation
+  parent: BaseNegativeMutation
+  id: MuteMutation
+  name: Mute
+  description: ...
+  isMental: true
+  isActive: false
+  icon:
+    state: mute
+  initializeFunctions:
+    - !type:AddMutantComponents
+      components:
+        - type: Muted
+  removalFunctions:
+    - !type:RemoveMutantComponents
+      components:
+        - type: Muted
+
+- type: mutation
+  parent: BaseNegativeMutation
+  id: DeafMutation
+  name: Deaf
+  description: ...
+  isMental: true
+  isActive: false
+  icon:
+    state: deaf
+  initializeFunctions:
+    - !type:AddMutantComponents
+      components:
+        - type: Deaf
+  removalFunctions:
+    - !type:RemoveMutantComponents
+      components:
+        - type: Deaf

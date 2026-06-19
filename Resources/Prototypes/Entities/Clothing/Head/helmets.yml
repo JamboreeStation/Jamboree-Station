@@ -384,6 +384,10 @@
         Piercing: 0.8
         Heat: 0.8
   - type: FaceHuggerBlocker # Goobstation
+  # Jamboree: Mental Immunity (Mutations system).
+  - type: ClothingGrantComponent
+    component:
+    - type: PsionicInsulation
 
 #Knight Helmet
 - type: entity
@@ -586,6 +590,10 @@
  # - type: HideLayerClothing  #Goobstation
  #   layers:
  #     Hair: HEAD
+  # Jamboree: Mental Immunity (Mutations system). Inherited by ERT/CBURN variants.
+  - type: ClothingGrantComponent
+    component:
+    - type: PsionicInsulation
 
 #ERT Security Helmet
 - type: entity

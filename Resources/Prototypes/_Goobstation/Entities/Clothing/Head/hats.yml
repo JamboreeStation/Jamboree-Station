@@ -395,3 +395,5 @@
   - type: ClothingGrantComponent
     component:
       - type: PossessionImmune
+      # Jamboree: Mental Immunity (Mutations system).
+      - type: PsionicInsulation

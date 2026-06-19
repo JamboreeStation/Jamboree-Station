@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Reused sprite: generic computer screen "dna" state from Structures/Machines/computers.rsi.
+- type: entity
+  parent: BaseComputer
+  id: ComputerEvolutionizer
+  name: evolutionizer
+  description: A console that links to a medical scanner via multitool. Promotes a monkey into a fresh humanoid (or a kobold into a reptilian). Emagging it unlocks DNA-targeted reshaping.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Evolutionizer
+  - type: GeneticMachine
+  - type: DeviceLinkSource
+    range: 4
+    ports:
+    - MedicalScannerSender
+  - type: Computer
+    board: EvolutionizerComputerCircuitboard
+  - type: ActivatableUI
+    key: enum.EvolutionizerUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.EvolutionizerUiKey.Key:
+        type: EvolutionizerBoundUserInterface
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: evolutionizer
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#1f8c28"

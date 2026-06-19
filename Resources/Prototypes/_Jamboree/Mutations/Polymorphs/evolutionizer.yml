@@ -1,0 +1,25 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Polymorph configurations used by the Evolutionizer console.
+# Monkeys become Urist McHumans, kobolds become Urist McReptilians.
+- type: polymorph
+  id: EvolutionizerMonkeyToHuman
+  configuration:
+    entity: MobHuman
+    forced: true
+    inventory: Drop
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true
+
+- type: polymorph
+  id: EvolutionizerKoboldToReptilian
+  configuration:
+    entity: MobReptilian
+    forced: true
+    inventory: Drop
+    revertOnCrit: false
+    revertOnDeath: false
+    transferDamage: true

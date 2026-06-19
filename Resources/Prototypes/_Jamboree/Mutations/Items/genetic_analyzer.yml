@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Reused sprite: forensic scanner (Objects/Devices/forensic_scanner.rsi) tinted cyan.
+- type: entity
+  parent: BaseItem
+  id: GeneticAnalyzer
+  name: genetic analyzer
+  description: A handheld scanner that catalogs the mutations of a creature it's used on. The screen blinks a soft cyan.
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/forensic_scanner.rsi
+    state: forensicnew
+    color: "#9be5ff"
+  - type: Item
+    size: Small
+  - type: GeneticAnalyzer

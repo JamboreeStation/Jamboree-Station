@@ -1,15 +1,15 @@
 - type: entity
   parent: BaseItem
   id: PsiWatchCartridge
-  name: psi watch cartridge
-  description: A cartridge that tracks the status of currently documented psionics individuals.
+  name: mutant watch cartridge # Jamboree: rebranded to Mutant Watch (Mutations system).
+  description: A cartridge that tracks the status of currently documented mutants. # Jamboree
   components:
   - type: Sprite
-    sprite: _EinsteinEngines/Objects/Devices/cartridge.rsi
-    state: cart-psi
+    sprite: _Jamboree/Objects/Devices/cartridge.rsi # # Jamboree - Mutant Watch
+    state: cart-muta # Jamboree - Mutant Watch
   - type: Icon
-    sprite: _EinsteinEngines/Objects/Devices/cartridge.rsi
-    state: cart-psi
+    sprite: _Jamboree/Objects/Devices/cartridge.rsi # # Jamboree - Mutant Watch
+    state: cart-muta # Jamboree - Mutant Watch
   - type: UIFragment
     ui: !type:PsiWatchUi
   - type: Cartridge

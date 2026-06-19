@@ -1,8 +1,9 @@
 - type: entity
   parent: BaseComputerCircuitboard
   id: PsionicsRecordsComputerCircuitboard
-  name: psionics registry computer board
-  description: A computer printed circuit board for a psionics registry computer.
+  # Jamboree: rebranded as the Mutant Registry (Mutations system).
+  name: mutant registry computer board
+  description: A printed circuit board for a mutant registry computer.
   components:
   - type: Sprite
     state: cpu_science

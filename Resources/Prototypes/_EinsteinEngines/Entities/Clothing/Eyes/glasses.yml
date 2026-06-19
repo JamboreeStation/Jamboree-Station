@@ -6,13 +6,13 @@
 - type: entity
   parent: [ClothingEyesBase, ShowPsionicsIcons]
   id: ClothingEyesGlassesEpistemics
-  name: epi psionics glasses
-  description: Upgraded sunglasses that provide flash immunity and a epistemics psionics HUD.
+  name: mutation sunglasses # Jamboree: rebranded to Mutation Sunglasses (Mutations system).
+  description: Cyan-tinted upgraded sunglasses that provide flash immunity, a mutation registry HUD, and basic vitals. # Jamboree
   components:
   - type: Sprite
-    sprite: _EinsteinEngines/Clothing/Eyes/Glasses/epiglasses.rsi
+    sprite: _Jamboree/Clothing/Eyes/Glasses/mutantglasses.rsi # Jamboree - Mutant sunglasses
   - type: Clothing
-    sprite: _EinsteinEngines/Clothing/Eyes/Glasses/epiglasses.rsi
+    sprite: _Jamboree/Clothing/Eyes/Glasses/mutantglasses.rsi # Jamboree - Mutant sunglasses
   - type: FlashImmunity
   - type: EyeProtection
     protectionTime: 5
@@ -21,3 +21,5 @@
     - WhitelistChameleon
   - type: IdentityBlocker
     coverage: EYES
+  # Jamboree: medical HUD icons per Mutations design doc.
+  - type: ShowHealthIcons

@@ -1,0 +1,76 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: latheRecipe
+  id: GeneticAnalyzer
+  result: GeneticAnalyzer
+  completetime: 4
+  materials:
+    Glass: 500
+    Steel: 500
+
+- type: latheRecipe
+  id: GenepackInjector
+  result: GenepackInjector
+  completetime: 3
+  materials:
+    Steel: 200
+    Plastic: 100
+    Glass: 100
+
+- type: latheRecipe
+  id: Genepack
+  result: Genepack
+  completetime: 3
+  materials:
+    Steel: 200
+    Glass: 100
+
+- type: latheRecipe
+  id: MutantInhibitorCollar
+  result: MutantInhibitorCollar
+  completetime: 4
+  materials:
+    Steel: 400
+    Plastic: 200
+
+- type: latheRecipe
+  id: MutatorComputerCircuitboard
+  result: MutatorComputerCircuitboard
+  completetime: 4
+  materials:
+    Steel: 100
+    Glass: 500
+
+- type: latheRecipe
+  id: EvolutionizerComputerCircuitboard
+  result: EvolutionizerComputerCircuitboard
+  completetime: 4
+  materials:
+    Steel: 100
+    Glass: 500
+
+- type: latheRecipe
+  id: GeneticExtractorComputerCircuitboard
+  result: GeneticExtractorComputerCircuitboard
+  completetime: 4
+  materials:
+    Steel: 100
+    Glass: 500
+
+- type: latheRecipe
+  id: RecombinerComputerCircuitboard
+  result: RecombinerComputerCircuitboard
+  completetime: 4
+  materials:
+    Steel: 100
+    Glass: 500
+
+- type: latheRecipe
+  id: MedicalScannerConsoleCircuitboard
+  result: MedicalScannerConsoleCircuitboard
+  completetime: 4
+  materials:
+    Steel: 100
+    Glass: 500

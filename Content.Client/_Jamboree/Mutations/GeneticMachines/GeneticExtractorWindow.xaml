@@ -1,0 +1,29 @@
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc 'extractor-window-title'}"
+               SetSize="460 405"
+               MinSize="460 405">
+    <BoxContainer Orientation="Vertical" Margin="6">
+        <RichTextLabel Name="StatusLabel" HorizontalExpand="True" />
+        <RichTextLabel Name="OccupantLabel" HorizontalExpand="True" Margin="0 4 0 4" />
+
+        <BoxContainer Orientation="Horizontal" Margin="0 8 0 8">
+            <Button Name="CleanseModeButton" Access="Public" Text="{Loc 'extractor-mode-cleanse'}" HorizontalExpand="True" />
+            <Button Name="IsolateModeButton" Access="Public" Text="{Loc 'extractor-mode-isolate'}" HorizontalExpand="True" />
+        </BoxContainer>
+
+        <RichTextLabel Name="ModeBlurb" HorizontalExpand="True" Margin="0 0 0 6" />
+
+        <BoxContainer Name="IsolatePanel" Orientation="Vertical" Visible="False">
+            <Label Text="{Loc 'extractor-isolate-gene-prompt'}" />
+            <OptionButton Name="IsolatedGeneOption" Access="Public" HorizontalExpand="True" Margin="0 2 0 6"/>
+            <Label Text="{Loc 'extractor-genepack-name-prompt'}" />
+            <LineEdit Name="GenepackNameInput" Access="Public" HorizontalExpand="True" Margin="0 2 0 6"/>
+            <RichTextLabel Name="IsolateWarning" Margin="0 0 0 6" />
+        </BoxContainer>
+
+        <Button Name="ActivateButton" Access="Public" HorizontalAlignment="Stretch" Text="{Loc 'extractor-button-activate'}" />
+        <Label Name="BusyLabel" Margin="0 8 0 0" Text="{Loc 'extractor-busy'}" Visible="False" />
+        <ProgressBar Name="ProgressBar" Access="Public" Margin="0 4 0 0" HorizontalExpand="True"
+                     MinValue="0" MaxValue="1" Value="0" Visible="False" />
+    </BoxContainer>
+</DefaultWindow>

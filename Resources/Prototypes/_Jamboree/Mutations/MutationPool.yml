@@ -8,3 +8,6 @@
     TeleprojectionMutation: 1
     TelepathyMutation: 1
     RevivifyMutation: 1
+    BlindnessMutation: 1
+    MuteMutation: 1
+    DeafMutation: 1

@@ -1,0 +1,58 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: MutatorComputerCircuitboard
+  name: mutator board
+  description: A printed circuit board for a Mutator console.
+  components:
+    - type: Sprite
+      state: cpu_medical
+    - type: ComputerBoard
+      prototype: ComputerMutator
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: EvolutionizerComputerCircuitboard
+  name: evolutionizer board
+  description: A printed circuit board for an Evolutionizer console.
+  components:
+    - type: Sprite
+      state: cpu_medical
+    - type: ComputerBoard
+      prototype: ComputerEvolutionizer
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: GeneticExtractorComputerCircuitboard
+  name: genetic extractor board
+  description: A printed circuit board for a Genetic Extractor console.
+  components:
+    - type: Sprite
+      state: cpu_medical
+    - type: ComputerBoard
+      prototype: ComputerGeneticExtractor
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: MedicalScannerConsoleCircuitboard
+  name: medical scanner console board
+  description: A printed circuit board for a Medical Scanner Console.
+  components:
+    - type: Sprite
+      state: cpu_medical
+    - type: ComputerBoard
+      prototype: ComputerMedicalScannerConsole
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: RecombinerComputerCircuitboard
+  name: recombiner board
+  description: A printed circuit board for a Recombiner console.
+  components:
+    - type: Sprite
+      state: cpu_medical
+    - type: ComputerBoard
+      prototype: ComputerRecombiner

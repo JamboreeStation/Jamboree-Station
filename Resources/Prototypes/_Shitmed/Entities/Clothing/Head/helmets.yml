@@ -37,3 +37,7 @@
     layers:
       HeadTop : HEAD
       HeadSide : HEAD
+  # Jamboree: Mental Immunity (Mutations system).
+  - type: ClothingGrantComponent
+    component:
+    - type: PsionicInsulation

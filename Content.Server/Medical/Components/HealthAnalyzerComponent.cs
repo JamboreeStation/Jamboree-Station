@@ -25,6 +25,7 @@
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Content.Shared._Shitmed.Medical.HealthAnalyzer;
+using Content.Server._Jamboree.Mutations.GeneticMachines; // Jamboree - For Medical Scanner Console
 
 namespace Content.Server.Medical.Components;
 
@@ -35,7 +36,8 @@ namespace Content.Server.Medical.Components;
 /// Requires <c>ItemToggleComponent</c>.
 /// </remarks>
 [RegisterComponent, AutoGenerateComponentPause]
-[Access(typeof(HealthAnalyzerSystem), typeof(CryoPodSystem))]
+// Jamboree: MedicalScannerConsoleSystem repoints ScannedEntity at the scanner occupant.
+[Access(typeof(HealthAnalyzerSystem), typeof(CryoPodSystem), typeof(MedicalScannerConsoleSystem))]
 public sealed partial class HealthAnalyzerComponent : Component
 {
     /// <summary>

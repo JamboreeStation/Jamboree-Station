@@ -217,6 +217,7 @@
   - Psychologist
   - Paramedic
   - Virologist # Gooby goob ba gooby goob ba
+  - Geneticist # Jamboree: Mutations system role.
 
 - type: department
   id: Security

@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Reused sprite: electropack (Clothing/Back/Backpacks/electropack.rsi). Eventually a
+# dedicated cyan-collar sprite should replace this.
+- type: entity
+  parent: ClothingNeckBase
+  id: MutantInhibitorCollar
+  name: mutant inhibitor collar
+  description: A locking neck collar woven with bluespace dampeners. While worn, it suppresses every mutant gene. Only somebody else can take it off.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Neck/Misc/mutantcollar.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Neck/Misc/mutantcollar.rsi
+  - type: MutantInhibitorCollar

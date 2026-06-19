@@ -582,6 +582,10 @@
     tags:
     - PetWearable
     - CorgiWearable
+  # Jamboree: Mental Immunity (Mutations system).
+  - type: ClothingGrantComponent
+    component:
+    - type: PsionicInsulation
 
 - type: entity
   parent: ClothingHeadBase

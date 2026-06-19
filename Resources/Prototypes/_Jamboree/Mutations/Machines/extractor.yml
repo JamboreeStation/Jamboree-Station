@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Reused sprite: generic computer screen "dna" state from Structures/Machines/computers.rsi.
+- type: entity
+  parent: BaseComputer
+  id: ComputerGeneticExtractor
+  name: genetic extractor
+  description: A console that links to a medical scanner via multitool. Either cleanses every mutation from the occupant, or isolates one for extraction (killing them in the process).
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: GeneticExtractor
+  - type: GeneticMachine
+  - type: DeviceLinkSource
+    range: 4
+    ports:
+    - MedicalScannerSender
+  - type: Computer
+    board: GeneticExtractorComputerCircuitboard
+  - type: ActivatableUI
+    key: enum.GeneticExtractorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.GeneticExtractorUiKey.Key:
+        type: GeneticExtractorBoundUserInterface
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: genetic_extractor
+    - map: ["computerLayerKeys"]
+      state: generic_keys
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#1f8c28"
