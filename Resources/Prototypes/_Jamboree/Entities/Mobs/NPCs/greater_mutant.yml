@@ -1,0 +1,30 @@
+- type: entity
+  id: MobGreaterMutant
+  name: greater mutant
+  parent: SimpleMobBase
+  description: A disgusting visage of uncontrolled mutation.
+  components:
+  - type: CombatMode
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - AllHostile
+  - type: NPCRetaliation
+  # Zombie voice: Vocal supplies the actual sounds, while AutoEmote/EmoteOnDamage are what
+  # trigger them -- an uncontrolled NPC never emotes on its own otherwise.
+  - type: Vocal
+    sounds:
+      Male: Zombie
+      Female: Zombie
+      Unsexed: Zombie
+  - type: AutoEmote
+    emotes:
+    - ZombieGroan
+  - type: EmoteOnDamage
+    emotes:
+    - Scream
+  - type: Sprite
+    sprite: _Jamboree/Mobs/Alien/greatermutant.rsi
+    state: greater_mutant

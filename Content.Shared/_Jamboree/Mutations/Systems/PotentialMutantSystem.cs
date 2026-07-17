@@ -15,6 +15,12 @@ using Robust.Shared.Serialization.Manager;
 
 namespace Content.Shared._Jamboree.Mutations;
 
+[ByRefEvent]
+public readonly record struct MutationAddedEvent(EntityUid Entity, MutationPrototype Mutation);
+
+[ByRefEvent]
+public readonly record struct MutationRemovedEvent(EntityUid Entity, MutationPrototype Mutation);
+
 public sealed partial class PotentialMutantSystem : EntitySystem
 {
     [Dependency] private readonly IComponentFactory _componentFactory = default!;
@@ -173,18 +179,24 @@ public sealed partial class PotentialMutantSystem : EntitySystem
         mutant.ActiveMutations.Add(mutation);
         // If a suppression source currently covers this mutation, leave its effects
         // un-applied; they'll be applied later by RemoveSuppressionSource.
-        if (IsSuppressed(mutant, mutation))
-            return;
-        foreach (var function in mutation.InitializeFunctions)
-            function.OnMutate(ent.Owner,
-                _componentFactory,
-                EntityManager,
-                _serialization,
-                _playerManager,
-                Loc,
-                mutant,
-                mutation
-            );
+        if (!IsSuppressed(mutant, mutation))
+        {
+            foreach (var function in mutation.InitializeFunctions)
+                function.OnMutate(ent.Owner,
+                    _componentFactory,
+                    EntityManager,
+                    _serialization,
+                    _playerManager,
+                    Loc,
+                    mutant,
+                    mutation
+                );
+        }
+        // Raised last, once the mutation is fully applied. Handlers are allowed to strip or
+        // transform the entity outright (GreaterMutantSystem does), so anything we ran after the
+        // raise would be writing effects onto an entity that has already been cleaned up.
+        var addedEvent = new MutationAddedEvent(ent.Owner, mutation);
+        RaiseLocalEvent(ent.Owner, ref addedEvent);
     }
 
     public void RemoveMutation(Entity<MutantComponent> ent, MutationPrototype mutation)
@@ -208,7 +220,9 @@ public sealed partial class PotentialMutantSystem : EntitySystem
                 );
         }
         mutant.ActiveMutations.RemoveWhere(mut => mut.ID == mutation.ID);
-        if(!mutant.ActiveMutations.Any())
+        var removedEvent = new MutationRemovedEvent(ent.Owner, mutation);
+        RaiseLocalEvent(ent.Owner, ref removedEvent);
+        if (!mutant.ActiveMutations.Any())
         {
             // Demutate me.
             RemComp<MutantComponent>(ent.Owner);
@@ -278,7 +292,8 @@ public sealed partial class PotentialMutantSystem : EntitySystem
         if (args.DamageDelta is not { } damageDelta)
             return;
         // if we have radiation damage over a threshold, gain a mutation
-        foreach (var kv in entity.Comp.MutateDamageThreshold.DamageDict) {
+        foreach (var kv in entity.Comp.MutateDamageThreshold.DamageDict)
+        {
             if (!damageDelta.DamageDict.TryGetValue(kv.Key, out var damageValue))
                 return; // Target did not take this kind of damage, or cannot take it.
             if (damageValue < kv.Value)

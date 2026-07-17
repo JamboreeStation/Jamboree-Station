@@ -150,11 +150,11 @@
   initializeFunctions:
     - !type:AddMutantComponents
       components:
-        - type: PermanentBlindness
-  removalFunctions: 
+        - type: BlindnessMutation
+  removalFunctions:
     - !type:RemoveMutantComponents
       components:
-        - type: PermanentBlindness
+        - type: BlindnessMutation
 
 - type: mutation
   parent: BaseNegativeMutation
