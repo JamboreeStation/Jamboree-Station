@@ -1,0 +1,18 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: FoodMealBase
+  id: marshmallow
+  name: marshmallow
+  description: A soft and fluffy treat, great for camping!
+  components:
+  - type: FlavorProfile
+    flavors:
+      - fluffy
+      - sweet
+      - fluffy
+  - type: Sprite
+    sprite: _Jamboree/Objects/Consumable/Food/marshmallow.rsi
+    state: icon
