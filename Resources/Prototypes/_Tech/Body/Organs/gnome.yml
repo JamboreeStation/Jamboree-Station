@@ -1,0 +1,23 @@
+- type: entity
+  parent: OrganHumanStomach
+  id: OrganStomachGnome
+  name: gnome stomach
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Gnome ]
+
+- type: entity
+  parent: OrganHumanHeart
+  id: OrganHeartGnome
+  name: gnome heart
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Gnome ]
+
+- type: entity
+  parent: OrganHumanLiver
+  id: OrganLiverGnome
+  name: gnome liver
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Gnome ]

@@ -95,6 +95,7 @@
 - type: roleLoadout
   id: JobNanotrasenRepresentative
   groups:
+  - TTSpecies # different species items
   - GroupTankHarness
   - NanotrasenRepresentativeHead
   - NanotrasenRepresentativeJumpsuit
@@ -118,6 +119,7 @@
 - type: roleLoadout
   id: JobBlueshieldOfficer
   groups:
+  - TTSpecies # different species items
   - BlueshieldOfficerHead
   - BlueshieldOfficerJumpsuit
   - BlueshieldOfficerBackpack
@@ -139,6 +141,7 @@
 - type: roleLoadout
   id: JobNanotrasenCareerTrainer
   groups:
+  - TTSpecies # different species items
   - GroupTankHarness
   - NanotrasenTrainerHead
   - NanotrasenTrainerJumpsuit
@@ -160,6 +163,7 @@
 - type: roleLoadout
   id: RoleSurvivalNukieHonkops
   groups:
+  - TTSpecies # different species items
   - SurvivalSyndicate
   - GroupHonkopsMask
   - GroupPocketTankDouble
@@ -167,6 +171,7 @@
 - type: roleLoadout
   id: JobRoboticist
   groups:
+  - TTSpecies # different species items
   - GroupTankHarness
   - RoboticistHead
   - ScientistNeck
@@ -190,6 +195,7 @@
 - type: roleLoadout
   id: JobBrigmedic
   groups:
+  - TTSpecies # different species items
   - BrigmedicHead
   - MedicalMask
   - BrigmedicJumpsuit
@@ -214,6 +220,7 @@
   id: JobRadioHost
   canCustomizeName: true
   groups:
+  - TTSpecies # different species items
   - RadioHostJumpsuit
   - CommonBackpack
   - Survival
@@ -222,6 +229,7 @@
   - Drip # Jamboree
   - GroupSpeciesBreathTool
   - Glasses
+  - TTSpecies # different species items
   - GroupTankHarness
   - ServiceWorkerEnvirohelm
   - ServiceWorkerEnvirosuit
@@ -232,6 +240,7 @@
 - type: roleLoadout
   id: RoleSurvivalPlasmaTank
   groups:
+  - TTSpecies # different species items
   - GroupEVATankPlasma
 
 # Event-restricted roles
@@ -239,6 +248,7 @@
 - type: roleLoadout
   id: JobSecurityClown
   groups:
+  - TTSpecies # different species items
   - ClownBackpack
   - SurvivalSecurity
   - GroupSpeciesBreathToolSecurity
@@ -246,6 +256,7 @@
 - type: roleLoadout
   id: JobCommandMaid
   groups:
+  - TTSpecies # different species items
   - CommonBackpack
   - Survival
   - GroupSpeciesBreathTool
@@ -253,6 +264,7 @@
 - type: roleLoadout
   id: JobPartyMaker
   groups:
+  - TTSpecies # different species items
   - GroupTankHarness
   - CommonBackpack
   - Survival
@@ -261,20 +273,21 @@
 - type: roleLoadout
   id: JobVirologist
   groups:
-   - GroupTankHarness
-   - VirologistHead #jamboree
-   - VirologistMask #jamboree
-   - VirologistJumpsuit
-   - MedicalGloves
-   - VirologistBackpack
-   - VirologistOuterClothing
-   - MedicalShoes
-   - VirologistPDA
-   - SurvivalMedical
-   - Trinkets
-   - Animals # Jamboree, parity with other roles
-   - Drip # Jamboree
-   - GroupSpeciesBreathToolMedical
-   - VirologyEnvirohelm
-   - VirologyEnvirosuit
-   - VirologyEnvirogloves
+  - TTSpecies # different species items
+  - GroupTankHarness
+  - VirologistHead #jamboree
+  - VirologistMask #jamboree
+  - VirologistJumpsuit
+  - MedicalGloves
+  - VirologistBackpack
+  - VirologistOuterClothing
+  - MedicalShoes
+  - VirologistPDA
+  - SurvivalMedical
+  - Trinkets
+  - Animals # Jamboree, parity with other roles
+  - Drip # Jamboree
+  - GroupSpeciesBreathToolMedical
+  - VirologyEnvirohelm
+  - VirologyEnvirosuit
+  - VirologyEnvirogloves

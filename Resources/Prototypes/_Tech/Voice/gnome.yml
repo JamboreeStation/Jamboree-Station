@@ -1,5 +1,5 @@
 - type: emoteSounds
-  id: UnisexDwarf
+  id: UnisexGnome
   sounds:
     Scream:
       collection: MaleScreams
@@ -48,7 +48,7 @@
     pitch: 0.75
 
 - type: emoteSounds
-  id: FemaleDwarf
+  id: FemaleGnome
   sounds:
     Scream:
       collection: FemaleScreams

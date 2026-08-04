@@ -5,11 +5,19 @@
   save: false
   abstract: true
   components:
-  - type: Hunger
-  - type: Thirst
+  # Visuals
   - type: Icon
     sprite: Mobs/Species/Human/parts.rsi
     state: full
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+  # Damage
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Drawbacks
+  - type: Hunger
+  - type: Thirst
   - type: Respirator
     damage:
       types:
@@ -17,9 +25,6 @@
     damageRecovery:
       types:
         Asphyxiation: -1.0
-  - type: Sprite
-    noRot: true
-    drawdepth: Mobs
   - type: Fixtures
     fixtures:
       fix1:
@@ -53,9 +58,11 @@
     speaks:
     - TauCetiBasic
     - SolCommon
+    - Gnomish
     understands:
     - TauCetiBasic
     - SolCommon
+    - Gnomish
   - type: HumanoidAppearance
     species: Dwarf
     hideLayersOnEquip:

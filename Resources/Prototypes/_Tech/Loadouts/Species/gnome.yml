@@ -1,0 +1,22 @@
+- type: loadoutEffectGroup
+  id: GnomeSpecies
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Gnome
+
+- type: loadout
+  id: Gnome
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GnomeSpecies
+  equipment:
+    head: ClothingHeadHatChef
+
+- type: loadoutGroup
+  id: TTSpecies
+  name: loadout-group-gnome
+  minLimit: 1
+  hidden: true
+  loadouts:
+  - Gnome

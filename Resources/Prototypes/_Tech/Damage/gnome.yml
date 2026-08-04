@@ -1,0 +1,11 @@
+# 20% Increased Blunt, Slashing, And Piercing Damage
+# 15% Increased Asphyxiation Damage
+
+- type: damageModifierSet
+  id: Drawbacks
+  coefficients:
+    Blunt: 1.2
+    Slash: 1.2
+    Piercing: 1.2
+    Asphyxiation: 1.15
+  ignoreArmorPierceFlags: All
