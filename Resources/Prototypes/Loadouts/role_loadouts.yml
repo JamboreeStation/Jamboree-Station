@@ -123,7 +123,8 @@
 - type: roleLoadout
   id: JobCaptain
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - CaptainHead
   - CaptainGlasses #Jamboree - More glasses in the future?
   - CaptainNeck
@@ -147,7 +148,8 @@
 - type: roleLoadout
   id: JobHeadOfPersonnel
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - HoPHead
   - HoPNeck
@@ -181,7 +183,8 @@
 - type: roleLoadout
   id: JobPassenger
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - PassengerHead
   - PassengerJumpsuit
@@ -205,7 +208,8 @@
 - type: roleLoadout
   id: JobBartender
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - BartenderHead
   - BartenderJumpsuit
@@ -225,7 +229,8 @@
 - type: roleLoadout
   id: JobServiceWorker
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ServiceWorkerHead
   - ServiceWorkerJumpsuit
@@ -245,7 +250,8 @@
 - type: roleLoadout
   id: JobChef
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ChefHead
   - ChefMask
@@ -266,7 +272,8 @@
 - type: roleLoadout
   id: JobLibrarian
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - LibrarianHead
   - LibrarianJumpsuit
@@ -285,7 +292,8 @@
 - type: roleLoadout
   id: JobLawyer
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - LawyerHead
   - LawyerNeck
@@ -306,7 +314,8 @@
   id: JobChaplain
   canCustomizeName: true #wizden
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ChaplainHead
   - ChaplainEyes
@@ -330,7 +339,8 @@
 - type: roleLoadout
   id: JobJanitor
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - JanitorHead
   - JanitorJumpsuit
@@ -352,7 +362,8 @@
 - type: roleLoadout
   id: JobBotanist
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - BotanistHead
   - BotanistJumpsuit
@@ -373,7 +384,8 @@
   id: JobClown
   canCustomizeName: true
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ClownHead
   - ClownMask
@@ -396,7 +408,8 @@
   id: JobMime
   canCustomizeName: true
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - MimeHead
   - MimeMask
@@ -420,7 +433,8 @@
 - type: roleLoadout
   id: JobMusician
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - MusicianHead
   - MusicianNeck
@@ -445,7 +459,8 @@
 - type: roleLoadout
   id: JobQuartermaster
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - QuartermasterHead
   - QuartermasterNeck
@@ -468,7 +483,8 @@
 - type: roleLoadout
   id: JobCargoTechnician
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - CargoTechnicianHead
   - CargoTechnicianJumpsuit
@@ -489,7 +505,8 @@
 - type: roleLoadout
   id: JobSalvageSpecialist
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - SalvageSpecialistNeck # Goobstation
   - SalvageSpecialistBackpack
@@ -510,7 +527,8 @@
 - type: roleLoadout
   id: JobChiefEngineer
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ChiefEngineerHead
   - ChiefEngineerJumpsuit
@@ -531,7 +549,8 @@
 - type: roleLoadout
   id: JobTechnicalAssistant
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - TechnicalAssistantJumpsuit
   - StationEngineerBackpack
@@ -548,7 +567,8 @@
 - type: roleLoadout
   id: JobStationEngineer
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - StationEngineerHead
   - StationEngineerJumpsuit
@@ -569,7 +589,8 @@
 - type: roleLoadout
   id: JobAtmosphericTechnician
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - AtmosphericTechnicianHead # Goobstation
   - AtmosphericTechnicianNeck
@@ -591,7 +612,8 @@
 - type: roleLoadout
   id: JobResearchDirector
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ResearchDirectorHead
   - ResearchDirectorNeck
@@ -614,7 +636,8 @@
 - type: roleLoadout
   id: JobScientist
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ScientistHead
   - ScientistNeck
@@ -638,7 +661,8 @@
 - type: roleLoadout
   id: JobResearchAssistant
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ResearchAssistantJumpsuit
   - ScientistBackpack
@@ -768,7 +792,8 @@
 - type: roleLoadout
   id: JobChiefMedicalOfficer
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ChiefMedicalOfficerHead
   - MedicalMask
@@ -792,7 +817,8 @@
 - type: roleLoadout
   id: JobMedicalDoctor
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - MedicalDoctorHead
   - MedicalMask
@@ -816,7 +842,8 @@
 - type: roleLoadout
   id: JobMedicalIntern
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - MedicalInternJumpsuit
   - MedicalBackpack
@@ -834,7 +861,8 @@
 - type: roleLoadout
   id: JobChemist
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ChemistHead # Goobstation
   - MedicalMask
@@ -856,7 +884,8 @@
 - type: roleLoadout
   id: JobParamedic
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ParamedicHead
   - MedicalMask
@@ -882,7 +911,8 @@
   groups:
   - ZookeeperHead
   - ZookeeperJumpsuit
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - CommonBackpack
   - Glasses
@@ -899,7 +929,8 @@
 - type: roleLoadout
   id: JobReporter
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ReporterHead
   - ReporterJumpsuit
@@ -919,7 +950,8 @@
 - type: roleLoadout
   id: JobPsychologist
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - PsychologistJumpsuit
   - MedicalBackpack
@@ -938,7 +970,8 @@
   id: JobBoxer
   canCustomizeName: true
   groups:
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
   - BoxerMask #DV
   - BoxerJumpsuit
@@ -963,7 +996,8 @@
   id: RoleSurvivalVoxSupport
   groups:
   - GroupSpeciesBreathTool
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
 
 # gives vox a nitrogen breathing tank
@@ -978,14 +1012,16 @@
   groups:
   - Survival
   - GroupSpeciesBreathTool
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
 
 - type: roleLoadout
   id: RoleSurvivalClown
   groups:
   - SurvivalClown
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
 
 - type: roleLoadout
@@ -993,7 +1029,8 @@
   groups:
   - SurvivalExtended
   - GroupSpeciesBreathTool
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
 
 - type: roleLoadout
@@ -1001,7 +1038,8 @@
   groups:
   - SurvivalMedical
   - GroupSpeciesBreathToolMedical
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
 
 - type: roleLoadout
@@ -1009,7 +1047,8 @@
   groups:
   - SurvivalSecurity
   - GroupSpeciesBreathToolSecurity
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
 
 - type: roleLoadout
@@ -1017,7 +1056,8 @@
   groups:
   - SurvivalSyndicate
   - GroupSpeciesBreathTool
-  - TTSpecies # different species items
+  - GnomePointyHats # Gnome
+  - GnomeUniforms # Gnome
   - GroupTankHarness
 
 - type: roleLoadout

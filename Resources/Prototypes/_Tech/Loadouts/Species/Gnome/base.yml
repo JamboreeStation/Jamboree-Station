@@ -1,0 +1,6 @@
+- type: loadoutEffectGroup
+  id: GnomeSpecies
+  effects:
+  - !type:SpeciesLoadoutEffect
+    species:
+    - Gnome

@@ -1,4 +1,4 @@
 - type: entity
-  parent: TTMobBaseGnome
-  id: TTMobGnome
+  parent: MobBaseGnome
+  id: MobGnome
   save: false

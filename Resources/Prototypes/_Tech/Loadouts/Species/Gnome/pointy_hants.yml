@@ -1,0 +1,33 @@
+- type: loadoutGroup
+  id: GnomePointyHats
+  name: loadout-group-gnome-pointy-hats
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - GnomePointyHatRed
+  - GnomePointyHatBlue
+  - GnomePointyHatGreen
+
+- type: loadout
+  id: GnomePointyHatRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GnomeSpecies
+  equipment:
+    head: ClothingHeadHatPointyRed
+
+- type: loadout
+  id: GnomePointyHatBlue
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GnomeSpecies
+  equipment:
+    head: ClothingHeadHatPointyBlue
+
+- type: loadout
+  id: GnomePointyHatGreen
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GnomeSpecies
+  equipment:
+    head: ClothingHeadHatPointyGreen

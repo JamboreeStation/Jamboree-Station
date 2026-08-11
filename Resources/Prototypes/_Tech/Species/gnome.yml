@@ -10,7 +10,7 @@
 - type: species
   id: Gnome
   name: species-name-gnome
-  prototype: TTMobGnome
+  prototype: MobGnome
   dollPrototype: TTMobDummyGnome
   roundStart: true
   # TODO

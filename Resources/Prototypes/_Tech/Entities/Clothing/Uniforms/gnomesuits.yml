@@ -1,0 +1,19 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformGnomeBase
+  name: gnome suit
+  description: An typical red shirt.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/red_shirt.rsi
+  - type: Clothing
+    sprite: ADT/Clothing/Uniforms/Jumpsuit/red_shirt.rsi
+  - type: ClothingEquipmentRequirements
+    whitelist:
+      tags:
+      - SpeciesGnome
+
+- type: entity
+  parent: ClothingUniformGnomeBase
+  id: ClothingUniformGnomeRed
