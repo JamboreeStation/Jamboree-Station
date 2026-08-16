@@ -8,6 +8,8 @@
   save: false
   abstract: true
   components:
+  # Specials
+  - type: DropDualWieldWeapon
   # Tags
   - type: Tag
     tags:
