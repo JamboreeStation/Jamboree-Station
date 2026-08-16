@@ -1,4 +1,8 @@
-﻿using Content.Shared._Shitmed.Weapons.Ranged.Events;
+// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Shared._Shitmed.Weapons.Ranged.Events;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Ranged.Components;
