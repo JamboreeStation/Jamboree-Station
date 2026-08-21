@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: OrganHumanStomach
+  id: OrganStomachGnome
+  name: gnome stomach
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Gnome ]
+
+- type: entity
+  parent: OrganHumanHeart
+  id: OrganHeartGnome
+  name: gnome heart
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Gnome ]
+
+- type: entity
+  parent: OrganHumanLiver
+  id: OrganLiverGnome
+  name: gnome liver
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Gnome ]

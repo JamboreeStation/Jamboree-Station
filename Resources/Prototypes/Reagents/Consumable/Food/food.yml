@@ -113,6 +113,16 @@
           reagent: Nutriment
           min: 0.1
         factor: 1
+      # Gnome healing
+      - !type:HealthChange
+        conditions:
+        - !type:OrganType
+          type: Gnome
+        damage:
+          groups:
+            Brute: -2
+            Burn: -2
+            Piercing: -2
   plantMetabolism:
   - !type:PlantAdjustNutrition
     amount: 0.1

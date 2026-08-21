@@ -1,0 +1,61 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingBaseHeadHatPointy
+  name: pointy hat
+  description: WIP
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/chefhat.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/chefhat.rsi
+  - type: Storage
+    grid:
+    - 0,0,0,0
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+
+- type: entity
+  parent: ClothingBaseHeadHatPointy
+  id: ClothingHeadHatPointyRed
+  name: red pointy hat
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/chefhat.rsi
+    color: "#991919"
+  - type: Clothing
+    sprite: Clothing/Head/Hats/chefhat.rsi
+    color: "#991919"
+
+- type: entity
+  parent: ClothingBaseHeadHatPointy
+  id: ClothingHeadHatPointyBlue
+  name: blue pointy hat
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/chefhat.rsi
+    color: "#2a55b2"
+  - type: Clothing
+    sprite: Clothing/Head/Hats/chefhat.rsi
+    color: "#2a55b2"
+
+- type: entity
+  parent: ClothingBaseHeadHatPointy
+  id: ClothingHeadHatPointyGreen
+  name: green pointy hat
+  components:
+  - type: Sprite
+    sprite: Clothing/Head/Hats/chefhat.rsi
+    color: "#249e13"
+  - type: Clothing
+    sprite: Clothing/Head/Hats/chefhat.rsi
+    color: "#249e13"

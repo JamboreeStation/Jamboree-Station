@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+
+- type: loadoutGroup
+  id: GnomeUniforms
+  name: loadout-group-gnome-uniforms
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - GnomeUniformRed
+
+- type: loadout
+  id: GnomeUniformRed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: GnomeSpecies
+  equipment:
+    jumpsuit: ClothingUniformGnomeRed

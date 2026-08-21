@@ -1,0 +1,59 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: body
+  id: Gnome
+  name: gnome
+  root: chest
+  slots:
+    head:
+      part: HeadHuman
+      connections:
+      - chest
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    chest:
+      part: ChestHuman
+      connections:
+      - right arm
+      - left arm
+      - groin
+      - head # Shitmed
+      organs:
+        heart: OrganHeartGnome
+        lungs: OrganHumanLungs
+    groin:
+      part: GroinHuman
+      connections:
+      - right leg
+      - left leg
+      organs:
+        stomach: OrganStomachGnome
+        liver: OrganLiverGnome
+        kidneys: OrganHumanKidneys
+    right arm:
+      part: RightArmHuman
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmHuman
+      connections:
+      - left hand
+    right hand:
+      part: RightHandHuman
+    left hand:
+      part: LeftHandHuman
+    right leg:
+      part: RightLegHuman
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegHuman
+      connections:
+      - left foot
+    right foot:
+      part: RightFootHuman
+    left foot:
+      part: LeftFootHuman
