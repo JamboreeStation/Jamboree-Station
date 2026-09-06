@@ -2115,3 +2115,15 @@ Entries:
         Jamboree sector!
   id: 174
   time: '2026-09-04T22:53:30.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: >-
+        Salvage expedition ships no longer get permanently stuck when being
+        force-returned from a planet expedition.
+    - type: Fix
+      message: >-
+        The respawn timer can no longer be bypassed, so `ghostrespawn` can't be
+        used to instantly respawn.
+  id: 175
+  time: '2026-09-06T00:15:48.0000000+00:00'
