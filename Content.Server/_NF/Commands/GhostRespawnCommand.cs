@@ -67,16 +67,19 @@ public sealed class GhostRespawnCommand : IConsoleCommand
 
         var respawnResetTime = _entity.GetEntitySystem<RespawnSystem>().GetRespawnResetTime(shell.Player);
 
-        if (respawnResetTime is not null)
+        if (respawnResetTime is null)
         {
-            var time = _gameTiming.CurTime - respawnResetTime.Value;
-            var respawnTime = _configurationManager.GetCVar(NF14CVars.RespawnTime);
+            shell.WriteLine("You have no respawn timer registered. This is not supposed to happen, ask an admin to respawn you.");
+            return;
+        }
 
-            if (respawnTime > time.TotalSeconds)
-            {
-                shell.WriteLine($"You haven't been dead long enough. You have been dead {time.TotalSeconds} seconds of the required {respawnTime}.");
-                return;
-            }
+        var time = _gameTiming.CurTime - respawnResetTime.Value;
+        var respawnTime = _configurationManager.GetCVar(NF14CVars.RespawnTime);
+
+        if (respawnTime > time.TotalSeconds)
+        {
+            shell.WriteLine($"You haven't been dead long enough. You have been dead {time.TotalSeconds} seconds of the required {respawnTime}.");
+            return;
         }
 
         var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();

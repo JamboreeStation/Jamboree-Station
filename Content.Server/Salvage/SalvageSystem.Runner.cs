@@ -12,6 +12,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using System.Numerics;
 using Content.Server.Salvage.Expeditions;
 using Content.Server.Shuttles.Components;
@@ -196,17 +197,24 @@ public sealed partial class SalvageSystem
 
                 if (TryComp<StationDataComponent>(comp.Station, out var data))
                 {
-                    foreach (var member in data.Grids)
+                    // Pick a member that is not parked on a planet (a map that is also a grid),
+                    // otherwise shuttles arrive on the planet and get their FTL/shuttle components disabled.
+                    var destination = data.Grids.FirstOrDefault(member =>
+                        Transform(member).MapUid is { } mapUid &&
+                        !HasComp<MapGridComponent>(mapUid));
+
+                    if (destination == default)
+                        destination = data.Grids.FirstOrDefault();
+
+                    if (destination != default)
                     {
                         while (shuttleQuery.MoveNext(out var shuttleUid, out var shuttle, out var shuttleXform))
                         {
                             if (shuttleXform.MapUid != uid || HasComp<FTLComponent>(shuttleUid))
                                 continue;
 
-                            _shuttle.FTLToDock(shuttleUid, shuttle, member, ftlTime);
+                            _shuttle.FTLToDock(shuttleUid, shuttle, destination, ftlTime);
                         }
-
-                        break;
                     }
                 }
             }

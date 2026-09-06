@@ -76,6 +76,9 @@ public sealed class RespawnSystem : EntitySystem
         if (!_player.TryGetSessionById(e.Mind.Comp.UserId.Value, out var session))
             return;
 
+        if (_respawnResetTimes.ContainsKey(session))
+            return;
+
         ResetRespawnTime(session);
     }
 
