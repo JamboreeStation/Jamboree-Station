@@ -21,7 +21,7 @@
     - Sidearm
   - type: Gun
     fireRate: 6
-    selectedMode: SemiAuto
+    selectedMode: Burst
     availableModes:
       - SemiAuto
       - Burst
@@ -30,6 +30,11 @@
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/bore_cock.ogg
+  - type: RestrictById
+    restrictMelee: true
+    restrictRanged: true
+  - type: AccessReader
+    access: [['Salvage']]
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -82,7 +87,6 @@
   - type: EmitSoundOnLand
     sound:
       collection: PistolsDrop
-  # Goobstation edit end
   - type: AltFireMelee
     attackType: Heavy
   - type: MeleeWeapon
@@ -95,13 +99,13 @@
       collection: MetalThud # Goobstation ^
 
 - type: entity
-  name: viper
+  name: .85 BORE G832
   parent: [ BaseWeaponSalvageBore ]
-  id: WeaponTestTest!
+  id: 85SalvageBoreG832
   description: Its for testing!
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Pistols/viper.rsi
+    sprite: Objects/Weapons/Guns/SalvageBore/SalvageBoreGun.rsi # RSI file path for salvage bore
   - type: ItemSlots
     slots:
       gun_magazine:
