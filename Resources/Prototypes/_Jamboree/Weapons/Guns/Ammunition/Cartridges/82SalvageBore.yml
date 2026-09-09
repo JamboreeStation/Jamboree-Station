@@ -4,16 +4,9 @@
   parent: [ BaseCartridge, BaseSecuritySalvageContraband ]
   abstract: true
   components:
+  - type: CartridgeAmmo
+    proto: BulletPistol
   - type: Tag
     tags:
       - Cartridge
       - CartridgePistol
-  - type: CartridgeAmmo
-    proto: BulletPistol
-  - type: Sprite
-    sprite: _Jamboree/Objects/Weapons/Guns/Ammunition/SalvageBore/SalvageBoreCasings.rsi
-    layers:
-      - state: base
-        map: [ "enum.AmmoVisualLayers.Base" ]
-  - type: Appearance
-  - type: SpentAmmoVisuals
