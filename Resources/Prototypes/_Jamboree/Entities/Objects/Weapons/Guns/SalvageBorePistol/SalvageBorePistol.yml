@@ -107,6 +107,8 @@
       gun_magazine:
         name: Magazine
         startingItem: MagazinePistol
+        insertSound: /Audio/Weapons/Guns/MagIn/bore_mag_insert.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
         priority: 2
         whitelist:
           tags:
