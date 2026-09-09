@@ -94,7 +94,7 @@
     soundHit:
       collection: MetalThud # Goobstation ^
 
-  type: entity
+- type: entity
   name: viper
   parent: [ BaseWeaponSalvageBore ]
   id: WeaponTestTest!
