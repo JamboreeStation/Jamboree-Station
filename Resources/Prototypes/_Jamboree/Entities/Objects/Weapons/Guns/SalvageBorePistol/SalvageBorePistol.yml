@@ -73,6 +73,13 @@
     - generic-cannot-shoot-1 # Jamboree - was oni-cannot-shoot-x
     - generic-cannot-shoot-2
     - generic-cannot-shoot-3
+  - type: RestrictById # Jamboree - lawbringer-style ID scanner, keyed to salvagers
+    restrictMelee: true
+    restrictRanged: true
+    isEmaggable: true
+  - type: AccessReader
+    access:
+    - - Salvage
   - type: EmitSoundOnPickup
     sound:
       collection: PistolsPickUp
