@@ -30,6 +30,10 @@
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/bore_cock.ogg
+    soundBoltClosed:
+      path: /Audio/Weapons/Guns/Cock/bore_cock.ogg
+    soundBoltOpened:
+      path: /Audio/Weapons/Guns/Cock/bore_cock.ogg
   - type: ItemSlots
     slots:
       gun_magazine:
