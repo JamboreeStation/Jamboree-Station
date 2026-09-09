@@ -1,0 +1,19 @@
+- type: entity
+  id: BaseCartridgeBore
+  name: .85 Bore
+  parent: [ BaseCartridge, BaseSecuritySalvageContraband ]
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+      - Cartridge
+      - CartridgePistol
+  - type: CartridgeAmmo
+    proto: BulletPistol
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/SalvageBore/SalvageBoreCasings.rsi
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+  - type: Appearance
+  - type: SpentAmmoVisuals

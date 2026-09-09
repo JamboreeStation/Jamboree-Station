@@ -158,7 +158,7 @@
 
 - type: entity
   name: Atreides
-  parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
+  parent: [BaseWeaponSubMachineGun, BaseSecuritySalvageContraband]
   id: WeaponSubMachineGunAtreides
   description: A rare machine pistol hailing from the Corporate Wars. Its extremely high fire rate and compact profile make it useful in close quarters combat. Despite its age, it is in remarkably good condition. Feeds from .35 SMG magazines.
   components:
@@ -181,7 +181,7 @@
 
 - type: entity
   name: C-20r submachine gun
-  parent: [BaseWeaponSubMachineGun, BaseSyndicateContraband]
+  parent: [BaseWeaponSubMachineGun, BaseSyndicateContraband, BaseSecuritySalvageContraband ]
   id: WeaponSubMachineGunC20r
   description: A classic and widespread submachine gun, infamous for its use by the Gorlex Marauders. One of the first homegrown Waffle Corp. designs, it remains in service today. Feeds from .35 SMG magazines.
   components:
@@ -222,9 +222,47 @@
   - type: StaticPrice
     price: 5000
 
+# A legally distinct CR20 made by jamboree station for salvager use
+- type: entity
+  name: C82R3
+  parent: [BaseWeaponSubMachineGun, BaseSecuritySalvageContraband ]
+  id: WeaponSubMachineGunC82R3
+  description: From the same line as the bulldog, the C82R3 stands similarly as a legally distinct and unique firearm approved for salvage usage by nanotrasens experimental weaponry department.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-0
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+  - type: Gun
+    shotsPerBurst: 5
+    availableModes:
+    - Burst
+    - FullAuto
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/c-20r.ogg
+  - type: ChamberMagazineAmmoProvider
+    autoEject: true
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: true
+  - type: Appearance
+  - type: Item # Goobstation
+    shape:
+    - 0,0,2,1
+  - type: StaticPrice
+    price: 2000
+
+
 - type: entity
   name: Drozd
-  parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
+  parent: [BaseWeaponSubMachineGun, BaseSecuritySalvageContraband ]
   id: WeaponSubMachineGunDrozd
   description: A modern SMG manufactured by Nanotrasen’s Small Arms Division. It features an exceptional rate of fire in burst mode, useful for holding defensive angles or engaging hostiles at longer ranges. Feeds from .35 SMG magazines.
   components:
@@ -283,7 +321,7 @@
 
 - type: entity
   name: WT550 autorifle # Goobstation
-  parent: [BaseWeaponSubMachineGun, BaseSecurityContraband]
+  parent: [BaseWeaponSubMachineGun, BaseSecuritySalvageContraband ]
   id: WeaponSubMachineGunWt550
   description: A truly unique firearm, the WT550 was designed by Nanotrasen's Small Arms Division as a compact, cheap, and mass produced submachine gun fully controllable with one hand. It contains an exotic internal recoil buffer and feeds from special top-mounted .35 magazines.
   components:
