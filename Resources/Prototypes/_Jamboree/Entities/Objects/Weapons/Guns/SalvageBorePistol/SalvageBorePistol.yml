@@ -30,11 +30,6 @@
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/Weapons/Guns/Cock/bore_cock.ogg
-  - type: RestrictById
-    restrictMelee: true
-    restrictRanged: true
-  - type: AccessReader
-    access: [['Salvage']]
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -112,7 +107,10 @@
   description: Its for testing!
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/SalvageBore/SalvageBoreGun.rsi # RSI file path for salvage bore
+    sprite: _Jamboree/Objects/Weapons/Guns/SalvageBore/SalvageBoreGun.rsi # RSI file path for salvage bore
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
   - type: ItemSlots
     slots:
       gun_magazine:
