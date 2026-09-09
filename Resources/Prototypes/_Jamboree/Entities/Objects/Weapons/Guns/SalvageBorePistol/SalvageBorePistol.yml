@@ -78,6 +78,13 @@
     - generic-cannot-shoot-1 # Jamboree - was oni-cannot-shoot-x
     - generic-cannot-shoot-2
     - generic-cannot-shoot-3
+  - type: RestrictById # Jamboree - lawbringer-style ID scanner, keyed to salvagers
+    restrictMelee: true
+    restrictRanged: true
+    isEmaggable: true
+  - type: AccessReader
+    access:
+    - - Salvage
   - type: EmitSoundOnPickup
     sound:
       collection: PistolsPickUp
@@ -111,6 +118,8 @@
       gun_magazine:
         name: Magazine
         startingItem: MagazinePistol
+        insertSound: /Audio/Weapons/Guns/MagIn/bore_mag_insert.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
         priority: 2
         whitelist:
           tags:
