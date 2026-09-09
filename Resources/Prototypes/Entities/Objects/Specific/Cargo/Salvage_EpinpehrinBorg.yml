@@ -1,0 +1,19 @@
+- type: entity
+  parent: [ BorgHypo ]
+  id: EpinephrineHypoSalvage
+  name: Epinephrine Hypospray
+  description: A self-refilling injector for rapid healing and recussiatation of salvagers in critical condition.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 16
+        reagents:
+        - ReagentId: Epinephrine
+          Quantity: 16
+  - type: SolutionRegeneration
+    solution: hypospray
+    generated:
+      reagents:
+      - ReagentId: Epinephrine
+        Quantity: 0.5
