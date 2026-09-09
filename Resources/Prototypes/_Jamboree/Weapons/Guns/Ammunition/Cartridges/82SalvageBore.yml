@@ -11,7 +11,7 @@
   - type: CartridgeAmmo
     proto: BulletPistol
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/SalvageBore/SalvageBoreCasings.rsi
+    sprite: _Jamboree/Objects/Weapons/Guns/Ammunition/SalvageBore/SalvageBoreCasings.rsi
     layers:
       - state: base
         map: [ "enum.AmmoVisualLayers.Base" ]
