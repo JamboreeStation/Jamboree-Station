@@ -19,12 +19,6 @@
   - type: Tag
     tags:
     - Sidearm
-  - type: Clothing
-    sprite: Objects/Weapons/Guns/SalvageBore/SalvageBore.rsi
-    quickEquip: false
-    slots:
-    - suitStorage
-    - Belt
   - type: Gun
     fireRate: 6
     selectedMode: SemiAuto
@@ -32,16 +26,16 @@
       - SemiAuto
       - Burst
     soundGunshot:
-      path: /Audio/Weapons/Guns/Gunshots/pistol.ogg
+      path: /Audio/Weapons/Guns/Gunshots/bore_gunshot.ogg
   - type: ChamberMagazineAmmoProvider
     soundRack:
-      path: /Audio/Weapons/Guns/Cock/pistol_cock.ogg
+      path: /Audio/Weapons/Guns/Cock/bore_cock.ogg
   - type: ItemSlots
     slots:
       gun_magazine:
         name: Magazine
         startingItem: MagazinePistol
-        insertSound: /Audio/Weapons/Guns/MagIn/pistol_magin.ogg
+        insertSound: /Audio/Weapons/Guns/MagIn/bore_mag_insert.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
         priority: 2
         whitelist:
@@ -94,8 +88,41 @@
   - type: MeleeWeapon
     damage:
       types:
-       Blunt: 8 # pistol whip
+       Blunt: 12 # Bit hefty no?
     angle: 0
     wideAnimationRotation: 90 # -90 if it takes bayonets (hits with muzzle) 90 if not (hits with butt)
     soundHit:
       collection: MetalThud # Goobstation ^
+
+  type: entity
+  name: viper
+  parent: [ BaseWeaponSalvageBore ]
+  id: WeaponTestTest!
+  description: Its for testing!
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Pistols/viper.rsi
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistol
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistol
+            - MagazinePistolHighCapacity
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: StaticPrice
+    price: 1000

@@ -1,0 +1,17 @@
+﻿- type: entity
+  id: BulletQuarter
+  name: bullet (quarter)
+  description: This probably won't hurt.
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 4
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Misc/coins.rsi
+    scale: 0.5, 0.5
+    layers:
+    - state: coin_iron
