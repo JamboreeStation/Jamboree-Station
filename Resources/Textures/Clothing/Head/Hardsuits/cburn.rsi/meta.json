@@ -36,6 +36,14 @@
       "directions": 4
     },
     {
+      "name": "equipped-head-reptillian",
+      "directions": 4
+    },
+    {
+      "name": "equipped-head-unshaded-reptillian",
+      "directions": 4
+    },
+    {
       "name": "equipped-head-vulpkanin",
       "directions": 4
     },
