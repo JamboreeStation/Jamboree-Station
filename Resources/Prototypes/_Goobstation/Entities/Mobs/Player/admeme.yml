@@ -327,7 +327,7 @@
 
 - type: entity
   id: RandomHumanoidHECUSpawner
-  name: Asset Protection Operative
+  name: Asset Protection Operative #Jamboree Change
   suffix: ERTRole
   components:
   - type: Sprite

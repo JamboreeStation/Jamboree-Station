@@ -43,10 +43,10 @@
   - type: LanguageKnowledge # Einstein Engines - Languages
     speaks:
     - TauCetiBasic
-    - Freespeak
+    - Umamese #Jamboree
     understands:
     - TauCetiBasic
-    - Freespeak
+    - Umamese #Jamboree
 #  - type: DamageVisuals
 #    damageOverlayGroups:
 #      Brute:

@@ -1,0 +1,33 @@
+- type: entity
+  id: BruinTranslator
+  parent: [ TranslatorPoweredBase ]
+  name: Bruin translator
+  description: Translates speech between Bruin and Basic. Help the bear!
+  components:
+  - type: HandheldTranslator
+    spoken:
+    - TauCetiBasic
+    - Bruin
+    understood:
+    - Bruin
+    - TauCetiBasic
+    requires:
+    - TauCetiBasic
+    - Bruin
+
+- type: entity
+  id: UmameseTranslator
+  parent: [ TranslatorPoweredBase ]
+  name: Umamese translator
+  description: Translates speech between Umamese and Basic. No, it's not edible.
+  components:
+  - type: HandheldTranslator
+    spoken:
+    - TauCetiBasic
+    - Umamese
+    understood:
+    - Umamese
+    - TauCetiBasic
+    requires:
+    - TauCetiBasic
+    - Umamese

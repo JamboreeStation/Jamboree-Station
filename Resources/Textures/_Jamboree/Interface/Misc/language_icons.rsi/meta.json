@@ -1,0 +1,36 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Per-state; see below.",
+    "size": {
+        "x": 16,
+        "y": 16
+    },
+    "states": [
+        {
+			"license": "CC-BY-SA-3.0",
+			"copyright": "Made by Bibble for Jamboree, references other textures found in the base Textures folder.",
+            "name": "bruin"
+        },
+        {
+			"license": "CC-BY-SA-3.0",
+			"copyright": "Made by Bibble for Jamboree, references other textures found in the base Textures folder.",
+            "name": "hegemonic"
+        },
+        {
+			"license": "CC-BY-SA-3.0",
+			"copyright": "Made by Bibble for Jamboree, references other textures found in the base Textures folder.",
+            "name": "sovblov"
+        },
+        {
+			"license": "CC-BY-SA-3.0",
+			"copyright": "Made by Bibble for Jamboree, references other textures found in the base Textures folder.",
+            "name": "spessnish"
+        },
+        {
+			"license": "CC-BY-SA-3.0",
+			"copyright": "Made by Bibble for Jamboree, references other textures found in the base Textures folder.",
+            "name": "umamese"
+        }
+    ]
+}

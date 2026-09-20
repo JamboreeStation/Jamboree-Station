@@ -11,6 +11,7 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Robust.Server.Player;
+using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
@@ -21,7 +22,7 @@ public sealed class RespawnSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private readonly Dictionary<ICommonSession, TimeSpan> _respawnResetTimes = [];
+    private readonly Dictionary<NetUserId, TimeSpan> _respawnResetTimes = [];
 
 
 
@@ -61,7 +62,7 @@ public sealed class RespawnSystem : EntitySystem
     private void ClearRespawnTime(ICommonSession session)
     {
         // Jam, reset the respawn timer for the player, and send a network event to the client to clear the respawn timer.
-        if (_respawnResetTimes.Remove(session))
+        if (_respawnResetTimes.Remove(session.UserId))
             SendRespawnResetTime(session, null);
     }
 
@@ -76,7 +77,7 @@ public sealed class RespawnSystem : EntitySystem
         if (!_player.TryGetSessionById(e.Mind.Comp.UserId.Value, out var session))
             return;
 
-        if (_respawnResetTimes.ContainsKey(session))
+        if (_respawnResetTimes.ContainsKey(e.Mind.Comp.UserId.Value))
             return;
 
         ResetRespawnTime(session);
@@ -90,12 +91,15 @@ public sealed class RespawnSystem : EntitySystem
     private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
     {
         if (e.NewStatus == Robust.Shared.Enums.SessionStatus.Connected)
-            SendRespawnResetTime(e.Session, GetRespawnResetTime(e.Session)); // If player reconnects, get their OG respawn timer.
+        {
+            var respawnTime = GetRespawnResetTime(e.Session); // If player reconnects, get their OG respawn timer.
+            SendRespawnResetTime(e.Session, respawnTime); // JAM Start that RESPAWN!
+        }
     }
 
-    private void ResetRespawnTime(ICommonSession session)
+    public void ResetRespawnTime(ICommonSession session)
     {
-        ref var respawnTime = ref CollectionsMarshal.GetValueRefOrAddDefault(_respawnResetTimes, session, out _);
+        ref var respawnTime = ref CollectionsMarshal.GetValueRefOrAddDefault(_respawnResetTimes, session.UserId, out _);
 
         respawnTime = _timing.CurTime;
 
@@ -109,6 +113,6 @@ public sealed class RespawnSystem : EntitySystem
 
     public TimeSpan? GetRespawnResetTime(ICommonSession session)
     {
-        return _respawnResetTimes.TryGetValue(session, out var time) ? time : null;
+        return _respawnResetTimes.TryGetValue(session.UserId, out var time) ? time : null;
     }
 }

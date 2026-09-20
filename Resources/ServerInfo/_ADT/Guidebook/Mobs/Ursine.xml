@@ -1,0 +1,41 @@
+<Document>
+  # Ursine
+
+  <Box>
+    <GuideEntityEmbed Entity="MobUrsine" Caption=""/>
+  </Box>
+
+
+ ## Strong Toss
+  Ursine arms have a musculature which has been developed for grappling and tossing. As such, people they can [color=#ffa500]they can throw people farther, faster, and their throws hurt more.[/color]
+
+ ## Slow and Shoeless
+  Ursine are quite sluggish, moving [color=#1e90ff]25% slower than a human.[/color] As well, due to their big foot paws, they [color=#1e90ff]can't wear shoes.[/color]
+
+ ## Damage
+  Like their animalistic cousins, Ursine are quite bulky giving them a [ccolor=#ffa500f]20% resistance to blunt and slashing damage.[/color]
+  However, the fat which gives them their resistances is also vulnerable to puncturing, giving them a [color=#1e90ff]15% vulnerability to piercing damage.[/color]
+  Their fur also lets them be more insulated against the cold, giving them a [color=#ffa500]15% resistance to cold damage.[/color]
+  Unfortunately, this insulation against the cold works negatively in the heat, giving them a [color=#1e90ff]20% vulnerability to heat damage.[/color]
+
+ ## Ursine Naming Conventions
+  Upon reaching adulthood, an Ursine chooses their first name. This name, traditionally, is selected on a basis of their favorite thing to consume, be it food, liquid, or booze.
+  Then, given by their peers or a diviner, is an epiphet. This epiphet is either an embodiment of an aspect of the Ursine or an emodiment of an aspect of the life of an Ursine, be it their past
+  or future. This epiphet, depending on several factors, may change as an Ursine grows older.
+  - [color=#449944]Acceptable:[/color] Gumbo the Strong
+  - [color=#449944]Acceptable:[/color] Cognac the Keeper
+  - [color=#449944]Acceptable:[/color] Water the Bald
+  - [color=#449944]Acceptable:[/color] Boritos the Robust
+  - [color=#994444]Bad:[/color] Bob the Builder
+  - [color=#994444]Bad:[/color] Freddy Fazbear
+  - [color=#994444]Bad:[/color] Raagh I'm Bear
+
+## Lore
+
+  Though Ursine were only discovered by the wider galaxy in the middle of 3XXX, there are many mysteries which surround them. One is that of the mysterious
+  ability that a small selection of Ursine possess to see possible outcomes of the future. This ability remains unexplainable and mysterious, though two theories
+  have provided a possible explanation. The first is that it is a byproduct of contact with a technological relic of the ancient past, with the evidence backing up
+  this theory coming from the super-terrorist known as Mindscape, who existed around the same time as their discovery and had similar abilities provided by his helmet.
+  The other theory, brought forward by members of the Space Wizard Federation, pose that instead the Ursine ability of foresight was granted upon contact with a cosmic
+  entity. The Space Wizard Federation have refused to provide the evidence for this theory, but it has remained one they hold to this day.
+</Document>
