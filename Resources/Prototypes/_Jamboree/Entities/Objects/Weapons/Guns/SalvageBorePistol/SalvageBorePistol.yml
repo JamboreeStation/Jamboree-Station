@@ -108,7 +108,7 @@
   name: .85 BORE G832
   parent: [ BaseWeaponSalvageBore ]
   id: 85SalvageBoreG832
-  description: Its for testing!
+  description: A weapon commisioned by a certain CC lizard, handmade in the forges of cargonia and retrofitted with the latest in technology for checking that the owner is the owner, the .85 bore will leave a hole in the xenos face as wide as your expression when you see this thing at work.
   components:
   - type: Sprite
     sprite: _Jamboree/Objects/Weapons/Guns/SalvageBore/SalvageBoreGun.rsi # RSI file path for salvage bore
