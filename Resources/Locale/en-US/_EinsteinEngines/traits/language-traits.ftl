@@ -33,11 +33,10 @@ trait-language-freespeak-name = Freespeak
 trait-language-freespeak-desc =
     A language of renegades and frontiersmen descending from various languages from Earth like Hindi combined into a multi-rooted jumble that sounds incoherent to non-native speakers.
     This language is the only common cultural identity for humans in the frontier. Speaking this language in itself boldly declares the speaker a free spirit.
-    This language is typically spoken by Gingerbread.
 
 trait-language-elyran-name = Elyran
 trait-language-elyran-desc =
-    Elyran Standard is the official tongue of the Republic of Elyra, once known as the planet Jupiter.
+    Elyran Standard is the official tongue of the Planetary Kingdom of Elyra, once known as the planet Jupiter. It was coined by the Elyran Royal family after they formed a fondness for Earth.
     Constructed using elements of Farsi - Arabic - and Turkish - influence from all three of these languages can be seen throughout its grammar and vocabulary.
 
 trait-language-valyrianstandard-name = Valyrian Standard

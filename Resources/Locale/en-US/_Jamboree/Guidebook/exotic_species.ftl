@@ -1,4 +1,4 @@
-guide-entry-exotic-species = Exotic Species
+guide-entry-exotic-species = Uncommon Species
 
 guide-entry-skeleton = Skeleton
 guide-entry-bananamen = Bananamen

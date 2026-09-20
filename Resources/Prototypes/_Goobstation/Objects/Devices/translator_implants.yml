@@ -20,6 +20,9 @@
       - Freespeak
       - NovuNederic
       - Tradeband
+      - Spessnish #jamboree
+      - Sovblov #jamboree
+      - Hegemonic #jamboree
       - Sign
       - SpaceItalian # Job Specific -
       - Bubblish # Slime Language
@@ -44,8 +47,10 @@
       - Xeeplian # Abductor Language
       - Eckeckyik # Thaven Language
       - BieselEckeckyik # Bieselized Thaven Language
-      - Crab # Animal Languages -
-      - Mouse
+      - Crab # Anomalocarid Language
+      - Mouse # Rodentia Language
+      - Umamese #Jamboree, Gingerbread language
+      - Bruin #Jamboree, Ursine Language
 
     understood:
       - TauCetiBasic # Common Languages -
@@ -54,6 +59,9 @@
       - Freespeak
       - NovuNederic
       - Tradeband
+      - Spessnish #jamboree
+      - Sovblov #jamboree
+      - Hegemonic #jamboree
       - Sign
       - SpaceItalian # Job Specific -
       - Bubblish # Slime Language
@@ -78,8 +86,10 @@
       - Xeeplian # Abductor Language
       - Eckeckyik # Thaven Language
       - BieselEckeckyik # Bieselized Thaven Language
-      - Crab # Animal Languages -
-      - Mouse
+      - Crab # Anomalocarid Language
+      - Mouse # Rodentia Language
+      - Umamese #Jamboree, Gingerbread language
+      - Bruin #Jamboree, Ursine Language
 
 - type: entity
   parent: BaseSubdermalImplant

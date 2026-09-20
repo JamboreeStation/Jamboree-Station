@@ -1,0 +1,109 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+- type: entity
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobUrsine
+  name: Urist McHands The Bear
+  abstract: true
+  components:
+  - type: Hunger
+    baseDecayRate: 0.1 # I think this is 50% faster than normal?
+  - type: Thirst
+    baseDecayRate: 0.1 # I think this is 50% faster than normal?
+  - type: Icon
+    sprite: _ADT/Mobs/Species/Ursine/parts.rsi
+    state: full
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatBear
+      amount: 5
+  - type: LanguageKnowledge # Einstein Engines - Languages
+    speaks:
+    - TauCetiBasic
+    - Bruin #Jamboree, Ursine Language
+    understands:
+    - TauCetiBasic
+    - Bruin #Jamboree, Ursine Language
+  - type: HumanoidAppearance
+    species: Ursine
+    hideLayersOnEquip:
+    - HeadTop
+  - type: Speech
+    speechVerb: Vulpkanin
+    speechSounds: Sasquatch
+  - type: Vocal
+    sounds:
+      Male: MaleYowie
+      Female: FemaleYowie
+      Unsexed: MaleYowie
+  - type: Body
+    prototype: Ursine
+    requiredLegs: 2
+  - type: Carriable
+    freeHandsRequired: 4 # easiest way to make them uncarriable without removing carriable from base mob
+  - type: Damageable
+    damageModifierSet: Ursine
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 0.75
+    baseSprintSpeed : 0.85
+  - type: Temperature
+    coldDamageThreshold: 248.15 # -25 degrees centigrade, like 12 degrees below normal "takes cold damage"
+    currentTemperature: 310.15
+    coldDamage:
+      types:
+        Cold: 0.080 # in line with cold resist
+    heatDamage:
+      types:
+        Heat: 1.85 # in line with heat dmg received up
+  - type: Puller
+    needsHands: true
+    grabThrownSpeed: 20
+    grabThrowDamageModifier: 1.5
+    throwCooldown: 1.25
+    stageChangeCooldown: 1.25
+    softGrabSpeedModifier: 1
+    hardGrabSpeedModifier: 1
+    chokeGrabSpeedModifier: 1
+  - type: Fixtures
+    fixtures: # TODO: This needs a second fixture just for mob collisions.
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 400 #they are BEEFY!!!
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Inventory
+    templateId: ursine
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+
+
+- type: entity
+  parent: BaseSpeciesDummy
+  id: MobUrsineDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: Ursine
+  - type: Inventory
+    templateId: ursine
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female

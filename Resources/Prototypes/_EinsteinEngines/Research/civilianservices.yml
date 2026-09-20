@@ -34,6 +34,8 @@
   - YowKriolTranslator # goob edit - yowie language
   - EckeckyikTranslator # omu thaven port from gds
   - BieselEckeckyikTranslator # omu thaven port from gds
+  - BruinTranslator #Jamboree
+  - UmameseTranslator #Jamboree
   position: -4, 4
   technologyPrerequisites:
   - AdvancedEntertainment
@@ -70,6 +72,8 @@
   - SignTranslatorImplanter # goob edit
   - EckeckyikTranslatorImplanter # omu thaven port from gds
   - BieselEckeckyikTranslatorImplanter # omu thaven port from gds
+  - BruinTranslatorImplanter #Jamboree
+  - UmameseTranslatorImplanter #Jamboree
   position: -4, 5
   technologyPrerequisites:
   - BasicTranslation

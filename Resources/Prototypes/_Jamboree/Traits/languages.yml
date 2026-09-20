@@ -1,0 +1,40 @@
+# If you add a new trait, make sure to add the corresponding component to the whitelist in \Resources\Prototypes\Entities\Mobs\Player\clone.yml so it gets copied to clones correctly!
+# Not sure if it's required, but I added the warning anyway.
+- type: trait
+  id: Hegemonic
+  name: trait-language-hegemonic-name
+  description: trait-language-hegemonic-desc
+  category: LanguageTraits
+  cost: 1
+  components:
+  - type: LanguageSpeaker
+  languagesSpoken:
+    - Hegemonic
+  languagesUnderstood:
+    - Hegemonic
+
+- type: trait
+  id: Spessnish
+  name: trait-language-spessnish-name
+  description: trait-language-spessnish-desc
+  category: LanguageTraits
+  cost: 1
+  components:
+  - type: LanguageSpeaker
+  languagesSpoken:
+    - Spessnish
+  languagesUnderstood:
+    - Spessnish
+
+- type: trait
+  id: Sovblov
+  name: trait-language-sovblov-name
+  description: trait-language-sovblov-desc
+  category: LanguageTraits
+  cost: 1
+  components:
+  - type: LanguageSpeaker
+  languagesSpoken:
+    - Sovblov
+  languagesUnderstood:
+    - Sovblov
