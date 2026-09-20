@@ -26,6 +26,8 @@
   - YowKriolTranslator # goob edit - yowie language
   - EckeckyikTranslator # omu thaven port from gds
   - BieselEckeckyikTranslator # omu thaven port from gds
+  - BruinTranslator #Jamboree
+  - UmameseTranslator #Jamboree
 
 - type: latheRecipePack
   id: TranslatorImplanters
