@@ -17,4 +17,16 @@ language-Sovblov-name = Sovblov
 language-Sovblov-description =
     The language of the Soviet Remnant, a small Terran faction who align with the ancient belief of communism. It has a slightly intimidating demeanor
     to the words spoken in it, regardless if the intent of the words is actually menacing. While the Soviet Remnant is currently an obscure faction
-    inside of Terra it once served as one of the world's dominant superpowers and a forerunner in the Terran Space Race.
+    inside of Earth it once served as one of the world's dominant superpowers and a forerunner in the Terran Space Race.
+
+language-Bruin-name = Bruin
+language-Bruin-description =
+    The language of the Ursine, a species of bearlike folks. It involves a lot of growls, snorts, and grumbles. It is said by Ursine diviners that it arrived to them
+    via the stars above. What this exactly means is a mystery, but it nonetheless has persisted to the modern day.
+
+# Language icon names, when you hover over the icon in the chat!
+language-icon-bruin = Bruin
+language-icon-umamese = Umamese
+language-icon-sovblov = Sovblov
+language-icon-spessnish = Spessnish
+language-icon-hegemonic = Hegemonic

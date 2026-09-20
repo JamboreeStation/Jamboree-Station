@@ -1,0 +1,64 @@
+# Spoken by Spessnish Trait.
+- type: language
+  icon: LanguageIconSpessnish
+  id: Spessnish
+  iconUnderstood: false
+  isVisibleLanguage: true
+  speech:
+    color: "#ffb700"
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 1
+    maxSyllables: 2
+    replacement:
+    - ¡hola!
+    - ¡adios!
+    - buenos
+    - días
+    - tardes
+    - noches
+    - por favor
+    - gracias
+    - de nada
+    - perdón
+    - está
+    - ¿dónde?
+    - ayuda
+    - bibliotecha
+    - speso
+    - señor
+    - señorita
+    - grande
+    - pequeño
+    - espessio
+    - estación
+    - catorce
+    - astronave
+    - astronauta
+    - cohete
+    - diablo
+    - amiga
+    - amigo
+    - gota
+    - sindicato
+    - mago
+    - puente
+    - alimento
+    - agua
+    - estrella
+    - termodinámica
+    - cósmico
+    - cósmica
+    - cantar
+    - reptil
+    - gracias
+    - casa
+    - spese
+    - spessy
+    - spessing
+    - hombre
+    - mujer
+    - nonbinario
+    - extranjero
+    - extranjera
+    - cíborg

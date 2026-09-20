@@ -1,0 +1,41 @@
+<Document>
+  # Ursine
+
+  <Box>
+    <GuideEntityEmbed Entity="MobUrsine" Caption=""/>
+  </Box>
+
+
+ ## Strong Toss
+  Ursine arms have a musculature which has been developed for grappling and tossing. As such, people they can [color=#ffa500]they can throw people farther, faster, and their throws hurt more.[/color]
+
+ ## Slow and Shoeless
+  Ursine are quite sluggish, moving [color=#1e90ff]25% slower than a human.[/color] As well, due to their big foot paws, they [color=#1e90ff]can't wear shoes.[/color]
+
+ ## Damage
+  Like their animalistic cousins, Ursine are quite bulky giving them a [ccolor=#ffa500f]20% resistance to blunt and slashing damage.[/color]
+  However, the fat which gives them their resistances is also vulnerable to puncturing, giving them a [color=#1e90ff]15% vulnerability to piercing damage.[/color]
+  Their fur also lets them be more insulated against the cold, giving them a [color=#ffa500]15% resistance to cold damage.[/color]
+  Unfortunately, this insulation against the cold works negatively in the heat, giving them a [color=#1e90ff]20% vulnerability to heat damage.[/color]
+
+ ## Ursine Naming Conventions
+  Upon reaching adulthood, an Ursine chooses their first name. This name, traditionally, is selected on a basis of their favorite thing to consume, be it food, liquid, or booze.
+  Then, given by their peers or a diviner, is an epiphet. This epiphet is either an embodiment of an aspect of the Ursine or an emodiment of an aspect of the life of an Ursine, be it their past
+  or future. This epiphet, depending on several factors, may change as an Ursine grows older.
+  - [color=#449944]Acceptable:[/color] Gumbo the Strong
+  - [color=#449944]Acceptable:[/color] Cognac the Keeper
+  - [color=#449944]Acceptable:[/color] Water the Bald
+  - [color=#449944]Acceptable:[/color] Boritos the Robust
+  - [color=#994444]Bad:[/color] Bob the Builder
+  - [color=#994444]Bad:[/color] Freddy Fazbear
+  - [color=#994444]Bad:[/color] Raagh I'm Bear
+
+## Lore
+
+  The Ursine, despite being far from the systems with the most life, seem to hold a lot of knowledge of the goings on of the species of the wider universe. Though this still remains
+  a mystery, there are multiple theories on how this is possible. The first theory involves the ancient rumors of devices scattered throughout the universe which can do actions on a
+  galaxy-sized scale. The theory goes that a device of this nature was discovered in the history of the Ursine, and even after it was long forgotten the stories of the stars still
+  persist. The secondary theory is mainly propogated by the Space Wizard Federation. This theory states that rather than a device being the means in which the Ursine discovered the
+  wider galaxy, it was actually via a series of major prophets who could see the galaxy on a larger scale. Both theories have a lot of credit and methods of disproving, and as such
+  it is believed this will remain another mystery of the galaxy.
+</Document>

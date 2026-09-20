@@ -51,6 +51,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   </Box>
 
   <Box>
+    <GuideEntityEmbed Entity="MobUrsine" Caption="Ursine"/> <!-- Jamboree/ADT adaption -->
     <GuideEntityEmbed Entity="MobVox" Caption="Vox"/>
     <GuideEntityEmbed Entity="MobVulpkanin" Caption="Vulpkanin"/>
     <GuideEntityEmbed Entity="MobYowie" Caption="Yowie"/> <!-- Jamboree, return of the Yowie -->

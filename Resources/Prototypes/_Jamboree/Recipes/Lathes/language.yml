@@ -1,0 +1,15 @@
+# SPDX-FileCopyrightText: 2026 Goob Station Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: latheRecipe
+  parent: BaseTranslatorImplanter
+  id: BruinTranslatorImplanter
+  subname: lathe-recipe-BruinTranslatorImplanter-subname
+  result: BruinTranslatorImplanter
+
+- type: latheRecipe
+  parent: BaseTranslatorImplanter
+  id: UmameseTranslatorImplanter
+  subname: lathe-recipe-UmameseTranslatorImplanter-subname
+  result: UmameseTranslatorImplanter

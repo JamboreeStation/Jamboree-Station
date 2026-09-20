@@ -51,3 +51,5 @@
   - SignTranslatorImplanter # goob edit
   - EckeckyikTranslatorImplanter # omu thaven port from gds
   - BieselEckeckyikTranslatorImplanter # omu thaven port from gds
+  - BruinTranslatorImplanter #Jamboree
+  - UmameseTranslatorImplanter #Jamboree

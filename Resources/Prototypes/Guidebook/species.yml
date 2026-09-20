@@ -49,10 +49,10 @@
     - SlimePerson
     - Tajaran
     - Thaven
+    - Ursine #ADT/Jamboree Adaptation
     - Vox
     - Vulpkanin
     - Yowie # Jamboree, return of the Yowie
-    - ExoticSpecies #Jamboree, addition of exotic species tab
 
 - type: guideEntry
   id: Arachnid
@@ -144,3 +144,8 @@
   id: Avali
   name: species-name-avali
   text: "/ServerInfo/Guidebook/Mobs/Avali.xml"
+
+- type: guideEntry #ADT/Jamboree
+  id: Ursine
+  name: species-name-ursine
+  text: "/ServerInfo/_ADT/Guidebook/Mobs/Ursine.xml"
