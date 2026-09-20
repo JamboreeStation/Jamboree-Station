@@ -9,8 +9,8 @@
     baseDecayRate: 0.1 # I think this is 50% faster than normal?
   - type: Thirst
     baseDecayRate: 0.1 # I think this is 50% faster than normal?
-  - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
-    sprite: _ADT/Textures/Mobs/Species/Ursine/parts.rsi
+  - type: Icon
+    sprite: _ADT/Mobs/Species/Ursine/parts.rsi
     state: full
   - type: Butcherable
     butcheringType: Spike

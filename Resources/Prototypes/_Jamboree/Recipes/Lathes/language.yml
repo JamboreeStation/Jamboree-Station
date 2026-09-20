@@ -13,3 +13,23 @@
   id: UmameseTranslatorImplanter
   subname: lathe-recipe-UmameseTranslatorImplanter-subname
   result: UmameseTranslatorImplanter
+
+- type: latheRecipe
+  id: BruinTranslator
+  result: BruinTranslator
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 100
+    Plastic: 50
+    Gold: 50
+
+- type: latheRecipe
+  id: UmameseTranslator
+  result: UmameseTranslator
+  completetime: 2
+  materials:
+    Steel: 500
+    Glass: 100
+    Plastic: 50
+    Gold: 50
