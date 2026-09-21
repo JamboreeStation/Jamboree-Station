@@ -2184,3 +2184,9 @@ Entries:
       message: Removed Herobrine.
   id: 177
   time: '2026-09-20T06:00:22.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Fix
+      message: Ursine now round-start spawn with a survival kit!
+  id: 178
+  time: '2026-09-21T10:35:38.0000000+00:00'
