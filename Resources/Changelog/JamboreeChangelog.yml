@@ -2190,3 +2190,17 @@ Entries:
       message: Ursine now round-start spawn with a survival kit!
   id: 178
   time: '2026-09-21T10:35:38.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: The hotdog costume's texture has been updated! WEAR IT NOW!!!
+    - type: Tweak
+      message: >-
+        The inventories of the Clothesmate, AutoDrobe, and Winterdrobe have been
+        shifted! Be sure to get reaquainted!
+    - type: Tweak
+      message: >-
+        Bread Dogs and Caks now speak Umamese! Gingerbread chefs, get ready to
+        get into some fantastic conversations!
+  id: 179
+  time: '2026-09-25T02:57:00.0000000+00:00'
