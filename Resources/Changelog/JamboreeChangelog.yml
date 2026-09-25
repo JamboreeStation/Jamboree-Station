@@ -2204,3 +2204,13 @@ Entries:
         get into some fantastic conversations!
   id: 179
   time: '2026-09-25T02:57:00.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: Shoko, a lowpop map, has arrived from DV to the Jamboree sector!
+    - type: Tweak
+      message: >-
+        Barry Burger's memorial statue has finished construction at Central
+        Command. Press b to pay your burger.
+  id: 180
+  time: '2026-09-25T03:42:13.0000000+00:00'
