@@ -241,6 +241,7 @@ namespace Content.IntegrationTests.Tests
             "Chibi", // Jamboree, DV
             "Glacier", // Jamboree, DV
             "Byoin", // Jamboree, DV
+			"Shoukou", // Goobstation, DV
         };
 
         private static readonly ProtoId<EntityCategoryPrototype> DoNotMapCategory = "DoNotMap";
@@ -443,7 +444,7 @@ namespace Content.IntegrationTests.Tests
 
             Assert.Multiple(() =>
             {
-                foreach (var yamlEntity in (YamlSequenceNode)yamlEntities)
+                foreach (var yamlEntity in (YamlSequenceNode) yamlEntities)
                 {
                     var protoId = yamlEntity["proto"].AsString();
 
