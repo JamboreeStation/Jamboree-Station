@@ -24,11 +24,13 @@
             Lawyer: [ 1, 1 ]
             Bartender: [ 1, 2 ]
             Botanist: [ 1, 2 ]
+            Boxer: [ 1, 2 ]
             Chef: [ 1, 2 ]
             Clown: [ 1, 1 ]
             Janitor: [ 1, 2 ]
             Musician: [ 1, 1 ]
             Mime: [ 1, 1 ]
+            RadioHost: [ 1, 1 ] #jamboree
           #Command
             Captain: [ 1, 1 ]
             NanotrasenRepresentative: [ 1, 1 ]

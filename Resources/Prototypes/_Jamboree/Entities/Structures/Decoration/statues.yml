@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: MemorialBarryBurger
+  parent: BaseStructure
+  name: CEO memorial
+  description: A memorial made of gold and stone commerating a NanoTrasen CEO named Barry Burger. The quote on it reads, "I would do anything for the people. Especially pay them."
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Jamboree/Structures/Decoration/statues.rsi
+    state: memorial_gilded
+    drawdepth: Mobs
+    offset: "0.0,0.5"
