@@ -30,6 +30,7 @@
     DanitoBurrito: 3 #added by jambo
     CigPackMixed: 2
     DiscountDanLighter: 3 #Jamboree change
+    ClothingHeadHatTinfoilHat: 2 # Jamboree, shifting inventories
   contrabandInventory:
     FoodSnackDanDanNoodles: 3
     FoodBakedBunHoney: 3
