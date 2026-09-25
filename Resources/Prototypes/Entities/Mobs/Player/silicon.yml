@@ -445,63 +445,79 @@
     group: StationAi
   - type: LanguageKnowledge
     speaks:
-    - TauCetiBasic
-    - Canilunzt
-    - Bubblish
-    - Nekomimetic
-    - Draconic
-    - SolCommon
-    - RootSpeak
-    - Moffic
-    - ValyrianStandard
-    - Chittin
-    - SiikMaas
-    - RobotTalk
-    - Marish
-    - Elyran
-    - Freespeak
-    - Tradeband
-    - NovuNederic
-    - Sign
-    - Schechi
-    - NewKinPidgin
-    - FloorGoblin #jamboree
-    - YowKriol #jamboree
-    - Calcic #jamboree
-    - Gruntish #jamboree
-    - SpaceItalian #jamboree
-    - Eckeckyik
-    - BieselEckeckyik
-    - Crab
+      - TauCetiBasic # Common Languages -
+      - SolCommon # Human and Dwarf Language and Trait
+      - Elyran
+      - Freespeak
+      - NovuNederic
+      - Tradeband
+      - Spessnish #jamboree
+      - Sovblov #jamboree
+      - Hegemonic #jamboree
+      - Sign
+      - SpaceItalian # Job Specific -
+      - Bubblish # Slime Language
+      - Calcic # Plamamen and Skeleton Language
+      - Canilunzt # Vulpakanin Language
+      - Chittin # Chitinid Language
+      - FloorGoblin # Gobling Language
+      - Gruntish # Oni Lanugage
+      - NewKinPidgin # = Ka'rakk, Vox Language
+      - Marish # Shadowkin Language
+      - Moffic # Moth Language
+      - Nehina # Feroxi Language
+      - Nekomimetic # Felinid Lanugage
+      - RobotTalk # Borg/IPC Language
+      - RootSpeak # Diona Lanugage
+      - SiikMaas # Tajaran Language
+      - Draconic # = Sinta'Unathi, Reptillian Language
+      - Schechi # Avali Language
+      - ValyrianStandard # Harpy Language
+      - YowKriol # Yowie Language
+      - Eldritch # Cthulhoid Language
+      - Eckeckyik # Thaven Language
+      - BieselEckeckyik # Bieselized Thaven Language
+      - Crab # Anomalocarid Language
+      - Mouse # Rodentia Language
+      - Umamese #Jamboree, Gingerbread language
+      - Bruin #Jamboree, Ursine Language
     understands:
-    - TauCetiBasic
-    - Canilunzt
-    - Bubblish
-    - Nekomimetic
-    - Draconic
-    - SolCommon
-    - RootSpeak
-    - Moffic
-    - ValyrianStandard
-    - Chittin
-    - SiikMaas
-    - RobotTalk
-    - Marish
-    - Elyran
-    - Freespeak
-    - Tradeband
-    - NovuNederic
-    - Sign
-    - Schechi
-    - NewKinPidgin
-    - FloorGoblin #jamboree
-    - YowKriol #jamboree
-    - Calcic #jamboree
-    - Gruntish #jamboree
-    - SpaceItalian #jamboree
-    - Eckeckyik
-    - BieselEckeckyik
-    - Crab
+      - TauCetiBasic # Common Languages -
+      - SolCommon # Human and Dwarf Language and Trait
+      - Elyran
+      - Freespeak
+      - NovuNederic
+      - Tradeband
+      - Spessnish #jamboree
+      - Sovblov #jamboree
+      - Hegemonic #jamboree
+      - Sign
+      - SpaceItalian # Job Specific -
+      - Bubblish # Slime Language
+      - Calcic # Plamamen and Skeleton Language
+      - Canilunzt # Vulpakanin Language
+      - Chittin # Chitinid Language
+      - FloorGoblin # Gobling Language
+      - Gruntish # Oni Lanugage
+      - NewKinPidgin # = Ka'rakk, Vox Language
+      - Marish # Shadowkin Language
+      - Moffic # Moth Language
+      - Nehina # Feroxi Language
+      - Nekomimetic # Felinid Lanugage
+      - RobotTalk # Borg/IPC Language
+      - RootSpeak # Diona Lanugage
+      - SiikMaas # Tajaran Language
+      - Draconic # = Sinta'Unathi, Reptillian Language
+      - Schechi # Avali Language
+      - ValyrianStandard # Harpy Language
+      - YowKriol # Yowie Language
+      - Eldritch # Cthulhoid Language
+      - Eckeckyik # Thaven Language
+      - BieselEckeckyik # Bieselized Thaven Language
+      - Crab # Anomalocarid Language
+      - Mouse # Rodentia Language
+      - Umamese #Jamboree, Gingerbread language
+      - Bruin #Jamboree, Ursine Language
   - type: SpeechSynthesis # Corvax-Frontier-Barks
     voice: Borg
 

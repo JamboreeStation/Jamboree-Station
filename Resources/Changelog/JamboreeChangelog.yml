@@ -2161,3 +2161,32 @@ Entries:
         added!
   id: 176
   time: '2026-09-07T05:54:31.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Ursine have arrived in the Jamboree Sector! These bear folk will throw
+        you to the wall if you make them mad!
+    - type: Add
+      message: >-
+        Gingerbread now have a unique language known as Umamese! Speak sweet to
+        all your coworkers!
+    - type: Add
+      message: >-
+        Three new language traits have been added! Become truly Spanish with the
+        Spessnish language! Explore being a citizen of the Galactic Hegemony
+        with Hegemonic! Or become a cosmonaut with Sovblov!
+    - type: Tweak
+      message: >-
+        Exotic Species guidebook entry has been moved and had it's name changed
+        to "Uncommon Species"
+    - type: Remove
+      message: Removed Herobrine.
+  id: 177
+  time: '2026-09-20T06:00:22.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Fix
+      message: Ursine now round-start spawn with a survival kit!
+  id: 178
+  time: '2026-09-21T10:35:38.0000000+00:00'

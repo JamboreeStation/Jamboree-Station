@@ -1,0 +1,46 @@
+# SPDX-FileCopyrightText: 2025 CerberusWolfie <wb.johnb.willis@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Languages by Traits
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconSovBlov
+  icon:
+    sprite: /Textures/_Jamboree/Interface/Misc/language_icons.rsi
+    state: sovblov
+  jobName: language-icon-sovblov
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconSpessnish
+  icon:
+    sprite: /Textures/_Jamboree/Interface/Misc/language_icons.rsi
+    state: spessnish
+  jobName: language-icon-spessnish
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconHegemonic
+  icon:
+    sprite: /Textures/_Jamboree/Interface/Misc/language_icons.rsi
+    state: hegemonic
+  jobName: language-icon-hegemonic
+
+# Species Languages
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconBruin
+  icon:
+    sprite: /Textures/_Jamboree/Interface/Misc/language_icons.rsi
+    state: bruin
+  jobName: language-icon-bruin
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconUmamese
+  icon:
+    sprite: /Textures/_Jamboree/Interface/Misc/language_icons.rsi
+    state: umamese
+  jobName: language-icon-umamese

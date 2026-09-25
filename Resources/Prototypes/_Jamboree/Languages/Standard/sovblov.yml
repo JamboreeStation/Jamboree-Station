@@ -1,0 +1,54 @@
+# Spoken by Sovblov Trait.
+- type: language
+  icon: LanguageIconSovBlov
+  id: Sovblov
+  iconUnderstood: false
+  isVisibleLanguage: true
+  speech:
+    color: "#bf2121"
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 1
+    maxSyllables: 2
+    replacement:
+    - Привет
+    - до свидания
+    - является
+    - ты
+    - хорошо
+    - утро
+    - что
+    - как
+    - почему
+    - космос
+    - станция
+    - выпивка
+    - товарищ
+    - когда
+    - парень
+    - девушка
+    - небинарный
+    - слава
+    - коммунизм
+    - советский
+    - капиталист
+    - ночь
+    - день
+    - содержание
+    - яблоко
+    - еда
+    - вода
+    - корабль
+    - звезды
+    - галактика
+    - луна
+    - любовь
+    - фандом
+    - надеяться
+    - хот-дог
+    - собака
+    - спутник
+    - путешественник
+    - ушел
+    - задерживаться
+    - оставаться

@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: NamesUrsineFirst
+  values:
+    prefix: names-ursine-first-dataset-
+    count: 84

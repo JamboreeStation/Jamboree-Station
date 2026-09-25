@@ -1,0 +1,26 @@
+# Spoken by Gingerbread.
+- type: language
+  icon: LanguageIconUmamese
+  id: Umamese
+  iconUnderstood: false
+  isVisibleLanguage: true
+  speech:
+    fontId: LDFComicSans
+    boldFontId: LDFComicSansBold
+    color: "#ffd17a"
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 1
+    maxSyllables: 3
+    replacement:
+    - om
+    - nom
+    - crunch
+    - munch
+    - cronch
+    - chomp
+    - miam
+    - mampf
+    - nyam
+    - yum
+    - yummy
