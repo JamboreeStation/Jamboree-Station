@@ -4,8 +4,8 @@ meta:
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 09/25/2026 02:52:13
-  entityCount: 15018
+  time: 09/26/2026 00:16:36
+  entityCount: 15040
 maps:
 - 1
 grids:
@@ -6950,6 +6950,85 @@ entities:
     components:
     - type: Transform
       pos: -29.5,-35.5
+      parent: 2
+- proto: AmeJar
+  entities:
+  - uid: 15020
+    components:
+    - type: Transform
+      pos: -29.592602,-34.463272
+      parent: 2
+  - uid: 15021
+    components:
+    - type: Transform
+      pos: -29.373852,-34.463272
+      parent: 2
+  - uid: 15022
+    components:
+    - type: Transform
+      pos: -29.498852,-34.463272
+      parent: 2
+- proto: AmePartFlatpack
+  entities:
+  - uid: 15023
+    components:
+    - type: Transform
+      pos: -33.514477,-36.494522
+      parent: 2
+  - uid: 15024
+    components:
+    - type: Transform
+      pos: -32.5301,-36.525772
+      parent: 2
+  - uid: 15025
+    components:
+    - type: Transform
+      pos: -31.483227,-36.494522
+      parent: 2
+  - uid: 15026
+    components:
+    - type: Transform
+      pos: -33.514477,-37.478897
+      parent: 2
+  - uid: 15027
+    components:
+    - type: Transform
+      pos: -32.49885,-37.494522
+      parent: 2
+  - uid: 15028
+    components:
+    - type: Transform
+      pos: -31.530102,-37.478897
+      parent: 2
+  - uid: 15029
+    components:
+    - type: Transform
+      pos: -33.483227,-38.494522
+      parent: 2
+  - uid: 15030
+    components:
+    - type: Transform
+      pos: -32.49885,-38.541397
+      parent: 2
+  - uid: 15031
+    components:
+    - type: Transform
+      pos: -31.514477,-38.541397
+      parent: 2
+  - uid: 15032
+    components:
+    - type: Transform
+      pos: -33.514477,-39.510147
+      parent: 2
+  - uid: 15033
+    components:
+    - type: Transform
+      pos: -32.5301,-39.557022
+      parent: 2
+  - uid: 15034
+    components:
+    - type: Transform
+      pos: -31.530102,-39.494522
       parent: 2
 - proto: AnomalyScanner
   entities:
@@ -34471,14 +34550,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 67.5,-20.5
       parent: 2
-- proto: ComputerSalvageExpedition
-  entities:
-  - uid: 4867
-    components:
-    - type: Transform
-      rot: 3.141592653589793 rad
-      pos: -24.5,-47.5
-      parent: 2
 - proto: ComputerSalvageJobBoard
   entities:
   - uid: 5000
@@ -34508,6 +34579,12 @@ entities:
     components:
     - type: Transform
       pos: 13.5,-47.5
+      parent: 2
+  - uid: 4867
+    components:
+    - type: Transform
+      rot: 3.141592653589793 rad
+      pos: -24.5,-47.5
       parent: 2
 - proto: ComputerSolarControl
   entities:
@@ -34757,6 +34834,13 @@ entities:
     components:
     - type: Transform
       pos: -17.5,-34.5
+      parent: 2
+- proto: CrateEngineeringAMEJar
+  entities:
+  - uid: 13424
+    components:
+    - type: Transform
+      pos: -29.5,-36.5
       parent: 2
 - proto: CrateEngineeringCableHV
   entities:
@@ -69454,6 +69538,11 @@ entities:
     - type: Transform
       pos: -28.788094,-8.180353
       parent: 2
+  - uid: 15035
+    components:
+    - type: Transform
+      pos: -29.701977,-34.541397
+      parent: 2
 - proto: MysteryFigureBox
   entities:
   - uid: 9556
@@ -70277,6 +70366,11 @@ entities:
     components:
     - type: Transform
       pos: 65.5,-24.5
+      parent: 2
+  - uid: 15036
+    components:
+    - type: Transform
+      pos: -32.5,-33.5
       parent: 2
 - proto: PortableScrubber
   entities:
@@ -72659,13 +72753,6 @@ entities:
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 0
-- proto: PoweredSmallLightMaintenance
-  entities:
-  - uid: 13424
-    components:
-    - type: Transform
-      pos: -19.5,-29.5
-      parent: 2
 - proto: PoweredWarmSmallLight
   entities:
   - uid: 14820
@@ -72974,6 +73061,16 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -54.5,-24.5
+      parent: 2
+  - uid: 15019
+    components:
+    - type: Transform
+      pos: -29.5,-34.5
+      parent: 2
+  - uid: 15037
+    components:
+    - type: Transform
+      pos: -35.5,-35.5
       parent: 2
 - proto: RadiationCollectorFullTank
   entities:
@@ -76615,6 +76712,21 @@ entities:
     components:
     - type: Transform
       pos: 65.5,-22.5
+      parent: 2
+  - uid: 15038
+    components:
+    - type: Transform
+      pos: -35.63959,-35.455578
+      parent: 2
+  - uid: 15039
+    components:
+    - type: Transform
+      pos: -35.436466,-35.455578
+      parent: 2
+  - uid: 15040
+    components:
+    - type: Transform
+      pos: -35.561466,-35.471203
       parent: 2
 - proto: SheetPlasma1
   entities:
