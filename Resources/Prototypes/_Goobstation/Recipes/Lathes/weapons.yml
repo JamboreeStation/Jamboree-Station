@@ -57,3 +57,110 @@
   result: MagazineNailgunArmorPiercing
   materials:
     Steel: 400
+
+- type: latheRecipe
+  id: WeaponSubMachineGunAtreides
+  result: WeaponSubMachineGunAtreides
+  completetime: 25
+  materials:
+    Steel: 6000
+    Plastic: 1000
+
+- type: latheRecipe
+  id: WeaponSubMachineGunC82R3LegallyDistinct
+  result: WeaponSubMachineGunC82R3
+  completetime: 60
+  materials:
+    Steel: 6000
+    Plastic: 2000
+
+- type: latheRecipe
+  id: WeaponShotgunBulldogLegallyDistinct
+  result: WeaponShotgunBulldogLegallyDistinct
+  completetime: 60
+  materials:
+    Steel: 7500
+    Plastic: 3000
+
+- type: latheRecipe
+  id: WeaponSubMachineGunWt550
+  result: WeaponSubMachineGunWt550
+  completetime: 60
+  materials:
+    Steel: 6000
+    Plastic: 1000
+
+- type: latheRecipe
+  id: WeaponSubMachineGunDrozd
+  result: WeaponSubMachineGunDrozd
+  completetime: 60
+  materials:
+    Steel: 6500
+    Plastic: 2500
+
+- type: latheRecipe
+  id: WeaponLaserCellSMGSalvage
+  result: WeaponLaserCellSMG
+  completetime: 30
+  materials:
+    Steel: 3000
+    Plastic: 4500
+    Plasma: 4000
+
+- type: latheRecipe
+  id: WeaponLaserCannonSalvage
+  result: WeaponLaserCannon
+  completetime: 30
+  materials:
+    Steel: 2250
+    Plastic: 1750
+    Plasma: 2000
+
+- type: latheRecipe
+  id: WeaponLaserCarbineSalvage
+  result: WeaponLaserCarbine
+  completetime: 30
+  materials:
+    Steel: 3500
+    Plastic: 2000
+    Plasma: 4500
+
+- type: latheRecipe
+  id: PowerCellIRSMGSalvage
+  result: PowerCellIRSMG
+  completetime: 30
+  materials:
+    Steel: 500
+    Plastic: 2500
+    Plasma: 2000
+    Gold: 100
+
+- type: latheRecipe
+  id: PowerCellIonSMGSalvage
+  result: PowerCellIonSMG
+  completetime: 30
+  materials:
+    Steel: 500
+    Plastic: 2500
+    Plasma: 2000
+    Gold: 100
+
+- type: latheRecipe
+  id: PowerCellPulseSMGSalvage
+  result: PowerCellPulseSMG
+  completetime: 30
+  materials:
+    Steel: 500
+    Plastic: 2500
+    Plasma: 2000
+    Gold: 100
+
+- type: latheRecipe
+  id: PowerCellXraySMGSalvage
+  result: PowerCellXraySMG
+  completetime: 30
+  materials:
+    Steel: 500
+    Plastic: 2500
+    Plasma: 2000
+    Gold: 100

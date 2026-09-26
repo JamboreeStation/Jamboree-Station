@@ -806,17 +806,17 @@
         - Ingot
 
 - type: entity
-  id: AmmoTechFab
-  parent: [BaseLatheLube, BaseSiloUtilizer] # Goob edit
-  name: ammo techfab
-  description: Prints the bare minimum of bullets that any budget military or armory could need. Nothing fancy.
+  id: SalvTechFab
+  parent: [BaseLatheLube, BaseSiloUtilizer, BaseSecuritySalvageContraband] # Jamboree edited for utilization by salvage department :)
+  name: Salvage techfab
+  description: Utilized for providing armaments for salvages crusades among the planets, personally designed by a certain angry lizard from centcom.
   components:
     - type: Sprite
       sprite: Structures/Machines/techfab.rsi
       layers:
         - state: icon
           map: ["enum.LatheVisualLayers.IsRunning"]
-        - state: ammo
+        - state: salvage
         - state: unlit
           shader: unshaded
           map: ["enum.PowerDeviceVisualLayers.Powered"]
@@ -825,7 +825,7 @@
         - state: panel
           map: ["enum.WiresVisualLayers.MaintenancePanel"]
     - type: Machine
-      board: AmmoTechFabCircuitboard
+      board: SalvTechFabCircuitboard
     - type: Lathe
       idleState: icon
       runningState: icon
@@ -834,6 +834,7 @@
       - SecurityAmmoStaticJamboree # Jamboree - derringer ammo
       # Goobstation Packs
       - SecurityAmmoStaticGoob
+      - SalvageTechFab # Convinces the techfab that it knows how to make guns and other usefull salve bs :weh:
     - type: EmagLatheRecipes # Goobstation Packs
       emagStaticPacks:
       - SyndicateAmmoLightStatic

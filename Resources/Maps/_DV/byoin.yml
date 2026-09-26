@@ -11742,7 +11742,7 @@ entities:
     - type: Transform
       pos: -11.515047,10.481748
       parent: 2
-- proto: AmmoTechFab
+- proto: SalvTechFabCircuitboard
   entities:
   - uid: 7038
     components:

@@ -3343,7 +3343,7 @@ entities:
     - type: Transform
       pos: 55.5,-3.5
       parent: 2
-- proto: AmmoTechFab
+- proto: SalvTechFabCircuitboard
   entities:
   - uid: 1370
     components:

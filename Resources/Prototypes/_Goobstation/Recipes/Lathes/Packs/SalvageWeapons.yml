@@ -1,0 +1,27 @@
+# contains the delicious code that tells the secfab what recipes to reference and add from weapons.yml and compiles it into its own group which the lathe reads then utilizes
+# Jamboree
+- type: latheRecipePack
+  id: SalvageTechFab
+  recipes:
+  - WeaponSubMachineGunAtreides
+  - WeaponSubMachineGunC82R3LegallyDistinct
+  - WeaponShotgunBulldogLegallyDistinct # fuckass contra wont work
+  - WeaponSubMachineGunWt550
+  - WeaponSubMachineGunDrozd
+  - WeaponLaserCellSMGSalvage
+  - WeaponLaserCannonSalvage
+  - WeaponLaserCarbineSalvage
+  - MagazinePistolSubMachineGunIncendiary
+  - MagazinePistolSubMachineGun
+  - MagazinePistolSubMachineGunUranium
+  - MagazinePistolSubMachineGunPractice
+  - MagazinePistolSubMachineGunTopMounted
+  - MagazineShotgun
+  - MagazineShotgunIncendiary
+  - MagazineShotgunBeanbag
+  - MagazineShotgun
+  - PowerCellIRSMGSalvage
+  - PowerCellIonSMGSalvage
+  - PowerCellPulseSMGSalvage
+  - PowerCellXraySMG
+  - SalvageBorgParaModule

@@ -21186,7 +21186,7 @@ entities:
     - type: Transform
       pos: 42.5,-48.5
       parent: 2
-- proto: AmmoTechFabCircuitboard
+- proto: SalvTechFabCircuitboard
   entities:
   - uid: 724
     components:

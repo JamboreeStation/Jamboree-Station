@@ -166,3 +166,48 @@
       types:
         Blunt: 8
         Shock: 16
+
+- type: entity #Jamboree defib for modules
+  id: DefibrillatorBorgSalvage #I think it zaps people :0
+  parent: [ BaseDefibrillator ]
+  name: Intergrated Defibrilator
+  description: Get back up soldier, the keep is not lost yet!
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/defibsalvborg.rsi
+    layers:
+      - state: icon
+      - state: screen
+        map: [ "enum.ToggleableVisuals.Layer" ]
+        visible: false
+        shader: unshaded
+      - state: ready
+        map: ["enum.PowerDeviceVisualLayers.Powered"]
+        shader: unshaded
+  - type: Item
+    size: Normal
+  - type: Defibrillator
+    zapHeal:
+      types:
+        Asphyxiation: -20
+    doAfterDuration: 6 # Poor borg is fumbling with the defib :(
+  - type: DoAfter
+  - type: UseDelay
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 2
+  - type: ItemToggleMeleeWeapon
+    activatedSoundOnHit:
+      path: /Audio/Items/Defib/defib_zap.ogg
+      params:
+        variation: 0.250
+    activatedSoundOnHitNoDamage:
+      path: /Audio/Items/Defib/defib_zap.ogg
+      params:
+        variation: 0.250
+        volume: -10
+    activatedDamage:
+      types:
+        Blunt: 2
+        Shock: 8
