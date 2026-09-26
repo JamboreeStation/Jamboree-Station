@@ -2224,3 +2224,9 @@ Entries:
         moustache!
   id: 181
   time: '2026-09-25T08:57:31.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Tweak
+      message: Shoko has recieved proper funding for the AME!
+  id: 182
+  time: '2026-09-26T03:29:16.0000000+00:00'
