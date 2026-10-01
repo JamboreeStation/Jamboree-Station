@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Goob Station Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # contains the delicious code that tells the secfab what recipes to reference and add from weapons.yml and compiles it into its own group which the lathe reads then utilizes
 # Jamboree
 - type: latheRecipePack
