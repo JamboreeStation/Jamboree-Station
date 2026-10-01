@@ -2190,3 +2190,63 @@ Entries:
       message: Ursine now round-start spawn with a survival kit!
   id: 178
   time: '2026-09-21T10:35:38.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: The hotdog costume's texture has been updated! WEAR IT NOW!!!
+    - type: Tweak
+      message: >-
+        The inventories of the Clothesmate, AutoDrobe, and Winterdrobe have been
+        shifted! Be sure to get reaquainted!
+    - type: Tweak
+      message: >-
+        Bread Dogs and Caks now speak Umamese! Gingerbread chefs, get ready to
+        get into some fantastic conversations!
+  id: 179
+  time: '2026-09-25T02:57:00.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: Shoko, a lowpop map, has arrived from DV to the Jamboree sector!
+    - type: Tweak
+      message: >-
+        Barry Burger's memorial statue has finished construction at Central
+        Command. Press b to pay your burger.
+  id: 180
+  time: '2026-09-25T03:42:13.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: Added 2 new hairstyles! If you're a clown fan, you'll love this!
+    - type: Add
+      message: >-
+        Added 5 new facial hair styles! Finally, you can have a brilliant
+        moustache!
+  id: 181
+  time: '2026-09-25T08:57:31.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Tweak
+      message: Shoko has recieved proper funding for the AME!
+  id: 182
+  time: '2026-09-26T03:29:16.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Add
+      message: >-
+        Added the DNA Molecular Synthesizer to Centcomm, do you ever wonder why
+        crew can come back from death even when they touched a singularity? Well
+        now you have an answer!
+    - type: Add
+      message: >-
+        Bureaucracy has now been defined as a language. Rumors say the Central
+        Command personnel...and the Librarian are ones who only know how to
+        speak it...
+    - type: Add
+      message: Lizards can now have dragon wings! Though you cannot fly with them...
+    - type: Fix
+      message: >-
+        The shuttles should no longer get stuck in static mode, meaning they
+        were unable to move.
+  id: 183
+  time: '2026-09-28T21:17:07.0000000+00:00'

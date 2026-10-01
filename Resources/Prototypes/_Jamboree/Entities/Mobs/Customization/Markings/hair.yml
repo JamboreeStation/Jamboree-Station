@@ -1,0 +1,60 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# HEAD
+
+## DEFAULTS
+
+# Hair
+
+- type: marking
+  id: HumanHairClown
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Jamboree/Mobs/Customization/human_hair.rsi
+      state: clown
+- type: marking
+  id: HumanHairCluwne
+  bodyPart: Hair
+  markingCategory: Hair
+  sprites:
+    - sprite: _Jamboree/Mobs/Customization/human_hair.rsi
+      state: cluwne
+
+# Facial Hair
+
+- type: marking
+  id: HumanFacialHairBraided
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  sprites:
+    - sprite: _Jamboree/Mobs/Customization/human_facial_hair.rsi
+      state: braided
+- type: marking
+  id: HumanFacialHairHandlebar
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  sprites:
+    - sprite: _Jamboree/Mobs/Customization/human_facial_hair.rsi
+      state: handlebar
+- type: marking
+  id: HumanFacialHairHandledbar
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  sprites:
+    - sprite: _Jamboree/Mobs/Customization/human_facial_hair.rsi
+      state: handledbar
+- type: marking
+  id: HumanFacialHairTramp
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  sprites:
+    - sprite: _Jamboree/Mobs/Customization/human_facial_hair.rsi
+      state: tramp
+- type: marking
+  id: HumanFacialHairUnbrokenman
+  bodyPart: FacialHair
+  markingCategory: FacialHair
+  sprites:
+    - sprite: _Jamboree/Mobs/Customization/human_facial_hair.rsi
+      state: unbrokenman
+

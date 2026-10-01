@@ -47,6 +47,10 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         [DataField]
         public ScrubberPumpDirection PumpDirection { get; set; } = ScrubberPumpDirection.Scrubbing;
 
+        // Jamboree - MaxTransferRate must be declared before TransferRate.
+        [DataField]
+        public float MaxTransferRate = Atmospherics.MaxTransferRate;
+
         /// <summary>
         ///     Target volume to transfer. If <see cref="WideNet"/> is enabled, actual transfer rate will be much higher.
         /// </summary>
@@ -58,9 +62,6 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         }
 
         private float _transferRate = Atmospherics.MaxTransferRate;
-
-        [DataField]
-        public float MaxTransferRate = Atmospherics.MaxTransferRate;
 
         /// <summary>
         ///     As pressure difference approaches this number, the effective volume rate may be smaller than <see

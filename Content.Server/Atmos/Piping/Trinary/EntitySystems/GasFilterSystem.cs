@@ -89,7 +89,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             if (!filter.Enabled
                 || !_nodeContainer.TryGetNodes(uid, filter.InletName, filter.FilterName, filter.OutletName, out PipeNode? inletNode, out PipeNode? filterNode, out PipeNode? outletNode)
                 || inletNode != outletNode // Goobstation - ignore pressure if we're inline
-                    && outletNode.Air.Pressure >= Atmospherics.MaxOutputPressure)
+                    && outletNode.Air.Pressure >= filter.MaxPressure) // JAMBOREE make it actually go to its true max pressure it can produce.
             {
                 _ambientSoundSystem.SetAmbience(uid, false);
                 return;
@@ -113,7 +113,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
                 filteredOut.SetMoles(filter.FilteredGas.Value, removed.GetMoles(filter.FilteredGas.Value));
                 removed.SetMoles(filter.FilteredGas.Value, 0f);
 
-                var target = filterNode.Air.Pressure < Atmospherics.MaxOutputPressure ? filterNode : inletNode;
+                var target = filterNode.Air.Pressure < filter.MaxPressure ? filterNode : inletNode; // JAMBOREE - because of the new pipe port.
                 _atmosphereSystem.Merge(target.Air, filteredOut);
                 _ambientSoundSystem.SetAmbience(uid, filteredOut.TotalMoles > 0f);
             }

@@ -1210,7 +1210,13 @@
     raffle:
       settings: short
   - type: GhostTakeoverAvailable
-  - type: OwOAccent
+  - type: LanguageKnowledge # Einstein Engines - Languages
+    speaks:
+    - Cat
+    - Umamese #Jamboree
+    understands:
+    - Cat
+    - Umamese #Jamboree
   - type: Speech
     speechSounds: Cat
     speechVerb: SmallMob

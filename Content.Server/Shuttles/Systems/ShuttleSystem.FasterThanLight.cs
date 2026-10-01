@@ -615,14 +615,7 @@ public sealed partial class ShuttleSystem
 
             // Disable shuttle if it's on a planet; unfortunately can't do this in parent change messages due
             // to event ordering and awake body shenanigans (at least for now).
-            if (HasComp<MapGridComponent>(xform.MapUid))
-            {
-                Disable(uid, component: body);
-            }
-            else
-            {
-                Enable(uid, component: body, shuttle: entity.Comp2);
-            }
+            UpdateShuttleBodyState(uid);
         }
 
         _thruster.DisableLinearThrusters(entity.Comp2);

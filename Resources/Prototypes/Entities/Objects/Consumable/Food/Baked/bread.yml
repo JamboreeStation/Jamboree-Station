@@ -1115,7 +1115,13 @@
     raffle:
       settings: short
   - type: GhostTakeoverAvailable
-  - type: BarkAccent
+  - type: LanguageKnowledge # Einstein Engines - Languages
+    speaks:
+    - Dog
+    - Umamese #Jamboree
+    understands:
+    - Dog
+    - Umamese #Jamboree
   - type: Speech
     speechSounds: Dog
     speechVerb: SmallMob

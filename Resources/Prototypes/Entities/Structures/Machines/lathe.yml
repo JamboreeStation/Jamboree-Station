@@ -506,7 +506,8 @@
     runningState: building
     unlitIdleState: unlit
     unlitRunningState: unlit-building
-    #staticPacks: - Goobstation - Move static recipes to autolathe
+    staticPacks:
+    - AtmosHighFlow
     #- ChemistryStatic
     #- SurgeryStatic
     dynamicPacks:

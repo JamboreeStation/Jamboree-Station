@@ -44,6 +44,8 @@ namespace Content.Client.Atmos.UI
             if (EntMan.TryGetComponent(Owner, out GasVolumePumpComponent? pump))
             {
                 _maxTransferRate = pump.MaxTransferRate;
+                // Jamboree - Had to change hardcode. So itll show its actual max cap like 600L/s or something.
+                _window.MaxTransferRate = _maxTransferRate;
             }
 
             _window.ToggleStatusButtonPressed += OnToggleStatusButtonPressed;

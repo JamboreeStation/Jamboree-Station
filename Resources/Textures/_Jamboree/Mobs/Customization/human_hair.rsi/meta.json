@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "copyright": "Clown and Cluwne sprited by Bibble for Jamboree, based on clown and cluwne mask from base repo",
+    "license": "CC-BY-SA-3.0",
+    "states": [
+        {
+            "name": "clown",
+            "directions": 4
+        },
+        {
+            "name": "cluwne",
+            "directions": 4
+        }
+    ]
+}

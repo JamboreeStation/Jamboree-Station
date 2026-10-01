@@ -74,9 +74,9 @@
   description: Hot-diggity-dog!
   components:
   - type: Sprite
-    sprite: _Goobstation/Clothing/OuterClothing/Misc/hotdog.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/hotdog.rsi
   - type: Clothing
-    sprite: _Goobstation/Clothing/OuterClothing/Misc/hotdog.rsi
+    sprite: _Moffstation/Clothing/OuterClothing/Misc/hotdog.rsi
     quickEquip: true
   - type: HideLayerClothing
     slots:

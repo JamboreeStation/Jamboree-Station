@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 Jamboree-Station
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# JAMBOREE - THIS IS PORTED FROM HARDLIGHT. THOUGH THIS IS JUST TO MAKE REINFORCED PIPES POSSIBLE!
+
+- type: entity
+  parent: SheetMetalBase
+  id: HighPressureCasing
+  name: high-pressure casing
+  description: A thick-walled pressure casing. Weld it around an atmos machine to reinforce it against far higher pressures than it was designed for.
+  components:
+  - type: Sprite
+    sprite: Objects/Materials/Sheets/metal.rsi
+    state: steel_3
+  - type: Item
+    sprite: Objects/Materials/Sheets/metal.rsi
+    heldPrefix: steel
+    size: Normal
+  - type: Tag
+    tags:
+    - Sheet
+    - Metal
+    - DroneUsable
+    - HighPressureCasing
+  - type: StaticPrice
+    price: 25

@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2026 Jamboree-Station
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+
+- type: latheRecipe
+  id: HighPressureCasing
+  result: HighPressureCasing
+  completetime: 2
+  materials:
+    Steel: 200
+
+- type: latheRecipePack
+  id: AtmosHighFlow
+  recipes:
+  - HighPressureCasing

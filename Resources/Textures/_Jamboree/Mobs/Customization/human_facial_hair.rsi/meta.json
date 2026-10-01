@@ -1,0 +1,31 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "copyright": "unbrokenman by Bibble for jamboree based on brokenman, braided and handlebar and handledbar and tramp come from Monkestation's SS13 repo",
+    "license": "CC-BY-SA-3.0",
+    "states": [
+        {
+            "name": "braided",
+            "directions": 4
+        },
+        {
+            "name": "handlebar",
+            "directions": 4
+        },
+        {
+            "name": "handledbar",
+            "directions": 4
+        },
+        {
+            "name": "tramp",
+            "directions": 4
+        },
+        {
+            "name": "unbrokenman",
+            "directions": 4
+        }
+    ]
+}

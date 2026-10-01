@@ -25,9 +25,11 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         [ViewVariables(VVAccess.ReadWrite)]
         public bool Enabled = true;
 
-        /// <summary>
-        ///     Target volume to transfer. If <see cref="WideNet"/> is enabled, actual transfer rate will be much higher.
-        /// </summary>
+        [DataField] // JAMBOREE - Because of the new pipes, made it so it actually reports its maxtransferrate instead of hardcoded ones.
+        public float MaxTransferRate = Atmospherics.MaxTransferRate;
+
+
+        [DataField]
         [ViewVariables(VVAccess.ReadWrite)]
         public float TransferRate
         {
@@ -36,9 +38,6 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         }
 
         private float _transferRate = 50;
-
-        [DataField]
-        public float MaxTransferRate = Atmospherics.MaxTransferRate;
 
         [DataField]
         [GuidebookData]

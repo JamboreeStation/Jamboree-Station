@@ -502,7 +502,6 @@
   id: ADTHalloweenEmpressOfLightSuitYellow
   name: empress under suit #changed name
   description: This suit is a replica of the one worn by a far off empress of a powerful spacefaring nation. #changed description
-  suffix: Halloween
   components:
   - type: Sprite
     sprite: ADT/Clothing/Uniforms/Jumpsuit/empress_of_light_yellow.rsi
@@ -514,7 +513,6 @@
   id: ADTHalloweenLethalCompanySuit
   name: scavenger's suit #changed name
   description: A contracted scavenger's suit. There's a lot of missing persons who have put this uniform on... #changed description
-  suffix: Halloween
   components:
   - type: Sprite
     sprite: ADT/Clothing/Uniforms/Jumpsuit/lethal_company.rsi
