@@ -28,6 +28,15 @@
     state: hegemonic
   jobName: language-icon-hegemonic
 
+# Job Languages
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconBureaucratic
+  icon:
+    sprite: /Textures/_Goobstation/Interface/Misc/job_icons.rsi
+    state: nanotrasenrepresentative
+  jobName: language-icon-Bureaucratic
+
 # Species Languages
 - type: jobIcon
   parent: LanguageIcon

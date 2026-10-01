@@ -44,6 +44,13 @@
     ClothingOuterFlannelBlue: 2
     ClothingOuterFlannelGreen: 2
     ClothingOuterCoatBomber: 3
+    ClothingNeckPonchoBlack: 3 # Monolith #Jamboree, moving inventories. Moved from clothesmate.yml to winterdrob.yml start
+    ClothingNeckPonchoArctic: 3 # Monolith
+    ClothingNeckPonchoSmallPink: 3 # Monolith
+    ClothingNeckPonchoSmallRed: 3 # Monolith
+    ClothingNeckPonchoSmallPurple: 3 # Monolith
+    ClothingNeckPonchoSmallBlack: 3 # Monolith
+    ClothingNeckPonchoSmallWhite: 3 # Monolith #Jamboree, moving inventories. Moved from clothesmate.yml to winterdrob.yml start
     ClothingHeadHatCanadaBeanie: 4
     ClothingHeadHatSantahat: 2
     ClothingHeadHatXmasCrown: 2

@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2026 PureBreadBagel
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+ - type: entity
+   name: Central Command DNA Molecularsynthesis Computer Circuitboard
+   id: CentralCommandDnaClonerComputerCircuitboard
+   parent: BaseComputerCircuitboard
+   description: Highly classified, yet highly wanted. Though you feel as if you shouldn't have this.
+   components:
+     - type: ComputerBoard
+       prototype: CentralCommandDnaClonerComputer

@@ -57,6 +57,8 @@
     - MiscSignallersStatic
     - NailgunStatic
     - NailsStatic
+    # Jamboree - high-pressure casing, needed to build the high-flow atmos machines
+    - AtmosHighFlow
     dynamicPacks:
     - ConstructionBagOfHolding
     - AdvancedTools

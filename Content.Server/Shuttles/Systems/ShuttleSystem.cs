@@ -201,6 +201,7 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
         SubscribeLocalEvent<ShuttleComponent, TileFrictionEvent>(OnTileFriction);
         SubscribeLocalEvent<ShuttleComponent, FTLStartedEvent>(OnFTLStarted);
         SubscribeLocalEvent<ShuttleComponent, FTLCompletedEvent>(OnFTLCompleted);
+        SubscribeLocalEvent<UndockEvent>(OnShuttleUndocked); // JAMBOREE - Bricked shuttle fix.
 
         SubscribeLocalEvent<GridInitializeEvent>(OnGridInit);
     }
@@ -300,5 +301,35 @@ public sealed partial class ShuttleSystem : SharedShuttleSystem
     private void OnFTLCompleted(Entity<ShuttleComponent> ent, ref FTLCompletedEvent args)
     {
         ent.Comp.DampingModifier = ent.Comp.BodyModifier;
+        UpdateShuttleBodyState(ent.Owner); // JAMBOREE, see below.
+    }
+
+    private void OnShuttleUndocked(UndockEvent args)
+    {
+        UpdateShuttleBodyState(args.GridAUid);
+        UpdateShuttleBodyState(args.GridBUid);
+    }
+
+    // JAMBOREE a shuttle can get stuck into static and sometimes theres not a way to fix it. Add a failsafe here!!
+    private void UpdateShuttleBodyState(EntityUid uid)
+    {
+        if (!_gridQuery.HasComponent(uid) ||
+            !_physicsQuery.TryGetComponent(uid, out var body))
+        {
+            return;
+        }
+
+        //JAMBOREE A grid parented to a docking port sits inside the port's grid, so it counts as embedded.
+        var parent = _xformQuery.GetComponent(uid).ParentUid;
+        var embedded = parent is { } parentUid && _gridQuery.HasComponent(parentUid);
+
+        if (embedded)
+        {
+            Disable(uid, component: body);
+        }
+        else
+        {
+            Enable(uid, component: body, shuttle: Comp<ShuttleComponent>(uid));
+        }
     }
 }

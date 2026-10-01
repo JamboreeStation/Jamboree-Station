@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2026 PureBreadBagel
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+  - type: entity
+    id: CentralCommandDnaClonerComputer
+    parent: BaseComputer
+    name: DNA Molecularsynthesis Computer
+    description: Central Command's DNA Molecularsynthesis Computer. Access all of NanoTrasen's appointed workers DNA and snatch them back from death to get to work!
+    components:
+     - type: AccessReader
+       access: [["CentralCommand"]]
+     # AccessReader alone only stops the machine being pried open - the UI needs gating separately.
+     - type: ActivatableUIRequiresAccess
+     - type: Computer
+       board: CentralCommandDnaClonerComputerCircuitboard
+     - type: CentralCommandDnaClonerConsole
+     - type: DeviceList
+     - type: DeviceNetwork
+       deviceNetId: Wired
+     - type: DeviceLinkSource
+       ports:
+       - CentralCommandDnaClonerSender
+     - type: ActivatableUI
+       key: enum.CentralCommandDnaClonerUiKey.Key
+     - type: UserInterface
+       interfaces:
+         enum.CentralCommandDnaClonerUiKey.Key:
+           type: CentralCommandDnaClonerBoundUserInterface
+     # The console answers in Bureaucratic, because of course it does LOOOOOL
+     - type: Speech
+       speechVerb: Robotic
+       speechSounds: Vending
+     - type: Vocal
+       sounds:
+         Unsexed: UnisexSilicon
+     - type: LanguageSpeaker
+       currentLanguage: Bureaucratic
+     - type: LanguageKnowledge
+       speaks:
+       - TauCetiBasic
+       - Bureaucratic
+       understands:
+       - TauCetiBasic
+       - Bureaucratic

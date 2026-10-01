@@ -135,6 +135,8 @@ jobs:
 
       - name: Commit changes to PR branch
         env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
           CHANGELOG_USER: ${{ vars.CHANGELOG_USER }}
           CHANGELOG_EMAIL: ${{ vars.CHANGELOG_EMAIL }}
           HEAD_REF: ${{ github.head_ref }}
@@ -146,12 +148,10 @@ jobs:
             exit 0
           fi
 
-          git remote add pr "https://x-access-token:${BOT_TOKEN}@github.com/${HEAD_REPO}.git"
+          git remote set-url pr "https://x-access-token:${BOT_TOKEN}@github.com/${HEAD_REPO}.git"
           git fetch pr "${HEAD_REF}"
-          git checkout -B pr-head "${HEAD_SHA}"
 
-          git apply -3 /tmp/headers.patch
           git add -A
           git -c user.name="${CHANGELOG_USER}" -c user.email="${CHANGELOG_EMAIL}" \
             commit -m "chore: Automatically update REUSE headers"
-          git push pr pr-head:"${HEAD_REF}"
+          git push pr HEAD:"${HEAD_REF}"

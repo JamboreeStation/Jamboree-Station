@@ -47,7 +47,7 @@ language-Freespeak-description =
 # changed for clarity
 language-Elyran-name = Elyran Standard
 language-Elyran-description =
-    Elyran Standard is the official tongue of the Republic of Elyra, once known as the planet Jupiter. Constructed using elements of Farsi - Arabic - and Turkish.
+    Elyran Standard is the official tongue of the Planetary Kingdom of Elyra, once known as the planet Jupiter. Constructed using elements of Farsi - Arabic - and Turkish.
     Influence from all three of these languages can be seen throughout its grammar and vocabulary.
 # changed to fit jamboree lore
 language-Canilunzt-name = Canilunzt

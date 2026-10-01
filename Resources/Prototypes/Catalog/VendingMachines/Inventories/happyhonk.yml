@@ -14,5 +14,7 @@
     ToyFigurineMime: 1
     ToyFigurineNukie: 1
     HappyHonkCluwne: 1
+    WeaponLauncherTaiwanPond: 1 # Jamboree, shifting inventories. Moved from theater.yml to happyhonk.yml.
+    GrenadeToy: 5 # Jamboree, shifting inventories. Moved from theater.yml to happyhonk.yml.
   emaggedInventory:
     HappyHonkNukie: 1

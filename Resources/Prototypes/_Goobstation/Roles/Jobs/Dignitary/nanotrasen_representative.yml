@@ -137,7 +137,8 @@
   - NanotrasenRepresentative
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+    # Jamboree - the Rep has no universal translator, only their own Bureaucratic.
+    implants: [ MindShieldImplant, BureaucraticTranslatorImplant ]
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff

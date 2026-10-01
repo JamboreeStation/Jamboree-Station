@@ -51,6 +51,7 @@
       - Mouse # Rodentia Language
       - Umamese #Jamboree, Gingerbread language
       - Bruin #Jamboree, Ursine Language
+      - Bureaucratic # Jamboree, CC Language
 
     understood:
       - TauCetiBasic # Common Languages -
@@ -90,6 +91,8 @@
       - Mouse # Rodentia Language
       - Umamese #Jamboree, Gingerbread language
       - Bruin #Jamboree, Ursine Language
+      - Bureaucratic # Jamboree, CC Language
+
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -205,6 +208,19 @@
     - YowKriol
     requires:
     - TauCetiBasic
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: BureaucraticTranslatorImplant
+  name: Bureaucratic translator implant
+  description: An implant giving the ability to understand and speak Bureaucratic, the tongue of the NanoTrasen boardroom.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TranslatorImplant
+    spoken:
+    - Bureaucratic
+    understood:
+    - Bureaucratic
 
 - type: entity
   parent: BaseSubdermalImplant

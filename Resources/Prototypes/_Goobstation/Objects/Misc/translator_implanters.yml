@@ -66,8 +66,16 @@
 
 - type: entity
   id: SignTranslatorImplanter
-  parent: BaseTranslatorImplanter
+  parent: [ BaseTranslatorImplanter ]
   suffix: Sign
   components:
   - type: Implanter
     implant: SignTranslatorImplant
+
+- type: entity
+  id: BureaucraticTranslatorImplanter
+  parent: [ BaseTranslatorImplanter ]
+  suffix: Bureaucratic
+  components:
+  - type: Implanter
+    implant: BureaucraticTranslatorImplant

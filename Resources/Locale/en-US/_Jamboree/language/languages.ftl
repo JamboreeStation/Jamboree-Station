@@ -29,9 +29,17 @@ language-Bruin-description =
     The language of the Ursine, a species of bearlike folks. It involves a lot of growls, snorts, and grumbles. It is said by Ursine diviners that it arrived to them
     via the stars above. What this exactly means is a mystery, but it nonetheless has persisted to the modern day.
 
+language-Bureaucratic-name = Bureaucratic
+chat-language-Bureaucratic-name = Bureaucratic
+language-Bureaucratic-description =
+    The working language of the NanoTrasen boardroom, and the only one spoken by the company's Representative on-station.
+    Every sentence is a form that somebody, somewhere, is contractually obliged to process. It is said that a fluent
+    Bureaucratic speaker can lose an entire department in a single paragraph.
+
 # Language icon names, when you hover over the icon in the chat!
 language-icon-bruin = Bruin
 language-icon-umamese = Umamese
 language-icon-sovblov = Sovblov
 language-icon-spessnish = Spessnish
 language-icon-hegemonic = Hegemonic
+language-icon-Bureaucratic = Bureaucratic

@@ -72,6 +72,18 @@
     - sprite: _White/Mobs/Customization/reptilian_64x32.rsi
       state: snake_large_wagging_overlay
 
+# WINGS
+- type: marking
+  id: LizardChestDragonwings
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Reptilian]
+  sprites:
+  - sprite: _White/Mobs/Customization/reptilian.rsi
+    state: body_dragonwings
+  - sprite: _White/Mobs/Customization/reptilian.rsi
+    state: body_dragonwings_membrane
+
 # SPINE
 - type: marking
   id: LizardChestSpinesAquatic
