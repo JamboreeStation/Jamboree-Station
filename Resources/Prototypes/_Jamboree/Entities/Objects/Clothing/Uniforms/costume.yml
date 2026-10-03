@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later AND MIT
+
+- type: entity
+  parent: ClothingUniformBase
+  id: JamboreeClothingUniformLobster
+  name: lobster costume
+  description: Let's hope there's no chefs around who want to boil you alive!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Uniform/Costumes/lobster_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Uniform/Costumes/lobster_suit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: JamboreeClothingUniformGondola
+  name: gondola costume
+  description: ...
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Uniform/Costumes/gondola_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Uniform/Costumes/gondola_suit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: JamboreeClothingUniformScarecrow
+  name: scarecrow costume
+  description: The crows have no idea you're coming.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Uniform/Costumes/scarecrow_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Uniform/Costumes/scarecrow_suit.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: JamboreeClothingUniformMummy
+  name: mummy costume
+  description: That's a wrap!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Uniform/Costumes/mummy_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Uniform/Costumes/mummy_suit.rsi

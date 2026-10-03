@@ -15,6 +15,7 @@
 - type: vendingMachineInventory
   id: GoodCleanFunInventory
   startingInventory:
+    CandyBucket: 6 #Jamboree, Halloween update. Remove when Halloween is over.
     DiceBag: 6
     Paper: 8
     d6Dice: 8

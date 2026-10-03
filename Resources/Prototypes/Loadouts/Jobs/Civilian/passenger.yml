@@ -555,16 +555,41 @@
   id: PassengerWintercoat
   equipment:
     outerClothing: ClothingOuterWinterCoat
+# Below are Jamboree additions
+- type: loadout
+  id: BlackWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterColorBlack
 
 - type: loadout
+  id: BlueWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterColorBlue
+
+- type: loadout
+  id: RedWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterColorRed
+
+- type: loadout
+  id: BrownWintercoat
+  equipment:
+    outerClothing: ClothingOuterWinterColorBrown
+
+- type: loadout #jamboree
   id: BomberJacket
   equipment:
     outerClothing: ClothingOuterCoatBomber
 
-- type: loadout
+- type: loadout # jamboree
   id: PirateJacket
   equipment:
     outerClothing: ClothingOuterCoatPirate
+
+- type: loadout # jamboree
+  id: NerdShirt
+  equipment:
+    outerClothing: JamboreeClothingOuterSuitShirtNerd
 
 # Shoes
 - type: loadout

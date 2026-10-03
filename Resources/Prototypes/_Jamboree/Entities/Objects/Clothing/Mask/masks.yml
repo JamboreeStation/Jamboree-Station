@@ -1,0 +1,156 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: ClothingMaskBase
+  id: JamboreeClothingMaskGondola
+  name: gondola mask
+  description: The visage of the tranquil gondola.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Mask/gondola_m.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Mask/gondola_m.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - IPCMaskWearable # EE - IPCs
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  - type: IdentityBlocker
+
+- type: entity
+  parent: ClothingMaskBase
+  id: JamboreeClothingMaskMummy
+  name: mummy mask
+  description: Mummy mummy mummy! Must be... fummy?
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Mask/mummy_m.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Mask/mummy_m.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - IPCMaskWearable # EE - IPCs
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  - type: IdentityBlocker
+
+- type: entity
+  parent: ClothingMaskBase
+  id: JamboreeClothingMaskScarecrow
+  name: scarecrow sack
+  description: Turn that frown, upside sideways!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Mask/scarecrow_sack.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Mask/scarecrow_sack.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - IPCMaskWearable # EE - IPCs
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  - type: IdentityBlocker
+
+# Emoji Start
+- type: entity
+  parent: ClothingMaskBase
+  id: JamboreeClothingMaskAnger
+  name: anger mask
+  description: Express your anger or project a stern aura with this angry face cutout.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Mask/Emoji/angry.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Mask/Emoji/angry.rsi
+  - type: BreathMask
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
+
+- type: entity
+  parent: ClothingMaskBase
+  id: JamboreeClothingMaskEpic
+  name: epic mask
+  description: Despite the unrelenting joy shown by this mask, it is obvious to all what evils lay beneat such a face.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Mask/Emoji/epic.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Mask/Emoji/epic.rsi
+  - type: BreathMask
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
+
+- type: entity
+  parent: ClothingMaskBase
+  id: JamboreeClothingMaskFlushed
+  name: flushed mask
+  description: Express your embarrassment or never let them know your next move with flushed face cutout.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Mask/Emoji/flushed.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Mask/Emoji/flushed.rsi
+  - type: BreathMask
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
+
+- type: entity
+  parent: ClothingMaskBase
+  id: JamboreeClothingMaskPensive
+  name: pensive mask
+  description: Express your contemplation or convince others you are very philosophical with this pensive face cutout.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Mask/Emoji/pensive.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Mask/Emoji/pensive.rsi
+  - type: BreathMask
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
+
+- type: entity
+  parent: ClothingMaskBase
+  id: JamboreeClothingMaskPleading
+  name: pleading mask
+  description: Express your desperation or plead your case with this pleading face cutout.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Mask/Emoji/pleading.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Mask/Emoji/pleading.rsi
+  - type: BreathMask
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Snout
+  - type: Tag
+    tags:
+    - IPCMaskWearable # EE - IPCs
+
+# Emoji End

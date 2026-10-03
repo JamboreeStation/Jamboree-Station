@@ -71,9 +71,6 @@
     ClothingUniformJokester: 1 #imp
     ClothingOuterCoatJokester: 1 #imp
     ClothingShoesJokester: 1 #imp
-    ClothingMaskClownDevil: 1 #funky
-    ClothingMaskClownGamble: 1 #funky
-    ClothingMaskClownJuggle: 1 #funky
     ClothingMaskClownNose: 2 #imp
     ClothingNeckRuffle: 2 #imp
     ClothingOuterWinterClown: 1
@@ -93,7 +90,11 @@
     ClothingUniformJumpskirtAngelDress: 1 #imp
     ClothingShoesAngelSandals: 1 #imp
     ClothingHeadHatStar: 2 #DV
-    ClothingMaskJoy: 2
+    ClothingMaskJoy: 1 #Jamboree, amount changed from 2 to 1
+    JamboreeClothingMaskAnger: 1 #Jamboree
+    JamboreeClothingMaskPensive: 1 #Jamboree
+    JamboreeClothingMaskFlushed: 1 #Jamboree
+    JamboreeClothingMaskPleading: 1 #Jamboree
     ClothingHeadHatCardborg: 2
     ClothingOuterCardborg: 2
     ClothingHeadHatSombrero: 2
@@ -105,10 +106,17 @@
     ClothingOuterSanta: 2
     ClothingHeadHatSkub: 2
     ClothingOuterSkub: 2
+    JamboreeClothingHeadHatFlash: 2 #Jamboree
+    JamboreeClothingOuterSuitFlash: 2 #Jamboree
 #    ClothingHeadHatBeretFrench: 2 #Jamboree, disabling
-    ClothingOuterSuitChicken: 2
-    ClothingHeadHatChickenhead: 2
+    ClothingHeadHatChickenhead: 2 #Jamboree, moving slightly for inventory structuring
+    ClothingOuterSuitChicken: 2 #Jamboree, moving slightly for inventory structuring
+    JamboreeClothingHeadHatBunny: 2 #Jamboree
+    JamboreeClothingOuterSuitBunny: 2 #Jamboree
+    JamboreeClothingHeadHatMonkey: 2 #Jamboree
     ClothingOuterSuitMonkey: 2
+    JamboreeClothingHeadHatGorilla: 2 #Jamboree
+    JamboreeClothingOuterSuitGorilla: 2 #Jamboree
     ClothingHeadHatPumpkin: 2
     ClothingHeadHatShrineMaidenWig: 2
     ClothingOuterSuitShrineMaiden: 2
@@ -118,6 +126,10 @@
     Broomstick: 2 # Goobstation
     ClothingHeadHatRedRacoon: 2
     ClothingOuterRedRacoon: 2
+    JamboreeClothingHeadHatSnowman: 2 #Jamboree
+    JamboreeClothingOuterSuitSnowman: 2 #Jamboree
+    JamboreeClothingHeadHatXeno: 2 #Jamboree
+    JamboreeClothingOuterSuitXeno: 2 #Jamboree
     ClothingHeadPaperSack: 2
     ClothingHeadPaperSackSmile: 2
     ClothingEyesBlindfold: 1
@@ -133,7 +145,14 @@
     ClothingMaskScaredMime: 1
     ClothingMaskOddMime: 1 #funky
     ClothingHeadHatCasa: 1
-    ClothingUniformJumpsuitKimono: 1
+    ClothingUniformJumpsuitKimono: 2
+    JamboreeClothingHeadHatPharoh: 1 #Jamboree
+    JamboreeClothingMaskMummy: 1 #Jamboree
+    JamboreeClothingUniformMummy: 1 #Jamboree
+    JamboreeClothingHeadHatScarecrow: 1 #Jamboree
+    JamboreeClothingMaskScarecrow: 1 #Jamboree
+    JamboreeClothingUniformScarecrow: 1 #Jamboree
+    JamboreeClothingOuterSuitDracula: 2 #Jamboree
 #    FoodPoppy: 1 #Jamboree, shifting inventories.
     ClothingHeadHatGladiator: 1
     ClothingUniformJumpsuitGladiator: 1
@@ -146,12 +165,17 @@
 #    ClothingShoesBootsCowboyWhite: 1 #Jamboree, shifting inventories, end
     ClothingCostumeAbductorHead: 1
     ClothingCostumeAbductor: 1
+    JamboreeClothingMaskGondola: 1 #Jamboree
+    JamboreeClothingUniformGondola: 1 #Jamboree
     ClothingOuterSuitHotDog: 1 # Goob
     ClothingOuterSuitTutu: 2 # Goob
+    JamboreeClothingHeadHatLobster: 1 #Jamboree
+    JamboreeClothingUniformLobster: 1 #Jamboree
 #    ClothingHeadHatTinfoilHat: 2 # Goobstation #Jamboree, shifting inventories
   contrabandInventory:
     ClothingHeadHatRichard: 1
     ClothingHeadScaryMask: 1 #funky
+    JamboreeClothingMaskEpic: 1 #Jamboree
     ClothingHeadHatPirateLuffy: 1 #frontier
     ClothingUniformJumpsuitPirateLuffy: 1 #frontier
     ClothingShoesBootsPirateLuffy: 1 #frontier
@@ -159,6 +183,9 @@
     ClothingMaskSexyClown: 1
     ClothingMaskSexyMime: 1
     ClothingHeadHatCowboyBountyHunter: 1
+    JamboreeClothingHeadHatBingle: 1 #Jamboree
+    JamboreeClothingHeadHatIRS: 1 #Jamboree
+    JamboreeClothingOuterCoatIRS: 1 #Jamboree
 #    ToyFigurineBoxer: 1 # Jamboree, removed mainly because figurines can be gotten other ways. Same applies for below
 #    ToyFigurineMusician: 1
 #    ClothingShoesResonant: 1 # Goobstation # Jamboree, giving to the chaplain

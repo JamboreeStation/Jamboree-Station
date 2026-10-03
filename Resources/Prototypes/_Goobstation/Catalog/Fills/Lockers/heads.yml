@@ -23,6 +23,7 @@
   id: LockerFillNanorep
   table: !type:AllSelector
     children:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: BoxFolderCentCom
     # - id: BriefcaseBrownFilled
     - id: WeaponDisablerAdvanced
