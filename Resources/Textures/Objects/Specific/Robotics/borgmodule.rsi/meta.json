@@ -194,6 +194,9 @@
             "name": "xenoborg_stealth"
         },
         {
+            "name": "icon-ParaPal"
+        },
+        {
             "name": "base-icon-inhand-left",
             "directions": 4
         },

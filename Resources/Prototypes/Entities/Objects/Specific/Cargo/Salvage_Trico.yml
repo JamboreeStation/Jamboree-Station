@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: [ BorgHypo ]
+  id: TricoHypoSalvage
+  name: Tricordrazine Hypospray
+  description: A self-refilling injector for rapid healing and recussiatation of would be dead salvagers.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      hypospray:
+        maxVol: 32
+        reagents:
+        - ReagentId: Tricordrazine
+          Quantity: 32
+  - type: SolutionRegeneration
+    solution: hypospray
+    generated:
+      reagents:
+      - ReagentId: Tricordrazine
+        Quantity: 0.5

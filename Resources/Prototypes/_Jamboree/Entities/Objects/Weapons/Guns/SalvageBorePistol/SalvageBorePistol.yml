@@ -1,0 +1,143 @@
+- type: entity
+  name: SalvageBorePistol
+  parent: BaseItem
+  id: BaseWeaponSalvageBore
+  description: A handcrafted firearm, custom made and commisioned from cargonia for NanoTrasens finest salvagers.
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Small
+    shape:
+    - 0,0,1,0
+    - 0,1,0,1
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Gun
+    fireRate: 6
+    selectedMode: Burst
+    availableModes:
+      - SemiAuto
+      - Burst
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/bore_gunshot.ogg
+  - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/Weapons/Guns/Cock/bore_cock.ogg
+    soundBoltClosed:
+      path: /Audio/Weapons/Guns/Cock/bore_cock.ogg
+    soundBoltOpened:
+      path: /Audio/Weapons/Guns/Cock/bore_cock.ogg
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistol
+        insertSound: /Audio/Weapons/Guns/MagIn/bore_mag_insert.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistol
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: AmmoCounter
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: Appearance
+  - type: StaticPrice
+    price: 500
+  - type: Multishot # Goobstation V
+    missChance: 0.4
+    spreadMultiplier: 2
+    spreadAddition: 40
+  - type: RestrictGunshotsByUserTag # Goobstation
+    doesntContain:
+    - Oni
+    - FirepowerGauntletsWorn # Jamboree - firepower modsuit
+    messages:
+    - generic-cannot-shoot-1 # Jamboree - was oni-cannot-shoot-x
+    - generic-cannot-shoot-2
+    - generic-cannot-shoot-3
+  - type: RestrictById # Jamboree - lawbringer-style ID scanner, keyed to salvagers
+    restrictMelee: true
+    restrictRanged: true
+    isEmaggable: true
+  - type: AccessReader
+    access:
+    - - Salvage
+  - type: EmitSoundOnPickup
+    sound:
+      collection: PistolsPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: PistolsDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: PistolsDrop
+  - type: AltFireMelee
+    attackType: Heavy
+  - type: MeleeWeapon
+    damage:
+      types:
+       Blunt: 12 # Bit hefty no?
+    angle: 0
+    wideAnimationRotation: 90 # -90 if it takes bayonets (hits with muzzle) 90 if not (hits with butt)
+    soundHit:
+      collection: MetalThud # Goobstation ^
+
+- type: entity
+  name: .85 BORE G832
+  parent: [ BaseWeaponSalvageBore ]
+  id: 85SalvageBoreG832
+  description: Its for testing!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Objects/Weapons/Guns/SalvageBore/SalvageBoreGun.rsi # RSI file path for salvage bore
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistol
+        insertSound: /Audio/Weapons/Guns/MagIn/bore_mag_insert.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        priority: 2
+        whitelist:
+          tags:
+            - MagazinePistol
+            - MagazinePistolHighCapacity
+        whitelistFailPopup: gun-magazine-whitelist-fail
+      gun_chamber:
+        name: Chamber
+        startingItem: CartridgePistol
+        priority: 1
+        whitelist:
+          tags:
+            - CartridgePistol
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+  - type: StaticPrice
+    price: 1000

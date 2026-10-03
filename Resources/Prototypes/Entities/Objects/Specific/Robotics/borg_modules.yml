@@ -1537,3 +1537,29 @@
     - CloakingDevice
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye-module }
+
+
+# Jamboree salv modules
+
+- type: entity
+  id: SalvageBorgParaPal
+  parent: [ BaseBorgModuleCargo, BaseProviderBorgModule, BaseSalvageContraband]
+  name: Paramedic Pal Salvage Module
+  components:
+  - type: Sprite
+    layers:
+    - state: cargo
+    - state: icon-ParaPal
+  - type: ItemBorgModule
+    moduleId: ParaPal
+    items:
+    - TricoHypoSalvage
+    - EpinephrineHypoSalvage
+    - DexaPlusHypoSpray
+    - DefibrillatorBorgSalvage
+    - Brutepack10Lingering
+    - Ointment10Lingering
+    - Gauze10Lingering
+    - HandheldHealthAnalyzerUnpowered
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: Para-Pal-Module }

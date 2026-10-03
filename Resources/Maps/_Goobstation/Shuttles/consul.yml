@@ -1997,7 +1997,7 @@ entities:
       linearDamping: 0
       canCollide: False
     - type: InsideEntityStorage
-- proto: AmmoTechFab
+- proto: SalvTechFabCircuitboard
   entities:
   - uid: 262
     components:
