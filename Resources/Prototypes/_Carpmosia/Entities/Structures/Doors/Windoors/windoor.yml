@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Secure
+- type: entity
+  parent: WindoorSecureEngineeringLocked
+  id: WindoorSecureLogisticsLocked
+  suffix: Cargo/Engineering, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLogistics ]
