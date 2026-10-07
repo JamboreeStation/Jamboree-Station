@@ -2250,3 +2250,46 @@ Entries:
         were unable to move.
   id: 183
   time: '2026-09-28T21:17:07.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: 'You can no longer edit a paper in a language that you do not know. '
+  id: 184
+  time: '2026-10-01T20:21:36.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Added 7 new cosmetics to the loadout menu! HOP and Assistants are
+        getting some big shirts, Clowns have busted out the balloons, and
+        Salvage Specialists have trophies from bear fights!
+    - type: Add
+      message: Assistants have received a variety of differently colored winter coats!
+    - type: Add
+      message: >-
+        Over 20 new costumes have made their way to the AutoDrobe! Get dressed
+        up for Halloween as a lobster, scarecrow, and more!
+    - type: Add
+      message: >-
+        All crew members can now pick up a candy bucket in the trinket menu in
+        the loadout or at their nearest Good Clean Fun Vendor! Trick or Treat!
+    - type: Add
+      message: >-
+        All command and dignitary lockers now come with a candy bowl filled with
+        lollypops! Prepare for Trick or Treaters or be pranked severely.
+    - type: Add
+      message: >-
+        Reports have spotted unusually tall and slender mimes about the Jamboree
+        sector. Caution is advised when engaging.
+    - type: Add
+      message: >-
+        Legends tell of deer headed beasts wandering the Jamboree sector known
+        as... Wendigos...
+    - type: Add
+      message: >-
+        Bubblegum has broken free from the Pits of Hell. May Space God have
+        mercy on us all.
+    - type: Fix
+      message: Fixed various naming and improper classification issues!
+  id: 185
+  time: '2026-10-04T09:28:18.0000000+00:00'

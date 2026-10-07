@@ -134,3 +134,11 @@
   id: HoPWintercoat
   equipment:
     outerClothing: ClothingOuterWinterHoP
+
+- type: loadout
+  id: IanShirt #Jamboree
+  equipment:
+    outerClothing: JamboreeClothingOuterSuitShirtIan
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ProfessionalHoP

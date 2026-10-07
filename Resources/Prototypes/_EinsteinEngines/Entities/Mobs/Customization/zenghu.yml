@@ -39,7 +39,7 @@
 - type: marking
   id: CyberLimbsMarkingZenghuLHand
   bodyPart: LHand
-  markingCategory: LeftArm
+  markingCategory: LeftHand #was LeftArm, moved to Lefthand since that is actually what it is.
   speciesRestriction: [IPC]
   sprites:
   - sprite: _EinsteinEngines/Mobs/Species/Cybernetics/zenghu/zenghu_main.rsi

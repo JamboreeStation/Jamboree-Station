@@ -42,7 +42,8 @@ public sealed class BodySetupTest
     private readonly HashSet<string> _ignoredPrototypes = new()
     {
         "Skeleton",
-        "Cyborg" // Since cyborgs are now a species just for appearance comps, we have to add em here.
+        "Cyborg", // Since cyborgs are now a species just for appearance comps, we have to add em here.
+        "MobBubblegum", // Jamboree, Bubblegum is essentially a super boss so his math is kind of weird.
     };
 
     /// <summary>

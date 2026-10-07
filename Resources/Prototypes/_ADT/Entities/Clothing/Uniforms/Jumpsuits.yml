@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Centcom Consultant
 - type: entity
   parent: ClothingUniformBase
@@ -27,7 +31,7 @@
   parent: ClothingUniformBase
   id: ADTClothingUniformJumpsuitAnarchyTshirt
   name: anarchy t-shirt #changed name
-  description: "NANOTRASEN IS UNFAIR! MR.BURGER IS IN THERE! STANDING AT THE CONCESSION! PLOTTING HIS OPPRESSION!" #changed description, also yooo, first Barry Burger reference
+  description: "NANOTRASEN IS UNFAIR! CENTCOMM IS IN THERE! STANDING AT THE CONCESSION! PLOTTING THEIR OPPRESSION!" #changed description, also yooo, first Barry Burger reference
   components:
   - type: Sprite
     sprite: ADT/Clothing/Uniforms/Jumpsuit/black_anarchy.rsi

@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: [ BaseItem, BaseMagicalContraband ]
+  id: WendigoSkull
+  name: wendigo skull
+  description: The skull of a wendigo, stained with dark blood. Though it looks old, it's tougher than steel and worth a lot.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Objects/Misc/wendigo_skull.rsi
+    state: icon
+  - type: Item
+    size: Large
+  - type: StaticPrice
+    price: 50000
+

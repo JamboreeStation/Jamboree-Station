@@ -179,6 +179,7 @@
   minLimit: 0
   maxLimit: 3
   loadouts:
+  - CandyBucket #Jamboree
   - FlowerWreath
   - Hairflower
   - Headphones
@@ -481,6 +482,7 @@
   loadouts:
   - HoPWintercoat
   - HoPLongcoat #goob
+  - IanShirt #Jamboree
 
 - type: loadoutGroup
   id: HoPShoes
@@ -697,11 +699,16 @@
   minLimit: 0
   loadouts:
   - PassengerWintercoat
+  - BlackWintercoat #jamboree
+  - BlueWintercoat #jamboree
+  - BrownWintercoat #jamboree
+  - RedWintercoat #jamboree
   #jamboree
   - BomberJacket
   - PirateJacket
   - DusterCoat #DV
   - NavalCoat #DV
+  - NerdShirt #Jamboree
 
 - type: loadoutGroup
   id: PassengerShoes
@@ -1098,6 +1105,7 @@
   - EvilJesterHat #imp
   - CircusClownHat #imp
   - WearyClownHat #TB
+  - BalloonTophat #jamboree
 
 - type: loadoutGroup
   id: ClownMask
@@ -1154,6 +1162,7 @@
   - BoxVest #ADT
   - JokesterOuterCoat #imp
   - WearyClownCoat #TB
+  - BalloonVest #Jamboree
 
 - type: loadoutGroup
   id: ClownShoes
@@ -1455,6 +1464,15 @@
   loadouts:
   - BlackShoes
   - CargoWinterBoots
+
+- type: loadoutGroup
+  id: SalvageSpecialistHead #Jamboree
+  name: loadout-group-salvage-specialist-head
+  minLimit: 0 #Jamboree, forgot to add this.
+  loadouts:
+  - BlackBearPelt
+  - BrownBearPelt
+  - PolarBearPelt
 
 - type: loadoutGroup
   id: SalvageSpecialistBackpack
