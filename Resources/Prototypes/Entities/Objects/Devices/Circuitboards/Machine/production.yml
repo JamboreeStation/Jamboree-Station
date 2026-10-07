@@ -223,17 +223,17 @@
           defaultPrototype: Beaker
 
 - type: entity
-  id: AmmoTechFabCircuitboard
-  parent: BaseMachineCircuitboard
-  name: ammo techfab circuit board
-  description: A machine printed circuit board for an ammo techfab.
+  id: SalvTechFabCircuitboard
+  parent: [ BaseMachineCircuitboard, BaseSecuritySalvageContraband ] # Prevent folks from pilfering it or making excuses
+  name: Salvage TechFab circuit board
+  description: A restricted circuit board used to craft salvages weapon fabricator.
   components:
     - type: Sprite
       state: security
     - type: MachineBoard
-      prototype: AmmoTechFab
+      prototype: SalvTechFabCircuitboard
       stackRequirements:
-        Manipulator: 2
+        Manipulator: 32
 
 - type: entity
   id: MedicalTechFabCircuitboard

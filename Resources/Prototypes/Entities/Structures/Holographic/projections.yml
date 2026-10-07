@@ -54,7 +54,7 @@
 
 - type: entity
   id: HoloFan
-  parent: BaseHolosign # DeltaV - don't include TimedDespawn
+  parent: BaseHolosign # Reincluded timeddespawn
   name: holofan
   description: A barrier of hard light that blocks air, but nothing else.
   components:
@@ -67,8 +67,8 @@
         shape:
           !type:PhysShapeAabb
             bounds: "-0.5,-0.5,0.5,0.5"
-  #- type: TimedDespawn # DeltaV - no despawning for holofans
-  #  lifetime: 180
+  - type: TimedDespawn # Jamboree - No i really want them to despawn sorry :)
+    lifetime: 180
   - type: Transform # DeltaV
     noRot: true
   - type: Airtight

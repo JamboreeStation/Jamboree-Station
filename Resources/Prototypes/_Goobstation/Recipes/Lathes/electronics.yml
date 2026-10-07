@@ -183,3 +183,13 @@
   id: CameraElectronics
   icon: { sprite: Structures/Wallmounts/camera.rsi, state: cameracase }
   result: CameraElectronics
+
+- type: latheRecipe
+  id: SalvageBorgParaModule
+  result: SalvageBorgParaPal
+  completetime: 30
+  materials:
+    Steel: 500
+    Plastic: 2500
+    Glass: 2000
+    Plasma: 25
