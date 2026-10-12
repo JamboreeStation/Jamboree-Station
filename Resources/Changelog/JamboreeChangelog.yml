@@ -2293,3 +2293,11 @@ Entries:
       message: Fixed various naming and improper classification issues!
   id: 185
   time: '2026-10-04T09:28:18.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: >-
+        The Deck Tape can now understand the 8 basic languages instead of null.
+        Now its transcript shouldnt display gibberish.
+  id: 186
+  time: '2026-10-09T18:11:47.0000000+00:00'
