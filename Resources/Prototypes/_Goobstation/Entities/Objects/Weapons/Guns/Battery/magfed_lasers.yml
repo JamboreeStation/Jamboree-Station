@@ -5,7 +5,7 @@
 
 - type: entity
   name: ER-5 Torrent
-  parent: [ BaseWeaponCustomCell, BaseSecurityContraband ]
+  parent: [ BaseWeaponCustomCell, BaseSecuritySalvageContraband ]
   id: WeaponLaserCellSMG
   description: A high-tech laser SMG, compatible with specialized SMG power cells.
   components:
