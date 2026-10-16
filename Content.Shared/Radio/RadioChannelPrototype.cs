@@ -36,6 +36,10 @@ public sealed partial class RadioChannelPrototype : IPrototype
     [DataField("keycode")]
     public char KeyCode { get; private set; } = '\0';
 
+    // Jamboree~ multi-character radio prefixes made possible (:#name)
+    [DataField]
+    public string? LongKey { get; private set; }
+
     [DataField("frequency")]
     public int Frequency { get; private set; } = 0;
 

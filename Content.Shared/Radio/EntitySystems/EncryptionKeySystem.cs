@@ -224,8 +224,11 @@ public sealed partial class EncryptionKeySystem : EntitySystem
 
         if(component.Channels.Count > 0)
         {
-            args.PushMarkup(Loc.GetString("examine-encryption-channels-prefix"));
-            AddChannelsExamine(component.Channels, component.DefaultChannel, args, _protoManager, "examine-encryption-channel");
+            using (args.PushGroup(nameof(EncryptionKeyComponent))) // Jamboree~ Header stays above chans list
+            {
+                args.PushMarkup(Loc.GetString("examine-encryption-channels-prefix"));
+                AddChannelsExamine(component.Channels, component.DefaultChannel, args, _protoManager, "examine-encryption-channel");
+            }
         }
     }
 
@@ -244,7 +247,9 @@ public sealed partial class EncryptionKeySystem : EntitySystem
 
             var key = id == SharedChatSystem.CommonChannel
                 ? SharedChatSystem.RadioCommonPrefix.ToString()
-                : $"{SharedChatSystem.RadioChannelPrefix}{proto.KeyCode}";
+                : proto.KeyCode == '\0' && !string.IsNullOrEmpty(proto.LongKey) // Jamboree~ multi-character radio prefixes
+                    ? $"{SharedChatSystem.RadioChannelPrefix}{SharedChatSystem.RadioLongKeyPrefix}{proto.LongKey}"
+                    : $"{SharedChatSystem.RadioChannelPrefix}{proto.KeyCode}";
 
             // Goobstation - Start - Whitelisted radio channels
             var restictionText = string.Empty;
