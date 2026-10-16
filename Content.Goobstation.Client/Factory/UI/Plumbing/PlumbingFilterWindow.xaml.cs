@@ -1,5 +1,3 @@
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client.UserInterface.Controls;
@@ -16,8 +14,8 @@ namespace Content.Goobstation.Client.Factory.UI.Plumbing;
 [GenerateTypedNameReferences]
 public sealed partial class PlumbingFilterWindow : FancyWindow
 {
-    [Dependency] private readonly EntityManager _entMan = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private EntityManager _entMan = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public event Action<ProtoId<ReagentPrototype>?>? OnChange;
 

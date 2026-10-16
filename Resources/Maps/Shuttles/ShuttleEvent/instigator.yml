@@ -9,7 +9,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 03/29/2026 22:58:59
-  entityCount: 552
+  entityCount: 553
 maps: []
 grids:
 - 1
@@ -645,6 +645,8 @@ entities:
     - type: Transform
       pos: -2.5,0.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
 - proto: AtmosDeviceFanDirectional
   entities:
   - uid: 19
@@ -2759,6 +2761,13 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 3.5,3.5
       parent: 1
+- proto: PowerCellRecharger
+  entities:
+  - uid: 536
+    components:
+    - type: Transform
+      pos: 8.5,10.5
+      parent: 1
 - proto: PoweredlightRed
   entities:
   - uid: 341
@@ -3215,6 +3224,8 @@ entities:
     - type: Transform
       pos: 3.5,2.5
       parent: 1
+    - type: Fixtures
+      fixtures: {}
 - proto: SyndieHandyFlag
   entities:
   - uid: 390
@@ -4101,7 +4112,7 @@ entities:
       parent: 1
 - proto: WeaponPistolCobra
   entities:
-  - uid: 536
+  - uid: 553
     components:
     - type: Transform
       pos: -7.446324,10.43428
@@ -4111,6 +4122,6 @@ entities:
   - uid: 537
     components:
     - type: Transform
-      pos: -7.4154773,10.488477
+      pos: -7.6356955,7.483289
       parent: 1
 ...

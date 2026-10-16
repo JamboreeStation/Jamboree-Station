@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Physics;
@@ -20,9 +16,12 @@ using Content.Shared.Alert;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
+using Content.Shared.Power.Components;
 using Content.Shared.Timing;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
@@ -33,23 +32,23 @@ using Robust.Shared.Utility;
 namespace Content.Goobstation.Server.Medical;
 
 // TODO: Move this to Shared when battery systems will be predicted
-public sealed class MedigunSystem : SharedMedigunSystem
+public sealed partial class MedigunSystem : SharedMedigunSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedTransformSystem _xform = default!;
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
-    [Dependency] private readonly AlertsSystem _alert = default!;
-    [Dependency] private readonly BatterySystem _battery = default!;
-    [Dependency] private readonly BloodstreamSystem _bloodstreamSystem = default!;
-    [Dependency] private readonly ConsciousnessSystem _consciousness = default!; // Shitmed Change
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly ExplosionSystem _explosion = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly PainSystem _pain = default!; // Shitmed Change
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedTransformSystem _xform = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedBodySystem _body = default!;
+    [Dependency] private AlertsSystem _alert = default!;
+    [Dependency] private BatterySystem _battery = default!;
+    [Dependency] private BloodstreamSystem _bloodstreamSystem = default!;
+    [Dependency] private ConsciousnessSystem _consciousness = default!; // Shitmed Change
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private ExplosionSystem _explosion = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private PainSystem _pain = default!; // Shitmed Change
+    [Dependency] private UseDelaySystem _useDelay = default!;
 
     private EntityQuery<BatteryComponent> _batteryQuery;
     private EntityQuery<DamageableComponent> _damageableQuery;
@@ -127,9 +126,9 @@ public sealed class MedigunSystem : SharedMedigunSystem
 
         var batteryToWithdraw = comp.UberActivated ? comp.UberBatteryWithdraw: comp.BatteryWithdraw;
         if (_batteryQuery.TryComp(ent.Owner, out var batteryComp)
-            && !_battery.TryUseCharge(ent, batteryToWithdraw, batteryComp))
+            && !_battery.TryUseCharge(ent.Owner, batteryToWithdraw))
         {
-            _battery.SetCharge(ent, 0f, batteryComp); // Trigger recharging & cooldown
+            _battery.SetCharge(ent.Owner, 0f); // Trigger recharging & cooldown
             return false;
         }
 
@@ -140,12 +139,11 @@ public sealed class MedigunSystem : SharedMedigunSystem
         var healing = comp.UberActivated ? comp.UberHealing : comp.Healing;
         var originalDamage = damageable.TotalDamage;
 
-        _damage.TryChangeDamage(
-            healed,
+        _damage.ChangeDamage(
+            (healed, damageable),
             healing,
             true,
             false,
-            damageable,
             ent.Comp.ParentEntity,
             partMultiplier: 1.0f,
             targetPart: TargetBodyPart.All,

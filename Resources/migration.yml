@@ -302,9 +302,9 @@ BenchParkRight: null
 BenchPewLeft: null
 BenchPewMiddle: null
 BenchPewRight: null
-BenchSofaCorpLeft: null
-BenchSofaCorpMiddle: null
-BenchSofaCorpRight: null
+#BenchSofaCorpLeft: null # Goob edit
+#BenchSofaCorpMiddle: null # Goob edit
+#BenchSofaCorpRight: null # Goob edit
 BenchSofaLeft: null
 BenchSofaRight: null
 BenchSteelLeft: null
@@ -633,10 +633,10 @@ DefaultStationBeaconTeslaEngine: null
 FoodBoxDonkpocketGondola: FoodBoxDonkpocketPizza
 
 # 2024-01-31
-SpyCrewMonitor: null
-SpyCrewMonitorEmpty: null
-SyndiCrewMonitor: null
-SyndiCrewMonitorEmpty: null
+# SpyCrewMonitor: null Trauma - Re-add Antag Crew Monitors
+# SpyCrewMonitorEmpty: null Trauma - Re-add Antag Crew Monitors
+# SyndiCrewMonitor: null Trauma - Re-add Antag Crew Monitors
+# SyndiCrewMonitorEmpty: null Trauma - Re-add Antag Crew Monitors
 
 #SpawnVehicleWheelchair: null Goobstation - Re-add vehicles
 #SpawnVehicleWheelchairFolded: null Goobstation - Re-add vehicles
@@ -684,7 +684,7 @@ FoodDonutJellyBlumpkin: FoodDonutJellyBluePumpkin
 SolarAssemblyPart: SolarAssemblyFlatpack
 AmePart: AmePartFlatpack
 AmePartStealObjective: AmePartFlatpackStealObjective
-Observationskit: null
+# Observationskit: null Trauma - Re-add Antag Crew Monitors
 
 # 2024-02-26
 CrateBaseWeldable: CrateGenericSteel
@@ -1045,11 +1045,11 @@ LeadChemistryBottle: ChemistryBottleLead
 ToxinChemistryBottle: ChemistryBottleToxin
 
 # Goob - making wizden maps compatible to support mapping efforts. 2025-04-13.
-CargoMailTeleporter: MailTeleporter
+# CargoMailTeleporter: MailTeleporter # see 2026-2-14
 ClothingMaskBlushingMime: ClothingMaskSexyMime
 ClothingMaskBlushingClown: ClothingMaskSexyMime
-MachineMaterialSilo: null
-CrateMaterialSilo: null
+#MachineMaterialSilo: null
+#CrateMaterialSilo: null
 
 # 2025-03-29
 ClothingBackpackDuffelSyndicateRaidBundle: ClothingBackpackSyndicateRaidBundle
@@ -1109,9 +1109,6 @@ PlushieBlackburnKobliska: null
 # 2025-06-13 Goobstation
 BroomWitch: Broomstick
 
-# 2025-06-04 Goobstation
-SmartFridge: DVSmartFridgeMedical
-
 # 2025-05-02
 CigPackMixedNasty: CigPackMixed
 CigPackMixedMedical: CigPackMixed
@@ -1147,6 +1144,27 @@ SpawnHonkBot: SpawnMobHonkBot
 CrateFoodPizzaLarge: CrateFoodPizza
 CrateFoodSoftdrinksLarge: CrateFoodSoftdrinks
 
+# 2025-06-03
+FloorTileItemGCircuit4: FloorTileItemGCircuit
+FloorTileItemBCircuit4: FloorTileItemBCircuit
+FloorTileItemRCircuit4: FloorTileItemRCircuit
+
+# 2025-06-06
+MagazineLightRifleMaxim: null
+MagazineLightRiflePkBox: null
+MagazineCaselessRifle10x24: null
+BaseMagazineCaselessRifleShort: null
+MagazineCaselessRifleShort: null
+MagazineCaselessRifleShortPractice: null
+BaseMagazineMagnumSubMachineGun: null
+MagazineMagnumSubMachineGunEmpty: null
+MagazineMagnumSubMachineGun: null
+MagazineMagnumSubMachineGunPractice: null
+MagazineMagnumSubMachineGunUranium: null
+MagazineMagnumSubMachineGunPiercing: null
+BoxMagazineMagnumSubMachineGun: null
+BoxMagazineMagnumSubMachineGunPractice: null
+
 # 2025-06-09
 BarSignAlignTile: BarSign
 BarSignComboCafeAlignTile: BarSignComboCafe
@@ -1178,6 +1196,44 @@ BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
 # 2025-06-21
 ClothingNeckHeadphones: ClothingMultipleHeadphones
 
-# 2025-10-09
+# 2025-07-17
+RipleyChassis: null
+HonkerChassis: null
+HamtrChassis: null
+VimChassis: null
+
+# 2025-10-09 & # 2025-08-01 ????
 FoodDonutJellySlugcat: FoodDonutJellyScurret
 
+
+# Old maps placed this syringe before it became an abstract template.
+PrefilledSyringe: Syringe
+
+# Upstream migrations required by retained Jamboree maps.
+BaseChemistryEmptyVial: ChemistryEmptyVial
+ClothingUniformJumpsuitChiefEngineerNT: ClothingUniformJumpsuitChiefEngineer
+DVSmartFridgeMedical: SmartFridgeMedical
+DrinkKiraSpecial: DrinkOrangeLimeSodaGlass
+FigureSpawner: MechFigurineSpawner50
+GlowstickBase: GlowstickGreen
+# Keep mapped unfinished Gygax frames buildable with the current assembly system.
+GygaxChassis: GygaxHarness
+HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
+HandheldHealthAnalyzerUnpowered: HandheldHealthAnalyzer
+MailTeleporter: CargoMailTeleporter
+MaterialSilo: MachineMaterialSilo
+SpacemenFigureSpawner: SpacemenFigurineSpawner90
+ToyGriffin: ToyFigurineGriffin
+ToyOwlman: ToyFigurineOwlman
+ToySkeleton: ToyFigurineSkeleton
+ToySpawner: PlushieSpawner50
+WarpPointBombing: null
+
+# Removed upstream mail hardware has no implementation in the new mail system.
+BoxMailCapsulePrimed: null
+MailCapsulePrimed: null
+MailMetricsCartridge: null
+WeaponMailLake: null
+VendingMachineMailDrobe: null
+# Keep mapped salvage shuttles pilotable using the current console.
+ComputerShuttleSalvage: ComputerShuttle

@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Lumminal <81829924+Lumminal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Shadowling.Components;
@@ -19,13 +15,13 @@ namespace Content.Goobstation.Shared.Shadowling.Systems.Abilities.CollectiveMind
 /// The Collective Mind ability lets you gain new actions, and informs you
 /// how many Thralls are required to ascend. At the same time, it stuns all Thralls for a very short amount of time.
 /// </summary>
-public sealed class ShadowlingCollectiveMindSystem : EntitySystem
+public sealed partial class ShadowlingCollectiveMindSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly SharedPopupSystem _popups = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedPopupSystem _popups = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
     {
@@ -110,7 +106,7 @@ public sealed class ShadowlingCollectiveMindSystem : EntitySystem
             if (!HasComp<StatusEffectsComponent>(thrall))
                 return;
 
-            _stun.TryParalyze(thrall, TimeSpan.FromSeconds(comp.BaseStunTime * abiltiesAddedCount + 1), false);
+            _stun.TryUpdateParalyzeDuration(thrall, TimeSpan.FromSeconds(comp.BaseStunTime * abiltiesAddedCount + 1));
         }
 
         args.Handled = true;

@@ -67,6 +67,7 @@ loadout-group-technical-assistant-envirogloves = Technical Assistant enviroglove
 loadout-group-atmos-envirohelm = Atmospheric Technician envirohelm
 loadout-group-atmos-envirosuit = Atmospheric Technician envirosuit
 loadout-group-atmos-envirogloves = Atmospheric Technician envirogloves
+loadout-group-atmospheric-technician-belt = Atmospheric Technician belt
 
 # Chief Engineer
 loadout-group-chief-engineer-envirohelm = Chief Engineer envirohelm
@@ -220,6 +221,12 @@ loadout-group-zookeeper-head = Zookeeper hat
 # Boxer
 loadout-group-boxer-envirohelm = Boxer envirohelm
 loadout-group-boxer-envirosuit = Boxer envirosuit
+loadout-group-boxer-helmet = Boxer helmet
 
 # Misc
 loadout-group-plasma-tank = Plasma tank
+loadout-group-security-gloves = Security gloves
+
+# Salvage/Shaft Miner
+loadout-group-salvage-specialist-jumpsuit = Salvage Specialist Jumpsuit
+loadout-group-shaft-miner-jumpsuit = Shaft Miner Jumpsuit

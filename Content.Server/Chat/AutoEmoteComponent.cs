@@ -1,14 +1,10 @@
-// SPDX-FileCopyrightText: 2023 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 namespace Content.Server.Chat;
 
 using Content.Server.Chat.Systems;
 using Content.Shared.Chat.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
+using Robust.Shared.Prototypes;
 
 /// <summary>
 /// Causes an entity to automatically emote at a set interval.
@@ -20,8 +16,8 @@ public sealed partial class AutoEmoteComponent : Component
     /// A set of emotes that the entity will preform.
     /// <see cref="AutoEmotePrototype"/>
     /// </summary>
-    [DataField("emotes", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<AutoEmotePrototype>)), ViewVariables(VVAccess.ReadOnly)]
-    public HashSet<string> Emotes = new HashSet<string>();
+    [DataField("emotes"), ViewVariables(VVAccess.ReadOnly)]
+    public HashSet<ProtoId<AutoEmotePrototype>> Emotes = new();
 
     /// <summary>
     /// A dictionary storing the time of the next emote attempt for each emote.

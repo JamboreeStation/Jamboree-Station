@@ -41,5 +41,10 @@ research-technology-xenobag-holding = Bluespace Xenobiological Equipment
 research-technology-advanced-power-generation = Advanced Power Generation
 research-technology-bluespace-construction-storage = Bluespace Construction Storage
 research-technology-extended-communication = Extended Communications
+research-technology-bluespace-munitions = Bluespace Munitions
 research-technology-radio-music-communication = Radio Music Communications
 research-technology-service-energy-chem = Organic Electrosynthesis
+
+research-technology-cloning = Biological Reconstruction
+
+research-technology-security-cyborg = Security Cyborg Technology

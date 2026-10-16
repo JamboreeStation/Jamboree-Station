@@ -140,6 +140,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.Markdown;
 using Robust.Shared.Serialization.Markdown.Mapping;
 using Robust.Shared.Serialization.Markdown.Sequence;
@@ -159,6 +160,7 @@ namespace Content.Client.Actions
         [Dependency] private readonly IPrototypeManager _proto = default!;
         [Dependency] private readonly IResourceManager _resources = default!;
         [Dependency] private readonly MetaDataSystem _metaData = default!;
+        [Dependency] private readonly ISerializationManager _serialization = default!;
         [Dependency] private readonly ActionTargetMarkSystem _mark = default!;
 
         public event Action<EntityUid>? OnActionAdded;
@@ -297,7 +299,7 @@ namespace Content.Client.Actions
         }
 
         // Goobstation start
-        protected override void SaveActions(EntityUid performer)
+        public override void SaveActions(EntityUid performer)
         {
             if (_playerManager.LocalEntity != performer)
                 return;
@@ -305,7 +307,7 @@ namespace Content.Client.Actions
             ActionsSaved?.Invoke(performer);
         }
 
-        protected override void LoadActions(EntityUid performer)
+        public override void LoadActions(EntityUid performer)
         {
             if (_playerManager.LocalEntity != performer)
                 return;
@@ -448,8 +450,27 @@ namespace Content.Client.Actions
                     continue;
                 }
 
+                if (assignmentNode is SequenceDataNode sequenceAssignments)
+                {
+                    try
+                    {
+                        var nodeAssignments = _serialization.Read<List<(byte Hotbar, byte Slot)>>(sequenceAssignments, notNullableOverride: true);
+
+                        foreach (var index in nodeAssignments)
+                        {
+                            assignments.Add(new SlotAssignment(index.Hotbar, index.Slot, actionId));
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error($"Failed to parse action assignments: {ex}");
+                    }
+                }
+
                 AddActionDirect((user, actions), actionId);
             }
+
+            AssignSlot?.Invoke(assignments);
         }
 
         private void OnWorldTargetAttempt(Entity<WorldTargetActionComponent> ent, ref ActionTargetAttemptEvent args)
@@ -471,10 +492,10 @@ namespace Content.Client.Actions
             // this is the actual entity-world targeting magic
             EntityUid? targetEnt = null;
             if (TryComp<EntityTargetActionComponent>(ent, out var entity) &&
-                args.Input.EntityUid != null &&
-                ValidateEntityTarget(user, args.Input.EntityUid, (uid, entity)))
+                args.Input.EntityUid is { Valid: true } entityUid &&
+                ValidateEntityTarget(user, entityUid, (uid, entity)))
             {
-                targetEnt = args.Input.EntityUid;
+                targetEnt = entityUid;
             }
 
             if (HasComp<LockOnMarkActionComponent>(uid) && Exists(_mark.Target))
@@ -499,20 +520,16 @@ namespace Content.Client.Actions
 
         private void OnEntityTargetAttempt(Entity<EntityTargetActionComponent> ent, ref ActionTargetAttemptEvent args)
         {
-            // Goob edit start
             if (args.Handled)
                 return;
 
-            var entity = args.Input.EntityUid;
-            if (!HasComp<LockOnMarkActionComponent>(ent) || !Exists(_mark.Target))
-            {
-                if (entity is not { Valid: true })
-                {
-                    args.Handled = true;
-                    return;
-                }
-            }
-            else
+            args.Handled = true;
+
+            if (args.Input.EntityUid is not { Valid: true } entity)
+                return;
+
+            // Goob edit start
+            if (HasComp<LockOnMarkActionComponent>(ent) && Exists(_mark.Target))
                 entity = _mark.Target.Value;
             // Goob edit end
 
@@ -523,8 +540,6 @@ namespace Content.Client.Actions
                 DebugTools.Assert(HasComp<WorldTargetActionComponent>(ent), $"Action {ToPrettyString(ent)} requires WorldTargetActionComponent for entity-world targeting");
                 return;
             }
-
-            args.Handled = true;
 
             var action = args.Action;
             var user = args.User;

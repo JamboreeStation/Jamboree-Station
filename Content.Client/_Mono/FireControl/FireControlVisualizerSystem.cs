@@ -12,6 +12,7 @@ using System.Numerics;
 using Content.Shared._Mono.FireControl;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
+using Robust.Client.GameObjects;
 
 namespace Content.Client._Mono.FireControl;
 
@@ -82,7 +83,7 @@ public sealed class FireControlVisualizerSystem : EntitySystem
     {
         private readonly FireControlVisualizerSystem _system;
         private readonly IEntityManager _entityManager;
-        private readonly SharedTransformSystem _transformSystem;
+        private readonly TransformSystem _transformSystem;
 
         public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
@@ -90,7 +91,7 @@ public sealed class FireControlVisualizerSystem : EntitySystem
         {
             _system = system;
             _entityManager = entityManager;
-            _transformSystem = entityManager.System<SharedTransformSystem>();
+            _transformSystem = entityManager.System<TransformSystem>();
         }
 
         protected override void Draw(in OverlayDrawArgs args)

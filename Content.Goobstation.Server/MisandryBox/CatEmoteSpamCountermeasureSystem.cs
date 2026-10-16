@@ -1,11 +1,9 @@
-// SPDX-FileCopyrightText: 2025 Conchelle <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.MisandryBox;
 using Content.Goobstation.Shared.MisandryBox.Smites;
 using Content.Server.Chat.Systems;
+using Content.Shared.Chat;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Speech;
 using Robust.Shared.Random;
@@ -13,10 +11,10 @@ using Robust.Shared.Random;
 namespace Content.Goobstation.Server.MisandryBox;
 
 // Now that's a mouthful
-public sealed class CatEmoteSpamCountermeasureSystem : EntitySystem
+public sealed partial class CatEmoteSpamCountermeasureSystem : EntitySystem
 {
-    [Dependency] private readonly ThunderstrikeSystem _thunderstrike = default!;
-    [Dependency] private readonly IRobustRandom _rand = default!;
+    [Dependency] private ThunderstrikeSystem _thunderstrike = default!;
+    [Dependency] private IRobustRandom _rand = default!;
 
     private const float ClearInterval = 20.0f;
     private const float PitchModulo = 0.08f;
@@ -146,6 +144,13 @@ public sealed class CatEmoteSpamCountermeasureSystem : EntitySystem
     /// <param name="killOverride">Optional override for the kill parameter. If null, uses DrasticMeasures</param>
     private void Smite(EntityUid uid, bool? killOverride = null)
     {
-        _thunderstrike.Smite(uid, kill: killOverride ?? DrasticMeasures);
+        var kill = killOverride ?? DrasticMeasures;
+        if (kill)
+        {
+            var ev = new EmoteSpamSmitedEvent();
+            RaiseLocalEvent(uid, ref ev);
+        }
+
+        _thunderstrike.Smite(uid, kill: kill);
     }
 }

@@ -8228,7 +8228,7 @@ entities:
     - type: Transform
       pos: 1.5,8.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 1686
 - proto: Carpet
   entities:
@@ -11078,7 +11078,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 1686
 - proto: ExtinguisherCabinetFilled
   entities:
@@ -19290,6 +19290,15 @@ entities:
           - FillbotAnyItem
         - - MaterialSilo
           - MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 774
+      - 904
+      - 1690
+      - 1702
+      - 1858
+      - 1860
+      - 2732
 - proto: MedicalBed
   entities:
   - uid: 1688
@@ -19309,7 +19318,7 @@ entities:
     - type: Transform
       pos: 10.5,-3.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 1686
 - proto: MedkitBruteFilled
   entities:
@@ -19500,7 +19509,7 @@ entities:
     - type: Transform
       pos: -3.5,14.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 1686
 - proto: OxygenCanister
   entities:
@@ -21147,7 +21156,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 1686
 - proto: SciFlash
   entities:
@@ -21202,7 +21211,7 @@ entities:
     - type: Transform
       pos: 15.5,-4.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 1686
     - type: TechnologyDatabase
       supportedDisciplines:
@@ -21224,7 +21233,7 @@ entities:
     - type: Transform
       pos: -6.5,3.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 1686
     - type: TechnologyDatabase
       supportedDisciplines:

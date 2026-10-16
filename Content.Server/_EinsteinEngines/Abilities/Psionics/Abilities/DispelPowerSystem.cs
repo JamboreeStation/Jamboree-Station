@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.StatusEffect;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Abilities.Psionics;
 using Content.Shared.Damage;
 using Content.Shared.Revenant.Components;

@@ -54,23 +54,10 @@
     baseWalkSpeed : 0.75
     baseSprintSpeed : 0.85
   - type: Temperature
-    coldDamageThreshold: 248.15 # -25 degrees centigrade, like 12 degrees below normal "takes cold damage"
     currentTemperature: 310.15
-    coldDamage:
-      types:
-        Cold: 0.080 # in line with cold resist
-    heatDamage:
-      types:
-        Heat: 1.85 # in line with heat dmg received up
   - type: Puller
     needsHands: true
-    grabThrownSpeed: 20
-    grabThrowDamageModifier: 1.5
     throwCooldown: 1.25
-    stageChangeCooldown: 1.25
-    softGrabSpeedModifier: 1
-    hardGrabSpeedModifier: 1
-    chokeGrabSpeedModifier: 1
   - type: Fixtures
     fixtures: # TODO: This needs a second fixture just for mob collisions.
       fix1:
@@ -90,7 +77,21 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
-
+  - type: TemperatureDamage
+    coldDamageThreshold: 248.15 # -25 degrees centigrade, like 12 degrees below normal "takes cold damage"
+    coldDamage:
+      types:
+        Cold: 0.080 # in line with cold resist
+    heatDamage:
+      types:
+        Heat: 1.85 # in line with heat dmg received up
+  - type: GrabIntent
+    grabThrownSpeed: 20
+    grabThrowDamageModifier: 1.5
+    stageChangeCooldown: 1.25
+    softGrabSpeedModifier: 1
+    hardGrabSpeedModifier: 1
+    chokeGrabSpeedModifier: 1
 
 - type: entity
   parent: BaseSpeciesDummy

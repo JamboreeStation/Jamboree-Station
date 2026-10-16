@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 /* Goobstation - I don't see this being used anywhere and it uses the old voicemasker system
@@ -40,8 +33,7 @@ public sealed class SubdermalBionicSyrinxImplantSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
 
-    [ValidatePrototypeId<TagPrototype>]
-    public const string BionicSyrinxImplant = "BionicSyrinxImplant";
+    public static readonly ProtoId<TagPrototype> BionicSyrinxImplant = "BionicSyrinxImplant";
 
     private const string MaskSlot = "mask";
 

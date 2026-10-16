@@ -15,8 +15,9 @@ namespace Content.Goobstation.Server.Disease;
 
 public sealed partial class DiseaseSystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedEntityEffectsSystem _effects = default!;
 
     // cache for field setters for DiseaseGenericEffectComponent
     private readonly Dictionary<(Type, string), Action<Component, float>> _setterCache = new();
@@ -33,21 +34,14 @@ public sealed partial class DiseaseSystem
 
     private void OnReagentEffect(Entity<DiseaseReagentEffectComponent> ent, ref DiseaseEffectEvent args)
     {
-        var reagentArgs = new EntityEffectReagentArgs(
-            targetEntity: args.Ent,
-            entityManager: EntityManager,
-            organEntity: null,
-            source: null,
-            quantity: FixedPoint2.New(1),
-            reagent: null,
-            method: null,
-            scale: FixedPoint2.New(GetScale(args, ent.Comp))
-        );
+        var scale = GetScale(args, ent.Comp);
 
         foreach (var effect in ent.Comp.Effects)
         {
-            if (effect.ShouldApply(reagentArgs, _random))
-                effect.Effect(reagentArgs);
+            if (scale < effect.MinScale)
+                continue;
+
+            _effects.TryApplyEffect(args.Ent, effect, scale);
         }
     }
 
@@ -55,9 +49,9 @@ public sealed partial class DiseaseSystem
     {
         var emote = _proto.Index(ent.Comp.Emote);
         if (ent.Comp.WithChat)
-            _chat.TryEmoteWithChat(args.Ent, emote);
+            _chat.TryEmoteWithChat(args.Ent, emote, forceEmote: true);
         else
-            _chat.TryEmoteWithoutChat(args.Ent, emote);
+            _chat.TryEmoteWithoutChat(args.Ent, emote, voluntary: false);
     }
 
     private void OnGenericEffect(Entity<DiseaseGenericEffectComponent> ent, ref DiseaseEffectEvent args)

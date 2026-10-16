@@ -26,6 +26,7 @@
         layer:
         - MachineLayer
   - type: Battery
+    netsync: false
     maxCharge: 1500
     startingCharge: 1500
   - type: ApcPowerReceiverBattery
@@ -139,6 +140,7 @@
       Whiskey: 5
       Wine: 5
   - type: Battery
+    netsync: false
     maxCharge: 2500
     startingCharge: 100
 
@@ -184,6 +186,7 @@
       TonicWater: 5
       Water: 1
   - type: Battery
+    netsync: false
     maxCharge: 2500
     startingCharge: 100
 
@@ -235,5 +238,6 @@
       TableSalt: 20
       Vinaigrette: 9
   - type: Battery
+    netsync: false
     maxCharge: 3000
     startingCharge: 100

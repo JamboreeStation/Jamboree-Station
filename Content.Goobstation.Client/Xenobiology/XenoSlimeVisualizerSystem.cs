@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics;
@@ -18,10 +13,10 @@ namespace Content.Goobstation.Client.Xenobiology;
 /// <summary>
 /// This handles visual changes in slimes between breeds.
 /// </summary>
-public sealed class XenoSlimeVisualizerSystem : VisualizerSystem<SlimeComponent>
+public sealed partial class XenoSlimeVisualizerSystem : VisualizerSystem<SlimeComponent>
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     protected override void OnAppearanceChange(EntityUid uid, SlimeComponent component, ref AppearanceChangeEvent args)
     {
@@ -40,7 +35,5 @@ public sealed class XenoSlimeVisualizerSystem : VisualizerSystem<SlimeComponent>
         if (!layerExists)
             return;
         spriteComp.LayerSetShader(layerKey, newShader);
-        spriteComp.GetScreenTexture = true;
-        spriteComp.RaiseShaderEvent = true;
     }
 }

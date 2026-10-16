@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -13,6 +7,8 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.RCD.Components;
 using Content.Shared.RCD.Systems;
+using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Client.Placement;
 using Robust.Client.Player;
 using Robust.Client.State;
@@ -24,7 +20,6 @@ namespace Content.Client.RCD;
 public sealed class AlignRCDConstruction : PlacementMode
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     private readonly SharedMapSystem _mapSystem;
     private readonly HandsSystem _handsSystem;
     private readonly RCDSystem _rcdSystem;
@@ -54,7 +49,7 @@ public sealed class AlignRCDConstruction : PlacementMode
     public override void AlignPlacementMode(ScreenCoordinates mouseScreen)
     {
         _unalignedMouseCoords = ScreenToCursorGrid(mouseScreen);
-        MouseCoords = _unalignedMouseCoords.AlignWithClosestGridTile(SearchBoxSize, _entityManager, _mapManager);
+        MouseCoords = _unalignedMouseCoords.AlignWithClosestGridTile(SearchBoxSize, _entityManager);
 
         var gridId = _transformSystem.GetGrid(MouseCoords);
 
@@ -75,6 +70,36 @@ public sealed class AlignRCDConstruction : PlacementMode
         {
             MouseCoords = new EntityCoordinates(MouseCoords.EntityId, new Vector2(CurrentTile.X + tileSize / 2 + pManager.PlacementOffset.X,
                 CurrentTile.Y + tileSize / 2 + pManager.PlacementOffset.Y));
+        }
+    }
+
+    public override void Render(in OverlayDrawArgs args)
+    {
+        var uid = pManager.CurrentPlacementOverlayEntity;
+        if (!_entityManager.TryGetComponent(uid, out SpriteComponent? sprite) || !sprite.Visible)
+            return;
+
+        var locations = pManager.PlacementType switch
+        {
+            PlacementManager.PlacementTypes.Line => LineCoordinates(),
+            PlacementManager.PlacementTypes.Grid => GridCoordinates(),
+            _ => SingleCoordinate(),
+        };
+
+        var dirAng = pManager.Direction.ToAngle();
+        var eyeRot = args.Viewport.Eye?.Rotation ?? default;
+        var spriteSys = _entityManager.System<SpriteSystem>();
+        foreach (var coordinate in locations)
+        {
+            if (!coordinate.IsValid(_entityManager))
+                return;
+
+            var worldPos = _transformSystem.ToMapCoordinates(coordinate).Position;
+            worldPos = args.Viewport.LocalToWorld(args.Viewport.WorldToLocal(worldPos).Rounded()).Position;
+            var worldRot = _transformSystem.GetWorldRotation(coordinate.EntityId) + dirAng;
+
+            sprite.Color = IsValidPosition(coordinate) ? ValidPlaceColor : InvalidPlaceColor;
+            spriteSys.RenderSprite((uid.Value, sprite), args.WorldHandle, eyeRot, worldRot, worldPos);
         }
     }
 

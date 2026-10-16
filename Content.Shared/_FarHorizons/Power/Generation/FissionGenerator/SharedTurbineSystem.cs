@@ -1,6 +1,9 @@
 using Content.Shared.Administration.Logs;
+using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
+using Content.Shared.DoAfter;
 using Content.Shared.Electrocution;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
@@ -10,6 +13,7 @@ using Content.Shared.Tools.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._FarHorizons.Power.Generation.FissionGenerator;
 
@@ -35,7 +39,7 @@ public abstract class SharedTurbineSystem : EntitySystem
         SubscribeLocalEvent<TurbineComponent, ExaminedEvent>(OnExamined);
 
         SubscribeLocalEvent<TurbineComponent, InteractUsingEvent>(RepairTurbine);
-        SubscribeLocalEvent<TurbineComponent, RepairFinishedEvent>(OnRepairTurbineFinished);
+        SubscribeLocalEvent<TurbineComponent, TurbineRepairDoAfterEvent>(OnRepairTurbineFinished);
     }
 
     private void OnExamined(Entity<TurbineComponent> ent, ref ExaminedEvent args)
@@ -160,12 +164,12 @@ public abstract class SharedTurbineSystem : EntitySystem
             if (comp.BladeHealth >= comp.BladeHealthMax && !comp.Ruined)
                 return;
 
-            args.Handled = _toolSystem.UseTool(args.Used, args.User, uid, comp.RepairDelay, comp.RepairTool, new RepairFinishedEvent(), comp.RepairFuelCost);
+            args.Handled = _toolSystem.UseTool(args.Used, args.User, uid, comp.RepairDelay, comp.RepairTool, new TurbineRepairDoAfterEvent(), comp.RepairFuelCost);
         }
     }
 
     //Gotta love server/client desync
-    protected virtual void OnRepairTurbineFinished(EntityUid uid, TurbineComponent comp, ref RepairFinishedEvent args)
+    protected virtual void OnRepairTurbineFinished(EntityUid uid, TurbineComponent comp, ref TurbineRepairDoAfterEvent args)
     {
         if (comp.Ruined)
         {
@@ -186,7 +190,7 @@ public abstract class SharedTurbineSystem : EntitySystem
         if (!_entityManager.TryGetComponent<DamageableComponent>(uid, out var damageableComponent))
             return;
 
-        _damageableSystem.SetAllDamage(uid, damageableComponent, 0);
+        _damageableSystem.SetAllDamage((uid, damageableComponent), FixedPoint2.Zero);
     }
 
     protected void UpdateHealthIndicators(EntityUid uid, TurbineComponent comp)
@@ -221,3 +225,6 @@ public abstract class SharedTurbineSystem : EntitySystem
 
     #endregion
 }
+
+[Serializable, NetSerializable]
+public sealed partial class TurbineRepairDoAfterEvent : SimpleDoAfterEvent;

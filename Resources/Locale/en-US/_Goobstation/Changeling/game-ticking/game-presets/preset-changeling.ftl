@@ -4,7 +4,7 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-changeling-roundend-name = changeling
+changeling-roundend-name = a changeling
 
 # just removed this cause eh, not needed, objective-issuer-self = [color=orange]The Self[/color]
 # both changed to get a different perspective on changelings

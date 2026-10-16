@@ -1,5 +1,6 @@
 using Content.Shared.Actions;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Stunnable;
 using Content.Shared.Stealth;
 using Content.Shared.Stealth.Components;
@@ -105,7 +106,7 @@ public sealed class PsionicInvisibilityPowerSystem : EntitySystem
             return;
 
         ToggleInvisibility(uid);
-        _stunSystem.TryParalyze(uid, TimeSpan.FromSeconds(component.StunTime * psionic.CurrentAmplification / psionic.CurrentDampening), false);
+        _stunSystem.TryAddParalyzeDuration(uid, TimeSpan.FromSeconds(component.StunTime * psionic.CurrentAmplification / psionic.CurrentDampening));
     }
 
     public void ToggleInvisibility(EntityUid uid)

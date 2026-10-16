@@ -1,19 +1,11 @@
-# SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Southbridge <7013162+southbridge-fur@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Spanky <scott@wearejacob.com>
-# SPDX-FileCopyrightText: 2024 Spessmann <156740760+Spessmann@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # I couldn't figure out how randomsprite works so this mess was created!!!
 # Also pointlight masks were probably created by yakub or some shit to fuck with people holy god
 # Pointlight masks were coded in hell and sent up to us ong
 - type: entity
   id: SpawnerChristmasTinselWhite
+  name: Christmas Tinsel Spawner
+  suffix: White
   parent: MarkerBase
   components:
   - type: Sprite
@@ -33,6 +25,8 @@
 
 - type: entity
   id: SpawnerChristmasTinselRed
+  name: Christmas Tinsel Spawner
+  suffix: Red
   parent: MarkerBase
   components:
   - type: Sprite
@@ -53,6 +47,8 @@
 
 - type: entity
   id: SpawnerChristmasTinselBlue
+  name: Christmas Tinsel Spawner
+  suffix: Blue
   parent: MarkerBase
   components:
   - type: Sprite
@@ -73,6 +69,7 @@
 
 - type: entity
   id: ChristmasTinselWhite1
+  name: white christmas tinsel
   description: Some white tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -84,10 +81,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselWhite2
+  name: white christmas tinsel
   description: Some white tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -99,10 +97,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselWhite3
+  name: white christmas tinsel
   description: Some white tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -114,10 +113,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselWhite4
+  name: white christmas tinsel
   description: Some white tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -129,10 +129,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselWhite5
+  name: white christmas tinsel
   description: Some white tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -144,10 +145,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselWhite6
+  name: white christmas tinsel
   description: Some white tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -159,10 +161,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselRed1
+  name: red christmas tinsel
   description: Some red tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -175,10 +178,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselRed2
+  name: red christmas tinsel
   description: Some red tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -191,10 +195,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselRed3
+  name: red christmas tinsel
   description: Some red tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -207,10 +212,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselRed4
+  name: red christmas tinsel
   description: Some red tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -223,10 +229,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselRed5
+  name: red christmas tinsel
   description: Some red tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -239,10 +246,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselRed6
+  name: red christmas tinsel
   description: Some red tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -255,10 +263,11 @@
     color: "#f9f375"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselBlue1
+  name: blue christmas tinsel
   description: Some blue tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -271,10 +280,11 @@
     color: "#61accf"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselBlue2
+  name: blue christmas tinsel
   description: Some blue tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -287,10 +297,11 @@
     color: "#61accf"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselBlue3
+  name: blue christmas tinsel
   description: Some blue tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -303,10 +314,11 @@
     color: "#61accf"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselBlue4
+  name: blue christmas tinsel
   description: Some blue tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -319,10 +331,11 @@
     color: "#61accf"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselBlue5
+  name: blue christmas tinsel
   description: Some blue tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -335,10 +348,11 @@
     color: "#61accf"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle
 
 - type: entity
   id: ChristmasTinselBlue6
+  name: blue christmas tinsel
   description: Some blue tinsel. It's a bit sparkly.
   components:
   - type: Sprite
@@ -351,4 +365,4 @@
     color: "#61accf"
     radius: 3
     energy: 4
-    mask: /Textures/Effects/LightMasks/sparklemask.png
+    lightMask: Sparkle

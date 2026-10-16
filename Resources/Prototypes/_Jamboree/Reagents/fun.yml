@@ -20,7 +20,8 @@
       - !type:Polymorph
         prototype: Blonk
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: BlonkLiquid
           min: 100
 
 - type: reagent
@@ -43,11 +44,13 @@
       - !type:Polymorph
         prototype: Shadowkin
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: JuiceThatMakesYouMar
           min: 50
       - !type:AdjustReagent
         reagent: JuiceThatMakesYouMar
         amount: -20
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: JuiceThatMakesYouMar
           min: 50

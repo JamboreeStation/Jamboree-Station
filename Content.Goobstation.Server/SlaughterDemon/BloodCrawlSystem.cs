@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Lumminal <81829924+Lumminal@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.SlaughterDemon;
@@ -13,10 +10,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Server.SlaughterDemon;
 
-public sealed class BloodCrawlSystem : SharedBloodCrawlSystem
+public sealed partial class BloodCrawlSystem : SharedBloodCrawlSystem
 {
-    [Dependency] private readonly PolymorphSystem _polymorph = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private PolymorphSystem _polymorph = default!;
+    [Dependency] private AudioSystem _audio = default!;
 
     private EntityQuery<PolymorphedEntityComponent> _polymorphedQuery;
 
@@ -35,19 +32,17 @@ public sealed class BloodCrawlSystem : SharedBloodCrawlSystem
         var component = ent.Comp;
         var uid = ent.Owner;
 
-        if (!component.IsCrawling && _polymorphedQuery.TryComp(uid, out var polymorph))
-        {
-            var reverted = _polymorph.Revert(uid);
+        if (component.IsCrawling || !_polymorphedQuery.TryComp(uid, out var polymorph))
+            return true;
+        var reverted = _polymorph.Revert(uid);
 
-            if (reverted != null)
-                _audio.PlayPvs(component.ExitJauntSound, reverted.Value);
+        if (reverted != null)
+            _audio.PlayPvs(component.ExitJauntSound, reverted.Value);
 
-            var evExit = new BloodCrawlExitEvent();
-            RaiseLocalEvent(polymorph.Parent, ref evExit);
+        var evExit = new BloodCrawlExitEvent();
+        RaiseLocalEvent(polymorph.Parent!.Value, ref evExit);
 
-            return false;
-        }
-        return true;
+        return false;
     }
 
     protected override void PolymorphDemon(EntityUid user, ProtoId<PolymorphPrototype> polymorph)

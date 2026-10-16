@@ -12,7 +12,6 @@
         reagents:
         - ReagentId: Caramexinin
           Quantity: 150 #Jamboree, changed because it is weird for it to be so low
-  - type: Drink
   - type: Label
     currentLabel: reagent-name-caramexinin
 
@@ -31,7 +30,6 @@
         reagents:
         - ReagentId: Milk
           Quantity: 150 #Jamboree, changed because it is weird for it to be so low
-  - type: Drink
   - type: Label
     currentLabel: reagent-name-milk
 
@@ -49,7 +47,6 @@
         reagents:
         - ReagentId: MilkSoy
           Quantity: 150 #Jamboree, changed because it is weird for it to be so low
-  - type: Drink
   - type: Label
     currentLabel: reagent-name-milk-soy
 
@@ -67,7 +64,6 @@
         reagents:
         - ReagentId: Cream
           Quantity: 150 #Jamboree, changed because it is weird for it to be so low
-  - type: Drink
   - type: Label
     currentLabel: reagent-name-cream
 
@@ -85,7 +81,6 @@
         reagents:
         - ReagentId: MilkOat
           Quantity: 150 #Jamboree, changed because it is weird for it to be so low
-  - type: Drink
   - type: Label
     currentLabel: reagent-name-milk-oat
 

@@ -4,6 +4,7 @@
 
 using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
+using Content.Shared.Temperature.Components;
 using Content.Shared.Inventory.Events;
 using Robust.Shared.Timing;
 
@@ -39,7 +40,7 @@ public sealed class EquipmentHeaterSystem : EntitySystem
         var query = EntityQueryEnumerator<EquipmentHeaterComponent>();
         while (query.MoveNext(out _, out var comp))
         {
-            if (comp.CurrentlyEquipped == null || !TryComp(comp.CurrentlyEquipped, out TemperatureComponent? temp))
+            if (comp.CurrentlyEquipped == null || !TryComp<TemperatureComponent>(comp.CurrentlyEquipped, out var temp))
                 return;
 
             if (comp.NextUpdate < _timing.CurTime)

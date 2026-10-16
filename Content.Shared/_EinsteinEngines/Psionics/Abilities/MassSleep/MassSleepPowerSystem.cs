@@ -1,5 +1,6 @@
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared._EinsteinEngines.Actions.Events;
 

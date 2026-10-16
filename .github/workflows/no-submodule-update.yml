@@ -1,9 +1,6 @@
-# SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
 # SPDX-License-Identifier: MIT
 
-name: No submodule update checker
+name: Verify Goob engine pin
 
 on:
   pull_request:
@@ -15,9 +12,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  this_aint_right:
-    name: Submodule update in pr found
+  verify-engine-pin:
+    name: Engine matches integrated Goob revision
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Fail
-        run: exit 1
+      - uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+      - name: Check engine pin against merged upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags https://github.com/Goob-Station/Goob-Station.git master
+          upstream_revision=$(git merge-base HEAD FETCH_HEAD)
+          expected=$(git rev-parse "${upstream_revision}:RobustToolbox")
+          actual=$(git rev-parse HEAD:RobustToolbox)
+          if [[ "$actual" != "$expected" ]]; then
+            echo "Engine pin $actual does not match integrated Goob revision $upstream_revision ($expected)."
+            exit 1
+          fi
+          echo "Engine pin matches integrated Goob revision $upstream_revision: $actual"

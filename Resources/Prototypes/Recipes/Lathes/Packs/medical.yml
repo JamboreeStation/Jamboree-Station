@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
 # SPDX-FileCopyrightText: 2025 IrisTheAmped <iristheamped@gmail.com>
@@ -29,6 +31,7 @@
   - Brutepack
   - Ointment
   - Gauze
+  - SynthBloodpack # Goob - Afterlight synths
 
 - type: latheRecipePack
   id: BasicChemistryStatic
@@ -36,10 +39,13 @@
   - Beaker
   - LargeBeaker
   - Syringe
+  - Dropper #Goobstation
   - PillCanister
   - HandLabeler
-  - ChemicalPayload
-  - BaseChemistryEmptyVial
+  - ChemistryEmptyVial
+  - ChemistryEmptyVialSmall
+  - ChemicalPayload # Goobstation?
+  - Dropper
 
 - type: latheRecipePack
   parent: BasicChemistryStatic
@@ -68,6 +74,9 @@
   - DiseaseSwab
   - BodyBag
   - WhiteCane
+  - OffsetCane
+  - OffsetCaneWood
+  - JetInjector
 
 - type: latheRecipePack
   id: RollerBedsStatic
@@ -114,6 +123,7 @@
 - type: latheRecipePack
   id: Chemistry
   recipes:
+  - AdvancedJetInjector
   - CryostasisBeaker
   - SyringeCryostasis
   - BluespaceBeaker
@@ -121,6 +131,7 @@
   - EnergyChemDispenserMachineCircuitboard # Jamboree - move E-Chem board from static to research
   - MedkitCombat #goob - Move combat kit to research
   - VialBluespace # goob edit - bluespace vials
+  - CryostasisCigarette # goob - cryo cig
 
 
 - type: latheRecipePack
@@ -130,3 +141,4 @@
   - CryoPodMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
   - StasisOperatingTableCircuitboard # Corvax-Goob-StasisOperatingTable
+  - EnergyChemDispenserMachineCircuitboard #Goob

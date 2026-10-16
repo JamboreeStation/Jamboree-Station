@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Actions;
@@ -54,11 +48,16 @@ public enum CarvingKnifeUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed partial class CarveRuneDoAfterEvent(ProtoId<RuneCarvingPrototype> carving) : DoAfterEvent
+public sealed partial class CarveRuneDoAfterEvent : DoAfterEvent
 {
-    public ProtoId<RuneCarvingPrototype> Carving = carving;
+    public ProtoId<RuneCarvingPrototype> Carving;
 
-    public CarveRuneDoAfterEvent() : this(default) { }
+    public CarveRuneDoAfterEvent(ProtoId<RuneCarvingPrototype> carving)
+    {
+        Carving = carving;
+    }
+
+    public CarveRuneDoAfterEvent() { }
 
     public override DoAfterEvent Clone() => this;
 }

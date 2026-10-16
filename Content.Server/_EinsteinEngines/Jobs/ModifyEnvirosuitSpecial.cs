@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Skubman <ba.fallaria@gmail.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Humanoid;
@@ -10,6 +6,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Roles;
 using Content.Shared._EinsteinEngines.SelfExtinguisher;
 using JetBrains.Annotations;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._EinsteinEngines.Jobs;
 
@@ -22,8 +19,7 @@ public sealed partial class ModifyEnvirosuitSpecial : JobSpecial
     [DataField(required: true)]
     public int Charges { get; private set; }
 
-    [ValidatePrototypeId<SpeciesPrototype>]
-    private const string Species = "Plasmaman";
+    private static readonly ProtoId<SpeciesPrototype> Species = "Plasmaman";
 
     private const string Slot = "jumpsuit";
 

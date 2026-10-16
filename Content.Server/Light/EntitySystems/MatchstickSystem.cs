@@ -1,27 +1,3 @@
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 Paul <ritter.paul1+git@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 Wrexbe <wrexbe@protonmail.com>
-// SPDX-FileCopyrightText: 2021 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Atmos.EntitySystems;
@@ -34,6 +10,7 @@ using Content.Shared.Temperature;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Light.EntitySystems
 {
@@ -45,8 +22,10 @@ namespace Content.Server.Light.EntitySystems
         [Dependency] private readonly SharedItemSystem _item = default!;
         [Dependency] private readonly SharedPointLightSystem _lights = default!;
         [Dependency] private readonly TransformSystem _transformSystem = default!;
+        [Dependency] private readonly IGameTiming _timing = default!;
 
-        private readonly HashSet<Entity<MatchstickComponent>> _litMatches = new();
+        private readonly Dictionary<Entity<MatchstickComponent>, TimeSpan> _litMatches = new();
+        private readonly List<Entity<MatchstickComponent>> _burntMatches = new();
 
         public override void Initialize()
         {
@@ -65,20 +44,35 @@ namespace Content.Server.Light.EntitySystems
         {
             base.Update(frameTime);
 
-            foreach (var match in _litMatches)
+            var curTime = _timing.CurTime;
+            foreach (var (match, burnOutTime) in _litMatches)
             {
                 if (match.Comp.CurrentState != SmokableState.Lit || Paused(match) || match.Comp.Deleted)
                     continue;
 
+                if (curTime >= burnOutTime)
+                {
+                    _burntMatches.Add(match);
+                    continue;
+                }
+
                 var xform = Transform(match);
 
                 if (xform.GridUid is not {} gridUid)
-                    return;
+                    continue;
 
                 var position = _transformSystem.GetGridOrMapTilePosition(match, xform);
 
                 _atmosphereSystem.HotspotExpose(gridUid, position, 400, 50, match, true);
             }
+
+            foreach (var match in _burntMatches)
+            {
+                SetState(match, SmokableState.Burnt); // Shitmed Change
+                _litMatches.Remove(match);
+            }
+
+            _burntMatches.Clear();
         }
 
         private void OnInteractUsing(Entity<MatchstickComponent> ent, ref InteractUsingEvent args)
@@ -110,12 +104,7 @@ namespace Content.Server.Light.EntitySystems
 
             // Change state
             SetState((matchstick, component), SmokableState.Lit); // Shitmed Change
-            _litMatches.Add(matchstick);
-            matchstick.Owner.SpawnTimer(component.Duration * 1000, delegate
-            {
-                SetState((matchstick, component), SmokableState.Burnt); // Shitmed Change
-                _litMatches.Remove(matchstick);
-            });
+            _litMatches[matchstick] = _timing.CurTime + TimeSpan.FromSeconds(component.Duration);
         }
 
         // Shitmed Change Start

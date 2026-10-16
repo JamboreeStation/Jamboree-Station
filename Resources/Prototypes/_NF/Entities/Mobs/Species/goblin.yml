@@ -86,7 +86,10 @@
 #      Burn:
 #        sprite: _Shitmed/Mobs/Effects/burn_damage.rsi
   - type: Bloodstream
-    bloodReagent: GoblinBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: GoblinBlood
+        Quantity: 300
   - type: Tag
     tags:
     - CanPilot
@@ -113,7 +116,7 @@
     - reagents: [ Water, SpaceCleaner, SoapReagent ]
       methods: [ Touch ]
       effects:
-      - !type:WashCreamPieReaction
+      - !type:WashCreamPie
     - reagents: [ Water, SpaceCleaner, SoapReagent ]
       methods: [ Touch ]
       effects:

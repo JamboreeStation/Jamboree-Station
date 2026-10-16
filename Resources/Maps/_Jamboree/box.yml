@@ -69,7 +69,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 01/09/2026 02:17:37
-  entityCount: 27389
+  entityCount: 27392
 maps:
 - 1
 grids:
@@ -55927,7 +55927,7 @@ entities:
     - type: Transform
       pos: -28.5,-24.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 18715
 - proto: Carpet
   entities:
@@ -122644,6 +122644,10 @@ entities:
         18828:
         - - MaterialSilo
           - MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 8971
+      - 18828
 - proto: MaterialWoodPlank
   entities:
   - uid: 18716
@@ -123692,7 +123696,7 @@ entities:
     - type: Transform
       pos: -24.5,-28.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 18715
     - type: MaterialStorage
       materialWhiteList:
@@ -172561,5 +172565,22 @@ entities:
     components:
     - type: Transform
       pos: -51.5,7.5
+      parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 27390
+    components:
+    - type: Transform
+      pos: -26.5,-35.5
+      parent: 2
+  - uid: 27391
+    components:
+    - type: Transform
+      pos: -26.5,-31.5
+      parent: 2
+  - uid: 27392
+    components:
+    - type: Transform
+      pos: -26.5,-33.5
       parent: 2
 ...

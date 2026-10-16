@@ -1,4 +1,4 @@
-﻿# Chest
+# Chest
 
 - type: marking
   id: ThavenSlimChest
@@ -215,8 +215,8 @@
 
 - type: marking
   id: UnderwearBriefsTF
-  bodyPart: Underwear
-  markingCategory: Underwear
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -230,8 +230,8 @@
 
 - type: marking
   id: UnderwearDefaultTF
-  bodyPart: Underwear
-  markingCategory: Underwear
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -245,8 +245,8 @@
 
 - type: marking
   id: UnderwearLowridersTF
-  bodyPart: Underwear
-  markingCategory: Underwear
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -262,8 +262,8 @@
 
 - type: marking
   id: UndergarmentTopBinderTF
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Thaven ]
   coloring:
     default:
@@ -276,8 +276,8 @@
 
 - type: marking
   id: UndergarmentTopTanktopTF
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -291,8 +291,8 @@
 
 - type: marking
   id: UndershirtBraClassicTF
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -306,8 +306,8 @@
 
 - type: marking
   id: UndershirtBraSportsTF
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -321,8 +321,8 @@
 
 - type: marking
   id: UndershirtBraStraplessTF
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -336,8 +336,8 @@
 
 - type: marking
   id: UndershirtDefaultTF
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -351,8 +351,8 @@
 
 - type: marking
   id: UndershirtGrossSleevelessTF
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -366,8 +366,8 @@
 
 - type: marking
   id: UndershirtNanotrasenTF
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:
@@ -381,8 +381,8 @@
 
 - type: marking
   id: UndershirtRolledTF
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Thaven ]
   sexRestriction: [ Female ]
   coloring:

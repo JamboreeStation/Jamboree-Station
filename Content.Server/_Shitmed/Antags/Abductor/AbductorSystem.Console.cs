@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._Shitmed.Antags.Abductor;
@@ -89,7 +85,14 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
     private void OnAttractBuiMsg(Entity<AbductorConsoleComponent> ent, ref AbductorAttractBuiMsg args)
     {
         if (ent.Comp.Target == null || ent.Comp.AlienPod == null) return;
-        var target = GetEntity(ent.Comp.Target.Value);
+        if (!TryGetEntity(ent.Comp.Target.Value, out var targetEnt) || TerminatingOrDeleted(targetEnt)
+            || !TryGetEntity(ent.Comp.AlienPod.Value, out var podEnt) || TerminatingOrDeleted(podEnt))
+        {
+            ent.Comp.Target = null;
+            return;
+        }
+
+        var target = targetEnt.Value;
         EnsureComp<TransformComponent>(target, out var xform);
         var effectEnt = SpawnAttachedTo(TeleportationEffectEntity, xform.Coordinates);
         _xformSys.SetParent(effectEnt, target);

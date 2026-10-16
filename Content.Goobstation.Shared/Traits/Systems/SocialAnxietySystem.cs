@@ -9,9 +9,9 @@ namespace Content.Goobstation.Shared.Traits.Systems;
 
 public sealed partial class SocialAnxietySystem : EntitySystem
 {
-    [Dependency] private readonly StandingStateSystem _standingSystem = default!;
+    [Dependency] private StandingStateSystem _standingSystem = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly SharedStunSystem _stunSystem = default!;
+    [Dependency] private SharedStunSystem _stunSystem = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -20,7 +20,7 @@ public sealed partial class SocialAnxietySystem : EntitySystem
     private void OnHug(EntityUid uid, SocialAnxietyComponent component, ref InteractionSuccessEvent args)
     {
         _standingSystem.Down(uid);
-        _stunSystem.TryStun(uid, TimeSpan.FromSeconds(component.DownedTime), true);
+        _stunSystem.TryUpdateStunDuration(uid, TimeSpan.FromSeconds(component.DownedTime));
         var mobName = Identity.Name(uid, EntityManager);
         _popupSystem.PopupEntity(Loc.GetString("social-anxiety-hugged", ("user", mobName)), uid, PopupType.MediumCaution);
     }

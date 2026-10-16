@@ -226,3 +226,6 @@ language-icon-blob = Blob
 language-icon-calcic = Calcic
 language-icon-elyran = Elyran Standard
 
+
+language-Hydraspeak-name = Hy'drav'tha
+language-Hydraspeak-description = The arcane language of the Hydrakin, spoken in shifting, flowing syllables.

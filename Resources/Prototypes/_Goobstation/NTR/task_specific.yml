@@ -4,7 +4,7 @@
 
 - type: entity
   id: TaskVial
-  parent: BaseChemistryEmptyVial
+  parent: ChemistryEmptyVial
   suffix: TASK
   description: A special vial, that could be inserted inside a NTRs task console.
   components:

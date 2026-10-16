@@ -94,7 +94,7 @@ public sealed class ThavenBreatherSystem : EntitySystem
         if (lung.Comp1.IntoxicatingGasMaxDuration > 0f)
             drunkenness = Math.Min(drunkenness, lung.Comp1.IntoxicatingGasMaxDuration);
 
-        _drunk.TryApplyDrunkenness(ent.Owner, drunkenness, lung.Comp1.IntoxicatingGasApplySlur);
+        _drunk.TryApplyDrunkenness(ent.Owner, TimeSpan.FromSeconds(drunkenness));
     }
 
     private void OnCheckNeedsAir(Entity<RespiratorComponent> ent, ref CheckNeedsAirEvent args)

@@ -12,17 +12,18 @@ using Content.Goobstation.Shared.SlaughterDemon.Systems;
 using Content.Server.Administration.Systems;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
+using Content.Shared.Administration.Systems;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Events;
 using Robust.Shared.Containers;
 
 namespace Content.Goobstation.Server.SlaughterDemon;
 
-public sealed class SlaughterDemonSystem : SharedSlaughterDemonSystem
+public sealed partial class SlaughterDemonSystem : SharedSlaughterDemonSystem
 {
-    [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly BloodstreamSystem _bloodstream = default!;
+    [Dependency] private RejuvenateSystem _rejuvenate = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private BloodstreamSystem _bloodstream = default!;
 
     private EntityQuery<BloodstreamComponent> _bloodstreamQuery;
 

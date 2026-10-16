@@ -58,8 +58,8 @@
     Eyes: MobHumanoidEyes
     Head: MobUrsineHead
     Face: MobHumanoidAnyMarking
-    Underwear: MobHumanoidAnyMarking
-    Undershirt: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
     Chest: MobUrsineChest
     Groin: MobUrsineGroin
     HeadTop: MobHumanoidAnyMarking
@@ -92,10 +92,10 @@
     Chest:
       points: 4
       required: false
-    Undershirt:
+    UndergarmentTop:
       points: 1
       required: false
-    Underwear:
+    UndergarmentBottom:
       points: 1
       required: false
     RightFoot:

@@ -1,16 +1,12 @@
-using System.Numerics;
 using Robust.Client.Graphics;
-using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
-using Matrix3x2 = System.Numerics.Matrix3x2;
-using Vector3 = Robust.Shared.Maths.Vector3;
 
 namespace Content.Goobstation.Client.BerserkerImplant;
 
-public sealed class BerserkerImplantOverlay : Overlay
+public sealed partial class BerserkerImplantOverlay : Overlay
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;

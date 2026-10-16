@@ -21,7 +21,6 @@
     - Write
     - Crayon
   - type: Crayon
-    capacity: 2147483647 # int.MaxValue, infinite charges
   - type: FlavorProfile
     flavors:
     - chewy
@@ -35,3 +34,5 @@
   - type: Construction
     graph: magic_crayon
     node: magicCrayon
+  - type: LimitedCharges
+    maxCharges: 2147483647 # int.MaxValue, infinite charges

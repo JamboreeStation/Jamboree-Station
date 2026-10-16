@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -166,7 +161,7 @@ public sealed class SpellsGrantSystem : EntitySystem
         if (totalWeight <= 0f || !_proto.TryIndex(spells, out var randomActions))
             return (totalWeight, chosenSpells);
 
-        var weights = FilterDictionary(randomActions.Weights, ignoredSpells);
+        var weights = FilterDictionary(randomActions.Weights.ToDictionary(x => x.Key.Id, x => x.Value), ignoredSpells);
 
         while (totalWeight > 0f && weights.Count > 0 && maxAmount is null or > 0)
         {

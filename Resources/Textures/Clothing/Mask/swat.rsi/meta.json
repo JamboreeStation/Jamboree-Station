@@ -37,6 +37,8 @@
     {
       "name": "equipped-MASK-vulpkanin",
       "directions": 4
-    }
+    },
+    {"name": "equipped-MASK-feroxi", "directions": 4},
+    {"name": "equipped-MASK-hydrakin", "directions": 4}
   ]
 }

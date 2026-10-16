@@ -59,6 +59,12 @@
   parent: BaseKudzu
   description: A rapidly growing, dangerous plant. WHY ARE YOU STOPPING TO LOOK AT IT?!
   components:
+    # Goobstation - Kudzu uses the "kudzu" layer so Diona can see through it.
+    # normalDrawDepth: Overdoors (10), seeOverDrawDepth: HighFloorObjects (-5)
+    - type: SeeOverLayerVisuals
+      layer: kudzu
+      normalDrawDepth: 10
+      seeOverDrawDepth: -5
     - type: MeleeSound
       soundGroups:
         Brute:
@@ -91,6 +97,7 @@
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
     - type: Temperature
+    - type: TemperatureDamage
       heatDamage:
         types:
           Heat: 5
@@ -110,22 +117,21 @@
         methods: [Touch]
         effects:
         - !type:HealthChange
-          scaleByQuantity: true
           damage:
             types:
               Heat: 0.5
     - type: AtmosExposed
     - type: Kudzu
       growthTickChance: 0.3
-      spreadChance: 0.2
+      spreadChance: 0.2 #goob
     - type: SpeedModifierContacts
       walkSpeedModifier: 0.2
       sprintSpeedModifier: 0.2
       ignoreWhitelist:
         components:
         - IgnoreKudzu
-    - type: Food
-      requiredStomachs: 2 # ruminants have 4 stomachs but i dont care to give them literally 4 stomachs. 2 is good
+    - type: Edible
+      requiresSpecialDigestion: true
       delay: 0.5
     - type: FlavorProfile
       flavors:
@@ -135,7 +141,10 @@
         food:
           reagents:
           - ReagentId: Nutriment
-            Quantity: 2
+            Quantity: 0.1
+    - type: Tag
+      tags:
+      - Ruminant
 
 - type: entity
   id: WeakKudzu
@@ -143,7 +152,7 @@
   suffix: Weak
   components:
     - type: Kudzu
-      spreadChance: 0.1
+      spreadChance: 0.1 #goob
 
 - type: entity
   id: KudzuFlowerFriendly
@@ -152,6 +161,13 @@
   description: A colorful carpet of flowers sprawling in every direction. You're not sure whether to take it down or leave it up.
   parent: Kudzu
   components:
+    # Goobstation - Flower carpet uses the "kudzu" layer. Both depths are
+    # HighFloorObjects (-5) since the sprite already sits low — no visual
+    # change for Diona, but the component keeps the system consistent.
+    - type: SeeOverLayerVisuals
+      layer: kudzu
+      normalDrawDepth: -5
+      seeOverDrawDepth: -5
     - type: Sprite
       drawdepth: HighFloorObjects
       sprite: Objects/Misc/kudzuflower.rsi
@@ -180,6 +196,9 @@
       - CrystalCyan
       rarePrototypes:
       - AnomalyFloraBulb
+    - type: Tag
+      tags:
+      - Ruminant
 
 - type: entity
   id: KudzuFlowerAngry
@@ -187,7 +206,7 @@
   parent: KudzuFlowerFriendly
   components:
     - type: Kudzu
-      spreadChance: 0.1
+      spreadChance: 0.1 #goob
     - type: RandomSpawner
       chance: 0.05
       rarePrototypes:
@@ -256,6 +275,7 @@
           Cold: -1.0
           Blunt: -0.5 # Needs to be balanced (approx 3x) with vacuum damage to stall but not kill Kudzu
     - type: Temperature
+    - type: TemperatureDamage
       heatDamage:
         types:
           Heat: 10
@@ -272,14 +292,14 @@
        types:
          Heat: 1.5
     - type: AtmosExposed
+    - type: Edible # delightfully devilish !
+      delay: 0.5
     - type: SpeedModifierContacts
       walkSpeedModifier: 0.3
       sprintSpeedModifier: 0.3
       ignoreWhitelist:
         tags:
         - Flesh
-    - type: Food # delightfully devilish !
-      delay: 0.5
     - type: SolutionContainerManager
       solutions:
         food:
@@ -288,16 +308,13 @@
             Quantity: 2
           - ReagentId: Protein
             Quantity: 1
-    - type: Respirator
-      damage:
-        types:
-          Asphyxiation: 0.25
-      damageRecovery:
-        types:
-          Asphyxiation: -0.25
+    - type: AutoEmote # Meat Kudzu used to have respirator, but couldn't breathe so all it would do is gasp.
+      emotes:
+      - MeatGasp
     - type: Tag
       tags:
       - Meat
+      - Ruminant
 
 - type: entity
   name: dark haze

@@ -44,6 +44,9 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
+    - sprite: Objects/Devices/pda.rsi
+      state: insert_overlay
+      map: [ "enum.PdaVisualLayers.Pen" ]
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:

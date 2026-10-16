@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Stacks;
@@ -13,10 +9,10 @@ namespace Content.Goobstation.Server.Stacks;
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class GoobStackSystem : GoobSharedStackSystem
+public sealed partial class GoobStackSystem : GoobSharedStackSystem
 {
 
-    [Dependency] private readonly StackSystem _stackSystem = default!;
+    [Dependency] private StackSystem _stackSystem = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -33,6 +29,6 @@ public sealed class GoobStackSystem : GoobSharedStackSystem
             return;
 
         var amount = message.Amount;
-        _stackSystem.UserSplit(uid, user, amount, comp);
+        _stackSystem.UserSplit((uid, comp), user, amount);
     }
 }

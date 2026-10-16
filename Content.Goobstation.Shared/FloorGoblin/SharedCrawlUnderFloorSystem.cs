@@ -6,6 +6,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Common.Weapons;
 using Content.Shared._DV.Abilities;
 using Content.Shared._Starlight.VentCrawling;
 using Content.Shared.Climbing.Components;
@@ -15,6 +16,7 @@ using Content.Shared.Maps;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Stealth;
+using Content.Shared.StepTrigger.Systems;
 using Content.Shared.Stealth.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -30,26 +32,24 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Doors.Components;
 using Content.Shared.Conveyor;
 using Robust.Shared.Physics.Events;
-using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Systems;
 
 namespace Content.Goobstation.Shared.FloorGoblin;
 
-public abstract class SharedCrawlUnderFloorSystem : EntitySystem
+public abstract partial class SharedCrawlUnderFloorSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly ITileDefinitionManager _tileManager = default!;
-    [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly TileSystem _tile = default!;
-    [Dependency] private readonly SharedStealthSystem _stealth = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private ITileDefinitionManager _tileManager = default!;
+    [Dependency] private TurfSystem _turf = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private TileSystem _tile = default!;
+    [Dependency] private SharedStealthSystem _stealth = default!;
 
     public override void Initialize()
     {
@@ -62,6 +62,8 @@ public abstract class SharedCrawlUnderFloorSystem : EntitySystem
         SubscribeLocalEvent<CrawlUnderFloorComponent, PreventCollideEvent>(OnPreventCollision);
         SubscribeLocalEvent<CrawlUnderFloorComponent, AttackAttemptEvent>(OnAttemptAttack);
         SubscribeLocalEvent<AttackAttemptEvent>(OnAnyAttackAttempt);
+        SubscribeLocalEvent<CrawlUnderFloorComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt);
+        SubscribeLocalEvent<CrawlUnderFloorComponent, HeavyAttackTargetAttemptEvent>(OnHeavyAttackTargetAttempt);
     }
 
     private void OnMapInit(EntityUid uid, CrawlUnderFloorComponent component, MapInitEvent args)
@@ -119,7 +121,7 @@ public abstract class SharedCrawlUnderFloorSystem : EntitySystem
     }
 
 
-    private void OnAttemptClimb(EntityUid uid, CrawlUnderFloorComponent component, AttemptClimbEvent args)
+    private void OnAttemptClimb(EntityUid uid, CrawlUnderFloorComponent component, ref AttemptClimbEvent args)
     {
         if (component.Enabled)
             args.Cancelled = true;
@@ -148,6 +150,18 @@ public abstract class SharedCrawlUnderFloorSystem : EntitySystem
     {
         if (IsHidden(uid, comp))
             args.Cancel();
+    }
+
+    private void OnStepTriggerAttempt(Entity<CrawlUnderFloorComponent> ent, ref StepTriggerAttemptEvent args)
+    {
+        if (IsHidden(ent, ent.Comp))
+            args.Cancelled = true;
+    }
+
+    private void OnHeavyAttackTargetAttempt(Entity<CrawlUnderFloorComponent> ent, ref HeavyAttackTargetAttemptEvent args)
+    {
+        if (IsHidden(ent, ent.Comp))
+            args.Cancelled = true;
     }
 
     private void OnAnyAttackAttempt(AttackAttemptEvent ev)

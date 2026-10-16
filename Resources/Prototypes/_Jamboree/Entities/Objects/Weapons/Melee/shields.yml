@@ -101,6 +101,5 @@
     energyPerUse: 50
     lightAttackEnergyMultiplier: 2
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 1
     canEmp: true

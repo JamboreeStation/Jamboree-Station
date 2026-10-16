@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  id: BaseSlotMachine
   parent: BaseMachinePowered
+  id: BaseSlotMachine
   name: slot machine
   abstract: true
   description: Gambling for the antisocial.
@@ -41,7 +41,7 @@
     castShadows: false
     radius: 2
     energy: 1.5
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
   - type: LitOnPowered
   - type: ApcPowerReceiver
@@ -59,10 +59,7 @@
     weight: 0.125
   - type: StaticPrice
     price: 100
-  - type: CollectiveMind
-    defaultChannel: Binary
-    channels:
-    - Binary
+  - type: IntellicardableMind
   - type: Vocalizer
     minVocalizeInterval: 8m
     maxVocalizeInterval: 10m
@@ -83,8 +80,8 @@
         whitelist:
           components:
           - Cash
-  - type: LanguageSpeaker # Einstein Engines - Languages
-  - type: LanguageKnowledge # Einstein Engines - Languages
+  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - TauCetiBasic
     - RobotTalk
@@ -95,8 +92,8 @@
   - type: DoAfter
 
 - type: entity
-  id: SlotMachine
   parent: BaseSlotMachine
+  id: SlotMachine
   name: slot machine
   description: Gambling for the antisocial.
   components:
@@ -114,7 +111,7 @@
   - type: Wires
     layoutId: SlotMachine
     boardName: wires-board-name-slot-machine
-  - type: GenericVisualizer # I have NO idea how this works
+  - type: GenericVisualizer
     visuals:
       enum.SlotMachineVisuals.Spinning:
         slotmachine_spin:
@@ -125,10 +122,19 @@
     interfaces:
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
+  - type: SlotMachine
+    prizes:
+    - Lose
+    - MinorWin
+    - SmallWin
+    - MediumWin
+    - LargeWin
+    - Jackpot
+    - GodPot
 
 - type: entity
-  id: SlotMachineHighRoller
   parent: BaseSlotMachine
+  id: SlotMachineHighRoller
   name: the QM's personal slot machine
   description: A high roller version of the slot machine, takes a whopping 100k per spin, but you can win 1 MILLION from it!
   components:
@@ -146,7 +152,7 @@
   - type: Wires
     layoutId: SlotMachine
     boardName: wires-board-name-slot-machine
-  - type: GenericVisualizer # I have NO idea how this works
+  - type: GenericVisualizer
     visuals:
       enum.SlotMachineVisuals.Spinning:
         slotmachine_spin:
@@ -159,16 +165,7 @@
         type: WiresBoundUserInterface
   - type: SlotMachine
     spinCost: 100000
-    smallPrizeAmount: 0
-    mediumPrizeAmount: 0
-    bigPrizeAmount: 0
-    jackPotPrizeAmount: 1000000
-    godPotPrize: PilkChalice
-    smallWinChance: 0
-    mediumWinChance: 0
-    bigWinChance: 0
-    jackPotWinChance: .10
-    godPotWinChance: .001
+    prizes: [JamboreeHighRollerLose, JamboreeHighRollerJackpot, JamboreeHighRollerGodPot]
   - type: StealTarget # Jamboree - cmd/steal gear tweaks
     stealGroup: QM
 
@@ -221,7 +218,7 @@
     castShadows: false
     radius: 2
     energy: 1.5
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
   - type: LitOnPowered
   - type: ApcPowerReceiver
@@ -239,10 +236,6 @@
     weight: 0.125
   - type: StaticPrice
     price: 100
-  - type: CollectiveMind
-    defaultChannel: Binary
-    channels:
-    - Binary
   - type: Vocalizer
     minVocalizeInterval: 8m
     maxVocalizeInterval: 10m
@@ -263,8 +256,8 @@
         whitelist:
           components:
           - Cash
-  - type: LanguageSpeaker # Einstein Engines - Languages
-  - type: LanguageKnowledge # Einstein Engines - Languages
+  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - TauCetiBasic
     - RobotTalk
@@ -295,7 +288,7 @@
       map: [ "clawmachine_playing" ]
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  - type: GenericVisualizer # I have NO idea how this works
+  - type: GenericVisualizer
     visuals:
       enum.ClawMachineVisuals.Spinning:
         clawmachine_playing:
@@ -342,7 +335,7 @@
     castShadows: false
     radius: 2
     energy: 1.5
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
   - type: LitOnPowered
   - type: ApcPowerReceiver
@@ -360,10 +353,6 @@
     weight: 0.125
   - type: StaticPrice
     price: 100
-  - type: CollectiveMind
-    defaultChannel: Binary
-    channels:
-    - Binary
   - type: Vocalizer
     minVocalizeInterval: 8m
     maxVocalizeInterval: 10m
@@ -371,64 +360,106 @@
   - type: VocalizerRequiresPower
   - type: DatasetVocalizer
     dataset: SlotMachineAds
-  - type: LanguageSpeaker # Einstein Engines - Languages
-  - type: LanguageKnowledge # Einstein Engines - Languages
+  - type: LanguageSpeaker
+  - type: LanguageKnowledge
     speaks:
     - TauCetiBasic
     - RobotTalk
     understands:
     - TauCetiBasic
     - RobotTalk
-  - type: ClawMachine # EVIL LOOT!!!
-    rewards:
-    - PlushieMoth
-    - PlushieHuman
-    - PlushiePenguin
-    - FoamWonderprod
-    - PlushieBingleSmall #changed, jamboree
-    - PlushieAbductor
-    #jamboree additions
-    - PlushieGhost
-    - PlushieBee
-    - PlushieHampter
-    - PlushieNuke
-    - PlushieLamp
-    - PlushieArachind
-    - PlushieLizard
-    - PlushieExperiment
-    - PlushieSpaceLizard
-    - PlushieDiona
-    - PlushieSharkBlue
-    - PlushieSharkPink
-    - PlushieSharkGrey
-    - PlushieCarp
-    - PlushieMagicarp
-    - PlushieHolocarp
-    - PlushieSlime
-    - PlushieSnake
-    - PlushieVox
-    - PlushieAtmosian
-    # jamboree end
-    - PlushieGriffy #impstation addition to the cool machine
-    - PlushieThaven #impstation addition to the cool machine
-    - PlushieGoblin #impstation addition to the cool machine
-    - PlushieAnomalocarid #impstation
-
-    evilRewards:
-    #jamboree, fully changing this cause while we are a goob fork we don't interact with goob devs at all really
-    - PlushieBongle
-    - PlushieBinglePony
-    - PlushieGhostRevenant
-    - PlushieRouny
-    - PlushieLizardMirrored
-    - PlushieLizardInversed
-    - PlushieRatvar
-    - PlushieNar
-    - PlushieRainbowLizard
-    - PlushieRainbowCarp
-    - ToyRubberDuck
-    - FoamWonderprod
-    - PlushieBingle
-    - PlushieXeno
-    #jamboree, end
+  - type: ClawMachine
+    prizes: [JamboreeClawLose, JamboreeClawGame]
+    evilPrizes: [JamboreeClawLose, JamboreeClawGameEvil]
   - type: DoAfter
+
+# Jamboree prize pools migrated to the upstream prize system.
+- type: prize
+  id: JamboreeClawLose
+  weight: 0.9
+  winSound:
+    path: /Audio/Machines/buzz-two.ogg
+  winMessage: clawmachine-fail-generic
+  announceType: Popup
+
+- type: prize
+  id: JamboreeClawGame
+  weight: 0.1
+  prizeTable: !type:GroupSelector
+    children:
+    - id: PlushieMoth
+    - id: PlushieHuman
+    - id: PlushiePenguin
+    - id: FoamWonderprod
+    - id: PlushieBingleSmall
+    - id: PlushieAbductor
+    - id: PlushieGhost
+    - id: PlushieBee
+    - id: PlushieHampter
+    - id: PlushieNuke
+    - id: PlushieLamp
+    - id: PlushieArachind
+    - id: PlushieLizard
+    - id: PlushieExperiment
+    - id: PlushieSpaceLizard
+    - id: PlushieDiona
+    - id: PlushieSharkBlue
+    - id: PlushieSharkPink
+    - id: PlushieSharkGrey
+    - id: PlushieCarp
+    - id: PlushieMagicarp
+    - id: PlushieHolocarp
+    - id: PlushieSlime
+    - id: PlushieSnake
+    - id: PlushieVox
+    - id: PlushieAtmosian
+    - id: PlushieGriffy
+    - id: PlushieThaven
+    - id: PlushieGoblin
+    - id: PlushieAnomalocarid
+
+- type: prize
+  id: JamboreeClawGameEvil
+  weight: 0.1
+  prizeTable: !type:GroupSelector
+    children:
+    - id: PlushieBongle
+    - id: PlushieBinglePony
+    - id: PlushieGhostRevenant
+    - id: PlushieRouny
+    - id: PlushieLizardMirrored
+    - id: PlushieLizardInversed
+    - id: PlushieRatvar
+    - id: PlushieNar
+    - id: PlushieRainbowLizard
+    - id: PlushieRainbowCarp
+    - id: ToyRubberDuck
+    - id: FoamWonderprod
+    - id: PlushieBingle
+    - id: PlushieXeno
+  winMessage: clawmachine-win-evil
+
+- type: prize
+  id: JamboreeHighRollerLose
+  weight: 0.899
+  winSound:
+    path: /Audio/Machines/buzz-two.ogg
+  winMessage: slotmachine-fail-generic
+
+- type: prize
+  id: JamboreeHighRollerJackpot
+  weight: 0.1
+  prizeTable:
+    id: SpaceCash1000000
+  winSound:
+    path: /Audio/_Goobstation/Machines/SlotMachine/slotmachine_jackpotwin.ogg
+  winMessage: slotmachine-win-jackpot
+
+- type: prize
+  id: JamboreeHighRollerGodPot
+  weight: 0.001
+  prizeTable:
+    id: PilkChalice
+  winSound:
+    path: /Audio/_Goobstation/Machines/SlotMachine/slotmachine_godpot.ogg
+  winMessage: slotmachine-win-godpot

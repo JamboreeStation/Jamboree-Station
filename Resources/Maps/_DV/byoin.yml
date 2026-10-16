@@ -11749,7 +11749,7 @@ entities:
     - type: Transform
       pos: 27.5,20.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: AnalysisComputerCircuitboard
   entities:
@@ -37471,7 +37471,7 @@ entities:
     - type: Transform
       pos: -17.5,-10.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: Carpet
   entities:
@@ -42991,14 +42991,14 @@ entities:
     - type: Transform
       pos: -5.5,8.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
   - uid: 15744
     components:
     - type: Transform
       pos: 28.5,-14.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: CircuitImprinterMachineCircuitboard
   entities:
@@ -54903,7 +54903,7 @@ entities:
     - type: Transform
       pos: -4.5,8.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: EngineeringTechFabCircuitboard
   entities:
@@ -54965,7 +54965,7 @@ entities:
     - type: Transform
       pos: 55.5,-15.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: ExplosivesSignMed
   entities:
@@ -92759,6 +92759,18 @@ entities:
           - FillbotAnyItem
         - - MaterialSilo
           - MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 1339
+      - 1525
+      - 3135
+      - 6577
+      - 7038
+      - 7728
+      - 9062
+      - 15744
+      - 15808
+      - 16796
 - proto: MaterialToothSpaceCarp1
   entities:
   - uid: 7990
@@ -92905,7 +92917,7 @@ entities:
     - type: Transform
       pos: 1.5,-21.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: MedicalTechFabCircuitboard
   entities:
@@ -93580,7 +93592,7 @@ entities:
     - type: Transform
       pos: -21.5,-3.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: OreProcessorMachineCircuitboard
   entities:
@@ -102243,7 +102255,7 @@ entities:
     - type: Transform
       pos: 25.5,25.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
     - type: TechnologyDatabase
       supportedDisciplines:
@@ -102277,7 +102289,7 @@ entities:
     - type: Transform
       pos: 20.5,35.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
     - type: TechnologyDatabase
       supportedDisciplines:

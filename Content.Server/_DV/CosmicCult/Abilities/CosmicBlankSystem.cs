@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2025 AftrLite <61218133+AftrLite@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Collections.Immutable;
@@ -93,6 +87,12 @@ public sealed class CosmicBlankSystem : EntitySystem
                 continue;
 
             mind.PreventGhosting = false;
+            if (TerminatingOrDeleted(comp.OriginalBody))
+            {
+                QueueDel(uid);
+                continue;
+            }
+
             _mind.TransferTo(mindEnt, comp.OriginalBody);
             RemComp<CosmicBlankComponent>(comp.OriginalBody);
             RemComp<CosmicCultExamineComponent>(comp.OriginalBody);

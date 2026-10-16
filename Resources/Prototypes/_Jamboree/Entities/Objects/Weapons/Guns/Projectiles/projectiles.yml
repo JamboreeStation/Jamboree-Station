@@ -1,15 +1,20 @@
-﻿- type: hitscan
+- type: entity
+  parent: BasicHitscan
   id: LaserRailgun
-  damage:
-    types:
-      Heat: 40
-      Structural: 30
-  muzzleFlash:
-    sprite: _Jamboree/Objects/Weapons/Guns/Projectiles/railgunshot.rsi
-    state: big_red_laser_muzzle
-  travelFlash:
-    sprite: _Jamboree/Objects/Weapons/Guns/Projectiles/railgunshot.rsi
-    state: big_red_beam
-  impactFlash:
-    sprite: _Jamboree/Objects/Weapons/Guns/Projectiles/railgunshot.rsi
-    state: big_red_laser_impact
+  name: railgun beam
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 40
+        Structural: 30
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: _Jamboree/Objects/Weapons/Guns/Projectiles/railgunshot.rsi
+      state: big_red_laser_muzzle
+    travelFlash:
+      sprite: _Jamboree/Objects/Weapons/Guns/Projectiles/railgunshot.rsi
+      state: big_red_beam
+    impactFlash:
+      sprite: _Jamboree/Objects/Weapons/Guns/Projectiles/railgunshot.rsi
+      state: big_red_laser_impact

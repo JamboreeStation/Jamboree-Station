@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Client.Clothing.Components;
@@ -11,10 +8,10 @@ using Content.Shared.Item;
 
 namespace Content.Goobstation.Client.Clothing.EntitySystems;
 
-public sealed class HideClothingLayerClothingSystem : EntitySystem
+public sealed partial class HideClothingLayerClothingSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly SharedItemSystem _item = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedItemSystem _item = default!;
 
     public override void Initialize()
     {

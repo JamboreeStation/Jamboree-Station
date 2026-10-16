@@ -21530,7 +21530,7 @@ entities:
     - type: Transform
       pos: -25.5,0.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 9207
   - uid: 13152
     components:
@@ -21542,7 +21542,7 @@ entities:
     - type: Transform
       pos: -70.5,170.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 9207
 - proto: AutolatheMachineCircuitboard
   entities:
@@ -142472,6 +142472,13 @@ entities:
         - MaterialSilo: MaterialSiloUtilizer
         9217:
         - MaterialSilo: MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 9209
+      - 9217
+      - 20976
+      - 20977
+      - 22978
 - proto: MedicalBed
   entities:
   - uid: 3460
@@ -142526,7 +142533,7 @@ entities:
     - type: Transform
       pos: 2.5,198.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 9207
 - proto: MedkitAdvancedFilled
   entities:
@@ -146648,7 +146655,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: 111.5,57.5
       parent: 2
-    - type: Timer
   - uid: 4982
     components:
     - type: Transform
@@ -146665,14 +146671,12 @@ entities:
     - type: Transform
       pos: 94.5,59.5
       parent: 2
-    - type: Timer
   - uid: 4987
     components:
     - type: Transform
       rot: 3.141592653589793 rad
       pos: 94.5,47.5
       parent: 2
-    - type: Timer
   - uid: 4988
     components:
     - type: Transform
@@ -147085,7 +147089,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -3.5,78.5
       parent: 2
-    - type: Timer
   - uid: 11324
     components:
     - type: Transform
@@ -148330,7 +148333,6 @@ entities:
     - type: Transform
       pos: -125.5,60.5
       parent: 2
-    - type: Timer
   - uid: 25386
     components:
     - type: Transform
@@ -148527,7 +148529,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -101.5,26.5
       parent: 2
-    - type: Timer
   - uid: 30456
     components:
     - type: Transform
@@ -149290,7 +149291,6 @@ entities:
     - type: Transform
       pos: -117.5,66.5
       parent: 2
-    - type: Timer
   - uid: 27179
     components:
     - type: Transform
@@ -149454,7 +149454,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -0.5,-1.5
       parent: 2
-    - type: Timer
   - uid: 1915
     components:
     - type: Transform
@@ -149528,7 +149527,6 @@ entities:
     - type: Transform
       pos: -82.5,145.5
       parent: 2
-    - type: Timer
   - uid: 4019
     components:
     - type: Transform
@@ -149582,7 +149580,6 @@ entities:
     - type: Transform
       pos: 90.5,61.5
       parent: 2
-    - type: Timer
   - uid: 4965
     components:
     - type: Transform
@@ -149936,7 +149933,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -26.5,73.5
       parent: 2
-    - type: Timer
   - uid: 12171
     components:
     - type: Transform
@@ -150441,13 +150437,11 @@ entities:
       rot: 3.141592653589793 rad
       pos: -123.5,102.5
       parent: 2
-    - type: Timer
   - uid: 25338
     components:
     - type: Transform
       pos: -123.5,100.5
       parent: 2
-    - type: Timer
   - uid: 25340
     components:
     - type: Transform
@@ -150562,7 +150556,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -80.5,51.5
       parent: 2
-    - type: Timer
   - uid: 27996
     components:
     - type: Transform
@@ -150938,7 +150931,7 @@ entities:
     - type: Transform
       pos: -70.5,169.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 9207
 - proto: PsychBed
   entities:
@@ -158879,7 +158872,7 @@ entities:
     - type: Transform
       pos: 77.5,63.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 9207
 - proto: SeedExtractor
   entities:

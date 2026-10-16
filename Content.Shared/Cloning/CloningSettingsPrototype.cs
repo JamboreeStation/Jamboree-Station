@@ -18,7 +18,7 @@ public sealed partial class CloningSettingsPrototype : IPrototype, IInheritingPr
     [IdDataField]
     public string ID { get; private set; } = default!;
 
-    [ParentDataField(typeof(PrototypeIdArraySerializer<CloningSettingsPrototype>))]
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<CloningSettingsPrototype>))]
     public string[]? Parents { get; private set; }
 
     [AbstractDataField]
@@ -65,6 +65,12 @@ public sealed partial class CloningSettingsPrototype : IPrototype, IInheritingPr
     /// </summary>
     [DataField]
     public bool CopyImplants = true;
+
+    /// <summary>
+    ///     Should infinite status effects applied to an entity be copied or not?
+    /// </summary>
+    [DataField]
+    public bool CopyStatusEffects = true;
 
     /// <summary>
     ///     Whitelist for the equipment allowed to be copied.

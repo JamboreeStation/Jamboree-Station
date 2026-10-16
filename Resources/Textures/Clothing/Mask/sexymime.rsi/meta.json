@@ -29,6 +29,7 @@
     {
       "name": "equipped-MASK-anomalocarid",
       "directions": 4
-    }
+    },
+    {"name": "equipped-MASK-feroxi", "directions": 4}
   ]
 }

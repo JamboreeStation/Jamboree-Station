@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: [ ClothingModsuitStandard, BaseSecurityContraband ]
   id: ClothingModsuitFirepower
   name: Firepower Mk.6 Armor control unit
@@ -78,7 +78,7 @@
     interfaces:
       enum.AmmoSelectorUiKey.Key:
         type: AmmoSelectorMenuBoundUserInterface
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BulletDisabler
     fireCost: 100
   - type: ComponentToggler
@@ -109,9 +109,7 @@
     startingCharge: 1500
   - type: BatterySelfRecharger
     autoRechargeRate: 25
-    autoRecharge: true
     autoRechargePauseTime: 15
-    autoRechargePause: true
 
 - type: entity
   parent: [ClothingModsuitHelmetStandard, ShowSecurityIcons, BaseSecurityContraband]

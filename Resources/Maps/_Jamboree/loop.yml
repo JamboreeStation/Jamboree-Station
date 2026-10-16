@@ -34626,7 +34626,7 @@ entities:
     - type: Transform
       pos: 5.5,62.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 11842
 - proto: Carpet
   entities:
@@ -78390,6 +78390,10 @@ entities:
         5393:
         - - MaterialSilo
           - MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 5393
+      - 11932
 - proto: MaterialWoodPlank
   entities:
   - uid: 11843
@@ -78933,7 +78937,7 @@ entities:
     - type: Transform
       pos: 8.5,66.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 11842
 - proto: OxygenCanister
   entities:

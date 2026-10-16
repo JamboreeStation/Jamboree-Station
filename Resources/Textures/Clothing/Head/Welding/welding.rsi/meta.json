@@ -76,6 +76,10 @@
     {
       "name": "up-equipped-HELMET-vulpkanin",
       "directions": 4
-    }
+    },
+    {"name": "equipped-HELMET-feroxi", "directions": 4},
+    {"name": "equipped-HELMET-synth", "directions": 4},
+    {"name": "up-equipped-HELMET-feroxi", "directions": 4},
+    {"name": "up-equipped-HELMET-synth", "directions": 4}
   ]
 }
