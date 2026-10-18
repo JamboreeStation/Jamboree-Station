@@ -334,7 +334,7 @@
 - type: entity
   parent: [BaseCommandContraband, ClothingShoesGaloshes]
   id: ClothingShoesBootsJackGaloshes
-  name: Jack Galoshes
+  name: jack galoshes
   description: This pair of jackboots was designed for the elite maids of our station. Perhaps the most coveted item on station.
   components:
   - type: Sprite

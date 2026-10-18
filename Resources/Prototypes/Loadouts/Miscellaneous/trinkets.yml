@@ -824,3 +824,10 @@
     back:
     - TowelColorMime
   groupBy: "towels"
+
+# Candy Bucket! (Jamboree, only for Halloween!)
+- type: loadout
+  id: CandyBucket
+  storage:
+    back:
+    - CandyBucket

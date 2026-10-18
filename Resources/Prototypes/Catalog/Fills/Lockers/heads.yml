@@ -152,6 +152,7 @@
   id: LockerFillQuarterMaster
   table: !type:AllSelector
     children:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: BoxEncryptionKeyCargo
     - id: BoxFolderQmClipboard
     - id: CargoBountyComputerCircuitboard
@@ -192,6 +193,7 @@
   id: LockerFillCaptainNoLaser
   table: !type:AllSelector
     children:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: CaptainIDCard
     - id: CigarGoldCase
       prob: 0.25
@@ -278,6 +280,7 @@
   id: LockerFillHeadOfPersonnel
   table: !type:AllSelector
     children:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: AccessConfigurator
     - id: BoxEncryptionKeyPassenger
     - id: BoxEncryptionKeyService
@@ -323,6 +326,7 @@
   id: LockerFillChiefEngineerNoHardsuit
   table: !type:AllSelector
     children:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: AccessConfigurator
     - id: BoxEncryptionKeyEngineering
     - id: CigarCase
@@ -393,6 +397,7 @@
   id: LockerFillChiefMedicalOfficerNoHardsuit
   table: !type:AllSelector
     children:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: BoxEncryptionKeyMedical
     # - id: ClothingBackpackDuffelSurgeryFilled # Goobstation - tools in webbing
     - id: ClothingCloakCmo
@@ -470,6 +475,7 @@
   id: LockerFillResearchDirectorNoHardsuit
   table: !type:AllSelector
     children:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: Intellicard
     - id: BoxEncryptionKeyScience
     #- id: CircuitImprinterMachineCircuitboard # Goobstation - Science Techfab
@@ -533,6 +539,7 @@
   id: LockerFillHeadOfSecurityNoHardsuit
   table: !type:AllSelector
     children:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     #- id: WeaponEnergyShotgun # Goobstation - security revamp
     - id: BookSpaceLaw
     - id: BookCodeofConduct #jamboree COC
@@ -604,6 +611,7 @@
     access: [ [ "Command" ] ]
   - type: StorageFill
     contents:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: WeaponRevolverDeckard
     - id: JetpackBlue
     - id: SpaceCash1000

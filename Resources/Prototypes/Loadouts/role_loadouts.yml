@@ -474,6 +474,7 @@
   id: JobSalvageSpecialist
   groups:
   - GroupTankHarness
+  - SalvageSpecialistHead #jamboree
   - SalvageSpecialistNeck # Goobstation
   - SalvageSpecialistBackpack
   - SalvageSpecialistOuterClothing

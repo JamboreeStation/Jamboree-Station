@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterBalloonVest
+  name: balloon vest
+  description: It may have taken a thousand years, but our finest balloon engineers have created the perfect vest. Now using unfloatable gases and unpoppable rubber!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Misc/balloon_vest.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Misc/balloon_vest.rsi

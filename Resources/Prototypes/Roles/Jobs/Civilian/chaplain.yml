@@ -91,7 +91,7 @@
     - type: InnatePsionicPowers
       powersToAdd:
       - HealingWordPower
-      - SummonRemiliaPower
+#      - SummonRemiliaPower #Jamboree, it doesn't make sense for this ability to be active when they, in fact, can spawn Remilia with their Bible.
     - type: CurseImmune # Immune to curses of wraith plaguebinger - Goobstation
 
 - type: startingGear

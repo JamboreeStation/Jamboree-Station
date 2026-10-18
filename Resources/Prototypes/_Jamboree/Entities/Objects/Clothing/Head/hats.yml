@@ -81,3 +81,25 @@
   - type: DeviceLinkSink
     ports:
       - Trigger
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatIRS
+  name: IRS hat
+  description: "This might be the scariest thing you'll ever see..."
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Hats/irs_hat.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Hats/irs_hat.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatBalloon
+  name: balloon tophat
+  description: It may have taken a thousand years, but our finest balloon engineers have created the perfect hat. Now using unfloatable gases and unpoppable rubber!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Hats/balloon_tophat.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Hats/balloon_tophat.rsi

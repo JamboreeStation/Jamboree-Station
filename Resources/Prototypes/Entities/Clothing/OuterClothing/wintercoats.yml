@@ -241,7 +241,7 @@
 - type: entity
   parent: [ ClothingOuterWinterCoatToggleable, BaseCentcommContraband ]
   id: ClothingOuterWinterCentcom
-  name: CentComm winter coat
+  name: centcomm winter coat #decapitalized on purpose, Jamboree
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/WinterCoats/coatcentcom.rsi

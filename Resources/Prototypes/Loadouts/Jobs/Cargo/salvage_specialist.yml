@@ -74,6 +74,41 @@
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Head, Jamboree Addition
+- type: loadout
+  id: BlackBearPelt
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 36000 # 10hr
+  equipment:
+    head: JamboreeClothingHeadBlackBearPelt
+
+- type: loadout
+  id: BrownBearPelt
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 72000 # 20hr
+  equipment:
+    head: JamboreeClothingHeadBrownBearPelt
+
+- type: loadout
+  id: PolarBearPelt
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 108000 # 30hr
+  equipment:
+    head: JamboreeClothingHeadPolarBearPelt
+
 # Back
 - type: loadout
   id: SalvageSpecialistBackpack

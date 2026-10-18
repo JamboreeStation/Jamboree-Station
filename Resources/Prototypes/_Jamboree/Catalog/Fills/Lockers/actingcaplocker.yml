@@ -152,6 +152,7 @@
   id: LockerFillACO
   table: !type:AllSelector
     children:
+    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: CaptainIDCard
     - id: CommandMegaphone # Jamboree, cause why cap no get loud?
     - id: PrinterDocFlatpack  # Corvax-Printer

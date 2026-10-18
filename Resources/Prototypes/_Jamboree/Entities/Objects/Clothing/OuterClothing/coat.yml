@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: JamboreeClothingOuterCoatIRS
+  name: IRS jacket
+  description: "Woe be to the tider, for they know not the fury of the taxman."
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Coat/irs_coat.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Coat/irs_coat.rsi

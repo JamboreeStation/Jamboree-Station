@@ -91,6 +91,11 @@
   equipment:
     head: ClothingHeadHatMitreClown
 
+- type: loadout #Jamboree, Balloon Vest and Hat
+  id: BalloonTophat
+  equipment:
+    head: JamboreeClothingHeadHatBalloon
+
 # Jumpsuit
 - type: loadout
   id: ClownSuit
@@ -153,3 +158,8 @@
   id: ClownWintercoat
   equipment:
     outerClothing: ClothingOuterWinterClown
+
+- type: loadout #Jamboree, Balloon Vest and Hat
+  id: BalloonVest
+  equipment:
+    outerClothing: JamboreeClothingOuterBalloonVest
