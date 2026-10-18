@@ -15,3 +15,6 @@ global using Robust.Shared.IoC;
 global using Robust.Shared.Maths;
 global using Robust.Shared.ViewVariables;
 global using Robust.Shared.Serialization.Manager.Attributes;
+global using System.Linq;
+
+global using System.Numerics;

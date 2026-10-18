@@ -65,7 +65,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v4.1.0
       with:
-        dotnet-version: 9.0.x
+        dotnet-version: 10.0.x
 
     - name: Install dependencies
       run: dotnet restore
@@ -80,7 +80,28 @@ jobs:
       shell: pwsh
       run: |
         $env:DOTNET_gcServer=1
-        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+        # Each process has a 20-minute harness limit. Keep the expensive fixtures separate.
+        # The final two filters partition all station cases, including any future additions.
+        $stationNames = '(Name~Dev|Name~TestTeg|Name~Fland|Name~Meta|Name~Packed|Name~Cluster|Name~Omega|Name~Bagel|Name~CentComm|Name~Box|Name~Europa|Name~Atlas|Name~Core|Name~Marathon|Name~MeteorArena|Name~Saltern|Name~Reach|Name~Origin|Name~Train|Name~Oasis|Name~Cog)'
+        $otherStations = $stationNames.Replace('Name~', 'Name!~').Replace('|', '&')
+        $filters = @(
+          'FullyQualifiedName!~PostMapInitTest&FullyQualifiedName!~Content.IntegrationTests.Tests.EntityTest&FullyQualifiedName!~Content.IntegrationTests.Tests.PrototypeTests&FullyQualifiedName!~Content.IntegrationTests.Tests.PrototypeSaveTest',
+          'FullyQualifiedName~Content.IntegrationTests.Tests.PrototypeTests|FullyQualifiedName~Content.IntegrationTests.Tests.PrototypeSaveTest',
+          'FullyQualifiedName~Content.IntegrationTests.Tests.EntityTest&FullyQualifiedName!~SpawnAndDeleteAllEntitiesOnDifferentMaps&FullyQualifiedName!~SpawnAndDirtyAllEntities',
+          'FullyQualifiedName~Content.IntegrationTests.Tests.EntityTest.SpawnAndDeleteAllEntitiesOnDifferentMaps',
+          'FullyQualifiedName~Content.IntegrationTests.Tests.EntityTest.SpawnAndDirtyAllEntities',
+          'FullyQualifiedName~PostMapInitTest&FullyQualifiedName!~GameMapsLoadableTest',
+          'FullyQualifiedName~PostMapInitTest.NonGameMapsLoadableTest',
+          "FullyQualifiedName~PostMapInitTest.GameMapsLoadableTest&$stationNames",
+          "FullyQualifiedName~PostMapInitTest.GameMapsLoadableTest&$otherStations"
+        )
+        $failed = $false
+        for ($i = 0; $i -lt $filters.Count; $i++) {
+          Write-Output "Running integration partition $($i + 1)/$($filters.Count)"
+          dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj --filter $filters[$i] --logger "trx;LogFileName=integration-$i.trx" --results-directory TestResults -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+          if ($LASTEXITCODE -ne 0) { $failed = $true }
+        }
+        if ($failed) { exit 1 }
   ci-success:
     name: Build & Test Debug
     needs:

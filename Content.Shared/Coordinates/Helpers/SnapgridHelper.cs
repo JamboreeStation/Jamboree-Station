@@ -25,9 +25,10 @@ namespace Content.Shared.Coordinates.Helpers
 {
     public static class SnapgridHelper
     {
-        public static EntityCoordinates SnapToGrid(this EntityCoordinates coordinates, IEntityManager? entMan = null, IMapManager? mapManager = null)
+        public static EntityCoordinates SnapToGrid(this EntityCoordinates coordinates, IEntityManager? entMan = null, SharedMapSystem? mapManager = null)
         {
-            IoCManager.Resolve(ref entMan, ref mapManager);
+            IoCManager.Resolve(ref entMan);
+            mapManager ??= entMan.System<SharedMapSystem>();
 
             var gridId = coordinates.GetGridUid(entMan);
 

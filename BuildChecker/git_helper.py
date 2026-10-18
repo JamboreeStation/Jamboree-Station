@@ -81,6 +81,10 @@ def install_hooks():
     Installs the necessary git hooks into .git/hooks.
     """
 
+    # Linked worktrees share hooks with their main checkout. Leave those hooks intact.
+    if (Path("..") / ".git").is_file():
+        return
+
     # Read version file.
     if os.path.isfile("INSTALLED_HOOKS_VERSION"):
         with open("INSTALLED_HOOKS_VERSION", "r") as f:
@@ -121,7 +125,7 @@ def reset_solution():
 def check_for_zip_download():
     # Check if .git exists,
     cur_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-    if not os.path.isdir(os.path.join(cur_dir, ".git")):
+    if not os.path.exists(os.path.join(cur_dir, ".git")):
         print("It appears that you downloaded this repository directly from GitHub. (Using the .zip download option) \n"
               "When downloading straight from GitHub, it leaves out important information that git needs to function. "
               "Such as information to download the engine or even the ability to even be able to create contributions. \n"

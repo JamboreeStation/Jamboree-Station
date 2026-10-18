@@ -28,11 +28,26 @@ public sealed class EnchantVisualsSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<EnchantedComponent, AfterAutoHandleStateEvent>(OnHandleState);
+        SubscribeLocalEvent<EnchantedComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<EnchantedComponent, HeldVisualsUpdatedEvent>(OnHeldVisualsUpdated);
         SubscribeLocalEvent<EnchantedComponent, EquipmentVisualsUpdatedEvent>(OnEquipmentVisualsUpdated);
     }
 
+    private void OnStartup(Entity<EnchantedComponent> ent, ref ComponentStartup args)
+    {
+        SetShader(ent);
+    }
+
     private void OnHandleState(Entity<EnchantedComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        // Initial network state arrives before Sprite initializes its post-shaders.
+        if (!ent.Comp.Running)
+            return;
+
+        SetShader(ent);
+    }
+
+    private void SetShader(Entity<EnchantedComponent> ent)
     {
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;

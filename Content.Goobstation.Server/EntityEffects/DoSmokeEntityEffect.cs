@@ -64,7 +64,7 @@ public sealed partial class DoSmokeEntityEffect : EntityEffect
             return;
 
         var entityManager = args.EntityManager;
-        var mapMan = IoCManager.Resolve<IMapManager>();
+        var mapMan = IoCManager.Resolve<IEntityManager>().System<SharedMapSystem>();
         var transformSys = entityManager.System<SharedTransformSystem>();
         var spreaderSys = entityManager.System<SpreaderSystem>();
         var smokeSys = entityManager.System<SmokeSystem>();

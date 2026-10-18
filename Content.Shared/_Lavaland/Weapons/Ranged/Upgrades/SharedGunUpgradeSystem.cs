@@ -57,7 +57,8 @@ public abstract class SharedGunUpgradeSystem : EntitySystem
         SubscribeLocalEvent<UpgradeableGunComponent, InteractUsingEvent>(OnInteractUsing);
         SubscribeLocalEvent<UpgradeableGunComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttemptEvent);
         SubscribeLocalEvent<UpgradeableGunComponent, ExaminedEvent>(OnExamine);
-        SubscribeLocalEvent<UpgradeableGunComponent, MapInitEvent>(OnMapInit);
+        // Modifier refresh reads the slots, including on client-only visual dummies.
+        SubscribeLocalEvent<UpgradeableGunComponent, MapInitEvent>(OnMapInit, before: [typeof(SharedGunSystem)]);
         SubscribeLocalEvent<UpgradeableGunComponent, GunRefreshModifiersEvent>(RelayEvent);
         SubscribeLocalEvent<UpgradeableGunComponent, RechargeBasicEntityAmmoGetCooldownModifiersEvent>(RelayEvent);
         SubscribeLocalEvent<UpgradeableGunComponent, GunShotEvent>(RelayEvent);

@@ -4,7 +4,7 @@ using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Matrix3x2 = System.Numerics.Matrix3x2;
-using Vector3 = Robust.Shared.Maths.Vector3;
+using Vector3 = System.Numerics.Vector3;
 
 namespace Content.Goobstation.Client.BerserkerImplant;
 

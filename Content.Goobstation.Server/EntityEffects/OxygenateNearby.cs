@@ -14,7 +14,6 @@ using Content.Server.Body.Systems;
 using Content.Shared.Database;
 using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace Content.Goobstation.Server.EntityEffects;
 

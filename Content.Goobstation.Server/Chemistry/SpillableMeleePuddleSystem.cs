@@ -15,7 +15,7 @@ namespace Content.Goobstation.Server.Chemistry;
 
 public sealed class SpillableMeleePuddleSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapMan = default!;
 
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly TransformSystem _transform = default!;

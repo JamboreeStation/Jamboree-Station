@@ -6,8 +6,6 @@
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace Content.Goobstation.Shared.MisandryBox.JumpScare;
 

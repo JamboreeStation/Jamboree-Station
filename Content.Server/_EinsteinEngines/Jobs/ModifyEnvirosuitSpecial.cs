@@ -1,3 +1,4 @@
+using Robust.Shared.Prototypes;
 // SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
 // SPDX-FileCopyrightText: 2025 Skubman <ba.fallaria@gmail.com>
 // SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
@@ -22,8 +23,7 @@ public sealed partial class ModifyEnvirosuitSpecial : JobSpecial
     [DataField(required: true)]
     public int Charges { get; private set; }
 
-    [ValidatePrototypeId<SpeciesPrototype>]
-    private const string Species = "Plasmaman";
+    private static readonly ProtoId<SpeciesPrototype> Species = "Plasmaman";
 
     private const string Slot = "jumpsuit";
 

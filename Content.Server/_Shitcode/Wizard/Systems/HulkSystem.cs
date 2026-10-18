@@ -145,8 +145,6 @@ public sealed class HulkSystem : SharedHulkSystem
     private void Scale(EntityUid uid, float scale)
     {
         EnsureComp<ScaleVisualsComponent>(uid);
-        var ev = new ScaleCommand.ScaleEntityEvent();
-        RaiseLocalEvent(uid, ref ev);
 
         var appearanceComponent = EnsureComp<AppearanceComponent>(uid);
         if (!_appearance.TryGetData<Vector2>(uid, ScaleVisuals.Scale, out var oldScale, appearanceComponent))

@@ -47,13 +47,12 @@ public sealed partial class LavalandSystem : EntitySystem
 {
     public bool LavalandEnabled = true;
 
-    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly ITileDefinitionManager _tiledef = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly INetConfigurationManager _config = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
     [Dependency] private readonly BiomeSystem _biome = default!;
@@ -111,10 +110,10 @@ public sealed partial class LavalandSystem : EntitySystem
             || !LavalandEnabled)
             return;
 
-        var mapUid = _map.CreateMap(out var mapId, false);
+        var mapUid = _mapManager.CreateMap(out var mapId, false);
         EnsureComp<LavalandPreloaderComponent>(mapUid);
         _metaData.SetEntityName(mapUid, "Lavaland Preloader Map");
-        _map.SetPaused(mapId, true);
+        _mapManager.SetPaused(mapId, true);
     }
 
     /// <summary>

@@ -19,7 +19,7 @@ using Robust.Shared.Utility;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
-using Vector4 = Robust.Shared.Maths.Vector4;
+using Vector4 = System.Numerics.Vector4;
 
 namespace Content.Client.Power;
 

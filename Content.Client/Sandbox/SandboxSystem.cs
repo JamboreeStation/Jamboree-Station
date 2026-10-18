@@ -51,7 +51,7 @@ namespace Content.Client.Sandbox
     {
         [Dependency] private readonly IClientAdminManager _adminManager = default!;
         [Dependency] private readonly IClientConsoleHost _consoleHost = default!;
-        [Dependency] private readonly IMapManager _map = default!;
+        [Dependency] private readonly SharedMapSystem _map = default!;
         [Dependency] private readonly IPlacementManager _placement = default!;
         [Dependency] private readonly ContentEyeSystem _contentEye = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;

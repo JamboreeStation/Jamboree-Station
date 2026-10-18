@@ -19,3 +19,5 @@ global using Robust.Shared.Maths;
 global using Robust.Shared.ViewVariables;
 global using Robust.Shared.Serialization.Manager.Attributes;
 global using JetBrains.Annotations; // fuck importing this everytime its ugly and out of place
+
+global using System.Linq;

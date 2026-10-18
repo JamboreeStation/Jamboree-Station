@@ -420,10 +420,8 @@ public sealed class StarGazerSystem : SharedStarGazerSystem
                 if (aLen <= 0.01f || bLen <= 0.01f)
                     continue;
 
-                var angleac = Robust.Shared.Maths.Vector3.CalculateAngle(new Robust.Shared.Maths.Vector3(-a),
-                    new Robust.Shared.Maths.Vector3(-c));
-                var anglebc = Robust.Shared.Maths.Vector3.CalculateAngle(new Robust.Shared.Maths.Vector3(-b),
-                    new Robust.Shared.Maths.Vector3(c));
+                var angleac = MathF.Acos(Math.Clamp(Vector2.Dot(-a, -c) / ((-a).Length() * (-c).Length()), -1f, 1f));
+                var anglebc = MathF.Acos(Math.Clamp(Vector2.Dot(-b, c) / ((-b).Length() * (c).Length()), -1f, 1f));
 
                 var sinac = MathF.Sin(angleac);
                 var sinbc = MathF.Sin(anglebc);

@@ -385,9 +385,16 @@ internal struct CustomRichTextEntry
 
         var boxPadding = (BoxPadding * uiScale);
 
-        return new UIBox2(
-                new Vector2(drawBox.Left + (margin - boxPadding) - sPixelWidth, baseLineBase.Y - boxPadding),
-                new Vector2(drawBox.Right - (margin - boxPadding) - sPixelWidth, baseLine.Y - GetLineHeight(defaultFont, uiScale, lineHeightScale) + boxPadding));
+        // Baselines are inside the text, so subtracting a line height from the last
+        // baseline can put the bottom above the top for a single-line message.
+        // Height is the measured entry height in pixels, including wrapped lines.
+        var contentTop = baseLineBase.Y - defaultFont.GetAscent(uiScale);
+        var topLeft = new Vector2(drawBox.Left + margin - boxPadding - sPixelWidth, contentTop - boxPadding);
+        var bottomRight = new Vector2(drawBox.Right - margin + boxPadding - sPixelWidth,
+            contentTop + Math.Max(Height, defaultFont.GetHeight(uiScale)) + boxPadding);
+
+        // A panel can temporarily be narrower than its margins during layout.
+        return new UIBox2(topLeft, Vector2.Max(topLeft, bottomRight));
     }
 
     private readonly string ProcessNode(MarkupTagManager tagManager, MarkupNode node, MarkupDrawingContext context)

@@ -29,7 +29,7 @@ public partial class SharedDiseaseSystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly StatusEffectsSystem _status = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapMan = default!;
     [Dependency] private readonly TileSystem _tile = default!;
 
     public float MaxEffectSeverity = 1f; // magic numbers are EVIL and BAD

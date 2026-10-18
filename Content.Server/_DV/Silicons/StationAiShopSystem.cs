@@ -20,7 +20,7 @@ namespace Content.Server._DV.Silicons;
 public sealed class StationAiShopSystem : SharedStationAiShopSystem
 {
     [Dependency] private readonly StoreSystem _store = default!;
-    [Dependency] private readonly IMapManager _map = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly SmokeSystem _smoke = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SpreaderSystem _spreader = default!;

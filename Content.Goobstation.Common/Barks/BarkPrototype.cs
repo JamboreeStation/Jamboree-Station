@@ -67,5 +67,5 @@ public sealed partial class BarkPrototype : IPrototype
     /// Whether it is available for selection in the character editor.
     /// </summary>
     [DataField]
-    public bool RoundStart { get; } = true;
+    public bool RoundStart { get; private set; } = true;
 }

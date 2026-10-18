@@ -1,4 +1,4 @@
-﻿using Content.Shared._Lavaland.Megafauna.Selectors;
+using Content.Shared._Lavaland.Megafauna.Selectors;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Lavaland.Megafauna;
@@ -11,7 +11,7 @@ public sealed partial class MegafaunaSelectorPrototype : IPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
-    public string ID { get; } = default!;
+    public string ID { get; private set; } = default!;
 
     [DataField(required: true)]
     public MegafaunaSelector Selector = default!;

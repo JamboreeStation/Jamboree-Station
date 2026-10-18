@@ -305,13 +305,13 @@ public sealed partial class LavalandSystem
         // Copy all tiles
         _tiles.Clear();
 
-        var tiles = _map.GetAllTiles(grid.Owner, grid.Comp).ToList();
+        var tiles = _mapManager.GetAllTiles(grid.Owner, grid.Comp).ToList();
         foreach (var tileRef in tiles)
         {
             _tiles.Add((tileRef.GridIndices + offset, tileRef.Tile));
         }
 
-        _map.SetTiles(lavaland.Owner, lavaland.Comp, _tiles);
+        _mapManager.SetTiles(lavaland.Owner, lavaland.Comp, _tiles);
 
         // Teleport all entities
         var ents = new HashSet<Entity<TransformComponent>>();
@@ -377,9 +377,9 @@ public sealed partial class LavalandSystem
 
                 // Fallback because uhhhhhhhh yeah, a corner tile might look valid on the original
                 // but place 1 nanometre off grid and fail the add.
-                if (!_map.TryGetTileRef(grid, grid, tilePos, out var tileRef) || tileRef.Tile.IsEmpty)
+                if (!_mapManager.TryGetTileRef(grid, grid, tilePos, out var tileRef) || tileRef.Tile.IsEmpty)
                 {
-                    _map.SetTile(grid,
+                    _mapManager.SetTile(grid,
                         grid,
                         tilePos,
                         _tile.GetVariantTile((ContentTileDefinition) _tiledef[DungeonSystem.FallbackTileId],

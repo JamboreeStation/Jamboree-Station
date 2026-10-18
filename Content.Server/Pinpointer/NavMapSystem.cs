@@ -36,9 +36,8 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
 {
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapManager = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly TurfSystem _turfSystem = default!;
 
@@ -268,7 +267,7 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
         }
 
         // Loop over all tiles
-        var tileRefs = _mapSystem.GetAllTiles(uid, mapGrid);
+        var tileRefs = _mapManager.GetAllTiles(uid, mapGrid);
 
         foreach (var tileRef in tileRefs)
         {
@@ -300,7 +299,7 @@ public sealed partial class NavMapSystem : SharedNavMapSystem
         else
             tileData &= FloorMask;
 
-        var enumerator = _mapSystem.GetAnchoredEntitiesEnumerator(uid, mapGrid, tile);
+        var enumerator = _mapManager.GetAnchoredEntitiesEnumerator(uid, mapGrid, tile);
         while (enumerator.MoveNext(out var ent))
         {
             if (!_airtightQuery.TryComp(ent, out var airtight))

@@ -1,3 +1,4 @@
+using Robust.Shared.Prototypes;
 // SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
 // SPDX-FileCopyrightText: 2024 Fishbait <Fishbait@git.ml>
 // SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
@@ -45,8 +46,7 @@ public sealed class BlobTileSystem : SharedBlobTileSystem
 
     private EntityQuery<BlobCoreComponent> _blobCoreQuery;
 
-    [ValidatePrototypeId<NpcFactionPrototype>]
-    private const string BlobFaction = "Blob";
+    private static readonly ProtoId<NpcFactionPrototype> BlobFaction = "Blob";
 
     public override void Initialize()
     {

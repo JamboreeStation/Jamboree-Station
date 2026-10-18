@@ -1,3 +1,4 @@
+using Robust.Shared.Prototypes;
 // SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
 // SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
@@ -18,8 +19,7 @@ public sealed class HarpyVisualsSystem : EntitySystem
     [Dependency] private readonly TagSystem _tagSystem = default!;
     [Dependency] private readonly SharedHumanoidAppearanceSystem _humanoidSystem = default!;
 
-    [ValidatePrototypeId<TagPrototype>]
-    private const string HarpyWingsTag = "HidesHarpyWings";
+    private static readonly ProtoId<TagPrototype> HarpyWingsTag = "HidesHarpyWings";
 
     public override void Initialize()
     {

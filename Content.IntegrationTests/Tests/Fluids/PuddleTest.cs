@@ -79,7 +79,8 @@ namespace Content.IntegrationTests.Tests.Fluids
             // Remove all tiles
             await server.WaitPost(() =>
             {
-                var tiles = mapSystem.GetAllTiles(grid.Owner, grid.Comp);
+                // Tile removal changes the grid chunks; enumerate a snapshot.
+                var tiles = mapSystem.GetAllTiles(grid.Owner, grid.Comp).ToArray();
                 foreach (var tile in tiles)
                 {
                     mapSystem.SetTile(grid, tile.GridIndices, Tile.Empty);

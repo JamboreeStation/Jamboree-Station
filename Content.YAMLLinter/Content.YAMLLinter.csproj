@@ -11,6 +11,7 @@ SPDX-License-Identifier: MIT
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
+        <IsTestingPlatformApplication>false</IsTestingPlatformApplication>
         <TargetFramework>$(TargetFramework)</TargetFramework>
         <OutputPath>..\bin\Content.YAMLLinter\</OutputPath>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -22,10 +23,6 @@ SPDX-License-Identifier: MIT
       <ProjectReference Include="..\Content.Server\Content.Server.csproj" />
       <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
       <ProjectReference Include="..\Content.IntegrationTests\Content.IntegrationTests.csproj" />
-      <ProjectReference Include="..\RobustToolbox\Robust.Client\Robust.Client.csproj" />
-      <ProjectReference Include="..\RobustToolbox\Robust.Server\Robust.Server.csproj" />
-      <ProjectReference Include="..\RobustToolbox\Robust.Shared.Maths\Robust.Shared.Maths.csproj" />
-      <ProjectReference Include="..\RobustToolbox\Robust.Shared\Robust.Shared.csproj" />
     </ItemGroup>
 
   <ItemGroup>
@@ -33,4 +30,7 @@ SPDX-License-Identifier: MIT
   </ItemGroup>
 
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
+  <Import Project="..\RobustToolbox\Imports\Client.props" />
+  <Import Project="..\RobustToolbox\Imports\Server.props" />
+  <Import Project="..\RobustToolbox\Imports\Shared.props" />
 </Project>

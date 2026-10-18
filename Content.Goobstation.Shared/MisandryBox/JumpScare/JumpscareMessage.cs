@@ -7,8 +7,6 @@ using System.IO;
 using Lidgren.Network;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
 
 namespace Content.Goobstation.Shared.MisandryBox.JumpScare;
 

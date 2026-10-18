@@ -123,7 +123,7 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
     private void OnEmbedThrowDoHit(Entity<EmbeddableProjectileComponent> embeddable, ref ThrowDoHitEvent args)
     {
-        if (!embeddable.Comp.EmbedOnThrow)
+        if (!embeddable.Comp.EmbedOnThrow || embeddable.Comp.EmbeddedIntoUid != null)
             return;
 
         EmbedAttach(embeddable, args.Target, null, embeddable.Comp);
@@ -131,6 +131,10 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
     private void OnEmbedProjectileHit(Entity<EmbeddableProjectileComponent> embeddable, ref ProjectileHitEvent args)
     {
+        // Multiple fixture contacts can arrive after the first contact embeds the projectile.
+        if (embeddable.Comp.EmbeddedIntoUid != null)
+            return;
+
         EmbedAttach(embeddable, args.Target, args.Shooter, embeddable.Comp);
 
         // Raise a specific event for projectiles.

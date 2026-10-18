@@ -108,7 +108,7 @@ public sealed partial class FoodSequenceElementComponent : Component
 }
 
 [DataRecord, Serializable, NetSerializable]
-public sealed class FoodSequenceElementEntry
+public sealed partial class FoodSequenceElementEntry
 {
     /// <summary>
     /// A localized name piece to build into the item name generator.

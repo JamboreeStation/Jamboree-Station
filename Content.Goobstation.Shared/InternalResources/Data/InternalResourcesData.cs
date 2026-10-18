@@ -7,7 +7,7 @@ namespace Content.Goobstation.Shared.InternalResources.Data;
 /// <summary>
 /// Data structure for storing and changing inner resource in entities
 /// </summary>
-[Serializable, NetSerializable]
+[DataDefinition, Serializable, NetSerializable]
 public sealed partial class InternalResourcesData
 {
     /// <summary>
@@ -33,6 +33,8 @@ public sealed partial class InternalResourcesData
     /// </summary>
     [DataField(required: true)]
     public ProtoId<InternalResourcesPrototype> InternalResourcesType;
+
+    public InternalResourcesData() { }
 
     public InternalResourcesData(float maxAmount, float regenerationRate, float startingAmount, string protoId)
     {

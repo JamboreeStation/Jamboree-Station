@@ -51,7 +51,7 @@ public sealed class ChangelingRuleSystem : GameRuleSystem<ChangelingRuleComponen
 
     public readonly int StartingCurrency = 16;
 
-    [ValidatePrototypeId<EntityPrototype>] EntProtoId mindRole = "MindRoleChangeling";
+    EntProtoId mindRole = "MindRoleChangeling";
 
     public override void Initialize()
     {

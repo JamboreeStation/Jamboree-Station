@@ -115,8 +115,7 @@ public sealed class EscapeInventorySystem : EntitySystem
     /// <summary>
     /// DeltaV - action to cancel inventory escape
     /// </summary>
-    [ValidatePrototypeId<EntityPrototype>]
-    private readonly string _escapeCancelAction = "ActionCancelEscape";
+    private static readonly EntProtoId _escapeCancelAction = "ActionCancelEscape";
 
     public override void Initialize()
     {

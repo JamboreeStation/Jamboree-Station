@@ -18,11 +18,12 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="YamlDotNet" />
       <ProjectReference Include="..\Content.ModuleManager\Content.ModuleManager.csproj" />
-      <ProjectReference Include="..\RobustToolbox\Robust.Shared\Robust.Shared.csproj" />
     </ItemGroup>
 
     <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
     <Import Project="..\RobustToolbox\MSBuild\Robust.CompNetworkGenerator.targets" />
 
+  <Import Project="..\RobustToolbox\Imports\Shared.props" />
 </Project>

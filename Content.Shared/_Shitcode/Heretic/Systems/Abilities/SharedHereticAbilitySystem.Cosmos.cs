@@ -181,7 +181,7 @@ public abstract partial class SharedHereticAbilitySystem
         if (!TryComp(args.Action, out HereticCosmicRuneActionComponent? runeAction))
             return;
 
-        var coords = Transform(ent).Coordinates.SnapToGrid(EntityManager, _mapMan);
+        var coords = Transform(ent).Coordinates.SnapToGrid(EntityManager, _map);
 
         // No placing runes on top of runes
         if (Lookup.GetEntitiesInRange<HereticCosmicRuneComponent>(coords, 0.4f).Count > 0)

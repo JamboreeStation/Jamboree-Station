@@ -46,7 +46,6 @@ public sealed class WoundableVisualsSystem : VisualizerSystem<WoundableVisualsCo
     {
         base.Initialize();
         SubscribeLocalEvent<WoundableVisualsComponent, ComponentInit>(InitializeEntity, after: [typeof(WoundSystem)]);
-        SubscribeLocalEvent<WoundableVisualsComponent, AfterAutoHandleStateEvent>(OnAfterAutoHandleState);
         SubscribeLocalEvent<WoundableVisualsComponent, BodyPartRemovedEvent>(OnWoundableRemoved);
         SubscribeLocalEvent<WoundableVisualsComponent, BodyPartAddedEvent>(OnWoundableConnected);
         SubscribeLocalEvent<WoundableVisualsComponent, WoundableIntegrityChangedEvent>(OnWoundableIntegrityChanged);
