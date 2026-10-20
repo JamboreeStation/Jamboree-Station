@@ -492,7 +492,7 @@
 
 - type: entity
   name: laser rifle
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecuritySalvageContraband ]
   id: WeaponLaserCarbine
   description: Favoured by Nanotrasen Security for being cheap and easy to use.
   components:
@@ -675,7 +675,7 @@
 
 - type: entity
   name: laser cannon
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecuritySalvageContraband ]
   id: WeaponLaserCannon
   description: A heavy duty, high powered laser weapon.
   components:

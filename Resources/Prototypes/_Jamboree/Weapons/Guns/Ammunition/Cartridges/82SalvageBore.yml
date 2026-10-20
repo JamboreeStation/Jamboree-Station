@@ -1,0 +1,12 @@
+- type: entity
+  id: BaseCartridgeBore
+  name: .85 Bore
+  parent: [ BaseCartridge, BaseSecuritySalvageContraband ]
+  abstract: true
+  components:
+  - type: CartridgeAmmo
+    proto: BulletPistol
+  - type: Tag
+    tags:
+      - Cartridge
+      - CartridgePistol

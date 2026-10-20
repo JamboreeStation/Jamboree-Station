@@ -99,7 +99,7 @@
       color: "#9bf134"
   - type: GunUpgrade
     tags: [ GunUpgradeReloadSpeed ]
-    capacityCost: 40
+    capacityCost: 80 ## We are giving salv guns, they dont need a PKA thats gun level+
     examineText: gun-upgrade-examine-text-reload
   - type: GunUpgradeFireRate
     coefficient: 1.5

@@ -188,6 +188,17 @@
   - type: Contraband
     allowedDepartments: [ Security, Cargo ]
 
+# Utilized by jamboree for our lovely ~~terrible~~ salvagers!
+- type: entity
+  id: BaseSecuritySalvageContraband
+  parent: BaseRestrictedContraband # GO MY ARMED SALVAGERS, GOOOO, oh and secoffs ig...
+  abstract: true
+  components:
+  - type: Contraband
+    allowedDepartments: [ Security ]
+    allowedJobs: [ SalvageSpecialist ]
+
+
 - type: entity
   id: BaseMedicalScienceContraband
   parent: BaseRestrictedContraband
@@ -249,3 +260,4 @@
   - type: Contraband
     severity: Honkraband
     allowedJobs: [ Clown ]
+
