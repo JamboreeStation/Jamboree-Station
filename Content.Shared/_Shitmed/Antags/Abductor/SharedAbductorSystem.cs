@@ -1,10 +1,7 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Goobstation.Common.Conversion;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Content.Shared._Shitmed.Body.Organ;
@@ -21,6 +18,7 @@ public abstract class SharedAbductorSystem : EntitySystem
         SubscribeLocalEvent<AbductorExperimentatorComponent, EntInsertedIntoContainerMessage>(OnInsertedContainer);
         SubscribeLocalEvent<AbductorExperimentatorComponent, EntRemovedFromContainerMessage>(OnRemovedContainer);
         SubscribeLocalEvent<AbductorOrganComponent, TryRemoveOrganEvent>(OnTryRemoveOrgan);
+        SubscribeLocalEvent<AbductorComponent, BeforeConversionEvent>(OnBeforeConversion);
         base.Initialize();
     }
 
@@ -71,5 +69,10 @@ public abstract class SharedAbductorSystem : EntitySystem
     protected virtual void UpdateGui(NetEntity? target, Entity<AbductorConsoleComponent> computer)
     {
 
+    }
+
+    private void OnBeforeConversion(Entity<AbductorComponent> ent, ref BeforeConversionEvent args)
+    {
+        args.Blocked = true;
     }
 }

@@ -59,14 +59,9 @@
       - ReagentId: CarpoToxin
         Quantity: 5
   - type: FoodSequenceElement
-    sprite:
-      sprite: _Impstation/Mobs/Species/Thaven/organs.rsi
-      state: brain
     entries:
-      burger:
-        name: food-sequence-content-brain
-      taco:
-        name: food-sequence-content-brain
+      Burger: ThavenBrain
+      Taco: ThavenBrain
   - type: Item
     size: Small
     heldPrefix: brain
@@ -305,3 +300,12 @@
       reagents:
       - ReagentId: CarpoToxin
         Quantity: 5
+
+- type: foodSequenceElement
+  id: ThavenBrain
+  name: food-sequence-content-brain
+  sprites:
+  - sprite: _Impstation/Mobs/Species/Thaven/organs.rsi
+    state: brain
+  tags:
+  - Brain

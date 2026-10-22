@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Lumminal <81829924+Lumminal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Shadowling;
@@ -22,12 +18,12 @@ namespace Content.Goobstation.Server.Shadowling.Systems.Abilities.Ascension;
 /// This handles the Annihilate abiltiy logic.
 /// Gib from afar!
 /// </summary>
-public sealed class ShadowlingAnnihilateSystem : EntitySystem
+public sealed partial class ShadowlingAnnihilateSystem : EntitySystem
 {
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly ExplosionSystem _explosionSystem = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private ExplosionSystem _explosionSystem = default!;
+    [Dependency] private ChatSystem _chat = default!;
 
     public override void Initialize()
     {

@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Client.Fishing.Overlays;
@@ -14,10 +10,10 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Client.Fishing;
 
-public sealed class FishingSystem : SharedFishingSystem
+public sealed partial class FishingSystem : SharedFishingSystem
 {
-    [Dependency] private readonly IOverlayManager _overlay = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private IOverlayManager _overlay = default!;
+    [Dependency] private IPlayerManager _player = default!;
 
     public override void Initialize()
     {

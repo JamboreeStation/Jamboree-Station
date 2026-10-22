@@ -12,33 +12,30 @@ using JetBrains.Annotations;
 
 namespace Content.Server.Atmos.Reactions;
 
+// THIS IS A JAMBOREE FORK GAS!
 [UsedImplicitly]
 [DataDefinition]
 public sealed partial class KaltrenoxideCoolantReaction : IGasReactionEffect
 {
-    private const float TargetTemperature = 73.15f; // The target temp that Kaltrenoxide wants to be at.
+    private const float TargetTemperature = 73.15f; // In Kelvin, so this is -200C. Kaltrenoxide wants to sit here.
     private const float CoolingPerSecond = 55000f; // How much energy Kalt removes so it can get to the target temp.
 
     // Slow passive decay, even when nothing is touching it.
     private const float PassiveDecayPerSecond = 0.05f;
 
-    // Extra decay when Nitrogen is present.
+    // Extra decay when Nitrogen is present. Adds to the passive rate, it doesn't replace it.
     private const float NitrogenDecayPerSecond = 0.25f;
 
     public ReactionResult React(
-    GasMixture mixture, // The gas mixture is where the reaction is happening. It contains the gases and their properties, such as moles and temperature.
-    IGasMixtureHolder? holder, // What tile is holding gas.
-    AtmosphereSystem atmosphereSystem, // The AtmosphereSystem is a system that handles all the gas reactions and properties in the game.
-    float reactionDelta) // Reaction Delta is how much time passed in seconds since the last gas reaction.
+    GasMixture mixture,
+    IGasMixtureHolder? holder,
+    AtmosphereSystem atmosphereSystem,
+    float reactionDelta)
     {
         if (reactionDelta <= 0f)
-            return ReactionResult.NoReaction; // If no time has passed, there is no reaction!!!!
+            return ReactionResult.NoReaction;
 
         var reacted = false;
-
-        var kaltStart = mixture.GetMoles(Gas.Kaltrenoxide);
-        if (kaltStart <= 0f)
-            return ReactionResult.NoReaction;
 
         // Kaltrenoxide is stable inside sealed canisters and pipe nets, so nothing changes there.
         if (holder is GasCanisterComponent or IPipeNet)
@@ -46,7 +43,8 @@ public sealed partial class KaltrenoxideCoolantReaction : IGasReactionEffect
 
         if (mixture.Temperature > TargetTemperature)
         {
-            var heatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true); // All this to make sure it doesnt overshoot -200C
+            // Guarding the divisor keeps us from dividing by a near-zero heat capacity and spiking the temperature.
+            var heatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true);
 
             if (heatCapacity > Atmospherics.MinimumHeatCapacity)
             {
@@ -58,13 +56,12 @@ public sealed partial class KaltrenoxideCoolantReaction : IGasReactionEffect
             }
         }
 
-        var passiveDecay = MathF.Min(
-            kaltStart,
+        var passiveDecay = MathF.Min(mixture.GetMoles(Gas.Kaltrenoxide),
             PassiveDecayPerSecond * reactionDelta);
 
         if (passiveDecay > 0f)
         {
-            mixture.AdjustMoles(Gas.Kaltrenoxide, -passiveDecay); // Oh to be passively decaying.
+            mixture.AdjustMoles(Gas.Kaltrenoxide, -passiveDecay);
             reacted = true;
         }
 
@@ -72,6 +69,7 @@ public sealed partial class KaltrenoxideCoolantReaction : IGasReactionEffect
 
         if (nitrogen > 0f)
         {
+            // Same saturating ramp as the other reagents: full rate at 5 moles of Nitrogen.
             var nitrogenFactor = MathF.Min(1f, nitrogen / 5f);
 
             var nitrogenDecay = MathF.Min(
@@ -80,7 +78,9 @@ public sealed partial class KaltrenoxideCoolantReaction : IGasReactionEffect
 
             if (nitrogenDecay > 0f)
             {
-                mixture.AdjustMoles(Gas.Kaltrenoxide, -nitrogenDecay); // Remove Kaltrenoxide from the mixture because it interacts with Nitrogen obviously.
+                // Nitrogen actively eats Kaltrenoxide, so this runs on top of the passive decay above
+                // rather than replacing it.
+                mixture.AdjustMoles(Gas.Kaltrenoxide, -nitrogenDecay);
                 reacted = true;
             }
         }

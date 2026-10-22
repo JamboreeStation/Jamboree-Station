@@ -24441,7 +24441,7 @@ entities:
     - type: Transform
       pos: 13.5,-20.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8713
 - proto: Carpet
   entities:
@@ -60269,6 +60269,10 @@ entities:
         3441:
         - - MaterialSilo
           - MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 3441
+      - 8788
 - proto: MaterialWoodPlank
   entities:
   - uid: 8714
@@ -60741,7 +60745,7 @@ entities:
     - type: Transform
       pos: 17.5,-23.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8713
 - proto: OreProcessorMachineCircuitboard
   entities:

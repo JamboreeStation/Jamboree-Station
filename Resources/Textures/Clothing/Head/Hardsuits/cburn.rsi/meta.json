@@ -58,6 +58,8 @@
     {
       "name": "equipped-head-unshaded-anomalocarid",
       "directions": 4
-    }
+    },
+    {"name": "equipped-head-feroxi", "directions": 4},
+    {"name": "equipped-head-unshaded-feroxi", "directions": 4}
   ]
 }

@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Text.RegularExpressions;
@@ -11,7 +7,7 @@ using Content.Goobstation.Server.Devil.Contract;
 using Content.Goobstation.Server.Devil.Objectives.Components;
 using Content.Goobstation.Server.Possession;
 using Content.Goobstation.Shared.CheatDeath;
-using Content.Goobstation.Shared.CrematorImmune;
+using Content.Goobstation.Common.CrematorImmune;
 using Content.Goobstation.Shared.Devil;
 using Content.Goobstation.Shared.Devil.Condemned;
 using Content.Goobstation.Shared.Exorcism;
@@ -38,6 +34,7 @@ using Content.Shared._Lavaland.Chasm;
 using Content.Shared._Shitmed.Body.Components;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
 using Content.Shared.Actions;
+using Content.Shared.Administration.Systems;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
@@ -48,37 +45,42 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
 using Content.Shared.Shuttles.Components;
+using Content.Shared.Speech;
+using Content.Shared.Speech.Components;
 using Content.Shared.Temperature.Components;
+using Content.Shared.Zombies;
 using Robust.Server.Containers;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Components;
 
 namespace Content.Goobstation.Server.Devil;
 
 public sealed partial class DevilSystem : EntitySystem
 {
-    [Dependency] private readonly HandsSystem _hands = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly PolymorphSystem _poly = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly StunSystem _stun = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
-    [Dependency] private readonly DevilContractSystem _contract = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly PossessionSystem _possession = default!;
-    [Dependency] private readonly CondemnedSystem _condemned = default!;
-    [Dependency] private readonly MobStateSystem _state = default!;
-    [Dependency] private readonly JitteringSystem _jittering = default!;
-    [Dependency] private readonly BodySystem _body = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private HandsSystem _hands = default!;
+    [Dependency] private ActionsSystem _actions = default!;
+    [Dependency] private PolymorphSystem _poly = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private StunSystem _stun = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private RejuvenateSystem _rejuvenate = default!;
+    [Dependency] private DevilContractSystem _contract = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private PossessionSystem _possession = default!;
+    [Dependency] private CondemnedSystem _condemned = default!;
+    [Dependency] private MobStateSystem _state = default!;
+    [Dependency] private JitteringSystem _jittering = default!;
+    [Dependency] private BodySystem _body = default!;
+    [Dependency] private ContainerSystem _container = default!;
 
     private static readonly Regex WhitespaceAndNonWordRegex = new(@"[\s\W]+", RegexOptions.Compiled);
 
@@ -130,7 +132,7 @@ public sealed partial class DevilSystem : EntitySystem
 
         // Change damage modifier
         if (TryComp<DamageableComponent>(devil, out var damageableComp))
-           _damageable.SetDamageModifierSetId(devil, devil.Comp.DevilDamageModifierSet, damageableComp);
+           _damageable.SetDamageModifierSetId((devil, damageableComp), devil.Comp.DevilDamageModifierSet);
 
         // No decapitating the devil
         foreach (var part in _body.GetBodyChildren(devil))
@@ -237,16 +239,16 @@ public sealed partial class DevilSystem : EntitySystem
 
         if (HasComp<BibleUserComponent>(args.Source))
         {
-            _damageable.TryChangeDamage(devil, devil.Comp.DamageOnTrueName * devil.Comp.BibleUserDamageMultiplier, true);
-            _stun.TryParalyze(devil, devil.Comp.ParalyzeDurationOnTrueName * devil.Comp.BibleUserDamageMultiplier, false);
+            _damageable.TryChangeDamage(devil.Owner, devil.Comp.DamageOnTrueName * devil.Comp.BibleUserDamageMultiplier, true);
+            _stun.TryUpdateParalyzeDuration(devil, devil.Comp.ParalyzeDurationOnTrueName * devil.Comp.BibleUserDamageMultiplier);
 
             var popup = Loc.GetString("devil-true-name-heard-chaplain", ("speaker", args.Source), ("target", devil));
             _popup.PopupEntity(popup, devil, PopupType.LargeCaution);
         }
         else
         {
-            _stun.TryParalyze(devil, devil.Comp.ParalyzeDurationOnTrueName, false);
-            _damageable.TryChangeDamage(devil, devil.Comp.DamageOnTrueName, true);
+            _stun.TryUpdateParalyzeDuration(devil, devil.Comp.ParalyzeDurationOnTrueName);
+            _damageable.TryChangeDamage(devil.Owner, devil.Comp.DamageOnTrueName, true);
 
             var popup = Loc.GetString("devil-true-name-heard", ("speaker", args.Source), ("target", devil));
             _popup.PopupEntity(popup, devil, PopupType.LargeCaution);

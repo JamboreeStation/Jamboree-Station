@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Robust.Shared.Prototypes;
@@ -15,4 +12,11 @@ public interface IWeightedRandomPrototype : IPrototype
 {
     [ViewVariables]
     public Dictionary<string, float> Weights { get; }
+}
+
+public interface IWeightedRandomPrototype<TProto> : IPrototype
+    where TProto : class, IPrototype
+{
+    [ViewVariables]
+    public Dictionary<ProtoId<TProto>, float> Weights { get; }
 }

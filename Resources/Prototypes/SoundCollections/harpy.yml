@@ -1,18 +1,3 @@
-# SPDX-FileCopyrightText: 2024 Adeinitas <147965189+adeinitas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 Danger Revolution! <142105406+DangerRevolution@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Timemaster99 <57200767+Timemaster99@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 VMSolidus <evilexecutive@gmail.com>
-# SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 CometVoid <cometsstrile@gmail.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: soundCollection
@@ -125,12 +110,15 @@
     - /Audio/_DV/Voice/Vulpkanin/dog_growl4.ogg
     - /Audio/_DV/Voice/Vulpkanin/dog_growl5.ogg
     - /Audio/_DV/Voice/Vulpkanin/dog_growl6.ogg
+    - /Audio/Animals/space_dragon_roar.ogg # Goob - more harpy emotes
+    - /Audio/Items/Toys/rawr.ogg # Goob - more harpy emotes
 
 - type: soundCollection
   id: HarpyPurrs
   files:
     - /Audio/Nyanotrasen/Voice/Felinid/cat_purr1.ogg
     - /Audio/Mecha/sound_mecha_hydraulic.ogg
+    - /Audio/_Omu/Voice/Reptilian/Reptilian_lizard_purr.ogg # Goob - more harpy emotes
 
 - type: soundCollection
   id: HarpyRings
@@ -274,3 +262,11 @@
     - /Audio/_Starlight/Voice/Resomi/resomi_chirp3.ogg
     - /Audio/_Starlight/Voice/Resomi/resomi_chirp4.ogg
     - /Audio/_Starlight/Voice/Resomi/resomi_chirp5.ogg
+
+- type: soundCollection # Goob - more harpy emotes
+  id: HarpyYawn
+  files:
+  - /Audio/Voice/Human/male_yawn_1.ogg
+  - /Audio/Voice/Human/female_yawn_1.ogg
+  - /Audio/Animals/wawa_yawn.ogg
+  - /Audio/_Goobstation/Voice/Vox/vox_yawn.ogg

@@ -431,8 +431,8 @@
 
 - type: marking
   id: AnomalocaridUnderwearBoxers
-  bodyPart: Underwear
-  markingCategory: Underwear
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
   speciesRestriction: [ Anomalocarid ]
   forcedColoring: false
   coloring:
@@ -446,8 +446,8 @@
 
 - type: marking
   id: AnomalocaridUnderwearBriefs
-  bodyPart: Underwear
-  markingCategory: Underwear
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
   speciesRestriction: [ Anomalocarid ]
   forcedColoring: false
   coloring:
@@ -461,8 +461,8 @@
 
 - type: marking
   id: AnomalocaridUnderwearSatin
-  bodyPart: Underwear
-  markingCategory: Underwear
+  bodyPart: UndergarmentBottom
+  markingCategory: UndergarmentBottom
   speciesRestriction: [ Anomalocarid ]
   forcedColoring: false
   coloring:
@@ -478,8 +478,8 @@
 
 - type: marking
   id: AnomalocaridUndershirtBinder
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Anomalocarid ]
   forcedColoring: false
   coloring:
@@ -493,8 +493,8 @@
 
 - type: marking
   id: AnomalocaridUndershirtClassic
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Anomalocarid ]
   forcedColoring: false
   coloring:
@@ -508,8 +508,8 @@
 
 - type: marking
   id: AnomalocaridUndershirtSports
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Anomalocarid ]
   forcedColoring: false
   coloring:
@@ -523,8 +523,8 @@
 
 - type: marking
   id: AnomalocaridUndershirtStrapless
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Anomalocarid ]
   forcedColoring: false
   coloring:
@@ -538,8 +538,8 @@
 
 - type: marking
   id: AnomalocaridUndershirtTanktop
-  bodyPart: Undershirt
-  markingCategory: Undershirt
+  bodyPart: UndergarmentTop
+  markingCategory: UndergarmentTop
   speciesRestriction: [ Anomalocarid ]
   forcedColoring: false
   coloring:

@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 09/04/2026 02:08:05
-  entityCount: 10000
+  entityCount: 10002
 maps:
 - 1
 grids:
@@ -47552,7 +47552,6 @@ entities:
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 0
-    - type: Timer
   - uid: 6563
     components:
     - type: Transform
@@ -47568,7 +47567,6 @@ entities:
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 0
-    - type: Timer
   - uid: 6565
     components:
     - type: Transform
@@ -47577,7 +47575,6 @@ entities:
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 0
-    - type: Timer
   - uid: 6566
     components:
     - type: Transform
@@ -47994,7 +47991,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 4.5,16.5
       parent: 2
-    - type: Timer
   - uid: 6627
     components:
     - type: Transform
@@ -64508,5 +64504,17 @@ entities:
     components:
     - type: Transform
       pos: -16.439703,-22.499609
+      parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 10001
+    components:
+    - type: Transform
+      pos: -32.5,20.5
+      parent: 2
+  - uid: 10002
+    components:
+    - type: Transform
+      pos: -33.5,20.5
       parent: 2
 ...

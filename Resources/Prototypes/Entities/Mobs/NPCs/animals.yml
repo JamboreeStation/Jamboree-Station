@@ -335,12 +335,18 @@
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: Bloodstream
-    bloodMaxVolume: 50
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 50
+  - type: ReplacementAccent
+    accent: mouse
   - type: LanguageKnowledge # Einstein Engines - Language
     speaks:
     - Mouse
     understands:
     - Mouse
+    - TauCetiBasic
   - type: MeleeWeapon
     soundHit:
         path: /Audio/Effects/bite.ogg
@@ -404,8 +410,8 @@
       0: Alive
       5: Dead # Goob edit
   - type: Stamina
-    critThreshold: 10
-    animationThreshold: 5 # Goob edit
+    baseCritThreshold: 10
+    animationThreshold: 1
   - type: DamageStateVisuals
     states:
       Alive:
@@ -432,8 +438,10 @@
     - Bee
     - Trash
   - type: Bloodstream
-    bloodReagent: InsectBlood
-    bloodMaxVolume: 0.1
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: InsectBlood
+        Quantity: 0.1
   - type: MobPrice
     price: 50
   - type: NPCRetaliation
@@ -479,7 +487,10 @@
     factions:
     - SimpleHostile
   - type: Bloodstream
-    bloodMaxVolume: 0.1
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 0.1
   - type: ZombieImmune
 
 
@@ -553,7 +564,10 @@
     interactSuccessSound:
       path: /Audio/Animals/chicken_cluck_happy.ogg
   - type: Bloodstream
-    bloodMaxVolume: 100
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 100
   - type: EggLayer
     eggSpawn:
     - id: FoodEgg
@@ -563,6 +577,7 @@
     - Chicken
     understands:
     - Chicken
+    - TauCetiBasic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
@@ -624,7 +639,6 @@
   parent: FoodEgg
   suffix: Fertilized, Chicken
   components:
-  - type: Timer
   - type: TimedSpawner
     prototypes:
     - MobChicken
@@ -636,7 +650,7 @@
   - type: TimedDespawn #delete the egg after the chicken spawns
     lifetime: 21
 
-- type: entity # TODO: figure out how to make these guys gib when stepped on
+- type: entity
   name: cockroach
   parent: SimpleMobBase
   id: MobCockroach
@@ -683,9 +697,11 @@
       Dead:
         Base: cockroach_dead
   - type: Bloodstream
-    bloodReagent: InsectBlood
-    bloodMaxVolume: 20
-  - type: Food
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: InsectBlood
+        Quantity: 20
+  - type: Edible
   - type: FlavorProfile
     flavors:
     - horrible
@@ -722,11 +738,21 @@
         gibContents: Skip # Shitmed Change
         recursive: false
   - type: NonSpreaderZombie
+  - type: StepTrigger
+    requiredTriggeredSpeed: 1
+  - type: TriggerOnStepTrigger
+  - type: RandomChanceTriggerCondition
+    successChance: 0.2
+  - type: GibOnTrigger
+  - type: ProtectedFromStepTriggers
   - type: LanguageKnowledge # Einstein Engines - Languages
-    speaks: [Hissing]
-    understands: [Hissing]
-  - type: SentienceTarget
-    flavorKind: station-event-random-sentience-flavor-organic
+    speaks:
+    - Hissing
+    understands:
+    - Hissing
+    - TauCetiBasic
+  - type: SentienceTarget # Goobstation
+    flavorKind: station-event-random-sentience-flavor-organic # Goobstation
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Effects/bite.ogg
@@ -781,9 +807,9 @@
     allowMovement: true
     name: ghost-role-information-mothroach-name
     description: ghost-role-information-mothroach-description
-    rules: ghost-role-information-freeagent-rules
+    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
     mindRoles:
-    - MindRoleGhostRoleFreeAgentHarmless
+    - MindRoleGhostRoleSentientAnimal # Goobstation Sentient Animal PR
   - type: Fixtures
     fixtures:
       fix1:
@@ -851,7 +877,10 @@
     damageContainer: Biological
     damageModifierSet: Moth
   - type: Bloodstream
-    bloodReagent: InsectBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: InsectBlood
+        Quantity: 20
   - type: Respirator
     damage:
       types:
@@ -871,6 +900,7 @@
     - Moffic
     understands:
     - Moffic
+    - TauCetiBasic
   - type: ZombieAccentOverride
     accent: zombieMoth
   - type: Vocal
@@ -1012,7 +1042,10 @@
     interactSuccessSound:
       path: /Audio/Animals/duck_quack_happy.ogg
   - type: Bloodstream
-    bloodMaxVolume: 100
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 100
   - type: EggLayer
     eggSpawn:
     - id: FoodEgg
@@ -1022,6 +1055,7 @@
     - Duck
     understands:
     - Duck
+    - TauCetiBasic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
@@ -1071,7 +1105,6 @@
   parent: FoodEgg
   suffix: Fertilized, Duck
   components:
-    - type: Timer
     - type: TimedSpawner
       prototypes:
       - MobDuckMallard
@@ -1143,8 +1176,10 @@
     tags:
     - Trash
   - type: Bloodstream
-    bloodReagent: InsectBlood
-    bloodMaxVolume: 0.1
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: InsectBlood
+        Quantity: 0.1
   - type: MobPrice
     price: 50
   - type: Destructible
@@ -1309,9 +1344,12 @@
     - Crab
     understands:
     - Crab
+    - TauCetiBasic
   - type: Bloodstream
-    bloodMaxVolume: 50
-    bloodReagent: CopperBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CopperBlood
+        Quantity: 50
   - type: Tag
     tags:
     - VimPilot
@@ -1381,10 +1419,10 @@
     growthDelay: 20
   - type: ExaminableHunger
   - type: Wooly
-  - type: Food
+  - type: Edible
+    destroyOnEmpty: false
     solution: wool
     requiresSpecialDigestion: true
-    # Wooly prevents eating wool deleting the goat so its fine
     requireDead: false
   - type: FlavorProfile
     flavors:
@@ -1468,7 +1506,10 @@
     interactSuccessSound:
       path: /Audio/Animals/goose_honk.ogg
   - type: Bloodstream
-    bloodMaxVolume: 100
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 100
   - type: NpcFactionMember
     factions:
     - Passive
@@ -1510,7 +1551,10 @@
     - id: FoodMeat
       amount: 4
   - type: Bloodstream
-    bloodMaxVolume: 300
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 300
     # if you fuck with the gorilla he will harambe you
   - type: MeleeWeapon
     soundHit:
@@ -1527,6 +1571,23 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavInteract: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+  - type: Puller
+    needsHands: false
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1.5
+    useSound:
+      path: /Audio/Items/crowbar.ogg
   - type: MobThresholds # Goobstation
     thresholds:
       0: Alive
@@ -1575,6 +1636,7 @@
     - Kangaroo
     understands:
     - Kangaroo
+    - TauCetiBasic
   - type: Butcherable
     spawned:
     - id: FoodMeat
@@ -1595,7 +1657,7 @@
     prob: 0.25
     name: ghost-role-information-kangaroo-name
     description: ghost-role-information-kangaroo-description
-    rules: ghost-role-information-nonantagonist-rules
+    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
   - type: GhostTakeoverAvailable
   - type: Vocal
     sounds:
@@ -1642,14 +1704,17 @@
   description: The genetic bipedal ancestor of... Uh... Something. Yeah, there's definitely something on the station that descended from whatever this is.
   abstract: true
   components:
+  - type: Blindable # monkeys can be blind while sleeping!
   - type: VentCrawler # goobstation - Ventcrawl
     allowInventory: false
   - type: CombatMode
+    canDisarm: true
   # Shitmed Change Start
   - type: Targeting
   - type: HumanoidAppearance
     species: Monkey
   # Shitmed Change End
+  - type: CosmicCenserTarget # DeltaV - Cosmic Cult
   - type: Inventory
     templateId: monkey
     speciesId: monkey
@@ -1783,6 +1848,7 @@
     - VimPilot
     - DoorBumpOpener
     - AnomalyHost
+    - XenobioSlimeFavoriteFood # Goobstation
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -1791,8 +1857,7 @@
     - reagents: [ Water, SpaceCleaner ]
       methods: [ Touch ]
       effects:
-      - !type:WashCreamPieReaction
-  - type: LayingDown # Goobstation
+      - !type:WashCreamPie
   - type: Vocal # Goobstation
     sounds:
       Male: MonkeyMode
@@ -1803,7 +1868,10 @@
     hasPainScreams: false
     threshold: 70
     cap: 140
+  - type: Crawler
+  - type: StatusIcon
   - type: DiseaseCarrier # Goobstation
+  - type: XenovacTarget # Goobstation - Xenobio
 
 - type: entity
   name: monkey
@@ -1814,7 +1882,7 @@
   - type: NameIdentifier
     group: Monkey
   - type: Speech
-    speechSounds: Monkey
+    speechSounds: GoobMonkey # GoobStation
     speechVerb: Monkey
   - type: LanguageKnowledge # Einstein Engines - Language
     speaks:
@@ -1822,6 +1890,8 @@
     understands:
     - Monkey
     - Kobold
+  #- type: SentienceTarget   # Goobstation - monkeys no longer randomly sentient outside of events
+  #  - TauCetiBasic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-primate
   - type: AlwaysRevolutionaryConvertible
@@ -1830,9 +1900,9 @@
     makeSentient: true
     name: ghost-role-information-monkey-name
     description: ghost-role-information-monkey-description
-    rules: ghost-role-information-freeagent-rules # Goobstation - - remove: 1984
+    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
     mindRoles:
-    - MindRoleGhostRoleFreeAgent
+    - MindRoleGhostRoleSentientAnimal # Goobstation Sentient Animal PR
   - type: GhostTakeoverAvailable
   - type: Skinnable # Goobstation - Fuck pun-pun
   - type: Clumsy
@@ -1840,8 +1910,7 @@
       types:
         Blunt: 5
         Piercing: 4
-      groups:
-        Burn: 3
+        Heat: 3
     catchingFailDamage:
       types:
         Blunt: 1
@@ -1921,6 +1990,7 @@
     understands:
     - Kobold
     - Monkey
+    - TauCetiBasic
   # Shitmed Change Start
   - type: HumanoidAppearance
     species: Kobold
@@ -1968,10 +2038,52 @@
         Slash: 5
         Piercing: 4
   - type: Temperature
-    heatDamageThreshold: 360
-    coldDamageThreshold: 285
     currentTemperature: 310.15
     specificHeat: 42
+  - type: TemperatureDamage
+    heatDamageThreshold: 360
+    coldDamageThreshold: 285
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      sprite: Mobs/Animals/kobold.rsi
+      state: kobold
+    - map: [ "outline" ]
+      sprite: Mobs/Animals/kobold.rsi
+      state: outline
+    - map: [ "horns" ]
+      sprite: Mobs/Customization/reptilian_parts.rsi
+      state: horns_short
+    - map: [ "enum.HumanoidVisualLayers.Handcuffs" ]
+      color: "#ffffff"
+      sprite: Objects/Misc/handcuffs.rsi
+      state: body-overlay-2
+      visible: false
+    - map: [ "ears" ]
+    - map: [ "id" ]
+    - map: [ "mask" ]
+    - map: [ "head" ]
+    - map: [ "clownedon" ]
+      sprite: "Effects/creampie.rsi"
+      state: "creampie_human"
+      visible: false
+  - type: RandomSprite
+    getAllGroups: true
+    available:
+      - enum.DamageStateVisualLayers.Base:
+          kobold: KoboldColors
+      - horns:
+          horns_curled: KoboldHornColors
+          horns_ram: KoboldHornColors
+          horns_short: KoboldHornColors
+          horns_myrsore: KoboldHornColors
+          horns_bighorn: KoboldHornColors
+          horns_argali: KoboldHornColors
+          horns_ayrshire: KoboldHornColors
+          horns_floppy_kobold_ears: Inherit
+          horns_double: Inherit
+          horns_kobold_ears: Inherit
   - type: Butcherable
     butcheringType: Spike
     spawned:
@@ -1986,7 +2098,7 @@
     makeSentient: true
     name: ghost-role-information-kobold-name
     description: ghost-role-information-kobold-description
-    rules: ghost-role-information-nonantagonist-rules
+    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
 
 - type: entity
   name: kobold
@@ -1999,8 +2111,7 @@
       types:
         Blunt: 2
         Piercing: 7
-      groups:
-        Burn: 3
+        Heat: 3
     catchingFailDamage:
       types:
         Blunt: 1
@@ -2065,9 +2176,9 @@
     allowMovement: true
     name: ghost-role-information-mouse-name
     description: ghost-role-information-mouse-description
-    rules: ghost-role-information-freeagent-rules
+    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
     mindRoles:
-    - MindRoleGhostRoleFreeAgentHarmless
+    - MindRoleGhostRoleSentientAnimal # Goobstation Sentient Animal PR
   - type: GhostTakeoverAvailable
   - type: Speech
     speechSounds: Squeak
@@ -2140,7 +2251,7 @@
         Base: dead-0
       Dead:
         Base: splat-0
-  - type: Food
+  - type: Edible
   - type: FlavorProfile
     flavors:
     - meaty
@@ -2183,6 +2294,7 @@
     - Mouse
     understands:
     - Mouse
+    - TauCetiBasic
   - type: Tag
     tags:
     - Trash
@@ -2219,7 +2331,10 @@
       types:
         Slash: 1 # Goobstation - LET THE HORDES ROAM!!
   - type: Bloodstream
-    bloodMaxVolume: 50
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 50
     smokeImmune: true # Goobstation - prevent server lagging mouse farms
   - type: CanEscapeInventory
   - type: MobPrice
@@ -2230,19 +2345,10 @@
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
   - type: FoodSequenceElement
-    sprite:
-      sprite: Mobs/Animals/mouse.rsi
-      state: dead-0
     entries:
-      burger:
-        name: food-sequence-burger-content-rat
-      taco:
-        name: food-sequence-content-rat
-      skewer:
-        name: food-sequence-content-rat
-        sprite:
-          sprite: Objects/Consumable/Food/skewer.rsi
-          state: skewer-rat
+      Taco: RatTaco
+      Burger: RatBurger
+      Skewer: RatSkewer
   # <Goobstation>
   - type: NightVision
     color: "#808080"
@@ -2260,9 +2366,9 @@
   - type: DodgeWideswing
     staminaRatio: 1 # mice are small so can probably evade without much stamina drain
   - type: Stamina
-    critThreshold: 20
+    baseCritThreshold: 20
     animationThreshold: 10 # Goob edit
-  - type: LayingDown
+  - type: Crawler
   - type: NPCRetaliation
     attackMemoryLength: 5 # stop caring fast if you don't keep hitting
   - type: GroupRetaliation
@@ -2292,6 +2398,29 @@
       - !type:GibBehavior
         gibContents: Skip
         recursive: false
+  - type: ActionGrant
+    actions:
+    - ActionMouseCall
+  - type: MobCallSource
+    whitelist:
+      tags:
+      - Mouse
+  - type: MobCallable
+  - type: Strippable
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: InventorySlots
+  - type: Inventory
+    speciesId: mouse
+    templateId: mouse
+    displacements:
+      head:
+        sizeMaps:
+          32:
+            sprite: _Goobstation/Mobs/Animals/mouse/displacement.rsi
+            state: head
   # </Goobstation>
 
 - type: entity
@@ -2354,10 +2483,6 @@
   - type: Item
     size: Tiny
     heldPrefix: 1
-  - type: FoodSequenceElement
-    sprite:
-      sprite: Mobs/Animals/mouse.rsi
-      state: dead-1
 
 - type: entity
   parent: MobMouse
@@ -2387,10 +2512,6 @@
   - type: Item
     size: Tiny
     heldPrefix: 2
-  - type: FoodSequenceElement
-    sprite:
-      sprite: Mobs/Animals/mouse.rsi
-      state: dead-2
 
 - type: entity
   name: cancer mouse
@@ -2398,6 +2519,12 @@
   parent: MobMouse
   id: MobMouseCancer
   components:
+  - type: GhostRole
+    name: ghost-role-information-cancer-mouse-name
+    description: ghost-role-information-cancer-mouse-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
   - type: Sprite
     color: LightGreen
   - type: PointLight
@@ -2406,9 +2533,13 @@
     energy: 5
     netsync: false
   - type: RadiationSource
-    intensity: 0.3
+    intensity: 0.5
+    #slope: 0.3 # Goobstation custom rad system
   - type: Bloodstream
-    bloodReagent: UnstableMutagen
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: UnstableMutagen
+        Quantity: 50
   - type: SolutionContainerManager
     solutions:
       food:
@@ -2474,7 +2605,10 @@
     interactSuccessSound:
       path: /Audio/Animals/lizard_happy.ogg
   - type: Bloodstream
-    bloodMaxVolume: 150
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 150
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Scale
@@ -2529,7 +2663,10 @@
     interactFailureString: petting-failure-generic
     interactSuccessSpawn: EffectHearts
   - type: Bloodstream
-    bloodMaxVolume: 50
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 50
   - type: PleebnarGibbable # imp edit
 
 - type: entity
@@ -2587,7 +2724,10 @@
     interactSuccessSound:
       path: /Audio/Animals/frog_ribbit.ogg
   - type: Bloodstream
-    bloodMaxVolume: 50
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 50
   - type: Tag
     tags:
     - VimPilot
@@ -2606,6 +2746,7 @@
 - type: entity
   parent: [ SimpleMobBase, FlyingMobBase ]
   id: MobParrotBase
+  name: parrot
   abstract: true
   description: Infiltrates your domain, spies on you, and somehow still a cool pet.
   components:
@@ -2684,10 +2825,12 @@
     interactSuccessSound:
       path: /Audio/Animals/parrot_raught.ogg
   - type: Bloodstream
-    bloodMaxVolume: 50
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 50
 
 - type: entity
-  name: parrot
   parent: MobParrotBase
   id: MobParrot
   components:
@@ -2743,10 +2886,11 @@
     factions:
     - Passive
   - type: Temperature
-    heatDamageThreshold: 335
-    coldDamageThreshold: 230
     currentTemperature: 310.15
     specificHeat: 46
+  - type: TemperatureDamage
+    heatDamageThreshold: 335
+    coldDamageThreshold: 230
     coldDamage:
       types:
         Cold : 0.05 #per second, scales with temperature & other constants
@@ -2754,9 +2898,13 @@
       types:
         Heat : 0.2 #per second, scales with temperature & other constants
   - type: LanguageKnowledge # Einstein Engines - Language
-    speaks: [Penguin]
-    understands: [Penguin]
+    speaks:
+    - Penguin
+    understands:
+    - Penguin
+    - TauCetiBasic
 
+# TODO: Make grenade penguin voice activated like the rest of the stealth items.
 - type: entity
   name: grenade penguin
   parent: [ MobPenguin, MobCombat, BaseSyndicateContraband ]
@@ -2770,7 +2918,7 @@
   - type: MobMover
   - type: HTN
     rootTask:
-      task: SimpleHostileCompound
+      task: GrenadePenguinCompound
   - type: NpcFactionMember
     factions:
     - Syndicate
@@ -2808,7 +2956,8 @@
   - type: Item
     size: Normal
     sprite: Mobs/Animals/grenadepenguin.rsi
-  - type: OnUseTimerTrigger
+  - type: TriggerOnUse
+  - type: TimerTrigger
     delay: 10
     beepSound:
       path: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg #funny sfx use
@@ -2817,10 +2966,12 @@
     beepInterval: 1
   - type: Explosive
     explosionType: Default
-    maxIntensity: 20
-    intensitySlope: 20
-    totalIntensity: 225
+    maxIntensity: 10
+    intensitySlope: 3
+    totalIntensity: 150
   - type: ExplodeOnTrigger
+    keysIn:
+    - timer
   - type: Destructible
     thresholds:
     - trigger:
@@ -2873,13 +3024,19 @@
     interactFailureString: petting-failure-generic
     interactSuccessSpawn: EffectHearts
   - type: Bloodstream
-    bloodMaxVolume: 50
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 50
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Scale
   - type: LanguageKnowledge # Einstein Engines - Language
-    speaks: [Hissing]
-    understands: [Hissing]
+    speaks:
+    - Hissing
+    understands:
+    - Hissing
+    - TauCetiBasic
 
 # Code unique spider prototypes or combine them all into one spider and get a
 # random sprite state when you spawn it.
@@ -2930,6 +3087,7 @@
     - Xeno
     understands:
     - Xeno
+    - TauCetiBasic
   - type: InteractionPopup
     successChance: 0.5
     interactSuccessString: petting-success-tarantula
@@ -2937,12 +3095,16 @@
     interactSuccessSpawn: EffectHearts
     interactSuccessSound:
       path: /Audio/Animals/snake_hiss.ogg
+  - type: Puller
+    needsHands: false
   - type: NoSlip
   - type: Spider
   - type: IgnoreSpiderWeb
   - type: Bloodstream
-    bloodMaxVolume: 150
-    bloodReagent: CopperBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CopperBlood
+        Quantity: 150
   - type: Speech
     speechVerb: Arachnid
     speechSounds: Arachnid
@@ -3093,9 +3255,10 @@
     - type: Speech
       speechVerb: Cluwne
     - type: Bloodstream
-      bloodMaxVolume: 150
-      bloodReagent: Laughter
-
+      bloodReferenceSolution:
+        reagents:
+        - ReagentId: Laughter
+          Quantity: 150
 - type: entity
   name: wizard spider
   parent: MobGiantSpider
@@ -3165,6 +3328,7 @@
     - Hissing
     understands:
     - Hissing
+    - TauCetiBasic
 
 - type: entity
   name: possum
@@ -3244,6 +3408,7 @@
     - Hissing
     understands:
     - Hissing
+    - TauCetiBasic
 
 - type: entity
   name: fox
@@ -3302,7 +3467,10 @@
     attributes:
       gender: epicene
   - type: Bloodstream
-    bloodMaxVolume: 100
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 100
   - type: MeleeWeapon
     angle: 0
     animation: WeaponArcBite
@@ -3319,6 +3487,7 @@
   - type: HTN
     rootTask:
       task: RuminantHostileCompound
+  - type: MessyDrinker
   - type: Tag
     tags:
     - VimPilot
@@ -3327,6 +3496,7 @@
     - Fox
     understands:
     - Fox
+    - TauCetiBasic
 
 - type: entity
   abstract: true
@@ -3370,6 +3540,7 @@
       gender: epicene
   - type: MobPrice
     price: 200
+  - type: MessyDrinker
 
 - type: entity
   parent: MobCorgiBase
@@ -3387,11 +3558,13 @@
     spawned:
     - id: FoodMeat
       amount: 2
+  # Goob start
   - type: LanguageKnowledge # Einstein Engines - Language
     speaks:
     - Dog
     understands:
     - Dog
+    - TauCetiBasic
   - type: InteractionPopup
     interactSuccessString: petting-success-dog
     interactFailureString: petting-failure-generic
@@ -3403,6 +3576,7 @@
       gender: epicene
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-corgi
+  # Goob end
   - type: Tag
     tags:
     - VimPilot
@@ -3452,18 +3626,22 @@
     attributes:
       gender: epicene
   - type: Bloodstream
-    bloodReagent: DemonsBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: DemonsBlood
+        Quantity: 150
   - type: Damageable
     damageContainer: BiologicalMetaphysical
     damageModifierSet: Infernal
   - type: Temperature
+    currentTemperature: 310.15
+    specificHeat: 42
+  - type: TemperatureDamage
     heatDamageThreshold: 4000 #They come from hell, so..
     coldDamageThreshold: 260
-    currentTemperature: 310.15
     coldDamage:
       types:
         Cold : 1 #per second, scales with temperature & other constants
-    specificHeat: 42
     heatDamage:
       types:
         Heat : 1 #per second, scales with temperature & other constants
@@ -3544,6 +3722,7 @@
     - Cat
     understands:
     - Cat
+    - TauCetiBasic
   - type: InteractionPopup
     successChance: 0.7
     interactSuccessString: petting-success-cat
@@ -3670,6 +3849,7 @@
       Dead:
         Base: spacecat_dead
   - type: Temperature
+  - type: TemperatureDamage
     heatDamageThreshold: 423
     coldDamageThreshold: 0
   - type: Tag
@@ -3803,6 +3983,7 @@
     - Hissing
     understands:
     - Hissing
+    - TauCetiBasic
 
 - type: entity
   name: ferret
@@ -3862,6 +4043,7 @@
     - Hissing
     understands:
     - Hissing
+    - TauCetiBasic
 
 - type: entity
   name: hamster
@@ -3876,7 +4058,7 @@
     allowMovement: true
     name: ghost-role-information-hamster-name
     description: ghost-role-information-hamster-description
-    rules: ghost-role-information-nonantagonist-rules
+    rules: ghost-role-information-sentientanimal-rules # Goobstation Sentient Animal PR
   - type: GhostTakeoverAvailable
   - type: Speech
     speechVerb: SmallMob
@@ -3941,7 +4123,7 @@
         Base: dead-0
       Dead:
         Base: splat-0
-  - type: Food
+  - type: Edible
   - type: FlavorProfile
     flavors:
     - meaty
@@ -3968,6 +4150,7 @@
     - Mouse
     understands:
     - Mouse
+    - TauCetiBasic
   - type: Tag
     tags:
     - VimPilot
@@ -4003,7 +4186,10 @@
     interactSuccessSound:
       path: /Audio/Animals/fox_squeak.ogg
   - type: Bloodstream
-    bloodMaxVolume: 60
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 60
   - type: CanEscapeInventory
     baseResistTime: 3
   - type: MobPrice
@@ -4012,15 +4198,6 @@
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
-  - type: FoodSequenceElement
-    sprite:
-      sprite: Mobs/Animals/hamster.rsi
-      state: dead-0
-    entries:
-      burger:
-        name: food-sequence-burger-content-hamster
-      taco:
-        name: food-sequence-content-hamster
   - type: Destructible
     thresholds:
     - trigger:
@@ -4097,6 +4274,7 @@
     - Pig
     understands:
     - Pig
+    - TauCetiBasic
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-organic
   - type: NpcFactionMember
@@ -4113,6 +4291,10 @@
   id: MobDionaNymph
   description: It's like a cat, only.... branch-ier.
   components:
+  # Goobstation - Diona nymphs can also see through kudzu.
+  - type: SeeOverLayer
+    layers:
+    - kudzu
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -4135,8 +4317,10 @@
     speciesId: cat
     templateId: pet
   - type: Bloodstream
-    bloodReagent: Sap
-    bloodMaxVolume: 60
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Sap
+        Quantity: 60
   - type: DamageStateVisuals
     states:
       Alive:
@@ -4193,6 +4377,12 @@
     understands:
     - RootSpeak
     - TauCetiBasic
+  - type: VentCrawler # goob
+  - type: Carriable # goob
+  - type: PseudoItem # goob
+    storedOffset: 0,3
+    shape:
+    - 0,0,3,3
 
 - type: entity
   parent: MobDionaNymph
@@ -4246,7 +4436,10 @@
     - id: FoodMeat
       amount: 4
   - type: Bloodstream
-    bloodMaxVolume: 300
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 300
     # Horns though
   - type: MeleeWeapon
     damage:
@@ -4268,6 +4461,7 @@
     - Deer
     understands:
     - Deer
+    - TauCetiBasic
 
 - type: entity
   name: reindeer doe

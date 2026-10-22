@@ -2301,3 +2301,57 @@ Entries:
         Now its transcript shouldnt display gibberish.
   id: 186
   time: '2026-10-09T18:11:47.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Add
+      message: Added the ability for admins to edit eChem reagents.
+    - type: Fix
+      message: The DNA molecularsynthesiser no longer can fetch aGhost minds.
+    - type: Tweak
+      message: >-
+        The DNA molecularsynthesiser can no longer fetch minds in ghost roles!
+        Centcomm unfortunatley does not have ghost roles on DNA file.
+    - type: Fix
+      message: 'The Bye! round end timer now changes depending on admin interference. '
+  id: 187
+  time: '2026-10-18T20:10:34.0000000+00:00'
+- author: >-
+    11BelowStudio, 8Platanus8, Aidenkrz, Arraydeess, Arraydeess14,
+    AverageNotDoingAnythingEnjoyer, Aviu00, balt-dev, Baptr0b0t, BasedUser,
+    BeanyBoi69, BeeRobynn, bobbble, cfif126, charcuteriesampler, CliveOcelot,
+    codeduck101, cohanna, Connor Huffine, CosmicTheDiscommunicator, CryoDoctor,
+    cwestkaemper, Discommunicator, DoremyZerg, Errant-4, FairlySadPanda,
+    Firemixx, fourveeveevee, GNUtopia, H2Owe, HarelNo, harryhulse-12,
+    harryhulse12-alt, hzlayer, ishkab, IvanKuvalda, Jerulean, JohnJJohn,
+    JohnOakman, Kenkaitos, lacedfent, loltart, madeline-celeste, Makar0v-fr,
+    mrs-teg, nlaky, NotActuallyMarty, OnsenCapy, PhantomDergwulf,
+    PhosphateWithManyOs, Princess-Cheeseballs, PureBreadBagel,
+    QuantumPotatoGlitch, redmagicspider, Redrover1760, RedTerrorDark, Roudenn,
+    Samuka-C, Sanyato, Sarahon, SirCannonFodder, SkippyMcSkips, slarticodefast,
+    Snorkcom, spg-q, SSpetishes, thefirstLtaker, thinkfast1337-2, Toaster-Box,
+    Tony-251, Verbalase, YeenJunk
+  changes:
+    - type: Add
+      message: Feroxi can now breathe pluoxium!
+    - type: Fix
+      message: Wires when hacking a door now appear correctly.
+    - type: Fix
+      message: APCs GUIs now open correctly.
+    - type: Fix
+      message: >-
+        Text appending like [bold] tags in the examine menu now actually show
+        correctly.
+    - type: Fix
+      message: You can now revive a player with a defibrilator.
+    - type: Fix
+      message: Borg welding has been fixed.
+    - type: Add
+      message: >-
+        Central Command Officials spawn with cybernetic organs, whereas DS spawn
+        with advanced cybernetic organs.
+    - type: Add
+      message: Goob Upstream merge. Check the GoobStation log for everything!
+    - type: Tweak
+      message: buffed cybernetic organ integrities
+  id: 188
+  time: '2026-10-20T20:12:39.0000000+00:00'

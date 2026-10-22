@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 DoutorWhite <thedoctorwhite@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -22,7 +16,6 @@ namespace Content.Client.Light;
 public sealed class RoofOverlay : Overlay
 {
     private readonly IEntityManager _entManager;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IOverlayManager _overlay = default!;
 
     private readonly EntityLookupSystem _lookup;
@@ -59,11 +52,12 @@ public sealed class RoofOverlay : Overlay
 
         var worldHandle = args.WorldHandle;
         var lightoverlay = _overlay.GetOverlay<BeforeLightTargetOverlay>();
+        var lightRes = lightoverlay.GetCachedForViewport(args.Viewport);
         var bounds = lightoverlay.EnlargedBounds;
-        var target = lightoverlay.EnlargedLightTarget;
+        var target = lightRes.EnlargedLightTarget;
 
         _grids.Clear();
-        _mapManager.FindGridsIntersecting(args.MapId, bounds, ref _grids, approx: true, includeMap: true);
+        _mapSystem.FindGridsIntersecting(args.MapId, bounds, ref _grids, approx: true, includeMap: true);
         var lightScale = viewport.LightRenderTarget.Size / (Vector2) viewport.Size;
         var scale = viewport.RenderScale / (Vector2.One / lightScale);
 

@@ -19,11 +19,6 @@ namespace Content.Server._Jamboree.DnaCloner.Components {
 
         public EntityUid? DnaClonerVat = null; // Multitool link container. Need to have a vat right?
 
-        [ViewVariables]
-
-        public EntityUid? SelectedMind = null; // What mind being synthesised is getting unfortunatley made back to work lmao.
-
-
         [DataField("maxDistance")]
         public float MaxDistance = 4f; // 4 tiles...the max distance you can link it.
 

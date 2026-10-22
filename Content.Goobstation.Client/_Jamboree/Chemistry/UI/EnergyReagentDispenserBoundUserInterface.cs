@@ -70,6 +70,8 @@ namespace Content.Goobstation.Client._Jamboree.Chemistry.UI
             _window.AmountGrid.OnButtonPressed += s => SendMessage(new EnergyReagentDispenserSetDispenseAmountMessage(s));
 
             _window.OnDispenseReagentButtonPressed += (reagentId) => SendMessage(new EnergyReagentDispenserDispenseReagentMessage(reagentId));
+
+            _window.OnEditReagentButtonPressed += (reagentId, newCost) => SendMessage(new EnergyReagentDispenserEditReagentMessage(reagentId, newCost));
         }
 
         /// <summary>

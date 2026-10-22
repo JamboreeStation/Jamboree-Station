@@ -1,11 +1,11 @@
 - type: entity
-  name: EX-12 "Foxhound"
+  name: Foxhound
   parent: [BaseItem, BaseGunWieldable, BaseSecurityContraband]
   id: WeaponShotgunBulldogLegallyDistinct # """legally distinct"""
-  description: A completely original Nanotrasen design, that is legally distinct from any other weapons that might be on the market.
+  description: A completely original NanoTrasen design, legally distinct from any other weapons that might be on the market. Feeds from 12 Gauge drum magazines.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
+    sprite: _Goobstation/Objects/Weapons/Guns/Shotguns/bulldog.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -14,7 +14,7 @@
   - type: Item
     size: Large
   - type: Clothing
-    sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
+    sprite: _Goobstation/Objects/Weapons/Guns/Shotguns/bulldog.rsi
     quickEquip: false
     slots:
     - Back

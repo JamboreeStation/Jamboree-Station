@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Sprinting;
@@ -12,10 +8,10 @@ using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Client.Sprinting;
 
-public sealed class SprintingSystem : SharedSprintingSystem
+public sealed partial class SprintingSystem : SharedSprintingSystem
 {
-    [Dependency] private readonly AnimationPlayerSystem _animationPlayer = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private AnimationPlayerSystem _animationPlayer = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private static readonly Animation InitialAnimation = new()
     {

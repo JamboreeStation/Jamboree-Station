@@ -60,7 +60,7 @@ internal sealed class BuckleSystem : SharedBuckleSystem
 {
     [Dependency] private readonly RotationVisualizerSystem _rotationVisualizerSystem = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
-    [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
+    [Dependency] private readonly TransformSystem _xformSystem = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
     public override void Initialize()
@@ -178,7 +178,7 @@ internal sealed class BuckleSystem : SharedBuckleSystem
             !buckled ||
             args.Sprite == null)
         {
-            //_rotationVisualizerSystem.SetHorizontalAngle((uid, rotVisuals), rotVisuals.DefaultRotation); // WD EDIT
+            _rotationVisualizerSystem.SetHorizontalAngle((uid, rotVisuals), rotVisuals.DefaultRotation);
             return;
         }
 

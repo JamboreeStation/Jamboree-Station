@@ -20,6 +20,7 @@ public sealed partial class EnergyReagentCardControl : Control
     public float PowerCostPerUnit { get; }
     public bool IsDisabled => MainButton.Disabled;
     public Action<string>? OnPressed;
+    public Action<string>? OnEditPressed;
 
     public EnergyReagentCardControl(EnergyReagentInventoryItem item)
     {
@@ -32,6 +33,12 @@ public sealed partial class EnergyReagentCardControl : Control
         FillLabel.Text = $"{item.PowerCostPerUnit}J/u";
 
         MainButton.OnPressed += args => OnPressed?.Invoke(ReagentId);
+        EditButton.OnPressed += args => OnEditPressed?.Invoke(ReagentId);
+    }
+
+    public void SetEditVisible(bool visible)
+    {
+        EditButton.Visible = visible;
     }
     public void SetDisabled(bool disabled, string tooltip = "")
     {

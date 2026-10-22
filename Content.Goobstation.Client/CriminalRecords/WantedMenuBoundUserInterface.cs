@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 BeBright <98597725+be1bright@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Access.Systems;
@@ -10,10 +7,10 @@ using Robust.Shared.Random;
 
 namespace Content.Goobstation.Client.CriminalRecords;
 
-public sealed class WantedMenuBoundUserInterface : BoundUserInterface
+public sealed partial class WantedMenuBoundUserInterface : BoundUserInterface
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPlayerManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IPlayerManager _proto = default!;
     private readonly AccessReaderSystem _accessReader;
 
     private WantedMenu? _window;

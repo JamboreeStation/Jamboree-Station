@@ -19,13 +19,13 @@ using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Server.SpaceWhale;
 
-public sealed class SpaceWhaleDespawnSystem : EntitySystem
+public sealed partial class SpaceWhaleDespawnSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly SharedPointLightSystem _light = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private SharedPointLightSystem _light = default!;
 
     private static readonly TimeSpan CheckInterval = TimeSpan.FromSeconds(10); // This is a timer. Every 10 seconds; it kills leviathans near stations.
     private TimeSpan _nextCheck = TimeSpan.Zero;

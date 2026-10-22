@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Enchanting.Components;
@@ -22,15 +17,15 @@ namespace Content.Goobstation.Shared.Enchanting.Systems;
 /// <summary>
 /// Handles using enchanters on altars to enchant items.
 /// </summary>
-public sealed class EnchanterSystem : EntitySystem
+public sealed partial class EnchanterSystem : EntitySystem
 {
-    [Dependency] private readonly EnchantingSystem _enchanting = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedStackSystem _stack = default!;
+    [Dependency] private EnchantingSystem _enchanting = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedStackSystem _stack = default!;
 
     private List<EntProtoId<EnchantComponent>> _pool = new();
     private EntityQuery<CanEnchantComponent> _userQuery;
@@ -134,7 +129,7 @@ public sealed class EnchanterSystem : EntitySystem
         _adminLogger.Add(LogType.EntityDelete, LogImpact.Low,
             $"{ToPrettyString(user):player} enchanted {ToPrettyString(item):item} using {ToPrettyString(ent):enchanter}");
 
-        if (!TryComp<StackComponent>(ent, out var stack) || !_stack.Use(ent, 1, stack))
+        if (!HasComp<StackComponent>(ent) || !_stack.TryUse(ent.Owner, 1))
         {
             ent.Comp.Enchants = new(); // prevent double enchanting by malf client
             QueueDel(ent);

@@ -125,7 +125,6 @@
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
             ServiceWorker: [ 2, 2 ]
-            Zookeeper: [ 1, 1 ]
             Reporter: [ 1, 1 ]
 #            RadioHost: [ 1, 1 ] # Jamboree - spawnpoint not yet mapped
             #engineering
@@ -156,6 +155,7 @@
             #supply
             Quartermaster: [ 1, 1 ]
             SalvageSpecialist: [ 3, 3 ]
+            ShaftMiner: [ 3, 3 ]
             CargoTechnician: [ 4, 4 ]
             #civilian
             Passenger: [ -1, -1 ]

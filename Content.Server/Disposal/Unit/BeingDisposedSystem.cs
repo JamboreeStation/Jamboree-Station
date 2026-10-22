@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Scribbles0 <91828755+Scribbles0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Content.Server.Atmos.EntitySystems;
@@ -31,7 +25,7 @@ public sealed class BeingDisposedSystem : EntitySystem
         }
     }
 
-    private void OnInhaleLocation(EntityUid uid, BeingDisposedComponent component, InhaleLocationEvent args)
+    private void OnInhaleLocation(EntityUid uid, BeingDisposedComponent component, ref InhaleLocationEvent args) // Goob - by-ref
     {
         if (TryComp<DisposalHolderComponent>(component.Holder, out var holder))
         {
@@ -39,7 +33,7 @@ public sealed class BeingDisposedSystem : EntitySystem
         }
     }
 
-    private void OnExhaleLocation(EntityUid uid, BeingDisposedComponent component, ExhaleLocationEvent args)
+    private void OnExhaleLocation(EntityUid uid, BeingDisposedComponent component, ref ExhaleLocationEvent args) // Goob - by-ref
     {
         if (TryComp<DisposalHolderComponent>(component.Holder, out var holder))
         {

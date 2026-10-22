@@ -36,6 +36,10 @@
         "directions": 4
       },
       {
+        "name": "baby",
+        "directions": 4
+      },
+      {
         "name": "baldfade",
         "directions": 4
       },
@@ -241,6 +245,10 @@
       },
       {
         "name": "crewcut2",
+        "directions": 4
+      },
+      {
+        "name": "cube",
         "directions": 4
       },
       {
@@ -805,6 +813,10 @@
       },
       {
         "name": "longwithbangs",
+        "directions": 4
+      },
+      {
+        "name": "overeyepigtail",
         "directions": 4
       }
     ]

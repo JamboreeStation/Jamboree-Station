@@ -56,7 +56,8 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Goobstation.Maths.FixedPoint;
@@ -77,14 +78,13 @@ using Content.Shared._Shitmed.Medical.Surgery.Traumas.Systems;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
 using Content.Shared._Shitmed.Targeting;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
 using Content.Shared.Damage.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
 using Robust.Shared.Network;
+using Content.Shared.Damage;
 
 namespace Content.Shared.Medical.Healing;
 
@@ -177,20 +177,18 @@ public sealed class HealingSystem : EntitySystem
         if (healing.ModifyBloodLevel != 0 && bloodstream != null)
             _bloodstreamSystem.TryModifyBloodLevel((target.Owner, bloodstream), -healing.ModifyBloodLevel); // Goobedit
 
-        var healed = _damageable.TryChangeDamage(target.Owner, healing.Damage * _damageable.UniversalTopicalsHealModifier, true, origin: args.Args.User);
-
-        if (healed == null && healing.BloodlossModifier != 0)
+        if (!_damageable.TryChangeDamage(target.Owner, healing.Damage * _damageable.UniversalTopicalsHealModifier, out var healed, true, origin: args.Args.User) && healing.BloodlossModifier != 0)
             return;
 
-        var total = healed?.GetTotal() ?? FixedPoint2.Zero;
+        var total = healed.GetTotal();
 
         // Re-verify that we can heal the damage.
         var dontRepeat = false;
         if (TryComp<StackComponent>(args.Used.Value, out var stackComp))
         {
-            _stacks.Use(args.Used.Value, 1, stackComp);
+            _stacks.ReduceCount((args.Used.Value, stackComp), 1);
 
-            if (_stacks.GetCount(args.Used.Value, stackComp) <= 0)
+            if (_stacks.GetCount((args.Used.Value, stackComp)) <= 0)
                 dontRepeat = true;
         }
         else
@@ -235,7 +233,7 @@ public sealed class HealingSystem : EntitySystem
         var healingDict = healing.Comp.Damage.DamageDict;
         foreach (var type in healingDict)
         {
-            if (damageableDict[type.Key].Value > 0)
+            if (damageableDict.GetValueOrDefault(type.Key) > 0) // Goob
             {
                 return true;
             }
@@ -246,7 +244,7 @@ public sealed class HealingSystem : EntitySystem
             // Is ent missing blood that we can restore?
             if (healing.Comp.ModifyBloodLevel > 0
                 && _solutionContainerSystem.ResolveSolution(target.Owner, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var bloodSolution)
-                && bloodSolution.Volume < bloodSolution.MaxVolume)
+                && _bloodstreamSystem.GetBloodLevel((target, bloodstream)) < 1)
             {
                 return true;
             }
@@ -438,16 +436,8 @@ public sealed class HealingSystem : EntitySystem
                 targetedWoundable = woundablesQueue.Dequeue();
                 if (!TryComp<WoundableComponent>(targetedWoundable, out var woundableComp2))
                     continue;
-                if (TraumaSystem.TraumasBlockingHealing.Any(traumaType => _trauma.HasWoundableTrauma(targetedWoundable, traumaType, woundableComp2, false)))
-                {
-                    canHeal = false;
-
-                    if (!healedBleedLevel)
-                    {
-                        leftoverHealAndTrauma = true;
-                        continue;
-                    }
-                }
+                if (_trauma.HasHealingBlockingTrauma(targetedWoundable, woundableComp2) && !healedBleedLevel)
+                    leftoverHealAndTrauma = true;
 
                 if (canHeal)
                 {
@@ -457,7 +447,7 @@ public sealed class HealingSystem : EntitySystem
                         continue;
                     }
 
-                    var damageChanged = _damageable.TryChangeDamage(targetedWoundable, healingLeft, true, origin: args.User, ignoreBlockers: healedBleed || healing.BloodlossModifier == 0); // GOOBEDIT
+                    var damageChanged = _damageable.ChangeDamage(targetedWoundable, healingLeft, true, origin: args.User, ignoreBlockers: false);
 
                     if (damageChanged is not null)
                     {
@@ -470,7 +460,7 @@ public sealed class HealingSystem : EntitySystem
         }
         else
         {
-            var healed = _damageable.TryChangeDamage(ent, healing.Damage * _damageable.UniversalTopicalsHealModifier, true, origin: args.User);
+            var healed = _damageable.ChangeDamage(ent, healing.Damage * _damageable.UniversalTopicalsHealModifier, true, origin: args.User);
             if (healed != null)
                 healingLeft -= healed;
         }
@@ -490,9 +480,9 @@ public sealed class HealingSystem : EntitySystem
         // Re-verify that we can heal the damage.
         if (TryComp<StackComponent>(args.Used.Value, out var stackComp))
         {
-            _stacks.Use(args.Used.Value, 1, stackComp);
+            _stacks.ReduceCount((args.Used.Value, stackComp), 1);
 
-            if (_stacks.GetCount(args.Used.Value, stackComp) <= 0)
+            if (_stacks.GetCount((args.Used.Value, stackComp)) <= 0)
                 dontRepeat = true;
         }
         else
@@ -608,7 +598,7 @@ public sealed class HealingSystem : EntitySystem
 
         var delay = isNotSelf
             ? healing.Comp.Delay
-            : healing.Comp.Delay * GetScaledHealingPenalty(target.Owner, healing.Comp.SelfHealPenaltyMultiplier);
+            : healing.Comp.Delay * GetScaledHealingPenalty(target, healing.Comp.SelfHealPenaltyMultiplier);
 
         // Play sound when starting the healing action
         // Goobstation
@@ -643,10 +633,8 @@ public sealed class HealingSystem : EntitySystem
             return 1;
 
         var percentDamage = (float)(ent.Comp1.TotalDamage / amount);
-        if (TryComp<ConsciousnessComponent>(ent.Owner, out var consciousness))
-            percentDamage *= (float) (consciousness.Threshold / consciousness.Cap - consciousness.Consciousness);
-
         //basically make it scale from 1 to the multiplier.
+
         var output = percentDamage * (mod - 1) + 1;
         return Math.Max(output, 1);
     }

@@ -27792,14 +27792,14 @@ entities:
     - type: Transform
       pos: 19.5,-28.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 16185
   - uid: 2122
     components:
     - type: Transform
       pos: 7.5,20.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 16185
 - proto: BackgammonBoard
   entities:
@@ -62946,7 +62946,7 @@ entities:
     - type: Transform
       pos: 19.5,-29.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 16185
 - proto: CleanerDispenser
   entities:
@@ -73988,7 +73988,7 @@ entities:
     - type: Transform
       pos: 34.5,-27.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 16185
 - proto: ExtinguisherCabinetFilled
   entities:
@@ -112568,6 +112568,16 @@ entities:
         17055:
         - - MaterialSilo
           - MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 2121
+      - 2122
+      - 8991
+      - 10796
+      - 16202
+      - 16298
+      - 17055
+      - 18468
 - proto: MaterialWoodPlank
   entities:
   - uid: 16186
@@ -112662,7 +112672,7 @@ entities:
     - type: Transform
       pos: -36.5,-24.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 16185
 - proto: MedkitAdvancedFilled
   entities:
@@ -113292,7 +113302,7 @@ entities:
     - type: Transform
       pos: 12.5,21.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 16185
 - proto: OxygenCanister
   entities:
@@ -117781,7 +117791,7 @@ entities:
     - type: Transform
       pos: 21.5,-28.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 16185
 - proto: ProtolatheMachineCircuitboard
   entities:
@@ -125191,7 +125201,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 16185
 - proto: SecurityWhistle
   entities:

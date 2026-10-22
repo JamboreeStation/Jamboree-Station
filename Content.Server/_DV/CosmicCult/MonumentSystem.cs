@@ -1,15 +1,10 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Shared.Damage.Systems;
 using Content.Server._DV.CosmicCult.Components;
 using Content.Server._DV.CosmicCult.EntitySystems;
-using Content.Goobstation.Shared.Religion; // Goobstation - Shitchap
+using Content.Goobstation.Shared.Religion;
 using Content.Server.Actions;
 using Content.Server.Atmos.Components;
 using Content.Server.Audio;
@@ -22,12 +17,12 @@ using Content.Shared._DV.CosmicCult;
 using Content.Shared._DV.CosmicCult.Components;
 using Content.Shared._DV.CosmicCult.Components.Examine;
 using Content.Shared._DV.CosmicCult.Prototypes;
+using Content.Server._DV.Shuttles.Events;
 using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
-using Content.Shared.Temperature.Components;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
@@ -61,15 +56,18 @@ public sealed class MonumentSystem : SharedMonumentSystem
     [Dependency] private readonly SpawnOnDespawnSystem _sod = default!;
     private static readonly EntProtoId CosmicGod = "MobCosmicGodSpawn";
     private static readonly EntProtoId MonumentCollider = "MonumentCollider";
+
     private EntityUid? _monumentStorageMap;
 
     public override void Initialize()
     {
         base.Initialize();
 
+        SubscribeLocalEvent<EvacShuttleDockedEvent>(OnEvacDocked); // for no more finale once the evac shuttle docks
         SubscribeLocalEvent<MonumentComponent, InteractUsingEvent>(OnInfuseHeldEntropy);
         SubscribeLocalEvent<MonumentComponent, ActivateInWorldEvent>(OnInfuseEntropy);
     }
+
 
     public override void Update(float frameTime) // This Update() can fit so much functionality in it
     {
@@ -92,8 +90,7 @@ public sealed class MonumentSystem : SharedMonumentSystem
                 monuComp.CheckTimer = _timing.CurTime + monuComp.CheckWait;
             }
 
-            if (comp.SongTimer is { } time
-                && _timing.CurTime >= time)
+            if (comp.SongTimer is { } time && _timing.CurTime >= time)
             {
                 comp.SongTimer = null;
 
@@ -101,28 +98,21 @@ public sealed class MonumentSystem : SharedMonumentSystem
                     _sound.DispatchStationEventMusic(uid, song, StationEventMusicType.CosmicCult);
             }
 
-            if (comp.CurrentState == FinaleState.ActiveBuffer
-                && _timing.CurTime >= comp.BufferTimer) // swap everything over when buffer timer runs out
+            if (comp.CurrentState == FinaleState.ActiveFinale && comp.FinaleAnnounceCheck && comp.FinaleTimer - _timing.CurTime < comp.VisualsThreshold)
             {
-                comp.CurrentState = FinaleState.ActiveFinale;
-                comp.FinaleTimer = _timing.CurTime + comp.FinaleRemainingTime;
-                comp.SelectedSong = comp.FinaleMusic;
-                _sound.StopStationEventMusic(uid, StationEventMusicType.CosmicCult);
                 _appearance.SetData(uid, MonumentVisuals.FinaleReached, 3);
-                _chatSystem.DispatchStationAnnouncement(uid,
-                    Loc.GetString("cosmiccult-announce-finale-warning"),
-                    null,
-                    false,
-                    null,
-                    Color.FromHex("#cae8e8"));
-                comp.SongTimer = _timing.CurTime + TimeSpan.FromSeconds(1);
+                _chatSystem.DispatchStationAnnouncement(uid, Loc.GetString("cosmiccult-announce-finale-warning"), null, false, null, Color.FromHex("#cae8e8"));
+                comp.FinaleAnnounceCheck = false;
             }
-            else if (comp.CurrentState == FinaleState.ActiveFinale && _timing.CurTime >= comp.FinaleTimer) // trigger wincondition on time runout
+
+            if (comp.CurrentState == FinaleState.ActiveFinale && _timing.CurTime >= comp.FinaleTimer) // trigger wincondition on time runout
             {
                 var victoryQuery = EntityQueryEnumerator<CosmicVictoryConditionComponent>();
 
                 while (victoryQuery.MoveNext(out _, out var victoryComp))
+                {
                     victoryComp.Victory = true;
+                }
 
                 _sound.StopStationEventMusic(uid, StationEventMusicType.CosmicCult);
                 var spawnUid = Spawn(CosmicGod, Transform(uid).Coordinates);
@@ -135,7 +125,7 @@ public sealed class MonumentSystem : SharedMonumentSystem
                         {
                             {
                                 "CosmicGod", new EntityPrototype.ComponentRegistryEntry(
-                                    new CosmicGodComponent { TriggerRoundEnd = true }, new MappingDataNode())
+                                    new CosmicGodComponent { TriggerRoundEnd = true })
                             }
                         }));
             }
@@ -164,6 +154,19 @@ public sealed class MonumentSystem : SharedMonumentSystem
         }
     }
 
+    /// <summary>
+    /// on shuttle evac, disable the monument's UI, disable it from being activated, and stop the finale music if it was playing
+    /// </summary>
+    private void OnEvacDocked(EvacShuttleDockedEvent args)
+    {
+        var evacQuery = EntityQueryEnumerator<MonumentComponent, CosmicFinaleComponent>();
+        while (evacQuery.MoveNext(out var ent, out var monuComp, out var finaleComp))
+        {
+            finaleComp.CurrentState = FinaleState.Unreachable;
+        }
+
+    }
+
     private void OnMonumentPhaseOut(Entity<MonumentComponent> ent)
     {
         //todo check if anything gets messed up by doing this to the monument?
@@ -181,7 +184,9 @@ public sealed class MonumentSystem : SharedMonumentSystem
         var colliderQuery = EntityQueryEnumerator<MonumentCollisionComponent>();
 
         while (colliderQuery.MoveNext(out var collider, out _))
+        {
             QueueDel(collider);
+        }
 
         if (ent.Comp.Monument is null)
             return;
@@ -206,11 +211,15 @@ public sealed class MonumentSystem : SharedMonumentSystem
         return _monumentStorageMap.Value;
     }
 
-    public void PhaseOutMonument(Entity<MonumentComponent> ent) =>
+    public void PhaseOutMonument(Entity<MonumentComponent> ent)
+    {
         ent.Comp.PhaseOutTimer = _timing.CurTime + TimeSpan.FromSeconds(0.45);
+    }
 
-    public void UpdateMonumentProgress(Entity<MonumentComponent> ent, Entity<CosmicCultRuleComponent> cult) =>
+    public void UpdateMonumentProgress(Entity<MonumentComponent> ent, Entity<CosmicCultRuleComponent> cult)
+    {
         ent.Comp.CurrentProgress = ent.Comp.TotalEntropy + cult.Comp.TotalCult * _config.GetCVar(DCCVars.CosmicCultistEntropyValue);
+    }
 
     private void OnInfuseEntropy(Entity<MonumentComponent> uid, ref ActivateInWorldEvent args)
     {
@@ -219,7 +228,9 @@ public sealed class MonumentSystem : SharedMonumentSystem
 
         if (TryComp<CosmicCultComponent>(args.User, out var cultComp)
             && cultComp.EntropyStored > 0)
+        {
             args.Handled = AddEntropy(uid, (args.User, cultComp));
+        }
     }
 
     private void OnInfuseHeldEntropy(Entity<MonumentComponent> uid, ref InteractUsingEvent args)
@@ -261,8 +272,10 @@ public sealed class MonumentSystem : SharedMonumentSystem
         var quant = TryComp<StackComponent>(entropy, out var stackComp) ? stackComp.Count : 1;
         monument.Comp.TotalEntropy += quant;
         cultist.Comp.EntropyBudget += quant;
+
         Dirty(cultist, cultist.Comp);
         _cosmicRule.UpdateCultData(monument);
+
         _popup.PopupEntity(Loc.GetString("cosmiccult-entropy-inserted", ("count", quant)), cultist, cultist);
         _audio.PlayEntity(_audio.ResolveSound(monument.Comp.InfusionSFX), cultist, monument);
         QueueDel(entropy);
@@ -298,10 +311,10 @@ public sealed class MonumentSystem : SharedMonumentSystem
             _appearance.SetData(ent, MonumentVisuals.FinaleReached, true);
     }
 
-    //note - these ar the thresholds for moving to the next tier
-    //so t1 -> 2 needs 20% of the crew
-    //t2 -> 3 needs 40%
-    //and t3 -> finale needs an extra 20 entropy
+    //note - these are the thresholds for moving to the next tier
+    //so t1 -> 2 needs 1/3 of CosmicCultTargetConversionPercent
+    //t2 -> 3 needs 2/3 of CosmicCultTargetConversionPercent
+    //and t3 -> finale needs full CosmicCultTargetConversionPercent
     public void UpdateMonumentReqsForTier(Entity<MonumentComponent> monument, int tier)
     {
         if (_cosmicRule.AssociatedGamerule(monument) is not { } cult)
@@ -313,30 +326,38 @@ public sealed class MonumentSystem : SharedMonumentSystem
         {
             case 1:
                 monument.Comp.ProgressOffset = 0;
-                monument.Comp.TargetProgress = (int) (difficultyMultiplier * numberOfCrewForTier3 / 2 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue));
+                monument.Comp.TargetProgress = (int)(numberOfCrewForTier3 / 3 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue));
                 break;
             case 2:
-                monument.Comp.ProgressOffset = (int) (difficultyMultiplier * numberOfCrewForTier3 / 2 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue)); //reset the progress offset
-                monument.Comp.TargetProgress = (int) (difficultyMultiplier * numberOfCrewForTier3 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue));
+                monument.Comp.ProgressOffset = (int)(numberOfCrewForTier3 / 3 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue)); //reset the progress offset
+                monument.Comp.TargetProgress = (int)(numberOfCrewForTier3 / 3 * 2 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue));
                 break;
             case 3:
-                monument.Comp.ProgressOffset = (int) (difficultyMultiplier * numberOfCrewForTier3 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue));
-                monument.Comp.TargetProgress = (int) (difficultyMultiplier * numberOfCrewForTier3 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue)); //removed offset; replaced with timer
+                monument.Comp.ProgressOffset = (int)(numberOfCrewForTier3 / 3 * 2 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue));
+                monument.Comp.TargetProgress = (int)(numberOfCrewForTier3 * _config.GetCVar(DCCVars.CosmicCultistEntropyValue));
                 break;
         }
     }
 
-    public void SetCanTierUp(Entity<MonumentComponent> ent, bool canTierUp) =>
+    public void SetCanTierUp(Entity<MonumentComponent> ent, bool canTierUp)
+    {
         ent.Comp.CanTierUp = canTierUp;
+    }
 
-    public void SetTargetProgess(Entity<MonumentComponent> ent, int targetProgress) =>
+    public void SetTargetProgess(Entity<MonumentComponent> ent, int targetProgress)
+    {
         ent.Comp.TargetProgress = targetProgress;
+    }
 
-    public void Disable(Entity<MonumentComponent> ent) =>
+    public void Disable(Entity<MonumentComponent> ent)
+    {
         ent.Comp.Enabled = false;
+    }
 
-    public void Enable(Entity<MonumentComponent> ent) =>
+    public void Enable(Entity<MonumentComponent> ent)
+    {
         ent.Comp.Enabled = true;
+    }
 
     public void MonumentTier1(Entity<MonumentComponent> uid)
     {
@@ -349,7 +370,9 @@ public sealed class MonumentSystem : SharedMonumentSystem
         foreach (var glyphProto in _protoMan
             .EnumeratePrototypes<GlyphPrototype>()
             .Where(proto => proto.Tier == 1))
+        {
             uid.Comp.UnlockedGlyphs.Add(glyphProto.ID);
+        }
 
         //basically completely unnecessary, but putting this here for sanity & futureproofing - ruddygreat
         var query = EntityQueryEnumerator<CosmicCultComponent>();
@@ -358,7 +381,9 @@ public sealed class MonumentSystem : SharedMonumentSystem
             foreach (var influenceProto in _protoMan
                 .EnumeratePrototypes<InfluencePrototype>()
                 .Where(influenceProto => influenceProto.Tier == 1))
+            {
                 cultComp.UnlockedInfluences.Add(influenceProto.ID);
+            }
 
             Dirty(cultist, cultComp);
         }
@@ -366,7 +391,9 @@ public sealed class MonumentSystem : SharedMonumentSystem
         var objectiveQuery = EntityQueryEnumerator<CosmicTierConditionComponent>();
 
         while (objectiveQuery.MoveNext(out _, out var objectiveComp))
+        {
             objectiveComp.Tier = 1;
+        }
 
         //add the move action
         var leaderQuery = EntityQueryEnumerator<CosmicCultLeadComponent>();
@@ -384,22 +411,35 @@ public sealed class MonumentSystem : SharedMonumentSystem
         foreach (var glyphProto in _protoMan
             .EnumeratePrototypes<GlyphPrototype>()
             .Where(proto => proto.Tier == 2))
+        {
             uid.Comp.UnlockedGlyphs.Add(glyphProto.ID);
+        }
 
         var objectiveQuery = EntityQueryEnumerator<CosmicTierConditionComponent>();
 
         while (objectiveQuery.MoveNext(out _, out var objectiveComp))
+        {
             objectiveComp.Tier = 2;
+        }
 
         var query = EntityQueryEnumerator<CosmicCultComponent>();
         while (query.MoveNext(out var cultist, out var cultComp))
         {
             foreach (var influenceProto in _protoMan.EnumeratePrototypes<InfluencePrototype>().Where(influenceProto => influenceProto.Tier == 2))
+            {
                 cultComp.UnlockedInfluences.Add(influenceProto.ID);
+            }
 
             cultComp.EntropyBudget += cult.Comp.TotalCrew / 100 * 10; // pity system. 10% of the playercount worth of entropy on tier up
 
             Dirty(cultist, cultComp);
+        }
+
+        //add the move action
+        var leaderQuery = EntityQueryEnumerator<CosmicCultLeadComponent>();
+        while (leaderQuery.MoveNext(out var leader, out var leaderComp))
+        {
+            _actions.AddAction(leader, ref leaderComp.CosmicMonumentMoveActionEntity, leaderComp.CosmicMonumentMoveAction, leader);
         }
 
         Dirty(uid);
@@ -413,13 +453,17 @@ public sealed class MonumentSystem : SharedMonumentSystem
         foreach (var glyphProto in _protoMan
             .EnumeratePrototypes<GlyphPrototype>()
             .Where(proto => proto.Tier == 3))
+        {
             uid.Comp.UnlockedGlyphs.Add(glyphProto.ID);
+        }
 
         UpdateMonumentAppearance(uid, true);
 
         var objectiveQuery = EntityQueryEnumerator<CosmicTierConditionComponent>();
         while (objectiveQuery.MoveNext(out var _, out var objectiveComp))
+        {
             objectiveComp.Tier = 3;
+        }
 
         var query = EntityQueryEnumerator<CosmicCultComponent>();
         while (query.MoveNext(out var cultist, out var cultComp))
@@ -434,7 +478,9 @@ public sealed class MonumentSystem : SharedMonumentSystem
                 cultComp.WasWeakToHoly = true;
 
             foreach (var influenceProto in _protoMan.EnumeratePrototypes<InfluencePrototype>().Where(influenceProto => influenceProto.Tier == 3))
+            {
                 cultComp.UnlockedInfluences.Add(influenceProto.ID);
+            }
 
             cultComp.Respiration = false;
             cultComp.EntropyBudget += cult.Comp.TotalCrew / 100 * 10; //pity system. 10% of the playercount worth of entropy on tier up
@@ -444,7 +490,10 @@ public sealed class MonumentSystem : SharedMonumentSystem
         //remove the move action
         var leaderQuery = EntityQueryEnumerator<CosmicCultLeadComponent>();
         while (leaderQuery.MoveNext(out var leader, out var leaderComp))
+        {
             _actions.RemoveAction(leader, leaderComp.CosmicMonumentMoveActionEntity);
+        }
+
         Dirty(uid);
     }
 
@@ -456,12 +505,14 @@ public sealed class MonumentSystem : SharedMonumentSystem
         if (TryComp<ActivatableUIComponent>(uid, out var uiComp))
         {
             if (TryComp<UserInterfaceComponent>(uid, out var uiComp2)) //close the UI for everyone who has it open
+            {
                 _ui.CloseUi((uid.Owner, uiComp2), MonumentKey.Key);
+            }
 
             uiComp.Key = null; //kazne called this the laziest way to disable a UI ever
         }
 
-        finaleComp.CurrentState = FinaleState.ReadyBuffer;
+        finaleComp.CurrentState = FinaleState.ReadyFinale;
         uid.Comp.Enabled = false;
         uid.Comp.TargetProgress = uid.Comp.CurrentProgress;
 

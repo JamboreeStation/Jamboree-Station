@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -38,6 +34,14 @@ public sealed class AddImplant : LocalizedCommands
         }
 
         var target  = targetEntity.Value;
+        if (!IoCManager.Resolve<IPrototypeManager>().HasIndex<EntityPrototype>(args[1]))
+        {
+            shell.WriteLine(Loc.GetString("cmd-addimplant-failure",
+                ("implant", args[1]),
+                ("target", entityManager.ToPrettyString(target))));
+            return;
+        }
+
         var implant = implantSystem.AddImplant(target, args[1]);
 
         if (implant != null)

@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2024 avery <51971268+graevy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.TextScreen;
@@ -111,7 +108,14 @@ public sealed class ScreenSystem : EntitySystem
             return;
 
         if (args.Data.TryGetValue(ScreenMasks.Text, out string? label) && label != null)
+        {
             text = label;
+
+            // An explicit label (BYE!/KILL) is a round-end state rather than a transient ETA/ETD,
+            // so also stash it as the fallback text. Otherwise it is wiped the moment the
+            // countdown hits zero and the screen reverts to the last comms broadcast.
+            _appearanceSystem.SetData(uid, TextScreenVisuals.DefaultText, label);
+        }
 
         _appearanceSystem.SetData(uid, TextScreenVisuals.ScreenText, text);
         _appearanceSystem.SetData(uid, TextScreenVisuals.TargetTime, _gameTiming.CurTime + duration);

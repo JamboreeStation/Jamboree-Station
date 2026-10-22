@@ -8,19 +8,19 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Jamboree.DnaCloner
 {
     [Serializable, NetSerializable]
-    public sealed record CentralCommandDnaClonerMindRow(NetEntity Id, string Name, CentralCommandDnaClonerBodyState BodyState);
+    public sealed record CentralCommandDnaClonerMindRow(NetEntity Id, string Name, CentralCommandDnaClonerBodyState BodyState, bool IsObserver);
 
     [Serializable, NetSerializable]
     public enum CentralCommandDnaClonerBodyState : byte
     {
-        // Just basically means if they are alive and posessing body.
+        // They still have a body, or lost it in a way the UI doesn't need to distinguish.
         Intact,
 
-        // The corpse is gone and the mind cant get back into its body lol.
+        // The corpse is gone and the mind can't get back into it.
         Lost,
 
 
-        // A corpse is still lying there but the whole point is that if its rotting isnt it destroyed?
+        // A corpse is still lying there, but rotting. Worth flagging, because they're not getting that one back.
 
         Rotted,
     }
@@ -31,17 +31,17 @@ namespace Content.Shared._Jamboree.DnaCloner
         public List<CentralCommandDnaClonerMindRow> MindNames { get; set; } = new();
         public CentralCommandDnaClonerStatus Status { get; set; } = CentralCommandDnaClonerStatus.NoVat;
 
-        // How much biomass the machine has in right now????
+        // How much biomass the machine currently has.
         public int Biomass { get; set; }
 
-        //How much biomass one synthesis costs.
+        // How much one synthesis costs, so the client can render "have / need" without guessing.
         public int BiomassCost { get; set; }
     }
 
     [Serializable, NetSerializable]
     public enum CentralCommandDnaClonerVisuals : byte
     {
-        // Whether the vat currently has a body inside it. Would be weird if you just had more than 3.
+        // Whether the vat currently has a body in it. Two states, because the vat holds one body at a time.
 
         Status
     }
@@ -60,13 +60,13 @@ namespace Content.Shared._Jamboree.DnaCloner
         // The machine is linked, in range, fed and free. Go ahead.
         Ready,
 
-        // No molecularsynthesis machine is wired to this console...Kinda cringy.
+        // No molecularsynthesis machine has been linked with a multitool or linker.
         NoVat,
 
         // A machine is wired, but it is too far away to use.
         VatOutOfRange,
 
-        // Something is still GETTING MADE  inside the machine.
+        // A body is still being synthesised inside the machine.
         VatOccupied,
 
         // The machine does not have enough biomass for another body.

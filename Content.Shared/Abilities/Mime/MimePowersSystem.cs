@@ -20,7 +20,7 @@ public sealed class MimePowersSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly TurfSystem _turf = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
@@ -67,7 +67,7 @@ public sealed class MimePowersSystem : EntitySystem
             Dirty(ent, illiterateComponent);
         }
 
-        _alertsSystem.ShowAlert(ent, ent.Comp.VowAlert);
+        _alertsSystem.ShowAlert(ent.Owner, ent.Comp.VowAlert);
         _actionsSystem.AddAction(ent, ref ent.Comp.InvisibleWallActionEntity, ent.Comp.InvisibleWallAction);
     }
 
@@ -90,7 +90,7 @@ public sealed class MimePowersSystem : EntitySystem
         var xform = Transform(ent);
         // Get the tile in front of the mime
         var offsetValue = xform.LocalRotation.ToWorldVec();
-        var coords = xform.Coordinates.Offset(offsetValue).SnapToGrid(EntityManager, _mapMan);
+        var coords = xform.Coordinates.Offset(offsetValue).SnapToGrid(EntityManager);
         var tile = _turf.GetTileRef(coords);
         if (tile == null)
             return;
@@ -107,7 +107,7 @@ public sealed class MimePowersSystem : EntitySystem
         _popupSystem.PopupPredicted(messageSelf, messageOthers, ent, ent);
 
         // Make sure we set the invisible wall to despawn properly
-        PredictedSpawnAtPosition(ent.Comp.WallPrototype, _turf.GetTileCenter(tile.Value));
+        PredictedSpawnAttachedTo(ent.Comp.WallPrototype, _turf.GetTileCenter(tile.Value)); // Goob edit
         // Handle args so cooldown works
         args.Handled = true;
     }
@@ -138,10 +138,10 @@ public sealed class MimePowersSystem : EntitySystem
         if (!Resolve(uid, ref mimePowers))
             return;
 
-        if (mimePowers.VowBroken)
+        if (!mimePowers.CanBreakVow) // Goobstation
             return;
 
-        if (!mimePowers.CanBreakVow) // Goobstation
+        if (mimePowers.VowBroken)
             return;
 
         mimePowers.Enabled = false;

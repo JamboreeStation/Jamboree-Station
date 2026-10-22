@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client.Guidebook.Controls;
@@ -17,7 +14,7 @@ namespace Content.Goobstation.Client.Guidebook.Controls;
 /// </summary>
 public sealed partial class GuideAutomationSlotsEmbed : IDocumentTag
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
+    [Dependency] private IEntityManager _entMan = default!;
     private readonly AutomationSystem _automation;
 
     public GuideAutomationSlotsEmbed()

@@ -1,20 +1,3 @@
-// SPDX-FileCopyrightText: 2021 Julian Giebel <j.giebel@netrocks.info>
-// SPDX-FileCopyrightText: 2021 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Alex Nordlund <deep.alexander@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kot <1192090+koteq@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using System.Diagnostics.CodeAnalysis;
@@ -41,10 +24,8 @@ namespace Content.Server.Power.EntitySystems
 
             //Anchoring
             SubscribeLocalEvent<ExtensionCableReceiverComponent, AnchorStateChangedEvent>(OnReceiverAnchorStateChanged);
-            SubscribeLocalEvent<ExtensionCableReceiverComponent, ReAnchorEvent>(OnReceiverReAnchor);
 
             SubscribeLocalEvent<ExtensionCableProviderComponent, AnchorStateChangedEvent>(OnProviderAnchorStateChanged);
-            SubscribeLocalEvent<ExtensionCableProviderComponent, ReAnchorEvent>(OnProviderReAnchor);
         }
 
         #region Provider
@@ -104,12 +85,6 @@ namespace Content.Server.Power.EntitySystems
             // same as OnProviderShutdown
             provider.Comp.Connectable = false;
             ResetReceivers(provider);
-        }
-
-        private void OnProviderReAnchor(Entity<ExtensionCableProviderComponent> provider, ref ReAnchorEvent args)
-        {
-            Disconnect(provider);
-            Connect(provider);
         }
 
         private void ResetReceivers(Entity<ExtensionCableProviderComponent> provider)
@@ -221,11 +196,6 @@ namespace Content.Server.Power.EntitySystems
             }
         }
 
-        private void OnReceiverReAnchor(Entity<ExtensionCableReceiverComponent> receiver, ref ReAnchorEvent args)
-        {
-            Disconnect(receiver);
-            Connect(receiver);
-        }
 
         private void Connect(Entity<ExtensionCableReceiverComponent> receiver)
         {

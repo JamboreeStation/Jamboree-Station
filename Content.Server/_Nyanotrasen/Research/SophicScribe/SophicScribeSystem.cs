@@ -1,7 +1,7 @@
 using Content.Server._EinsteinEngines.Abilities.Psionics;
 using Content.Server._EinsteinEngines.StationEvents.Events;
 using Content.Server.Chat.Systems;
-using Content.Server.Radio.Components;
+using Content.Shared.Radio.Components;
 using Content.Server.Radio.EntitySystems;
 using Content.Shared._EinsteinEngines.Psionics.Glimmer;
 using Content.Shared.Chat;

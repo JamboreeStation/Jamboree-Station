@@ -1,38 +1,14 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ichaie <167008606+Ichaie@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 JORJ949 <159719201+JORJ949@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 MortalBaguette <169563638+MortalBaguette@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Panela <107573283+AgentePanela@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Poips <Hanakohashbrown@gmail.com>
-// SPDX-FileCopyrightText: 2025 PuroSlavKing <103608145+PuroSlavKing@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 blobadoodle <me@bloba.dev>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 kamkoi <poiiiple1@gmail.com>
-// SPDX-FileCopyrightText: 2025 shibe <95730644+shibechef@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 tetra <169831122+Foralemes@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Goobstation.Common.Patrons; // Goob
 using Content.Server.Database;
 using Content.Shared._RMC14.LinkAccount;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes; // Goob
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Color = System.Drawing.Color;
@@ -44,12 +20,16 @@ public sealed class LinkAccountManager : IPostInjectInit
     [Dependency] private readonly IServerDbManager _db = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IPrototypeManager _prototypes = default!; // Goob
+    [Dependency] private readonly ILogManager _log = default!; // Goob
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly UserDbDataManager _userDb = default!;
 
     private readonly Dictionary<NetUserId, TimeSpan> _lastRequest = new();
     private readonly TimeSpan _minimumWait = TimeSpan.FromSeconds(0.5);
     private readonly Dictionary<NetUserId, SharedRMCPatronFull> _connected = new();
+    private readonly Dictionary<NetUserId, ProtoId<PatronTierPrototype>> _fauxPatronAssignments = new(); // Goob
+    private bool _tiersSynced; // Goob
     private readonly List<SharedRMCPatron> _allPatrons = [];
     private readonly List<(string Message, string User)> _lobbyMessages = [];
     private readonly List<string> _shoutouts = [];
@@ -63,16 +43,7 @@ public sealed class LinkAccountManager : IPostInjectInit
         var linked = await _db.HasLinkedAccount(player.UserId, cancel);
         cancel.ThrowIfCancellationRequested();
 
-        var tier = patron?.Tier;
-        var sharedTier = tier == null
-            ? null
-            : new SharedRMCPatronTier(
-                tier.ShowOnCredits,
-                tier.GhostColor,
-                tier.LobbyMessage,
-                tier.RoundEndShoutout,
-                tier.Name
-            );
+        var sharedTier = patron == null ? null : GetSharedTier(patron.TierId); // Goob - patron tier prototypes
 
         SharedRMCLobbyMessage? lobbyMessage = null;
         if (patron?.LobbyMessage is { Message.Length: > 0 } patronMsg)
@@ -91,7 +62,7 @@ public sealed class LinkAccountManager : IPostInjectInit
             ghostColor = new Robust.Shared.Maths.Color(sysColor.R, sysColor.G, sysColor.B, sysColor.A);
         }
 
-        _connected[player.UserId] = new SharedRMCPatronFull(sharedTier, linked, ghostColor, lobbyMessage, shoutouts);
+        _connected[player.UserId] = new SharedRMCPatronFull(sharedTier, linked, ghostColor, patron?.OocIcon, lobbyMessage, shoutouts); // Goob - ooc icon
     }
 
     private void FinishLoad(ICommonSession player)
@@ -104,9 +75,9 @@ public sealed class LinkAccountManager : IPostInjectInit
         _connected.Remove(player.UserId);
     }
 
-    private void SendPatronStatus(ICommonSession player)
+    public void SendPatronStatus(ICommonSession player) // Goob - public
     {
-        var connected = _connected.GetValueOrDefault(player.UserId);
+        var connected = GetPatron(player.UserId); // Goob - include faux tiers
         var msg = new LinkAccountStatusMsg { Patron = connected, };
         _net.ServerSendMessage(msg, player.Channel);
         SendPatrons(player);
@@ -189,8 +160,125 @@ public sealed class LinkAccountManager : IPostInjectInit
         }
     }
 
+    // Goob start
+
+    public void SetOocIcon(NetUserId user, string? icon)
+    {
+        if (GetPatronTier(user) is not { } tier)
+            return;
+
+        if (icon != null &&
+            (!_prototypes.TryIndex<OocIconPrototype>(icon, out var iconProto) || !tier.CanUse(iconProto)))
+        {
+            return;
+        }
+
+        _db.SetOocIcon(user, icon);
+
+        if (_connected.TryGetValue(user, out var connected))
+        {
+            connected = connected with { OocIcon = icon };
+            _connected[user] = connected;
+            PatronUpdated?.Invoke((user, connected));
+        }
+    }
+
+    public string? GetOocIcon(NetUserId user)
+    {
+        if (GetPatronTier(user) is not { } tier)
+            return null;
+
+        if (GetPatron(user)?.OocIcon is { } selected &&
+            _prototypes.TryIndex<OocIconPrototype>(selected, out var icon) &&
+            tier.CanUse(icon))
+        {
+            return icon.ID;
+        }
+
+        return tier.Icon;
+    }
+
+    public PatronTierPrototype? GetPatronTier(NetUserId user)
+    {
+        if (GetPatron(user)?.Tier is not { } tier)
+            return null;
+
+        return _prototypes.TryIndex(tier.Id, out var proto) ? proto : null;
+    }
+
+    private SharedRMCPatronTier? GetSharedTier(int databaseId)
+    {
+        if (_prototypes.GetPatronTierByDatabaseId(databaseId) is not { } proto)
+            return null;
+
+        return GetSharedTier(proto);
+    }
+
+    private static SharedRMCPatronTier GetSharedTier(PatronTierPrototype proto)
+    {
+        return new SharedRMCPatronTier(
+            proto.ID,
+            proto.ShowOnCredits,
+            proto.GhostColor,
+            proto.LobbyMessage,
+            proto.RoundEndShoutout,
+            proto.OocIconTiers.Count > 0,
+            Loc.GetString(proto.Name),
+            proto.Icon
+        );
+    }
+
+    private async Task SyncTiers()
+    {
+        var tiers = new List<RMCPatronTier>();
+        foreach (var proto in _prototypes.EnumeratePrototypes<PatronTierPrototype>())
+        {
+            tiers.Add(new RMCPatronTier
+            {
+                Id = proto.DatabaseId,
+                Name = Loc.GetString(proto.Name),
+                Icon = proto.Icon,
+                DiscordRole = proto.DiscordRole,
+                Priority = proto.Priority,
+                ShowOnCredits = proto.ShowOnCredits,
+                GhostColor = proto.GhostColor,
+                LobbyMessage = proto.LobbyMessage,
+                RoundEndShoutout = proto.RoundEndShoutout,
+            });
+        }
+
+        _tiersSynced = true;
+        try
+        {
+            await _db.SyncPatronTiers(tiers);
+        }
+        catch (Exception e)
+        {
+            _log.GetSawmill("link_account").Error($"Failed to sync patron tier prototypes to the database:\n{e}");
+        }
+    }
+
+    private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
+    {
+        if (args.WasModified<PatronTierPrototype>())
+            _tiersSynced = false;
+    }
+
+    public async Task ReloadPatron(ICommonSession player)
+    {
+        await LoadData(player, CancellationToken.None);
+        SendPatronStatus(player);
+
+        if (_connected.TryGetValue(player.UserId, out var connected))
+            PatronUpdated?.Invoke((player.UserId, connected));
+    }
+    // Goob end
+
     public async Task RefreshAllPatrons()
     {
+        if (!_tiersSynced) // Goob
+            await SyncTiers(); // Goob
+
         var patrons = await _db.GetAllPatrons();
         var messages = await _db.GetLobbyMessages();
         var shoutouts = await _db.GetShoutouts();
@@ -199,13 +287,27 @@ public sealed class LinkAccountManager : IPostInjectInit
         _lobbyMessages.Clear();
         _shoutouts.Clear();
 
+        // Goob start - patron tier prototypes
         foreach (var patron in patrons)
         {
-            _allPatrons.Add(new SharedRMCPatron(patron.Player.LastSeenUserName, patron.Tier.Name));
+            if (_prototypes.GetPatronTierByDatabaseId(patron.TierId) is not { ShowOnCredits: true } tier)
+                continue;
+
+            _allPatrons.Add(new SharedRMCPatron(patron.Player.LastSeenUserName, tier.ID));
         }
 
-        _lobbyMessages.AddRange(messages);
-        _shoutouts.AddRange(shoutouts);
+        foreach (var (message, user, tierId) in messages)
+        {
+            if (_prototypes.GetPatronTierByDatabaseId(tierId) is { LobbyMessage: true })
+                _lobbyMessages.Add((message, user));
+        }
+
+        foreach (var (name, tierId) in shoutouts)
+        {
+            if (_prototypes.GetPatronTierByDatabaseId(tierId) is { RoundEndShoutout: true })
+                _shoutouts.Add(name);
+        }
+        // Goob end
 
         PatronsReloaded?.Invoke();
     }
@@ -245,8 +347,39 @@ public sealed class LinkAccountManager : IPostInjectInit
 
     public SharedRMCPatronFull? GetPatron(NetUserId userId)
     {
+        if (_fauxPatronAssignments.TryGetValue(userId, out var tierId) &&
+            _prototypes.TryIndex(tierId, out var tier))
+        {
+            // Goob start
+            var connected = _connected.GetValueOrDefault(userId);
+            return new SharedRMCPatronFull(
+                Tier: GetSharedTier(tier),
+                Linked: true,
+                GhostColor: connected?.GhostColor,
+                OocIcon: connected?.OocIcon,
+                LobbyMessage: connected?.LobbyMessage,
+                RoundEndShoutout: connected?.RoundEndShoutout
+            );
+            // Goob end
+        }
+
         return _connected.GetValueOrDefault(userId);
     }
+
+    // Goob start
+    public void AssignFauxPatron(NetUserId userId, ProtoId<PatronTierPrototype>? tierId)
+    {
+        if (tierId == null)
+            _fauxPatronAssignments.Remove(userId);
+        else if (_prototypes.HasIndex(tierId.Value))
+            _fauxPatronAssignments[userId] = tierId.Value;
+    }
+
+    public IReadOnlyDictionary<NetUserId, ProtoId<PatronTierPrototype>> GetAllFauxPatronAssignments()
+    {
+        return _fauxPatronAssignments;
+    }
+    // Goob end
 
     void IPostInjectInit.PostInject()
     {
@@ -261,5 +394,6 @@ public sealed class LinkAccountManager : IPostInjectInit
         _userDb.AddOnLoadPlayer(LoadData);
         _userDb.AddOnFinishLoad(FinishLoad);
         _userDb.AddOnPlayerDisconnect(ClientDisconnected);
+        _prototypes.PrototypesReloaded += OnPrototypesReloaded; // Goob
     }
 }

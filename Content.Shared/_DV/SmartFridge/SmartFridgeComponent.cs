@@ -15,7 +15,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._DV.SmartFridge;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
-public sealed partial class SmartFridgeComponent : Component
+public sealed partial class SmartFridgeDVComponent : Component
 {
     [DataField]
     public string Container = "smart_fridge_inventory";
@@ -64,7 +64,7 @@ public sealed partial class SmartFridgeComponent : Component
 }
 
 [Serializable, NetSerializable, DataRecord]
-public record struct SmartFridgeEntry
+public partial record struct SmartFridgeEntry
 {
     public string Name;
 

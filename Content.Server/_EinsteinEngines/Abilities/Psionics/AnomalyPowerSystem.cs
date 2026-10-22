@@ -1,4 +1,6 @@
 using Content.Shared.Abilities.Psionics;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared._EinsteinEngines.Actions.Events;
 using Content.Shared._EinsteinEngines.Psionics.Glimmer;
 using Robust.Shared.Random;
@@ -110,7 +112,7 @@ public sealed partial class AnomalyPowerSystem : EntitySystem
 
         if (args.Settings.OverchargeRecoil is not null
             && TryComp<DamageableComponent>(uid, out var damageable))
-            _damageable.TryChangeDamage(uid, args.Settings.OverchargeRecoil / component.CurrentDampening, true, true, damageable, uid);
+            _damageable.TryChangeDamage((uid, damageable), args.Settings.OverchargeRecoil / component.CurrentDampening, true, true, uid);
 
         if (args.Settings.OverchargeCooldown > 0)
             foreach (var action in component.Actions)

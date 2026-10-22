@@ -1,0 +1,41 @@
+// SPDX-FileCopyrightText: 2019 Space Station 14 Contributors
+// SPDX-License-Identifier: MIT
+// Adapted from RobustToolbox 56eda3ea92913e60c27aa029ba7877c8559dfe9d.
+
+using System.Linq;
+using Robust.Shared.Collections;
+using Robust.Shared.IoC;
+
+namespace Robust.Shared.GameObjects
+{
+    public sealed class TimerSystem : EntitySystem
+    {
+#pragma warning disable CS0618
+        public override void Update(float frameTime)
+        {
+            base.Update(frameTime);
+
+            // Avoid a collection was modified while enumerating.
+            var timers = EntityQueryEnumerator<TimerComponent>();
+            var timersList = new ValueList<(EntityUid, TimerComponent)>();
+            while (timers.MoveNext(out var uid, out var timer))
+            {
+                timersList.Add((uid, timer));
+            }
+
+            foreach (var (_, timer) in timersList)
+            {
+                timer.Update(frameTime);
+            }
+
+            foreach (var (uid, timer) in timersList)
+            {
+                if (!timer.Deleted && !EntityManager.Deleted(uid) && timer.RemoveOnEmpty && timer.TimerCount == 0)
+                {
+                    RemComp<TimerComponent>(uid);
+                }
+            }
+        }
+#pragma warning restore CS0618
+    }
+}

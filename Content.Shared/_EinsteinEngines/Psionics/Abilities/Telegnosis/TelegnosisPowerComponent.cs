@@ -1,6 +1,5 @@
 using Content.Shared.Actions.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 
 namespace Content.Shared.Abilities.Psionics
@@ -11,11 +10,11 @@ namespace Content.Shared.Abilities.Psionics
         [DataField("prototype")]
         public string Prototype = "MobTelegnosisObserver";
         public InstantActionComponent? TelegnosisPowerAction = null;
-        [ValidatePrototypeId<EntityPrototype>]
+
         public const string TelegnosisActionPrototype = "ActionTelegnosis";
-        [DataField("telegnosisActionId",
-        customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-        public string? TelegnosisActionId = "ActionTelegnosis";
+        [DataField("telegnosisActionId")]
+        public ProtoId<EntityPrototype>? TelegnosisActionId = "ActionTelegnosis";
+
 
         [DataField("telegnosisActionEntity")]
         public EntityUid? TelegnosisActionEntity;

@@ -1,5 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Evaisa <mail@evaisa.dev>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.FloorGoblin;
@@ -14,10 +12,10 @@ namespace Content.Goobstation.Client.FloorGoblin;
 
 public sealed partial class HideUnderFloorAbilitySystem : SharedCrawlUnderFloorSystem
 {
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     private readonly Dictionary<EntityUid, (EntityUid Grid, Vector2i Tile)> _lastCell = new();
 

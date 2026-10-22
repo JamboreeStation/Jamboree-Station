@@ -29,7 +29,8 @@
               Genetic: -0.5
         - !type:HealthChange
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
+            reagent: Tetrasolcincide
             min: 30
           damage:
             types:

@@ -46,7 +46,6 @@ using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server._EinsteinEngines.Language;
 using Content.Server.Power.Components;
-using Content.Server.Radio.Components;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared._EinsteinEngines.Language;
@@ -187,7 +186,7 @@ public sealed partial class RadioSystem : EntitySystem
         name = FormattedMessage.EscapeText(name);
 
         SpeechVerbPrototype speech;
-        if (evt.SpeechVerb != null && _prototype.TryIndex(evt.SpeechVerb, out var evntProto))
+        if (evt.SpeechVerb != null && _prototype.Resolve(evt.SpeechVerb, out var evntProto))
             speech = evntProto;
         else
             speech = _chat.GetSpeechVerb(messageSource, message);
@@ -343,6 +342,46 @@ public sealed partial class RadioSystem : EntitySystem
             ("language", languageDisplay));
     }
     // Einstein Engines - Language end
+
+    // Goobstation - Voice chat
+    public void GetVoiceReceivers(EntityUid radioSource, RadioChannelPrototype channel, List<EntityUid> receivers)
+    {
+        var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
+        RaiseLocalEvent(ref sendAttemptEv);
+        RaiseLocalEvent(radioSource, ref sendAttemptEv);
+        if (sendAttemptEv.Cancelled)
+            return;
+
+        var sourceMapId = Transform(radioSource).MapID;
+        var hasActiveServer = HasActiveServer(sourceMapId, channel.ID);
+        var sourceServerExempt = _exemptQuery.HasComp(radioSource);
+
+        var radioQuery = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
+        while (radioQuery.MoveNext(out var receiver, out var radio, out var transform))
+        {
+            if (!radio.ReceiveAllChannels)
+            {
+                if (!radio.Channels.Contains(channel.ID) || (TryComp<IntercomComponent>(receiver, out var intercom) &&
+                                                             !intercom.SupportedChannels.Contains(channel.ID)))
+                    continue;
+            }
+
+            if (!channel.LongRange && transform.MapID != sourceMapId && !radio.GlobalReceive
+                && !(HasActiveTransmitter(transform.MapID) && HasActiveTransmitter(sourceMapId)))
+                continue;
+
+            if (!channel.LongRange && !sourceServerExempt && !hasActiveServer)
+                continue;
+
+            var attemptEv = new RadioReceiveAttemptEvent(channel, radioSource, receiver);
+            RaiseLocalEvent(ref attemptEv);
+            RaiseLocalEvent(receiver, ref attemptEv);
+            if (attemptEv.Cancelled)
+                continue;
+
+            receivers.Add(receiver);
+        }
+    }
 
     /// <inheritdoc cref="TelecomServerComponent"/>
     private bool HasActiveServer(MapId mapId, string channelId)

@@ -61,6 +61,30 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                         Text="{Loc 'reagent-dispenser-window-eject-button'}"
                         StyleClasses="OpenLeft" />
             </BoxContainer>
+            <CheckBox Name="AdminToggle"
+                    Access="Public"
+                    Text="Admin"
+                    HorizontalAlignment="Center" />
+            <Control Name="AdminPanel" Visible="False">
+                <BoxContainer Orientation="Vertical">
+                    <LineEdit Name="ReagentIdEdit"
+                              Access="Public"
+                              PlaceHolder="Reagent ID (e.g. Blood)" />
+                    <LineEdit Name="CostEdit"
+                              Access="Public"
+                              PlaceHolder="Joules per unit. (e.g 5)" />
+                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Name="ApplyEditButton"
+                                Access="Public"
+                                Text="Apply"
+                                StyleClasses="OpenRight" />
+                        <Button Name="RemoveEditButton"
+                                Access="Public"
+                                Text="Remove"
+                                StyleClasses="OpenLeft" />
+                    </BoxContainer>
+                </BoxContainer>
+            </Control>
         </BoxContainer>
         <SplitContainer Orientation="Vertical"
                         HorizontalExpand="True"

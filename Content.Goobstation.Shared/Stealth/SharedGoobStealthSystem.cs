@@ -1,30 +1,24 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Stealth.Components;
 using Content.Shared.Stealth;
-using Content.Shared.Damage;
 using Content.Shared.Ninja.Components;
 using Content.Shared.Ninja.Systems;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Throwing;
-using Content.Goobstation.Shared.Slasher.Components; // For SlasherIncorporealComponent
+using Content.Goobstation.Shared.Slasher.Components;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Goobstation.Shared.Stealth;
 
 /// <summary>
 /// This handles goobstations additions to stealth system
 /// </summary>
-public sealed class SharedGoobStealthSystem : EntitySystem
+public sealed partial class SharedGoobStealthSystem : EntitySystem
 {
-    [Dependency] private readonly SharedStealthSystem _stealth = default!;
-    [Dependency] private readonly SharedNinjaSuitSystem _suit = default!;
+    [Dependency] private SharedStealthSystem _stealth = default!;
+    [Dependency] private SharedNinjaSuitSystem _suit = default!;
 
     public override void Initialize()
     {

@@ -19,7 +19,7 @@ public sealed class HeatVentSystem : SharedHeatVentSystem
 {
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
-    [Dependency] private readonly Shared.Damage.DamageableSystem _damage = default!;
+    [Dependency] private readonly Content.Shared.Damage.Systems.DamageableSystem _damage = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly JitteringSystem _jittering = default!;

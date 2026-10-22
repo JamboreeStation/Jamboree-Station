@@ -1,9 +1,6 @@
-# SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
 # SPDX-License-Identifier: MIT
 
-name: No submodule update checker
+name: Engine submodule version checker
 
 on:
   pull_request:
@@ -15,9 +12,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  this_aint_right:
-    name: Submodule update in pr found
+  verify_engine_version:
+    name: Verify engine release pin
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
-      - name: Fail
-        run: exit 1
+      - uses: actions/checkout@v4.2.2
+      - name: Verify RobustToolbox is pinned to v293.0.0
+        shell: bash
+        run: |
+          expected=$(git ls-remote --exit-code https://github.com/space-wizards/RobustToolbox.git refs/tags/v293.0.0 | cut -f1)
+          actual=$(git rev-parse HEAD:RobustToolbox)
+          test -n "$expected"
+          test "$actual" = "$expected"

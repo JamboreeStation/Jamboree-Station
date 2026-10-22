@@ -81,7 +81,6 @@
 
 using System.Diagnostics;
 using System.IO.Compression;
-using Content.ModuleManager;
 using Robust.Packaging;
 using Robust.Packaging.AssetProcessing;
 using Robust.Packaging.AssetProcessing.Passes;
@@ -101,15 +100,18 @@ public static class ServerPackaging
         new PlatformReg("osx-x64", "MacOS", true),
         new PlatformReg("osx-arm64", "MacOS", true),
         // Non-default platforms (i.e. for Watchdog Git)
-        new PlatformReg("win-x86", "Windows", false),
-        new PlatformReg("linux-x86", "Linux", false),
-        new PlatformReg("linux-arm", "Linux", false),
         new PlatformReg("freebsd-x64", "FreeBSD", false),
     };
 
+    private static IReadOnlySet<string> ServerContentIgnoresResources { get; } = new HashSet<string>
+    {
+        "ServerInfo",
+        "Changelog",
+    };
+
     private static List<string> PlatformRids => Platforms
-        .Select(o => o.Rid)
-        .ToList();
+    .Select(o => o.Rid)
+    .ToList();
 
     private static List<string> PlatformRidsDefault => Platforms
         .Where(o => o.BuildByDefault)
@@ -135,7 +137,7 @@ public static class ServerPackaging
 
     private static readonly List<string> ServerNotExtraAssemblies = new()
     {
-        "Microsoft.CodeAnalysis",
+        "JetBrains.Annotations",
     };
 
     private static readonly HashSet<string> BinSkipFolders = new()
@@ -173,24 +175,24 @@ public static class ServerPackaging
         }
 
         // Good variable naming right here.
+        string? builtTargetOs = null; // Goobstation
         foreach (var platform in Platforms)
         {
             if (!platforms.Contains(platform.Rid))
                 continue;
 
-            await BuildPlatform(platform, skipBuild, hybridAcz, configuration, logger);
+            await BuildPlatform(platform, skipBuild, hybridAcz, configuration, logger, builtTargetOs == platform.TargetOs); // Goobstation
+            builtTargetOs = platform.TargetOs; // Goobstation
         }
     }
 
-    private static async Task BuildPlatform(PlatformReg platform, bool skipBuild, bool hybridAcz, string configuration, IPackageLogger logger)
+    private static async Task BuildPlatform(PlatformReg platform, bool skipBuild, bool hybridAcz, string configuration, IPackageLogger logger, bool reuseContentBuild) // Goobstation
     {
-        logger.Info($"Building project for {platform.TargetOs}...");
+        logger.Info(reuseContentBuild ? $"Reusing {platform.TargetOs} build..." : $"Building project for {platform.TargetOs}..."); // Goobstation
 
         if (!skipBuild)
         {
-            var serverModules = FindServerModules();
-
-            foreach (var module in serverModules)
+            if (!reuseContentBuild) // Goobstation
             {
                 await ProcessHelpers.RunCheck(new ProcessStartInfo
                 {
@@ -198,7 +200,7 @@ public static class ServerPackaging
                     ArgumentList =
                     {
                         "build",
-                        Path.Combine(module, $"{module}.csproj"),
+                        Path.Combine("Content.Goobstation.Server", "Content.Goobstation.Server.csproj"), // Goob
                         "-c", configuration,
                         "--nologo",
                         "/v:m",
@@ -218,7 +220,7 @@ public static class ServerPackaging
         var sw = RStopwatch.StartNew();
         {
             await using var zipFile =
-                File.Open(Path.Combine("release", $"SS14.Server_{platform.Rid}.zip"), FileMode.Create, FileAccess.ReadWrite);
+            File.Open(Path.Combine("release", $"SS14.Server_{platform.Rid}.zip"), FileMode.Create, FileAccess.ReadWrite);
             using var zip = new ZipArchive(zipFile, ZipArchiveMode.Update);
             var writer = new AssetPassZipWriter(zip);
 
@@ -227,54 +229,6 @@ public static class ServerPackaging
         }
 
         logger.Info($"Finished packaging server in {sw.Elapsed}");
-    }
-
-    private static List<string> FindServerModules(string path = ".")
-    {
-        var serverModules = new List<string> { "Content.Server" };
-
-        var directories = Directory.GetDirectories(path, "Content.*");
-        foreach (var dir in directories)
-        {
-            var dirName = Path.GetFileName(dir);
-
-            // Look for Content.{name}.Server projects
-            if (dirName != "Content.Server" && dirName.EndsWith(".Server"))
-            {
-                var projectPath = Path.Combine(dir, $"{dirName}.csproj");
-                if (File.Exists(projectPath))
-                {
-                    serverModules.Add(dirName);
-                }
-            }
-        }
-
-        return serverModules;
-    }
-
-    private static List<string> FindAllServerModules(string path = ".")
-    {
-        var modules = new List<string>(CoreServerContentAssemblies);
-        modules.AddRange(ModuleDiscovery.DiscoverModules(path)
-            .Where(m => m.Type is not ModuleType.Client)
-            .Select(m => m.Name)
-            .Distinct()
-        );
-
-        var directories = Directory.GetDirectories(path, "Content.*");
-        foreach (var dir in directories)
-        {
-            var dirName = Path.GetFileName(dir);
-
-            // Throw out anything that does not end with ".Server" or ".Shared"
-            if ((!dirName.EndsWith(".Server") && !dirName.EndsWith(".Shared")) || modules.Contains(dirName))
-                continue;
-            var projectPath = Path.Combine(dir, $"{dirName}.csproj");
-            if (File.Exists(projectPath))
-                modules.Add(dirName);
-        }
-
-        return modules;
     }
 
     private static async Task PublishClientServer(string runtime, string targetOs, string configuration)
@@ -315,31 +269,20 @@ public static class ServerPackaging
         var inputPassCore = graph.InputCore;
         var inputPassResources = graph.InputResources;
 
-        var contentAssemblies = FindAllServerModules();
-
         // Additional assemblies that need to be copied such as EFCore.
         var sourcePath = Path.Combine(contentDir, "bin", "Content.Server");
 
-        // Should this be an asset pass?
-        // For future archaeologists I just want audio rework to work and need the audio pass so
-        // just porting this as is from python.
-        foreach (var fullPath in Directory.EnumerateFiles(sourcePath, "*.*", SearchOption.AllDirectories))
-        {
-            var fileName = Path.GetFileNameWithoutExtension(fullPath);
+        var deps = DepsHandler.Load(Path.Combine(sourcePath, "Content.Goobstation.Server.deps.json")); // Goob
 
-            if (!ServerNotExtraAssemblies.Any(o => fileName.StartsWith(o)) && ServerExtraAssemblies.Any(o => fileName.StartsWith(o)))
-            {
-                contentAssemblies.Add(fileName);
-            }
-        }
+        var contentAssemblies = GetContentAssemblyNamesToCopy(deps);
 
         await RobustSharedPackaging.DoResourceCopy(
             Path.Combine("RobustToolbox", "bin", "Server",
-            platform.Rid,
-            "publish"),
-            inputPassCore,
-            BinSkipFolders,
-            cancel: cancel);
+                         platform.Rid,
+                         "publish"),
+                         inputPassCore,
+                         BinSkipFolders,
+                         cancel: cancel);
 
         await RobustSharedPackaging.WriteContentAssemblies(
             inputPassResources,
@@ -348,7 +291,11 @@ public static class ServerPackaging
             contentAssemblies,
             cancel: cancel);
 
-        await RobustServerPackaging.WriteServerResources(contentDir, inputPassResources, cancel);
+        await RobustServerPackaging.WriteServerResources(
+            contentDir,
+            inputPassResources,
+            ServerContentIgnoresResources.Concat(SharedPackaging.AdditionalIgnoredResources).ToHashSet(),
+                                                         cancel);
 
         if (hybridAcz)
         {
@@ -357,6 +304,31 @@ public static class ServerPackaging
 
         inputPassCore.InjectFinished();
         inputPassResources.InjectFinished();
+    }
+
+    // This returns both content assemblies (e.g. Content.Server.dll) and dependencies (e.g. Npgsql)
+    private static IEnumerable<string> GetContentAssemblyNamesToCopy(DepsHandler deps)
+    {
+        // Goob edit start
+        return GetContentAssemblyNamesToCopy(deps, "Server");
+    }
+
+    public static IEnumerable<string> GetContentAssemblyNamesToCopy(DepsHandler deps, string side)
+    {
+        var depsContent = deps.RecursiveGetLibrariesFrom($"Content.Goobstation.{side}")
+            .SelectMany(GetLibraryNames);
+        var depsRobust = deps.RecursiveGetLibrariesFrom($"Robust.{side}")
+            .SelectMany(GetLibraryNames);
+        // Goob edit end
+
+        var depsContentExclusive = depsContent.Except(depsRobust).ToHashSet();
+
+        // Remove .dll suffix and apply filtering.
+        var names = depsContentExclusive.Select(p => p[..^4]).Where(p => !ServerNotExtraAssemblies.Any(p.StartsWith));
+
+        return names;
+
+        IEnumerable<string> GetLibraryNames(string library) => deps.Libraries[library].GetDllNames();
     }
 
     private readonly record struct PlatformReg(string Rid, string TargetOs, bool BuildByDefault);

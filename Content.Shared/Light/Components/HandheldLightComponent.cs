@@ -1,16 +1,9 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Light.Components;
 
@@ -18,6 +11,8 @@ namespace Content.Shared.Light.Components;
 public sealed partial class HandheldLightComponent : Component
 {
     public byte? Level;
+
+    [DataField]
     public bool Activated;
 
     [ViewVariables(VVAccess.ReadWrite)]
@@ -43,8 +38,8 @@ public sealed partial class HandheldLightComponent : Component
     [DataField("addPrefix")]
     public bool AddPrefix = false;
 
-    [DataField("toggleAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string ToggleAction = "ActionToggleLight";
+    [DataField("toggleAction")]
+    public EntProtoId ToggleAction = "ActionToggleLight";
 
     /// <summary>
     /// Whether or not the light can be toggled via standard interactions

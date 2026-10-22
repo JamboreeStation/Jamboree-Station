@@ -45,16 +45,21 @@ namespace Content.Client._Jamboree.DnaCloner.UI
 
             foreach (var row in state.MindNames) // For each name in the Minds without a body or rotted...
             {
+                var text = row.BodyState switch // switch here means it produces a value.
+                {
+                    CentralCommandDnaClonerBodyState.Lost => // if the body got round removed
+                        Loc.GetString("centralcommand-dnacloner-entry-body-lost", ("name", row.Name)), // show the minds name, and button.
+                    CentralCommandDnaClonerBodyState.Rotted =>
+                        Loc.GetString("centralcommand-dnacloner-entry-body-rotted", ("name", row.Name)), // show the minds name with "(Rotted)" and button.
+                    _ => row.Name,
+                };
+
+                if (row.IsObserver)
+                    text = Loc.GetString("centralcommand-dnacloner-entry-observer", ("name", text));
+
                 var button = new Button // create a new button for them.
                 {
-                    Text = row.BodyState switch // switch here means it produces a value.
-                    {
-                        CentralCommandDnaClonerBodyState.Lost => // if the body got round removed
-                            Loc.GetString("centralcommand-dnacloner-entry-body-lost", ("name", row.Name)), // show the minds name, and button.
-                        CentralCommandDnaClonerBodyState.Rotted =>
-                            Loc.GetString("centralcommand-dnacloner-entry-body-rotted", ("name", row.Name)), // show the minds name with "(Rotted)" and button.
-                        _ => row.Name,
-                    },
+                    Text = text,
                     HorizontalExpand = true,
 
                 };

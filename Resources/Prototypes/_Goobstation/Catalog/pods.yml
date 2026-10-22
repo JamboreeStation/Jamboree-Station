@@ -4,10 +4,11 @@
   name: crusader armour
   parent: SpawnSupplyEmpty
   components:
-  - type: SpawnOnDespawn
-    prototypes:
-    - ClothingOuterArmorTemplar
-    - ClothingHeadHatHelmetTemplar
+  - type: SpawnTableOnDespawn
+    table: !type:AllSelector
+      children:
+      - id: ClothingOuterArmorTemplar
+      - id: ClothingHeadHatHelmetTemplar
 
 #- type: entity
  # id: SpawnArmamentsStudent
@@ -26,10 +27,11 @@
   name: ancient armour
   parent: SpawnSupplyEmpty
   components:
-  - type: SpawnOnDespawn
-    prototypes:
-    - ClothingOuterArmorAncient
-    - ClothingHeadHatHelmetAncient
+  - type: SpawnTableOnDespawn
+    table: !type:AllSelector
+      children:
+      - id: ClothingOuterArmorAncient
+      - id: ClothingHeadHatHelmetAncient
 
 #- type: entity
  # id: SpawnArmamentsWitchhunter
@@ -58,10 +60,11 @@
   name: forgotten armour
   parent: SpawnSupplyEmpty
   components:
-  - type: SpawnOnDespawn
-    prototypes:
-    - ClothingOuterArmorClock
-    - ClothingHeadHatHelmetClock
+  - type: SpawnTableOnDespawn
+    table: !type:AllSelector
+      children:
+      - id: ClothingOuterArmorClock
+      - id: ClothingHeadHatHelmetClock
 
 #- type: entity
 #  id: SpawnArmamentsMonk
@@ -83,3 +86,13 @@
   #  prototypes:
    # - ClothingOuterArmorBishop
   #  - ClothingHeadHatHelmetBishop
+
+- type: entity
+  id: SpawnArmamentsDraconic
+  categories: [ HideSpawnMenu ]
+  name: dragon suit
+  parent: SpawnSupplyEmpty
+  components:
+  - type: SpawnTableOnDespawn
+    table:
+      id: ClothingOuterArmorDragon

@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2022 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2022 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2022 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration;
@@ -84,15 +74,15 @@ public sealed class TileReplaceCommand : IConsoleCommand
         var mapSystem = _entManager.System<SharedMapSystem>();
 
         var changed = 0;
+        var changes = new List<(Vector2i GridIndices, Tile Tile)>();
         foreach (var tile in mapSystem.GetAllTiles(gridId.Value, grid))
         {
-            var tileContent = tile.Tile;
-            if (tileContent.TypeId == tileA.TileId)
-            {
-                mapSystem.SetTile(gridId.Value, grid, tile.GridIndices, new Tile(tileB.TileId));
-                changed++;
-            }
+            if (tile.Tile.TypeId == tileA.TileId)
+                changes.Add((tile.GridIndices, new Tile(tileB.TileId)));
         }
+
+        mapSystem.SetTiles(gridId.Value, grid, changes);
+        changed = changes.Count;
 
         shell.WriteLine($"Changed {changed} tiles.");
     }

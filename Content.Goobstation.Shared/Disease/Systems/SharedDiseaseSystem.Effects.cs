@@ -2,10 +2,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Goobstation.Shared.Disease.Components;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Flash;
 using Content.Shared.Flash.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Maps;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.StatusEffect;
@@ -21,16 +23,16 @@ namespace Content.Goobstation.Shared.Disease.Systems;
 
 public partial class SharedDiseaseSystem
 {
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedFlashSystem _flash = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] private readonly SharedMeleeWeaponSystem _melee = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly StatusEffectsSystem _status = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly TileSystem _tile = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedFlashSystem _flash = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] private SharedMeleeWeaponSystem _melee = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private TileSystem _tile = default!;
+    [Dependency] private MovementModStatusSystem _movemod = default!;
 
     public float MaxEffectSeverity = 1f; // magic numbers are EVIL and BAD
 
@@ -148,10 +150,10 @@ public partial class SharedDiseaseSystem
 
         // migrate this to new status effects once flashes are
         _status.TryAddStatusEffect<FlashedComponent>(args.Ent, _flash.FlashedKey.Id, ent.Comp.Duration * GetScale(args, ent.Comp), true);
-        _stun.TrySlowdown(args.Ent, ent.Comp.Duration * GetScale(args, ent.Comp), true, ent.Comp.SlowTo, ent.Comp.SlowTo);
+        _movemod.TryUpdateMovementSpeedModDuration(args.Ent.Owner,  MovementModStatusSystem.FlashSlowdown, ent.Comp.Duration * GetScale(args, ent.Comp), ent.Comp.SlowTo, ent.Comp.SlowTo);
 
         if (ent.Comp.StunDuration != null)
-            _stun.TryKnockdown(args.Ent, ent.Comp.StunDuration.Value * GetScale(args, ent.Comp), true);
+            _stun.TryKnockdown(args.Ent.Owner, ent.Comp.StunDuration.Value * GetScale(args, ent.Comp), true);
     }
 
     private void OnPopupEffect(Entity<DiseasePopupEffectComponent> ent, ref DiseaseEffectEvent args)
@@ -171,7 +173,7 @@ public partial class SharedDiseaseSystem
             return;
         var xform = Transform(args.Ent);
         var mapPos = _transform.GetMapCoordinates(xform);
-        if (!_mapMan.TryFindGridAt(mapPos, out var gridUid, out var grid))
+        if (!_map.TryFindGridAt(mapPos, out var gridUid, out var grid))
             return;
         for (var i = 0; i < ent.Comp.Attempts; i++)
         {

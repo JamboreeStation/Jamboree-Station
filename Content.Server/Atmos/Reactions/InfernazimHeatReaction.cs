@@ -12,6 +12,8 @@ using JetBrains.Annotations;
 
 namespace Content.Server.Atmos.Reactions;
 
+
+// THIS IS A JAMBOREE-FORK GAS!
 [UsedImplicitly]
 [DataDefinition]
 public sealed partial class InfernazimHeatReaction : IGasReactionEffect
@@ -23,19 +25,15 @@ public sealed partial class InfernazimHeatReaction : IGasReactionEffect
     private const float ConversionPerSecond = 0.50f; // The mole conversion rate of Infernazim when it is touching Oxygen or Kaltrenoxide.
 
     public ReactionResult React(
-    GasMixture mixture, // The gas mixture is where the reaction is happening. It contains the gases and their properties, such as moles and temperature.
-    IGasMixtureHolder? holder, // What tile is holding gas.
-    AtmosphereSystem atmosphereSystem, // The AtmosphereSystem is a system that handles all the gas reactions and properties in the game.
-    float reactionDelta) // Reaction Delta is  how much time passed in seconds since the last gas reacton.
+    GasMixture mixture,
+    IGasMixtureHolder? holder,
+    AtmosphereSystem atmosphereSystem,
+    float reactionDelta)
     {
         if (reactionDelta <= 0f)
             return ReactionResult.NoReaction;
 
         var reacted = false;
-
-        var infernazimStart = mixture.GetMoles(Gas.Infernazim);
-        if (infernazimStart <= 0f)
-            return ReactionResult.NoReaction;
 
         // Infernazim is stable inside sealed canisters and pipe nets, so nothing changes there.
         if (holder is GasCanisterComponent or IPipeNet)
@@ -44,23 +42,24 @@ public sealed partial class InfernazimHeatReaction : IGasReactionEffect
         var oxygen = mixture.GetMoles(Gas.Oxygen);
         var kaltrenoxide = mixture.GetMoles(Gas.Kaltrenoxide);
 
-        var catalyst = oxygen + kaltrenoxide; // The catalyst is the amount of Oxygen and Kaltrenoxide present. The more catalyst, the more Infernazim will be converted to Water Vapor and Kaltrenoxide.
+        var catalyst = oxygen + kaltrenoxide; // Infernazim reacts with both, so they pool into one catalyst term
 
         if (catalyst > 0f)
         {
+            // Saturating ramp: full reaction rate at 5 moles of catalyst, tapering to nothing below that.
             var catalystFactor = MathF.Min(1f, catalyst / 5f);
 
-            // Wow, this is a lot of math. This is calculating how much Infernazim will be converted to Water Vapor and Kaltrenoxide based on how much Oxygen and Kaltrenoxide is present. The more Oxygen and Kaltrenoxide, the more Infernazim will be converted.
-            var converted = MathF.Min(
-                infernazimStart,
+            // Capped by how much Infernazim is actually present, so we never convert gas that isn't there.
+            var converted = MathF.Min(mixture.GetMoles(Gas.Infernazim),
                 catalyst * ConversionPerSecond * reactionDelta * catalystFactor);
 
             if (converted > 0f)
             {
-                mixture.AdjustMoles(Gas.Infernazim, -converted); // Remove Infernazim from the mixture because it hates OXYGEN, but hates Kaltrenoxide more.
+                // 1:1 in, 1:1 out on Infernazim, and it burns through Kaltrenoxide first because it prefers it
+                // over Oxygen. The mass balance isn't physical by design, it's just a gameplay curve.
+                mixture.AdjustMoles(Gas.Infernazim, -converted);
                 mixture.AdjustMoles(Gas.WaterVapor, converted);
 
-                // Remove Kaltrenoxide from the mixture because Infernazim hates it more than Oxygen.
                 var kaltrenConsumed = MathF.Min(kaltrenoxide, converted);
                 mixture.AdjustMoles(Gas.Kaltrenoxide, -kaltrenConsumed);
 
@@ -68,7 +67,8 @@ public sealed partial class InfernazimHeatReaction : IGasReactionEffect
             }
         }
 
-        var decay = MathF.Min( // The mole decay rate of Infernazim when nothing is touching it.
+        // Passive decay runs regardless of catalyst, so a sealed pocket of Infernazim still burns off.
+        var decay = MathF.Min(
             mixture.GetMoles(Gas.Infernazim),
             PassiveDecayPerSecond * reactionDelta);
 
@@ -82,7 +82,8 @@ public sealed partial class InfernazimHeatReaction : IGasReactionEffect
 
         if (infernazimRemaining > 0f && mixture.Temperature < TargetTemperature)
         {
-            var heatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true); // The heat capacity is how much energy it takes to raise the temperature of the gas mixture by 1 degree. The more heat capacity, the less the temperature will change.
+            // Dividing by heat capacity is what makes the approach asymptotic rather than overshooting.
+            var heatCapacity = atmosphereSystem.GetHeatCapacity(mixture, true);
 
             if (heatCapacity > Atmospherics.MinimumHeatCapacity)
             {

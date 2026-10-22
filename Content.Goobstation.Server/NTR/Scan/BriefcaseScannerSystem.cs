@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 LuciferEOS <stepanteliatnik2022@gmail.com>
-// SPDX-FileCopyrightText: 2025 LuciferMkshelter <154002422+LuciferEOS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 LuciferMkshelter <stepanteliatnik2022@gmail.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.NTR.Scan;
@@ -21,13 +14,13 @@ using Content.Shared.Store.Components;
 
 namespace Content.Goobstation.Server.NTR.Scan
 {
-    public sealed class BriefcaseScannerSystem : EntitySystem
+    public sealed partial class BriefcaseScannerSystem : EntitySystem
     {
-        [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-        [Dependency] private readonly StoreSystem _storeSystem = default!;
-        [Dependency] private readonly SharedMindSystem _mind = default!;
-        [Dependency] private readonly SharedPopupSystem _popup = default!;
-        [Dependency] private readonly ChatSystem _chatManager = default!;
+        [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+        [Dependency] private StoreSystem _storeSystem = default!;
+        [Dependency] private SharedMindSystem _mind = default!;
+        [Dependency] private SharedPopupSystem _popup = default!;
+        [Dependency] private ChatSystem _chatManager = default!;
 
         public override void Initialize()
         {
@@ -103,7 +96,6 @@ namespace Content.Goobstation.Server.NTR.Scan
                     store);
                     _chatManager.TrySendInGameICMessage(uid, Loc.GetString("ntr-scan-success", ("amount", points)), InGameICChatType.Speak, true);
 
-                    QueueDel(target);
                     Spawn("BluespaceTeleportationEffect", Transform(target).Coordinates);
                 }
             }

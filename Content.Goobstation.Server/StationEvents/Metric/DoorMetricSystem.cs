@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -23,9 +18,9 @@ namespace Content.Goobstation.Server.StationEvents.Metric;
 ///   Power - PowerCost per door or firelock with no power
 ///   Atmos - PressureCost for holding spacing or FireCost for holding back fire
 /// </summary>
-public sealed class DoorMetricSystem : ChaosMetricSystem<DoorMetricComponent>
+public sealed partial class DoorMetricSystem : ChaosMetricSystem<DoorMetricComponent>
 {
-    [Dependency] private readonly StationSystem _stationSystem = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
 
     private static readonly Gauge DoorsTotal = Metrics.CreateGauge(
         "game_director_metric_door_total",
@@ -86,7 +81,7 @@ public sealed class DoorMetricSystem : ChaosMetricSystem<DoorMetricComponent>
 
         // Add up the pain of all the doors
         // Restrict to just doors on the main station
-        var stationGrids = _stationSystem.GetAllStationGrids();
+        var stationGrids = _stationSystem.GoobGetAllStationGrids();
 
         var queryFirelock = EntityQueryEnumerator<DoorComponent, ApcPowerReceiverComponent, TransformComponent>();
         while (queryFirelock.MoveNext(out var uid, out var door, out var power, out var transform))

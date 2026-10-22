@@ -1,27 +1,3 @@
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 DoutorWhite <thedoctorwhite@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 J <billsmith116@gmail.com>
-// SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -62,7 +38,6 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 {
     [Dependency] private readonly IConfigurationManager _configManager = default!;
     [Dependency] private readonly IConsoleHost _console = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IParallelManager _parallel = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
@@ -121,6 +96,8 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
 
     private void ProtoReload(PrototypesReloadedEventArgs obj)
     {
+        ClearNoiseCache(); // Goob - Cache Noise
+
         if (!obj.ByType.TryGetValue(typeof(BiomeTemplatePrototype), out var reloads))
             return;
 
@@ -149,7 +126,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             SetSeed(uid, component, _random.Next());
         }
 
-        if (_proto.TryIndex(component.Template, out var biome))
+        if (_proto.Resolve(component.Template, out var biome))
             SetTemplate(uid, component, biome);
 
         var xform = Transform(uid);
@@ -159,7 +136,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         {
             var setTiles = new List<(Vector2i Index, Tile tile)>();
 
-            foreach (var grid in _mapManager.GetAllGrids(mapId))
+            foreach (var grid in _mapSystem.GetAllGrids(mapId))
             {
                 if (!_fixturesQuery.TryGetComponent(grid.Owner, out var fixtures))
                     continue;
@@ -476,7 +453,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         {
             // Lavaland Change start: optimization real
             var ev = new _Lavaland.Procedural.BeforeLoadChunkEvent(chunk);
-            RaiseLocalEvent(gridUid, ev);
+            RaiseLocalEvent(gridUid, ref ev);
 
             if (ev.Cancelled)
                 continue;
@@ -922,7 +899,7 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         {
             // Lavaland Change start: optimization real
             var ev = new _Lavaland.Procedural.UnLoadChunkEvent(chunk);
-            RaiseLocalEvent(gridUid, ev);
+            RaiseLocalEvent(gridUid, ref ev);
 
             if (ev.Cancelled)
                 continue;

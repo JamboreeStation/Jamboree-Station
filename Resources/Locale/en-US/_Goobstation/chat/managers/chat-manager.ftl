@@ -43,3 +43,5 @@ chat-speech-verb-holier-than-thou-7 = declares
 chat-speech-verb-holier-than-thou-8 = pronounces
 
 chat-manager-entity-say-bolded-language-wrap-message = [BubbleHeader]{$languageIcon}[bold][Name]{$entityName}[/Name][/bold][/BubbleHeader] {$verb}, [font={$fontType} size={$fontSize}]"[BubbleContent][font="{$boldFontType}" size={$fontSize}][color={$color}]{$message}[/color][/font][/BubbleContent]"[/font]{$language}
+
+chat-speech-verb-name-station-radio = Station Radio

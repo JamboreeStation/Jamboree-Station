@@ -11,6 +11,7 @@ centralcommand-dnacloner-no-records = No one on the manifest is currently dead! 
 
 centralcommand-dnacloner-entry-body-lost = {$name} (no body remains)
 centralcommand-dnacloner-entry-body-rotted = {$name} (body rotted away)
+centralcommand-dnacloner-entry-observer = {$name} (Wandering Watcher)
 
 signal-port-name-dnacloner-console-sender = MolecularSynthesis console
 signal-port-description-dnacloner-console-sender = Central Command DNA Molecularsynthesis console

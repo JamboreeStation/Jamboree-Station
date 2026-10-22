@@ -1,16 +1,7 @@
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Physics;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Lightning.Components;
 /// <summary>
@@ -37,8 +28,8 @@ public abstract partial class SharedLightningComponent : Component
     /// The prototype ID used for arcing bolts. Usually will be the same name as the main proto but it could be flexible.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("lightningPrototype", customTypeSerializer:typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string LightningPrototype = "Lightning";
+    [DataField("lightningPrototype")]
+    public EntProtoId LightningPrototype = "Lightning";
 
     /// <summary>
     /// The target that the lightning will Arc to.

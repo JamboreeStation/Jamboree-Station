@@ -30,7 +30,7 @@
     sprite: _Jamboree/Objects/Weapons/Melee/gorillamk2.rsi
   - type: CorePoweredThrower
   - type: MeleeThrowOnHit
-    unanchorOnHit: true
+    unanchorOnHit: Unanchorable
   - type: ItemSlots
     slots:
       core_slot:

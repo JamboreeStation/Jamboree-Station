@@ -23,5 +23,11 @@
                 </BoxContainer>
             </BoxContainer>
         </Button>
+        <Button Name="EditButton"
+                VerticalExpand="True"
+                StyleClasses="ButtonSquare"
+                ToolTip="Edit this reagent">
+            <Label Name="EditLabel" Text="&#x2699;" />
+        </Button>
     </BoxContainer>
 </Control>

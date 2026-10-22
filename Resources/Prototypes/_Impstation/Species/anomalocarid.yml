@@ -30,8 +30,8 @@
     HeadTop: MobHumanoidAnyMarking
     HeadSide: MobHumanoidAnyMarking
     Tail: MobHumanoidAnyMarking
-    Underwear: MobHumanoidAnyMarking
-    Undershirt: MobHumanoidAnyMarking
+    UndergarmentBottom: MobHumanoidAnyMarking
+    UndergarmentTop: MobHumanoidAnyMarking
     Chest: MobAnomalocaridChest
     Groin: MobAnomalocaridGroin
     LArm: MobAnomalocaridLArm
@@ -65,10 +65,10 @@
       points: 1
       required: true
       defaultMarkings: [ AnomalocaridWingsDefault ]
-    Undershirt:
+    UndergarmentTop:
       points: 1
       required: false
-    Underwear:
+    UndergarmentBottom:
       points: 1
       required: false
     Arms:

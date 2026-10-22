@@ -20,7 +20,7 @@
   - type: Objective
     difficulty: 3
   - type: NotJobRequirement
-    job: Warden # Goob edit
+    jobs: [ Warden ] # Goob edit
   - type: StealCondition
     stealGroup: Warden
     owner: job-name-warden # Goob edit
@@ -32,7 +32,7 @@
   - type: Objective
     difficulty: 3
   - type: NotJobRequirement
-    job: HeadOfSecurity
+    jobs: [ HeadOfSecurity ]
   - type: StealCondition
     stealGroup: HOS
     owner: job-name-hos
@@ -42,7 +42,7 @@
   id: QMGeneralStealObjective
   components:
   - type: NotJobRequirement
-    job: Quartermaster
+    jobs: [ Quartermaster ]
   - type: StealCondition
     stealGroup: QM
     owner: job-name-qm

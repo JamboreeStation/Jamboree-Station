@@ -67,8 +67,10 @@
 #        sprite: _Impstation/Mobs/Effects/apid_brute_damage.rsi
 #        color: "#808A51"
   - type: Bloodstream
-    bloodMaxVolume: 40
-    bloodReagent: InsectBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: InsectBlood
+        Quantity: 40
   - type: Speech
     speechBubbleOffset: -0.35
     speechVerb: Arachnid
@@ -101,7 +103,7 @@
   - type: FlavorProfile
     flavors:
       - ants
-  - type: Food
+  - type: Edible
   - type: SolutionContainerManager
     solutions:
       food:

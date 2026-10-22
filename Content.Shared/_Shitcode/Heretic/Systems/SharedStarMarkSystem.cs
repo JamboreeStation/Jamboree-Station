@@ -14,6 +14,7 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Popups;
+using Content.Shared.Trigger.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -28,7 +29,7 @@ namespace Content.Shared._Shitcode.Heretic.Systems;
 public abstract class SharedStarMarkSystem : EntitySystem
 {
     [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -39,6 +40,7 @@ public abstract class SharedStarMarkSystem : EntitySystem
     [Dependency] private readonly SharedBroadphaseSystem _broadphase = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedHereticSystem _heretic = default!;
 
     public static readonly EntProtoId StarMarkStatusEffect = "StatusEffectStarMark";
     public static readonly EntProtoId CosmicField = "WallFieldCosmic";
@@ -155,8 +157,9 @@ public abstract class SharedStarMarkSystem : EntitySystem
     {
         if (args.OurFixture.Hard && (!HasComp<StarMarkComponent>(args.OtherEntity) ||
                                      TryComp(args.OtherEntity, out PullableComponent? pullable) &&
-                                     (HasComp<StarGazerComponent>(pullable.Puller) ||
-                                      TryComp(pullable.Puller, out HereticComponent? heretic) &&
+                                     pullable.Puller is { } puller &&
+                                     (HasComp<StarGazerComponent>(puller) ||
+                                      _heretic.TryGetHereticComponent(puller, out var heretic, out _) &&
                                       heretic.CurrentPath == "Cosmos")))
             args.Cancelled = true;
     }
@@ -203,7 +206,7 @@ public abstract class SharedStarMarkSystem : EntitySystem
         if (_net.IsClient)
             return;
 
-        var spawnCoords = coords.SnapToGrid(EntityManager, _mapMan);
+        var spawnCoords = coords.SnapToGrid(EntityManager);
 
         var lookup = _lookup.GetEntitiesInRange<CosmicFieldComponent>(spawnCoords, 0.1f, LookupFlags.Static);
         if (lookup.Count > 0)
@@ -243,7 +246,7 @@ public abstract class SharedStarMarkSystem : EntitySystem
     public bool TryApplyStarMark(Entity<MobStateComponent?> entity)
     {
         if (!Resolve(entity, ref entity.Comp, false) ||
-            TryComp(entity, out HereticComponent? heretic) && heretic.CurrentPath == "Cosmos" ||
+            _heretic.TryGetHereticComponent(entity, out var heretic, out _) && heretic.CurrentPath == "Cosmos" ||
             HasComp<GhoulComponent>(entity))
             return false;
 

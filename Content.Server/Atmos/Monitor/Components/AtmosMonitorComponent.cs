@@ -1,23 +1,8 @@
-// SPDX-FileCopyrightText: 2022 E F R <602406+Efruit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 vulppine <vulppine@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Monitor;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Atmos.Monitor.Components;
 
@@ -38,14 +23,14 @@ public sealed partial class AtmosMonitorComponent : Component
     [DataField("netEnabled")]
     public bool NetEnabled = true;
 
-    [DataField("temperatureThresholdId", customTypeSerializer: (typeof(PrototypeIdSerializer<AtmosAlarmThresholdPrototype>)))]
-    public string? TemperatureThresholdId;
+    [DataField("temperatureThresholdId")]
+    public ProtoId<AtmosAlarmThresholdPrototype>? TemperatureThresholdId;
 
     [DataField("temperatureThreshold")]
     public AtmosAlarmThreshold? TemperatureThreshold;
 
-    [DataField("pressureThresholdId", customTypeSerializer: (typeof(PrototypeIdSerializer<AtmosAlarmThresholdPrototype>)))]
-    public string? PressureThresholdId;
+    [DataField("pressureThresholdId")]
+    public ProtoId<AtmosAlarmThresholdPrototype>? PressureThresholdId;
 
     [DataField("pressureThreshold")]
     public AtmosAlarmThreshold? PressureThreshold;
@@ -57,9 +42,8 @@ public sealed partial class AtmosMonitorComponent : Component
     [DataField("monitorFire")]
     public bool MonitorFire = false;
 
-    [DataField("gasThresholdPrototypes",
-        customTypeSerializer:typeof(PrototypeIdValueDictionarySerializer<Gas, AtmosAlarmThresholdPrototype>))]
-    public Dictionary<Gas, string>? GasThresholdPrototypes;
+    [DataField("gasThresholdPrototypes")]
+    public Dictionary<Gas, ProtoId<AtmosAlarmThresholdPrototype>>? GasThresholdPrototypes;
 
     [DataField("gasThresholds")]
     public Dictionary<Gas, AtmosAlarmThreshold>? GasThresholds;
@@ -75,7 +59,7 @@ public sealed partial class AtmosMonitorComponent : Component
     public AtmosAlarmType LastAlarmState = AtmosAlarmType.Normal;
 
     [DataField("trippedThresholds")]
-    public HashSet<AtmosMonitorThresholdType> TrippedThresholds = new();
+    public AtmosMonitorThresholdTypeFlags TrippedThresholds;
 
     /// <summary>
     ///     Registered devices in this atmos monitor. Alerts will be sent directly

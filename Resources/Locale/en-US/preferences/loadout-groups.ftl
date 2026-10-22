@@ -24,6 +24,7 @@ loadout-group-species-restriction = This item is not available for your current 
 
 # Miscellaneous
 loadout-group-trinkets = Trinkets
+loadout-group-jobtrinkets = Job trinkets
 loadout-group-glasses = Glasses
 loadout-group-backpack = Backpack
 loadout-group-instruments = Instruments
@@ -33,6 +34,7 @@ loadout-group-survival-clown = Clown Survival Box
 loadout-group-survival-medical = Medical Survival Box
 loadout-group-survival-security = Security Survival Box
 loadout-group-survival-syndicate = Github is forcing me to write text that is literally twice-impossible for the player to ever see, send help
+loadout-group-survival-military = See line 14, no one will ever see this so :3
 loadout-group-breath-tool = Species-dependent breath tools
 loadout-group-tank-harness = Species-specific survival equipment
 loadout-group-EVA-tank = Species-specific gas tank
@@ -73,6 +75,7 @@ loadout-group-serviceworker-outerclothing = Service Worker outer clothing
 loadout-group-bartender-head = Bartender head
 loadout-group-bartender-jumpsuit = Bartender jumpsuit
 loadout-group-bartender-outerclothing = Bartender outer clothing
+loadout-group-bartender-shaker = Bartender shaker
 
 loadout-group-chef-head = Chef head
 loadout-group-chef-mask = Chef mask
@@ -142,6 +145,7 @@ loadout-group-cargo-technician-jumpsuit = Cargo Technician jumpsuit
 loadout-group-cargo-technician-backpack = Cargo Technician backpack
 loadout-group-cargo-technician-outerclothing = Cargo Technician outer clothing
 loadout-group-cargo-technician-shoes = Cargo Technician shoes
+loadout-group-cargo-technician-id = Cargo Technician ID
 
 loadout-group-salvage-specialist-head = Salvage Specialist head
 loadout-group-salvage-specialist-backpack = Salvage Specialist backpack
@@ -252,5 +256,8 @@ loadout-group-reporter-head = Reporter hat
 
 loadout-group-psychologist-jumpsuit = Psychologist jumpsuit
 
-loadout-group-boxer-jumpsuit = Boxer jumpsuit
 loadout-group-boxer-gloves = Boxer gloves
+
+loadout-group-chaplain-bible = Holy Book
+
+loadout-group-boxer-jumpsuit = Boxer jumpsuit

@@ -86,7 +86,10 @@
     - Snout
     - Tail
   - type: Bloodstream
-    bloodReagent: ShimmeringBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: ShimmeringBlood
+        Quantity: 300
   - type: Inventory
     speciesId: thaven
     templateId: thaven

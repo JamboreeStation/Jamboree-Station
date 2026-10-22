@@ -105,6 +105,7 @@
   - NanotrasenRepresentativeBelt
   - Glasses
   - Trinkets
+  - NanotrasenRepresentativeJobTrinkets
   - Animals
   - Drip # Jamboree
   - GroupSpeciesBreathTool
@@ -126,6 +127,7 @@
   - BlueshieldOfficerMask
   - BlueshieldOfficerShoes
   - Trinkets
+  - BlueshieldOfficerJobTrinkets
   - Animals
   - GroupSpeciesBreathTool
   - SurvivalSecurity
@@ -148,6 +150,7 @@
   - NanotrasenTrainerGloves
   - NanotrasenTrainerBelt
   - Trinkets
+  - NanotrasenTrainerJobTrinkets
   - Animals
   - GroupSpeciesBreathTool
   - Survival
@@ -201,6 +204,7 @@
   - SecurityNeck
   - SurvivalSecurity
   - Trinkets
+  - BrigmedicJobTrinkets
   - Animals
   - SecurityStar
   - Drip # Jamboree
@@ -271,6 +275,7 @@
    - VirologistOuterClothing
    - MedicalShoes
    - VirologistPDA
+   - VirologistJobTrinkets
    - SurvivalMedical
    - Trinkets
    - Animals # Jamboree, parity with other roles

@@ -1,23 +1,21 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 ThunderBear2006 <bearthunder06@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Silicon.AiCameraWarping;
 using Content.Server.Station.Systems;
 using Content.Server.SurveillanceCamera;
 using Content.Shared.Silicons.StationAi;
+using Content.Shared.SurveillanceCamera.Components;
 using Microsoft.VisualBasic;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 
 namespace Content.Goobstation.Server.Silicon.AiCameraWarping;
 
-public sealed class StationAiWarpSystem : SharedStationAiWarpSystem
+public sealed partial class StationAiWarpSystem : SharedStationAiWarpSystem
 {
-    [Dependency] private readonly SharedStationAiSystem _stationAiSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
-    [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
+    [Dependency] private SharedStationAiSystem _stationAiSystem = default!;
+    [Dependency] private SharedTransformSystem _xformSystem = default!;
+    [Dependency] private UserInterfaceSystem _userInterface = default!;
 
     public override void Initialize()
     {

@@ -9,7 +9,7 @@
   components:
   - type: Item
     size: Small
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: LaserRailgun
     fireCost: 700
   - type: Sprite

@@ -1,30 +1,16 @@
 using Content.Server._EinsteinEngines.Abilities.Psionics;
+using Content.Shared._EinsteinEngines.Psionics;
 using Content.Shared.EntityEffects;
-using JetBrains.Annotations;
-using Robust.Shared.Prototypes;
 
-namespace Content.Server._Nyanotrasen.Chemistry.Effects
+namespace Content.Server._Nyanotrasen.Chemistry.Effects;
+
+public sealed partial class ChemRemovePsionicSystem : EntityEffectSystem<MetaDataComponent, ChemRemovePsionic>
 {
-    /// <summary>
-    /// Rerolls psionics once.
-    /// </summary>
-    [UsedImplicitly]
-    public sealed partial class ChemRemovePsionic : EntityEffect
+    [Dependency] private PsionicAbilitiesSystem _psionics = default!;
+
+    protected override void Effect(Entity<MetaDataComponent> entity, ref EntityEffectEvent<ChemRemovePsionic> args)
     {
-        protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-            => Loc.GetString("reagent-effect-guidebook-chem-remove-psionic", ("chance", Probability));
-
-        public override void Effect(EntityEffectBaseArgs args)
-        {
-            if (args is not EntityEffectReagentArgs effectArgs)
-                return;
-
-            if (effectArgs.Scale != 1f)
-                return;
-
-            var psySys = args.EntityManager.EntitySysManager.GetEntitySystem<PsionicAbilitiesSystem>();
-
-            psySys.MindBreak(effectArgs.TargetEntity);
-        }
+        if (args.Scale == 1f)
+            _psionics.MindBreak(entity);
     }
 }

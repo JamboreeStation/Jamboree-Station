@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -14,12 +9,13 @@ using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
-using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
+using Content.Shared.NPC.Components;
 using Content.Shared.Roles;
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
 using Prometheus;
+using Content.Shared.Damage.Components;
 
 namespace Content.Goobstation.Server.StationEvents.Metric;
 
@@ -37,12 +33,12 @@ namespace Content.Goobstation.Server.StationEvents.Metric;
 ///   Death: 20 per dead body,
 ///   Medical: 10 for crit + 0.05 * damage (so 5 for 100 damage),
 /// </summary>
-public sealed class CombatMetricSystem : ChaosMetricSystem<CombatMetricComponent>
+public sealed partial class CombatMetricSystem : ChaosMetricSystem<CombatMetricComponent>
 {
-    [Dependency] private readonly SharedRoleSystem _roles = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly NpcFactionSystem _faction = default!;
+    [Dependency] private SharedRoleSystem _roles = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private NpcFactionSystem _faction = default!;
     public readonly string NanotrasenFactionId = "NanoTrasen";
 
     private static readonly Gauge HostileEntitiesTotal = Metrics.CreateGauge(
@@ -130,7 +126,7 @@ public sealed class CombatMetricSystem : ChaosMetricSystem<CombatMetricComponent
 
 
         // var humanoidQ = GetEntityQuery<HumanoidAppearanceComponent>();
-        var stationGrids = _stationSystem.GetAllStationGrids();
+        var stationGrids = _stationSystem.GoobGetAllStationGrids();
         while (query.MoveNext(out var uid, out var mobState, out var damage, out var transform))
         {
             if (transform.GridUid == null || !stationGrids.Contains(transform.GridUid.Value))

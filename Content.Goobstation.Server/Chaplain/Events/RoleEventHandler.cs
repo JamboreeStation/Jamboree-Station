@@ -1,5 +1,3 @@
-// SPDX-FileCopyrightText: 2025 RichardBlonski <48651647+RichardBlonski@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Religion;
@@ -7,9 +5,9 @@ using Content.Goobstation.Server.Chaplain.Components;
 
 namespace Content.Goobstation.Server.Chaplain.Events;
 
-public sealed class RoleEventHandler : EntitySystem
+public sealed partial class RoleEventHandler : EntitySystem
 {
-    [Dependency] private readonly SharedEyeSystem _eye = default!;
+    [Dependency] private SharedEyeSystem _eye = default!;
 
     public override void Initialize()
     {

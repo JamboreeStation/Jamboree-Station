@@ -1,11 +1,6 @@
-// SPDX-FileCopyrightText: 2023 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Chat.Prototypes;
 
@@ -19,31 +14,45 @@ public sealed partial class AutoEmotePrototype : IPrototype
     /// <summary>
     /// The ID of the emote prototype.
     /// </summary>
-    [DataField("emote", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EmotePrototype>))]
-    public string EmoteId = String.Empty;
+    [DataField("emote", required: true)]
+    public ProtoId<EmotePrototype> EmoteId = string.Empty;
 
     /// <summary>
     /// How often an attempt at the emote will be made.
     /// </summary>
-    [DataField("interval", required: true)]
+    [DataField(required: true)]
     public TimeSpan Interval;
 
     /// <summary>
     /// Probability of performing the emote each interval.
-    /// <summary>
+    /// </summary>
     [DataField("chance")]
     public float Chance = 1;
 
     /// <summary>
     /// Also send the emote in chat.
-    /// <summary>
-    [DataField("withChat")]
+    /// </summary>
+    [DataField]
     public bool WithChat = true;
+
+    /// <summary>
+    /// Should we ignore action blockers?
+    /// This does nothing if WithChat is false.
+    /// </summary>
+    [DataField]
+    public bool IgnoreActionBlocker;
+
+    /// <summary>
+    /// Should we ignore whitelists and force the emote?
+    /// This does nothing if WithChat is false.
+    /// </summary>
+    [DataField]
+    public bool Force;
 
     /// <summary>
     /// Hide the chat message from the chat window, only showing the popup.
     /// This does nothing if WithChat is false.
-    /// <summary>
-    [DataField("hiddenFromChatWindow")]
-    public bool HiddenFromChatWindow = false;
+    /// </summary>
+    [DataField]
+    public bool HiddenFromChatWindow;
 }

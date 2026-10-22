@@ -8,7 +8,8 @@
   },
   "states": [
     {
-      "name": ""
+      "name": "moron"
+
     },
     {
       "name": "clam"
@@ -48,6 +49,9 @@
     },
     {
       "name": "crab_meat"
+    },
+    {
+       "name": "blank"
     }
   ]
 }

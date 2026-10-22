@@ -23829,7 +23829,7 @@ entities:
     - type: Transform
       pos: 12.5,9.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8349
 - proto: Carpet
   entities:
@@ -34207,7 +34207,7 @@ entities:
     - type: Transform
       pos: 47.5,5.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8349
 - proto: ExosuitFabricator
   entities:
@@ -34216,7 +34216,7 @@ entities:
     - type: Transform
       pos: -0.5,-24.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8349
 - proto: ExplosivesSignMed
   entities:
@@ -54252,6 +54252,16 @@ entities:
           - MaterialSiloUtilizer
         - - MaterialSilo
           - FillbotAnyItem
+    - type: OreSilo
+      clients:
+      - 3670
+      - 5403
+      - 5404
+      - 5442
+      - 8136
+      - 9208
+      - 9212
+      - 9559
 - proto: MaterialWoodPlank1
   entities:
   - uid: 8126
@@ -54318,7 +54328,7 @@ entities:
     - type: Transform
       pos: 16.5,-11.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8349
     - type: MaterialStorage
       materialWhiteList:
@@ -54690,7 +54700,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8349
 - proto: OxygenCanister
   entities:
@@ -56558,7 +56568,6 @@ entities:
       parent: 2
     - type: ApcPowerReceiver
       powerLoad: 0
-    - type: Timer
   - uid: 8456
     components:
     - type: Transform
@@ -60945,7 +60954,7 @@ entities:
     - type: Transform
       pos: -17.5,-21.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8349
     - type: TechnologyDatabase
       supportedDisciplines:
@@ -60979,7 +60988,7 @@ entities:
     - type: Transform
       pos: -14.5,18.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8349
     - type: TechnologyDatabase
       supportedDisciplines:
@@ -61001,7 +61010,7 @@ entities:
     - type: Transform
       pos: -29.5,10.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8349
     - type: TechnologyDatabase
       supportedDisciplines:

@@ -1,18 +1,9 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Parallax.Biomes.Layers;
 using Content.Shared.Parallax.Biomes.Markers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
 
 namespace Content.Shared.Parallax.Biomes;
 
@@ -78,8 +69,8 @@ public sealed partial class BiomeComponent : Component
     /// <summary>
     /// Track what markers we've loaded already to avoid double-loading.
     /// </summary>
-    [DataField("loadedMarkers", customTypeSerializer:typeof(PrototypeIdDictionarySerializer<HashSet<Vector2i>, BiomeMarkerLayerPrototype>))]
-    public Dictionary<string, HashSet<Vector2i>> LoadedMarkers = new();
+    [DataField("loadedMarkers")]
+    public Dictionary<ProtoId<BiomeMarkerLayerPrototype>, HashSet<Vector2i>> LoadedMarkers = new();
 
     [DataField]
     public HashSet<ProtoId<BiomeMarkerLayerPrototype>> MarkerLayers = new();

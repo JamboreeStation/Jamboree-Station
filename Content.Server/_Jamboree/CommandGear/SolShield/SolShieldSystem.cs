@@ -17,11 +17,11 @@ public sealed class SolShieldSystem : EntitySystem
     [Dependency] private readonly TagSystem _tag = default!;
     public override void Initialize()
     {
-        SubscribeLocalEvent<SolShieldComponent, ThrownEvent>(OnThrown);
+        SubscribeLocalEvent<SolShieldComponent, ThrowEvent>(OnThrown);
         SubscribeLocalEvent<SolShieldComponent, LandEvent>(OnLanded);
     }
 
-    private void OnThrown(EntityUid uid, SolShieldComponent component, ThrownEvent args)
+    private void OnThrown(EntityUid uid, SolShieldComponent component, ref ThrowEvent args)
     {
         if (args.User == null)
             return;

@@ -59,8 +59,11 @@ jobs:
             ADDED_FILES=""
             MODIFIED_FILES=""
           else
-            ADDED_FILES=$(echo "$PR_FILES" | grep "^added" | grep -E '\.(cs|ya?ml)$' | sed 's/^added //' | xargs) || true
-            MODIFIED_FILES=$(echo "$PR_FILES" | grep "^modified" | grep -E '\.(cs|ya?ml)$' | sed 's/^modified //' | xargs) || true
+            # Skip .github/ (especially .github/workflows/) - App tokens can only push
+            # changes to workflow files if they have the "workflows" permission,
+            # otherwise GitHub rejects the push.
+            ADDED_FILES=$(echo "$PR_FILES" | grep "^added" | grep -E '\.(cs|ya?ml)$' | grep -v '^\.github/' | sed 's/^added //' | xargs) || true
+            MODIFIED_FILES=$(echo "$PR_FILES" | grep "^modified" | grep -E '\.(cs|ya?ml)$' | grep -v '^\.github/' | sed 's/^modified //' | xargs) || true
           fi
 
           echo "Added Files: $ADDED_FILES"

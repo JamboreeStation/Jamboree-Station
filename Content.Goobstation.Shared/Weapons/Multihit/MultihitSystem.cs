@@ -1,9 +1,7 @@
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Shared._Shitcode.Heretic.Systems;
 using Content.Shared.CombatMode;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Heretic;
@@ -16,16 +14,17 @@ using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Shared.Weapons.Multihit;
 
-public sealed class MultihitSystem : EntitySystem
+public sealed partial class MultihitSystem : EntitySystem
 {
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedMeleeWeaponSystem _melee = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combatMode = default!;
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly ISharedPlayerManager _player = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedMeleeWeaponSystem _melee = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private SharedCombatModeSystem _combatMode = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private SharedHereticSystem _heretic = default!;
 
     public override void Initialize()
     {
@@ -33,21 +32,24 @@ public sealed class MultihitSystem : EntitySystem
 
         SubscribeLocalEvent<MultihitComponent, MeleeHitEvent>(OnHit);
 
-        SubscribeLocalEvent<HereticComponent, MultihitUserHereticEvent>(HereticCheck);
+        SubscribeLocalEvent<MultihitUserHereticEvent>(HereticCheck);
         SubscribeLocalEvent<MultihitUserWhitelistEvent>(WhitelistCheck);
     }
 
     private void WhitelistCheck(MultihitUserWhitelistEvent ev)
     {
         ev.Handled = ev.Blacklist
-            ? _whitelist.IsBlacklistFail(ev.Whitelist, ev.User)
+            ? _whitelist.IsWhitelistFail(ev.Whitelist, ev.User)
             : _whitelist.IsWhitelistPass(ev.Whitelist, ev.User);
     }
 
-    private void HereticCheck(Entity<HereticComponent> ent, ref MultihitUserHereticEvent args)
+    private void HereticCheck(MultihitUserHereticEvent args)
     {
-        args.Handled = (args.RequiredPath == null || ent.Comp.CurrentPath == args.RequiredPath) &&
-                       ent.Comp.PathStage >= args.MinPathStage;
+        if (!_heretic.TryGetHereticComponent(args.User, out var heretic, out _))
+            return;
+
+        args.Handled = (args.RequiredPath == null || heretic.CurrentPath == args.RequiredPath) &&
+                       heretic.PathStage >= args.MinPathStage;
     }
 
     private void OnHit(EntityUid uid, MultihitComponent component, MeleeHitEvent args)

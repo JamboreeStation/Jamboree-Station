@@ -126,6 +126,12 @@ public sealed partial class GoobCVars
     public static readonly CVarDef<float> HighpopThreshold =
         CVarDef.Create("game.players.highpop_threshold", 50f, CVar.SERVERONLY);
 
+    public static readonly CVarDef<bool> RemoveClumsyOnAntag =
+        CVarDef.Create("game.antag.gain.remove_clumsy", false, CVar.SERVERONLY);
+
+    public static readonly CVarDef<string> DisabledGamePresets =
+        CVarDef.Create("game.disabled_presets", "", CVar.SERVERONLY);
+
     /// <summary>
     ///     Is ore silo enabled.
     /// </summary>
@@ -137,6 +143,37 @@ public sealed partial class GoobCVars
     /// </summary>
     public static readonly CVarDef<float> MaxDrunkTime =
         CVarDef.Create("goob.max_drunk_time", 1500f, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Whether the no EORG popup is enabled.
+    /// </summary>
+    public static readonly CVarDef<bool> RoundEndNoEorgPopup =
+        CVarDef.Create("game.round_end_eorg_popup_enabled", false, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// How long until the next EORG popup can be shown after previous one.
+    /// </summary>
+    public static readonly CVarDef<int> AskRoundEndNoEorgPopup =
+        CVarDef.Create("game.ask_read_end_eorg_popup", 14, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Set the last shown of EORG popup to client current time.
+    /// </summary>
+    public static readonly CVarDef<string> LastReadRoundEndNoEorgPopup =
+        CVarDef.Create("game.last_read_end_eorg_popup_time", "", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// How long to display the EORG popup for.
+    /// </summary>
+    public static readonly CVarDef<float> RoundEndNoEorgPopupTime =
+        CVarDef.Create("game.round_end_eorg_popup_time", 5f, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     DEBUG Cvar - Should pathfinding be disabled globally. For SpawnAndDirty cause we need the mem.
+    /// </summary>
+    public static readonly CVarDef<bool> DisablePathfinding =
+        CVarDef.Create("goob.disable_pathfinding", false, CVar.SERVER | CVar.SERVERONLY);
+
 
     #region Player Listener
 
@@ -248,12 +285,6 @@ public sealed partial class GoobCVars
     /// </summary>
     public static readonly CVarDef<float> SiliconNpcUpdateTime =
         CVarDef.Create("silicon.npcupdatetime", 1.5f, CVar.SERVERONLY);
-
-    /// <summary>
-    ///     Should the player automatically get up after being knocked down
-    /// </summary>
-    public static readonly CVarDef<bool> AutoGetUp =
-        CVarDef.Create("white.auto_get_up", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // WD EDIT
 
     /// <summary>
     ///     Sets the size of the hitbox where projectile/laser will hit any entity regardless of crawling
@@ -467,60 +498,6 @@ public sealed partial class GoobCVars
 
     #endregion
 
-    #region Voicechat
-
-    /// <summary>
-    /// Controls whether the Lidgren voice chat server is enabled and running.
-    /// </summary>
-    public static readonly CVarDef<bool> VoiceChatEnabled =
-        CVarDef.Create("voice.enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE, "Is the voice chat server enabled?");
-
-    /// <summary>
-    /// The UDP port the Lidgren voice chat server will listen on.
-    /// </summary>
-    public static readonly CVarDef<int> VoiceChatPort =
-        CVarDef.Create("voice.vc_server_port", 1213, CVar.SERVER | CVar.REPLICATED, "Port for the voice chat server.");
-
-    public static readonly CVarDef<float> VoiceChatVolume =
-        CVarDef.Create("voice.volume", 5f, CVar.CLIENTONLY | CVar.ARCHIVE);
-
-    /// <summary>
-    /// Multiplier for the adaptive buffer target size calculation.
-    /// </summary>
-    public static readonly CVarDef<float> VoiceChatBufferTargetMultiplier =
-        CVarDef.Create("voice.buffer_target_multiplier", 1.0f, CVar.CLIENTONLY | CVar.ARCHIVE, "Multiplier for adaptive buffer target size calculation.");
-
-    /// <summary>
-    /// Minimum buffer size for voice chat, regardless of network conditions.
-    /// </summary>
-    public static readonly CVarDef<int> VoiceChatMinBufferSize =
-        CVarDef.Create("voice.min_buffer_size", 10, CVar.CLIENTONLY | CVar.ARCHIVE, "Minimum buffer size for voice chat.");
-
-    /// <summary>
-    /// Maximum buffer size for voice chat to prevent excessive memory usage.
-    /// </summary>
-    public static readonly CVarDef<int> VoiceChatMaxBufferSize =
-        CVarDef.Create("voice.max_buffer_size", 50, CVar.CLIENTONLY | CVar.ARCHIVE, "Maximum buffer size for voice chat.");
-
-    /// <summary>
-    /// Enable advanced time-stretching algorithms for better audio quality.
-    /// </summary>
-    public static readonly CVarDef<bool> VoiceChatAdvancedTimeStretch =
-        CVarDef.Create("voice.advanced_time_stretch", true, CVar.CLIENTONLY | CVar.ARCHIVE, "Enable advanced time-stretching for voice chat.");
-
-    /// <summary>
-    /// Enable debug logging for voice chat buffer management.
-    /// </summary>
-    public static readonly CVarDef<bool> VoiceChatDebugLogging =
-        CVarDef.Create("voice.debug_logging", false, CVar.CLIENTONLY | CVar.ARCHIVE, "Enable debug logging for voice chat buffer management.");
-
-    /// <summary>
-    /// Whether to hear audio from your own entity (useful for testing).
-    /// </summary>
-    public static readonly CVarDef<bool> VoiceChatHearSelf =
-        CVarDef.Create("voice.hear_self", false, CVar.CLIENTONLY | CVar.ARCHIVE, "Whether to hear audio from your own entity.");
-
-    #endregion
 
     #region Queue
 
@@ -536,6 +513,13 @@ public sealed partial class GoobCVars
     /// </summary>
     public static readonly CVarDef<bool> PatreonSkip =
         CVarDef.Create("queue.patreon_skip", true, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How long in seconds to hold a queue position for a disconnected player.
+    ///     If they reconnect within this window, they are placed at the front of the queue.
+    /// </summary>
+    public static readonly CVarDef<int> QueueReconnectGraceSeconds =
+        CVarDef.Create("queue.reconnect_grace_seconds", 120, CVar.SERVERONLY);
 
     #endregion
 
@@ -605,7 +589,7 @@ public sealed partial class GoobCVars
     /// Applies to Brute and Burn damage
     /// </summary>
     public static readonly CVarDef<float> ExplosionWoundMultiplier =
-        CVarDef.Create("explosion.wounding_multiplier", 8f, CVar.SERVERONLY);
+        CVarDef.Create("explosion.wounding_multiplier", 2.5f, CVar.SERVERONLY);
 
     #endregion
 
@@ -689,4 +673,42 @@ public sealed partial class GoobCVars
     /// </summary>
     public static readonly CVarDef<float> GpsUpdateRate =
         CVarDef.Create("gps.update_rate", 1f, CVar.SERVER | CVar.REPLICATED);
+
+    #region Particles
+
+    /// <summary>
+    /// Controls particle effect quality.
+    /// 0 = Off, 1 = Low, 2 = Medium, 3 = High
+    /// Low:    25% of maxCount per emitter
+    /// Medium: 50% of maxCount per emitter
+    /// High:   100% of maxCount per emitter
+    ///
+    /// Note: Particles with IgnoreQualitySettings = true always render at full quality.
+    /// </summary>
+    public static readonly CVarDef<int> ParticleQuality =
+        CVarDef.Create("particles.quality", 3, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Maximum total number of live particles allowed on screen at once across all emitters.
+    /// Emitters will reduce their emission rate once the budget is exhausted.
+    /// Overridden by ParticleQuality presets but can be set manually when quality is High.
+    /// </summary>
+    public static readonly CVarDef<int> ParticleGlobalBudget =
+        CVarDef.Create("particles.global_budget", 8000, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<bool> InteractionParticlesEnabled =
+        CVarDef.Create("particles.interaction_enabled", true, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Starfall: per-client visibility filter for interaction particles.
+    /// The server-replicated cvar above remains the master switch; this lets
+    /// an individual client hide them without changing what other players see.
+    /// </summary>
+    public static readonly CVarDef<bool> InteractionParticlesVisible =
+        CVarDef.Create("particles.interaction_visible", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<float> InHandInteractionParticleScale =
+        CVarDef.Create("particles.inhand_interaction_scale", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    #endregion
 }

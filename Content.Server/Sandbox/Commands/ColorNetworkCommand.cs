@@ -1,22 +1,8 @@
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Simon <63975668+Simyon264@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.Managers;
-using Content.Shared.Atmos.Components;
-using Content.Shared.Atmos.EntitySystems;
+using Content.Server.Atmos.Piping.Components;
+using Content.Server.Atmos.Piping.EntitySystems;
 using Content.Shared.Administration;
 using Content.Shared.NodeContainer;
 using Content.Shared.NodeContainer.NodeGroups;
@@ -72,14 +58,13 @@ namespace Content.Server.Sandbox.Commands
                 return;
             }
 
-            var color = Color.TryFromHex(args[2]);
-            if (!color.HasValue)
+            if (!Color.TryFromHex(args[2], out var color))
             {
                 shell.WriteError(Loc.GetString("shell-invalid-color-hex"));
                 return;
             }
 
-            PaintNodes(nodeContainerComponent, nodeGroupId, color.Value);
+            PaintNodes(nodeContainerComponent, nodeGroupId, color);
         }
 
         private void PaintNodes(NodeContainerComponent nodeContainerComponent, NodeGroupID nodeGroupId, Color color)
@@ -94,7 +79,7 @@ namespace Content.Server.Sandbox.Commands
                 if (!EntityManager.TryGetComponent(x.Owner, out AtmosPipeColorComponent? atmosPipeColorComponent))
                     continue;
 
-                _pipeColorSystem.SetColor((x.Owner, atmosPipeColorComponent), color);
+                _pipeColorSystem.SetColor(x.Owner, atmosPipeColorComponent, color);
             }
         }
     }

@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Threading;
@@ -15,6 +5,7 @@ using System.Threading.Tasks;
 using Content.Server.NPC.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared.CombatMode;
+using Content.Shared.Storage.Components; // Goob - Fix (non-storage containers)
 using Robust.Server.Containers;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Combat.Melee;
@@ -44,7 +35,9 @@ public sealed partial class EscapeOperator : HTNOperator, IHtnConditionalShutdow
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
         var target = blackboard.GetValue<EntityUid>(TargetKey);
 
-        if (_entityStorage.TryOpenStorage(owner, target))
+        // Goob - Fix (non-storage containers)
+        if (!_entManager.HasComponent<EntityStorageComponent>(target)
+            || _entityStorage.TryOpenStorage(owner, target))
         {
             TaskShutdown(blackboard, HTNOperatorStatus.Finished);
             return;
@@ -65,6 +58,12 @@ public sealed partial class EscapeOperator : HTNOperator, IHtnConditionalShutdow
         }
 
         if (!_container.IsEntityInContainer(owner))
+        {
+            return (false, null);
+        }
+
+        // Goob - Fix (non-storage containers)
+        if (!_entManager.HasComponent<EntityStorageComponent>(target))
         {
             return (false, null);
         }
@@ -114,6 +113,10 @@ public sealed partial class EscapeOperator : HTNOperator, IHtnConditionalShutdow
             if (!_container.IsEntityInContainer(owner))
             {
                 status = HTNOperatorStatus.Finished;
+            }
+            else if (!_entManager.HasComponent<EntityStorageComponent>(target)) // Goob - Fix (non-storage containers)
+            {
+                status = HTNOperatorStatus.Failed;
             }
             else
             {

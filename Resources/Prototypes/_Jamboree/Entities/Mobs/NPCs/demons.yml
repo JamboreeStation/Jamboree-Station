@@ -451,7 +451,7 @@
       0: Alive
       10000: Dead
   - type: Stamina
-    critThreshold: 100000
+    baseCritThreshold: 100000
   - type: Tag
     tags:
       - CannotSuicide

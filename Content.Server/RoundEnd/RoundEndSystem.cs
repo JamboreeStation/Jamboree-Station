@@ -1,51 +1,3 @@
-// SPDX-FileCopyrightText: 2020 ComicIronic <comicironic@gmail.com>
-// SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2020 V�ctor Aguilera Puerto <zddm@outlook.es>
-// SPDX-FileCopyrightText: 2020 chairbender <kwhipke1@gmail.com>
-// SPDX-FileCopyrightText: 2020 zumorica <zddm@outlook.es>
-// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
-// SPDX-FileCopyrightText: 2021 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Galactic Chimp <63882831+GalacticChimp@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Galactic Chimp <GalacticChimpanzee@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <zddm@outlook.es>
-// SPDX-FileCopyrightText: 2021 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Chris V <HoofedEar@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2022 Morber <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 T-Stalker <43253663+DogZeroX@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 theashtronaut <112137107+theashtronaut@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Arimah Greene <30327355+arimah@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 EmoGarbage404 <retron404@gmail.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 coolmankid12345 <55817627+coolmankid12345@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 coolmankid12345 <coolmankid12345@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 csqrb <56765288+CaptainSqrBeard@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 ElectroJr <leonsfriedrich@gmail.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 avery <51971268+graevy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 chavonadelal <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Threading;
@@ -60,7 +12,6 @@ using Content.Server.GameTicking;
 using Content.Server.Screens.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Systems;
-using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Shared.Database;
 using Content.Shared.DeviceNetwork;
@@ -71,6 +22,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Content.Shared.DeviceNetwork.Components;
+using Content.Shared.Station.Components;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server.RoundEnd
@@ -101,11 +53,17 @@ namespace Content.Server.RoundEnd
         public TimeSpan DefaultCountdownDuration { get; set; } = TimeSpan.FromMinutes(10);
 
         private CancellationTokenSource? _countdownTokenSource = null;
+        private CancellationTokenSource? _restartTokenSource = null;
         private CancellationTokenSource? _cooldownTokenSource = null;
         public TimeSpan? LastCountdownStart { get; set; } = null;
         public TimeSpan? ExpectedCountdownEnd { get; set; } = null;
         public TimeSpan? ExpectedShuttleLength => ExpectedCountdownEnd - LastCountdownStart;
         public TimeSpan? ShuttleTimeLeft => ExpectedCountdownEnd - _gameTiming.CurTime;
+
+        /// <summary>
+        /// If the shuttle can't be recalled. if set to true, the station wont be able to recall
+        /// </summary>
+        public bool CantRecall = false;
 
         public TimeSpan AutoCallStartTime;
         private bool _autoCalledBefore = false;
@@ -136,6 +94,15 @@ namespace Content.Server.RoundEnd
                 _cooldownTokenSource = null;
             }
 
+            if (_restartTokenSource != null)
+            {
+                _restartTokenSource.Cancel();
+                _restartTokenSource = null;
+            }
+
+            CantRecall = false;
+
+
             LastCountdownStart = null;
             ExpectedCountdownEnd = null;
             SetAutoCallTime();
@@ -148,10 +115,10 @@ namespace Content.Server.RoundEnd
         /// </summary>
         public EntityUid? GetStation()
         {
-            AllEntityQuery<StationEmergencyShuttleComponent, StationDataComponent>().MoveNext(out _, out _, out var data);
+            AllEntityQuery<StationEmergencyShuttleComponent, StationDataComponent>().MoveNext(out var uid, out _, out var data);
             if (data == null)
                 return null;
-            var targetGrid = _stationSystem.GetLargestGrid(data);
+            var targetGrid = _stationSystem.GetLargestGrid((uid, data));
             return targetGrid == null ? null : Transform(targetGrid.Value).MapUid;
         }
 
@@ -167,7 +134,7 @@ namespace Content.Server.RoundEnd
 
         public bool CanCallOrRecall()
         {
-            return _cooldownTokenSource == null;
+            return _cooldownTokenSource == null && !CantRecall;
         }
 
         public bool IsRoundEndRequested()
@@ -175,7 +142,15 @@ namespace Content.Server.RoundEnd
             return _countdownTokenSource != null;
         }
 
-        public void RequestRoundEnd(EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement")
+        /// <summary>
+        /// Starts the process of ending the round by calling evac
+        /// </summary>
+        /// <param name="requester"></param>
+        /// <param name="checkCooldown"></param>
+        /// <param name="text">text in the announcement of shuttle calling</param>
+        /// <param name="name">name in the announcement of shuttle calling</param>
+        /// <param name="cantRecall">if the station shouldn't be able to recall the shuttle</param>
+        public void RequestRoundEnd(EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool cantRecall = false)
         {
             var duration = DefaultCountdownDuration;
 
@@ -190,10 +165,19 @@ namespace Content.Server.RoundEnd
                 }
             }
 
-            RequestRoundEnd(duration, requester, checkCooldown, text, name);
+            RequestRoundEnd(duration, requester, checkCooldown, text, name, cantRecall);
         }
 
-        public void RequestRoundEnd(TimeSpan countdownTime, EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement")
+        /// <summary>
+        /// Starts the process of ending the round by calling evac
+        /// </summary>
+        /// <param name="countdownTime">time for evac to arrive</param>
+        /// <param name="requester"></param>
+        /// <param name="checkCooldown"></param>
+        /// <param name="text">text in the announcement of shuttle calling</param>
+        /// <param name="name">name in the announcement of shuttle calling</param>
+        /// <param name="cantRecall">if the station shouldn't be able to recall the shuttle</param>
+        public void RequestRoundEnd(TimeSpan countdownTime, EntityUid? requester = null, bool checkCooldown = true, string text = "round-end-system-shuttle-called-announcement", string name = "round-end-system-shuttle-sender-announcement", bool cantRecall = false)
         {
             if (_gameTicker.RunLevel != GameRunLevel.InRound)
                 return;
@@ -205,6 +189,7 @@ namespace Content.Server.RoundEnd
                 return;
 
             _countdownTokenSource = new();
+            CantRecall = cantRecall;
 
             if (requester != null)
             {
@@ -265,12 +250,17 @@ namespace Content.Server.RoundEnd
             }
         }
 
-        public void CancelRoundEndCountdown(EntityUid? requester = null, bool checkCooldown = true)
+        public void CancelRoundEndCountdown(EntityUid? requester = null, bool forceRecall = false)
         {
-            if (_gameTicker.RunLevel != GameRunLevel.InRound) return;
-            if (checkCooldown && _cooldownTokenSource != null) return;
+            if (_gameTicker.RunLevel != GameRunLevel.InRound)
+                return;
 
-            if (_countdownTokenSource == null) return;
+            if (!forceRecall && (CantRecall || _cooldownTokenSource != null))
+                return;
+
+            if (_countdownTokenSource == null)
+                return;
+
             _countdownTokenSource.Cancel();
             _countdownTokenSource = null;
 
@@ -415,11 +405,11 @@ namespace Content.Server.RoundEnd
             if (_gameTicker.RunLevel != GameRunLevel.PostRound)
                 return;
 
-            if (_countdownTokenSource is null)
+            if (_restartTokenSource is null)
                 return;
 
-            _countdownTokenSource.Cancel();
-            _countdownTokenSource = null;
+            _restartTokenSource.Cancel();
+            _restartTokenSource = null;
             _adminLogger.Add(LogType.AdminCommands, LogImpact.High,
                 $"Round restart timer was delayed{(canceller is not null ? $" by {canceller.Name}." : ".")}");
             _chatManager.SendAdminAnnouncement(
@@ -432,8 +422,8 @@ namespace Content.Server.RoundEnd
         /// </summary>
         public void StartRestartTimer(TimeSpan? countdownTime = null)
         {
-            _countdownTokenSource?.Cancel();
-            _countdownTokenSource = new CancellationTokenSource();
+            _restartTokenSource?.Cancel();
+            _restartTokenSource = new CancellationTokenSource();
 
             countdownTime ??= TimeSpan.FromSeconds(_cfg.GetCVar(CCVars.RoundRestartTime));
             int time;
@@ -464,11 +454,38 @@ namespace Content.Server.RoundEnd
                     "round-end-system-round-restart-eta-announcement",
                     ("time", time),
                     ("units", Loc.GetString(unitsLocString))));
-            Timer.Spawn(countdownTime.Value, AfterEndRoundRestart, _countdownTokenSource.Token);
+
+            QueueRestartTimerScreens(countdownTime.Value);
+
+            Timer.Spawn(countdownTime.Value, AfterEndRoundRestart, _restartTokenSource.Token);
+        }
+
+        /// <summary>
+        /// Pushes the round restart countdown out to every shuttle timer screen, so players can
+        /// actually see how long they have left. Normally this only happens as a side effect of the
+        /// escape shuttle completing FTL, which admin-forced round ends never trigger.
+        /// </summary>
+        private void QueueRestartTimerScreens(TimeSpan countdownTime)
+        {
+            var shuttle = _shuttle.GetShuttle();
+            if (shuttle == null || !TryComp<DeviceNetworkComponent>(shuttle, out var net))
+                return;
+
+            var payload = new NetworkPayload
+            {
+                [ShuttleTimerMasks.ShuttleMap] = shuttle.Value,
+                [ShuttleTimerMasks.SourceMap] = GetStation(),
+                [ShuttleTimerMasks.DestMap] = GetCentcomm(),
+                [ShuttleTimerMasks.ShuttleTime] = countdownTime,
+                [ShuttleTimerMasks.SourceTime] = countdownTime,
+                [ShuttleTimerMasks.DestTime] = countdownTime,
+                [ScreenMasks.Text] = ShuttleTimerMasks.Bye,
+            };
+            _deviceNetworkSystem.QueuePacket(shuttle.Value, null, payload, net.TransmitFrequency);
         }
 
         public bool IsRestartTimerActive() =>
-            _gameTicker.RunLevel == GameRunLevel.PostRound && _countdownTokenSource is not null;
+            _gameTicker.RunLevel == GameRunLevel.PostRound && _restartTokenSource is not null;
 
         #endregion
     }

@@ -80,7 +80,7 @@ public abstract class SharedRotaryPhoneSystem : EntitySystem
 
         var visuals = EnsureComp<JointVisualsComponent>(ent.Owner);
         visuals.Sprite = ent.Comp.RopeSprite;
-        visuals.Target = GetNetEntity(args.Entity);
+        visuals.Target = args.Entity;
         Dirty(ent.Owner, visuals);
 
         var jointComp = EnsureComp<JointComponent>(ent.Owner);

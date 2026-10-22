@@ -64,7 +64,8 @@
 
 - type: entity
   abstract: true
-  parent: BaseStructureDynamic
+  parent: [ BaseStructureDynamic, BasePaperLabelableVisualized,
+            BaseAutomatedMachine ] # Goob: Automation
   id: GasCanister
   name: gas canister
   description: A canister that can contain any type of gas. It can be attached to connector ports using a wrench.
@@ -78,6 +79,9 @@
       noRot: true
       layers:
         - state: grey
+        - state: paper
+          visible: false
+          map: [ "enum.PaperLabelVisuals.Layer" ]
     - type: Appearance
     - type: GenericVisualizer
       visuals:
@@ -99,9 +103,24 @@
             1: { state: can-o1, shader: "unshaded" }
             2: { state: can-o2, shader: "unshaded" }
             3: { state: can-o3, shader: "unshaded" }
+        enum.PaperLabelVisuals.HasLabel:
+          enum.PaperLabelVisuals.Layer:
+            True: { visible: true }
+            False: { visible: false }
+        enum.StorageVisuals.Open:
+          enum.PaperLabelVisuals.Layer:
+            True: { visible: false }
+        enum.PaperLabelVisuals.LabelType:
+          enum.PaperLabelVisuals.Layer:
+            Paper: { state: paper }
+            Bounty: { state: bounty }
+            CaptainsPaper: { state: captains_paper }
+            Invoice: { state: invoice }
     - type: ActivatableUI
       key: enum.GasCanisterUiKey.Key
-    - type: ActivatableUIRequiresLock
+    - type: UIRequiresLock
+      userInterfaceKeys:
+      - enum.GasCanisterUiKey.Key
     - type: UserInterface
       interfaces:
         enum.GasCanisterUiKey.Key:
@@ -151,6 +170,7 @@
     - type: ContainerContainer
       containers:
         tank_slot: !type:ContainerSlot {}
+        paper_label: !type:ContainerSlot
     - type: NodeContainer
       nodes:
         port:
@@ -158,7 +178,6 @@
           nodeGroupID: Pipe
           rotationsEnabled: false
           volume: 1
-    - type: ItemSlots
     - type: AutomationSlots # Goobstation
       slots:
       - !type:AutomatedItemSlot
@@ -257,8 +276,8 @@
     gasMixture:
       volume: 1000
       moles:
-        - 393.0592071 # oxygen 21%
-        - 1478.6513029 # nitrogen 79%
+        Oxygen: 581.56 # oxygen 21%
+        Nitrogen: 2187.79 # nitrogen 79%
       temperature: 293.15
   - type: Destructible
     thresholds:
@@ -297,7 +316,7 @@
     gasMixture:
       volume: 1000
       moles:
-        - 1871.71051 # oxygen
+        Oxygen: 2769.36 # oxygen
       temperature: 293.15
   - type: Destructible
     thresholds:
@@ -333,7 +352,7 @@
     gasMixture:
       volume: 1000
       moles:
-        - 18710.71051 # oxygen
+        Oxygen: 18710.71051 # oxygen
       temperature: 72
   - type: AccessReader
     access: [["Atmospherics"]]
@@ -351,8 +370,7 @@
       gasMixture:
         volume: 1000
         moles:
-          - 0 # oxygen
-          - 1871.71051 # nitrogen
+          Nitrogen: 2769.36 # nitrogen
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -388,8 +406,7 @@
     gasMixture:
       volume: 1000
       moles:
-        - 0 # oxygen
-        - 18710.71051 # nitrogen
+        Nitrogen: 18710.71051 # nitrogen
       temperature: 72
   - type: AccessReader
     access: [["Atmospherics"]]
@@ -407,9 +424,7 @@
       gasMixture:
         volume: 1000
         moles:
-          - 0 # oxygen
-          - 0 # nitrogen
-          - 1871.71051 # CO2
+          CarbonDioxide: 2769.36 # CO2
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -447,9 +462,7 @@
     gasMixture:
       volume: 1000
       moles:
-        - 0 # oxygen
-        - 0 # nitrogen
-        - 18710.71051 # CO2
+        CarbonDioxide: 18710.71051 # CO2
       temperature: 72
   - type: AccessReader
     access: [["Atmospherics"]]
@@ -467,10 +480,7 @@
       gasMixture:
         volume: 1000
         moles:
-          - 0 # oxygen
-          - 0 # nitrogen
-          - 0 # carbon dioxide
-          - 1871.71051 # plasma
+          Plasma: 2769.36 # plasma
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -511,11 +521,7 @@
       gasMixture:
         volume: 1000
         moles:
-          - 0 # oxygen
-          - 0 # nitrogen
-          - 0 # CO2
-          - 0 # Plasma
-          - 1871.71051 # Tritium
+          Tritium: 2769.36 # Tritium
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -556,12 +562,7 @@
       gasMixture:
         volume: 1000
         moles:
-          - 0 # oxygen
-          - 0 # nitrogen
-          - 0 # CO2
-          - 0 # Plasma
-          - 0 # Tritium
-          - 1871.71051 # Water vapor
+          WaterVapor: 2769.36 # Water vapor
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -600,13 +601,7 @@
       gasMixture:
         volume: 1000
         moles:
-          - 0 # oxygen
-          - 0 # nitrogen
-          - 0 # CO2
-          - 0 # Plasma
-          - 0 # Tritium
-          - 0 #  Water vapor
-          - 1871.71051 # Ammonia
+          Ammonia: 2769.36 # Ammonia
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -647,14 +642,7 @@
       gasMixture:
         volume: 1000
         moles:
-          - 0 # oxygen
-          - 0 # nitrogen
-          - 0 # CO2
-          - 0 # Plasma
-          - 0 # Tritium
-          - 0 #  Water vapor
-          - 0 # Ammonia
-          - 1871.71051 # N2O
+          NitrousOxide: 2769.36 # N2O
         temperature: 293.15
     - type: Destructible
       thresholds:
@@ -695,15 +683,7 @@
     gasMixture:
       volume: 1000
       moles:
-      - 0 # oxygen
-      - 0 # nitrogen
-      - 0 # CO2
-      - 0 # Plasma
-      - 0 # Tritium
-      - 0 # Water vapor
-      - 0 # Ammonia
-      - 0 # N2O
-      - 1871.71051 # Frezon
+        Frezon: 2769.36 # Frezon
       temperature: 293.15
   - type: Destructible
     thresholds:
