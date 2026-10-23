@@ -20,6 +20,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization; // Einstein Engines - Language
 using Robust.Shared.Utility;
+using System.Linq; // Jamboree~
 
 namespace Content.Shared.Chat;
 
@@ -40,6 +41,7 @@ public abstract partial class SharedChatSystem : EntitySystem
     public const char TelepathicPrefix = '='; //Nyano - Summary: Adds the telepathic channel's prefix.
     public const char CollectiveMindPrefix = '+'; // Goobstation - Starlight collective mind port
     public const char DefaultChannelKey = 'h';
+    public const char RadioLongKeyPrefix = '#'; // Jamboree~ multi-character radio prefixes
 
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
@@ -65,6 +67,9 @@ public abstract partial class SharedChatSystem : EntitySystem
     /// Cache of the keycodes for faster lookup.
     /// </summary>
     private FrozenDictionary<char, RadioChannelPrototype> _keyCodes = default!;
+
+    // Jamboree~ multi character-radio prefixes
+    private FrozenDictionary<string, RadioChannelPrototype> _longKeyCodes = default!;
 
     // Goobstation - Starlight collective mind port
     private FrozenDictionary<char, CollectiveMindPrototype> _mindKeyCodes = default!;
@@ -96,8 +101,38 @@ public abstract partial class SharedChatSystem : EntitySystem
 
     private void CacheRadios()
     {
-        _keyCodes = _prototypeManager.EnumeratePrototypes<RadioChannelPrototype>()
+        // Jamboree~ multi-character radio prefixes
+        var channels = _prototypeManager.EnumeratePrototypes<RadioChannelPrototype>().ToList();
+
+        _keyCodes = channels
+            .Where(x => x.KeyCode != '\0')
             .ToFrozenDictionary(x => x.KeyCode);
+
+        _longKeyCodes = channels
+            .Where(x => !string.IsNullOrWhiteSpace(x.LongKey))
+            .GroupBy(x => x.LongKey!.ToLowerInvariant())
+            .ToFrozenDictionary(g => g.Key, g => g.First());
+    }
+
+    // Jamboree~ multi-character radio prefixes
+    private bool TryMatchLongKey(string input, out RadioChannelPrototype? channel, out int keyEnd)
+    {
+        channel = null;
+        keyEnd = 2;
+
+        foreach (var (key, proto) in _longKeyCodes)
+        {
+            if (key.Length + 2 <= keyEnd || input.Length < key.Length + 2)
+                continue;
+
+            if (!input.AsSpan(2, key.Length).Equals(key, StringComparison.OrdinalIgnoreCase))
+                continue;
+
+            channel = proto;
+            keyEnd = key.Length + 2;
+        }
+
+        return channel != null;
     }
 
     // Goobstation - Starlight collective mind port
@@ -154,6 +189,17 @@ public abstract partial class SharedChatSystem : EntitySystem
         if (!(input.StartsWith(RadioChannelPrefix) || input.StartsWith(RadioChannelAltPrefix)))
             return;
 
+        // Jamboree~ multi-character radio prefixes
+        if (input[1] == RadioLongKeyPrefix)
+        {
+            if (!TryMatchLongKey(input, out _, out var keyEnd))
+                return;
+
+            prefix = input[..keyEnd] + " ";
+            output = input[keyEnd..];
+            return;
+        }
+
         if (!_keyCodes.TryGetValue(char.ToLower(input[1]), out _))
             return;
 
@@ -199,6 +245,30 @@ public abstract partial class SharedChatSystem : EntitySystem
             output = SanitizeMessageCapital(input[1..].TrimStart());
             if (!quiet)
                 _popup.PopupEntity(Loc.GetString("chat-manager-no-radio-key"), source, source);
+            return true;
+        }
+
+        // Jamboree~ multi-character radio prefixes
+        if (input[1] == RadioLongKeyPrefix)
+        {
+            if (TryMatchLongKey(input, out channel, out var keyEnd))
+            {
+                output = SanitizeMessageCapital(input[keyEnd..].TrimStart());
+                return true;
+            }
+
+            var unknownEnd = input.IndexOf(' ', 2);
+            if (unknownEnd < 0)
+                unknownEnd = input.Length;
+
+            output = SanitizeMessageCapital(input[unknownEnd..].TrimStart());
+
+            if (!quiet)
+            {
+                var msg = Loc.GetString("chat-manager-no-such-channel", ("key", input[2..unknownEnd]));
+                _popup.PopupEntity(msg, source, source);
+            }
+
             return true;
         }
 
