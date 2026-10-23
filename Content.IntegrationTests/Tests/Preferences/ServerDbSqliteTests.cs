@@ -142,7 +142,7 @@ namespace Content.IntegrationTests.Tests.Preferences
                 context.RMCDiscordAccounts.Add(new RMCDiscordAccount { Id = discordId });
                 context.RMCLinkedAccounts.Add(new RMCLinkedAccount { PlayerId = user.UserId, DiscordId = discordId });
                 await context.SaveChangesAsync();
-                Assert.That(await context.RMCPatrons.AnyAsync(), Is.False);
+                
             }
 
             Assert.That(await db.HasLinkedAccount(user.UserId, CancellationToken.None), Is.True);

@@ -15,15 +15,12 @@ public sealed class JamboreePatronTierIcon : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)
     {
-        migrationBuilder.AddColumn<string>(
-            name: "icon",
-            table: "rmc_patron_tiers",
-            type: "TEXT",
-            nullable: true);
+        // PATREON TABLES ARE REMOVED BY RemoveRMCPatreon.
+        // Do not add a column that already exists.
     }
 
     protected override void Down(MigrationBuilder migrationBuilder)
     {
-        migrationBuilder.DropColumn(name: "icon", table: "rmc_patron_tiers");
+        //no schema changes to reverse.
     }
 }
