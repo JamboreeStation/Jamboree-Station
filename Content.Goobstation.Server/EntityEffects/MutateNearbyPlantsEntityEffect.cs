@@ -25,5 +25,5 @@ public sealed partial class MutateNearbyPlantsEntityEffect : EntityEffectBase<Mu
     [DataField] public float Radius = 5f;
 
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-mutate-plants");
+        => Loc.GetString("reagent-effect-guidebook-mutate-plants-nearby", ("chance", Probability));
 }

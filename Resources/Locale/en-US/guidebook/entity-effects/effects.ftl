@@ -414,6 +414,12 @@ entity-effect-guidebook-make-polymorph =
         *[other] polymorph
     } the metabolizer into a { $entityname }
 
+entity-effect-guidebook-random-polymorph =
+    { $chance ->
+        [1] Polymorphs
+        *[other] polymorph
+    } the metabolizer into a random form
+
 entity-effect-guidebook-modify-bleed-amount =
     { $chance ->
         [1] { $deltasign ->

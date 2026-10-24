@@ -15,6 +15,7 @@ station-ai-fixer-console-window-station-ai-online = Online
 station-ai-fixer-console-window-station-ai-offline = Offline
 station-ai-fixer-console-window-station-ai-rebooting = Rebooting...
 
+station-ai-fixer-console-window-controls = Controls
 station-ai-fixer-console-window-controls-locked = Controls locked
 
 station-ai-fixer-console-window-station-ai-eject = Eject storage unit

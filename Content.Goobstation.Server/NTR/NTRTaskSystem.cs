@@ -375,7 +375,7 @@ public sealed partial class NtrTaskSystem : EntitySystem
         {
             if (!_prototypes.TryIndex(reagentProtoId, out var requiredReagentProto))
             {
-                _popup.PopupEntity(Loc.GetString("ntr-console-invalid-reagent-proto", ("reagentId", reagentProtoId)), container);
+                _popup.PopupEntity(Loc.GetString("ntr-console-invalid-reagent-proto", ("reagentId", reagentProtoId.Id)), container);
                 return false;
             }
 

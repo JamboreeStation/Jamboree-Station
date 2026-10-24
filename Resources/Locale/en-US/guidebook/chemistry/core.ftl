@@ -19,6 +19,15 @@ guidebook-reagent-effect-description =
         *[other] {" "}when { $conditions }.
     }
 
+guidebook-nested-effect-description =
+    {$chance ->
+        [1] { $effect }
+        *[other] Has a { NATURALPERCENT($chance, 2) } chance to { $effect }
+    }{ $conditionCount ->
+        [0] .
+        *[other] {" "}when { $conditions }.
+    }
+
 guidebook-reagent-name = [bold][color={$color}]{CAPITALIZE($name)}[/color][/bold]
 guidebook-reagent-recipes-header = Recipe
 guidebook-reagent-recipes-reagent-display = [bold]{$reagent}[/bold] \[{$ratio}\]

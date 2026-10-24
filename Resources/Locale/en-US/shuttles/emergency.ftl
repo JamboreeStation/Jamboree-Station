@@ -23,6 +23,10 @@ cmd-dockemergencyshuttle-help = Usage: dockemergencyshuttle
 cmd-launchemergencyshuttle-desc = Early launches the emergency shuttle if possible.
 cmd-launchemergencyshuttle-help = Usage: launchemergencyshuttle
 
+## Delay round end
+emergency-shuttle-command-round-yes = Canceled the pending shuttle round end. The round can still end by other means.
+emergency-shuttle-command-round-no = There is no pending shuttle round end to cancel.
+
 # Emergency shuttle
 emergency-shuttle-left = The Emergency Shuttle has left the station. Estimate {$transitTime} seconds until the shuttle arrives at CentComm.
 emergency-shuttle-launch-time = The emergency shuttle will launch in {$consoleAccumulator} seconds.

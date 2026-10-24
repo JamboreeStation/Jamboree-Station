@@ -125,8 +125,8 @@
 
 - type: job
   id: SpecialOperationsOfficer
-  name: job-name-special-operations-officer
-  description: job-description-operations-officer
+  name: ghost-role-information-special-operations-officer-name
+  description: job-description-navy-special-operations-officer
   playTimeTracker: JobSpecialOperationsOfficer
   setPreference: false
   startingGear: SpecialOperationsOfficerGear
@@ -206,7 +206,7 @@
 - type: job
   id: Inspector
   name: job-name-inspector
-  description: job-description-inspector
+  description: ghost-role-information-inspector-description
   playTimeTracker: JobInspector
   setPreference: false
   startingGear: InspectorGear

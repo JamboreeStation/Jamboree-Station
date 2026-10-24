@@ -34,7 +34,7 @@ public sealed partial class ChameleonSkinComponent : Component
     /// Popup when attempting to toggle while on fire.
     /// </summary>
     [DataField]
-    public LocId OnFirePopup = "changeling-onfire";
+    public LocId OnFirePopup = "changeling-action-fail-onfire";
 
     /// <summary>
     /// Is the ability currently active?

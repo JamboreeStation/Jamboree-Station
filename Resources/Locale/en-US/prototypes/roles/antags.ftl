@@ -29,6 +29,10 @@ roles-antag-generic-team-antagonist-name = Team Antagonist
 
 roles-antag-generic-silicon-antagonist-name = Silicon Antagonist
 
+# Required objective sentinel for roles without antag preferences. The preference UI
+# skips these roles; an explicit empty pattern also keeps accidental lookups blank.
+never-shown = { "" }
+
 roles-antag-syndicate-agent-objective = Complete your objectives without being caught.
 
 roles-antag-syndicate-agent-sleeper-name = Syndicate sleeper agent

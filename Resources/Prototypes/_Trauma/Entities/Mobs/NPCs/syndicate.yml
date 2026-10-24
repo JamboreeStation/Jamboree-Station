@@ -68,7 +68,7 @@
     allowMovement: true
     name: ghost-role-information-nukie-spider-name
     description: ghost-role-information-nukie-spider-description
-    rules: ghost-role-information-nukie-spider-rules
+    rules: ghost-role-information-nukeop-reinforcement-rules
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist
   - type: RandomMetadata

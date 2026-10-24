@@ -48,7 +48,7 @@ public sealed class MiningVoucherSystem : EntitySystem
 
         if (!_power.IsPowered(target))
         {
-            _popup.PopupClient(Loc.GetString("mining-voucher-vendor-unpowered", ("vendor", target)), target, user);
+            _popup.PopupClient(Loc.GetString("mining-voucher-unpowered", ("vendor", target)), target, user);
             return;
         }
 
