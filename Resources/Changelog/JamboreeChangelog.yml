@@ -2355,3 +2355,27 @@ Entries:
       message: buffed cybernetic organ integrities
   id: 188
   time: '2026-10-20T20:12:39.0000000+00:00'
+- author: Aidenkrz, Baptr0b0t, fiestyfedora, madeline-celeste, PureBreadBagel
+  changes:
+    - type: Add
+      message: You can reattach your butt with surgery.
+    - type: Add
+      message: >-
+        WASH WASH WASH YOUR CLOTHES WITH THE WASHING MACHINE!! (ur clothes can
+        get stained now...)
+    - type: Add
+      message: Gun + throwing client prediction was added, to help with lag.
+    - type: Fix
+      message: Made moving prediction also account for running.
+    - type: Fix
+      message: atmos belts are now belts and not jumpsuits...
+    - type: Add
+      message: Mice can eat corpses!
+    - type: Fix
+      message: cameras work again!
+    - type: Add
+      message: >-
+        Slimefolk can regrow their limbs with a long cooldown. Though it costs
+        you food and blood..
+  id: 189
+  time: '2026-10-24T02:10:35.0000000+00:00'
