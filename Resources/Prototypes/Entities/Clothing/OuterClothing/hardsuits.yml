@@ -1303,6 +1303,14 @@
     sprite: Clothing/OuterClothing/Hardsuits/deathsquad.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Hardsuits/deathsquad.rsi
+  - type: Stainable
+    clothingVisuals:
+      outerClothing:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: suitblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: suitbloodicon
   - type: PressureProtection
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000

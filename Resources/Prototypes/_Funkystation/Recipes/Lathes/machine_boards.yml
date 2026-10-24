@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: MIT
+
+- type: latheRecipe
+  parent: [ BaseCircuitboardRecipe, BaseServiceMachineRecipeCategory ]
+  id: WashingMachineCircuitboard
+  result: WashingMachineCircuitboard
+  icon: { sprite: _Funkystation/Structures/Machines/washing_machine.rsi, state: base }

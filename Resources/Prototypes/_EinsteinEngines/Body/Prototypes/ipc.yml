@@ -25,6 +25,8 @@
       connections:
       - right leg
       - left leg
+      organs:
+        butt: Butt # Goob
     right arm:
       part: RightArmIPC
       connections:

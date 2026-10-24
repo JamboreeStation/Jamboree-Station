@@ -29,6 +29,7 @@
         stomach: OrganThavenStomach
         liver: OrganThavenLiver
         kidneys: OrganThavenKidneys
+        butt: Butt # Goob
     right arm:
       part: RightArmThaven
       connections:

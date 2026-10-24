@@ -155,6 +155,7 @@
     - id: HOPUndeterminedWeapon # Jamboree - command gear selectors
     - id: ClothingEyesHudCommand
     - id: ServiceTechFabCircuitboard # Goobstation - Service Techfab
+    - id: WashingMachineFlatpack
     - id: CommandMegaphone # goob - loudspeakers
     - id: PrinterDocFlatpack  # Corvax-Printer
 
@@ -257,6 +258,7 @@
     - id: BookCodeofConduct #all heads get COC jamboree
 #    - id: Hypospray # jamboree - available in gear selector
     - id: MedicalTechFabCircuitboard
+    - id: WashingMachineFlatpack
     - id: ComputerCargoRequestMedicalFlatpack # Goobstation
     - id: MedkitFilled
     - id: RubberStampCMO

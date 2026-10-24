@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Common.Grab;
@@ -100,7 +104,7 @@ public sealed partial class GrabIntentSystem : EntitySystem
             if (TryComp<VirtualItemComponent>(item, out var vi))
                 _virtualSystem.DeleteVirtualItem((item, vi), uid);
             else
-                QueueDel(item);
+                PredictedQueueDel(item); // Trauma - grab throwing is predicted now
         }
 
         Dirty(uid, component);

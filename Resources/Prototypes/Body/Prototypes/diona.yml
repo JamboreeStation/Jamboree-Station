@@ -27,6 +27,7 @@
       - left leg
       organs:
         stomach: OrganDionaStomachNymph
+        butt: Butt # Goob
     right arm:
       part: RightArmDiona
       connections:

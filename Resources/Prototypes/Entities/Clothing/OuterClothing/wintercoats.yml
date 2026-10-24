@@ -32,6 +32,9 @@
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:
+      stain:
+        maxVol: 1
+        canReact: false
       food:
         maxVol: 30
         reagents:

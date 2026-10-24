@@ -92,6 +92,7 @@
     snap:
     - Wall
   components:
+  - type: WaterClothingWash
   - type: FloorOccluder
   - type: SpeedModifierContacts
     walkSpeedModifier: 0.5

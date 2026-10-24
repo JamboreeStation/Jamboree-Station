@@ -5,6 +5,8 @@
   parent: Clothing
   id: ClothingShoesBase
   components:
+  - type: ExaminableSolution
+    solution: stain
   # Goobstation edit start
   - type: EmitSoundOnPickup
     sound:
@@ -37,6 +39,9 @@
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:
+      stain:
+        maxVol: 1
+        canReact: false
       food:
         maxVol: 10
         reagents:
@@ -56,6 +61,15 @@
         Blunt: 0.95
         Slash: 0.95
         Piercing: 0.95
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      shoes:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: shoeblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: shoebloodicon
 
 - type: entity
   abstract: true

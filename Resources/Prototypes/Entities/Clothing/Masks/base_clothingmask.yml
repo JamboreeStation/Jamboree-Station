@@ -5,6 +5,8 @@
   parent: Clothing
   id: ClothingMaskBase
   components:
+  - type: ExaminableSolution
+    solution: stain
   - type: Sprite
     state: icon
   - type: Item
@@ -53,6 +55,20 @@
   - type: Tag # goob edit
     tags:
     - Mask
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      mask:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: maskblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: maskbloodicon
+  - type: SolutionContainerManager
+    solutions:
+      stain:
+        maxVol: 1
+        canReact: false
 
 - type: entity
   abstract: true

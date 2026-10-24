@@ -7,6 +7,7 @@ using Content.Shared._Shitmed.Medical.Surgery.Consciousness;
 using Content.Shared._Shitmed.Medical.Surgery.Traumas.Components;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Components;
 using Content.Shared._Shitmed.Targeting;
+using Content.Shared._Funkystation.Fluids;
 using System.Linq;
 using Content.Shared.Alert;
 using Content.Shared.Body.Components;
@@ -21,6 +22,8 @@ using Content.Shared.EntityEffects.Effects.Solution;
 using Content.Shared.Fluids;
 using Content.Shared.Forensics.Components;
 using Content.Shared.HealthExaminable;
+using Content.Shared.Inventory;
+using Content.Shared.Interaction;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
@@ -48,6 +51,8 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
 
     private float _bloodlossMultiplier = 4f; // Goobstation
 
@@ -573,6 +578,7 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             }
             // Goobstation end
 
+            StainNearby(ent.Owner, tempSolution);
             _puddle.TrySpillAt(ent.Owner, tempSolution, out _, sound: false);
 
             tempSolution.RemoveAllSolution();
@@ -645,7 +651,23 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             SolutionContainer.RemoveAllSolution(ent.Comp.TemporarySolution.Value);
         }
 
+        StainNearby(ent.Owner, tempSol);
         _puddle.TrySpillAt(ent, tempSol, out _);
+    }
+
+    private void StainNearby(EntityUid source, Solution solution)
+    {
+        RaiseLocalEvent(source, new SpilledOnEvent(source, solution));
+
+        foreach (var neighbor in _lookup.GetEntitiesInRange(Transform(source).Coordinates, 1.5f))
+        {
+            if (solution.Volume <= 0)
+                break;
+
+            if (neighbor != source && HasComp<InventoryComponent>(neighbor)
+                && _interaction.InRangeUnobstructed(source, neighbor, 1.5f))
+                RaiseLocalEvent(neighbor, new SpilledOnEvent(source, solution));
+        }
     }
 
     /// <summary>

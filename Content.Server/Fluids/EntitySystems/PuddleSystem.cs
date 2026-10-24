@@ -4,6 +4,7 @@ using Content.Server.Fluids.Components;
 using Content.Server.Spreader;
 using Content.Goobstation.Common.Footprints;
 using Content.Shared.Chemistry;
+using Content.Shared._Funkystation.Fluids;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
@@ -283,6 +284,8 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
 
         // Take 15% of the puddle solution
         var splitSol = _solutionContainerSystem.SplitSolution(entity.Comp.Solution.Value, solution.Volume * 0.15f);
+        if (splitSol.Volume > 0)
+            RaiseLocalEvent(args.Slipped, new SpilledOnEvent(entity.Owner, splitSol.Clone()));
         Reactive.DoEntityReaction(args.Slipped, splitSol, ReactionMethod.Touch);
 
         // <Goobstation>
@@ -466,6 +469,8 @@ public sealed partial class PuddleSystem : SharedPuddleSystem
             }
 
             targets.Add(owner);
+            if (splitSolution.Volume > 0)
+                RaiseLocalEvent(owner, new SpilledOnEvent(entity, splitSolution.Clone()));
             Reactive.DoEntityReaction(owner, splitSolution, ReactionMethod.Touch);
             Popups.PopupEntity(Loc.GetString("spill-land-spilled-on-other",
                     ("spillable", entity),

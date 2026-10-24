@@ -88,6 +88,7 @@
     - id: LightReplacer
     - id: BoxLightMixed
     - id: Holoprojector
+    - id: WashingMachineFlatpack
     - !type:AllSelector
       rolls: 2
       children:

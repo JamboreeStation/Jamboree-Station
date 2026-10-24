@@ -5,6 +5,8 @@
   parent: Clothing
   id: ClothingHeadBase
   components:
+  - type: ExaminableSolution
+    solution: stain
   - type: Clothing
     slots:
     - HEAD
@@ -21,6 +23,9 @@
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:
+      stain:
+        maxVol: 1
+        canReact: false
       food:
         maxVol: 10
         reagents:
@@ -31,6 +36,15 @@
     - ClothMade
     - WhitelistChameleon
     - DroneUsable # Goobstation
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      head:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: helmetblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: helmetbloodicon
 
 - type: entity
   abstract: true
@@ -152,6 +166,8 @@
     - Snout
     - HeadTop
     - HeadSide
+  - type: StainBlocker
+    slots: [MASK]
 
 - type: entity
   abstract: true
@@ -160,6 +176,8 @@
   name: base hardsuit helmet
   categories: [ HideSpawnMenu ]
   components:
+  - type: ExaminableSolution
+    solution: stain
 # SlotBlocker blocked until UI change
 #  - type: SlotBlock
 #    slots: [ears, eyes, mask]
@@ -215,6 +233,22 @@
     - HeadTop
     - HeadSide
   - type: FaceHuggerBlocker # Goobstation
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      head:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: helmetblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: helmetbloodicon
+  - type: SolutionContainerManager
+    solutions:
+      stain:
+        maxVol: 1
+        canReact: false
+  - type: StainBlocker
+    slots: [MASK]
 
 - type: entity
   abstract: true
@@ -279,6 +313,8 @@
   description: A hood, made to keep your head warm.
   categories: [ HideSpawnMenu ]
   components:
+  - type: ExaminableSolution
+    solution: stain
   - type: Sprite
     state: icon
   - type: Clickable
@@ -302,3 +338,17 @@
     - HeadTop
     - HeadSide
     - Head #imp edit, for anomalocarids. doesn't effect other species.
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      head:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: helmetblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: helmetbloodicon
+  - type: SolutionContainerManager
+    solutions:
+      stain:
+        maxVol: 1
+        canReact: false

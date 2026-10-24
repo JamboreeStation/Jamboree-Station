@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server._EinsteinEngines.Forensics.Components;
+using Content.Server._Funkystation.Stains;
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.DoAfter;
@@ -38,6 +39,7 @@ namespace Content.Server.Forensics
         [Dependency] private readonly PopupSystem _popupSystem = default!;
         [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
         [Dependency] private readonly IGameTiming _timing = default!; // Goobstation
+        [Dependency] private readonly StainSystem _stains = default!;
 
         public override void Initialize()
         {
@@ -52,7 +54,7 @@ namespace Content.Server.Forensics
             SubscribeLocalEvent<ForensicsComponent, MeleeHitEvent>(OnMeleeHit);
             SubscribeLocalEvent<ForensicsComponent, GotRehydratedEvent>(OnRehydrated);
             SubscribeLocalEvent<CleansForensicsComponent, AfterInteractEvent>(OnAfterInteract, after: new[] { typeof(AbsorbentSystem) });
-            SubscribeLocalEvent<ForensicsComponent, CleanForensicsDoAfterEvent>(OnCleanForensicsDoAfter);
+            SubscribeLocalEvent<CleansForensicsComponent, CleanForensicsDoAfterEvent>(OnCleanForensicsDoAfter);
             SubscribeLocalEvent<DnaComponent, TransferDnaEvent>(OnTransferDnaEvent);
             SubscribeLocalEvent<DnaSubstanceTraceComponent, SolutionContainerChangedEvent>(OnSolutionChanged);
             SubscribeLocalEvent<CleansForensicsComponent, GetVerbsEvent<UtilityVerb>>(OnUtilityVerb);
@@ -245,19 +247,14 @@ namespace Content.Server.Forensics
         /// <param name="cleanForensicsEntity">The entity that is being used to clean the target.</param>
         /// <param name="user">The user that is using the cleanForensicsEntity.</param>
         /// <param name="target">The target of the forensics clean.</param>
-        /// <returns>True if the target can be cleaned and has some sort of DNA or fingerprints / fibers and false otherwise.</returns>
+        /// <returns>True if the target has removable forensic evidence or stains and false otherwise.</returns>
         public bool TryStartCleaning(Entity<CleansForensicsComponent> cleanForensicsEntity, EntityUid user, EntityUid target)
         {
-            if (!TryComp<ForensicsComponent>(target, out var forensicsComp))
-            {
-                _popupSystem.PopupEntity(Loc.GetString("forensics-cleaning-cannot-clean", ("target", target)), user, user, PopupType.MediumCaution);
-                return false;
-            }
+            var hasForensics = TryComp<ForensicsComponent>(target, out var forensicsComp) &&
+                               (forensicsComp.Fingerprints.Count + forensicsComp.Fibers.Count > 0 ||
+                                (forensicsComp.DNAs.Count > 0 && forensicsComp.CanDnaBeCleaned));
 
-            var totalPrintsAndFibers = forensicsComp.Fingerprints.Count + forensicsComp.Fibers.Count;
-            var hasRemovableDNA = forensicsComp.DNAs.Count > 0 && forensicsComp.CanDnaBeCleaned;
-
-            if (hasRemovableDNA || totalPrintsAndFibers > 0)
+            if (hasForensics || _stains.HasStains(target))
             {
                 var cleanDelay = cleanForensicsEntity.Comp.CleanDelay;
                 if (HasComp<ScentComponent>(target)) // EinsteinEngines
@@ -269,7 +266,7 @@ namespace Content.Server.Forensics
                     BreakOnDamage = true,
                     BreakOnMove = true,
                     MovementThreshold = 0.01f,
-                    DistanceThreshold = forensicsComp.CleanDistance,
+                    DistanceThreshold = forensicsComp?.CleanDistance ?? 1.5f,
                 };
 
                 _doAfterSystem.TryStartDoAfter(doAfterArgs);
@@ -286,10 +283,13 @@ namespace Content.Server.Forensics
 
         }
 
-        private void OnCleanForensicsDoAfter(EntityUid uid, ForensicsComponent component, CleanForensicsDoAfterEvent args)
+        private void OnCleanForensicsDoAfter(EntityUid uid, CleansForensicsComponent component, CleanForensicsDoAfterEvent args)
         {
             if (args.Handled || args.Cancelled || args.Args.Target == null)
                 return;
+
+            _stains.CleanStains(args.Args.Target.Value);
+            args.Handled = true;
 
             if (!TryComp<ForensicsComponent>(args.Target, out var targetComp))
                 return;
