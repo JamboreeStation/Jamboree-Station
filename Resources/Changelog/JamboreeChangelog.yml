@@ -2379,3 +2379,17 @@ Entries:
         you food and blood..
   id: 189
   time: '2026-10-24T02:10:35.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: Fixed most .ftl entries, spam mail shouldnt display its .ftl tag anymore
+    - type: Fix
+      message: >-
+        Supermatter console should now display properly instead of crashing the
+        client.
+    - type: Fix
+      message: Footsteps should now calculate their direction once instead of twice.
+    - type: Fix
+      message: Respawn system when you observe should work now.
+  id: 190
+  time: '2026-10-24T18:57:02.0000000+00:00'
