@@ -102,7 +102,7 @@
   - type: GhostRole
     name: roles-laughter-demon-name-token
     description: ghost-role-information-description-token-generic
-    rules: ghost-role-information-laughter-demon-rules
+    rules: ghost-role-information-slaughter-demon-rules
 
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]

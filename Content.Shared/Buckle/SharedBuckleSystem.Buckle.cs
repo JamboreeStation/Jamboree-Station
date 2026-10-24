@@ -86,22 +86,6 @@ public abstract partial class SharedBuckleSystem
             args.Cancel();
             return;
         }
-
-        // Goobstation - doafter for unbuckle by others
-        if (args.Puller != ent.Owner
-            && TryComp<StrapComponent>(ent.Comp.BuckledTo, out var strap)
-            && strap.UnbuckleDoafterTime > 0)
-        {
-            args.Cancel();
-            var doAfter = new DoAfterArgs(EntityManager, args.Puller, TimeSpan.FromSeconds(strap.UnbuckleDoafterTime), new UnbuckleDoAfterEvent(), ent.Owner, target: ent.Owner)
-            {
-                BreakOnMove = true,
-                BreakOnDamage = true,
-            };
-            _doAfter.TryStartDoAfter(doAfter);
-            return;
-        }
-        // Goobstation
     }
 
     // Goobstation - start unbuckle do-after only on actual pull initiation, not on CanPull checks

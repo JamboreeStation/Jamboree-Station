@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -34,7 +38,7 @@ public sealed partial class ChameleonSkinComponent : Component
     /// Popup when attempting to toggle while on fire.
     /// </summary>
     [DataField]
-    public LocId OnFirePopup = "changeling-onfire";
+    public LocId OnFirePopup = "changeling-action-fail-onfire";
 
     /// <summary>
     /// Is the ability currently active?

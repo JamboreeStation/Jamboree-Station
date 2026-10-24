@@ -65,7 +65,7 @@ public sealed class ItemCougherSystem : EntitySystem
             && TryComp<MaskComponent>(maskUid, out var mask)
             && !mask.IsToggled)
         {
-            _popup.PopupClient(Loc.GetString("item-cougher-mask", ("mask", maskUid)), ent, ent);
+            _popup.PopupClient(Loc.GetString("chitzite-mask", ("mask", maskUid)), ent, ent);
             return;
         }
 

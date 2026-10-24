@@ -5,4 +5,4 @@
   name: mindcontrolled
   antagonist: true
   setPreference: false
-  objective: "Help your Master"
+  objective: mindcontrol-role-objective

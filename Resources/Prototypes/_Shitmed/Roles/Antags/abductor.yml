@@ -43,7 +43,7 @@
   id: AbductorVictimAntag
   name: abductor-victim-role-name
   antagonist: true
-  objective: roles-antag-abductor-victim
+  objective: abductor-victim-role-desc
 
 - type: roleType
   id: AbductorVictimRole

@@ -17,9 +17,9 @@ public sealed class LavalandMappingCommand : IConsoleCommand
 
     public string Command => "mappinglavaland";
 
-    public string Description => "Loads lavaland world on a new map. Be careful, this can cause freezes on runtime!";
+    public string Description => Loc.GetString("cmd-mappinglavaland-desc");
 
-    public string Help => "mappinglavaland <prototype id> <seed (optional)>";
+    public string Help => Loc.GetString("cmd-mappinglavaland-help");
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -29,32 +29,32 @@ public sealed class LavalandMappingCommand : IConsoleCommand
         switch (args.Length)
         {
             case 0:
-                shell.WriteLine(Loc.GetString("Enter Lavaland prototype ID as a first argument"));
+                shell.WriteLine(Loc.GetString("cmd-mappinglavaland-missing-prototype"));
                 shell.WriteLine(Help);
                 return;
             case 1:
                 if (!_proto.TryIndex(args[0], out lavalandProto))
                 {
-                    shell.WriteLine(Loc.GetString("Wrong lavaland prototype!"));
+                    shell.WriteLine(Loc.GetString("cmd-mappinglavaland-invalid-prototype", ("prototype", args[0])));
                     return;
                 }
                 break;
             case 2:
                 if (!_proto.TryIndex(args[0], out lavalandProto))
                 {
-                    shell.WriteLine(Loc.GetString("Wrong lavaland prototype!"));
+                    shell.WriteLine(Loc.GetString("cmd-mappinglavaland-invalid-prototype", ("prototype", args[0])));
                     return;
                 }
 
                 if (!ushort.TryParse(args[1], out var targetId))
                 {
-                    shell.WriteLine(Loc.GetString("shell-argument-must-be-number"));
+                    shell.WriteLine(Loc.GetString("cmd-mappinglavaland-invalid-seed", ("seed", args[1])));
                     return;
                 }
                 lavalandSeed = targetId;
                 break;
             default:
-                shell.WriteLine(Loc.GetString("cmd-playerpanel-invalid-arguments"));
+                shell.WriteLine(Loc.GetString("shell-need-between-arguments", ("lower", 1), ("upper", 2)));
                 shell.WriteLine(Help);
                 return;
         }
@@ -64,8 +64,8 @@ public sealed class LavalandMappingCommand : IConsoleCommand
             lavalandSys.EnsurePreloaderMap();
 
         if (!lavalandSys.SetupLavalandPlanet(lavalandProto, out var lavaland, lavalandSeed))
-            shell.WriteLine("Failed to load lavaland! Ensure that lavaland.enabled CVar is set to true and check server-side logs.");
+            shell.WriteLine(Loc.GetString("cmd-mappinglavaland-load-failed"));
         else
-            shell.WriteLine($"Successfully created new lavaland map: {_entityManager.ToPrettyString(lavaland)}");
+            shell.WriteLine(Loc.GetString("cmd-mappinglavaland-success", ("map", $"{_entityManager.ToPrettyString(lavaland)}")));
     }
 }

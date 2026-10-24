@@ -179,7 +179,9 @@ public sealed partial class FootprintSystem : EntitySystem
 
         if (!TryGetAnchoredEntity<FootprintComponent>(grid, tile, out var footprint))
         {
-            var footprintEntity = SpawnAtPosition(FootprintPrototypeId, coordinates);
+            // Footprint offsets and rotations are grid-local; the container must not inherit the walker's rotation.
+            var footprintEntity = SpawnAttachedTo(FootprintPrototypeId,
+                new EntityCoordinates(grid, _map.LocalToGrid(grid, grid, coordinates)));
 
             footprint = (footprintEntity, Comp<FootprintComponent>(footprintEntity));
         }

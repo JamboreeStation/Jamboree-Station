@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Botany.Components;
 using Content.Shared.EntityEffects;
 using Content.Shared.EntityEffects.Effects.Botany.PlantAttributes;
@@ -25,5 +29,5 @@ public sealed partial class MutateNearbyPlantsEntityEffect : EntityEffectBase<Mu
     [DataField] public float Radius = 5f;
 
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-mutate-plants");
+        => Loc.GetString("reagent-effect-guidebook-mutate-plants-nearby", ("chance", Probability));
 }

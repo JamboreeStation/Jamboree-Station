@@ -136,7 +136,7 @@ public sealed class KickNonWhitelistedCommand : LocalizedCommands
                 continue;
 
             if (!await _dbManager.GetWhitelistStatusAsync(session.UserId))
-                _netManager.DisconnectChannel(session.Channel, Loc.GetString("whitelist-not-whitelisted"));
+                _netManager.DisconnectChannel(session.Channel, Loc.GetString("whitelist-manual"));
         }
     }
 }

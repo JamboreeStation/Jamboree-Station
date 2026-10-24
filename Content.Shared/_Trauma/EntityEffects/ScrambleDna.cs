@@ -12,7 +12,7 @@ namespace Content.Shared._Trauma.EntityEffects;
 public sealed partial class ScrambleDna : EntityEffectBase<ScrambleDna>
 {
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("entity-effect-guidebook-scramble-dna", ("chance", Probability));
+        => Loc.GetString("reagent-effect-guidebook-dnascramble", ("chance", Probability));
 }
 
 public sealed partial class ScrambleDnaEntityEffectSystem : EntityEffectSystem<HumanoidAppearanceComponent, ScrambleDna>

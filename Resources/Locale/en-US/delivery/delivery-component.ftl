@@ -6,6 +6,10 @@ delivery-recipient-no-job = Unknown
 
 delivery-unlocked = You unlock the {$delivery} with your fingerprint.
 delivery-opened = You open the {$delivery}.
+delivery-unlocked-self = You unlock the {$delivery} with your fingerprint.
+delivery-unlocked-others = {CAPITALIZE(THE($recipient))} unlocks the {$delivery} with {POSS-ADJ($possadj)} fingerprint.
+delivery-opened-self = You open the {$delivery}.
+delivery-opened-others = {CAPITALIZE(THE($recipient))} opens the {$delivery}.
 
 delivery-unlock-verb = Unlock
 delivery-open-verb = Open

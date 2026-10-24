@@ -111,25 +111,25 @@ delivery-spam-5 =   FREE ALL AXCESS!!
 
                         {"[color=gray]"}
                         {"[bullet/]Note: station ID must be stated in the format of \"NT/NX - ###\""}
-{"[bullet/]Note: Payments lodged to the client's station's cargo department amount to roughly $5000 spesos per transaction, not including individual processing fees"}
+                    {"[bullet/]Note: Payments lodged to the client's station's cargo department amount to roughly $5000 spesos per transaction, not including individual processing fees"}
                     {"[bullet/]Note: We at Gour-Lecksss LMT. are not responsible if your station's HoP forces you to fill out an ACTUAL Free AA form if they find out about this letter"}
                     {"[/color]"}
 
 delivery-spam-6 =   NOTICE FROM NANOTRASN!!
-.desc =         An official notice from the CEO of Nanotrasn?!
-.content =      [color=red] THIS IS AN OFICAL NOTICE FROM THE HEAD OF [color=blue]NANOTRASN[/color][/color]
+    .desc =         An official notice from the CEO of Nanotrasn?!
+    .content =      [color=red] THIS IS AN OFICAL NOTICE FROM THE HEAD OF [color=blue]NANOTRASN[/color][/color]
 
                     Dear Sir, Madam, or Other Insignificat station personell
 
                     If you do not wish for this station to be declared Unprofitable in the eyes of
-                    {"[head=2][italic] Our Great and Glorious [color=blue]Nanotransen[[/color][/head]"}
+                    {"[head=2][italic] Our Great and Glorious [color=blue]Nanotransen[/color][/italic][/head]"}
                     Then you must organize for three [color=blue]Nt[/color] Standard Stacks of [color=blue]nt[/color] Standard Gold Ingots to be sent to your station's Away Trade Outpots within 5 [color=blue]nT[/color] Standard work shifts.
 
-                    {"[head=2][color=red]IGNORE THIS ORDER AT RISK OF RETRIBUTON FROM [color=green]CENTCO[/color]!!!!![/head][/color]"}
+                    {"[head=2][color=red]IGNORE THIS ORDER AT RISK OF RETRIBUTON FROM [color=green]CENTCO[/color]!!!!![/color][/head]"}
 
 delivery-spam-7 =   Send reinforcements!
-.desc =         An official notice from... an alternate timeline?
-.content =      {-delivery-header-nanotrasen-alternate-timeline}
+    .desc =         An official notice from... an alternate timeline?
+    .content =      {-delivery-header-nanotrasen-alternate-timeline}
                     {"[head=2]This is an official notice from the [color=red]Chief Security Officer[/color] at a Nanotrasen's Space Station 15.[/head]"}
 
                     To whoever receives this letter. I am Sergeant Rigel. My occupation is the CSO. We need immediate assistance.
@@ -141,8 +141,8 @@ delivery-spam-7 =   Send reinforcements!
                     Glory to Nanotrasen.
 
 delivery-spam-8 =   The Children of Nar'Sie
-.desc =         A local cult is looking for recruits.
-.content =      [color=#134975][head=2]The Children of Nar'Sie[/head][/color]
+    .desc =         A local cult is looking for recruits.
+    .content =      [color=#134975][head=2]The Children of Nar'Sie[/head][/color]
                                                     The Beginning of a New Era
                     {"[bold]══──══──══──══──══──══──══──══──══──══──══[/bold]"}
 
@@ -160,8 +160,8 @@ delivery-spam-8 =   The Children of Nar'Sie
                     All you have to do is say [color=#FF0000][italic]"Sas'so c'arta forbici!"[/italic][/color]
 
 delivery-spam-9 =   Do you want to fight?!
-.desc =         Advertisement for a local fighting club.
-.content =      [color=#aaaaaa]▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀[/color]
+    .desc =         Advertisement for a local fighting club.
+    .content =      [color=#aaaaaa]▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀[/color]
                                                 {"[bold][head=1]THE RAGE CAGE[/head][/bold]"}
                     {"[color=#aaaaaa]▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬[/color]"}
                     {"[bold][color=#FF0000][head=3]DO YOU WANT TO FIGHT?[/head][/color][/bold]"}
@@ -181,8 +181,8 @@ delivery-spam-9 =   Do you want to fight?!
                     No weapons, no armor, just pure unadulterated [bold]COMBAT[/bold]. Don't lose out and be a [bold]WIMP[/bold]. Win the glory of being your station's most robust fighter in the [color=#FF0000][bold]RAGE CAGE[/bold][/color] today!
 
 delivery-spam-10 =  DO NOT OPEN THIS MAIL
-.desc =         You have been cursed!
-.content =      [color=#FF0000][bold][head=2]STOP[/head][/bold][/color]
+    .desc =         You have been cursed!
+    .content =      [color=#FF0000][bold][head=2]STOP[/head][/bold][/color]
 
                     If yore reading this letter...[color=#FF0000][head=3]YOUR ALRAEDY CURSED!!![/head][/color]
 
@@ -206,7 +206,7 @@ delivery-spam-10 =  DO NOT OPEN THIS MAIL
                     ░░░░░░░░░█░░[color=#67CC40]████████[/color]█[color=#67CC40]███[/color]░░░░░░░░░░
                     ░░░░░░[color=#FF0000]████[/color]█[color=#6EC543]█[/color][color=#67CC40]███████[/color]█[color=#FF0000]██████[/color]░░░░░░░░
                     ░░░░[color=#FF0000]████[/color][color=#6EC543]██[/color][color=#67CC40]████████[/color][color=#FF0000]██████[/color][color=#FFFFFF]██[/color][color=#FF0000]█[/color][color=#B53737]█[/color]░░░░░░
-                    ░░░░[color=#FF0000]██[/color][color=#6EC543]██[/color][color=#67CC40]██████████[color=#FF0000]████████[/color][color=#B53737]██[/color]░░░░░░
+                    ░░░░[color=#FF0000]██[/color][color=#6EC543]██[/color][color=#67CC40]██████████[/color][color=#FF0000]████████[/color][color=#B53737]██[/color]░░░░░░
                     ░░[color=#6EC543]██████[/color][color=#67CC40]██████████[/color][color=#FF0000]███████[/color][color=#B53737]███[/color]░░░░░░
                     {"[color=#6EC543]██████[/color][color=#67CC40]██████████████[/color][color=#FF0000]███[/color][color=#B53737]███[/color]░░░░░░░░"}
                     {"[color=#6EC543]██████[/color][color=#67CC40]██████████████[/color][color=#FF0000]█[/color][color=#6EC543]█████[/color]░░░░░░░░"}
@@ -222,8 +222,8 @@ delivery-spam-10 =  DO NOT OPEN THIS MAIL
                     ░░░░░░░░░░░░░░░░░░░░[color=#6EC543]████[/color]░░░░░░░░░░
 
 delivery-spam-11 =  Help mom and dad!
-.desc =         Parents in need of financial support.
-.content =      [bold]Hello Child,[/bold]
+    .desc =         Parents in need of financial support.
+    .content =      [bold]Hello Child,[/bold]
                     This is your Parents writing to you: we are in need of money! Our taxes have been audited and we owe $100,000 in spesos to governnment! please help! they only want gift cards so you will need to send us 100 $1000 spesos Bisa gift cards.
 
                     please mail to:
@@ -238,8 +238,8 @@ delivery-spam-11 =  Help mom and dad!
                     {"[italic]parents[/italic]"}
 
 delivery-spam-12 =  Join us on the maiden voyage!
-.desc =         Advertisement for a relaxing voyage.
-.content =      [head=2]Join us on the maiden voyage of the...[/head]
+    .desc =         Advertisement for a relaxing voyage.
+    .content =      [head=2]Join us on the maiden voyage of the...[/head]
 
                         ░█▀▀░█▀▀░░░█▀▄░█▀▀░█░░░█▀█░█░█░█▀█░█▀▄
                         ░▀▀█░▀▀█░░░█▀▄░█▀▀░█░░░█▀█░▄▀▄░█░█░█▀▄
@@ -268,8 +268,8 @@ delivery-spam-12 =  Join us on the maiden voyage!
                     {"[italic]***Must sign safety waiver before landing, Relaxination Destinations does not guarantee the safety of the Agatharian ruins. Disappearances of tour groups are down to an acceptable margin of 0.23% of all tour groups that visit the ruins.[/italic]"}
 
 delivery-spam-13 =  paper
-.desc =         A letter to the editor.
-.content =      To whom it may concern,
+    .desc =         A letter to the editor.
+    .content =      To whom it may concern,
 
                     The famous Adventures of Ian and Renault book series is one that is enjoyed by young children and at least one severely dyslexic lizard (don't worry, I got better). However, there was an error in the publication, as Ian and Renault would never make a mistake writing. It appears that in The Adventures of Ian and Renault: An Arctic Journey of Courage and Friendship, two lines from The Adventures of Ian and Renault: Exploring the City were used.
                     This made no sense. How did Ian and Renault find a little kitten in the Arctic? What was the little kitten doing there? Why were Ian and Renault doing more than average today? And the worst offender is the second misplaced line, which is "As the day turned to night, they were exhausted abut happy from their adventure in the city" (Ian and Renault, 1). OH, SORRY!!! I'M NOT AWARE THAT THERE'S A CITY IN THE ARCTIC!!! THAT THEY JUST STOPPED AT. YOU KNOW. FOR A COFFEE. OH WAIT!! COFFEE KILLS DOGS AND FOXES!!!!!!!!! WHO WOULD PUBLISH THIS!!!!! YOU'VE JUST KILLED IAN AND RENAULT!!!!!!!!!!!!!!!!!!! HOW COULD YOU!!!!!!!!!!!!!!!!!!! YOU MONSTER!!!!!!!!!!!!!!!!!
@@ -277,4 +277,4 @@ delivery-spam-13 =  paper
                     LOOK AT WHERE THAT GOT YOU. YOU'VE KILLED THE TWO. CONGRATS.
                     THERE WILL BE NO MORE SEQUELS NOW.
                     HOW'S THAT FOR MAKING MONEY???? IT SUCKS????
-                    {"["}bold]WELL YOU SHOULDN'T HAVE KILLED THEM!!!!!!!!!!!!!!![/bold]
+                    {"[bold]WELL YOU SHOULDN'T HAVE KILLED THEM!!!!!!!!!!!!!!![/bold]"}

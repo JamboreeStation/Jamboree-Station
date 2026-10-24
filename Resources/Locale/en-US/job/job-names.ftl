@@ -64,6 +64,8 @@ job-name-ce = Chief Engineer
 job-name-janitor = Janitor
 job-name-chaplain = Chaplain
 job-name-botanist = Botanist
+job-name-boxer = Boxer
+job-name-zookeeper = Zookeeper
 job-name-bartender = Bartender
 ## goob edit - epic passengers
 job-name-passenger = Assistant
