@@ -7,6 +7,7 @@
 using System.Runtime.InteropServices;
 using Content.Shared._NF.Respawn;
 using Content.Shared.GameTicking;
+using Content.Shared.Ghost;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -32,6 +33,7 @@ public sealed class RespawnSystem : EntitySystem
     {
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged); // MobStateChangedEvent is raised when a mob's state changes, such as when it dies or is revived.
         SubscribeLocalEvent<MindContainerComponent, MindRemovedMessage>(OnMindRemoved); // MindRemovedMessage is raised when a mind is removed from an entity, such as when a player disconnects or is killed.
+        SubscribeLocalEvent<GhostComponent, PlayerAttachedEvent>(OnGhostPlayerAttached);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup); // RoundRestartCleanupEvent is raised when the round restarts, such as when the server is restarted or the round ends.
 
         _player.PlayerStatusChanged += OnPlayerStatusChanged;
@@ -57,6 +59,13 @@ public sealed class RespawnSystem : EntitySystem
             // If player is no longer dead, clear the respawn timer.
             ClearRespawnTime(session);
         }
+    }
+
+    private void OnGhostPlayerAttached(EntityUid uid, GhostComponent component, PlayerAttachedEvent args)
+    {
+        // JAMBOREE Lobby observers have no previous body to start their timer. So you have to restart it this way.
+        if (!_respawnResetTimes.ContainsKey(args.Player.UserId))
+            ResetRespawnTime(args.Player);
     }
 
     private void ClearRespawnTime(ICommonSession session)

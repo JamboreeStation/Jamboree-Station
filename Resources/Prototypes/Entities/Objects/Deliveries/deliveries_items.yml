@@ -10,7 +10,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-robust-toolboxes
+    content: delivery-spam-1.content
 
 - type: entity
   id: MailNanotrasenSpam
@@ -19,7 +19,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-reasons-to-chose-nanotrasen
+    content: delivery-spam-2.content
 
 - type: entity
   id: MailSyndicateSpam
@@ -28,7 +28,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-reasons-to-choose-syndicate
+    content: delivery-spam-3.content
 
 - type: entity
   id: MailAlternativeDimensionSpam
@@ -37,7 +37,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-alternate-timeline
+    content: delivery-spam-7.content
 
 - type: entity
   id: MailNarsieCultSpam
@@ -46,7 +46,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-narsie-cult
+    content: delivery-spam-8.content
 
 - type: entity
   id: MailRageCageSpam
@@ -55,7 +55,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-rage-cage
+    content: delivery-spam-9.content
 
 - type: entity
   id: MailVoyageAdvertisementSpam
@@ -64,7 +64,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-voyage-advertisement
+    content: delivery-spam-12.content
 
 # Scam Mail
 - type: entity
@@ -74,7 +74,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-tired-of-science
+    content: delivery-spam-4.content
 
 - type: entity
   id: MailAllAccessSpam
@@ -83,7 +83,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-free-all-access
+    content: delivery-spam-5.content
 
 - type: entity
   id: MailCentcommRetributionSpam
@@ -92,7 +92,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-centcomm-retribution
+    content: delivery-spam-6.content
 
 - type: entity
   id: MailEvilLizardSpam
@@ -101,7 +101,7 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-evil-lizard
+    content: delivery-spam-10.content
 
 - type: entity
   id: MailParentsNeedMoneySpam
@@ -110,4 +110,4 @@
   parent: Paper
   components:
   - type: Paper
-    content: delivery-spam-parents-need-money
+    content: delivery-spam-11.content
