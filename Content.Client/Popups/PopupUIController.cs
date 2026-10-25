@@ -13,13 +13,9 @@ namespace Content.Client.Popups;
 /// <summary>
 /// Handles screens-space popups. World popups are handled via PopupOverlay.
 /// </summary>
-public sealed class PopupUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>
+public sealed partial class PopupUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>
 {
     [UISystemDependency] private readonly PopupSystem? _popup = default!;
-
-    private Font _smallFont = default!;
-    private Font _mediumFont = default!;
-    private Font _largeFont = default!;
 
     private PopupRootControl? _popupControl;
 
