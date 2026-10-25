@@ -9,11 +9,4 @@ namespace Content.Shared._DV.Chemistry.Components;
 /// Hyposprays are unaffected.
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class BlockInjectionComponent : Component
-{
-    [DataField]
-    public bool BlockPatches; // Goob
-
-    [DataField]
-    public LocId DenyMessage = "injector-component-deny-user"; // Goob
-}
+public sealed partial class BlockInjectionComponent : Component;

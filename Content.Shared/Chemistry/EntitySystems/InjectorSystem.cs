@@ -197,9 +197,9 @@ public sealed partial class InjectorSystem : EntitySystem
     private bool TryMobsDoAfter(Entity<InjectorComponent> injector, EntityUid user, EntityUid target)
     {
         //Checks if target has blockInjection comp - fuck Chitinid, no more hypos for them - also Goob start
-        if (TryComp<BlockInjectionComponent>(target, out var block))
+        if (HasComp<BlockInjectionComponent>(target))
         {
-            _popup.PopupClient(Loc.GetString(block.DenyMessage), user, user);
+            _popup.PopupClient(Loc.GetString("injector-component-deny-user"), user, user);
             return false;
         }
         //Goob end

@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Armor; // Goobstation - Armor resisting syringe gun
-using Content.Shared._DV.Chemistry.Components; // Goob
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chemistry.Components;
@@ -177,9 +176,6 @@ public sealed class SolutionInjectOnCollideSystem : EntitySystem
         foreach (var target in targets)
         {
             if (Deleted(target))
-                continue;
-
-            if (HasComp<BlockInjectionComponent>(target)) // Goob
                 continue;
 
             // Goobstation - Armor resisting syringe gun
