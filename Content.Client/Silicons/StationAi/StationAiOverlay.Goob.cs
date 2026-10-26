@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Silicons.StationAi;
 using Content.Shared.Wall;
@@ -14,6 +18,11 @@ public sealed partial class StationAiOverlay
     private static readonly ProtoId<ShaderPrototype> AiMachineViewShader = "AiMachineView";
 
     private readonly HashSet<Entity<StationAiWhitelistComponent>> _aiMachineViewCandidates = new();
+
+    public bool IsTileVisible(EntityUid gridUid, Vector2i tile)
+    {
+        return gridUid == _lastGridUid && _visibleTiles.Contains(tile);
+    }
 
     /// <summary>
     /// Renders with shader the sprite of every anchored, powered, AI-whitelisted machine that is hidden by the static.

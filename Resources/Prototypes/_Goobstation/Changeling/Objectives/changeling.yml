@@ -289,7 +289,7 @@
   id: LingCaptainGunStealObjective
   components:
   - type: StealCondition
-    stealGroup: WeaponAntiqueLaser
+    stealGroup: Captain # Jamboree - was WeaponAntiqueLaser
     owner: job-name-captain
 
 - type: entity

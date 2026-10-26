@@ -201,10 +201,22 @@ public sealed partial class PaperSystem : EntitySystem // Goob
             if (TryComp<LanguageSpeakerComponent>(args.Actor, out var speaker))
             {
                 // JAMBOREE - Use the language chosen in the paper UI, validated against the languages the
-                // writer actually understands. Fall back to their currently spoken language if none chosen.
-                var chosen = args.Language ?? (ProtoId<LanguagePrototype>) speaker.CurrentLanguage;
-                if (chosen != "Sign" && speaker.UnderstoodLanguages.Contains(chosen))
-                    entity.Comp.WrittenLanguage = chosen;
+                // writer actually understands. Default to the first known written language, as the UI does.
+                var chosen = args.Language;
+                if (chosen == null)
+                {
+                    foreach (var knownLanguage in speaker.UnderstoodLanguages)
+                    {
+                        if (knownLanguage == "Sign")
+                            continue;
+
+                        chosen = knownLanguage;
+                        break;
+                    }
+                }
+
+                if (chosen is { } language && language != "Sign" && speaker.UnderstoodLanguages.Contains(language))
+                    entity.Comp.WrittenLanguage = language;
             }
 
             SetContent(entity, args.Text);

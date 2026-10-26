@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Server.Pinpointer;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Materials.OreSilo;
@@ -27,6 +31,9 @@ public sealed class OreSiloSystem : SharedOreSiloSystem
             return;
         _clientLookup.Clear();
         _clientInformation.Clear();
+
+        if (ent.Comp.Clients.RemoveWhere(c => TerminatingOrDeleted(c) || !HasComp<OreSiloClientComponent>(c)) > 0) // Goob
+            Dirty(ent);
 
         var xform = Transform(ent);
 

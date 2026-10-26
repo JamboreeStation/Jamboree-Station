@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Xenobiology.Components;
 using Content.Goobstation.Shared.Xenobiology.Components.Equipment;
 using Content.Shared.Chemistry.Reaction;
@@ -70,9 +74,8 @@ public sealed partial class SlimeScannerSystem : EntitySystem
             var info = _proto.Index(mutations[i]);
 
             var color = "white";
-            // todo make the colors work
-            if (info.Components.TryGetComponent(nameof(SlimeComponent), out var sc))
-                color = ((SlimeComponent) sc).SlimeColor.ToHex();
+            if (info.Components.TryGetComponent<SlimeComponent>(Factory, out var sc))
+                color = sc.SlimeColor.ToHex();
 
             sb.Append($"[color={color}]{info.BreedName}[/color]");
 

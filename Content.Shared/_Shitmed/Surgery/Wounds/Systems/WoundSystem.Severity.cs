@@ -229,18 +229,22 @@ public sealed partial class WoundSystem
             || !Resolve(woundable, ref woundableComp))
             return;
 
-        var nearestSeverity = component.WoundSeverity;
-        foreach (var (severity, value) in WoundThresholds)
+        var nearestSeverity = WoundSeverity.Healed;
+        if (component.WoundSeverityPoint > 0)
         {
-            var scaledThreshold = value * (woundableComp.IntegrityCap / 100);
-            if (component.WoundSeverityPoint < scaledThreshold)
-                continue;
+            nearestSeverity = WoundSeverity.Minor;
+            foreach (var (severity, value) in WoundThresholds)
+            {
+                var scaledThreshold = value * (woundableComp.IntegrityCap / 100);
+                if (component.WoundSeverityPoint < scaledThreshold)
+                    continue;
 
-            if (severity == WoundSeverity.Healed && component.WoundSeverityPoint > 0)
-                continue;
+                if (severity == WoundSeverity.Healed)
+                    continue;
 
-            nearestSeverity = severity;
-            break;
+                nearestSeverity = severity;
+                break;
+            }
         }
 
         if (nearestSeverity == component.WoundSeverity)
