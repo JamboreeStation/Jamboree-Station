@@ -37,13 +37,13 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                             <Label Name="FillStatus" StyleClasses="LabelSecondaryColor"/>
                         </BoxContainer>
                         <TextureButton Name="FooterImage" HorizontalAlignment="Center" VerticalAlignment="Top" MouseFilter="Ignore"/>
-                        <Label Name="LanguageLabel" StyleClasses="LabelSecondaryColor" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 4 0 0"/>
                     </BoxContainer>
                     <paper:StampCollection Name="StampDisplay" VerticalAlignment="Bottom" Margin="6"/>
 
                 </PanelContainer>
             </ScrollContainer>
         </PanelContainer>
+        <Label Name="LanguageLabel" StyleClasses="LabelSecondaryColor" HorizontalAlignment="Center" Margin="0 4" Visible="False"/>
         <!-- Bottom buttons for editing -->
         <BoxContainer Name="EditButtons" Orientation="Horizontal" HorizontalAlignment="Right" Margin="6">
             <Button Name="SaveButton" />

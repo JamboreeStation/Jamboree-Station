@@ -286,7 +286,7 @@ namespace Content.Client.Paper.UI
         ///     Initialize the paper contents, i.e. the text typed by the
         ///     user and any stamps that have peen put on the page.
         /// </summary>
-        public void Populate(PaperComponent.PaperBoundUserInterfaceState state, EntityUid owner)
+        public void Populate(PaperComponent.PaperBoundUserInterfaceState state)
         {
 
             var displayText = state.Text;
@@ -298,16 +298,11 @@ namespace Content.Client.Paper.UI
                 understood = playerLanguages.UnderstoodLanguages; // JAMBOREE - Getting the players understood language.
             }
 
-            ProtoId<LanguagePrototype>? paperLanguage = null;
-            if (_entityManager.TryGetComponent<PaperComponent>(owner, out var paperLang))
-            {
-                paperLanguage = paperLang.WrittenLanguage; // JAMBOREE -
-
-            }
+            var paperLanguage = state.WrittenLanguage;
 
             // JAMBOREE - Display the language the paper was written in at the bottom.
             var protoManager = IoCManager.Resolve<IPrototypeManager>();
-            if (state.WrittenLanguage != null && protoManager.TryIndex(state.WrittenLanguage.Value, out var labelLangProto))
+            if (paperLanguage != null && protoManager.TryIndex(paperLanguage.Value, out var labelLangProto))
             {
                 LanguageLabel.Text = Loc.GetString("paper-ui-written-language", ("language", labelLangProto.Name));
                 LanguageLabel.Visible = true;
@@ -420,7 +415,7 @@ namespace Content.Client.Paper.UI
         }
 
         // JAMBOREE - Populate the "write in" language dropdown with every language the local player understands,
-        // defaulting the selection to the language they are currently speaking.
+        // independently of the language they are currently speaking.
         private void PopulateLanguageDropdown()
         {
             if (!_entityManager.TryGetComponent<LanguageSpeakerComponent>(_playerManager.LocalEntity, out var speaker))
@@ -430,7 +425,6 @@ namespace Content.Client.Paper.UI
             LanguageDropDown.Clear();
             _languageOptions.Clear();
 
-            var selectedIndex = -1;
             for (var i = 0; i < speaker.UnderstoodLanguages.Count; i++)
             {
                 var lang = speaker.UnderstoodLanguages[i]; // get their language in order
@@ -443,15 +437,12 @@ namespace Content.Client.Paper.UI
                 var listIndex = _languageOptions.Count; // compact index this entry will occupy
                 _languageOptions.Add(lang);
                 LanguageDropDown.AddItem(proto.Name, listIndex); // item id == compact index
-                if (lang.Id == speaker.CurrentLanguage)
-                    selectedIndex = listIndex;
             }
 
             if (_languageOptions.Count > 0)
             {
-                selectedIndex = selectedIndex >= 0 ? selectedIndex : 0;
-                LanguageDropDown.Select(selectedIndex);
-                _selectedLanguage = _languageOptions[selectedIndex];
+                LanguageDropDown.Select(0);
+                _selectedLanguage = _languageOptions[0];
             }
 
             LanguageDropDown.OnItemSelected += args =>
