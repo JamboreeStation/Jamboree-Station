@@ -2393,3 +2393,11 @@ Entries:
       message: Respawn system when you observe should work now.
   id: 190
   time: '2026-10-24T18:57:02.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: paper language system should display correctly now.
+    - type: Fix
+      message: Examine text has been fixed for icons showing.
+  id: 191
+  time: '2026-10-26T23:24:19.0000000+00:00'
