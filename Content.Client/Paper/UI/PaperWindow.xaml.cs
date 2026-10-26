@@ -297,10 +297,10 @@ namespace Content.Client.Paper.UI
             var displayText = state.Text; // i mean i do need the paper text
             var reader = _playerManager.LocalEntity; // JAMBOREE -  Get the clients EntityID
 
-            string? selectedLanguage = null;
+            var understood = new List<ProtoId<LanguagePrototype>>();
             if (_entityManager.TryGetComponent<LanguageSpeakerComponent>(reader, out var playerLanguages))
             {
-                selectedLanguage = playerLanguages.CurrentLanguage; // JAMBOREE - The language the reader currently has selected.
+                understood = playerLanguages.UnderstoodLanguages; // JAMBOREE - Getting the players understood language.
             }
 
             ProtoId<LanguagePrototype>? paperLanguage = null;
@@ -310,15 +310,27 @@ namespace Content.Client.Paper.UI
 
             }
 
+            // JAMBOREE - Display the language the paper was written in at the bottom.
+            var protoManager = IoCManager.Resolve<IPrototypeManager>();
+            if (state.WrittenLanguage != null && protoManager.TryIndex(state.WrittenLanguage.Value, out var labelLangProto))
+            {
+                LanguageLabel.Text = Loc.GetString("paper-ui-written-language", ("language", labelLangProto.Name));
+                LanguageLabel.Visible = true;
+            }
+            else
+            {
+                LanguageLabel.Visible = false;
+            }
+
             if (paperLanguage != null // JAM-  check if the paper has a language
             &&
             paperLanguage.Value != SharedLanguageSystem.UniversalPrototype // JAM- and its not the Universal lang obvs
             &&
-            paperLanguage.Value.Id != selectedLanguage) // JAM- and its not the language the reader currently has selected
+            !understood.Contains(paperLanguage.Value)) // JAM- and the client doesnt have it in their list of languages
             {
                 //scramble text time to them!
 
-                var langProto = IoCManager.Resolve<IPrototypeManager>().Index(paperLanguage.Value);
+                var langProto = protoManager.Index(paperLanguage.Value);
                 displayText = _sharedLanguageSystem.ObfuscateSpeech(state.Text, langProto);          // scramble, store result
 
             }
@@ -366,19 +378,6 @@ namespace Content.Client.Paper.UI
             foreach (var stamper in state.StampedBy)
             {
                 StampDisplay.AddStamp(new StampWidget { StampInfo = stamper });
-            }
-
-            // JAMBOREE - Display the language the paper was written in at the bottom.
-            if (state.WrittenLanguage != null)
-            {
-                var protoManager = IoCManager.Resolve<IPrototypeManager>();
-                var langProto = protoManager.Index(state.WrittenLanguage.Value);
-                LanguageLabel.Text = Loc.GetString("paper-ui-written-language", ("language", langProto.Name));
-                LanguageLabel.Visible = true;
-            }
-            else
-            {
-                LanguageLabel.Visible = false;
             }
         }
 
