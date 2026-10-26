@@ -407,7 +407,7 @@ public sealed class HealingSystem : EntitySystem
                 bleedBefore = bloodstream.BleedAmountFromWounds + bloodstream.BleedAmountNotFromWounds;
             healedBleed = bleedBefore > 0.0;
             _wounds.TryHealBleedingWounds(targetedWoundable, healing.BloodlossModifier, out modifiedBleedStopAbility, woundableComp);
-            if (healing.BloodlossModifier + modifiedBleedStopAbility < 0.0)
+            if (healing.BloodlossModifier + modifiedBleedStopAbility <= 0.0)
                 _bloodstreamSystem.TryModifyBleedAmount(ent, (healing.BloodlossModifier + modifiedBleedStopAbility).Float()); // Use the leftover bleed heal
             if (healedBleed)
                 _popupSystem.PopupClient(bleedBefore + healing.BloodlossModifier <= 0.0
