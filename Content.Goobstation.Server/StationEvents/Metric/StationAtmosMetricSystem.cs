@@ -81,8 +81,8 @@ public sealed class StationAtmosMetricSystem : ChaosMetricSystem<StationAtmosMet
             component.BaselineCaptured = true;
 
         var atmosChaos = spaced * component.SpacedTileCost
-                         + fire * component.FireTileCost
                          + toxic * component.ToxicTileCost;
+        var fireChaos = fire * component.FireTileCost;
 
         TilesTotal.Set(tiles);
         BaselineTiles.Set(component.BaselineTiles.Count);
@@ -94,6 +94,7 @@ public sealed class StationAtmosMetricSystem : ChaosMetricSystem<StationAtmosMet
         return new ChaosMetrics(new Dictionary<ChaosMetric, double>
         {
             { ChaosMetric.Atmos, atmosChaos },
+            { ChaosMetric.Fire, fireChaos },
         });
     }
 
