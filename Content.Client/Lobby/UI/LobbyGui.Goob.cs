@@ -14,12 +14,9 @@ using Content.Shared.CCVar;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Configuration;
-<<<<<<< HEAD
-=======
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
->>>>>>> 64bc12d57222f (lobby ui updates (#7463))
 
 namespace Content.Client.Lobby.UI;
 

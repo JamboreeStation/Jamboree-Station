@@ -1,4 +1,3 @@
-using Content.Client.Chat.UI;
 using Content.Client.Resources;
 using Content.Client.Stylesheets;
 using Content.Client.Stylesheets.Stylesheets;
@@ -39,7 +38,7 @@ public sealed class HullSheetlet : Sheetlet<NanotrasenStylesheet>
             E<Label>().Class(HullStyleClasses.Muted).Font(PixelFont(false, true)).FontColor(MutedColor),
             E<Label>().Class(HullStyleClasses.FactKey).Font(PixelFont(false, true)).FontColor(MutedColor),
             E<Label>().Class(HullStyleClasses.FactValue).Font(PixelFont(false)).FontColor(TextColor),
-            E<Label>().Class(HullStyleClasses.LcdCaption).Font(RunechatStyle.GetFont(RunechatStyle.FontPath, 12)).FontColor(LcdCaptionColor),
+            E<Label>().Class(HullStyleClasses.LcdCaption).Font(PixelFont(false)).FontColor(LcdCaptionColor),
             E<Label>().Class(HullStyleClasses.PinTitle).Font(PixelFont(true)).FontColor(AmberColor),
             E<Label>().Class(HullStyleClasses.PostDate).Font(PixelFont(false, true)).FontColor(MutedColor),
             E<Label>().Class(HullStyleClasses.PostTitle).Font(PixelFont(true)).FontColor(TextColor),

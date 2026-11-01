@@ -41,12 +41,6 @@
   id: Delius
   path: /Fonts/_Goobstation/Delius/Delius-Regular.ttf
 
-<<<<<<< HEAD
-=======
-- type: font
-  id: MinecraftEnchantment
-  path: /Fonts/unifont-17.0.03.otf
-
 - type: font
   id: Hull
   path: /Fonts/_Goobstation/Bekoha/Freezeframe-Cond.ttf
@@ -62,4 +56,3 @@
 - type: font
   id: HullBoldItalic
   path: /Fonts/_Goobstation/Bekoha/Freezeframe-Cond-BoldItalic.ttf
->>>>>>> 64bc12d57222f (lobby ui updates (#7463))
