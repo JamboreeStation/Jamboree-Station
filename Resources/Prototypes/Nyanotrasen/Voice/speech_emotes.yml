@@ -8,6 +8,7 @@
   whitelist:
     tags:
     - FelinidEmotes
+    - HarpyEmotes
     - ReptilianEmotes
     - ThavenEmotes # gds
   blacklist:
@@ -94,6 +95,7 @@
   whitelist:
     tags:
     - FelinidEmotes
+    - HarpyEmotes
     - ReptilianEmotes # Omu
     - ThavenEmotes # gds
   blacklist:

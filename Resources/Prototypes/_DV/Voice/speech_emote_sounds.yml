@@ -19,10 +19,50 @@
       collection: HarpyCry
     Whistle:
       collection: Whistles
+    Hiss:
+      collection: HarpyHisses
+    Meow:
+      collection: HarpyMeows
+    Mew:
+      collection: HarpyMews
+    Growl:
+      collection: HarpyGrowls
+    Purr:
+      collection: HarpyPurrs
+    Ring:
+      collection: HarpyRings
+    Pew:
+      collection: HarpyPews
+    Bang:
+      collection: HarpyBangs
+    Beep:
+      collection: HarpyBeeps
+    Rev:
+      collection: HarpyRevs
+    Click:
+      collection: HarpyClicks
+    Chitter:
+      collection: HarpyChitter
+    Squeak:
+      collection: HarpySqueak
     Caw:
       collection: HarpyCaws
     Chirp:
       collection: HarpyChirps
+    Snarl:
+      collection: VulpkaninSnarls
+    Bark:
+      collection: VulpkaninBarks
+    Whine:
+      collection: VulpkaninWhines
+    Howl:
+      collection: VulpkaninHowls
+    Awoo:
+      collection: VulpkaninHowls
+    Honk:
+      collection: HarpyHonks
+    Weh:
+      collection: Weh
     CatMeow:
       collection: CatMeows # Goobstation - effect standardization
     Coo: #Floofstation
@@ -35,6 +75,8 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Trill:
       collection: Trill
+    Yip:
+      collection: Yip
     Warble:
       collection: Warble
     Wurble:
@@ -88,10 +130,50 @@
       collection: HarpyCry
     Whistle:
       collection: Whistles
+    Hiss:
+      collection: HarpyHisses
+    Meow:
+      collection: HarpyMeows
+    Mew:
+      collection: HarpyMews
+    Growl:
+      collection: HarpyGrowls
+    Purr:
+      collection: HarpyPurrs
+    Ring:
+      collection: HarpyRings
+    Pew:
+      collection: HarpyPews
+    Bang:
+      collection: HarpyBangs
+    Beep:
+      collection: HarpyBeeps
+    Rev:
+      collection: HarpyRevs
+    Click:
+      collection: HarpyClicks
+    Chitter:
+      collection: HarpyChitter
+    Squeak:
+      collection: HarpySqueak
     Caw:
       collection: HarpyCaws
     Chirp:
       collection: HarpyChirps
+    Snarl:
+      collection: VulpkaninSnarls
+    Bark:
+      collection: VulpkaninBarks
+    Whine:
+      collection: VulpkaninWhines
+    Howl:
+      collection: VulpkaninHowls
+    Awoo:
+      collection: VulpkaninHowls
+    Honk:
+      collection: HarpyHonks
+    Weh:
+      collection: Weh
     CatMeow:
       collection: CatMeows # Goobstation - effect standardization
     Coo: #Floofstation
@@ -104,10 +186,14 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Trill:
       collection: Trill
+    Yip:
+      collection: Yip
     Warble:
       collection: Warble
     Wurble:
       collection: Wurble
+    Mars:
+      collection: Mars
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
     Scree: # Omu, give harpy more emotes
