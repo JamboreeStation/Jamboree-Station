@@ -321,6 +321,24 @@ public sealed partial class GoobCVars
 
     #endregion
 
+    public static readonly CVarDef<string> NewsPinned =
+        CVarDef.Create("news.pinned", "", CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE, "Comma-separated newsEntry IDs pinned to the top of the lobby news feed, in order.");
+
+    public static readonly CVarDef<string> NewsRead =
+        CVarDef.Create("news.read", "", CVar.CLIENTONLY | CVar.ARCHIVE, "Comma-separated newsEntry IDs this client has opened.");
+
+    public static readonly CVarDef<string> NewsPopupState =
+        CVarDef.Create("news.popup_state", "", CVar.CLIENTONLY | CVar.ARCHIVE, "When each news popup was last shown, as id=timestamp pairs separated by semicolons. A value of never means don't show again.");
+
+    public static readonly CVarDef<string> MarkingFavourites =
+        CVarDef.Create("humanoid.marking_favourites", "", CVar.CLIENTONLY | CVar.ARCHIVE, "Comma-separated marking IDs starred in the character editor.");
+
+    public static readonly CVarDef<bool> FacialHairMatchesHair =
+        CVarDef.Create("humanoid.facial_hair_matches_hair", true, CVar.CLIENTONLY | CVar.ARCHIVE, "Changing hair color in the character editor also recolors facial hair.");
+
+    public static readonly CVarDef<string> WindowTitle =
+        CVarDef.Create("goob.window_title", "", CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE, "Shown in the client's window title instead of the hostname when set.");
+
     #region Xenobiology
 
     public static readonly CVarDef<float> BreedingInterval =

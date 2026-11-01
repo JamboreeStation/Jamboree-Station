@@ -731,9 +731,8 @@ public abstract partial class SharedMindSystem : EntitySystem
         // If the entity already speaks some language (like monkey or robot), we do nothing else.
         // Otherwise, we give them the fallback language
 
-        // I'm assuming here that if they have languagespeaker, we don't need to do everything else.
         if (TryComp<LanguageSpeakerComponent>(uid, out var languageSpeaker) &&
-            languageSpeaker.SpokenLanguages.Count > 1)
+            languageSpeaker.SpokenLanguages.Count > 0)
             return;
 
         var newSpeaker = EnsureComp<LanguageSpeakerComponent>(uid);

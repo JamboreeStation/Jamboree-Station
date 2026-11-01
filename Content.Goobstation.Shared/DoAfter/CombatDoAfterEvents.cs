@@ -16,7 +16,7 @@ public abstract partial class BaseCombatDoAfterSuccessEvent : EntityEventArgs;
 [Virtual]
 public partial class CombatDoAfterMeleeHitEvent : BaseCombatDoAfterSuccessEvent
 {
-    public IReadOnlyList<EntityUid> Targets;
+    public IReadOnlySet<EntityUid> Targets;
 
     public DamageSpecifier BonusDamage = new();
 }

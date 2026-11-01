@@ -124,7 +124,7 @@ public sealed partial class CombatDoAfterSystem : EntitySystem
 
     private bool CheckDoAfter(Entity<CombatDoAfterComponent> item,
         EntityUid? user,
-        IReadOnlyList<EntityUid>? targets,
+        IReadOnlySet<EntityUid>? targets,
         bool setSuccessColorOverride = true)
     {
         if (item.Comp.DoAfterUser == null || user != null && item.Comp.DoAfterUser != user ||

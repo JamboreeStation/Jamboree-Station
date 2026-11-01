@@ -1,3 +1,9 @@
 [game]
 hostname = "Goob Sigma ᴇᴜ-ᴡ !!!!!Voice Chat!!!!!"
 desc = "😱"
+
+[news]
+pinned = ""
+
+[goob]
+window_title = "Goob Sigma"

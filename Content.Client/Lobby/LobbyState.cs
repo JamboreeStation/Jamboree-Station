@@ -133,25 +133,23 @@ namespace Content.Client.Lobby
 
         public override void FrameUpdate(FrameEventArgs e)
         {
+            // Goob start
             if (_gameTicker.IsGameStarted)
             {
-                Lobby!.StartTime.Text = string.Empty;
                 var roundTime = _gameTiming.CurTime.Subtract(_gameTicker.RoundStartTimeSpan);
-                Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-time", ("hours", roundTime.Hours), ("minutes", roundTime.Minutes));
+                Lobby!.SetRoundTimer(Loc.GetString("ui-lobby-lcd-round-time"), $"{(int) roundTime.TotalHours}:{roundTime.Minutes:D2}");
                 return;
             }
 
-            Lobby!.StationTime.Text = Loc.GetString("lobby-state-player-status-round-not-started");
             string text;
 
             if (_gameTicker.Paused)
             {
-                text = Loc.GetString("lobby-state-paused");
+                text = Loc.GetString("ui-lobby-lcd-paused");
             }
             else if (_gameTicker.StartTime < _gameTiming.CurTime)
             {
-                Lobby!.StartTime.Text = Loc.GetString("lobby-state-soon");
-                return;
+                text = Loc.GetString("ui-lobby-lcd-soon");
             }
             else
             {
@@ -171,7 +169,8 @@ namespace Content.Client.Lobby
                 }
             }
 
-            Lobby!.StartTime.Text = Loc.GetString("lobby-state-round-start-countdown-text", ("timeLeft", text));
+            Lobby!.SetRoundTimer(Loc.GetString("ui-lobby-lcd-starts-in"), text);
+            // Goob end
         }
 
         private void LobbyStatusUpdated()
@@ -196,7 +195,6 @@ namespace Content.Client.Lobby
             }
             else
             {
-                Lobby!.StartTime.Text = string.Empty;
                 Lobby!.ReadyButton.Pressed = _gameTicker.AreWeReady;
                 Lobby!.ReadyButton.Text = Loc.GetString(Lobby!.ReadyButton.Pressed ? "lobby-state-player-status-ready": "lobby-state-player-status-not-ready");
                 Lobby!.ReadyButton.ToggleMode = true;
@@ -204,11 +202,8 @@ namespace Content.Client.Lobby
                 Lobby!.ObserveButton.Disabled = true;
             }
 
-            if (_gameTicker.ServerInfoBlob != null)
-            {
-                Lobby!.ServerInfo.SetInfoBlob(_gameTicker.ServerInfoBlob);
-            }
-
+            Lobby!.UpdateReadyArt(); // Goob
+            // Goob
             UpdatePlayerBalance(); // Goobstation - Goob Coin
 
             var minutesToday = _playtimeTracking.PlaytimeMinutesToday;

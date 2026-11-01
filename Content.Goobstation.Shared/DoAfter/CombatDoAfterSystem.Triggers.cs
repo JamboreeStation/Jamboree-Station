@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Goobstation.Common.DoAfter;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
@@ -46,7 +47,7 @@ public sealed partial class CombatDoAfterSystem
         if (args.Targets.Count == 0)
             return;
 
-        var target = args.Targets[0];
+        var target = args.Targets.First();
 
         if (!HasComp<MobStateComponent>(target))
             return;

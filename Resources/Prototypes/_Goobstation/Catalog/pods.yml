@@ -2,97 +2,131 @@
   id: SpawnArmamentsCursader
   categories: [ HideSpawnMenu ]
   name: crusader armour
-  parent: SpawnSupplyEmpty
+  parent: DropPod
   components:
-  - type: SpawnTableOnDespawn
+  - type: DropPod
     table: !type:AllSelector
       children:
       - id: ClothingOuterArmorTemplar
       - id: ClothingHeadHatHelmetTemplar
 
-#- type: entity
- # id: SpawnArmamentsStudent
- # categories: [ HideSpawnMenu ]
- # name: student robe
- # parent: SpawnSupplyEmpty
- # components:
- # - type: SpawnOnDespawn
- #   prototypes:
- #   - ClothingOuterArmorStudent
- #   - ClothingHeadHatHelmetCage
+- type: entity
+  id: SpawnArmamentsStudent
+  categories: [ HideSpawnMenu ]
+  name: student robe
+  parent: DropPod
+  components:
+  - type: DropPod
+    table: !type:AllSelector
+      children:
+      - id: ClothingOuterArmorStudent
+      - id: ClothingHeadHatHelmetCage
 
 - type: entity
   id: SpawnArmamentsAncient
   categories: [ HideSpawnMenu ]
   name: ancient armour
-  parent: SpawnSupplyEmpty
+  parent: DropPod
   components:
-  - type: SpawnTableOnDespawn
+  - type: DropPod
     table: !type:AllSelector
       children:
       - id: ClothingOuterArmorAncient
       - id: ClothingHeadHatHelmetAncient
 
+# Jamboree-Station: commented out cause prototypes removed upstream
 #- type: entity
- # id: SpawnArmamentsWitchhunter
- # categories: [ HideSpawnMenu ]
- # name: witch hunter garb
- # parent: SpawnSupplyEmpty
- # components:
- # - type: SpawnOnDespawn
- #   prototypes:
- #   - ClothingOuterArmorWitchhunter
- #   - ClothingHeadHatHelmetWitchhunter
-
-#- type: entity
-#  id: SpawnArmamentsAdept
+#  id: SpawnArmamentsWitchhunter
 #  categories: [ HideSpawnMenu ]
-#  name: adept robes
-#  parent: SpawnSupplyEmpty
+#  name: witch hunter garb
+#  parent: DropPod
 #  components:
- # - type: SpawnOnDespawn
- #   prototypes:
- #   - ClothingOuterArmorAdept
+#  - type: DropPod
+#    table: !type:AllSelector
+#      children:
+#      #- id: ClothingOuterArmorWitchhunter
+#      #- id: ClothingHeadHatHelmetWitchhunter
+
+- type: entity
+  id: SpawnArmamentsAdept
+  categories: [ HideSpawnMenu ]
+  name: adept robes
+  parent: DropPod
+  components:
+  - type: DropPod
+    table:
+      id: ClothingOuterArmorAdept
 
 - type: entity
   id: SpawnArmamentsClock
   categories: [ HideSpawnMenu ]
   name: forgotten armour
-  parent: SpawnSupplyEmpty
+  parent: DropPod
   components:
-  - type: SpawnTableOnDespawn
+  - type: DropPod
     table: !type:AllSelector
       children:
       - id: ClothingOuterArmorClock
       - id: ClothingHeadHatHelmetClock
 
-#- type: entity
-#  id: SpawnArmamentsMonk
-#  categories: [ HideSpawnMenu ]
- # name: monk's habit
- # parent: SpawnSupplyEmpty
-#  components:
-#  - type: SpawnOnDespawn
-#    prototypes:
- #   - ClothingOuterArmorMonk
+- type: entity
+  id: SpawnArmamentsMonk
+  categories: [ HideSpawnMenu ]
+  name: monk's habit
+  parent: DropPod
+  components:
+  - type: DropPod
+    table: !type:AllSelector
+      children:
+      - id: ClothingOuterArmorMonk
+      - id: ClothingHeadHatHelmetMonk
+      #- id: ClothingUniformJumpsuitMonk # Jamboree-Station: prototype removed
 
+# Jamboree-Station: commented out cause prototypes removed upstream
 #- type: entity
 #  id: SpawnArmamentsBishop
 #  categories: [ HideSpawnMenu ]
- # name: bishop's robes
- # parent: SpawnSupplyEmpty
- # components:
-  #- type: SpawnOnDespawn
-  #  prototypes:
-   # - ClothingOuterArmorBishop
-  #  - ClothingHeadHatHelmetBishop
+#  name: bishop's robes
+#  parent: DropPod
+#  components:
+#  - type: DropPod
+#    table: !type:AllSelector
+#      children:
+#      #- id: ClothingOuterArmorBishop
+#      #- id: ClothingHeadHatHelmetBishop
 
 - type: entity
   id: SpawnArmamentsDraconic
   categories: [ HideSpawnMenu ]
   name: dragon suit
-  parent: SpawnSupplyEmpty
+  parent: DropPod
   components:
-  - type: SpawnTableOnDespawn
+  - type: DropPod
+    table: !type:AllSelector
+      children:
+      - id: ClothingOuterArmorDragon
+      - id: ClothingHeadHatHelmetDragon
+
+# Jamboree-Station: commented out cause prototypes removed upstream
+#- type: entity
+#  id: SpawnArmamentsInquisitor
+#  categories: [ HideSpawnMenu ]
+#  name: inquisitor armour
+#  parent: DropPod
+#  components:
+#  - type: DropPod
+#    table: !type:AllSelector
+#      children:
+#      #- id: ClothingHeadHatHelmetInquisitor
+#      #- id: ClothingOuterArmorInquisitor
+#      #- id: ClothingNeckCloakInquisitor
+
+- type: entity
+  id: SpawnSchemaMonk
+  categories: [ HideSpawnMenu ]
+  name: monastic vestments
+  parent: DropPod
+  components:
+  - type: DropPod
     table:
       id: ClothingOuterArmorDragon

@@ -64,14 +64,22 @@
       collection: MaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Scree: # Goob
+      collection: ResomiScrees
+    Call: # Goob
+      collection: ResomiCalls
+    Squawk: # Goob
+      collection: ResomiSquawks
+    Coo: # Goob
+      collection: HarpyCoos
+    Growl: # Goob
+      collection: CatGrowls
+    Hew: # Goob
+      collection: Hew
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
-    Scree:
-      collection: ResomiScrees
-    Call:
-      collection: ResomiCalls
-    Squawk:
-      collection: ResomiSquawk
 
 - type: emoteSounds
   id: FemaleResomiEmote  # Omu, rename to Resomi
@@ -122,11 +130,17 @@
       collection: FemaleDeathGasp
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
-    Mars: # jamboree - juice that makes you mar
-      path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
-    Scree:
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Scree: # Goob
       collection: ResomiScrees
-    Call:
+    Call: # Goob
       collection: ResomiCalls
-    Squawk:
-      collection: ResomiSquawk
+    Squawk: # Goob
+      collection: ResomiSquawks
+    Coo: # Goob
+      collection: HarpyCoos
+    Growl: # Goob
+      collection: CatGrowls
+    Hew: # Goob
+      collection: Hew
