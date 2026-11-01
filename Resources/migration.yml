@@ -1236,3 +1236,7 @@ WeaponMailLake: null
 VendingMachineMailDrobe: null
 # Keep mapped salvage shuttles pilotable using the current console.
 ComputerShuttleSalvage: ComputerShuttle
+
+# 2026-11-01: Thermobaths replace mapped hotplates and their boards.
+ChemistryHotplate: MachineThermobath
+HotplateMachineCircuitboard: ThermobathMachineCircuitboard

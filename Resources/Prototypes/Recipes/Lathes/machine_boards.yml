@@ -202,9 +202,9 @@
 # Chemistry
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
-  id: HotplateMachineCircuitboard
-  icon: { sprite: Structures/Machines/hotplate.rsi, state: icon } # Goobstation
-  result: HotplateMachineCircuitboard
+  id: ThermobathMachineCircuitboard
+  icon: { sprite: Structures/Machines/thermobath.rsi, state: base } # Goobstation
+  result: ThermobathMachineCircuitboard
 
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
