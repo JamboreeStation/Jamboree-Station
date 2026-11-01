@@ -1091,8 +1091,6 @@
       collection: Blinks # Imp
 
 # mobs
-    Blink: # Goob
-      path: /Audio/_Starlight/Effects/Emotes/blink.ogg
 - type: emoteSounds
   id: Zombie
   sound:

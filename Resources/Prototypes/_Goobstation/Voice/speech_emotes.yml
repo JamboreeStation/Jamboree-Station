@@ -288,8 +288,17 @@
   chatMessages: ["chat-emote-msg-scree"]
   chatTriggers:
     - scree
+    - scree.
+    - scree!
+    - scree?
     - screes
+    - screes.
+    - screes!
+    - screes?
     - screeing
+    - screeing.
+    - screeing!
+    - screeing?
     - screed
 
 - type: emote
@@ -304,8 +313,17 @@
   chatMessages: ["chat-emote-msg-call"]
   chatTriggers:
     - call
+    - call.
+    - call!
+    - call?
     - calls
+    - calls.
+    - calls!
+    - calls?
     - calling
+    - calling.
+    - calling!
+    - calling?
     - called
 
 - type: emote
@@ -320,8 +338,17 @@
   chatMessages: ["chat-emote-msg-squawk"]
   chatTriggers:
     - squawk
+    - squawk.
+    - squawk!
+    - squawk?
     - squawks
+    - squawks.
+    - squawks!
+    - squawks?
     - squawking
+    - squawking.
+    - squawking!
+    - squawking?
     - squawked
 
 - type: emote
