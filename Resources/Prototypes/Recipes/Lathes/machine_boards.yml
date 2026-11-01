@@ -203,7 +203,7 @@
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
   id: ThermobathMachineCircuitboard
-  icon: { sprite: Structures/Machines/thermobath.rsi, state: base } # Goobstation
+  icon: { sprite: Structures/Machines/thermobath.rsi, state: base } # Wizden
   result: ThermobathMachineCircuitboard
 
 - type: latheRecipe
@@ -295,7 +295,7 @@
   parent: [BaseCircuitboardRecipe]
   id: SmartFridgeCircuitboard
   result: SmartFridgeCircuitboard
-  
+
 # Bar
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseServiceMachineRecipeCategory ]
