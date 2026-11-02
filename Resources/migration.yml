@@ -1240,3 +1240,9 @@ ComputerShuttleSalvage: ComputerShuttle
 # 2026-11-01: Thermobaths replace mapped hotplates and their boards.
 ChemistryHotplate: MachineThermobath
 HotplateMachineCircuitboard: ThermobathMachineCircuitboard
+
+# 2026-11-02: Keep mapped debug dummies after the MODsuit loadouts were removed.
+SpawnMobHumanBSOModSuit: SpawnMobHumanBSOSuit
+SpawnMobHumanCaptainModsuit: SpawnMobHumanCaptainHardsuit
+SpawnMobHumanHosModSuit: SpawnMobHumanHoSSuit
+SpawnMobHumanSecurityOfficerModSuit: SpawnMobHumanSecurityOfficerSuit

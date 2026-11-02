@@ -273,24 +273,3 @@
       amount: 3
     - id: AirGrenade
       amount: 3
-
-- type: entityTable
-  id: FillLockerEngineer
-  table: !type:AllSelector
-    children:
-    - id: ClothingHandsGlovesColorYellow
-    - id: ClothingMaskGas
-    - id: trayScanner
-    - id: RCD
-    - id: RCDAmmo
-    - id: MetalFoamGrenade
-
-- type: entityTable
-  id: FillEngineerHardsuit
-  table: !type:AllSelector
-    children:
-    #- id: ClothingOuterHardsuitEngineering
-    - id: UndeterminedVoidsuitEngineer # Goob edit
-    - id: OxygenTankFilled
-    - id: ClothingShoesBootsMag
-    - id: ClothingMaskBreath
