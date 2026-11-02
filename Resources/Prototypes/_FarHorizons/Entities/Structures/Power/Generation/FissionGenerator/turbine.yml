@@ -13,24 +13,13 @@
     - state: turbinebroken
       visible: false
       map: [ "enum.TurbineVisualLayers.TurbineRuined" ]
-    - state: turbine_sparks
-      visible: false
-      map: [ "enum.TurbineVisualLayers.DamageSpark" ]
-    - state: turbine_smoke
-      visible: false
-      map: [ "enum.TurbineVisualLayers.DamageSmoke" ]
   - type: GenericVisualizer
     visuals:
       enum.TurbineVisuals.TurbineRuined:
+        enum.TurbineVisualLayers.TurbineSpeed:
+          True: { visible: false }
+          False: { visible: true }
         enum.TurbineVisualLayers.TurbineRuined:
-          True: { visible: true }
-          False: { visible: false }
-      enum.TurbineVisuals.DamageSpark:
-        enum.TurbineVisualLayers.DamageSpark:
-          True: { visible: true }
-          False: { visible: false }
-      enum.TurbineVisuals.DamageSmoke:
-        enum.TurbineVisualLayers.DamageSmoke:
           True: { visible: true }
           False: { visible: false }
   - type: Appearance

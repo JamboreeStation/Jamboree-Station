@@ -47,10 +47,14 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Goob
+      collection: Belch
+    Hew: # Goob
+      collection: Hew
+    Trill: # Goob
+      collection: CatTrills
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
-    Trill: # Omu
-      collection: Trill
 
 - type: emoteSounds
   id: FemaleFelinid
@@ -99,7 +103,11 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Goob
+      collection: Belch
+    Hew: # Goob
+      collection: Hew
+    Trill: # Goob
+      collection: CatTrills
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
-    Trill: # Omu
-      collection: Trill

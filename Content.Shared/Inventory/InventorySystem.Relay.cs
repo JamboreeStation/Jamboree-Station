@@ -135,6 +135,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, ExaminedEvent>(RelayInventoryEvent); // Harmony - added for lanyards.
 
         // by-ref events
+        SubscribeLocalEvent<InventoryComponent, IngestionAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshFrictionModifiersEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, BeforeStaminaDamageEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, GetExplosionResistanceEvent>(RefRelayInventoryEvent);

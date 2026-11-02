@@ -113,6 +113,8 @@ public sealed class TurbineSystem : SharedTurbineSystem
 
         UpdatePartValues(comp);
 
+        UpdateAppearance(uid, comp);
+
         comp.AlarmAudioOvertemp = SpawnAttachedTo("GasTurbineAlarmEntity", new(uid, 0, 0));
         comp.AlarmAudioUnderspeed = SpawnAttachedTo("GasTurbineAlarmEntity", new(uid, 0, 0));
         _ambientSoundSystem.SetSound(comp.AlarmAudioUnderspeed.Value, new SoundPathSpecifier("/Audio/_FarHorizons/Machines/alarm_beep.ogg"));
@@ -175,8 +177,6 @@ public sealed class TurbineSystem : SharedTurbineSystem
 
         if (comp.CurrentBlade == null || comp.CurrentStator == null)
             comp.Ruined = true;
-
-        UpdateAppearance(uid, comp);
 
         var transferVolume = CalculateTransferVolume(comp, inlet, outlet, args.dt);
 
@@ -286,6 +286,11 @@ public sealed class TurbineSystem : SharedTurbineSystem
                 // Sacrifices must be made to have a smooth ramp up:
                 // This will generate 2 audio streams every second with up to 4 of them playing at once... surely this can't go wrong :clueless:
                 _audio.PlayPvs(new SoundPathSpecifier("/Audio/_FarHorizons/Ambience/Objects/turbine_room.ogg"), uid, AudioParams.Default.WithPitchScale(comp.RPM / comp.BestRPM).WithVolume(-2));
+
+                var healthPercent = (float)comp.BladeHealth / comp.BladeHealthMax;
+                if (healthPercent < 1)
+                    _audio.PlayPvs(new SoundPathSpecifier("/Audio/_FarHorizons/Ambience/Objects/bad_bearing.ogg"), uid,
+                        AudioParams.Default.WithPitchScale(comp.RPM / comp.BestRPM).WithVolume(healthPercent * -6f - 2));
             }
 
             // Calculate power generation
@@ -318,6 +323,7 @@ public sealed class TurbineSystem : SharedTurbineSystem
         _signal.SendSignal(uid, comp.SpeedHighPort, comp.RPM > comp.BestRPM * 1.05);
         _signal.SendSignal(uid, comp.SpeedLowPort, comp.RPM < comp.BestRPM * 0.95);
 
+        UpdateAppearance(uid, comp);
         Dirty(uid, comp);
         UpdateUI(uid, comp);
     }
@@ -608,6 +614,8 @@ public sealed class TurbineSystem : SharedTurbineSystem
             comp.CurrentStator = null;
         }
         comp.Ruined = true;
+        UpdateAppearance(uid, comp);
+        Dirty(uid, comp);
     }
 
     private void OnEjectAttempt(EntityUid uid, TurbineComponent comp, ref ItemSlotEjectAttemptEvent args)

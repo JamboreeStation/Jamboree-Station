@@ -14,6 +14,7 @@ using Content.Goobstation.Server.IoC;
 using Content.Goobstation.Common.JoinQueue;
 using Content.Goobstation.Common.ServerCurrency;
 using Robust.Shared.ContentPack;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Server.Entry;
@@ -31,6 +32,7 @@ public sealed class EntryPoint : GameServer
 
         IoCManager.BuildGraph();
 
+        IoCManager.Resolve<IPrototypeManager>().RegisterIgnore("newsEntry");
 
         _joinQueue = IoCManager.Resolve<IJoinQueueManager>();
         _joinQueue.Initialize();

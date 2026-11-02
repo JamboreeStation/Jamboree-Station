@@ -1,4 +1,8 @@
-﻿using Content.Client.Resources;
+// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Client.Resources;
 using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
@@ -35,6 +39,8 @@ public sealed class NotoFontFamilyStack(IResourceCache resCache, string variant 
     /// </remarks>
     private string _fontSymbols = "/Fonts/NotoSans/NotoSansSymbols-{2}.ttf";
 
+    private string _fontCjk = "/Fonts/NotoSans/NotoSansSC-{2}.ttf"; // Goob
+
     /// <summary>
     ///     The fallback font path, exactly. (no string substitutions.)
     /// </summary>
@@ -69,6 +75,7 @@ public sealed class NotoFontFamilyStack(IResourceCache resCache, string variant 
         {
             string.Format(_fontPrimary, kindStr, simpleKindStr, boldOrRegularStr),
             string.Format(_fontSymbols, kindStr, simpleKindStr, boldOrRegularStr),
+            string.Format(_fontCjk, kindStr, simpleKindStr, boldOrRegularStr), // Goob
         };
         fontList.AddRange(_extras);
         return fontList.ToArray();

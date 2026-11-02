@@ -107,7 +107,11 @@ public struct CustomRichTextEntry
             // StaticSprite
             var controlTyped = control as StaticSpriteView;
             if (controlTyped is not null)
+            {
+                // Manually drawn sprites still need to occupy space in the text layout.
+                control.ReservesSpace = true;
                 control.Visible = false;
+            }
 
             tagControls ??= new Dictionary<int, Control>();
             tagControls.Add(nodeIndex, control);

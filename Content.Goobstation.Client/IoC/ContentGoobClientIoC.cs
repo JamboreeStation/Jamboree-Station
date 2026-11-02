@@ -5,10 +5,11 @@ using Content.Goobstation.Client.MisandryBox;
 using Content.Goobstation.Client.Polls;
 using Content.Goobstation.Client.Redial;
 using Content.Goobstation.Client.ServerCurrency;
-using Content.Client.UserInterface.Systems.Chat.Controls;
 using Content.Goobstation.Common.ServerCurrency;
 using Content.Goobstation.Shared.MisandryBox.JumpScare;
 using Robust.Shared.IoC;
+
+using Content.Goobstation.Client.News;
 
 namespace Content.Goobstation.Client.IoC;
 
@@ -20,6 +21,7 @@ internal static class ContentGoobClientIoC
 
         collection.Register<RedialManager>();
         collection.Register<PollManager>();
+        collection.Register<NewsManager>();
         collection.Register<JoinQueueManager>();
         collection.Register<IFullScreenImageJumpscare, ClientFullScreenImageJumpscare>();
         collection.Register<ICommonCurrencyManager, ClientCurrencyManager>();

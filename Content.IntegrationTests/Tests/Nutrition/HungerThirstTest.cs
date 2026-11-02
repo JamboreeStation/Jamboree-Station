@@ -1,5 +1,7 @@
 using Content.IntegrationTests.Tests.Interaction;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Clothing.EntitySystems;
+using Content.Shared.Inventory;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Robust.Shared.GameObjects;
@@ -15,6 +17,47 @@ public sealed class HungerThirstTest : InteractionTest
     private readonly EntProtoId _drink = "DrinkLemonadeGlass";
     private readonly EntProtoId _food = "FoodCakeVanillaSlice";
     protected override string PlayerPrototype => "MobHuman";
+
+    [TestCase("ClothingHeadHatWelding", "head", true)]
+    [TestCase("ClothingMaskGas", "mask", true)]
+    [TestCase("ClothingHeadHatTophat", "head", false)]
+    public async Task EquippedClothingBlocksMouthOnlyWhenEnabled(string prototype, string slot, bool blocksMouth)
+    {
+        var clothing = ToServer(await Spawn(prototype));
+        var food = ToServer(await Spawn(_food));
+        var drink = ToServer(await Spawn(_drink));
+        var inventory = SEntMan.System<InventorySystem>();
+        var ingestion = SEntMan.System<IngestionSystem>();
+
+        await Server.WaitAssertion(() =>
+        {
+            AssertConsumptionAllowed(true);
+            Assert.That(inventory.TryEquip(SPlayer, clothing, slot), Is.True);
+            AssertConsumptionAllowed(!blocksMouth);
+
+            if (slot == "mask")
+            {
+                var masks = SEntMan.System<MaskSystem>();
+                masks.SetToggled(clothing, true);
+                AssertConsumptionAllowed(true);
+                masks.SetToggled(clothing, false);
+                AssertConsumptionAllowed(false);
+            }
+
+            Assert.That(inventory.TryUnequip(SPlayer, slot), Is.True);
+            AssertConsumptionAllowed(true);
+        });
+
+        void AssertConsumptionAllowed(bool allowed)
+        {
+            Assert.Multiple(() =>
+            {
+                Assert.That(ingestion.HasMouthAvailable(SPlayer, SPlayer), Is.EqualTo(allowed), "Mouth availability");
+                Assert.That(ingestion.CanConsume(SPlayer, SPlayer, food), Is.EqualTo(allowed), "Food consumption");
+                Assert.That(ingestion.CanConsume(SPlayer, SPlayer, drink), Is.EqualTo(allowed), "Drink consumption");
+            });
+        }
+    }
 
     /// <summary>
     /// Tests that hunger and thirst values decrease over time (low means hungrier and thirstier).

@@ -142,30 +142,7 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             }
 
             // Shitmed Change Start
-            var total = FixedPoint2.Zero;
-            foreach (var (bodyPart, _) in _body.GetBodyChildren(uid))
-            {
-                var totalPartBleeds = FixedPoint2.Zero; // Goobstation
-                foreach (var (wound, _) in _wound.GetWoundableWounds(bodyPart))
-                {
-                    if (!TryComp<BleedInflicterComponent>(wound, out var bleeds))
-                        continue;
-
-                    total += bleeds.BleedingAmount;
-                    totalPartBleeds += bleeds.BleedingAmount; // Goobstation
-                }
-
-                if (TryComp<WoundableComponent>(bodyPart, out var woundable)
-                    && woundable.Bleeds != totalPartBleeds) // Goobstation
-                {
-                    woundable.Bleeds = totalPartBleeds; // Goobstation
-                    Dirty(bodyPart, woundable); // Goobstation
-                }
-            }
-
             var missingBlood = bloodstream.BloodReferenceSolution.Volume - bloodstream.BloodSolution.Value.Comp.Solution.Volume;
-
-            bloodstream.BleedAmountFromWounds = (float) total; // why was it ever divided by 4? Goobstation
 
             if (_consciousness.TryGetNerveSystem(uid, out var nerveSys))
             {
@@ -185,20 +162,6 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
                 }
             }
             // Shitmed Change End
-            // Goobstation start
-            bloodstream.BleedAmount = bloodstream.BleedAmountFromWounds + bloodstream.BleedAmountNotFromWounds;
-            bloodstream.BleedAmount = Math.Clamp(bloodstream.BleedAmount, 0, bloodstream.MaxBleedAmount);
-
-            DirtyFields(uid, bloodstream, null, nameof(BloodstreamComponent.BleedAmount), nameof(BloodstreamComponent.BleedAmountFromWounds));
-
-            if (bloodstream.BleedAmount == 0)
-                _alertsSystem.ClearAlert(uid, bloodstream.BleedingAlert);
-            else
-            {
-                var severity = (short) Math.Clamp(Math.Round(bloodstream.BleedAmount, MidpointRounding.ToZero), 0, 10);
-                _alertsSystem.ShowAlert(uid, bloodstream.BleedingAlert, severity);
-            }
-            // Goobstation end
         }
 
         UpdateWounds(frameTime);
@@ -526,6 +489,9 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
 
     public void TickBleed(Entity<BloodstreamComponent> entity)
     {
+        // Treatment can change wounds between bloodstream ticks. Never spill blood from a stale total.
+        UpdateBleedAmount(entity);
+
         // Removes blood from the bloodstream based on bleed amount (bleed rate)
         // as well as stop their bleeding to a certain extent.
         if (entity.Comp.BleedAmount <= 0)
@@ -609,11 +575,38 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
         // Clamp minimum bleed to zero
         ent.Comp.BleedAmountNotFromWounds = Math.Max(ent.Comp.BleedAmountNotFromWounds, 0);
 
-        ent.Comp.BleedAmount = Math.Clamp(ent.Comp.BleedAmountFromWounds + ent.Comp.BleedAmountNotFromWounds, 0, ent.Comp.MaxBleedAmount);
-
         DirtyField(ent, ent.Comp, nameof(BloodstreamComponent.BleedAmountNotFromWounds));
         // Goobstation end
-        DirtyField(ent, ent.Comp, nameof(BloodstreamComponent.BleedAmount));
+        UpdateBleedAmount((ent.Owner, ent.Comp));
+
+        return true;
+    }
+
+    private void UpdateBleedAmount(Entity<BloodstreamComponent> ent)
+    {
+        var total = FixedPoint2.Zero;
+        foreach (var (bodyPart, _) in _body.GetBodyChildren(ent.Owner))
+        {
+            var partTotal = FixedPoint2.Zero;
+            foreach (var (wound, _) in _wound.GetWoundableWounds(bodyPart))
+            {
+                if (!TryComp<BleedInflicterComponent>(wound, out var bleeds) || !bleeds.IsBleeding)
+                    continue;
+
+                partTotal += bleeds.BleedingAmount;
+            }
+
+            total += partTotal;
+            if (TryComp<WoundableComponent>(bodyPart, out var woundable) && woundable.Bleeds != partTotal)
+            {
+                woundable.Bleeds = partTotal;
+                Dirty(bodyPart, woundable);
+            }
+        }
+
+        ent.Comp.BleedAmountFromWounds = (float) total;
+        ent.Comp.BleedAmount = Math.Clamp(ent.Comp.BleedAmountFromWounds + ent.Comp.BleedAmountNotFromWounds, 0, ent.Comp.MaxBleedAmount);
+        DirtyFields(ent.Owner, ent.Comp, null, nameof(BloodstreamComponent.BleedAmount), nameof(BloodstreamComponent.BleedAmountFromWounds));
 
         if (ent.Comp.BleedAmount == 0)
             _alertsSystem.ClearAlert(ent.Owner, ent.Comp.BleedingAlert);
@@ -622,8 +615,6 @@ public abstract partial class SharedBloodstreamSystem : EntitySystem
             var severity = (short)Math.Clamp(Math.Round(ent.Comp.BleedAmount, MidpointRounding.ToZero), 0, 10);
             _alertsSystem.ShowAlert(ent.Owner, ent.Comp.BleedingAlert, severity);
         }
-
-        return true;
     }
 
     /// <summary>

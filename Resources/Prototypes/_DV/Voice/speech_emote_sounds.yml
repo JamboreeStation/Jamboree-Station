@@ -91,6 +91,25 @@
       collection: ResomiCalls
     Squawk: # Omu, give harpy more emotes
       collection: ResomiSquawk
+    Belch: # Frontier
+      collection: Belch # Frontier
+# Goobstation start
+    Yawn:
+      collection: HarpyYawn
+    Bagawk:
+      path: /Audio/_Mono/Voice/bagawk.ogg
+    Flap:
+      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+    Hoot:
+      path: /Audio/_Goobstation/Voice/Harpy/owl_hoot.ogg
+    Hew:
+      collection: Hew
+# Goobstation end
+
+    Quack: # Goob
+      collection: HarpyQuacks
+    Snore: # Goob
+      collection: Snores
 
 - type: emoteSounds
   id: SoundsHarpyMale
@@ -183,6 +202,26 @@
       collection: ResomiCalls
     Squawk: # Omu, give harpy more emotes
       collection: ResomiSquawk
+    Belch: # Frontier
+      collection: Belch # Frontier
+# Goobstation start
+    Yawn:
+      collection: HarpyYawn
+    Bagawk:
+      path: /Audio/_Mono/Voice/bagawk.ogg
+    Flap:
+      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+    Hoot:
+      path: /Audio/_Goobstation/Voice/Harpy/owl_hoot.ogg
+    Hew:
+      collection: Hew
+# Goobstation End
+
+
+    Quack: # Goob
+      collection: HarpyQuacks
+    Snore: # Goob
+      collection: Snores
 
 - type: emoteSounds
   id: FemaleVulpkanin
@@ -233,6 +272,16 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Hew: # Goob
+      collection: Hew
+    Gekker: # Goob
+      path: /Audio/_Floofstation/Voice/Vulpkanin/gekker.ogg
+    Yap: # Goob
+      path: /Audio/_Floofstation/Voice/Vulpkanin/yap.ogg
+    Squeak: # Goob
+      path: /Audio/_DV/Voice/Kitsune/fox_squeal1.ogg
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -285,6 +334,16 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Hew: # Goob
+      collection: Hew
+    Gekker: # Goob
+      path: /Audio/_Floofstation/Voice/Vulpkanin/gekker.ogg
+    Yap: # Goob
+      path: /Audio/_Floofstation/Voice/Vulpkanin/yap.ogg
+    Squeak: # Goob
+      path: /Audio/_DV/Voice/Kitsune/fox_squeal1.ogg
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -345,6 +404,14 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Hew: # Goob
+      collection: Hew
+    Snort: # Goob
+      collection: LagomorphSnorts
+    Squee: # Goob
+      collection: LagomorphSqueaks
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -387,6 +454,14 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Hew: # Goob
+      collection: Hew
+    Snort: # Goob
+      collection: LagomorphSnorts
+    Squee: # Goob
+      collection: LagomorphSqueaks
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 

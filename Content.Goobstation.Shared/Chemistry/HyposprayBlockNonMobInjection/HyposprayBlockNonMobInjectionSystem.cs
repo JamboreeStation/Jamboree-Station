@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -27,7 +28,7 @@ public sealed class HyposprayBlockNonMobInjectionSystem : EntitySystem
 
     private void OnAttack(Entity<HyposprayBlockNonMobInjectionComponent> ent, ref MeleeHitEvent args)
     {
-        if (args.HitEntities.Count == 0 || !IsMob(args.HitEntities[0]))
+        if (args.HitEntities.Count == 0 || !IsMob(args.HitEntities.First()))
             args.Handled = true;
     }
 
