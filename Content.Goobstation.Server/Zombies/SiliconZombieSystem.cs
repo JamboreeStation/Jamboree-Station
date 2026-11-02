@@ -1,5 +1,4 @@
 using Content.Goobstation.Common.Zombies;
-using Content.Shared._Afterlight.Silicons.Synths.Battery;
 using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -53,7 +52,6 @@ public sealed partial class SiliconZombieSystem : EntitySystem
         if (TryComp<SiliconComponent>(ent, out var silicon))
             silicon.BatteryPowered = false;
 
-        RemComp<SynthBatteryComponent>(ent);
         RemComp<IntrinsicRadioTransmitterComponent>(ent);
         RemComp<IntrinsicRadioReceiverComponent>(ent);
         RemComp<ActiveRadioComponent>(ent);
