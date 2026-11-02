@@ -2,12 +2,14 @@
 
 - type: entity
   id: Butt
-  parent: BaseHumanOrgan
+  parent: [BaseItem, ClothingHeadBase]
   name: butt
+  description: The beginning of the first joke. The end of the last.
   components:
   - type: Sprite
-    sprite: _Goobstation/Mobs/butt.rsi
-    state: butt
+    sprite: _Monkestation/Species/Human/butt.rsi
+  - type: Clothing
+    sprite: _Monkestation/Species/Human/butt.rsi
   - type: Item
     size: Small
   - type: Organ

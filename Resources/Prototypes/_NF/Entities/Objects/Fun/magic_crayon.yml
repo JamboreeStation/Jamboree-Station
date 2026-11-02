@@ -8,7 +8,7 @@
   parent: CrayonRainbow
   id: CrayonMagic
   name: magic crayon
-  description: Specially blended with bluespace crystals and certified non-toxic.
+  description: Now using ethically sourced bluespace crystals instead of the blood of wizards!
   components:
   - type: Sprite
     sprite: _NF/Objects/Fun/magic_crayon.rsi
@@ -21,6 +21,10 @@
     - Write
     - Crayon
   - type: Crayon
+    color: Red
+    selectableColor: true
+  - type: AutoRecharge
+    rechargeDuration: 1
   - type: FlavorProfile
     flavors:
     - chewy
