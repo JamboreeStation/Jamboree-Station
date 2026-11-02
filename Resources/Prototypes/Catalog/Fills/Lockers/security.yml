@@ -80,6 +80,7 @@
   id: FillLockerSecurity
   table: !type:AllSelector
     children:
+    - id: ModsuitPlatingSecurity # Goob
     - id: FlashlightSeclite
       prob: 0.8
     #- id: WeaponDisabler # Goobstation (Disablers in belts)
@@ -139,9 +140,30 @@
     - id: MedkitOxygenFilled
     - id: MedkitAdvancedFilled
     - id: BoxSyringe
-    - id: BoxBodyBag # Goob Station
-    - id: WeaponGrapplingGun # Jamboree
-    - id: HandheldGPSBasic # Jamboree
+    - id: BoxBodyBag
+      # Goob end
+    - id: ClothingOuterHardsuitBrigmedic
+    - id: ModsuitPlatingBrigMed # Goob
+    - id: ClothingUniformJumpskirtOfLife
+      prob: 0.1
+
+    #- id: MedkitFilled # Goob
+    #- !type:GroupSelector
+    #  prob: 0.7
+    #  children:
+    #  - id: MedkitCombatFilled
+    #    weight: 1.6
+    #  - id: MedkitAdvancedFilled
+    #  - id: MedkitOxygenFilled
+    #    weight: 0.8
+    #  - id: MedkitBruteFilled
+    #    weight: 0.8
+    #  - id: MedkitToxinFilled
+    #    weight: 0.8
+    #  - id: MedkitBurnFilled
+    #    weight: 1.8
+    #- id: ClothingNeckCloakMoth #bzzz Moth-pocalypse
+    #  prob: 0.15
 
 - type: entity
   id: LockerDetectiveFilled
