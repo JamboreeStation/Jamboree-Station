@@ -4,7 +4,7 @@
   id: LockerFillQuarterMaster
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: BoxEncryptionKeyCargo
     - id: BoxFolderQmClipboard
     - id: BoxQMCircuitboards
@@ -126,7 +126,7 @@
   id: LockerFillHeadOfPersonnel
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: AccessConfigurator
     - id: BoxEncryptionKeyPassenger
     - id: BoxEncryptionKeyService
@@ -174,7 +174,7 @@
   id: LockerFillChiefEngineerNoHardsuit
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: AccessConfigurator
     - id: BoxEncryptionKeyEngineering
     - id: CigarCase
@@ -246,7 +246,7 @@
   id: LockerFillChiefMedicalOfficerNoHardsuit
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: BoxEncryptionKeyMedical
     # - id: ClothingBackpackDuffelSurgeryFilled # Goobstation - tools in webbing
     - id: ClothingEyesHudMedical
@@ -462,7 +462,7 @@
     access: [ [ "Command" ] ]
   - type: StorageFill
     contents:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: WeaponRevolverDeckard
     - id: JetpackBlue
     - id: SpaceCash1000

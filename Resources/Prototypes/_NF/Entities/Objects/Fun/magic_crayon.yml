@@ -5,10 +5,10 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  parent: CrayonRainbow
+  parent: CrayonRainbowLarge
   id: CrayonMagic
   name: magic crayon
-  description: Specially blended with bluespace crystals and certified non-toxic.
+  description: Now using ethically sourced bluespace crystals instead of the blood of wizards! #Jamboree, description changed and made to hopefully work with painting
   components:
   - type: Sprite
     sprite: _NF/Objects/Fun/magic_crayon.rsi
@@ -20,7 +20,6 @@
     tags:
     - Write
     - Crayon
-  - type: Crayon
   - type: FlavorProfile
     flavors:
     - chewy
@@ -34,5 +33,3 @@
   - type: Construction
     graph: magic_crayon
     node: magicCrayon
-  - type: LimitedCharges
-    maxCharges: 2147483647 # int.MaxValue, infinite charges
