@@ -1,6 +1,8 @@
 using System.Numerics;
 using Content.Goobstation.UIKit.UserInterface.Lobby;
+using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Preferences;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Map;
 
@@ -56,8 +58,15 @@ public sealed partial class SpeciesGallery : BoxContainer
 
         if (id >= 0 && id < _species.Count)
         {
-            var doll = _entMan.SpawnEntity(_species[id].DollPrototype, MapCoordinates.Nullspace);
+            var species = _species[id];
+            var doll = _entMan.SpawnEntity(species.DollPrototype, MapCoordinates.Nullspace);
             _dolls.Add(doll);
+
+            var profile = HumanoidCharacterProfile.DefaultWithSpecies(species.ID)
+                .WithSex(species.Sexes[0])
+                .WithHeight(species.DefaultHeight)
+                .WithWidth(species.DefaultWidth);
+            _entMan.System<SharedHumanoidAppearanceSystem>().LoadProfile(doll, profile);
 
             var view = new SpriteView
             {
