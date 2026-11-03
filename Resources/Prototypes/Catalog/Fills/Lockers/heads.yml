@@ -4,7 +4,7 @@
   id: LockerFillQuarterMaster
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+    - id: ModsuitPlatingLoader # Goob
     - id: BoxEncryptionKeyCargo
     - id: BoxFolderQmClipboard
     - id: BoxQMCircuitboards
