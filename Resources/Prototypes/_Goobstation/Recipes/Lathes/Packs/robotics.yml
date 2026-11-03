@@ -39,6 +39,78 @@
   - ModsuitPlatingExternal
 
 - type: latheRecipePack
+  id: ModsuitModules
+  recipes:
+  - ModsuitCoreStandard
+  - ModsuitCorePlasma
+  - ModsuitCoreStandardMicroreactor
+  - ModsuitModuleStorageCompact
+  - ModsuitModuleStorageLarge
+  - ModsuitModuleStorageBluespace
+  - ModsuitModuleFlashlight
+  - ModsuitModuleWelding
+  - ModsuitModuleThermalRegulator
+  - ModsuitModuleGps
+  - ModsuitModuleVisorDiagnostic
+  - ModsuitModuleReagentScanner
+
+
+- type: latheRecipePack
+  id: ModsuitEngineering
+  recipes:
+  - ModsuitPlatingEngineer
+  - ModsuitPlatingAtmostech
+  - ModsuitModuleMagboots
+  - ModsuitModuleTRay
+  - ModsuitModuleTether
+  - ModsuitModuleMister
+  - ModsuitModuleHeadProtector
+  - ModsuitModuleJetpack
+  - ModsuitModuleRadProtection
+  - ModsuitModuleResinMister
+  - ModsuitModuleAntiGravity
+
+- type: latheRecipePack
+  id: ModsuitMedical
+  recipes:
+  - ModsuitPlatingParamedic
+  - ModsuitModuleHealthAnalyzer
+  - ModsuitModuleVisorMedical
+  - ModsuitModuleQuickCarry
+  - ModsuitModuleInjector
+  - ModsuitModuleDefibrillator
+  - ModsuitModulePatientTransport
+  - ModsuitModuleThreadRipper
+
+- type: latheRecipePack
+  id: ModsuitSecurity
+  recipes:
+  - ModsuitPlatingSecurity
+  - ModsuitPlatingBrigMed
+  - ModsuitModuleVisorSecurity
+  - ModsuitModuleHolster
+  - ModsuitModuleMegaphone
+  - ModsuitModulePepperShoulders
+  - ModsuitModuleRestraintAssist
+  - ModsuitModuleBulwark
+  - ModsuitModuleEmpShield
+
+- type: latheRecipePack
+  id: ModsuitService
+  recipes:
+  - ModsuitModuleBikeHorn
+  - ModsuitModuleWaddle
+  - ModsuitModuleJanitorMister
+  - ModsuitModuleMouthhole
+
+- type: latheRecipePack
+  id: ModsuitSupply
+  recipes:
+  - ModsuitModuleDrill
+  - ModsuitModuleOreBag
+  - ModsuitModuleClamp
+
+- type: latheRecipePack
   id: BorgModulesGoob
   recipes:
   - BorgModuleAdvancedSurgery
