@@ -2419,3 +2419,23 @@ Entries:
         simple damage.
   id: 192
   time: '2026-11-03T01:24:56.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Honk.CO, late as always, have introduced a new modification set to IPCs!
+        Change yourself today!\
+    - type: Add
+      message: Multiple foxwithguns songs have been added as lobby music!
+    - type: Remove
+      message: Several Goob-Specific lobby arts have been removed!
+    - type: Fix
+      message: Butts are now back to being wearable as hats!
+    - type: Tweak
+      message: The Bubblegum on Lavaland has been renamed to Bubblegum Jr.
+    - type: Tweak
+      message: >-
+        The Wizard's Theory by foxwithguns and the Middlemen has had it's volume
+        increased. Please notify if it is too loud!
+  id: 193
+  time: '2026-11-03T08:12:05.0000000+00:00'
