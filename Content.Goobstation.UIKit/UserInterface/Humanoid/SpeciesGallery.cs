@@ -63,7 +63,7 @@ public sealed partial class SpeciesGallery : BoxContainer
             _dolls.Add(doll);
 
             var profile = HumanoidCharacterProfile.DefaultWithSpecies(species.ID)
-                .WithSex(species.Sexes[0])
+                .WithSex(species.Sexes[0]) // JAMBOREE - Actually make it load the species instead of inheritance.
                 .WithHeight(species.DefaultHeight)
                 .WithWidth(species.DefaultWidth);
             _entMan.System<SharedHumanoidAppearanceSystem>().LoadProfile(doll, profile);
