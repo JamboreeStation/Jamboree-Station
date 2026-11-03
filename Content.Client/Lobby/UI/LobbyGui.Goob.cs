@@ -45,6 +45,7 @@ public sealed partial class LobbyGui
 
         CreateMenu(LinksButton, BuildLinks());
         CreateMenu(MenuButton, BuildMenu());
+        MainMenuButton.OnPressed += _ => _consoleHost.ExecuteCommand("disconnect");
 
         NewsTabButton.OnPressed += _ => SelectTab(false);
         ChatTabButton.OnPressed += _ => SelectTab(true);

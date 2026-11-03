@@ -1,5 +1,6 @@
 ui-lobby-links-button = Links
 ui-lobby-menu-button = Menu
+ui-lobby-main-menu-button = Main Menu
 ui-lobby-news-tab = News
 ui-lobby-chat-tab = Chat
 

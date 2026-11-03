@@ -1915,3 +1915,257 @@
       tags:
       - ContractorUplink
 
+- type: listing
+  id: UplinkCdDiskSyndicate
+  name: uplink-cddisksyndicate-name
+  description: uplink-cddisksyndicate-desc
+  productEntity: JVNECdDiskSyndicate
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkPointless
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: UplinkBoxXenobio
+  name: uplink-box-xenobio-name
+  description: uplink-box-xenobio-desc
+  icon: { sprite: _Goobstation/Objects/Misc/syndiecubes.rsi, state: box }
+  productEntity: SlimeCubeBoxSyndie
+  cost:
+    Telecrystal: 250
+  categories:
+    - UplinkDisruption
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+
+    #Contractor
+
+- type: listing
+  id: UplinkContractorContractorBaton
+  name: uplink-contractor-baton-name
+  description: uplink-contractor-baton-desc
+  icon: { sprite: /Textures/_Goobstation/Objects/Weapons/Melee/contractor_baton.rsi, state: uplink }
+  productEntity: ContractorBaton
+  cost:
+    Telecrystal: 10  #cheaper for contractors
+  categories:
+  - UplinkWeaponry
+  - UplinkContractor
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - ContractorUplink
+
+- type: listing
+  id: UplinkModsuitContractor
+  name: uplink-moduist-contractor-name
+  description: uplink-moduist-contractor-desc
+  icon: { sprite: /Textures/_Goobstation/Clothing/OuterClothing/Modsuits/contractor.rsi, state: control }
+  productEntity: ClothingModsuitContractor
+  cost:
+    Telecrystal: 50
+  categories:
+  - UplinkWearables
+  - UplinkContractor
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - ContractorUplink
+
+- type: listing
+  id: UplinkHardsuitContractor
+  name: uplink-hardsuit-contractor-name
+  description: uplink-hardsuit-contractor-desc
+  icon: { sprite: /Textures/_Goobstation/Clothing/OuterClothing/Hardsuits/contractor.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelContractorHardsuitBundle
+  cost:
+    Telecrystal: 25
+  categories:
+  - UplinkWearables
+  - UplinkContractor
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - ContractorUplink
+
+- type: listing
+  id: UplinkContractorChestRig
+  name: uplink-webbing-contractor-name
+  description: uplink-webbing-contractor-desc
+  icon: { sprite: /Textures/Clothing/Belt/securitywebbing.rsi, state: icon }
+  productEntity: ClothingBeltSecurityWebbingContractor
+  cost:
+    Telecrystal: 5
+  categories:
+  - UplinkWearables
+  - UplinkContractor
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - ContractorUplink
+
+- type: listing
+  id: UplinkContractorJetpack
+  name: uplink-jetpack-contractor-name
+  description: uplink-jetpack-contractor-desc
+  icon: { sprite: /Textures/_Goobstation/Objects/Tanks/contractorpack.rsi, state: icon }
+  productEntity: JetpackContractorFilled
+  cost:
+    Telecrystal: 15
+  categories:
+  - UplinkWearables
+  - UplinkContractor
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - ContractorUplink
+
+- type: listing
+  id: UplinkContractorCuffs
+  name: uplink-cuffs-contractor-name
+  description: uplink-cuffs-contractor-desc
+  icon: { sprite: /Textures/Objects/Misc/handcuffs.rsi, state: handcuff }
+  productEntity: Handcuffs
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkDisruption
+  - UplinkContractor
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - ContractorUplink
+
+- type: listing
+  id: UplinkModsuitModuleArmorBooster
+  productEntity: ModsuitModuleArmorBooster
+  cost:
+    Telecrystal: 40
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModuleEnergyShield
+  productEntity: ModsuitModuleEnergyShield
+  cost:
+    Telecrystal: 40
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModuleNoSlip
+  productEntity: ModsuitModuleNoSlip
+  cost:
+    Telecrystal: 15
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModulePlateCompression
+  productEntity: ModsuitModulePlateCompression
+  cost:
+    Telecrystal: 10
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModuleChameleon
+  productEntity: ModsuitModuleChameleon
+  cost:
+    Telecrystal: 10
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModuleEmpPulse
+  productEntity: ModsuitModuleEmpPulse
+  cost:
+    Telecrystal: 35
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModuleCloak
+  productEntity: ModsuitModuleCloak
+  cost:
+    Telecrystal: 40
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModuleAdrenalineBoost
+  productEntity: ModsuitModuleAdrenalineBoost
+  cost:
+    Telecrystal: 35
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModuleDnaLock
+  productEntity: ModsuitModuleDnaLock
+  cost:
+    Telecrystal: 5
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModuleInfiltrator
+  productEntity: ModsuitModuleInfiltrator
+  cost:
+    Telecrystal: 15
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModulePowerKick
+  productEntity: ModsuitModulePowerKick
+  cost:
+    Telecrystal: 30
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitModuleMedbeam
+  productEntity: ModsuitModuleMedbeam
+  cost:
+    Telecrystal: 120
+  categories:
+  - UplinkWearables
+
+- type: listing
+  id: UplinkModsuitSyndicate
+  productEntity: ClothingModsuitSyndicateFilled
+  cost:
+    Telecrystal: 60
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - ContractorUplink
+
+- type: listing
+  id: UplinkModsuitSyndicateElite
+  productEntity: ClothingModsuitSyndicateEliteFilled
+  cost:
+    Telecrystal: 90
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink

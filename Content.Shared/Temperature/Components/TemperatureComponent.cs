@@ -18,6 +18,12 @@ public sealed partial class TemperatureComponent : Component
     public float CurrentTemperature = Atmospherics.T20C;
 
     /// <summary>
+    /// If set, atmospheric heat exchange affects this solution instead of the entity's surface.
+    /// </summary>
+    [DataField]
+    public string? Solution;
+
+    /// <summary>
     /// Heat capacity per kg of mass.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite)]

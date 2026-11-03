@@ -30,7 +30,9 @@ using Content.Client.Players.PlayTimeTracking;
 namespace Content.Client.UserInterface.Systems.EscapeMenu;
 
 [UsedImplicitly]
-public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>
+public sealed class EscapeUIController : UIController,
+    IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>,
+    IOnStateEntered<LobbyState>, IOnStateExited<LobbyState>
 {
     [Dependency] private readonly IClientConsoleHost _console = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
@@ -78,10 +80,14 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
         EscapeButton.OnPressed += EscapeButtonOnOnPressed;
     }
 
-    private void ActivateButton() => EscapeButton!.SetClickPressed(true);
-    private void DeactivateButton() => EscapeButton!.SetClickPressed(false);
+    private void ActivateButton() => EscapeButton?.SetClickPressed(true);
+    private void DeactivateButton() => EscapeButton?.SetClickPressed(false);
 
-    public void OnStateEntered(GameplayState state)
+    public void OnStateEntered(GameplayState state) => EnterState(false);
+
+    public void OnStateEntered(LobbyState state) => EnterState(true);
+
+    private void EnterState(bool inLobby)
     {
         DebugTools.Assert(_escapeWindow == null);
 
@@ -89,6 +95,7 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
 
         _escapeWindow.OnClose += DeactivateButton;
         _escapeWindow.OnOpen += ActivateButton;
+        _escapeWindow.CharacterButton.Visible = !inLobby;
 
         _escapeWindow.ChangelogButton.OnPressed += _ =>
         {
@@ -146,7 +153,11 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
             .Register<EscapeUIController>();
     }
 
-    public void OnStateExited(GameplayState state)
+    public void OnStateExited(GameplayState state) => ExitState();
+
+    public void OnStateExited(LobbyState state) => ExitState();
+
+    private void ExitState()
     {
         if (_escapeWindow != null)
         {
@@ -180,12 +191,10 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
         if (_escapeWindow.IsOpen)
         {
             CloseEscapeWindow();
-            EscapeButton!.Pressed = false;
         }
         else
         {
             _escapeWindow.OpenCentered();
-            EscapeButton!.Pressed = true;
         }
     }
 
