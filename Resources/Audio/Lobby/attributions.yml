@@ -167,6 +167,11 @@
   copyright: "Life Story by foxwithguns"
   source: "https://youtube.com/@foxwithguns"
 
+- files: ["thing-of-bleach.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Thing of Bleach by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
 - files: ["oh-yeah.ogg"]
   license: "CC-BY-SA-3.0"
   copyright: "Oh Yeah by foxwithguns"
