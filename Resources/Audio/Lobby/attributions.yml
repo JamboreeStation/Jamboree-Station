@@ -137,7 +137,47 @@
   source: "https://www.youtube.com/watch?v=l5PEz3kGbp4"
 
 # Jamboree, adding more stuff
-- files: ["theholybibble.ogg", "whimsicalwoods.ogg", "beyond-the-rainbow.ogg", "centrifugal-force.ogg", "cursed-genes.ogg", "destiny-s-mirror.ogg", "gambled-to-shambles.ogg", "gone-fishin.ogg", "morbing-time.ogg", "pride-month.ogg", "the-blartening.ogg", "tutorial.ogg", "wario-is-several-years-late-for-school.ogg", "yellow-cap-zone.ogg", "yin-and-yang.ogg", "names-for-frogs.ogg","6125-lucy's-song.ogg", "a-god's-delusion.ogg", "black-&-white.ogg", "kaleidoscope.ogg", "life-story.ogg", "lsd-dream-emulator.ogg", "number-stations.ogg", "oh-yeah.ogg", "sulfoxide.ogg", "tales-from-an-inbox.ogg", "thing-of-bleach.ogg", "umbrella-man.ogg", "zombieyon-death-lawn.ogg"]
+- files: ["theholybibble.ogg"]
   license: "CC-BY-SA-3.0"
-  copyright: "foxwithguns"
+  copyright: "The Holy Bibble by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["whimsicalwoods.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Whimsical Woods by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["names-for-frogs.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Names for Frogs by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["gone-fishin.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Gone Fishin' by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["gambled-to-shambles.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Gambled to Shambles by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["life-story.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Life Story by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["oh-yeah.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Oh Yeah by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["tales-from-an-inbox.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Tales from an Inbox by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["zombieyon-death-lawn.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Zombieyon/Death Lawn by foxwithguns"
   source: "https://youtube.com/@foxwithguns"

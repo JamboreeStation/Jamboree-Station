@@ -170,7 +170,7 @@
 # SPDX-FileCopyrightText: 2025 shityaml <unalterableness@gmail.com>
 # SPDX-FileCopyrightText: 2025 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 starch <starchpersonal@gmail.com>
-#
+#s
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # Miscellaneous
 - type: loadoutGroup
@@ -179,7 +179,7 @@
   minLimit: 0
   maxLimit: 3
   loadouts:
-  - CandyBucket #Jamboree
+#  - CandyBucket #Jamboree, disabling for Jamboween
   - FlowerWreath
   - Hairflower
   - Headphones

@@ -1,0 +1,23 @@
+﻿- type: entity
+  name: bont
+  parent: [ BaseItem, BaseCommandContraband ]
+  id: MeleeBont
+  description: They put Yorick on a stick?
+  suffix: ADMEME
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Objects/Weapons/Melee/bont.rsi
+    state: icon
+  - type: MeleeWeapon
+    animationRotation: -135 # WWDP
+    heavyStaminaCost: 15 # goob edit
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 10
+        Structural: 5
+    soundHit:
+      collection: MetalThud
+  - type: Item
+    size: Normal
+  - type: Execution
