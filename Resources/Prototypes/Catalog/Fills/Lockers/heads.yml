@@ -39,7 +39,7 @@
   id: LockerFillCaptainNoLaser
   table: !type:AllSelector
     children:
-#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+    - id: ModsuitPlatingCaptain # Goob
     - id: CaptainIDCard
     - id: CigarGoldCase
       prob: 0.25
@@ -79,7 +79,7 @@
   id: FillCaptainHardsuit
   table: !type:AllSelector
     children:
-    - id: UndeterminedVoidsuitCaptain # Goobstation - Modsuit Update
+    - id: ClothingOuterHardsuitCap
     - id: ClothingMaskGasCaptain
     - id: JetpackCaptainFilled
     - id: OxygenTankFilled
@@ -324,7 +324,7 @@
   id: LockerFillResearchDirectorNoHardsuit
   table: !type:AllSelector
     children:
-#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+    - id: ModsuitPlatingRD # Goob
     - id: Intellicard
     - id: BoxEncryptionKeyScience
     - id: BoxRDCircuitboards
@@ -354,7 +354,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskBreath
-    - id: UndeterminedVoidsuitRD
+    - id: ClothingOuterHardsuitRd
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
 
@@ -389,8 +389,8 @@
   id: LockerFillHeadOfSecurityNoHardsuit
   table: !type:AllSelector
     children:
-#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
-    #- id: WeaponEnergyShotgun # Goobstation - security revamp
+    - id: ModsuitPlatingHeadOfSecurity # Goob
+   # - id: WeaponEnergyMagnum # Goobstation - Remove Energy Magnum
     - id: BookSpaceLaw
     - id: BookCodeofConduct #jamboree COC
     - id: BoxEncryptionKeySecurity
@@ -422,7 +422,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskGasSwat
-    - id: UndeterminedVoidsuitHeadOfSecurity # Goob edit
+    - id: ClothingOuterHardsuitSecurityRed
     - id: JetpackSecurityFilled
     - id: OxygenTankFilled
     - id: NitrogenTankFilled

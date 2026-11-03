@@ -2401,3 +2401,21 @@ Entries:
       message: Examine text has been fixed for icons showing.
   id: 191
   time: '2026-10-26T23:24:19.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: >-
+        A surgery bug fix regarding not being able to select "Close Incision".
+        (It secretly denied it).
+    - type: Fix
+      message: You can finally leave by pressing escape in the new lobby gui...
+    - type: Tweak
+      message: Hotplates no more....They have been replaced by THERMOBATHS.
+    - type: Fix
+      message: The new lobby UI has got some FIXES. SHould now display
+    - type: Fix
+      message: >-
+        Fear bubblegum for they no longer use GIB. They have been fixed to
+        simple damage.
+  id: 192
+  time: '2026-11-03T01:24:56.0000000+00:00'

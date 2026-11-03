@@ -471,6 +471,8 @@
     range: 3 # Goob
   - type: Body
     prototype: SlaughterDemon
+    bodyType: Simple # Use the boss health pool instead of ordinary body-part integrity.
+  - type: DamageGibImmune
   - type: DemonicAccent # the accent
   - type: Vocal
     sounds:

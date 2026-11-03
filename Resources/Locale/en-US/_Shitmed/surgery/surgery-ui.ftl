@@ -19,3 +19,7 @@ surgery-ui-window-steps-error-missing-tool = You need {$tool} to perform this st
 surgery-error-laying = They need to be laying down!
 surgery-error-self-surgery = You can't perform surgery on yourself!
 surgery-part-damage-evaded = {$user} narrowly evaded!
+surgery-popup-step-invalid = That surgery or step is no longer valid!
+surgery-popup-step-missing-previous = You have to complete the previous steps first!
+surgery-popup-step-completed = That step is already done!
+surgery-popup-step-doafter-failed = You're already busy!
