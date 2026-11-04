@@ -76,7 +76,6 @@
   complexityMax: 13
   chargeDrain: 1.6
   inbuiltModules:
-  - ModsuitModuleBuiltinSphereTransform
   - ModsuitModuleBuiltinAshAccretion
 
 - type: modTheme

@@ -1559,6 +1559,7 @@
   parent: BaseModsuitModuleBuiltin
   id: ModsuitModuleBuiltinSphereTransform
   name: "MOD sphere transform module"
+  suffix: Admeme
   description: "A module able to move the suit's parts around, turning it and the user into a sphere. The sphere can move quickly and launch mining micromissiles to decimate terrain and fauna alike."
   components:
   - type: Sprite
@@ -1619,7 +1620,7 @@
 - type: entity
   parent: ModsuitModuleBuiltinSphereTransform
   id: ModsuitModuleBuiltinSphereTransformCorporate
-  suffix: Corporate
+  suffix: Corporate, Admeme
   components:
   - type: ModSphereTransformModule
     primaryColor: "#254022"
