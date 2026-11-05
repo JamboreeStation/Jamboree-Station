@@ -23,5 +23,6 @@ jobs:
         shell: bash
         run: |
           expected=$(git ls-remote --exit-code https://github.com/space-wizards/RobustToolbox.git 'refs/tags/v293.0.2^{}' | cut -f1)
+          actual=$(git rev-parse HEAD:RobustToolbox)
           test -n "$expected"
           test "$actual" = "$expected"
