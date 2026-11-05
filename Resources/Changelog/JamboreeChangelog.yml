@@ -2439,3 +2439,11 @@ Entries:
         increased. Please notify if it is too loud!
   id: 193
   time: '2026-11-03T08:12:05.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: Fixed modsuits not working.
+    - type: Fix
+      message: Bumped the engine from 293.0.0 to 293.0.2 to fix a DDOS vulnerability.
+  id: 194
+  time: '2026-11-05T15:40:32.0000000+00:00'
