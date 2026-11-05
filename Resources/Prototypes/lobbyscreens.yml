@@ -167,17 +167,17 @@
   name: Fuck You, Death
   artist: boiwab
 
-- type: lobbyBackground
-  id: thatfuckingratthatihate
-  background: /Textures/LobbyScreens/thatfuckingratthatihate.webp
-  name: That Fucking Rat That I Hate
-  artist: bright1905
+#- type: lobbyBackground
+#  id: thatfuckingratthatihate
+#  background: /Textures/LobbyScreens/thatfuckingratthatihate.webp
+#  name: That Fucking Rat That I Hate
+#  artist: bright1905
 
-- type: lobbyBackground
-  id: whiskeyechowhiskeytime
-  background: /Textures/LobbyScreens/whiskeyechowhiskeytime.webp
-  name: Whiskey Echo Whiskey Time
-  artist: brizby
+#- type: lobbyBackground
+#  id: whiskeyechowhiskeytime
+#  background: /Textures/LobbyScreens/whiskeyechowhiskeytime.webp
+#  name: Whiskey Echo Whiskey Time
+#  artist: brizby
 
 - type: lobbyBackground
   id: theantags
@@ -221,11 +221,11 @@
   name: Honk Honk
   artist: feathergothic
 
-- type: lobbyBackground
-  id: weregoingtohell
-  background: /Textures/LobbyScreens/We'reGoingToHell.webp
-  name: We're Going to Hell
-  artist: i.void.destroyer
+#- type: lobbyBackground
+#  id: weregoingtohell
+#  background: /Textures/LobbyScreens/We'reGoingToHell.webp
+#  name: We're Going to Hell
+#  artist: i.void.destroyer
 
 - type: lobbyBackground
   id: GloryToNanoTrasen
@@ -245,11 +245,11 @@
   name: Space Station 64
   artist: mr.fisher
 
-- type: lobbyBackground
-  id: JustAnotherShift
-  background: /Textures/LobbyScreens/JustAnotherShift.webp
-  name: Just Another Shift
-  artist: frflyffufox
+#- type: lobbyBackground
+#  id: JustAnotherShift
+#  background: /Textures/LobbyScreens/JustAnotherShift.webp
+#  name: Just Another Shift
+#  artist: frflyffufox
 
 - type: lobbyBackground
   id: aCalmEvac
@@ -323,11 +323,11 @@
   name: Standoff
   artist: rtx420
 
-- type: lobbyBackground
-  id: ThreeBrizbyMoon
-  background: /Textures/LobbyScreens/ThreeBrizbyMoon.webp
-  name: Three Brizby Moon
-  artist: singularjames
+#- type: lobbyBackground
+#  id: ThreeBrizbyMoon
+#  background: /Textures/LobbyScreens/ThreeBrizbyMoon.webp
+#  name: Three Brizby Moon
+#  artist: singularjames
 
 - type: lobbyBackground
   id: AFriendlyGameOfCards
