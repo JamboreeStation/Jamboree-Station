@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Cargo.Components;
 using Content.Shared.Salvage.JobBoard;
 using JetBrains.Annotations;

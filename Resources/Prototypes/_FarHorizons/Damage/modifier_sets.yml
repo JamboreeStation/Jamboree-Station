@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Jamboree Station Contributors (Far-Horizons-SS14)
+# SPDX-License-Identifier: MIT
+# Far Horizons post-cutoff original (commit 21680b3e6b282, 2026-08-18)
 - type: damageModifierSet
   id: StructuralReactorCasing # StructuralMetallicStrong(er), it's going to take more than a mere baseball bat to do any real damage
   coefficients:

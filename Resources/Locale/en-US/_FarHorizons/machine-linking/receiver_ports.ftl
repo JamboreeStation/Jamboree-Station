@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Jamboree Station Contributors (Far-Horizons-SS14)
+# SPDX-License-Identifier: MIT
+# Far Horizons post-cutoff original (commit 21680b3e6b282, 2026-08-18)
 signal-port-name-nuclear-reactor-data-receiver = Reactor Monitor
 signal-port-description-nuclear-reactor-data-receiver = Receiving info about a nuclear reactor.
 

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Damage.Systems;
 
 namespace Content.Shared.Damage.Components;

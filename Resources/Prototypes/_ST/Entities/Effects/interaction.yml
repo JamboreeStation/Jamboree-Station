@@ -1,6 +1,9 @@
 # SPDX-FileCopyrightText: 2026 Janet Blackquill <uhhadd@gmail.com>
+# SPDX-FileCopyrightText: 2026 mirrorcult <mirrorcult@pm.me>
+# SPDX-FileCopyrightText: 2026 YaraaraY
 #
-# SPDX-License-Identifier: LicenseRef-Wallening
+# SPDX-License-Identifier: MIT
+# SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
   id: StellarInteractionParticleUse

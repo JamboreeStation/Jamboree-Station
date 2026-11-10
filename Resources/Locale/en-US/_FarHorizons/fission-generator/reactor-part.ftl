@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Jamboree Station Contributors (Far-Horizons-SS14)
+# SPDX-License-Identifier: MIT
+# Far Horizons post-cutoff original (commit 21680b3e6b282, 2026-08-18)
 reactor-part-nrad-0 = It's glowing slightly blue.
 reactor-part-nrad-1 = It's glowing somewhat blue.
 reactor-part-nrad-2 = It's glowing blue.
