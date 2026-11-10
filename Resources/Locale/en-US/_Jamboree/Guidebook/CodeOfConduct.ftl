@@ -17,3 +17,5 @@ guide-entry-alert-level-arresting = Alert Levels and Arresting/Sentencing Proced
 guide-entry-prisoner-treatment = Prisoner Treatment, Searching and Seizure, and Warrants
 
 guide-entry-violations-punishments = Violations, Punishment and Varieties
+
+guide-entry-right-to-trial = Right to Trial, Powers of Lawyers

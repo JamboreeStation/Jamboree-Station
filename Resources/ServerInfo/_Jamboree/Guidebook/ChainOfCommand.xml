@@ -11,6 +11,9 @@
 
  [color=green][bold]Central Command[/bold][/color]
   - [bold]Cental Command Official[/bold]: Heads over both Central Command and over all other departments.
+  - [bold]ERT[/bold]: When on station, they work alongside Command.
+  - [bold]NanoTrasen Representative[/bold]: Advises Command and reports to Central Command, but does not have authority over any departments.
+    - Note: The NanoTrasen Representative is not a member of Command, despite their accesses. They are to be considered to take on teh ACO position during Step 5.
 
   [color=DeepSkyBlue][bold]Command[/bold][/color]
   - [bold]Captain[/bold]: Heads over both Command and all other departments besides Central Command
@@ -35,9 +38,25 @@ ___________________________________________________________________________
   - Step 4: All heads may vote on a head to elect as captain, then should proceed to step 6.
   If all heads are not alive and present, proceed to the next step. If all heads are dead or
   unavailable, proceed to the next step.
-  - Step 5: If no heads have yet to arrive up until 15 minutes into the shift, crew are
-  permitted to take the actions necessary to keep operations on the station stable. If heads
-  have arrived during the course of the shift but are now all deceased or incapable of their
-  duties, call the emergency shuttle and set the alert level to code red.
-  - Step 6: That person is now the Captain
+  - Step 5: The following are the two situations you may encounter which lead to Step 5:
+    - If no heads have yet to arrive up until 10 minutes into the shift, crew are
+    permitted to take the actions necessary to keep operations on the station stable.
+      - Note: Should a command/security member arrive during this Step, it is expected that all crew report to them.
+      - While the situation is unstable, it is acceptable to use items that are [bold]neccessary[/bold]
+        in order to bring the station into a stable capacity, even if such things would typically be
+        prohibited during stable times.
+          - Example:
+            - Acceptable:
+              - Taking the contents of an engineer's locker in order to properly set up the main power source of the station.
+              - Granting an assistant temporary access to engineering since they are knowledgable in the tasks.
+              - Breaking into the ACO locker to access the ACO gear.
+              - Holding onto the Captain's spare ID card while the station is unstable.
+            - Unacceptable:
+              - Taking the CMO's hardsuit when you need to go into space when the standard EVA suit is already available.
+              - Granting an assistant all access because they "know what they are doing."
+              - Breaking into the NanoTrasen Representative's locker for their gear.
+              - Refusing to give up the Captain's spare ID card when the station is stable/a command/security member arrives.
+    - If heads have arrived during the course of the shift but are now all deceased or incapable of their
+    duties, call the emergency shuttle and set the alert level to code red.
+  - Step 6: That person is now the Captain.
 </Document>

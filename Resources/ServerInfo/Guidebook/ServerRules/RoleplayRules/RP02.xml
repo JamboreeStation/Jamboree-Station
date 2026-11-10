@@ -18,14 +18,18 @@
   ### The following are shielded:
     - Current game mode and possible antagonists during
       the current game mode.
-    - Events from previous rounds.
+    - The actions of meta-shielded antagonists from previous rounds.
     - Events you experienced as a different character.
     - All information related to the player of a character
       rather than the character itself. (See “Metafriending
-      and Metagrudging” below.”
+      and Metagrudging” below.)
     - All information gained while dead or a ghost.
     - All information gained while in critical condition or
       unconscious.
+    - All information gained while under the effects of
+      amenstizine.
+    - The events of a previous round in which your character
+      was exposed to amnestizine.
 
   Nuclear Operatives
   - Nuclear Operatives are rumored, and appear in
@@ -60,7 +64,7 @@
     no benefit to revealing it to the crew. People likely
     won’t believe you anyway.
 
-  Infections (Once the zombie virus is proven)
+  Zombie Infections (Once Zombies are revealed)
   - Such infections have been known to be extinct.
     Luckily though, advanced medicine has been able to
     cure the infection. The cure is not known to the
@@ -69,14 +73,31 @@
     zombie virus but is known to be a cure for an infection
     that causes people to become zombies.
 
+  Amnestizine,
+  - Amnestizine, and it's effects, are not known to the public.
+    Only members of Central Command, such as the NanoTrasen Representative,
+    are aware of the chemical and it's effects.
+
   Deathsquad
   - Deathsquad is a sci-fi trope that is well known in the
     galaxy, but not as a real thing. It is a myth, a legend,
     and a story people tell each other. The Deathsquad is
     not real, but some will argue that it is. The only ones
     who know the truth are members of Central
-    Command, who desire to keep it secret given its
-    purpose.
+    Command, such as the NanoTrasen Representative, who desire
+    to keep it secret given its purpose.
+
+  Chrono Legionairre
+  - The Chrono Legionairre are considered to be another
+    sci-fi trope in the galaxy, similar to Deathsquad.
+    The Chrono Legionairres are not real, but some will
+    argue they are. The only ones who know the truth are
+    members of Central Command, such as the NanoTrasen Representative,
+    who desire to keep it secret given the ramifications that could occur
+    should time travel become public knowledge.
+
+  Liquidators
+  - Liquidators do not exist.
 
   Implants
   - Implants are not shielded by default, but the fact they
@@ -101,9 +122,9 @@
 
   Metafriending and Metagrudging
   - Giving a person or character preferential treatment based on
-    something your character should not know is considered
-    metafriending. Treating a person or character negatively
-    based on something your character should not know is
+    something your character should not know/due to the events of a
+    previous round is considered metafriending. Treating a person or character negatively
+    based on something your character should not know/due to the events of a previous round is
     considered metagrudging. Both are not permitted.
 
   ### Explicitly Not Shielded:
@@ -131,6 +152,6 @@
   - The fact that the Syndicate have covert items capable
     of getting items to them, and that these items are
     known as uplinks.
-  - Wizards are not metashielded as the wizards
-    federation is well rumored about.
+  - Wizards are not metashielded as the Space's Federation
+    is well known.
 </Document>

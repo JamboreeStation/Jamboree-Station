@@ -32,6 +32,7 @@
   - ViolationsPunishments
   - PrisonerTreatmentSearchWarrant
   - AlertLevelArresting
+  - RightToTrial
 
 
 #Subsections
@@ -78,4 +79,8 @@
   text: "/ServerInfo/_Jamboree/Guidebook/ViolationsPunishments.xml"
   priority: 3
 
-
+- type: guideEntry
+  id: RightToTrial
+  name: guide-entry-right-to-trial
+  text: "/ServerInfo/_Jamboree/Guidebook/RightToTrial.xml"
+  priority: 4
