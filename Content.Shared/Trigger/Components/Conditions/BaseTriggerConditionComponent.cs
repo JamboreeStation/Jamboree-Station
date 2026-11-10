@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Trigger.Systems;
 
 namespace Content.Shared.Trigger.Components.Conditions;

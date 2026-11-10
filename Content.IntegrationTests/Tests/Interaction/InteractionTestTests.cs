@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using System.Linq;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Map.Components;

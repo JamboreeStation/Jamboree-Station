@@ -1,9 +1,6 @@
 // SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+// SPDX-FileCopyrightText: 2026 PureBreadBagel
 //
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
-
-// SPDX-License-Identifier PureBreadBagel 2026
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._EinsteinEngines.Language.Components;

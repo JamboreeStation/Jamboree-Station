@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Content.Server.NodeContainer.NodeGroups;
 using Content.Shared.NodeContainer.NodeGroups;
 using Content.Server.Power.Components;

@@ -1,4 +1,8 @@
-﻿#region --- License ---
+﻿// SPDX-FileCopyrightText: 2006-2008 The Open Toolkit library
+// SPDX-FileCopyrightText: 2013 Xamarin Inc
+// SPDX-License-Identifier: MIT
+
+#region --- License ---
 
 /*
 Copyright (c) 2006 - 2008 The Open Toolkit library.
