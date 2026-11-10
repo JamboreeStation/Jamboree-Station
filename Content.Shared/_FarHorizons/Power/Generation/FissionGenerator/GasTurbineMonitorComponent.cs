@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+// SPDX-FileCopyrightText: 2025 jhrushbe (Far-Horizons-SS14)
 //
-// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: LicenseRef-Starlight-MIT
 
 using Content.Shared.DeviceLinking;
 using Robust.Shared.GameStates;
