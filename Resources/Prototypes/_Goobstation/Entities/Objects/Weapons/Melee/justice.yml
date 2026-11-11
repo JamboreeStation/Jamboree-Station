@@ -140,10 +140,10 @@
             types:
 #              Slash: 25
               Heat: 0 #25
-        - type: CuffsOnHit
-          proto: Cablecuffs
           soundHit:
             path: /Audio/_Goobstation/Weapons/Effects/energy-short-sword-swing.ogg
+        - type: CuffsOnHit
+          proto: Cablecuffs
         soundStateActivate:
           collection: sparks
           params:
