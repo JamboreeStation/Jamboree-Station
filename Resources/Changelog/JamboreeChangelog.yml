@@ -2447,3 +2447,28 @@ Entries:
       message: Bumped the engine from 293.0.0 to 293.0.2 to fix a DDOS vulnerability.
   id: 194
   time: '2026-11-05T15:40:32.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Tweak
+      message: >-
+        The Rules, Legal Mandate, and Code of Conduct have all been updated.
+        Please read up on them once the update is out!
+    - type: Add
+      message: >-
+        Lawyers now have new capabilities because of the Legal Mandate. These
+        include: Trials, Lawsuits, Weddings, and more! 
+    - type: Tweak
+      message: >-
+        All command kits and security kits have been updated to use a texture
+        more visible to color blind individuals! If you know your job icon, you
+        know your kit!
+    - type: Remove
+      message: >-
+        Shaft Miner has, temporarily, been removed from the roundstart
+        selection.
+    - type: Remove
+      message: >-
+        Being lobotomized no longer gives you skibidi brainrot! No more
+        Fortnite! No more Ohio! No more rizz!
+  id: 195
+  time: '2026-11-11T06:56:52.0000000+00:00'
