@@ -1,9 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Basically a reskin of salvage specialist
 - type: job
   id: ShaftMiner
   name: job-name-shaftminer
   description: job-description-shaftminer
   playTimeTracker: JobShaftMiner
+  setPreference: false # jamboree, shaftminer's nap
   requirements:
   - !type:DepartmentTimeRequirement
     department: Cargo

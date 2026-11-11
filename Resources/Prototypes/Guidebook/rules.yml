@@ -422,6 +422,7 @@
   text: "/ServerInfo/Guidebook/ServerRules/BanDurations.xml"
 
 #Jamboree Core Rules
+
 - type: guideEntry
   id: CORE01
   name: guide-entry-rules-core01

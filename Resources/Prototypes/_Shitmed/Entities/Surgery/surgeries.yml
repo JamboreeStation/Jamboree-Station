@@ -1048,7 +1048,7 @@
   - type: SurgeryOrganOnAddCondition
     components:
       brain:
-      - type: OhioAccent
+#      - type: OhioAccent #Jamboree
       - type: RatvarianLanguage
       - type: Clumsy
     inverse: true
@@ -1072,7 +1072,7 @@
   - type: SurgeryOrganOnAddCondition
     components:
       brain:
-      - type: OhioAccent
+#      - type: OhioAccent #Jamboree
       - type: RatvarianLanguage
       - type: Clumsy
   - type: SurgeryPartCondition
