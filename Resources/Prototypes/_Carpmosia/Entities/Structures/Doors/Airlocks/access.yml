@@ -1,0 +1,31 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Airlocks
+- type: entity
+  parent: AirlockLogistics
+  id: AirlockLogisticsLocked
+  suffix: Cargo/Engineering, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLogistics ]
+
+# Glass Airlocks
+- type: entity
+  parent: AirlockLogisticsGlass
+  id: AirlockLogisticsGlassLocked
+  suffix: Cargo/Engineering, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLogistics ]
+
+# Maintenance Hatches
+- type: entity
+  parent: AirlockLogisticsLocked
+  id: AirlockMaintLogistics
+  components:
+  - type: Sprite
+    sprite: Structures/Doors/Airlocks/Standard/maint.rsi
