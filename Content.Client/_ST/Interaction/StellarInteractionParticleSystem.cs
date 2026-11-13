@@ -1,6 +1,12 @@
 // SPDX-FileCopyrightText: 2026 Janet Blackquill <uhhadd@gmail.com>
+// SPDX-FileCopyrightText: 2026 mirrorcult <mirrorcult@pm.me>
+// SPDX-FileCopyrightText: 2026 YaraaraY
+// SPDX-FileCopyrightText: 2026 Aidenkrz
+// SPDX-FileCopyrightText: 2026 pheem
+// SPDX-FileCopyrightText: 2026 PureBreadBagel (Jamboree Station)
 //
-// SPDX-License-Identifier: LicenseRef-Wallening
+// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
 using Content.Goobstation.Common.CCVar;

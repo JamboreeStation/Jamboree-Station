@@ -43,7 +43,7 @@ public sealed partial class PaperBoundUserInterface : BoundUserInterface // Delt
     protected override void UpdateState(BoundUserInterfaceState state)
     {
         base.UpdateState(state);
-        _window?.Populate((PaperBoundUserInterfaceState) state, Owner);
+        _window?.Populate((PaperBoundUserInterfaceState) state);
     }
 
     private void InputOnTextEntered(string text)

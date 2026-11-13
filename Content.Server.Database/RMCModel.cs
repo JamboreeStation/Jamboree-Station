@@ -31,51 +31,6 @@ public sealed class RMCLinkedAccount
     public RMCDiscordAccount Discord { get; set; } = default!;
 }
 
-[Table("rmc_patron_tiers")]
-[Index(nameof(LobbyMessage))]
-[Index(nameof(RoundEndShoutout))]
-public sealed class RMCPatronTier
-{
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.None)] // Goob - tiers are defined by prototypes
-    public int Id { get; set; }
-
-    public bool ShowOnCredits { get; set; }
-
-    public bool GhostColor { get; set; }
-
-    public bool LobbyMessage { get; set; }
-
-    public bool RoundEndShoutout { get; set; }
-
-    public string Name { get; set; } = default!;
-
-    public string? Icon { get; set; }
-
-    public ulong DiscordRole { get; set; }
-
-    public int Priority { get; set; }
-
-    public List<RMCPatron> Patrons { get; set; } = default!;
-}
-
-[Table("rmc_patrons")]
-[Index(nameof(TierId))]
-public sealed class RMCPatron
-{
-    [Key]
-    public Guid PlayerId { get; set; }
-
-    public Player Player { get; set; } = default!;
-
-    public int TierId { get; set; }
-
-    public RMCPatronTier Tier { get; set; } = default!;
-    public int? GhostColor { get; set; } = default!;
-    public string? OocIcon { get; set; }
-    public RMCPatronLobbyMessage? LobbyMessage { get; set; } = default!;
-    public RMCPatronRoundEndNTShoutout? RoundEndNTShoutout { get; set; } = default!;
-}
 
 [Table("rmc_linking_codes")]
 [Index(nameof(Code))]
@@ -111,26 +66,3 @@ public sealed class RMCLinkedAccountLogs
     public DateTime At { get; set; }
 }
 
-[Table(("rmc_patron_lobby_messages"))]
-public sealed class RMCPatronLobbyMessage
-{
-    [Key, ForeignKey("Patron")]
-    public Guid PatronId { get; set; }
-
-    public RMCPatron Patron { get; set; } = default!;
-
-    [StringLength(500)]
-    public string Message { get; set; } = default!;
-}
-
-[Table(("rmc_patron_round_end_nt_shoutouts"))]
-public sealed class RMCPatronRoundEndNTShoutout
-{
-    [Key, ForeignKey("Patron")]
-    public Guid PatronId { get; set; }
-
-    public RMCPatron Patron { get; set; } = default!;
-
-    [StringLength(100), Required]
-    public string Name { get; set; } = default!;
-}

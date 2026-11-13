@@ -2355,3 +2355,120 @@ Entries:
       message: buffed cybernetic organ integrities
   id: 188
   time: '2026-10-20T20:12:39.0000000+00:00'
+- author: Aidenkrz, Baptr0b0t, fiestyfedora, madeline-celeste, PureBreadBagel
+  changes:
+    - type: Add
+      message: You can reattach your butt with surgery.
+    - type: Add
+      message: >-
+        WASH WASH WASH YOUR CLOTHES WITH THE WASHING MACHINE!! (ur clothes can
+        get stained now...)
+    - type: Add
+      message: Gun + throwing client prediction was added, to help with lag.
+    - type: Fix
+      message: Made moving prediction also account for running.
+    - type: Fix
+      message: atmos belts are now belts and not jumpsuits...
+    - type: Add
+      message: Mice can eat corpses!
+    - type: Fix
+      message: cameras work again!
+    - type: Add
+      message: >-
+        Slimefolk can regrow their limbs with a long cooldown. Though it costs
+        you food and blood..
+  id: 189
+  time: '2026-10-24T02:10:35.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: Fixed most .ftl entries, spam mail shouldnt display its .ftl tag anymore
+    - type: Fix
+      message: >-
+        Supermatter console should now display properly instead of crashing the
+        client.
+    - type: Fix
+      message: Footsteps should now calculate their direction once instead of twice.
+    - type: Fix
+      message: Respawn system when you observe should work now.
+  id: 190
+  time: '2026-10-24T18:57:02.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: paper language system should display correctly now.
+    - type: Fix
+      message: Examine text has been fixed for icons showing.
+  id: 191
+  time: '2026-10-26T23:24:19.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: >-
+        A surgery bug fix regarding not being able to select "Close Incision".
+        (It secretly denied it).
+    - type: Fix
+      message: You can finally leave by pressing escape in the new lobby gui...
+    - type: Tweak
+      message: Hotplates no more....They have been replaced by THERMOBATHS.
+    - type: Fix
+      message: The new lobby UI has got some FIXES. SHould now display
+    - type: Fix
+      message: >-
+        Fear bubblegum for they no longer use GIB. They have been fixed to
+        simple damage.
+  id: 192
+  time: '2026-11-03T01:24:56.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Honk.CO, late as always, have introduced a new modification set to IPCs!
+        Change yourself today!\
+    - type: Add
+      message: Multiple foxwithguns songs have been added as lobby music!
+    - type: Remove
+      message: Several Goob-Specific lobby arts have been removed!
+    - type: Fix
+      message: Butts are now back to being wearable as hats!
+    - type: Tweak
+      message: The Bubblegum on Lavaland has been renamed to Bubblegum Jr.
+    - type: Tweak
+      message: >-
+        The Wizard's Theory by foxwithguns and the Middlemen has had it's volume
+        increased. Please notify if it is too loud!
+  id: 193
+  time: '2026-11-03T08:12:05.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: Fixed modsuits not working.
+    - type: Fix
+      message: Bumped the engine from 293.0.0 to 293.0.2 to fix a DDOS vulnerability.
+  id: 194
+  time: '2026-11-05T15:40:32.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Tweak
+      message: >-
+        The Rules, Legal Mandate, and Code of Conduct have all been updated.
+        Please read up on them once the update is out!
+    - type: Add
+      message: >-
+        Lawyers now have new capabilities because of the Legal Mandate. These
+        include: Trials, Lawsuits, Weddings, and more! 
+    - type: Tweak
+      message: >-
+        All command kits and security kits have been updated to use a texture
+        more visible to color blind individuals! If you know your job icon, you
+        know your kit!
+    - type: Remove
+      message: >-
+        Shaft Miner has, temporarily, been removed from the roundstart
+        selection.
+    - type: Remove
+      message: >-
+        Being lobotomized no longer gives you skibidi brainrot! No more
+        Fortnite! No more Ohio! No more rizz!
+  id: 195
+  time: '2026-11-11T06:56:52.0000000+00:00'

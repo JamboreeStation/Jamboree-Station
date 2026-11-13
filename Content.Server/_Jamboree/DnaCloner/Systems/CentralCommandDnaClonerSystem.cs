@@ -318,7 +318,7 @@ namespace Content.Server._Jamboree.DnaCloner.Systems
 
         private bool IsObserver(EntityUid mindEntity)
         {
-            return HasComp<ObserverRoleComponent>(mindEntity);
+            return _roles.MindHasRole<ObserverRoleComponent>(mindEntity);
         }
 
 

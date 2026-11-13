@@ -109,11 +109,20 @@ public sealed class GlueSystem : EntitySystem
             if (_timing.CurTime < glue.Until)
                 continue;
 
-            RemComp<UnremoveableComponent>(uid);
-            RemComp<GluedComponent>(uid);
-
-            _nameMod.RefreshNameModifiers(uid);
+            RemoveGlued(uid);
         }
+    }
+
+    /// <summary>
+    /// Removes glue, its pickup restriction, and its name modifier.
+    /// </summary>
+    public void RemoveGlued(EntityUid uid)
+    {
+        if (!RemComp<GluedComponent>(uid))
+            return;
+
+        RemComp<UnremoveableComponent>(uid);
+        _nameMod.RefreshNameModifiers(uid);
     }
 
     private void OnGluedInit(Entity<GluedComponent> entity, ref ComponentInit args)

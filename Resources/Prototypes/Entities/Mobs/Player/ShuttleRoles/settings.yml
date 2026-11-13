@@ -763,7 +763,7 @@
     - type: GhostRole
       name: ghost-role-information-lost-challenge-cargo-technican-name
       description: ghost-role-information-lost-challenge-cargo-technican-description
-      rules: ghost-role-information-lost-disaster-challenge-cargo-technican-rules
+      rules: ghost-role-information-lost-challenge-cargo-technican-rules
       raffle:
         settings: short
     - type: GhostTakeoverAvailable
@@ -893,7 +893,7 @@
       factions:
       - Syndicate
     - type: GhostRole
-      name: ghost-role-information-pirate-name
+      name: ghost-role-information-pirate-irs-name
       description: ghost-role-information-pirate-description
       rules: ghost-role-information-rules-team-antagonist
       mindRoles:
@@ -912,7 +912,7 @@
       factions:
       - Syndicate
     - type: GhostRole
-      name: ghost-role-information-pirate-captain-name
+      name: ghost-role-information-pirate-irs-captain-name
       description: ghost-role-information-pirate-captain-description
       rules: ghost-role-information-rules-team-antagonist
       mindRoles:

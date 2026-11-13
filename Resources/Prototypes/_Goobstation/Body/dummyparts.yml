@@ -2,11 +2,16 @@
 
 - type: entity
   id: Butt
-  name: butt #changed bunch of stuff (as in adding butts from Monke/Boomerstation)
-  description: The begining of the first joke. The end of the last.
-  parent: [BaseItem, ClothingHeadBase]
+  parent: [BaseItem, ClothingHeadBase] #Jamboree, butthead update
+  name: butt
+  description: The beginning of the first joke. The end of the last.
   components:
   - type: Sprite
     sprite: _Monkestation/Species/Human/butt.rsi
   - type: Clothing
     sprite: _Monkestation/Species/Human/butt.rsi
+  - type: Item
+    size: Small
+  - type: Organ
+    slotId: butt
+  - type: Butt

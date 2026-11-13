@@ -37,12 +37,6 @@ public sealed partial class CCVars
         CVarDef.Create("infolinks.wiki", "", CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
-    ///     Link to Patreon. Not shown in the launcher currently.
-    /// </summary>
-    public static readonly CVarDef<string> InfoLinksPatreon =
-        CVarDef.Create("infolinks.patreon", "", CVar.SERVER | CVar.REPLICATED);
-
-    /// <summary>
     ///     Link to the bug report form.
     /// </summary>
     public static readonly CVarDef<string> InfoLinksBugReport =

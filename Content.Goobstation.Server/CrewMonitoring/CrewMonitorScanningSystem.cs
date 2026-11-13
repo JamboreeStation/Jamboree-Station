@@ -37,7 +37,7 @@ public sealed partial class CrewMonitorScanningSystem : EntitySystem
             return;
 
         var userName = Identity.Entity(args.User, EntityManager);
-        _popup.PopupEntity(Loc.GetString("injector-component-injecting-user"), args.Target.Value, args.User);
+        _popup.PopupEntity(Loc.GetString("injector-component-needle-injecting-user"), args.Target.Value, args.User);
         if (args.User != args.Target.Value)
             _popup.PopupEntity(Loc.GetString("implanter-component-implanting-target", ("user", userName)), args.User, args.Target.Value, PopupType.LargeCaution);
 

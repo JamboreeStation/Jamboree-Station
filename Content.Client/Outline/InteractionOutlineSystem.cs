@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using System.Collections.Generic;
 using Content.Client.ContextMenu.UI;
 using Content.Client.Gameplay;

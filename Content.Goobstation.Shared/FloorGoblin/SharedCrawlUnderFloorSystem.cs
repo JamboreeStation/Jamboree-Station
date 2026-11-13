@@ -6,6 +6,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Shared.Throwing;
 using Content.Goobstation.Common.Weapons;
 using Content.Shared._DV.Abilities;
 using Content.Shared._Starlight.VentCrawling;
@@ -194,6 +195,9 @@ public abstract partial class SharedCrawlUnderFloorSystem : EntitySystem
             args.Cancelled = true;
             return;
         }
+
+        if (HasComp<ThrownItemComponent>(otherUid) && IsHidden(uid, component))
+            args.Cancelled = true;
     }
 
     protected void PlayDuendeSound(EntityUid uid, float probability = 0.3f)

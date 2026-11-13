@@ -24,5 +24,5 @@ public sealed partial class ChemRestorePsionicReroll : EntityEffectBase<ChemRest
     public bool BypassRoller;
 
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-chem-restorereroll-psionic");
+        => Loc.GetString("reagent-effect-guidebook-chem-restorereroll-psionic", ("chance", Probability));
 }

@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+SPDX-License-Identifier: MIT
+-->
+
 <ui:SimpleRadialMenu xmlns="https://spacestation14.io"
                      xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
                      BackButtonStyleClass="RadialMenuBackButton"

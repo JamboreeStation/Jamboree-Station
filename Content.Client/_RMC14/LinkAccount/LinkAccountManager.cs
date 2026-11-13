@@ -9,17 +9,9 @@ public sealed class LinkAccountManager : IPostInjectInit
 {
     [Dependency] private readonly INetManager _net = default!;
 
-    private readonly List<SharedRMCPatron> _allPatrons = [];
-
-    public SharedRMCPatronTier? Tier { get; private set; }
     public bool Linked { get; private set; }
-    public Color? GhostColor { get; private set; }
-    public string? OocIcon { get; private set; } // Goob - ooc icon selection
-    public SharedRMCLobbyMessage? LobbyMessage { get; private set; }
-    public SharedRMCRoundEndShoutouts? RoundEndShoutout { get; private set; }
 
     public event Action<Guid>? CodeReceived;
-    public event Action? Updated;
 
     private void OnCode(LinkAccountCodeMsg message)
     {
@@ -28,33 +20,7 @@ public sealed class LinkAccountManager : IPostInjectInit
 
     private void OnStatus(LinkAccountStatusMsg ev)
     {
-        Tier = ev.Patron?.Tier;
-        Linked = ev.Patron?.Linked ?? false;
-        GhostColor = ev.Patron?.GhostColor;
-        OocIcon = ev.Patron?.OocIcon; // Goob - ooc icon selection
-        LobbyMessage = ev.Patron?.LobbyMessage;
-        RoundEndShoutout = ev.Patron?.RoundEndShoutout;
-        Updated?.Invoke();
-    }
-
-    private void OnPatronList(RMCPatronListMsg ev)
-    {
-        _allPatrons.Clear();
-        _allPatrons.AddRange(ev.Patrons);
-    }
-
-    public IReadOnlyList<SharedRMCPatron> GetPatrons()
-    {
-        return _allPatrons;
-    }
-
-    public bool CanViewPatronPerks()
-    {
-        return Tier is { } tier &&
-               (tier.GhostColor ||
-                tier.OocIcons || // Goob - ooc icon selection
-                tier.LobbyMessage ||
-                tier.RoundEndShoutout);
+        Linked = ev.Linked;
     }
 
     void IPostInjectInit.PostInject()
@@ -62,10 +28,5 @@ public sealed class LinkAccountManager : IPostInjectInit
         _net.RegisterNetMessage<LinkAccountCodeMsg>(OnCode);
         _net.RegisterNetMessage<LinkAccountRequestMsg>();
         _net.RegisterNetMessage<LinkAccountStatusMsg>(OnStatus);
-        _net.RegisterNetMessage<RMCPatronListMsg>(OnPatronList);
-        _net.RegisterNetMessage<RMCClearGhostColorMsg>();
-        _net.RegisterNetMessage<RMCChangeGhostColorMsg>();
-        _net.RegisterNetMessage<RMCChangeLobbyMessageMsg>();
-        _net.RegisterNetMessage<RMCChangeNTShoutoutMsg>();
     }
 }

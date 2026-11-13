@@ -1,6 +1,7 @@
 
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using System.Numerics;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -40,7 +41,7 @@ public sealed class BackStabSystem : EntitySystem
         if (ent.Comp.DamageMultiplier < 1f || !args.IsHit || args.HitEntities.Count != 1)
             return;
 
-        var target = args.HitEntities[0];
+        var target = args.HitEntities.First();
 
         if (!TryBackstab(target, args.User, ent.Comp.Tolerance))
             return;

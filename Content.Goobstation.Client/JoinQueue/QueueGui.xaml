@@ -49,14 +49,6 @@
             <Label Name="ServerInfo"
                    StyleClasses="LabelSecondaryColor" Align="Center"
                    Margin="0 8 0 4" />
-
-            <!-- Patron message -->
-            <PanelContainer Name="PatronPanel" StyleClasses="AngleRect"
-                            Margin="0 4 0 4" Visible="False">
-                <Label Name="PatronText" Text="{Loc 'queue-patreon'}"
-                       StyleClasses="LabelKeyText" Align="Center"
-                       Margin="8 6" />
-            </PanelContainer>
         </BoxContainer>
     </Control>
     <queue:QueueCritterWalk Name="CritterWalk"

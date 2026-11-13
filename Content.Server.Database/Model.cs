@@ -55,12 +55,9 @@ namespace Content.Server.Database
         // RMC14
         public DbSet<RMCDiscordAccount> RMCDiscordAccounts { get; set; } = default!;
         public DbSet<RMCLinkedAccount> RMCLinkedAccounts { get; set; } = default!;
-        public DbSet<RMCPatronTier> RMCPatronTiers { get; set; } = default!;
-        public DbSet<RMCPatron> RMCPatrons { get; set; } = default!;
         public DbSet<RMCLinkingCodes> RMCLinkingCodes { get; set; } = default!;
         public DbSet<RMCLinkedAccountLogs> RMCLinkedAccountLogs { get; set; } = default!;
-        public DbSet<RMCPatronLobbyMessage> RMCPatronLobbyMessages { get; set; } = default!;
-        public DbSet<RMCPatronRoundEndNTShoutout> RMCPatronRoundEndNTShoutouts { get; set; } = default!;
+
 
         // Goobstation Polls
         public DbSet<Poll> Polls { get; set; } = default!;
@@ -319,11 +316,7 @@ namespace Content.Server.Database
             // RMC14
             // Reserve #6875's persisted columns without exposing the excluded cosmetics feature.
             // Keep migration history valid for both fresh and already-migrated databases.
-            modelBuilder.Entity<RMCPatron>().Property<string>("GhostHat").IsRequired(false);
-            modelBuilder.Entity<RMCPatron>().Property<string>("GhostMask").IsRequired(false);
-            modelBuilder.Entity<RMCPatron>().Property<string>("GhostParticles").IsRequired(false);
-            modelBuilder.Entity<RMCPatronTier>().Property<bool>("GhostCosmetics");
-            modelBuilder.Entity<RMCPatronTier>().Property<bool>("GhostParticles");
+           
 
             modelBuilder.Entity<RMCLinkedAccount>()
                 .HasOne(l => l.Player)
@@ -338,24 +331,6 @@ namespace Content.Server.Database
                 .HasForeignKey<RMCLinkedAccount>(l => l.DiscordId)
                 .HasPrincipalKey<RMCDiscordAccount>(d => d.Id)
                 .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<RMCPatron>()
-                .HasOne(p => p.Player)
-                .WithOne(p => p.Patron)
-                .HasForeignKey<RMCPatron>(p => p.PlayerId)
-                .HasPrincipalKey<Player>(p => p.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<RMCPatron>()
-                .HasOne(p => p.Tier)
-                .WithMany(t => t.Patrons)
-                .HasForeignKey(p => p.TierId)
-                .HasPrincipalKey(p => p.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<RMCPatronTier>()
-                .HasIndex(t => t.DiscordRole)
-                .IsUnique();
 
             modelBuilder.Entity<RMCLinkingCodes>()
                 .HasOne(l => l.Player)
@@ -663,7 +638,6 @@ namespace Content.Server.Database
 
         // RMC14
         public RMCLinkedAccount? LinkedAccount { get; set; }
-        public RMCPatron? Patron { get; set; }
         public RMCLinkingCodes? LinkingCodes { get; set; }
         public List<RMCLinkedAccountLogs> LinkedAccountLogs { get; set; } = default!;
     }

@@ -107,7 +107,11 @@ public struct CustomRichTextEntry
             // StaticSprite
             var controlTyped = control as StaticSpriteView;
             if (controlTyped is not null)
+            {
+                // Manually drawn sprites still need to occupy space in the text layout.
+                control.ReservesSpace = true;
                 control.Visible = false;
+            }
 
             tagControls ??= new Dictionary<int, Control>();
             tagControls.Add(nodeIndex, control);
@@ -367,8 +371,8 @@ public struct CustomRichTextEntry
 
             var invertedScale = 1f / uiScale;
             var pos = new Vector2(baseLine.X * invertedScale, (baseLine.Y - defaultFont.GetAscent(uiScale)) * invertedScale);
-            LayoutContainer.SetPosition(control, pos);
             control.Measure(new Vector2(Width, Height));
+            control.Arrange(UIBox2.FromDimensions(pos, control.DesiredSize));
             if (staticSprite is not null &&
                 staticSprite.IsVisible &&
                 staticSprite.Entity is not null &&
@@ -398,7 +402,7 @@ public struct CustomRichTextEntry
                         Angle.Zero);
             }
 
-            var advanceX = control.SetWidth;
+            var advanceX = control.DesiredPixelSize.X;
             controlYAdvance = Math.Max(0f, (control.DesiredPixelSize.Y - GetLineHeight(font, uiScale, lineHeightScale)) * invertedScale);
             baseLine += new Vector2(advanceX, 0);
         }

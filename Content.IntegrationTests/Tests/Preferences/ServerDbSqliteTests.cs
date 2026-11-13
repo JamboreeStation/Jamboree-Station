@@ -2,6 +2,8 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Threading;
 using Content.Server.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid;
@@ -107,6 +109,43 @@ namespace Content.IntegrationTests.Tests.Preferences
             await db.SaveCharacterSlotAsync(username, null, 1);
             var prefs = await db.GetPlayerPreferencesAsync(username);
             Assert.That(!prefs.Characters.Any(p => p.Key != 0));
+            await pair.CleanReturnAsync();
+        }
+
+        [Test]
+        public async Task TestDiscordLinkingWithoutPatron()
+        {
+            var pair = await PoolManager.GetServerClient();
+            using var conn = new SqliteConnection("Data Source=:memory:");
+            conn.Open();
+            var options = new DbContextOptionsBuilder<SqliteServerDbContext>().UseSqlite(conn).Options;
+            var cfg = pair.Server.ResolveDependency<IConfigurationManager>();
+            var opsLog = pair.Server.ResolveDependency<ILogManager>().GetSawmill("db.ops");
+            var db = new ServerDbSqlite(() => options, true, cfg, true, opsLog);
+            var user = NewUserId();
+            await db.UpdatePlayerRecord(user, "DiscordLinkTest", IPAddress.Loopback, null);
+
+            Assert.That(await db.GetLinkingCode(user.UserId), Is.Null);
+            Assert.That(await db.HasLinkedAccount(user.UserId, CancellationToken.None), Is.False);
+
+            var code = Guid.NewGuid();
+            await db.SetLinkingCode(user.UserId, code);
+            Assert.That(await db.GetLinkingCode(user.UserId), Is.EqualTo(code));
+
+            var replacement = Guid.NewGuid();
+            await db.SetLinkingCode(user.UserId, replacement);
+            Assert.That(await db.GetLinkingCode(user.UserId), Is.EqualTo(replacement));
+
+            await using (var context = new SqliteServerDbContext(options))
+            {
+                const ulong discordId = 123456789;
+                context.RMCDiscordAccounts.Add(new RMCDiscordAccount { Id = discordId });
+                context.RMCLinkedAccounts.Add(new RMCLinkedAccount { PlayerId = user.UserId, DiscordId = discordId });
+                await context.SaveChangesAsync();
+                
+            }
+
+            Assert.That(await db.HasLinkedAccount(user.UserId, CancellationToken.None), Is.True);
             await pair.CleanReturnAsync();
         }
 

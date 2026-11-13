@@ -14,8 +14,7 @@ using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Utility;
 using static Robust.Client.UserInterface.Controls.BaseButton;
-using Content.Client.UserInterface.Systems.MenuBar.Widgets;  // RMC - Patreon
-using Content.Client._RMC14.LinkAccount; // RMC - Patreon
+using Content.Client.UserInterface.Systems.MenuBar.Widgets;
 // Goobstation - Character customization in escape menu
 using Content.Client.Lobby;
 using Robust.Client.Player;
@@ -31,7 +30,9 @@ using Content.Client.Players.PlayTimeTracking;
 namespace Content.Client.UserInterface.Systems.EscapeMenu;
 
 [UsedImplicitly]
-public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>
+public sealed class EscapeUIController : UIController,
+    IOnStateEntered<GameplayState>, IOnStateExited<GameplayState>,
+    IOnStateEntered<LobbyState>, IOnStateExited<LobbyState>
 {
     [Dependency] private readonly IClientConsoleHost _console = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
@@ -39,7 +40,6 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
     [Dependency] private readonly InfoUIController _info = default!;
     [Dependency] private readonly OptionsUIController _options = default!;
     [Dependency] private readonly GuidebookUIController _guidebook = default!;
-    [Dependency] private readonly LinkAccountManager _linkAccount = default!; // RMC - Patreon
     // Goobstation - Character customization in escape menu
     [Dependency] private readonly IClientPreferencesManager _preferencesManager = default!;
     [Dependency] private readonly IFileDialogManager _dialogManager = default!;
@@ -57,16 +57,7 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
     private CharacterSetupGui? _characterSetup;
     private HumanoidProfileEditor? _profileEditor;
 
-    private MenuButton? EscapeButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.EscapeButton; // RMC - Patreon
-
-    public override void Initialize()  // RMC - Patreon
-    {
-        _linkAccount.Updated += () =>
-        {
-            if (_escapeWindow != null)
-                _escapeWindow.PatronPerksButton.Visible = _linkAccount.CanViewPatronPerks();
-        };
-    }
+    private MenuButton? EscapeButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.EscapeButton;
 
     public void UnloadButton()
     {
@@ -89,10 +80,14 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
         EscapeButton.OnPressed += EscapeButtonOnOnPressed;
     }
 
-    private void ActivateButton() => EscapeButton!.SetClickPressed(true);
-    private void DeactivateButton() => EscapeButton!.SetClickPressed(false);
+    private void ActivateButton() => EscapeButton?.SetClickPressed(true);
+    private void DeactivateButton() => EscapeButton?.SetClickPressed(false);
 
-    public void OnStateEntered(GameplayState state)
+    public void OnStateEntered(GameplayState state) => EnterState(false);
+
+    public void OnStateEntered(LobbyState state) => EnterState(true);
+
+    private void EnterState(bool inLobby)
     {
         DebugTools.Assert(_escapeWindow == null);
 
@@ -100,18 +95,12 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
 
         _escapeWindow.OnClose += DeactivateButton;
         _escapeWindow.OnOpen += ActivateButton;
+        _escapeWindow.CharacterButton.Visible = !inLobby;
 
         _escapeWindow.ChangelogButton.OnPressed += _ =>
         {
             CloseEscapeWindow();
             _changelog.ToggleWindow();
-        };
-
-        _escapeWindow.PatronPerksButton.Visible = _linkAccount.CanViewPatronPerks(); // RMC - Patreon
-        _escapeWindow.PatronPerksButton.OnPressed += _ => // RMC - Patreon
-        {
-            CloseEscapeWindow();
-            UIManager.GetUIController<LinkAccountUIController>().TogglePatronPerksWindow();
         };
 
         _escapeWindow.RulesButton.OnPressed += _ =>
@@ -164,7 +153,11 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
             .Register<EscapeUIController>();
     }
 
-    public void OnStateExited(GameplayState state)
+    public void OnStateExited(GameplayState state) => ExitState();
+
+    public void OnStateExited(LobbyState state) => ExitState();
+
+    private void ExitState()
     {
         if (_escapeWindow != null)
         {
@@ -198,12 +191,10 @@ public sealed class EscapeUIController : UIController, IOnStateEntered<GameplayS
         if (_escapeWindow.IsOpen)
         {
             CloseEscapeWindow();
-            EscapeButton!.Pressed = false;
         }
         else
         {
             _escapeWindow.OpenCentered();
-            EscapeButton!.Pressed = true;
         }
     }
 

@@ -64,3 +64,18 @@ alert-level-honk-instructions = Crewmembers are advised to execute the clown.
 alert-level-amber = Amber
 alert-level-amber-announcement = There is an immediate station ending threat. All crewmembers are to be armed by any means and all non-essential personnel must assist Security and the Heads of Staff in the defence of the station.
 alert-level-amber-instructions = Crewmembers are to be armed to fight a station ending threat.
+
+# Amber alert authorization
+alert-level-amber-unlocked-announcement = A station-ending threat has been detected. Amber alert is now available at communications consoles.
+alert-level-amber-locked = Amber alert is locked. Two command ID cards are required to authorize it.
+alert-level-amber-verb-text = Authorize Amber Alert
+alert-level-amber-verb-message = Present an ID card to authorize amber alert. The first card must have Captain, Head of Security, or Central Command access; a different command ID card must confirm.
+alert-level-amber-unlocked = Amber alert unlocked. It can now be selected at communications consoles.
+alert-level-amber-no-id = You need an ID card to authorize amber alert.
+alert-level-amber-needs-command = The first ID card must have Captain, Head of Security, or Central Command access.
+alert-level-amber-first-swipe = First authorization accepted. Have another command member authorize amber alert with a different ID card before the authorization expires.
+alert-level-amber-same-id = The second authorization requires a different ID card.
+alert-level-amber-needs-second-command = The second ID card must have command access.
+alert-level-amber-unknown-name = Unknown command member
+alert-level-amber-authorized-initiated-announcement = {$name} has initiated amber alert authorization. A second command ID card is required to confirm.
+alert-level-amber-authorized-announcement = {$name} has confirmed amber alert authorization. Amber alert is now available at communications consoles.

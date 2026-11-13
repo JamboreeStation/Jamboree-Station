@@ -1,5 +1,8 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Diagnostics.CodeAnalysis;
-using Content.Goobstation.Common.Patrons;
 using Content.Shared.StatusIcon;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -24,9 +27,7 @@ public sealed partial class IconTag : IMarkupTag
         }
 
         SpriteSpecifier? sprite = null;
-        if (_prototype.TryIndex<OocIconPrototype>(id.StringValue, out var oocIcon))
-            sprite = oocIcon.Icon;
-        else if (_prototype.TryIndex<JobIconPrototype>(id.StringValue, out var iconPrototype))
+        if (_prototype.TryIndex<JobIconPrototype>(id.StringValue, out var iconPrototype))
             sprite = iconPrototype.Icon;
 
         var icon = new AnimatedTextureRect

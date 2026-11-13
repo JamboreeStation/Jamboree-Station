@@ -1,6 +1,8 @@
 using Content.Goobstation.Common.Weapons;
 using Content.Shared._ES.Camera;
 using Content.Shared.Damage;
+using Content.Shared.IdentityManagement;
+using Robust.Shared.Audio;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Weapons.Melee;
@@ -12,7 +14,7 @@ public abstract partial class SharedMeleeWeaponSystem
     private static readonly ESScreenshakeParameters MeleeUserShake = new(0.08f, 1.0f, 0.009f);
     private static readonly ESScreenshakeParameters MeleeTargetShake = new(0.45f, 1.1f, 0.04f);
 
-    private void DoMeleeScreenshake(EntityUid user, List<EntityUid> targets)
+    private void DoMeleeScreenshake(EntityUid user, IEnumerable<EntityUid> targets)
     {
         _shake.Screenshake(user, null, MeleeUserShake);
         foreach (var target in targets)
@@ -29,6 +31,18 @@ public abstract partial class SharedMeleeWeaponSystem
 
         var abs = Math.Abs(ap);
         message.AddMarkupPermissive("\n" + Loc.GetString("armor-penetration", ("arg", ap / abs), ("abs", abs)));
+    }
+
+    private bool IsShoveBlocked(EntityUid target, EntityUid user)
+    {
+        var ev = new ShoveAttemptEvent(user);
+        RaiseLocalEvent(target, ref ev);
+        if (!ev.Cancelled)
+            return false;
+
+        _audio.PlayPredicted(new SoundPathSpecifier("/Audio/Effects/thudswoosh.ogg"), target, user);
+        PopupSystem.PopupPredicted(Loc.GetString("shove-blocked-popup", ("target", Identity.Entity(target, EntityManager))), target, user);
+        return true;
     }
 
     private bool IsHeavyAttackTargetBlocked(EntityUid target, EntityUid user, EntityUid weapon)

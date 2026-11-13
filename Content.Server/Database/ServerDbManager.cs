@@ -312,28 +312,6 @@ namespace Content.Server.Database
 
         Task<bool> HasLinkedAccount(Guid player, CancellationToken cancel);
 
-        Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel);
-
-        Task<List<RMCPatron>> GetAllPatrons();
-
-        Task SetGhostColor(Guid player, System.Drawing.Color? color);
-
-        // Goob start
-        Task SetOocIcon(Guid player, string? icon);
-
-        Task SyncPatronTiers(List<RMCPatronTier> tiers);
-
-        Task<bool> SetPatron(Guid player, int? tierId);
-        // Goob end
-
-        Task SetLobbyMessage(Guid player, string message);
-
-        Task SetNTShoutout(Guid player, string name);
-
-        Task<List<(string Message, string User, int TierId)>> GetLobbyMessages(); // Goob - tier perks from prototypes
-
-        Task<List<(string Name, int TierId)>> GetShoutouts(); // Goob - tier perks from prototypes
-
         #endregion
 
         #region IPintel
@@ -1055,68 +1033,6 @@ namespace Content.Server.Database
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.HasLinkedAccount(player, cancel));
-        }
-
-        public Task<RMCPatron?> GetPatron(Guid player, CancellationToken cancel)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetPatron(player, cancel));
-        }
-
-        public Task<List<RMCPatron>> GetAllPatrons()
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetAllPatrons());
-        }
-
-        public Task SetGhostColor(Guid player, System.Drawing.Color? color)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SetGhostColor(player, color));
-        }
-
-        // Goob start - patron database commands
-        public Task SetOocIcon(Guid player, string? icon)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SetOocIcon(player, icon));
-        }
-
-        public Task SyncPatronTiers(List<RMCPatronTier> tiers)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SyncPatronTiers(tiers));
-        }
-
-        public Task<bool> SetPatron(Guid player, int? tierId)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SetPatron(player, tierId));
-        }
-        // Goob end
-
-        public Task SetLobbyMessage(Guid player, string message)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SetLobbyMessage(player, message));
-        }
-
-        public Task SetNTShoutout(Guid player, string name)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.SetNTShoutout(player, name));
-        }
-
-        public Task<List<(string Message, string User, int TierId)>> GetLobbyMessages() // Goob - tier perks from prototypes
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetLobbyMessages());
-        }
-
-        public Task<List<(string Name, int TierId)>> GetShoutouts() // Goob - tier perks from prototypes
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetShoutouts());
         }
 
         #endregion

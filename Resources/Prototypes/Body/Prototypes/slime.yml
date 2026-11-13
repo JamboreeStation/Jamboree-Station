@@ -22,6 +22,7 @@
       part: GroinSlime
       organs:
         core: SentientSlimeCore
+        butt: Butt # Goob
       connections:
       - right leg
       - left leg

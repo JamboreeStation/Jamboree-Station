@@ -65,7 +65,7 @@ public sealed partial class MultihitSystem : EntitySystem
             if (args.HitEntities.Count == 0)
                 return;
 
-            if (args.HitEntities[0] == args.User)
+            if (args.HitEntities.First() == args.User)
                 return;
         }
 
@@ -122,14 +122,14 @@ public sealed partial class MultihitSystem : EntitySystem
 
             if (args.Direction == null)
             {
+                // The melee system may clear the backing set before the delayed attack runs.
+                var target = args.HitEntities.First();
                 Timer.Spawn(delay,
                     () =>
                     {
                         if (TerminatingOrDeleted(weapon) ||
                             !TryComp(weapon, out ActiveMultihitComponent? activeMultihit))
                             return;
-
-                        var target = args.HitEntities[0];
 
                         if (TerminatingOrDeleted(args.User) || TerminatingOrDeleted(target) ||
                             !Resolve(weapon, ref melee, false) || !_hands.IsHolding(args.User, weapon))

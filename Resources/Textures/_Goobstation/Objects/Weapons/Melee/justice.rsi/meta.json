@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "copyright": "Sprited by Taro Varne, resprite by RedTerror",
+    "copyright": "Sprited by Taro Varne, resprite by RedTerror, cuffs sprites by Bibble for Jamboree",
     "license": "CC-BY-SA-3.0",
     "size": {
         "x": 32,
@@ -33,6 +33,19 @@
                 0.1,
                 0.1,
                 0.1
+              ]
+            ]
+        },
+        {
+            "name": "cuffs-icon",
+            "delays": [
+              [
+                0.2,
+                0.2,
+                0.2,
+                0.2,
+                0.2,
+                0.2
               ]
             ]
         },
@@ -221,6 +234,36 @@
             ]
         },
 		{
+            "name": "cuffs-inhand-left",
+			"directions": 4,
+            "delays": [
+              [
+                0.2,
+                0.2,
+                0.2,
+                0.2
+              ],
+              [
+                0.2,
+                0.2,
+                0.2,
+                0.2
+              ],
+              [
+                0.2,
+                0.2,
+                0.2,
+                0.2
+              ],
+              [
+                0.2,
+                0.2,
+                0.2,
+                0.2
+              ]
+            ]
+        },
+		{
             "name": "stun-inhand-right",
 			"directions": 4,
             "delays": [
@@ -247,6 +290,36 @@
                 0.1,
                 0.1,
                 0.1
+              ]
+            ]
+        },
+		{
+            "name": "cuffs-inhand-right",
+			"directions": 4,
+            "delays": [
+              [
+                0.2,
+                0.2,
+                0.2,
+                0.2
+              ],
+              [
+                0.2,
+                0.2,
+                0.2,
+                0.2
+              ],
+              [
+                0.2,
+                0.2,
+                0.2,
+                0.2
+              ],
+              [
+                0.2,
+                0.2,
+                0.2,
+                0.2
               ]
             ]
         },

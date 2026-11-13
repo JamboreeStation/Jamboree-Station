@@ -2,7 +2,6 @@
 
 using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Common.ServerCurrency;
-using Content.Server._RMC14.LinkAccount;
 using Content.Server.GameTicking;
 using Content.Server.Popups;
 using Content.Shared.Humanoid;
@@ -27,7 +26,6 @@ namespace Content.Goobstation.Server.ServerCurrency
         [Dependency] private SharedJobSystem _jobs = default!;
         [Dependency] private IPlayerManager _players = default!;
         [Dependency] private IConfigurationManager _cfg = default!;
-        [Dependency] private LinkAccountManager _linkAccount = default!;
         [Dependency] private GameTicker _gameTicker = default!;
 
         private int _goobcoinsPerPlayer = 10;
@@ -99,9 +97,6 @@ namespace Content.Goobstation.Server.ServerCurrency
 
                         if (_goobcoinsServerMultiplier != 1)
                             money *= _goobcoinsServerMultiplier;
-
-                        if (session != null && _linkAccount.GetPatron(session)?.Tier != null)
-                            money *= 2;
 
                         if (_goobcoinsUseShortRoundPenalty)
                         {

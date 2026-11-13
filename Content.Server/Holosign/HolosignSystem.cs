@@ -1,1 +1,96 @@
-// SPDX-License-Identifier: AGPL-3.0-or-laterusing Content.Shared.Examine;using Content.Shared.Coordinates.Helpers;using Content.Shared.PowerCell;using Content.Shared.Interaction;using Content.Shared.Physics; // Goobstationusing Content.Shared.Power.Components;using Content.Shared.Storage;using Content.Shared.Tag; // Goobstationusing Robust.Shared.Map; // Goobstationusing Robust.Shared.Physics.Components; // Goobstationnamespace Content.Server.Holosign;public sealed class HolosignSystem : EntitySystem{    [Dependency] private readonly PowerCellSystem _powerCell = default!;    [Dependency] private readonly SharedTransformSystem _transform = default!;    // Goobstation start    [Dependency] private readonly EntityLookupSystem _lookup = default!;    [Dependency] private readonly SharedMapSystem _map = default!;    [Dependency] private readonly TagSystem _tag = default!;    private EntityQuery<PhysicsComponent> _physicsQuery;    // Goobstation end    public override void Initialize()    {        base.Initialize();        SubscribeLocalEvent<HolosignProjectorComponent, BeforeRangedInteractEvent>(OnBeforeInteract);        SubscribeLocalEvent<HolosignProjectorComponent, ExaminedEvent>(OnExamine);        _physicsQuery = GetEntityQuery<PhysicsComponent>(); // Goobstation    }    private void OnExamine(EntityUid uid, HolosignProjectorComponent component, ExaminedEvent args)    {        // TODO: This should probably be using an itemstatus        // TODO: I'm too lazy to do this rn but it's literally copy-paste from emag.        var charges = _powerCell.GetRemainingUses(uid, component.ChargeUse);        var maxCharges = _powerCell.GetMaxUses(uid, component.ChargeUse);        using (args.PushGroup(nameof(HolosignProjectorComponent)))        {            args.PushMarkup(Loc.GetString("limited-charges-charges-remaining", ("charges", charges)));            if (charges > 0 && charges == maxCharges)            {                args.PushMarkup(Loc.GetString("limited-charges-max-charges"));            }        }    }    private void OnBeforeInteract(EntityUid uid, HolosignProjectorComponent component, BeforeRangedInteractEvent args)    {        // Goob edit start        if (args.Handled            || !args.CanReach // prevent placing out of range            || HasComp<StorageComponent>(args.Target)) // if it's a storage component like a bag, we ignore usage so it can be stored            return;        // places the holographic sign at the click location, snapped to grid.        var coords = args.ClickLocation.SnapToGrid(EntityManager);        var mapCoords = _transform.ToMapCoordinates(coords);        IEnumerable<EntityUid> look = _map.TryFindGridAt(mapCoords, out var grid, out var gridComp)            ? _map.GetAnchoredEntities((grid, gridComp), mapCoords)            : _lookup.GetEntitiesInRange(mapCoords, 0.1f);        foreach (var entity in look)        {            if (_tag.HasTag(entity, component.HolosignTag))                return;            if (!_physicsQuery.TryComp(entity, out var physics) || !physics.CanCollide || !physics.Hard) // Goob                continue;            if ((physics.CollisionLayer &                 (int) (CollisionGroup.Impassable |                        CollisionGroup.LowImpassable |                        CollisionGroup.MidImpassable |                        CollisionGroup.HighImpassable)) != 0)                return;        }        if (!_powerCell.TryUseCharge(uid, component.ChargeUse, user: args.User)) // if no battery or no charge, doesn't work            return;        var holoUid = Spawn(component.SignProto, coords);        // Goob edit end        var xform = Transform(holoUid);        // TODO: Just make the prototype anchored        if (!xform.Anchored)            _transform.AnchorEntity(holoUid, xform); // anchor to prevent any tempering with (don't know what could even interact with it)        args.Handled = true;    }}
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Content.Shared.Examine;
+using Content.Shared.Coordinates.Helpers;
+using Content.Shared.PowerCell;
+using Content.Shared.Interaction;
+using Content.Shared.Physics; // Goobstation
+using Content.Shared.Power.Components;
+using Content.Shared.Storage;
+using Content.Shared.Tag; // Goobstation
+using Robust.Shared.Map; // Goobstation
+using Robust.Shared.Physics.Components; // Goobstation
+
+namespace Content.Server.Holosign;
+
+public sealed class HolosignSystem : EntitySystem
+{
+    [Dependency] private readonly PowerCellSystem _powerCell = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    // Goobstation start
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
+
+    private EntityQuery<PhysicsComponent> _physicsQuery;
+    // Goobstation end
+
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<HolosignProjectorComponent, BeforeRangedInteractEvent>(OnBeforeInteract);
+        SubscribeLocalEvent<HolosignProjectorComponent, ExaminedEvent>(OnExamine);
+
+        _physicsQuery = GetEntityQuery<PhysicsComponent>(); // Goobstation
+    }
+
+    private void OnExamine(EntityUid uid, HolosignProjectorComponent component, ExaminedEvent args)
+    {
+        // TODO: This should probably be using an itemstatus
+        // TODO: I'm too lazy to do this rn but it's literally copy-paste from emag.
+        var charges = _powerCell.GetRemainingUses(uid, component.ChargeUse);
+        var maxCharges = _powerCell.GetMaxUses(uid, component.ChargeUse);
+
+        using (args.PushGroup(nameof(HolosignProjectorComponent)))
+        {
+            args.PushMarkup(Loc.GetString("limited-charges-charges-remaining", ("charges", charges)));
+
+            if (charges > 0 && charges == maxCharges)
+            {
+                args.PushMarkup(Loc.GetString("limited-charges-max-charges"));
+            }
+        }
+    }
+
+    private void OnBeforeInteract(EntityUid uid, HolosignProjectorComponent component, BeforeRangedInteractEvent args)
+    {
+        // Goob edit start
+        if (args.Handled
+            || !args.CanReach // prevent placing out of range
+            || HasComp<StorageComponent>(args.Target)) // if it's a storage component like a bag, we ignore usage so it can be stored
+            return;
+
+        // places the holographic sign at the click location, snapped to grid.
+        var coords = args.ClickLocation.SnapToGrid(EntityManager);
+        var mapCoords = _transform.ToMapCoordinates(coords);
+        IEnumerable<EntityUid> look = _map.TryFindGridAt(mapCoords, out var grid, out var gridComp)
+            ? _map.GetAnchoredEntities((grid, gridComp), mapCoords)
+            : _lookup.GetEntitiesInRange(mapCoords, 0.1f);
+        foreach (var entity in look)
+        {
+            if (_tag.HasTag(entity, component.HolosignTag))
+                return;
+
+            if (!_physicsQuery.TryComp(entity, out var physics) || !physics.CanCollide || !physics.Hard) // Goob
+                continue;
+
+            if ((physics.CollisionLayer &
+                 (int) (CollisionGroup.Impassable |
+                        CollisionGroup.LowImpassable |
+                        CollisionGroup.MidImpassable |
+                        CollisionGroup.HighImpassable)) != 0)
+                return;
+        }
+        if (!_powerCell.TryUseCharge(uid, component.ChargeUse, user: args.User)) // if no battery or no charge, doesn't work
+            return;
+        var holoUid = Spawn(component.SignProto, coords);
+        // Goob edit end
+        var xform = Transform(holoUid);
+        // TODO: Just make the prototype anchored
+        if (!xform.Anchored)
+            _transform.AnchorEntity(holoUid, xform); // anchor to prevent any tempering with (don't know what could even interact with it)
+
+        args.Handled = true;
+    }
+}

@@ -5,6 +5,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 cqc-fail-notself = You can't teach anyone with {CAPITALIZE(THE($manual))}.
+cqc-fail-used = {CAPITALIZE(THE($manual))} has no teachings left to offer.
 
 cqc-fail-changeling = We are beyond using this.
 cqc-fail-knowanother = You already know another martial art.

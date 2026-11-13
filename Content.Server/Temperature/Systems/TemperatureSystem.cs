@@ -10,6 +10,8 @@ using Content.Shared._DV.CosmicCult.Components; // DeltaV
 using Content.Shared._Goobstation.Wizard.Spellblade;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
+using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
@@ -27,6 +29,7 @@ namespace Content.Server.Temperature.Systems;
 public sealed partial class TemperatureSystem : SharedTemperatureSystem
 {
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutions = default!;
 
     private EntityQuery<TemperatureImmunityComponent> _immuneQuery; // DeltaV
 
@@ -163,13 +166,31 @@ public sealed partial class TemperatureSystem : SharedTemperatureSystem
         if (transform.MapUid == null)
             return;
 
-        var temperatureDelta = args.GasMixture.Temperature - temperature.CurrentTemperature;
-        var airHeatCapacity = _atmosphere.GetHeatCapacity(args.GasMixture, false);
+        var currentTemperature = temperature.CurrentTemperature;
         var heatCapacity = GetHeatCapacity(uid, temperature);
+        Entity<SolutionComponent>? solution = null;
+        if (temperature.Solution != null)
+        {
+            if (!_solutions.TryGetSolution(uid, temperature.Solution, out solution, out var contents) || contents.Volume == 0)
+                return;
+
+            currentTemperature = contents.Temperature;
+            heatCapacity = contents.GetHeatCapacity(null);
+        }
+
+        if (heatCapacity <= 0f)
+            return;
+
+        var temperatureDelta = args.GasMixture.Temperature - currentTemperature;
+        var airHeatCapacity = _atmosphere.GetHeatCapacity(args.GasMixture, false);
         // TODO ATMOS: This heat transfer formula is really really wrong, it needs to be pulled out. Pending on HeatContainers.
         var heat = temperatureDelta * (airHeatCapacity * heatCapacity /
                                        (airHeatCapacity + heatCapacity));
-        ChangeHeat(uid, heat * temperature.AtmosTemperatureTransferEfficiency, temperature: temperature);
+        heat *= temperature.AtmosTemperatureTransferEfficiency;
+        if (solution is { } solutionEnt)
+            _solutions.AddThermalEnergy(solutionEnt, heat);
+        else
+            ChangeHeat(uid, heat, temperature: temperature);
     }
 
     private void OnInit(Entity<InternalTemperatureComponent> entity, ref MapInitEvent args)

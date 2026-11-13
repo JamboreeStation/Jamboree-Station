@@ -1,3 +1,9 @@
+// SPDX-FileCopyrightText: 2025-2026 jhrushbe (Far-Horizons-SS14)
+// SPDX-FileCopyrightText: 2025-2026 princess-gurchi (Far-Horizons-SS14)
+// SPDX-FileCopyrightText: The Goonstation Project (nuclear reactor code derivation, per the Far-Horizons-SS14 README)
+//
+// SPDX-License-Identifier: CC-BY-NC-SA-3.0
+
 using Content.Shared.Popups;
 using Content.Shared.Containers.ItemSlots;
 using Robust.Shared.Prototypes;

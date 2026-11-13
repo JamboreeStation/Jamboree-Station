@@ -27,6 +27,29 @@ doc-text-printer-report-station =
 
     =============================================
                                 ⠀          [italic]Place for seals[/italic]
+doc-text-printer-report-on-elimination-of-violations =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Corrective Action Report[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                    REPORT ON ELIMINATION OF VIOLATIONS
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+
+    In response to the inspection of (department or facility) recorded in (inspection report reference), I report the following corrective actions.
+    Identified violations:
+    Measures taken to correct each violation:
+    Employees responsible for the work:
+    Verification of completed corrections:
+    Outstanding violations and reasons for delay:
+    Planned completion time:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
 doc-text-printer-report-department =
    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Departmental Performance Report[/head]
@@ -94,6 +117,31 @@ doc-text-printer-report-on-the-chapters-meeting =
     Decision of the Heads of Departments Meeting:
     =============================================
                                 ⠀          [italic]Place for seals[/italic]
+doc-text-printer-internal-affairs-agents-report =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Internal Investigation Report[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                    INTERNAL INVESTIGATION REPORT
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Case reference:
+
+    Grounds for opening the investigation:
+    Employees and departments involved:
+    Account of the events under investigation:
+    Witness statements and supporting evidence:
+    Relevant provisions of the Code of Conduct or Legal Mandate:
+    Findings and conclusions:
+    Recommended action:
+    Attached documents:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
 doc-text-printer-condition-report =
    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Technical Condition Report[/head]
@@ -133,6 +181,55 @@ doc-text-printer-report-study-object =
     External description of the object:
 
     Identified properties of the object:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-experiment-report =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Experiment Report[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                            EXPERIMENT REPORT
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Experiment name or reference:
+
+    Purpose and hypothesis:
+    Personnel participating in the experiment:
+    Materials and equipment used:
+    Safety precautions and containment measures:
+    Procedure and test conditions:
+    Observations and measurements:
+    Unexpected effects or incidents:
+    Results and conclusions:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-disposal-report =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Disposal Report[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                            DISPOSAL REPORT
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+
+    I, (full name), in the position of (full job title), report the disposal of the property or materials listed below.
+    Items, quantities, and identifying details:
+    Reason for disposal:
+    Authorizing document or responsible supervisor:
+    Disposal method and location:
+    Safety measures taken:
+    Recoverable materials returned to storage:
+    Employees present during disposal:
 
     =============================================
                                 ⠀          [italic]Place for seals[/italic]
@@ -229,6 +326,29 @@ doc-text-printer-application-equipment =
 
     =============================================
                                 ⠀          [italic]Place for seals[/italic]
+doc-text-printer-appeal =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Appeal[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                                APPEAL
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Addressed to:
+
+    I, (full name), request a review of the decision described below.
+    Decision or document being appealed:
+    Person who issued the decision:
+    Grounds for appeal:
+    Supporting evidence and attached documents:
+    Requested resolution:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
 doc-text-printer-evacuation-shuttle-request =
     ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
     ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Evacuation Shuttle Request[/head]
@@ -268,6 +388,75 @@ doc-text-printer-shuttle-registration-request =
     Responsible for construction:
 
     Requested name:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-request-call-members-central-committee-dso =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Central Command Assistance Request[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                REQUEST FOR CENTRAL COMMAND PERSONNEL
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+
+    Dear Central Command, I, (full name), in the position of (full job title), request the dispatch of Central Command or Special Operations personnel to the station.
+    Personnel or team requested:
+    Purpose of the visit and assistance required:
+    Current situation and active threats:
+    Measures already taken by station personnel:
+    Reason the station cannot resolve the matter independently:
+    Designated station contact and meeting location:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-request-to-establish-threat-level =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Threat Level Change Request[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                    REQUEST TO ESTABLISH A THREAT LEVEL
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Addressed to:
+
+    I, (full name), in the position of (full job title), request that the station's threat level be changed as detailed below.
+    Current threat level:
+    Requested threat level:
+    Nature of the threat and supporting evidence:
+    Measures already taken:
+    Reason the requested level is appropriate:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-request-change-salary =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Salary Change Request[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                        REQUEST FOR SALARY CHANGE
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Addressed to:
+
+    I, (full name), in the position of (full job title), request a review of the compensation of (employee's full name), employed as (full job title) in (department name).
+    Current salary and payment period:
+    Proposed salary and payment period:
+    Reason for the adjustment:
+    Supporting performance records or changed duties:
+    Proposed effective date:
 
     =============================================
                                 ⠀          [italic]Place for seals[/italic]
@@ -388,6 +577,30 @@ doc-text-printer-request-modernization =
 
     =============================================
                                 ⠀          [italic]Place for seals[/italic]
+doc-text-printer-complaint-violation-labor-rules =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Workplace Conduct Complaint[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                    COMPLAINT FOR VIOLATION OF LABOR RULES
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Addressed to:
+
+    I, (full name), in the position of (full job title), request an investigation into the following alleged breach of workplace duties or the Code of Conduct.
+    Employee and department concerned:
+    Time and location of the incident:
+    Duties or rules allegedly violated:
+    Description of the incident and its effect on work:
+    Witnesses and supporting evidence:
+    Requested corrective action:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
 doc-text-printer-complaint-offense =
     ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
     ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Snitch Report[/head]
@@ -421,6 +634,30 @@ doc-text-printer-permission-equipment =
 
     I, (full name), authorize (full name), in the position of (full job title), to use the following work equipment of the department:
 
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-permission-to-travel-in-case-of-threat =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Emergency Travel Permit[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                    TRAVEL PERMIT IN CASE OF THREAT
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+
+    I, (full name), in the position of (full job title), authorize the persons listed below to travel to (destination) in response to (description of the threat).
+    Authorized travelers and positions:
+    Purpose of travel:
+    Departure point and means of transport:
+    Route and destination:
+    Escort or safety arrangements:
+    Conditions and duration of this permission:
+
+    This permit applies only to the travel described above and does not grant unrestricted access to other areas.
     =============================================
                                 ⠀          [italic]Place for seals[/italic]
 doc-text-printer-search-permission =
@@ -518,6 +755,29 @@ doc-text-printer-construction-permit =
 
     I, (full name), in the position of (full job title), authorize (full name), in the position of (full job title), to carry out the reconfiguration of part of the station (indication of the reconfiguration location) for the reason (reason for reconfiguration).
     Agreed scope of reconfiguration:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-permission-to-extend-marriage =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Marriage Extension Permit[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                    PERMISSION TO EXTEND A MARRIAGE
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+
+    I, (full name), in the position of (full job title), record the consent of the parties listed below to add (full name) to their existing marriage.
+    Existing spouses:
+    Marriage certificate reference:
+    Additional spouse or spouses:
+    Full names to be used after the ceremony:
+    Statements of consent and signatures of all parties:
+    Officiant's name and position:
 
     =============================================
                                 ⠀          [italic]Place for seals[/italic]
@@ -643,6 +903,102 @@ doc-text-printer-product-manufacturing-order =
     Author's position:
     Requested item:
     Reason (Please be detailed.):
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-order-purchase-resources-equipment =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Resources and Equipment Purchase Order[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                PURCHASE ORDER FOR RESOURCES AND EQUIPMENT
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Requesting department:
+
+    I, (full name), in the position of (full job title), request that the Cargo department purchase the following resources and equipment for station use.
+    Items and quantities:
+    Intended use and reason for purchase:
+    Estimated cost and funding source:
+    Delivery location and receiving employee:
+    Authorizing supervisor:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-ordering-special-equipment =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Special Equipment Requisition[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                    REQUISITION FOR SPECIAL EQUIPMENT
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Addressed to:
+
+    I, (full name), in the position of (full job title), request the supply of special equipment not available through the station's ordinary stores.
+    Equipment requested and quantity:
+    Operational need and intended use:
+    Reason standard equipment is insufficient:
+    Intended operator and responsible department:
+    Storage, handling, and return arrangements:
+    Requested delivery location:
+    Authorizing supervisor:
+
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-order-purchase-weapons =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Armaments Purchase Order[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                        PURCHASE ORDER FOR ARMAMENTS
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Requesting department:
+
+    I, (full name), in the position of (full job title), request the purchase of the weapons and ammunition listed below for (stated operational purpose).
+    Weapons, ammunition types, and quantities:
+    Reason existing armaments are insufficient:
+    Estimated cost and funding source:
+    Authorized recipients:
+    Secure delivery and storage location:
+    Authorizing supervisor:
+
+    This purchase order does not itself authorize the bearer to carry or use the requested weapons.
+    =============================================
+                                ⠀          [italic]Place for seals[/italic]
+doc-text-printer-certificate =
+    ⠀[color=#1b487e]███░███░░░░██░░░░[/color]
+    ⠀[color=#1b487e]░██░████░░░██░░░░[/color]      [head=3]Certificate[/head]
+    ⠀[color=#1b487e]░░█░██░██░░██░█░░[/color]               [head=3]NanoTrasen[/head]
+    ⠀[color=#1b487e]░░░░██░░██░██░██░[/color]           [bold]Jamboree Sector[/bold]
+    ⠀[color=#1b487e]░░░░██░░░████░███[/color]
+    =============================================
+                                CERTIFICATE
+    =============================================
+    Time from the start of the shift and date:
+    Document author:
+    Author's position:
+    Issued to:
+
+    I, (full name), in the position of (full job title), certify the following facts on the basis of the records or observations identified below.
+    Subject of certification:
+    Facts certified:
+    Supporting records or grounds for certification:
+    Purpose and intended recipient:
+    Issuer's signature:
 
     =============================================
                                 ⠀          [italic]Place for seals[/italic]

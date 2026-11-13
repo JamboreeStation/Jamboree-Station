@@ -62,6 +62,7 @@ blob-not-enough-resources = Not enough resources.
 blob-help = Only God can help you.
 blob-swap-chem = In development.
 blob-mob-attack-blob = You can not attack a blob.
+blob-no-using-guns-popup = You cannot use guns!
 blob-get-resource = +{ $point }
 blob-spent-resource = -{ $point }
 blobberaut-not-on-blob-tile = You are dying while not on blob tiles.
@@ -137,6 +138,7 @@ blob-carrier-role-greeting = You are a carrier of Blob. Find a secluded place at
 
 # Verbs
 blob-pod-verb-zombify = Zombify
+blob-verb-upgrade = Upgrade Blob
 blob-verb-upgrade-to-strong = Upgrade to Strong Blob
 blob-verb-upgrade-to-reflective = Upgrade to Reflective Blob
 blob-verb-remove-blob-tile = Remove Blob
@@ -187,6 +189,7 @@ admin-verb-make-blob = Make the target into a blob carrier.
 admin-verb-text-make-blob = Make Blob Carrier
 
 # Language
+speak-vv-blob = Blob
 language-Blob-name = Blob
 chat-language-Blob-name = Blob
 language-Blob-description = Bleeb bob! Blob blob!

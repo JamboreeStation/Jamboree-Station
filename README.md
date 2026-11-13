@@ -63,8 +63,10 @@ Exceptions to this are simple tools like Rider's single-line completion feature.
 
 ## License
 
-All code in this codebase is released under the AGPL-3.0-or-later license. Each file includes REUSE Specification headers or separate .license files that specify a dual license option. This dual licensing is provided to simplify the process for projects that are not using AGPL, allowing them to adopt the relevant portions of the code under an alternative license. You can review the complete texts of these licenses in the LICENSES/ directory.
+This fork uses AGPL-3.0-or-later for its own code, with MIT, MPL-2.0, and other imported-file exceptions. Consult each file's notices, accompanying attribution records, and applicable `REUSE.toml` annotations; the root license does not relicense third-party work. Not every file currently has complete or reconciled licensing information. Alternative licensing is available only where explicitly granted (`OR` expresses a choice; `AND` requires both licenses). License texts are in `LICENSES/`.
 
 Most media assets are licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) unless stated otherwise. Assets have their license and the copyright in the metadata file. [Example](https://github.com/space-wizards/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 
 Note that some assets are licensed under the non-commercial [CC-BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) or similar non-commercial licenses and will need to be removed if you wish to use this project commercially.
+
+See [the licensing audit](LICENSE-AUDIT.md) for coverage, provenance evidence, and unresolved conflicts, including non-commercial notices in imported source code. The audit and SPDX annotations are not a certification that every imported work has valid redistribution permission or is compatible with the combined project.

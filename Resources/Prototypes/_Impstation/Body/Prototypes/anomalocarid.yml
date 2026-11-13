@@ -29,6 +29,7 @@
         stomach: OrganAnomalocaridStomach
         liver: OrganAnomalocaridLiver
         kidneys: OrganAnomalocaridKidneys
+        butt: Butt # Goob
     right arm:
       part: RightArmAnomalocarid
       connections:

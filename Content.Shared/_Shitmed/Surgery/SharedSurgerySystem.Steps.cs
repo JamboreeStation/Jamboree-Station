@@ -678,6 +678,10 @@ public abstract partial class SharedSurgerySystem
 
     private void OnPainInflicterCheck(Entity<SurgeryStepPainInflicterComponent> ent, ref SurgeryStepCompleteCheckEvent args)
     {
+
+        if (!HasComp<SurgeryRepeatableStepComponent>(ent))
+            return;
+
         if (!_consciousness.TryGetNerveSystem(args.Body, out var nerveSys))
             return;
 
@@ -855,18 +859,21 @@ public abstract partial class SharedSurgerySystem
         if (!IsSurgeryValid(body, targetPart, surgeryId, stepId, user, out var surgery, out var part, out var step))
         {
             error = StepInvalidReason.SurgeryInvalid;
+            RejectStep(user, error);
             return false;
         }
 
         if (!PreviousStepsComplete(body, part, surgery, stepId, user))
         {
             error = StepInvalidReason.MissingPreviousSteps;
+            RejectStep(user, error);
             return false;
         }
 
         if (IsStepComplete(body, part, stepId, surgery))
         {
             error = StepInvalidReason.StepCompleted;
+            RejectStep(user, error);
             return false;
         }
 
@@ -910,6 +917,7 @@ public abstract partial class SharedSurgerySystem
         if (!_doAfter.TryStartDoAfter(doAfter))
         {
             error = StepInvalidReason.DoAfterFailed;
+            RejectStep(user, error);
             return false;
         }
 
@@ -926,6 +934,26 @@ public abstract partial class SharedSurgerySystem
 
         _popup.PopupPredicted(locResult, user, user);
         return true;
+    }
+
+    private void RejectStep(EntityUid user, StepInvalidReason reason)
+    {
+        // Predicted clicks can be accepted client-side but rejected server-side.
+        // Popup client-side only covers reasons the client itself rejected (PopupClient is a server no-op),
+        // so server rejections go through PopupEntity to tell the player why their click did nothing.
+        var locId = reason switch
+        {
+            StepInvalidReason.SurgeryInvalid => "surgery-popup-step-invalid",
+            StepInvalidReason.MissingPreviousSteps => "surgery-popup-step-missing-previous",
+            StepInvalidReason.StepCompleted => "surgery-popup-step-completed",
+            StepInvalidReason.DoAfterFailed => "surgery-popup-step-doafter-failed",
+            _ => null,
+        };
+
+        if (locId is null)
+            return;
+
+        _popup.PopupEntity(Loc.GetString(locId), user, user);
     }
 
     private float GetSurgeryDuration(EntityUid surgeryStep, EntityUid user, EntityUid target, float toolSpeed)
