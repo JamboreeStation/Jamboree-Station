@@ -221,6 +221,7 @@ public sealed class NtslTelecomSystem : EntitySystem
         // Several servers can carry the same channel
         _servers.Sort((a, b) => a.Owner.Id.CompareTo(b.Owner.Id));
 
+        var contentChanged = false;
         foreach (var server in _servers)
         {
             var interpreter = GetInterpreter(server);
@@ -269,7 +270,9 @@ public sealed class NtslTelecomSystem : EntitySystem
                 return false;
             }
 
-            message = CleanText(NtslInterpreter.ToText(output.Get("content")), NtslInterpreter.MaxStringLength, "*beep*");
+            var content = NtslInterpreter.ToText(output.Get("content"));
+            contentChanged |= content != message;
+            message = CleanText(content, NtslInterpreter.MaxStringLength, "*beep*");
             name = CleanText(NtslInterpreter.ToText(output.Get("source")), MaxNameLength, name);
             job = CleanText(NtslInterpreter.ToText(output.Get("job")), MaxNameLength, string.Empty);
             filters = ParseFilters(output.Get("filters"));
@@ -280,6 +283,15 @@ public sealed class NtslTelecomSystem : EntitySystem
             {
                 channel = rerouted;
             }
+        }
+
+        // fix for custom script commands showing in radio chat
+        if (!contentChanged && HideCommand(messageSource, raw, language) is { } rest)
+        {
+            if (rest.Length == 0)
+                return false;
+
+            message = rest;
         }
 
         return true;

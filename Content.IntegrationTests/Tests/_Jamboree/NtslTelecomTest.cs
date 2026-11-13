@@ -113,7 +113,9 @@ def process_signal(sig) {
 
             var blocked = Send("/block this", "Alice", out _, out _, out _, out _);
             var rerouted = Send("/med help me", "Alice", out var medMessage, out var medChannel, out var medName, out _);
-            var loud = Send("/loud HEY", "Alice", out _, out _, out _, out var loudFilters);
+            var loud = Send("/loud HEY", "Alice", out var loudMessage, out _, out _, out var loudFilters);
+            var commandOnly = Send("/loud", "Alice", out _, out _, out _, out _);
+            Send("/nothing hi", "Alice", out var unknownMessage, out _, out _, out _);
             var all = Send("/all everyone listen", "Alice", out _, out _, out _, out _, draconic);
             var broadcastLanguages = ntsl.QueuedBroadcastLanguages.ToList();
 
@@ -137,6 +139,9 @@ def process_signal(sig) {
                 Assert.That(hissedMessage, Is.EqualTo("what I typed"));
                 Assert.That(loud, Is.True);
                 Assert.That(loudFilters, Is.EqualTo(NtslFilters.Loud | NtslFilters.Italics));
+                Assert.That(loudMessage, Is.EqualTo("HEY"));
+                Assert.That(commandOnly, Is.False);
+                Assert.That(unknownMessage, Is.EqualTo("/nothing hi"));
                 Assert.That(all, Is.False);
                 Assert.That(catMessage, Is.EqualTo("itsss ssso nice nya"));
                 Assert.That(langMessage, Is.EqualTo(draconic.Name));
