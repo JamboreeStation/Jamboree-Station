@@ -1,0 +1,20 @@
+<!--
+SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc 'custom-key-window-title'}"
+               MinWidth="320">
+    <BoxContainer Orientation="Vertical" SeparationOverride="4">
+        <Label Text="{Loc 'custom-key-window-name'}" />
+        <LineEdit Name="NameEdit" />
+        <Label Text="{Loc 'custom-key-window-prefix'}" />
+        <LineEdit Name="KeyEdit" />
+        <Label Text="{Loc 'custom-key-window-color'}" />
+        <ColorSelectorSliders Name="ColorSelector" Color="#d39af0" />
+        <Label Name="ColorPreview" />
+        <Button Name="ConfirmButton" Text="{Loc 'custom-key-window-confirm'}" />
+    </BoxContainer>
+</DefaultWindow>

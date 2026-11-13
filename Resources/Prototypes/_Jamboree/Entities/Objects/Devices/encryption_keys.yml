@@ -1,0 +1,20 @@
+# SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyBlank
+  name: blank encryption key
+  description: An unprogrammed chip. Use a multitool on it to set up a custom radio channel.
+  components:
+  - type: Sprite
+    layers:
+    - state: crypt_silver
+      map: [ "enum.CustomEncryptionKeyLayers.Base" ]
+  - type: CustomEncryptionKey
+  - type: UserInterface
+    interfaces:
+      enum.CustomEncryptionKeyUiKey.Key:
+        type: CustomEncryptionKeyBoundUserInterface
+  - type: Appearance

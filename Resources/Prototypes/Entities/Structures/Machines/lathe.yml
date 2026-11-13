@@ -170,6 +170,7 @@
     - GrenadeTriggersStatic
     - TapeRecorderStatic
     - MiscSignallersStatic
+    - RadioStaticJamboree # Jamboree~ blank encryption keys
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityWeaponsStatic

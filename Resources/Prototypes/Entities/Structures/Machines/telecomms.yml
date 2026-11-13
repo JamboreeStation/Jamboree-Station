@@ -181,6 +181,12 @@
     keysExtractionMethod: Prying
     keySlots: 10
   - type: TelecomServer
+  - type: ActivatableUI # Jamboree~ custom radio channels
+    key: enum.CustomRadioServerUiKey.Key
+  - type: UserInterface # Jamboree~ custom radio channels
+    interfaces:
+      enum.CustomRadioServerUiKey.Key:
+        type: CustomRadioServerBoundUserInterface
   - type: ContainerContainer
     containers:
       key_slots: !type:Container
