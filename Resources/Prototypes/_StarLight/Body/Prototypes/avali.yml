@@ -29,6 +29,7 @@
         stomach: OrganAvaliStomach
         liver: OrganAvaliLiver
         kidneys: OrganAvaliKidneys
+        butt: Butt # Goob
     right arm:
       part: RightArmAvali
       connections:

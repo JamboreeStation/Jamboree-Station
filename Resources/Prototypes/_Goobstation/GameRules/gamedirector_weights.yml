@@ -14,6 +14,16 @@
     CosmicCult: 0.05 # make it semi often so we can test it
     Conspirators: 0.2 #OMU added, make it fairly commmon so we can test it and get feedback
 
+- type: weightedRandom
+  id: GameDirectorWatcher
+  weights:
+    Traitor: 0.45
+    Changeling: 0.2
+    Heretic: 0.2
+    BlobGameMode: 0.05
+    Wizard: 0.05
+    CosmicCult: 0.05
+
 
 - type: incompatibleModes
   id: Nukeops

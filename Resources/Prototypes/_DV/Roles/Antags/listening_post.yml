@@ -1,8 +1,8 @@
 - type: antag
   id: ListeningPost
-  name: roles-antag-listening-post-name
+  name: ghost-role-information-listeningop-name
   antagonist: true
-  objective: roles-antag-listening-post-objective
+  objective: ghost-role-information-listeningop-description
   # keep these in sync with the spawner
   requirements: # Worth considering these numbers for the goal of making sure someone willing to MRP takes this.
   - !type:OverallPlaytimeRequirement

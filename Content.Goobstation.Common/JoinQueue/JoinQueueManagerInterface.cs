@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 namespace Content.Goobstation.Common.JoinQueue;
 
 /// <summary>
@@ -16,7 +20,7 @@ public interface IJoinQueueManager
     void Update(float frameTime);
 
     /// <summary>
-    /// Gets the total number of players currently waiting in any queue (patron or regular).
+    /// Gets the total number of players currently waiting in the queue.
     /// </summary>
     int PlayerInQueueCount { get; }
 

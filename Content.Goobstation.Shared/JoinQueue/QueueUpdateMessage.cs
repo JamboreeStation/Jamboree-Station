@@ -15,7 +15,6 @@ public sealed class QueueUpdateMessage : NetMessage
     // Queue info
     public int Total { get; set; }
     public int Position { get; set; }
-    public bool IsPatron { get; set; }
 
     // Estimated wait
     public float EstimatedWaitSeconds { get; set; } = -1f;
@@ -35,7 +34,6 @@ public sealed class QueueUpdateMessage : NetMessage
     {
         Total = buffer.ReadInt32();
         Position = buffer.ReadInt32();
-        IsPatron = buffer.ReadBoolean();
         EstimatedWaitSeconds = buffer.ReadFloat();
 
         MapName = buffer.ReadString();
@@ -57,7 +55,6 @@ public sealed class QueueUpdateMessage : NetMessage
     {
         buffer.Write(Total);
         buffer.Write(Position);
-        buffer.Write(IsPatron);
         buffer.Write(EstimatedWaitSeconds);
 
         buffer.Write(MapName);

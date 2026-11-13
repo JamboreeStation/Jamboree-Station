@@ -63,6 +63,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._EinsteinEngines.Overlays;
+using Content.Shared._Funkystation.Fluids;
 using Content.Shared.Armor;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
@@ -110,6 +111,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, ElectrocutionAttemptEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, SlipAttemptEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshMovementSpeedModifiersEvent>(RelayInventoryEvent);
+        SubscribeLocalEvent<InventoryComponent, SpilledOnEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, BeforeStripEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, SeeIdentityAttemptEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, ModifyChangedTemperatureEvent>(RelayInventoryEvent);
@@ -133,6 +135,7 @@ public partial class InventorySystem
         SubscribeLocalEvent<InventoryComponent, ExaminedEvent>(RelayInventoryEvent); // Harmony - added for lanyards.
 
         // by-ref events
+        SubscribeLocalEvent<InventoryComponent, IngestionAttemptEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, RefreshFrictionModifiersEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, BeforeStaminaDamageEvent>(RefRelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, GetExplosionResistanceEvent>(RefRelayInventoryEvent);

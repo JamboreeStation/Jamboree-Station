@@ -5,6 +5,8 @@
   parent: Clothing
   id: UnsensoredClothingUniformBase
   components:
+  - type: ExaminableSolution
+    solution: stain
   # Goobstation edit start
   - type: EmitSoundOnPickup
     sound:
@@ -40,6 +42,9 @@
     requiresSpecialDigestion: true
   - type: SolutionContainerManager
     solutions:
+      stain:
+        maxVol: 1
+        canReact: false
       food:
         maxVol: 30
         reagents:
@@ -51,6 +56,22 @@
     - Recyclable
     - WhitelistChameleon
     - Skirt # Goobstation
+  - type: Appearance
+  - type: Stainable
+    clothingVisuals:
+      jumpsuit:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: uniformblood
+    itemVisuals:
+      left:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: itemblood
+      right:
+      - sprite: _Funkystation/Effects/blood.rsi
+        state: itemblood
+    iconVisuals:
+    - sprite: _Funkystation/Effects/blood.rsi
+      state: uniformbloodicon
 
 - type: entity
   abstract: true

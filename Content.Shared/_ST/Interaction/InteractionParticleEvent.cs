@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: 2026 Janet Blackquill <uhhadd@gmail.com>
+// SPDX-FileCopyrightText: 2026 mirrorcult <mirrorcult@pm.me>
 //
-// SPDX-License-Identifier: LicenseRef-Wallening
+// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Robust.Shared.Serialization;
 

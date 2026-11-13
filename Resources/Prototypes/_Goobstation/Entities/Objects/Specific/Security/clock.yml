@@ -1,8 +1,12 @@
+# SPDX-FileCopyrightText: 2026 Goob Station Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: BaseItem
   id: ObraDinnClock
-  name: clock of the insurance evaluator
-  description: an old heirloom that seems to be ticking backwards
+  name: crime scene analyzer
+  description: A machine that allows to wielder to scan a body and determine basic details about those around a deceased person. Wind back the clock and solve the case!
   components:
   - type: Sprite
     sprite: _Goobstation/Objects/Specific/Security/Obradinnclock.rsi

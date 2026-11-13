@@ -203,7 +203,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Server._RMC14.LinkAccount; // RMC - Patreon
 
 namespace Content.Server.Chat.Managers;
 
@@ -212,14 +211,6 @@ namespace Content.Server.Chat.Managers;
 /// </summary>
 internal sealed partial class ChatManager : IChatManager
 {
-    private static readonly Dictionary<string, string> PatronOocColors = new()
-    {
-        // I had plans for multiple colors and those went nowhere so...
-        { "nuclear_operative", "#aa00ff" },
-        { "syndicate_agent", "#aa00ff" },
-        { "revolutionary", "#aa00ff" }
-    };
-
     [Dependency] private readonly IReplayRecordingManager _replay = default!;
     [Dependency] private readonly IServerNetManager _netManager = default!;
     [Dependency] private readonly IAdminManager _adminManager = default!;
@@ -232,7 +223,6 @@ internal sealed partial class ChatManager : IChatManager
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly DiscordChatLink _discordLink = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly LinkAccountManager _linkAccount = default!; // RMC - Patreon
     private ISawmill _sawmill = default!;
 
     /// <summary>
@@ -475,11 +465,6 @@ internal sealed partial class ChatManager : IChatManager
         {
             var prefs = _preferencesManager.GetPreferences(player.UserId);
             colorOverride = prefs.AdminOOCColor;
-        }
-        if (  _netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) &&
-            _linkAccount.GetPatron(player)?.Tier != null) // RMC - Patreon
-        {
-            wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", "#aa00ff"),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message))); // RMC - Patreon
         }
 
         //TODO: player.Name color, this will need to change the structure of the MsgChatMessage

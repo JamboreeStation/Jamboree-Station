@@ -30,41 +30,27 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Linq; // Goob - ooc icon selection
-using Content.Client.Lobby.UI;
 using Content.Client.Message;
 using Content.Goobstation.Common.CCVar;
-using Content.Goobstation.Common.Patrons; // Goob - ooc icon selection
-using Content.Goobstation.Shared.Patrons; // Goob - ooc icon selection
 using Content.Shared._RMC14.LinkAccount;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
-using Robust.Shared.Prototypes; // Goob - ooc icon selection
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
-using Robust.Client.UserInterface.Controls; // Goob - ooc icon selection
-using static Robust.Client.UserInterface.Controls.BaseButton;
-using static Robust.Client.UserInterface.Controls.LineEdit;
-using static Robust.Client.UserInterface.Controls.TabContainer;
 
 namespace Content.Client._RMC14.LinkAccount;
 
-public sealed class LinkAccountUIController : UIController, IOnSystemChanged<LinkAccountSystem>
+public sealed class LinkAccountUIController : UIController
 {
     [Dependency] private readonly IClipboardManager _clipboard = default!;
     [Dependency] private readonly IConfigurationManager _config = default!;
-    [Dependency] private readonly IEntityNetworkManager _entityNet = default!; // Goob - ooc icon selection
     [Dependency] private readonly LinkAccountManager _linkAccount = default!;
     [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!; // Goob - ooc icon selection
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IUriOpener _uriOpener = default!;
 
     private LinkAccountWindow? _window;
-    private PatronPerksWindow? _patronPerksWindow;
-    private string? _selectedOocIcon; // Goob - ooc icon selection
     private TimeSpan _disableUntil;
 
     private Guid _code;
@@ -72,7 +58,6 @@ public sealed class LinkAccountUIController : UIController, IOnSystemChanged<Lin
     public override void Initialize()
     {
         _linkAccount.CodeReceived += OnCode;
-        _linkAccount.Updated += OnUpdated;
     }
 
     private void OnCode(Guid code)
@@ -83,24 +68,6 @@ public sealed class LinkAccountUIController : UIController, IOnSystemChanged<Lin
             return;
 
         _window.CopyButton.Disabled = false;
-    }
-
-    private void OnUpdated()
-    {
-        if (UIManager.ActiveScreen is not LobbyGui gui)
-            return;
-
-        gui.CharacterPreview.PatronPerks.Visible = _linkAccount.CanViewPatronPerks();
-    }
-
-    private void OnLobbyMessageReceived(SharedRMCDisplayLobbyMessageEvent message)
-    {
-        if (UIManager.ActiveScreen is not LobbyGui gui)
-            return;
-
-        var user = FormattedMessage.EscapeText(message.User);
-        var msg = FormattedMessage.EscapeText(message.Message);
-        gui.LobbyMessageLabel.SetMarkupPermissive($"[font size=20]Lobby message by: {user}\n{msg}[/font]");
     }
 
     public void ToggleWindow()
@@ -145,251 +112,6 @@ public sealed class LinkAccountUIController : UIController, IOnSystemChanged<Lin
 
         _window.Close();
         _window = null;
-    }
-
-    public void TogglePatronPerksWindow()
-    {
-        if (_patronPerksWindow == null)
-        {
-            _patronPerksWindow = new PatronPerksWindow();
-            _patronPerksWindow.OnClose += () => _patronPerksWindow = null;
-
-            var tier = _linkAccount.Tier;
-            SetTabTitle(_patronPerksWindow.LobbyMessageTab, Loc.GetString("rmc-ui-lobby-message"));
-            SetTabVisible(_patronPerksWindow.LobbyMessageTab, tier is { LobbyMessage: true });
-            _patronPerksWindow.LobbyMessageSaveButton.OnPressed += OnLobbyMessageSave;
-
-            if (_linkAccount.LobbyMessage?.Message is { } lobbyMessage)
-                _patronPerksWindow.LobbyMessage.Text = lobbyMessage;
-
-            SetTabTitle(_patronPerksWindow.ShoutoutTab, Loc.GetString("rmc-ui-shoutout"));
-            SetTabVisible(_patronPerksWindow.ShoutoutTab, tier is { RoundEndShoutout: true });
-            _patronPerksWindow.NTShoutoutSaveButton.OnPressed += OnNTShoutoutSave;
-
-            if (_linkAccount.RoundEndShoutout?.NT is { } ntShoutout)
-                _patronPerksWindow.NTShoutout.Text = ntShoutout;
-
-            SetTabTitle(_patronPerksWindow.GhostColorTab, Loc.GetString("rmc-ui-ghost-color"));
-            SetTabVisible(_patronPerksWindow.GhostColorTab, tier is { GhostColor: true });
-            _patronPerksWindow.GhostColorSliders.Color = _linkAccount.GhostColor ?? Color.White;
-            _patronPerksWindow.GhostColorSliders.OnColorChanged += OnGhostColorChanged;
-            _patronPerksWindow.GhostColorClearButton.OnPressed += OnGhostColorClear;
-            _patronPerksWindow.GhostColorSaveButton.OnPressed += OnGhostColorSave;
-
-            // Goob start - ooc icon selection
-            SetTabTitle(_patronPerksWindow.OocIconTab, Loc.GetString("goob-ui-ooc-icon"));
-            SetTabVisible(_patronPerksWindow.OocIconTab, tier is { OocIcons: true });
-            if (tier is { OocIcons: true })
-                PopulateOocIcons(tier);
-            // Goob end
-
-            UpdateExamples();
-
-            for (var i = 0; i < _patronPerksWindow.Tabs.ChildCount; i++)
-            {
-                var child = _patronPerksWindow.Tabs.GetChild(i);
-                if (!child.GetValue(TabVisibleProperty))
-                    continue;
-
-                _patronPerksWindow.Tabs.CurrentTab = i;
-                break;
-            }
-
-            _patronPerksWindow.OpenCentered();
-            return;
-        }
-
-        _patronPerksWindow.Close();
-        _patronPerksWindow = null;
-    }
-
-    private void OnLobbyMessageSave(ButtonEventArgs args)
-    {
-        var text = _patronPerksWindow?.LobbyMessage.Text;
-        if (text == null)
-            return;
-
-        if (text.Length > SharedRMCLobbyMessage.CharacterLimit)
-        {
-            text = text[..SharedRMCLobbyMessage.CharacterLimit];
-            _patronPerksWindow?.LobbyMessage.SetText(text, false);
-        }
-
-        _net.ClientSendMessage(new RMCChangeLobbyMessageMsg { Text = text });
-    }
-
-    private void OnNTShoutoutSave(ButtonEventArgs args)
-    {
-        var text = _patronPerksWindow?.NTShoutout.Text;
-        if (text == null)
-            return;
-
-        if (text.Length > SharedRMCRoundEndShoutouts.CharacterLimit)
-        {
-            text = text[..SharedRMCRoundEndShoutouts.CharacterLimit];
-            _patronPerksWindow?.NTShoutout.SetText(text, false);
-        }
-
-        _net.ClientSendMessage(new RMCChangeNTShoutoutMsg { Name = text });
-        UpdateExamples();
-    }
-
-    private void OnGhostColorChanged(Color color)
-    {
-        if (_patronPerksWindow is not { IsOpen: true })
-            return;
-
-        _patronPerksWindow.GhostColorSaveButton.Disabled = false;
-    }
-
-    private void OnGhostColorClear(ButtonEventArgs args)
-    {
-        if (_patronPerksWindow is not { IsOpen: true })
-            return;
-
-        _patronPerksWindow.GhostColorSliders.Color = Color.White;
-        _net.ClientSendMessage(new RMCClearGhostColorMsg());
-    }
-
-    private void OnGhostColorSave(ButtonEventArgs args)
-    {
-        if (_patronPerksWindow is not { IsOpen: true })
-            return;
-
-        _net.ClientSendMessage(new RMCChangeGhostColorMsg { Color = _patronPerksWindow.GhostColorSliders.Color });
-    }
-
-    // Goob start - ooc icon selection
-    private void PopulateOocIcons(SharedRMCPatronTier tier)
-    {
-        if (_patronPerksWindow == null || !_prototype.TryIndex(tier.Id, out var tierProto))
-            return;
-
-        var window = _patronPerksWindow;
-        window.OocIconList.RemoveAllChildren();
-        window.OocIconPreview.DisplayRect.Stretch = TextureRect.StretchMode.Scale;
-        _selectedOocIcon = _linkAccount.OocIcon;
-
-        var group = new ButtonGroup();
-        var icons = _prototype.GetAvailableOocIcons(tierProto).ToList();
-
-        foreach (var iconTier in tierProto.OocIconTiers)
-        {
-            var tierIcons = icons
-                .Where(icon => icon.Tier == iconTier)
-                .OrderBy(icon => Loc.GetString(icon.Name))
-                .ToList();
-
-            if (tierIcons.Count == 0)
-                continue;
-
-            var heading = _prototype.TryIndex(iconTier, out var iconTierProto)
-                ? Loc.GetString(iconTierProto.Name)
-                : iconTier.Id;
-
-            window.OocIconList.AddChild(new Label { Text = heading, StyleClasses = { "LabelHeading" }, Margin = new Thickness(0, 5, 0, 2) });
-            var grid = new GridContainer { Columns = 12 };
-            window.OocIconList.AddChild(grid);
-
-            foreach (var icon in tierIcons)
-            {
-                var button = new Button
-                {
-                    ToggleMode = true,
-                    Group = group,
-                    SetSize = new System.Numerics.Vector2(40, 40),
-                    ToolTip = Loc.GetString(icon.Name),
-                    Pressed = icon.ID == _selectedOocIcon,
-                };
-
-                var iconRect = new AnimatedTextureRect
-                {
-                    SetSize = new System.Numerics.Vector2(24, 24),
-                    HorizontalAlignment = Control.HAlignment.Center,
-                    VerticalAlignment = Control.VAlignment.Center,
-                };
-                iconRect.DisplayRect.Stretch = TextureRect.StretchMode.Scale;
-                iconRect.SetFromSpriteSpecifier(icon.Icon);
-                button.AddChild(iconRect);
-
-                var id = icon.ID;
-                button.OnPressed += _ =>
-                {
-                    _selectedOocIcon = id;
-                    UpdateOocIconPreview(tierProto);
-                };
-
-                grid.AddChild(button);
-            }
-        }
-
-        window.OocIconDefaultButton.OnPressed += _ =>
-        {
-            _selectedOocIcon = null;
-            foreach (var button in group.Buttons)
-            {
-                button.Pressed = false;
-            }
-
-            UpdateOocIconPreview(tierProto);
-        };
-
-        window.OocIconSaveButton.OnPressed += _ =>
-        {
-            _entityNet.SendSystemNetworkMessage(new ChangePatronOocIconEvent
-            {
-                Icon = _selectedOocIcon == null ? null : (ProtoId<OocIconPrototype>?) _selectedOocIcon,
-            });
-            window.OocIconSaveButton.Disabled = true;
-        };
-
-        UpdateOocIconPreview(tierProto, false);
-    }
-
-    private void UpdateOocIconPreview(PatronTierPrototype tier, bool changed = true)
-    {
-        if (_patronPerksWindow == null)
-            return;
-
-        var iconId = _selectedOocIcon ?? tier.Icon?.Id;
-        if (iconId != null && _prototype.TryIndex<OocIconPrototype>(iconId, out var icon))
-        {
-            _patronPerksWindow.OocIconPreview.Visible = true;
-            _patronPerksWindow.OocIconPreview.SetFromSpriteSpecifier(icon.Icon);
-            _patronPerksWindow.OocIconSelectedName.Text = _selectedOocIcon == null
-                ? Loc.GetString("goob-ui-ooc-icon-default-name", ("name", Loc.GetString(icon.Name)))
-                : Loc.GetString(icon.Name);
-        }
-        else
-        {
-            _patronPerksWindow.OocIconPreview.Visible = false;
-            _patronPerksWindow.OocIconSelectedName.Text = Loc.GetString("goob-ui-ooc-icon-none");
-        }
-
-        if (changed)
-            _patronPerksWindow.OocIconSaveButton.Disabled = false;
-    }
-    // Goob end
-
-    private void UpdateExamples()
-    {
-        if (_patronPerksWindow == null)
-            return;
-
-        var nt = _patronPerksWindow.NTShoutout.Text.Trim();
-        _patronPerksWindow.NTShoutoutExample.SetMarkupPermissive(string.IsNullOrWhiteSpace(nt)
-            ? " "
-            : $"{Loc.GetString("rmc-ui-shoutout-example")} {Loc.GetString("rmc-ui-shoutout-nt", ("name", nt))}");
-    }
-
-    public void OnSystemLoaded(LinkAccountSystem system)
-    {
-        system.LobbyMessageReceived += OnLobbyMessageReceived;
-    }
-
-    public void OnSystemUnloaded(LinkAccountSystem system)
-    {
-        system.LobbyMessageReceived -= OnLobbyMessageReceived;
     }
 
     public override void FrameUpdate(FrameEventArgs args)

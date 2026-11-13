@@ -7,23 +7,18 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Content.Server.Database.Migrations.Postgres;
 
-// Jamboree's older schema lacks the icon expected by upstream's patron
-// target models. Add it before their SQLite table rebuilds copy this column.
+// Older Jamboree databases may lack the icon column expected by upstream's model.
 [DbContext(typeof(PostgresServerDbContext))]
 [Migration("20260714000000_JamboreePatronTierIcon")]
 public sealed class JamboreePatronTierIcon : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)
     {
-        migrationBuilder.AddColumn<string>(
-            name: "icon",
-            table: "rmc_patron_tiers",
-            type: "text",
-            nullable: true);
+        migrationBuilder.Sql("ALTER TABLE rmc_patron_tiers ADD COLUMN IF NOT EXISTS icon text;");
     }
 
     protected override void Down(MigrationBuilder migrationBuilder)
     {
-        migrationBuilder.DropColumn(name: "icon", table: "rmc_patron_tiers");
+        // The column may predate this migration, so rollback must preserve it and its data.
     }
 }

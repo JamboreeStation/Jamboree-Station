@@ -1,5 +1,6 @@
 using Content.Goobstation.Common.Medical;
 using Content.Shared.Body.Components;
+using Content.Shared._Funkystation.Fluids;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
@@ -132,6 +133,8 @@ public sealed class VomitSystem : EntitySystem
             // Makes a vomit solution the size of 90% of the chemicals removed from the chemstream
             solution.AddReagent(new ReagentId(VomitPrototype, _bloodstream.GetEntityBloodData((uid, bloodStream))), vomitAmount);
         }
+
+        RaiseLocalEvent(uid, new SpilledOnEvent(uid, solution));
 
         if (_puddle.TrySpillAt(uid, solution, out var puddle, false))
         {

@@ -106,6 +106,10 @@
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Hum: # Goob
+      collection: MaleHums
+    Sniff: # Goob
+      path: /Audio/_WF/Wolfmed/Emotes/sniff_male1.ogg
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -156,6 +160,10 @@
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Hum: # Goob
+      collection: FemaleHums
+    Sniff: # Goob
+      path: /Audio/_WF/Wolfmed/Emotes/sniff_female1.ogg
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -242,6 +250,35 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Sigh: # Goob
+      collection: MaleSigh
+    Cough: # Goob
+      collection: MaleCoughs
+    Yawn: # Goob
+      collection: MaleYawn
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Purr: #Omu
+      path: /Audio/_Omu/Voice/Reptilian/Reptilian_lizard_purr.ogg
+    Rattle: #Omu
+      path: /Audio/_Omu/Voice/Reptilian/Reptilian_lizard_rattle.ogg
+    ReptilianScreech: #Omu
+      collection: ReptilianScreech
+    Chirp: # Goob
+      collection: ReptilianChirps
+    Gurgle: # Goob
+      collection: ReptilianGurgles
+    Liss: # Goob
+      collection: ReptilianLisses
+    Lurr: # Goob
+      path: /Audio/_Starlight/Voice/Reptilian/lizard_purr.ogg
+    Snicker: # Goob
+      path: /Audio/_Mono/Voice/Reptilian/laugh_1.ogg
+    Sneeze: # Goob
+      collection: MaleSneezes
+    Snore: # Goob
+      collection: Snores
+
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -280,6 +317,34 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Sigh: # Goob
+      collection: FemaleSigh
+    Cough: # Goob
+      collection: FemaleCoughs
+    Yawn: # Goob
+      collection: FemaleYawn
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Purr: #Omu
+      path: /Audio/_Omu/Voice/Reptilian/Reptilian_lizard_purr.ogg
+    Rattle: #Omu
+      path: /Audio/_Omu/Voice/Reptilian/Reptilian_lizard_rattle.ogg
+    ReptilianScreech: #Omu
+      collection: ReptilianScreech
+    Chirp: # Goob
+      collection: ReptilianChirps
+    Gurgle: # Goob
+      collection: ReptilianGurgles
+    Liss: # Goob
+      collection: ReptilianLisses
+    Lurr: # Goob
+      path: /Audio/_Starlight/Voice/Reptilian/lizard_purr.ogg
+    Snicker: # Goob
+      path: /Audio/_Mono/Voice/Reptilian/laugh_1.ogg
+    Sneeze: # Goob
+      collection: FemaleSneezes
+    Snore: # Goob
+      collection: Snores
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -466,6 +531,10 @@
     #  path: /Audio/Effects/Gasp/vox_gasp.ogg
     #DefaultDeathgasp:
     #  path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
+    Chirp: # Goob
+      collection: ResomiChirp
+    Coo: # Goob
+      collection: VoxCoos
   params:
     variation: 0.125
 
@@ -508,6 +577,12 @@
       collection: Dionasigh
     Belch: # Frontier
       collection: Belch # Frontier
+    Multichirp: # Goob
+      path: /Audio/_Impstation/Effects/Emotes/multichirp.ogg
+    Sneeze: # Goob
+      path: /Audio/Voice/Diona/diona_sneeze.ogg
+    Snore: # Goob
+      collection: Snores
   params:
     variation: 0.125
 
@@ -541,6 +616,24 @@
       path: /Audio/_Goobstation/Voice/surprised.ogg
     Gulp: # Goob
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Cough: # Goob
+      path: /Audio/_Impstation/Voice/Arachnid/arachnid_cough.ogg
+    Crying: # Goob
+      path: /Audio/_Impstation/Voice/Arachnid/arachnid_cry.ogg
+    Hiss: # Goob
+      path: /Audio/_Impstation/Voice/Arachnid/arachnid_hiss.ogg
+    Sigh: # Goob
+      path: /Audio/_Impstation/Voice/Arachnid/arachnid_sigh.ogg
+    Yawn: # Goob
+      path: /Audio/_Impstation/Voice/Arachnid/arachnid_yawn.ogg
+    Sneeze: # Goob
+      collection: MaleSneezes
+    Snore: # Goob
+      collection: Snores
+    Whistle: # Goob
+      collection: Whistles
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -591,6 +684,10 @@
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Hum: # Goob
+      collection: MaleHums
+    Sniff: # Goob
+      path: /Audio/_WF/Wolfmed/Emotes/sniff_male1.ogg
   params:
     variation: 0.125
     pitch: 0.75
@@ -640,6 +737,10 @@
       path: /Audio/_Goobstation/Voice/Human/gulp.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Hum: # Goob
+      collection: FemaleHums
+    Sniff: # Goob
+      path: /Audio/_WF/Wolfmed/Emotes/sniff_female1.ogg
   params:
     variation: 0.125
     pitch: 0.75
@@ -941,8 +1042,10 @@
       collection: Salutes
     Crack: # Imp
       collection: Cracks # Imp
-    Blink: # Imp
-      collection: Blinks # Imp
+    Blink: # Goob
+      path: /Audio/_Starlight/Effects/Emotes/blink.ogg
+    Stomp: # Goob
+      path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
 
 - type: emoteSounds
   id: DionaBodyEmotes
@@ -962,8 +1065,8 @@
        volume: -5
     Crack: # Imp
       collection: Cracks # Imp
-    Blink: # Imp
-      collection: Blinks # Imp
+    Blink: # Goob
+      path: /Audio/_Starlight/Effects/Emotes/blink.ogg
 
 - type: emoteSounds
   id: ReptilianBodyEmotes
@@ -1129,3 +1232,5 @@
       collection: Salutes
     Crack: # Imp
       collection: Cracks # Imp
+    Blink: # Goob
+      path: /Audio/_Starlight/Effects/Emotes/blink.ogg

@@ -7,6 +7,7 @@ using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Database;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Sticky;
 using Content.Shared.Sticky.Components;
 using Content.Shared.Sticky.Systems;
@@ -83,7 +84,8 @@ public sealed partial class MedicalPatchSystem : EntitySystem
         var realTransferAmount = FixedPoint2.Min(transferAmount, targetSolution.AvailableVolume);
         if (realTransferAmount <= 0)
         {
-            _popupSystem.PopupEntity(Loc.GetString("No room to inject"), target);
+            _popupSystem.PopupEntity(Loc.GetString("injector-component-target-already-full-message",
+                ("target", Identity.Entity(target, EntityManager))), target);
             return true;
         }
         var removedSolution = _solutionContainers.SplitSolution(medicalPatchSoln.Value, realTransferAmount);

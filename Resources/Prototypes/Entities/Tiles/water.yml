@@ -74,6 +74,7 @@
     blacklist:
       tags:
         - Catwalk
+  - type: WaterClothingWash
   - type: TileEntityEffect
     effects:
     - !type:Extinguish

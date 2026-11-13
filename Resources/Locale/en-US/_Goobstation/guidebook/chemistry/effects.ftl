@@ -24,9 +24,50 @@ reagent-effect-guidebook-stealth-entities = Camouflages living mobs nearby.
 
 reagent-effect-guidebook-change-faction = Changes the mob's faction to {$faction}.
 
-reagent-effect-guidebook-mutate-plants-nearby = Randomly mutates nearby plants.
+reagent-effect-guidebook-mutate-plants-nearby =
+    { $chance ->
+        [1] Increases
+        *[other] increase
+    } the mutation level of nearby plants
 
-reagent-effect-guidebook-dnascramble = Scrambles the person's DNA.
+reagent-effect-guidebook-oxygenate-nearby =
+    { $chance ->
+        [1] Adjusts
+        *[other] adjust
+    } the respiratory saturation of nearby breathing entities
+
+reagent-effect-guidebook-extinguish-nearby =
+    { $chance ->
+        [1] Extinguishes
+        *[other] extinguish
+    } nearby burning entities
+
+reagent-effect-guidebook-ignite-nearby =
+    { $chance ->
+        [1] Adjusts
+        *[other] adjust
+    } fire stacks on nearby flammable entities, igniting those with positive stacks
+
+reagent-effect-guidebook-scramble-nearby =
+    { $chance ->
+        [1] Scrambles
+        *[other] scramble
+    } the DNA of nearby humanoids
+
+reagent-effect-guidebook-create-entity-reaction-effect =
+    { $chance ->
+        [1] Creates
+        *[other] create
+    } { $amount ->
+        [1] {INDEFINITE($entname)} {$entname}
+        *[other] between 1 and {$amount} {MAKEPLURAL($entname)}
+    }
+
+reagent-effect-guidebook-dnascramble =
+    { $chance ->
+        [1] Scrambles
+        *[other] scramble
+    } the target's DNA
 
 reagent-effect-guidebook-change-species = Turns the target into a {$species}.
 

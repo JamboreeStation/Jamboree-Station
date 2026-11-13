@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Linq;
 using Content.Server.Connection;
 using Content.Server.GameTicking;
@@ -12,14 +16,13 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using Content.Goobstation.Common.CCVar;
-using Content.Server._RMC14.LinkAccount;
 using Content.Server.Database;
 using Content.Goobstation.Common.JoinQueue;
 
 namespace Content.Goobstation.Server.JoinQueue;
 
 /// <summary>
-///     Manages new player connections when the server is full and queues them up, granting access when a slot becomes free
+///     Manages new player connections when the server is full and queues them up, granting access when a slot becomes free.
 /// </summary>
 public sealed partial class JoinQueueManager : IJoinQueueManager
 {
@@ -40,19 +43,16 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
             Buckets = Histogram.ExponentialBuckets(1, 2, 14),
         });
 
-
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IConnectionManager _connection = default!;
     [Dependency] private IConfigurationManager _configuration = default!;
     [Dependency] private IServerNetManager _net = default!;
-    [Dependency] private LinkAccountManager _linkAccount = default!;
     [Dependency] private UserDbDataManager _userDb = default!;
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private IGameMapManager _gameMapManager = default!;
     [Dependency] private IGameTiming _gameTiming = default!;
 
     private readonly List<ICommonSession> _queue = new();
-    private readonly List<ICommonSession> _patronQueue = new();
 
     /// <summary>
     ///     Rolling window of recent wait times in seconds for estimating queue wait.
@@ -66,24 +66,21 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
     private readonly Dictionary<NetUserId, QueueReservation> _reservations = new();
 
     private bool _isEnabled;
-    private bool _patreonIsEnabled = true;
 
     /// <summary>
-    ///     Interval for queue info refreshes
+    ///     Interval for queue info refreshes.
     /// </summary>
     private const float InfoRefreshIntervalSeconds = 30f;
     private float _infoRefreshTimer;
 
-    public int PlayerInQueueCount => _queue.Count + _patronQueue.Count;
+    public int PlayerInQueueCount => _queue.Count;
     public int ActualPlayersCount => _player.PlayerCount - PlayerInQueueCount;
-
 
     public void Initialize()
     {
         _net.RegisterNetMessage<QueueUpdateMessage>();
 
         _configuration.OnValueChanged(GoobCVars.QueueEnabled, OnQueueCVarChanged, true);
-        _configuration.OnValueChanged(GoobCVars.PatreonSkip, OnPatronCvarChanged, true);
         _player.PlayerStatusChanged += OnPlayerStatusChanged;
         _userDb.AddOnFinishLoad(OnPlayerDataLoaded);
     }
@@ -101,7 +98,6 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
         SendUpdateMessages();
     }
 
-
     private void OnQueueCVarChanged(bool value)
     {
         _isEnabled = value;
@@ -110,36 +106,25 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
         {
             foreach (var session in _queue)
                 session.Channel.Disconnect("Queue was disabled");
-            foreach (var session in _patronQueue)
-                session.Channel.Disconnect("Queue was disabled");
         }
     }
 
-    private void OnPatronCvarChanged(bool value)
-        => _patreonIsEnabled = value;
-
-
-    private async void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
+    private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
     {
         if (e.NewStatus == SessionStatus.Disconnected)
         {
-            var wasInPatronQueue = _patronQueue.Remove(e.Session);
-            var wasInQueue = !wasInPatronQueue && _queue.Remove(e.Session);
+            var wasInQueue = _queue.Remove(e.Session);
 
-            if (wasInPatronQueue || wasInQueue)
+            if (wasInQueue)
             {
                 var graceSeconds = _configuration.GetCVar(GoobCVars.QueueReconnectGraceSeconds);
                 if (graceSeconds > 0)
-                {
-                    _reservations[e.Session.UserId] = new QueueReservation(
-                        DateTime.UtcNow,
-                        wasInPatronQueue);
-                }
+                    _reservations[e.Session.UserId] = new QueueReservation(DateTime.UtcNow);
 
                 QueueTimings.WithLabels("Unwaited").Observe((DateTime.UtcNow - e.Session.ConnectedTime).TotalSeconds);
             }
 
-            if (!wasInPatronQueue && !wasInQueue && e.OldStatus != SessionStatus.InGame)
+            if (!wasInQueue && e.OldStatus != SessionStatus.InGame)
                 return;
 
             ProcessQueue(e.Session.ConnectedTime);
@@ -151,14 +136,12 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
         }
     }
 
-
     private async void OnPlayerDataLoaded(ICommonSession session)
     {
         if (!_isEnabled)
             return;
 
         var isPrivileged = await _connection.HasPrivilegedJoin(session.UserId);
-        var isPatron = _linkAccount.GetPatron(session)?.Tier != null;
         var currentOnline = _player.PlayerCount - 1;
         var haveFreeSlot = currentOnline < _configuration.GetCVar(CCVars.SoftMaxPlayers);
         if (isPrivileged || haveFreeSlot)
@@ -177,43 +160,25 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
             var graceSeconds = _configuration.GetCVar(GoobCVars.QueueReconnectGraceSeconds);
             if ((DateTime.UtcNow - reservation.DisconnectTime).TotalSeconds <= graceSeconds)
             {
-                if (reservation.WasPatron && _patreonIsEnabled)
-                    _patronQueue.Insert(0, session);
-                else
-                    _queue.Insert(0, session);
-
+                _queue.Insert(0, session);
                 ProcessQueue(session.ConnectedTime);
                 return;
             }
         }
 
-        if (isPatron && _patreonIsEnabled)
-            _patronQueue.Add(session);
-        else
-            _queue.Add(session);
-
+        _queue.Add(session);
         ProcessQueue(session.ConnectedTime);
     }
 
     private void ProcessQueue(DateTime connectedTime)
     {
         var players = ActualPlayersCount;
-
         var softMax = _configuration.GetCVar(CCVars.SoftMaxPlayers);
 
-        while (players < softMax && (_patronQueue.Count > 0 || _queue.Count > 0))
+        while (players < softMax && _queue.Count > 0)
         {
-            ICommonSession session;
-            if (_patronQueue.Count > 0)
-            {
-                session = _patronQueue[0];
-                _patronQueue.RemoveAt(0);
-            }
-            else
-            {
-                session = _queue[0];
-                _queue.RemoveAt(0);
-            }
+            var session = _queue[0];
+            _queue.RemoveAt(0);
 
             RecordWaitTime(session);
             SendToGame(session);
@@ -223,7 +188,7 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
 
         CleanupExpiredReservations();
         SendUpdateMessages();
-        QueueCount.Set(_queue.Count + _patronQueue.Count);
+        QueueCount.Set(_queue.Count);
     }
 
     private void RecordWaitTime(ICommonSession session)
@@ -245,7 +210,7 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
 
     private void SendUpdateMessages()
     {
-        var totalInQueue = _patronQueue.Count + _queue.Count;
+        var totalInQueue = _queue.Count;
         var currentPosition = 1;
 
         var mapName = _gameMapManager.GetSelectedMap()?.MapName ?? "Unknown";
@@ -269,28 +234,8 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
         var maxPlayerCount = _configuration.GetCVar(CCVars.SoftMaxPlayers);
 
         var playerNames = new List<string>(totalInQueue);
-        foreach (var session in _patronQueue)
-            playerNames.Add(session.Name);
         foreach (var session in _queue)
             playerNames.Add(session.Name);
-
-        for (var i = 0; i < _patronQueue.Count; i++, currentPosition++)
-        {
-            _patronQueue[i].Channel.SendMessage(new QueueUpdateMessage
-            {
-                Total = totalInQueue,
-                Position = currentPosition,
-                IsPatron = true,
-                EstimatedWaitSeconds = GetEstimatedWaitForPosition(currentPosition),
-                MapName = mapName,
-                GameMode = gameMode,
-                ServerPlayerCount = serverPlayerCount,
-                MaxPlayerCount = maxPlayerCount,
-                RoundDurationMinutes = roundDurationMinutes,
-                YourName = _patronQueue[i].Name,
-                PlayerNames = playerNames,
-            });
-        }
 
         for (var i = 0; i < _queue.Count; i++, currentPosition++)
         {
@@ -298,7 +243,6 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
             {
                 Total = totalInQueue,
                 Position = currentPosition,
-                IsPatron = false,
                 EstimatedWaitSeconds = GetEstimatedWaitForPosition(currentPosition),
                 MapName = mapName,
                 GameMode = gameMode,
@@ -332,5 +276,5 @@ public sealed partial class JoinQueueManager : IJoinQueueManager
         Timer.Spawn(0, () => _player.JoinGame(session));
     }
 
-    private sealed record QueueReservation(DateTime DisconnectTime, bool WasPatron);
+    private sealed record QueueReservation(DateTime DisconnectTime);
 }

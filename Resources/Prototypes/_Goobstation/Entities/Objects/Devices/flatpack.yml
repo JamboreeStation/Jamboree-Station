@@ -207,11 +207,11 @@
 - type: entity
   parent: BaseFlatpack
   id: ChemistryHotplateFlatPack
-  name: hotplate flat pack
-  description: A flatpack used for constructing a hotplate.
+  name: thermobath flat pack
+  description: A flatpack used for constructing a thermobath.
   components:
   - type: Flatpack
-    entity: ChemistryHotplate
+    entity: MachineThermobath
 
 - type: entity
   parent: BaseFlatpack

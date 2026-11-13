@@ -1,17 +1,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Body.Events;
-using Content.Server.Body.Components;
-using Content.Shared.Body.Systems;
 using Content.Shared._Shitmed.Body.Organ;
 using Content.Server._Shitmed.DelayedDeath;
-using Content.Shared.Body.Components;
 
 namespace Content.Server._Shitmed.Body.Organ;
 
 public sealed class HeartSystem : EntitySystem
 {
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -34,7 +30,8 @@ public sealed class HeartSystem : EntitySystem
         if (TerminatingOrDeleted(uid) || TerminatingOrDeleted(args.Body))
             return;
 
-        if (_bodySystem.TryGetBodyOrganEntityComps<BrainComponent>(args.Body, out var _))
+        // Naturally brainless bodies can recover from heart loss, but debrained bodies still need a brain.
+        if (!HasComp<DebrainedComponent>(args.Body))
             RemComp<DelayedDeathComponent>(args.Body);
     }
     // Shitmed-End

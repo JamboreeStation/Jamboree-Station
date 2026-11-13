@@ -35,6 +35,7 @@ implanter-set-draw-type = Implant type:
 
 implanter-draw-text = Draw
 implanter-inject-text = Inject
+implanter-invalid-mode = Invalid mode
 
 implanter-empty-text = Empty
 

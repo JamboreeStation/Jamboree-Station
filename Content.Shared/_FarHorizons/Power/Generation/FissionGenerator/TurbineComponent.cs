@@ -1,3 +1,10 @@
+//
+// SPDX-FileCopyrightText: 2026 jhrushbe (Far-Horizons-SS14)
+// SPDX-FileCopyrightText: The Goonstation Project (nuclear reactor code derivation, per the Far-Horizons-SS14 README)
+//
+// SPDX-License-Identifier: CC-BY-NC-SA-3.0
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Robust.Shared.Prototypes;
 using Robust.Shared.GameStates;
 using Content.Shared.Tools;
@@ -12,7 +19,7 @@ namespace Content.Shared._FarHorizons.Power.Generation.FissionGenerator;
 // CC-BY-NC-SA-3.0
 // https://github.com/goonstation/goonstation/blob/ff86b044/code/obj/nuclearreactor/turbine.dm
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class TurbineComponent : Component
 {
     /// <summary>

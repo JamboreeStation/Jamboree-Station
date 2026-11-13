@@ -1,6 +1,8 @@
 <Document>
   #SUBSECTION 2: Prisoner Treatment, Searching and Seizure, and Warrants
 
+  ## Prisoner Treatment/Rights
+
   Prisoners still have these rights that must be upheld by the Security Department:
   - Prisoners must be granted adequate medical care.
   - Prisoners must be allowed access to basic communications equipment (radios or a
@@ -18,20 +20,31 @@
   only be confined to a solitary cell if they pose a risk to life and limb.
 
   Revival
+
   - If lethal force was used to incapacitate a capital offender or an attempted escape
   from permanent confinement, they are no longer eligible to be revived.
   - The CMO, Captain, or HoS may also declare a patient or prisoner to not be
   revived within reason. Example being a patient immediately killing themselves
   after revival, wasting resources.
 
-  A personnel search is a seizure of objects in a person’s backpack, hands, coat, belt, and
+  ## Searching and Seizure/Warrants
+
+  - A personnel search is a seizure of objects in a person's backpack, hands, coat, belt, and
   pockets. If any contraband is found during a search, the officer may choose to further the search
   into detainment or simply confiscate the restricted items. After the search is conducted, all legal
   items are to be returned to the person. A crewmate may legally decline any search conducted
   without probable cause or a warrant while on alert level green. This is not applicable on alert
   levels of blue or above.
+    - Probable cause is established when a crewmate has a reasonable belief that a violation has been or is being committed.
+      - Examples:
+        - The clown is seen walking out of an area they should not have access to unaccompanied.
+        - The chemist has stated over the radio that they are going to create a drug lab in maintenance.
+        - An assistant is holding a spear upon their back and wearing scrap armor.
+
+  Note: [italic]Changing the alert level to blue for the sole purpose of searching a crewmate does not validate a search and is considered to be an act of terrorism.[/italic]
+
   - A warrant is a form which specifies “who” is to be searched and “why”. It must be
-  stamped by the proper authority according to its creation
+  stamped by the proper authority according to its creation.
   - Security officers can create but cannot approve warrants. The warden or HOS
   must approve officer search warrants.
   - The warden can create a warrant but it must be approved by the HOS or the

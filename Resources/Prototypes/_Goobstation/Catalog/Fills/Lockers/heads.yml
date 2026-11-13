@@ -4,7 +4,7 @@
   id: LockerFillNanorep
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: BoxFolderCentCom
     # - id: BriefcaseBrownFilled
     - id: WeaponDisablerAdvanced
@@ -45,7 +45,8 @@
     - id: NitrogenTankFilled
     - id: HandheldCrewMonitorBSO
     - id: BlueshieldUndeterminedWeapon
-    - id: BlueshieldUndeterminedHardsuit
+    - id: ClothingOuterHardsuitBlueshieldLight
+    - id: ModsuitPlatingPraetorian
     - id: FlashlightSeclite
 
 - type: entity

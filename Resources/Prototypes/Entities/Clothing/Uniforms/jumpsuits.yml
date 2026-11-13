@@ -85,10 +85,10 @@
     inhandVisuals:
       left:
       - state: inhand-left
-        color: "#b7793d"
+        color: "#8B4513"
       right:
       - state: inhand-right
-        color: "#b7793d"
+        color: "#8B4513"
 
 - type: entity
   parent: [ClothingUniformBase, ClothingUniformFoldableBase] # Goob

@@ -33,5 +33,5 @@ public sealed partial class ScrambleNearbyEffect : EntityEffectBase<ScrambleNear
     public override LogImpact? Impact => LogImpact.Medium;
 
     public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-scramble-nearby");
+        => Loc.GetString("reagent-effect-guidebook-scramble-nearby", ("chance", Probability));
 }

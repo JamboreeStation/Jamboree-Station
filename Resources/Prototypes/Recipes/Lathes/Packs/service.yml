@@ -41,6 +41,7 @@
   - BoozeDispenserMachineCircuitboard
   - SodaDispenserMachineCircuitboard
   - ImpCoffeeMachineCircuitboard #imp
+  - WashingMachineCircuitboard
 
 ## Dynamic
 

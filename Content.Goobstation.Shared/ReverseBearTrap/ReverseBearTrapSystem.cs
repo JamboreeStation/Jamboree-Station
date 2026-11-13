@@ -86,7 +86,7 @@ public sealed partial class ReverseBearTrapSystem : EntitySystem
             return;
 
         args.Handled = true;
-        var target = args.HitEntities[0];
+        var target = args.HitEntities.First();
         var user = args.User;
 
         _popup.PopupEntity(Loc.GetString("reverse-bear-trap-component-start-cuffing-observer",

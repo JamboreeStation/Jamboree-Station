@@ -380,6 +380,9 @@ ghost-role-information-blackmarketeer-description = Make trades or take odd jobs
 ghost-role-information-cossack-name = Ancient Traveler
 ghost-role-information-cossack-description = From a history lost to time, you find yourself cast into this day and age.
 
+ghost-role-information-pirate-description = Plunder the station for valuables and share the spoils with your fellow pirates.
+ghost-role-information-pirate-captain-description = Lead your pirate crew in plundering the station and bring home a hold full of treasure.
+
 ghost-role-information-pirate-irs-name = Space Pirate
 ghost-role-information-pirate-irs-description = Confiscate the station's valuable assets. Arrest the captain for tax evasion.
 

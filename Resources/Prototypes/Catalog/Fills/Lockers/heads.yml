@@ -4,7 +4,9 @@
   id: LockerFillQuarterMaster
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+
+    - id: ModsuitPlatingLoader # Goob
+#   - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: BoxEncryptionKeyCargo
     - id: BoxFolderQmClipboard
     - id: BoxQMCircuitboards
@@ -39,7 +41,7 @@
   id: LockerFillCaptainNoLaser
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+    - id: ModsuitPlatingCaptain # Goob
     - id: CaptainIDCard
     - id: CigarGoldCase
       prob: 0.25
@@ -79,7 +81,7 @@
   id: FillCaptainHardsuit
   table: !type:AllSelector
     children:
-    - id: UndeterminedVoidsuitCaptain # Goobstation - Modsuit Update
+    - id: ClothingOuterHardsuitCap
     - id: ClothingMaskGasCaptain
     - id: JetpackCaptainFilled
     - id: OxygenTankFilled
@@ -126,7 +128,7 @@
   id: LockerFillHeadOfPersonnel
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: AccessConfigurator
     - id: BoxEncryptionKeyPassenger
     - id: BoxEncryptionKeyService
@@ -155,6 +157,7 @@
     - id: HOPUndeterminedWeapon # Jamboree - command gear selectors
     - id: ClothingEyesHudCommand
     - id: ServiceTechFabCircuitboard # Goobstation - Service Techfab
+    - id: WashingMachineFlatpack
     - id: CommandMegaphone # goob - loudspeakers
     - id: PrinterDocFlatpack  # Corvax-Printer
 
@@ -173,7 +176,7 @@
   id: LockerFillChiefEngineerNoHardsuit
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: AccessConfigurator
     - id: BoxEncryptionKeyEngineering
     - id: CigarCase
@@ -245,7 +248,7 @@
   id: LockerFillChiefMedicalOfficerNoHardsuit
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: BoxEncryptionKeyMedical
     # - id: ClothingBackpackDuffelSurgeryFilled # Goobstation - tools in webbing
     - id: ClothingEyesHudMedical
@@ -257,6 +260,7 @@
     - id: BookCodeofConduct #all heads get COC jamboree
 #    - id: Hypospray # jamboree - available in gear selector
     - id: MedicalTechFabCircuitboard
+    - id: WashingMachineFlatpack
     - id: ComputerCargoRequestMedicalFlatpack # Goobstation
     - id: MedkitFilled
     - id: RubberStampCMO
@@ -322,7 +326,7 @@
   id: LockerFillResearchDirectorNoHardsuit
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+    - id: ModsuitPlatingRD # Goob
     - id: Intellicard
     - id: BoxEncryptionKeyScience
     - id: BoxRDCircuitboards
@@ -352,7 +356,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskBreath
-    - id: UndeterminedVoidsuitRD
+    - id: ClothingOuterHardsuitRd
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
 
@@ -387,8 +391,8 @@
   id: LockerFillHeadOfSecurityNoHardsuit
   table: !type:AllSelector
     children:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
-    #- id: WeaponEnergyShotgun # Goobstation - security revamp
+    - id: ModsuitPlatingHeadOfSecurity # Goob
+   # - id: WeaponEnergyMagnum # Goobstation - Remove Energy Magnum
     - id: BookSpaceLaw
     - id: BookCodeofConduct #jamboree COC
     - id: BoxEncryptionKeySecurity
@@ -420,7 +424,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskGasSwat
-    - id: UndeterminedVoidsuitHeadOfSecurity # Goob edit
+    - id: ClothingOuterHardsuitSecurityRed
     - id: JetpackSecurityFilled
     - id: OxygenTankFilled
     - id: NitrogenTankFilled
@@ -460,7 +464,7 @@
     access: [ [ "Command" ] ]
   - type: StorageFill
     contents:
-    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
+#    - id: CandyBowlFilledLollypopsMystery #Jamboree, Remove when Halloween is over
     - id: WeaponRevolverDeckard
     - id: JetpackBlue
     - id: SpaceCash1000

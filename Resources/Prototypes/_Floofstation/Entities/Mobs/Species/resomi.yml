@@ -51,7 +51,8 @@
   - type: Speech
     speechVerb: Parrot
     speechSounds: MaleResomi # Omu
-    allowedEmotes: ['Chirp', 'Trill', 'Warble', 'Wurble', 'Scree', 'Call', 'Squawk'] #goob # omu, add 'Scree', 'Call', 'Squawk'
+    allowedEmotes: ['Chirp', 'Trill', 'Warble', 'Wurble', 'Scree', 'Call', 'Squawk', 'Coo', 'Growl'] #goob # omu, add 'Scree', 'Call', 'Squawk'
+
   - type: Vocal
     sounds:
 # Omu start

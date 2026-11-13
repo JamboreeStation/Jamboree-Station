@@ -52,8 +52,8 @@ namespace Content.Client.Cargo.UI
                              ("accountColor", account.Color),
                              ("account", Loc.GetString(account.Code)))
                      },
-                     Description = {Text = Loc.GetString("cargo-console-menu-order-reason-description",
-                         ("reason", order.Reason))}
+                     Description = {Text = Loc.GetString("cargo-console-menu-order-row-product-description",
+                         ("orderReason", order.Reason))}
                  };
 
                  row.Approve.Visible = false;

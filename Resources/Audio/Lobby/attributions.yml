@@ -135,3 +135,54 @@
   license: "CC-BY-NC-SA-3.0"
   copyright: "The Future Soon by Jonathan Coulton"
   source: "https://www.youtube.com/watch?v=l5PEz3kGbp4"
+
+# Jamboree, adding more stuff
+- files: ["theholybibble.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "The Holy Bibble by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["whimsicalwoods.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Whimsical Woods by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["names-for-frogs.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Names for Frogs by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["gone-fishin.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Gone Fishin' by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["gambled-to-shambles.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Gambled to Shambles by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["life-story.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Life Story by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["thing-of-bleach.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Thing of Bleach by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["oh-yeah.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Oh Yeah by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["tales-from-an-inbox.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Tales from an Inbox by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"
+
+- files: ["zombieyon-death-lawn.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Zombieyon/Death Lawn by foxwithguns"
+  source: "https://youtube.com/@foxwithguns"

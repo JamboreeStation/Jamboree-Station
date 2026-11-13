@@ -39,7 +39,6 @@ namespace Content.Client.Info
             AddInfoButton("server-info-wiki-button", CCVars.InfoLinksWiki);
             AddInfoButton("server-info-forum-button", CCVars.InfoLinksForum);
             AddInfoButton("server-info-telegram-button", CCVars.InfoLinksTelegram);
-            AddInfoButton("rmc-ui-patreon", CCVars.InfoLinksPatreon);
 
             var linkAccount = UserInterfaceManager.GetUIController<LinkAccountUIController>();
             var linkAccountButton = new Button

@@ -157,7 +157,7 @@
     - id: ClothingHeadHelmetAtmosFire
     - id: GasAnalyzer
     - id: MedkitOxygenFilled
-    - id: HolofanProjector 
+    - id: HolofanProjector
     - id: RCD
     - id: RCDAmmo
     - id: AirGrenade
@@ -165,16 +165,15 @@
     - id: ClothingBackpackFirefighterTank # Assmos - Firefighter nozzle
     - id: RPD #funkystation
     - id: DoorRemoteFirefight # Goobstation - re adding fire door remote
-    - id: trayScanner # Goobstation - new belt 
+    - id: trayScanner # Goobstation - new belt
 
 - type: entityTable
   id: FillAtmosphericsHardsuit
   table: !type:AllSelector
     children:
-    #- id: ClothingOuterHardsuitAtmos # Goob
+    - id: ClothingOuterHardsuitAtmos
     - id: OxygenTankFilled
     - id: ClothingMaskBreath
-    - id: ClothingModsuitAtmostechPowerCell # Goob edit
 
 - type: entity
   id: LockerEngineerFilledHardsuit
@@ -195,15 +194,30 @@
   suffix: Filled
   parent: LockerEngineer
   components:
-  - type: StorageFill
-    contents:
-      - id: ClothingHandsGlovesColorYellow
-      - id: ClothingMaskGas
-      - id: trayScanner
-      - id: RCD
-      - id: RCDAmmo
-      - id: MetalFoamGrenade
-      - id: PillCanisterPotassiumIodide # Far Horizons / Nuclear Reactor Port
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerEngineer
+
+- type: entityTable
+  id: FillLockerEngineer
+  table: !type:AllSelector
+    children:
+    - id: ClothingHandsGlovesColorYellow
+    - id: ClothingMaskGas
+    - id: trayScanner
+    - id: RCD
+    - id: RCDAmmo
+    - id: MetalFoamGrenade
+
+- type: entityTable
+  id: FillEngineerHardsuit
+  table: !type:AllSelector
+    children:
+    - id: ClothingOuterHardsuitEngineering
+    - id: OxygenTankFilled
+    - id: ClothingShoesBootsMag
+    - id: ClothingMaskBreath
 
 - type: entity
   id: ClosetRadiationSuitFilled
@@ -259,24 +273,3 @@
       amount: 3
     - id: AirGrenade
       amount: 3
-
-- type: entityTable
-  id: FillLockerEngineer
-  table: !type:AllSelector
-    children:
-    - id: ClothingHandsGlovesColorYellow
-    - id: ClothingMaskGas
-    - id: trayScanner
-    - id: RCD
-    - id: RCDAmmo
-    - id: MetalFoamGrenade
-
-- type: entityTable
-  id: FillEngineerHardsuit
-  table: !type:AllSelector
-    children:
-    #- id: ClothingOuterHardsuitEngineering
-    - id: UndeterminedVoidsuitEngineer # Goob edit
-    - id: OxygenTankFilled
-    - id: ClothingShoesBootsMag
-    - id: ClothingMaskBreath

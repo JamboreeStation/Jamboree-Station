@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Charges.Components;
 using Content.Shared.Cloning;
 using Robust.Shared.Audio;

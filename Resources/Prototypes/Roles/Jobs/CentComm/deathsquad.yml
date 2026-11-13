@@ -3,7 +3,7 @@
 - type: job
   id: DeathSquad
   name: job-name-deathsquad
-  description: job-description-deathsquad
+  description: ghost-role-information-Death-Squad-description
   playTimeTracker: JobDeathSquad
   setPreference: false
   startingGear: DeathSquadGear

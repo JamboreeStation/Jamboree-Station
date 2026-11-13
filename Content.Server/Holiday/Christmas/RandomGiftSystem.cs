@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.Logs;
+using Content.Goobstation.Shared.ModSuits.Modules;
 using Content.Server.Hands.Systems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
@@ -99,10 +100,15 @@ public sealed class RandomGiftSystem : EntitySystem
         var itemCompName = Factory.GetComponentName<ItemComponent>();
         var mapGridCompName = Factory.GetComponentName<MapGridComponent>();
         var physicsCompName = Factory.GetComponentName<PhysicsComponent>();
+        var sphereCompName = Factory.GetComponentName<ModSphereTransformModuleComponent>();
 
         foreach (var proto in _prototype.EnumeratePrototypes<EntityPrototype>())
         {
             if (proto.Abstract || proto.HideSpawnMenu || proto.Components.ContainsKey(mapGridCompName) || !proto.Components.ContainsKey(physicsCompName))
+                continue;
+
+            // Sphere transformation is admin-spawned only, not random gift loot.
+            if (proto.Components.ContainsKey(sphereCompName))
                 continue;
 
             _possibleGiftsUnsafe.Add(proto.ID);

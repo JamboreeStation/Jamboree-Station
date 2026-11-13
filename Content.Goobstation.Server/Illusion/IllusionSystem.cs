@@ -110,7 +110,7 @@ public sealed partial class IllusionSystem : EntitySystem
     private void SpawnIllusion(EntityUid user,
         float lifetime,
         float healthMultiplier,
-        IReadOnlyList<EntityUid> targets,
+        IEnumerable<EntityUid> targets,
         ComponentRegistry components)
     {
         if (lifetime <= 0f || healthMultiplier <= 0f)
@@ -187,7 +187,7 @@ public sealed partial class IllusionSystem : EntitySystem
 
     private bool ShouldSpawnIllusion(Entity<IllusionOnMeleeHitComponent> ent,
         EntityUid user,
-        IReadOnlyList<EntityUid> hitMobs)
+        IReadOnlySet<EntityUid> hitMobs)
     {
         if (hitMobs.Count == 0)
             return false;

@@ -45,7 +45,7 @@ public sealed class ImplanterStatusControl : Control
         {
             ImplanterToggleMode.Draw => Loc.GetString("implanter-draw-text"),
             ImplanterToggleMode.Inject => Loc.GetString("implanter-inject-text"),
-            _ => Loc.GetString("injector-invalid-injector-toggle-mode")
+            _ => Loc.GetString("implanter-invalid-mode")
         };
 
         if (_parent.CurrentMode == ImplanterToggleMode.Draw)

@@ -50,6 +50,7 @@ public abstract partial class SharedBuckleSystem
 
         SubscribeLocalEvent<BuckleComponent, PreventCollideEvent>(OnBucklePreventCollide);
         SubscribeLocalEvent<BuckleComponent, DownAttemptEvent>(OnBuckleDownAttempt);
+        SubscribeLocalEvent<BuckleComponent, KnockDownAttemptEvent>(OnBuckleKnockDownAttempt); // Goob
         SubscribeLocalEvent<BuckleComponent, StandAttemptEvent>(OnBuckleStandAttempt);
         SubscribeLocalEvent<BuckleComponent, ThrowPushbackAttemptEvent>(OnBuckleThrowPushbackAttempt);
         SubscribeLocalEvent<BuckleComponent, UpdateCanMoveEvent>(OnBuckleUpdateCanMove);
@@ -86,22 +87,6 @@ public abstract partial class SharedBuckleSystem
             args.Cancel();
             return;
         }
-
-        // Goobstation - doafter for unbuckle by others
-        if (args.Puller != ent.Owner
-            && TryComp<StrapComponent>(ent.Comp.BuckledTo, out var strap)
-            && strap.UnbuckleDoafterTime > 0)
-        {
-            args.Cancel();
-            var doAfter = new DoAfterArgs(EntityManager, args.Puller, TimeSpan.FromSeconds(strap.UnbuckleDoafterTime), new UnbuckleDoAfterEvent(), ent.Owner, target: ent.Owner)
-            {
-                BreakOnMove = true,
-                BreakOnDamage = true,
-            };
-            _doAfter.TryStartDoAfter(doAfter);
-            return;
-        }
-        // Goobstation
     }
 
     // Goobstation - start unbuckle do-after only on actual pull initiation, not on CanPull checks
@@ -221,6 +206,14 @@ public abstract partial class SharedBuckleSystem
         if (component.Buckled)
             args.Cancel();
     }
+
+    // Goob start
+    private void OnBuckleKnockDownAttempt(Entity<BuckleComponent> ent, ref KnockDownAttemptEvent args)
+    {
+        if (ent.Comp.Buckled)
+            args.Cancelled = true;
+    }
+    // Goob end
 
     private void OnBuckleStandAttempt(EntityUid uid, BuckleComponent component, StandAttemptEvent args)
     {

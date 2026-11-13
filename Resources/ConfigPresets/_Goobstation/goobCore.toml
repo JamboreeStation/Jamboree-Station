@@ -22,6 +22,8 @@ soft_max_players = 85
 maxcharacterslots = 25
 round_end_pvs_overrides = false
 defaultpreset = "CombatDynamic"
+fallbackpreset = "TheGuide,TheWatcher,TheGhost"
+disabled_presets = "CosmicCult,SecretCosmicCult,Shadowling,Wizard,Changeling,Traitorling,NukeTraitor,NukeLing,RevTraitor,RevLing,Blob,Honkops,SecretPlusLow,SecretPlusMid,SecretPlusHigh,SecretPlusAdmeme,SurvivalPlusMid,Xenomorphs,OopsAllThieves,SecretPlusLowpop,Survival,KesslerSyndrome,AllAtOnce,AllerAtOnce,Extended,Greenshift,Dynamic,Secret,Traitor,Deathmatch,Nukeops,Revolutionary,Xenoborgs,Zombie,Zombieteors"
 ipintel_enabled = true
 ipintel_contact_email = "administrator@goobstation.com"
 
@@ -51,7 +53,6 @@ forum = "https://forums.goobstation.com"
 github = "https://github.com/Goob-Station/Goob-Station"
 website = "https://goobstation.com"
 wiki = "https://wiki.goobstation.com"
-patreon = "https://www.patreon.com/goobstation14"
 bug_report = "https://github.com/Goob-Station/Goob-Station/issues/new"
 appeal = "https://forums.goobstation.com"
 
@@ -78,9 +79,6 @@ flavor_text = true
 [ban]
 hardware_ids = true
 
-[rmc]
-patron_lobby_message_time_seconds = 10
-
 [lavaland]
 enabled = true
 
@@ -92,3 +90,6 @@ barks_enabled = true
 
 [biomass]
 easy_mode = false
+
+[news]
+pinned = ""

@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Silicon.SecurityCyborg;
 using Content.Shared.Explosion.EntitySystems;
 using Content.Shared.Popups;
@@ -31,7 +35,8 @@ public sealed partial class SecurityCyborgSystem : EntitySystem
             chassis.BrainContainer.ContainedEntity is { } brain)
         {
             _container.Remove(brain, chassis.BrainContainer);
-            _throwing.TryThrow(brain, _random.NextVector2() * 5, 5f);
+            _throwing.TryThrow(brain, _random.NextVector2() * 5, 5f,
+                predicted: false); // Trauma
         }
 
         _popup.PopupEntity(Loc.GetString("sec-borg-self-destruct-popup", ("chassis", Name(ent))), ent, PopupType.LargeCaution);

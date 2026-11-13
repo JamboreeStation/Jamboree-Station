@@ -116,6 +116,39 @@
           params:
             variation: 0.250
 
+      cuffs: !type:ItemSwitchState #Jamboree, changing the Justice to have a WonderProd-esque effect (cuffs)
+        verb: cuffs #empowered was previous
+        energyPerUse: 15 #999 was previous
+        sprite:
+          sprite: _Goobstation/Objects/Weapons/Melee/justice.rsi
+          state: cuffs-icon
+        components:
+#        - type: Explosive
+#          explosionType: Default
+#          totalIntensity: 16
+#          intensitySlope: 0.5
+#          maxIntensity: 1.6
+#          canCreateVacuum: false
+#          deleteAfterExplosion: false
+#          repeatable: true
+#        - type: ExplodeOnMeleeHit
+        - type: MeleeWeapon
+          wideAnimationRotation: -135
+          attackRate: 0.75 #Changed from 0.5
+          animation: WeaponArcThrust
+          damage:
+            types:
+#              Slash: 25
+              Heat: 0 #25
+          soundHit:
+            path: /Audio/_Goobstation/Weapons/Effects/energy-short-sword-swing.ogg
+        - type: CuffsOnHit
+          proto: Cablecuffs
+        soundStateActivate:
+          collection: sparks
+          params:
+            variation: 0.250
+
       ion: !type:ItemSwitchState
         verb: ion
         energyPerUse: 65 # 65 real
@@ -164,33 +197,3 @@
           params:
             variation: 0.250
 
-      empowered: !type:ItemSwitchState
-        verb: empowered
-        energyPerUse: 999
-        sprite:
-          sprite: _Goobstation/Objects/Weapons/Melee/justice.rsi
-          state: empowered-icon
-        components:
-        - type: Explosive
-          explosionType: Default
-          totalIntensity: 16
-          intensitySlope: 0.5
-          maxIntensity: 1.6
-          canCreateVacuum: false
-          deleteAfterExplosion: false
-          repeatable: true
-        - type: ExplodeOnMeleeHit
-        - type: MeleeWeapon
-          canWideSwing: false
-          attackRate: 0.5
-          animation: WeaponArcThrust
-          damage:
-            types:
-              Slash: 25
-              Heat: 25
-          soundHit:
-            path: /Audio/_Goobstation/Weapons/Effects/energy-short-sword-swing.ogg
-        soundStateActivate:
-          collection: sparks
-          params:
-            variation: 0.250
