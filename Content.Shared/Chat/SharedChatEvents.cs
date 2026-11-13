@@ -64,6 +64,7 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     public readonly string Message;
     public readonly bool IsWhisper; // for some reason we don't have obfuscated message, ill attribute that to EE and pray for a refactor of languages entirely. - Goob
     public readonly LanguagePrototype Language; // something something Languages. EE. Goob. Yeah.
+    public readonly string RawMessage; // Jamboree~ the text as typed, before accents, for NTSL sig.raw
 
     /// <summary>
     /// If the entity was trying to speak into a radio, this was the channel they were trying to access. If a radio
@@ -71,12 +72,13 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     /// </summary>
     public RadioChannelPrototype? Channel;
 
-    public EntitySpokeEvent(EntityUid source, string message, RadioChannelPrototype? channel, bool isWhisper, LanguagePrototype language) // Einstein Engines - Language
+    public EntitySpokeEvent(EntityUid source, string message, RadioChannelPrototype? channel, bool isWhisper, LanguagePrototype language, string? rawMessage = null) // Einstein Engines - Language // Jamboree~ rawMessage
     {
         Source = source;
         Message = message;
         Channel = channel;
         IsWhisper = isWhisper;
         Language = language;
+        RawMessage = rawMessage ?? message; // Jamboree~
     }
 }

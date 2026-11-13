@@ -57,6 +57,7 @@
   recipes:
   - SpaceHeaterMachineCircuitBoard
   - CondenserMachineCircuitBoard # Goob
+  - TelecomTrafficComputerCircuitboard # Jamboree~ NTSL traffic control console
 
 ## Dynamic
 

@@ -902,6 +902,10 @@ namespace Content.Client.Stylesheets
                 Element<TextEdit>().Pseudo(TextEdit.StylePseudoClassPlaceholder)
                     .Prop("font-color", Color.Gray),
 
+                // Jamboree~ monospace code editor for the NTSL traffic control console
+                Element<TextEdit>().Class("NtslCode")
+                    .Prop("font", notoSansMono),
+
                 // chat subpanels (chat lineedit backing, popup backings)
                 new StyleRule(new SelectorElement(typeof(PanelContainer), new[] {StyleClassChatPanel}, null, null),
                     new[]

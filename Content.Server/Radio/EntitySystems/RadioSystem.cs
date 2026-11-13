@@ -1,4 +1,4 @@
-﻿// SPDX-FileCopyrightText: 2020 Bright <nsmoak10@yahoo.com>
+// SPDX-FileCopyrightText: 2020 Bright <nsmoak10@yahoo.com>
 // SPDX-FileCopyrightText: 2020 Bright0 <55061890+Bright0@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2020 Swept <jamesurquhartwebb@gmail.com>
 // SPDX-FileCopyrightText: 2020 V├¡ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
@@ -64,6 +64,7 @@ using Content.Shared.Chat.RadioIconsEvents; // Goobstation
 using Content.Shared.Whitelist; // Goobstation
 using Content.Shared.StatusIcon; // Goobstation
 using Content.Goobstation.Shared.Radio; // Goobstation
+using Content.Server._Jamboree.Telecomms; // Jamboree~ NTSL telecom scripts
 
 namespace Content.Server.Radio.EntitySystems;
 
@@ -81,6 +82,7 @@ public sealed partial class RadioSystem : EntitySystem
     [Dependency] private readonly RadioJobIconSystem _radioIconSystem = default!; // Goobstation - radio icons
     [Dependency] private readonly LanguageSystem _language = default!; // Einstein Engines - Language
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation - Whitelisted radio channels
+    [Dependency] private readonly NtslTelecomSystem _ntsl = default!; // Jamboree~ NTSL telecom scripts
 
     // set used to prevent radio feedback loops.
     private readonly HashSet<string> _messages = new();
@@ -103,7 +105,7 @@ public sealed partial class RadioSystem : EntitySystem
             && component.Channels.Contains(args.Channel.ID)
             && _whitelist.IsWhitelistPassOrNull(args.Channel.SendWhitelist, uid)) // Goobstation - Whitelisted radio channels
         {
-            SendRadioMessage(uid, args.Message, args.Channel, uid, args.Language); // Einstein Engines - Language
+            SendRadioMessage(uid, args.Message, args.Channel, uid, args.Language, rawMessage: args.RawMessage); // Einstein Engines - Language // Jamboree~ NTSL sig.raw
             args.Channel = null; // prevent duplicate messages from other listeners.
         }
     }
@@ -139,9 +141,10 @@ public sealed partial class RadioSystem : EntitySystem
         ProtoId<RadioChannelPrototype> channel,
         EntityUid radioSource,
         LanguagePrototype? language = null,
-        bool escapeMarkup = true)
+        bool escapeMarkup = true,
+        string? rawMessage = null) // Jamboree~ NTSL sig.raw
     {
-        SendRadioMessage(messageSource, message, _prototype.Index(channel), radioSource, escapeMarkup: escapeMarkup, language: language); // Einstein Engines - Language
+        SendRadioMessage(messageSource, message, _prototype.Index(channel), radioSource, escapeMarkup: escapeMarkup, language: language, rawMessage: rawMessage); // Einstein Engines - Language // Jamboree~ rawMessage
     }
 
     /// <summary>
@@ -155,7 +158,8 @@ public sealed partial class RadioSystem : EntitySystem
         RadioChannelPrototype channel,
         EntityUid radioSource,
         LanguagePrototype? language = null,
-        bool escapeMarkup = true)
+        bool escapeMarkup = true,
+        string? rawMessage = null) // Jamboree~ NTSL sig.raw
     {
         // Einstein Engines - Language begin
         if (language == null)
@@ -182,6 +186,25 @@ public sealed partial class RadioSystem : EntitySystem
             jobName = iconEvent.JobName;
         }
 
+        // Jamboree~ NTSL telecom scripts can rewrite, reroute or block the message
+        var scriptedMessage = message;
+        var scriptedName = evt.VoiceName;
+        if (!_ntsl.ProcessRadio(messageSource, radioSource, language, rawMessage ?? message, ref scriptedMessage, ref channel, ref scriptedName, ref jobName, out var ntslFilters))
+        {
+            _messages.Remove(message);
+            return;
+        }
+
+        evt.VoiceName = scriptedName;
+        if (scriptedMessage != message)
+        {
+            _messages.Remove(message);
+            message = scriptedMessage;
+            if (!_messages.Add(message))
+                return;
+        }
+        // Jamboree~ end
+
         var name = evt.VoiceName;
         name = FormattedMessage.EscapeText(name);
 
@@ -203,7 +226,7 @@ public sealed partial class RadioSystem : EntitySystem
         //     ("channel", $"\\[{channel.LocalizedName}\\]"),
         //     ("name", name),
         //     ("message", content));
-        var wrappedMessage = WrapRadioMessage(messageSource, channel, name, content, language, jobIcon, jobName); // Einstein Engines - Language
+        var wrappedMessage = WrapRadioMessage(messageSource, channel, name, NtslTelecomSystem.ApplyFilters(content, ntslFilters), language, jobIcon, jobName); // Einstein Engines - Language // Jamboree~ NTSL filters
 
         // most radios are relayed to chat, so lets parse the chat message beforehand
         // var chat = new ChatMessage(
@@ -222,7 +245,7 @@ public sealed partial class RadioSystem : EntitySystem
         var obfuscated = _language.ObfuscateSpeech(content, language);
         // Goobstation - Chat Pings
         // Added GetNetEntity(messageSource), to source
-        var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, obfuscated, language, jobIcon, jobName);
+        var obfuscatedWrapped = WrapRadioMessage(messageSource, channel, name, NtslTelecomSystem.ApplyFilters(obfuscated, ntslFilters), language, jobIcon, jobName); // Jamboree~ NTSL filters
         var notUdsMsg = new ChatMessage(ChatChannel.Radio, obfuscated, obfuscatedWrapped, GetNetEntity(messageSource), null);
         var ev = new RadioReceiveEvent(messageSource, channel, msg, notUdsMsg, language, radioSource);
         // Einstein Engines - Language end

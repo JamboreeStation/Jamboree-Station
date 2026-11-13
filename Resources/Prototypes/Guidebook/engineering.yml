@@ -277,6 +277,7 @@
   text: "/ServerInfo/Guidebook/Engineering/Networking.xml"
   children:
   - AccessConfigurator
+  - Ntsl # Jamboree~ NTSL telecom scripting
 
 - type: guideEntry
   id: AccessConfigurator
