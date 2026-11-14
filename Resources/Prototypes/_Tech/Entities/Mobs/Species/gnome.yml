@@ -14,6 +14,7 @@
   components:
   # Specials
   - type: DropDualWieldWeapon
+  - type: Tinkerer
   # Tags
   - type: Tag
     tags:
