@@ -6,7 +6,7 @@
   parent: ClothingUniformBase
   id: ClothingUniformGnomeBase
   name: gnome suit
-  description: An typical red shirt.
+  description: A snug little outfit, sized for gnomes and nobody else.
   abstract: true
   components:
   - type: Sprite
@@ -17,6 +17,7 @@
     whitelist:
       tags:
       - SpeciesGnome
+    reason: gnome-clothing-too-small
 
 - type: entity
   parent: ClothingUniformGnomeBase

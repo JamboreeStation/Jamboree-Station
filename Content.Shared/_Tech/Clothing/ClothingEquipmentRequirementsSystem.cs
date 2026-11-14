@@ -21,6 +21,7 @@ public sealed class ClothingEquipmentRequirementsSystem : EntitySystem
         if (_whitelist.IsWhitelistPassOrNull(entity.Comp.Whitelist, args.EquipTarget))
             return;
 
+        args.Reason = entity.Comp.Reason;
         args.Cancel();
     }
 }

@@ -12,4 +12,10 @@ public sealed partial class ClothingEquipmentRequirementsComponent : Component
 {
     [DataField]
     public EntityWhitelist? Whitelist;
+
+    /// <summary>
+    /// Shown to whoever tries to put it on someone the whitelist doesn't allow.
+    /// </summary>
+    [DataField]
+    public LocId Reason = "clothing-equipment-requirements-cannot-wear";
 }

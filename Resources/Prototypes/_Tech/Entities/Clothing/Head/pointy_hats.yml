@@ -6,7 +6,7 @@
   parent: ClothingHeadBase
   id: ClothingBaseHeadHatPointy
   name: pointy hat
-  description: WIP
+  description: A tall pointy hat, the pride of any gnome. There's a tiny pocket in the tip.
   abstract: true
   components:
   - type: Sprite
