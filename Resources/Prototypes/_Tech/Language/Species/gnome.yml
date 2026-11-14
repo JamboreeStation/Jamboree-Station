@@ -4,6 +4,10 @@
 
 - type: language
   id: Gnomish
+  iconUnderstood: false
+  isVisibleLanguage: true
+  speech:
+    color: "#cd8a3edd"
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
