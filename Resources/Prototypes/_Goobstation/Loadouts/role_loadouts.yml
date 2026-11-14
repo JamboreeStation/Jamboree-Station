@@ -169,8 +169,6 @@
 - type: roleLoadout
   id: RoleSurvivalNukieHonkops
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - SurvivalSyndicate
   - GroupHonkopsMask
   - GroupPocketTankDouble
@@ -252,8 +250,6 @@
 - type: roleLoadout
   id: RoleSurvivalPlasmaTank
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - GroupEVATankPlasma
 
 # Event-restricted roles
