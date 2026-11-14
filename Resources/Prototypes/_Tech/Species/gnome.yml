@@ -13,15 +13,19 @@
   prototype: MobGnome
   dollPrototype: TTMobDummyGnome
   roundStart: true
+  maleFirstNames: NamesGnomeFirstMale
+  femaleFirstNames: NamesGnomeFirstFemale
+  lastNames: NamesGnomeLast
+  naming: FirstLast
   # TODO
   sprites: MobHumanSprites
   markingLimits: MobHumanMarkingLimits
   skinColoration: HumanToned
   # TODO
-  sizeRatio: 1.5
-  minHeight: 0.6
-  defaultHeight: 0.7
+  sizeRatio: 3
+  minHeight: 0.4
+  defaultHeight: 0.6
   maxHeight: 0.8
-  minWidth: 0.8
-  defaultWidth: 0.9
-  maxWidth: 1.1
+  minWidth: 0.85
+  defaultWidth: 1
+  maxWidth: 1.15
