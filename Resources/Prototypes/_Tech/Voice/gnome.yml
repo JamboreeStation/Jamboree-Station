@@ -6,13 +6,13 @@
   id: UnisexGnome
   sounds:
     Scream:
-      collection: MaleScreams
+      collection: GnomeScreams
     Laugh:
-      collection: MaleLaugh
+      collection: GnomeLaugh
     Sneeze:
-      collection: MaleSneezes
+      collection: GnomeSneezes
     Cough:
-      collection: MaleCoughs
+      collection: GnomeCoughs
     CatMeow:
       collection: CatMeows
     CatHisses:
@@ -22,15 +22,15 @@
     RobotBeep:
       collection: RobotBeeps
     Yawn:
-      collection: MaleYawn
+      collection: GnomeYawn
     Snore:
-      collection: Snores
+      collection: GnomeSnores
     Sigh:
-      collection: MaleSigh
+      collection: GnomeSigh
     Honk:
       collection: BikeHorn
     Crying:
-      collection: MaleCry
+      collection: GnomeCry
     Whistle:
       collection: Whistles
     Weh:
@@ -38,9 +38,9 @@
     Hew:
       collection: Hew
     Gasp:
-      collection: MaleGasp
+      collection: GnomeGasp
     DefaultDeathgasp:
-      collection: MaleDeathGasp
+      collection: GnomeDeathGasp
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
     Gulp: # Goob
@@ -49,19 +49,18 @@
       path: /Audio/_Goobstation/Voice/surprised.ogg
   params:
     variation: 0.125
-    pitch: 0.75
 
 - type: emoteSounds
   id: FemaleGnome
   sounds:
     Scream:
-      collection: FemaleScreams
+      collection: GnomeScreams
     Laugh:
-      collection: FemaleLaugh
+      collection: GnomeLaugh
     Sneeze:
-      collection: FemaleSneezes
+      collection: GnomeSneezes
     Cough:
-      collection: FemaleCoughs
+      collection: GnomeCoughs
     CatMeow:
       collection: CatMeows
     CatHisses:
@@ -71,15 +70,15 @@
     RobotBeep:
       collection: RobotBeeps
     Yawn:
-      collection: FemaleYawn
+      collection: GnomeYawn
     Snore:
-      collection: Snores
+      collection: GnomeSnores
     Sigh:
-      collection: FemaleSigh
+      collection: GnomeSigh
     Honk:
       collection: BikeHorn
     Crying:
-      collection: FemaleCry
+      collection: GnomeCry
     Whistle:
       collection: Whistles
     Weh:
@@ -87,9 +86,9 @@
     Hew:
       collection: Hew
     Gasp:
-      collection: FemaleGasp
+      collection: GnomeGasp
     DefaultDeathgasp:
-      collection: FemaleDeathGasp
+      collection: GnomeDeathGasp
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
     Gulp: # Goob
@@ -98,4 +97,84 @@
       path: /Audio/_Goobstation/Voice/surprised.ogg
   params:
     variation: 0.125
-    pitch: 0.75
+
+- type: soundCollection
+  id: GnomeScreams
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_scream_1.ogg
+  - /Audio/_Tech/Voice/Gnome/gnome_scream_2.ogg
+  - /Audio/_Tech/Voice/Gnome/gnome_scream_3.ogg
+
+- type: soundCollection
+  id: GnomeLaugh
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_laugh_1.ogg
+  - /Audio/_Tech/Voice/Gnome/gnome_laugh_2.ogg
+  - /Audio/_Tech/Voice/Gnome/gnome_laugh_3.ogg
+
+- type: soundCollection
+  id: GnomeSneezes
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_sneeze_1.ogg
+  - /Audio/_Tech/Voice/Gnome/gnome_sneeze_2.ogg
+
+- type: soundCollection
+  id: GnomeCoughs
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_cough_1.ogg
+  - /Audio/_Tech/Voice/Gnome/gnome_cough_2.ogg
+
+- type: soundCollection
+  id: GnomeGasp
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_gasp_1.ogg
+  - /Audio/_Tech/Voice/Gnome/gnome_gasp_2.ogg
+
+- type: soundCollection
+  id: GnomeCry
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_cry_1.ogg
+
+- type: soundCollection
+  id: GnomeSigh
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_sigh_1.ogg
+
+- type: soundCollection
+  id: GnomeYawn
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_yawn_1.ogg
+
+- type: soundCollection
+  id: GnomeSnores
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_snore_1.ogg
+
+- type: soundCollection
+  id: GnomeDeathGasp
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_deathgasp_1.ogg
+
+- type: soundCollection
+  id: GnomeBark
+  files:
+  - /Audio/_Tech/Voice/Gnome/gnome_talk.ogg
+  - /Audio/_Tech/Voice/Gnome/gnome_talk_ask.ogg
+  - /Audio/_Tech/Voice/Gnome/gnome_talk_exclaim.ogg
+
+- type: bark
+  id: Gnome
+  name: Gnome
+  soundCollection:
+    collection: GnomeBark
+  speciesWhitelist:
+  - Gnome
+
+- type: speechSounds
+  id: Gnome
+  saySound:
+    path: /Audio/_Tech/Voice/Gnome/gnome_talk.ogg
+  askSound:
+    path: /Audio/_Tech/Voice/Gnome/gnome_talk_ask.ogg
+  exclaimSound:
+    path: /Audio/_Tech/Voice/Gnome/gnome_talk_exclaim.ogg
