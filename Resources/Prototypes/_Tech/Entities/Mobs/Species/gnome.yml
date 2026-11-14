@@ -48,7 +48,7 @@
       fix1:
         shape: !type:PhysShapeCircle
           radius: 0.35
-        density: 240
+        density: 145
         restitution: 0.0
         mask:
         - MobMask
