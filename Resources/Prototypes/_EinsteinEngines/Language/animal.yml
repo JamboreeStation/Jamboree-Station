@@ -1,6 +1,8 @@
 # Languages spoken by various animals and critters.
 - type: language
   id: Cat
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -13,6 +15,8 @@
 
 - type: language
   id: Dog
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -27,6 +31,8 @@
 
 - type: language
   id: Fox
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -41,6 +47,8 @@
 
 - type: language
   id: Xeno
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -51,6 +59,8 @@
 
 - type: language
   id: Monkey
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -61,6 +71,8 @@
 
 - type: language
   id: Mouse
+  isVisibleLanguage: true
+  icon: LanguageIconSqueakish
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
@@ -77,6 +89,8 @@
 
 - type: language
   id: Chicken
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -88,6 +102,8 @@
 
 - type: language
   id: Duck
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -99,6 +115,8 @@
 
 - type: language
   id: Cow
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -109,6 +127,8 @@
 
 - type: language
   id: Sheep
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -120,6 +140,8 @@
 
 - type: language
   id: Kangaroo
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -132,6 +154,8 @@
 
 - type: language
   id: Pig
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -141,21 +165,27 @@
 
 - type: language
   id: Crab
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
+  speech:
+    color: "#f54927"
   obfuscation:
     !type:SyllableObfuscation
-    minSyllables: 1
-    maxSyllables: 3
+    minSyllables: 2
+    maxSyllables: 4
     replacement:
-    - click
-    - clack
-    - ti
-    - pi
-    - tap
-    - cli
-    - ick
+    - kl
+    - cl
+    - gr
+    - br
+    - lk
+    - bl
+    - gl
 
 - type: language
   id: Kobold
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
@@ -175,6 +205,8 @@
 
 - type: language
   id: Hissing
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
@@ -187,6 +219,8 @@
 
 - type: language
   id: Penguin
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2
@@ -200,6 +234,7 @@
 
 - type: language # Goobstation - For Deer
   id: Deer
+  icon: LanguageIconAnimal
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1

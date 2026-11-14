@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Jake Huxell <JakeHuxell@pm.me>
-// SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -38,7 +29,6 @@ public sealed class GatewayGeneratorSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
     [Dependency] private readonly BiomeSystem _biome = default!;
     [Dependency] private readonly DungeonSystem _dungeon = default!;
@@ -112,8 +102,7 @@ public sealed class GatewayGeneratorSystem : EntitySystem
         var tiles = new List<(Vector2i Index, Tile Tile)>();
         var seed = _random.Next();
         var random = new Random(seed);
-        var mapId = _mapManager.CreateMap();
-        var mapUid = _mapManager.GetMapEntityId(mapId);
+        var mapUid = _maps.CreateMap(out var mapId);
 
         var gatewayName = _salvage.GetFTLName(_protoManager.Index(PlanetNames), seed);
         _metadata.SetEntityName(mapUid, gatewayName);

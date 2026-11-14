@@ -1,0 +1,108 @@
+# SPDX-FileCopyrightText: 2026 Jamboree Station Contributors
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+
+[[annotations]]
+path = ["NotoSans/NotoSans-Bold.ttf", "NotoSans/NotoSans-BoldItalic.ttf", "NotoSans/NotoSans-Italic.ttf", "NotoSans/NotoSans-Regular.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright 2012 Google Inc. All Rights Reserved."
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/NotoSans/LICENSE.txt:2-4,67-72. Embedded name IDs 0, 5, 13, 14: Version 1.04, Google 2012, explicit Apache-2.0 grant. Historical binaries; no current-family license inferred."
+
+[[annotations]]
+path = ["NotoSans/NotoSansSC-Bold.ttf", "NotoSans/NotoSansSC-Regular.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "(c) 2014-2021 Adobe (http://www.adobe.com/), with Reserved Font Name 'Source'."
+SPDX-License-Identifier = "OFL-1.1"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; embedded name IDs 0, 5, 13, 14: Version 2.004-H2;hotconv 1.0.118;makeotfexe 2.5.65603, explicit OFL-1.1 grant. Reserved Font Name 'Source'. Adjacent Resources/Fonts/NotoSans/LICENSE.txt:2-4 is Apache boilerplate and is not the grant for these binaries. No upstream commit pinned."
+
+[[annotations]]
+path = ["NotoSans/NotoSansSymbols-Bold.ttf", "NotoSans/NotoSansSymbols-Regular.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright 2016 Google LLC. All Rights Reserved."
+SPDX-License-Identifier = "OFL-1.1"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; embedded name IDs 0, 5, 13, 14: Version 2.001, Google LLC 2016, explicit OFL-1.1 grant. Adjacent Resources/Fonts/NotoSans/LICENSE.txt:2-4 is Apache boilerplate and is not the grant for these binaries. No upstream commit pinned."
+
+[[annotations]]
+path = ["NotoSans/NotoSansSymbols2-Regular.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright 2017 Google Inc. All Rights Reserved."
+SPDX-License-Identifier = "OFL-1.1"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; embedded name IDs 0, 5, 13, 14: Version 2.003, Google Inc. 2017, explicit OFL-1.1 grant. Adjacent Resources/Fonts/NotoSans/LICENSE.txt:2-4 is Apache boilerplate and is not the grant for this binary. No upstream commit pinned."
+
+[[annotations]]
+path = ["RobotoMono/RobotoMono-Bold.ttf", "RobotoMono/RobotoMono-Italic.ttf", "RobotoMono/RobotoMono-Regular.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright 2015 The Roboto Mono Project Authors (https://github.com/googlefonts/robotomono)"
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/RobotoMono/ATTRIBUTION.txt:1-6 and LICENSE.txt:2-4,67-72. Embedded name IDs 0, 5, 13, 14: Version 3.000, explicit Apache-2.0 grant. Attribution source https://fonts.google.com/specimen/Roboto+Mono is not pinned; no current-family license inferred."
+
+[[annotations]]
+path = ["NotoSansDisplay/NotoSansDisplay-Bold.ttf", "NotoSansDisplay/NotoSansDisplay-BoldItalic.ttf", "NotoSansDisplay/NotoSansDisplay-Italic.ttf", "NotoSansDisplay/NotoSansDisplay-Regular.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright 2015 Google Inc. All Rights Reserved."
+SPDX-License-Identifier = "OFL-1.1"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/NotoSansDisplay/LICENSE_OFL.txt:1-8,46-60 and README:4-9. Embedded name IDs 0, 5, 13, 14: Version 2.000;GOOG;noto-source:20170915:90ef993387c0; ttfautohint (v1.7), explicit OFL-1.1 grant. All four binaries byte-match hinted/ at https://github.com/notofonts/noto-fonts/tree/8ef14e6c606a7a0ef3943b9ca01fd49445620d79 (tag v2017-10-24-phase3-second-cleanup); exact URLs and hashes in LICENSE-INVESTIGATIONS-FONTS.json."
+
+[[annotations]]
+path = ["_Goobstation/Schoolbell/Schoolbell.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright (c) 2010 by Font Diner, Inc. All rights reserved."
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/_Goobstation/Schoolbell/LICENSE.txt:2-4,67-72. Embedded name IDs 0, 5, 13, 14: Version 1.001, Font Diner 2010, explicit Apache-2.0 grant. No upstream commit pinned."
+
+[[annotations]]
+path = ["_Gardenstation/Wavetosh/Wavetosh.otf", "_Gardenstation/Wavetosh/Wavetosh.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright \u00a9 2022 GGBotNet (https://ggbot.net/fonts), with Reserved Font Name \"Wavetosh\"."
+SPDX-License-Identifier = "OFL-1.1"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/_Gardenstation/Wavetosh/License.txt:1-8,46-60. Embedded name IDs 0, 5, 13, 14: 0.90, GGBotNet 2022, explicit OFL-1.1 grant. Reserved Font Name \"Wavetosh\". Bundled source https://ggbot.net/fonts is not pinned."
+
+[[annotations]]
+path = ["_Goobstation/ChelseaMarket/ChelseaMarket.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright (c) 2011 by Font Diner, Inc DBA Tart Workshop (diner@fontdiner.com) with Reseved Font Name \"Chelsea Market\""
+SPDX-License-Identifier = "OFL-1.1"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/_Goobstation/ChelseaMarket/OFL.txt:1-6. Embedded name IDs 0, 5, 13, 14: Version 1.001, explicit OFL-1.1 grant. Embedded copyright spelling preserved; bundled notice says Copyright (c) 2011, Font Diner (www.fontdiner.com), with Reserved Font Name \"Chelsea Market\". No upstream commit pinned."
+
+[[annotations]]
+path = ["_Goobstation/Delius/Delius-Regular.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = ["Copyright (c) 2010, 2011, Natalia Raices,", "Copyright (c) 2011, Igino Marini. (www.ikern.com|mail@iginomarini.com),"]
+SPDX-License-Identifier = "OFL-1.1"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/_Goobstation/Delius/OFL.txt:1-8. Full bundled reservation: with Reserved Font Names \"Delia\", \"Delia Unicase\", \"Delius\" and \"Delius Unicase\". Embedded name IDs 0, 5, 13, 14: Version 1.001; Copyright (c) 2010 by Natalia Raices. All rights reserved.; explicit OFL-1.1 grant. Both bundled copyright statements retained. No upstream commit pinned."
+
+[[annotations]]
+path = ["_Goobstation/NotoSansMono/NotoSansMono-Bold.ttf", "_Goobstation/NotoSansMono/NotoSansMono-ExtraLight.ttf", "_Goobstation/NotoSansMono/NotoSansMono-Medium.ttf", "_Goobstation/NotoSansMono/NotoSansMono-Regular.ttf", "_Goobstation/NotoSansMono/NotoSansMono-SemiBold.ttf", "_Goobstation/NotoSansMono/NotoSansMono-Thin.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright 2022 The Noto Project Authors (https://github.com/notofonts/latin-greek-cyrillic)"
+SPDX-License-Identifier = "OFL-1.1"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/_Goobstation/NotoSansMono/OFL.txt:1-5. Embedded name IDs 0, 5, 13, 14: Version 2.014, matching Noto Project Authors 2022 copyright and explicit OFL-1.1 grant. Bundled source https://github.com/notofonts/latin-greek-cyrillic has no pinned commit."
+
+[[annotations]]
+path = ["_Goobstation/Sour_Gummy/SourGummy-Bold.ttf", "_Goobstation/Sour_Gummy/SourGummy-BoldItalic.ttf", "_Goobstation/Sour_Gummy/SourGummy-Italic.ttf", "_Goobstation/Sour_Gummy/SourGummy-Medium.ttf", "_Goobstation/Sour_Gummy/SourGummy-MediumItalic.ttf", "_Goobstation/Sour_Gummy/SourGummy-Regular.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Copyright 2018 The Sour Gummy Project Authors (https://github.com/eifetx/Sour-Gummy-Fonts)"
+SPDX-License-Identifier = "OFL-1.1"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/_Goobstation/Sour_Gummy/OFL.txt:1-5. Embedded name IDs 0, 5, 13, 14: Version 1.000, matching Sour Gummy Project Authors 2018 copyright and explicit OFL-1.1 grant. Bundled source https://github.com/eifetx/Sour-Gummy-Fonts has no pinned commit."
+
+[[annotations]]
+path = ["Boxfont-round/Boxfont Round.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "mold"
+SPDX-License-Identifier = "CC0-1.0"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/Boxfont-round/credits.txt:1-2. Embedded name IDs 0, 5, 13, 14: original rights statement \"Public Domain\", Version 1.5; 2018, CC-0 and https://creativecommons.org/publicdomain/zero/1.0/. Embedded creator name IDs 8/9 both say \"mold\"; original page https://opengameart.org/node/83077 confirms mold and CC0. Current boxfont_round_1.5g.zip TTF is not byte-identical; page is grant corroboration, not an exact source pin."
+
+[[annotations]]
+path = ["_Goobstation/Bekoha/Freezeframe-Cond.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Created by Bekoha"
+SPDX-License-Identifier = "CC0-1.0"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/_Goobstation/Bekoha/attributions.yml:1-4 explicitly names this file and CC0-1.0. Embedded name IDs 0, 5, 13, 14: empty copyright, Version 1.0, CC0 / Public Domain, no license URL. Original page https://bekoha.itch.io/fonts confirms Bekoha, Freezeframe Condensed and CC0 / Public Domain; it is grant corroboration, not a pinned byte-identical download."
+
+[[annotations]]
+path = ["_Goobstation/Bekoha/Freezeframe-Cond-Bold.ttf", "_Goobstation/Bekoha/Freezeframe-Cond-BoldItalic.ttf", "_Goobstation/Bekoha/Freezeframe-Cond-Italic.ttf"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Created by Bekoha, bold and italic variants derived from Freezeframe Condensed for Goob Station"
+SPDX-License-Identifier = "CC0-1.0"
+SPDX-FileComment = "Local baseline 9b11a6589eb16cefee31b0db8e31134f0e37d7b9; Resources/Fonts/_Goobstation/Bekoha/attributions.yml:6-9 explicitly names these derived files and CC0-1.0. Embedded name IDs 0, 5, 13, 14: empty copyright, Version 1.0, CC0 / Public Domain, no license URL. Original page https://bekoha.itch.io/fonts confirms the base Freezeframe Condensed grant, not authorship or byte identity of the derived variants; variant attribution comes from the bundled notice."

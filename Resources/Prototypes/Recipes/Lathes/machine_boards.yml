@@ -168,6 +168,12 @@
   result: SMESAdvancedMachineCircuitboard
 
 - type: latheRecipe
+  parent: [ BaseGoldCircuitboardRecipeHigh, BaseEngineeringMachineRecipeCategory ]
+  id: SMESHyperAdvancedMachineCircuitboard
+  icon: { sprite:  _Starlight/Structures/Power/smes.rsi, state: smes-blue-static }
+  result: SMESHyperAdvancedMachineCircuitboard
+
+- type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseEngineeringMachineRecipeCategory ]
   id: PortableGeneratorPacmanMachineCircuitboard
   icon: { sprite:  Structures/Power/Generation/portable_generator.rsi, state: portgen0 } # Goobstation
@@ -196,9 +202,9 @@
 # Chemistry
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
-  id: HotplateMachineCircuitboard
-  icon: { sprite: Structures/Machines/hotplate.rsi, state: icon } # Goobstation
-  result: HotplateMachineCircuitboard
+  id: ThermobathMachineCircuitboard
+  icon: { sprite: Structures/Machines/thermobath.rsi, state: base } # Wizden
+  result: ThermobathMachineCircuitboard
 
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseMedicalMachineRecipeCategory ]
@@ -284,6 +290,11 @@
   id: DawInstrumentMachineCircuitboard
   icon: { sprite: Objects/Fun/Instruments/structureinstruments.rsi, state: daw-base } # Goobstation
   result: DawInstrumentMachineCircuitboard
+
+- type: latheRecipe
+  parent: [BaseCircuitboardRecipe]
+  id: SmartFridgeCircuitboard
+  result: SmartFridgeCircuitboard
 
 # Bar
 - type: latheRecipe

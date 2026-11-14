@@ -1,9 +1,6 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Goobstation.Common.Abductor;
 using Content.Server._Shitmed.GameTicking.Rules.Components;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
@@ -12,6 +9,7 @@ using Content.Server.Roles;
 using Content.Shared._Shitmed.Antags.Abductor;
 using Content.Shared._Shitmed.Medical.Surgery;
 using Content.Shared._Shitmed.Medical.Surgery.Steps;
+using Content.Shared._Shitmed.Roles;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
 using Robust.Shared.Player;
@@ -31,6 +29,16 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
     }
     private void OnSurgeryStepComplete(EntityUid uid, AbductorComponent comp, ref SurgeryStepEvent args)
     {
+        if (HasComp<SurgeryAddOrganStepComponent>(args.Step)
+            && args.Complete
+            && HasComp<AbductorOrganComponent>(args.Tool)
+            && TryComp<AbductorVictimComponent>(args.Body, out var priorVictim)
+            && priorVictim.Implanted)
+        {
+            var againEv = new AbductedAgainEvent();
+            RaiseLocalEvent(args.Body, ref againEv);
+        }
+
         if (!HasComp<SurgeryAddOrganStepComponent>(args.Step)
             || !args.Complete
             || HasComp<AbductorComponent>(args.Body)

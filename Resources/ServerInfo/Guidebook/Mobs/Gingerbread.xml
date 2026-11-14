@@ -21,10 +21,21 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   Gingerbreads take 3x less fire damage than Humans, do not take Asphyxiation (though they still breathe and are uncomfortable without oxygen), Bloodloss (though again, are uncomfortable without sugar) and Cold damage (though are slowed down by cold), but take 1.5x more Blunt damage and take a lot of Heat damage from being exposed to water externally.
 
+ ## Gingerbread Naming Conventions
+
+  Gingerbread name conventions typically use just a singular name which often
+  refers to an descriptor, flavor, or type of desert.
+  - [color=#449944]Acceptable:[/color] Crunch
+  - [color=#449944]Acceptable:[/color] S'more
+  - [color=#449944]Acceptable:[/color] Juicy
+  - [color=#449944]Acceptable:[/color] Eclair
+  - [color=#994444]Bad:[/color] Gingerbread Man
+  - [color=#994444]Bad:[/color] Dark Cacoa Cookie
+
   ## Lore
 
   The origin of the Gingerbread kind is almost entirely unknown, with it only being known they tend to make their appearance during times of wintery cheer. Whether it be magic, nanobots, or way too much cognizine, one thing
   is for certain known about the Gingerbread people... they taste really good.
-  
-  
+
+
 </Document>

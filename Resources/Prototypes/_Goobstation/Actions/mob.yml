@@ -1,0 +1,34 @@
+- type: entity
+  parent: BaseAction
+  id: ActionMouseCall
+  name: Mousecall
+  description: Call nearby mice to your location.
+  components:
+  - type: Action
+    icon:
+      sprite: _Goobstation/Actions/call.rsi
+      state: icon
+    useDelay: 15
+  - type: InstantAction
+    event: !type:MobCallActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionMouseSwarm
+  name: Join Swarm
+  description: Absorb a nearby mouse into your swarm.
+  components:
+  - type: Action
+    icon:
+      sprite: Mobs/Animals/mouse.rsi
+      state: mouse-0
+    useDelay: 2
+  - type: TargetAction
+    range: 1.5
+    interactOnMiss: false
+  - type: EntityTargetAction
+    event: !type:MouseSwarmActionEvent
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MouseSwarm

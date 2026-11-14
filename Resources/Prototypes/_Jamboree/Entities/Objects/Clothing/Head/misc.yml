@@ -1,0 +1,213 @@
+
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Jamboree orignals
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatGorilla
+  name: gorilla head
+  description: "Ook ook ook!"
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/gorilla_h.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/gorilla_h.rsi
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatBingle
+  name: bingle head
+  description: "Unlike the real thing, the inside actually smells nice!"
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/bingle_hat.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/bingle_hat.rsi
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.16"
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+# TG Station ports
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatBunny
+  name: bunny head
+  description: "It's a bunny head. Hippity hoppity!"
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/bunny_h.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/bunny_h.rsi
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - FacialHair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatFlash
+  name: flash hat
+  description: No, it will not protect your eyes.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/flash_h.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/flash_h.rsi
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatLobster
+  name: lobster head
+  description: "Livin like a lobster!"
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/lobster_h.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/lobster_h.rsi
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - FacialHair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatMonkey
+  name: monkey head
+  description: "Its official. You can finally go monkey mode."
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/monkey_h.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/monkey_h.rsi
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - FacialHair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatSnowman
+  name: snowman head
+  description: "Happy birthday!"
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/snowman_h.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/snowman_h.rsi
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - FacialHair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatXeno
+  name: xeno head
+  description: "The mouth inside of the mouth is not included!"
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/xeno_h.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/xeno_h.rsi
+  - type: IngestionBlocker
+  - type: IdentityBlocker
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - FacialHair
+    - HeadTop
+    - HeadSide
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatPharoh
+  name: pharoh headress
+  description: Curse of Ra!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/pharoh_h.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/pharoh_h.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadHatScarecrow
+  name: scarecrow hat
+  description: The perfect hat to cover up your lack of a brain!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Costume/scarecrow_h.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Costume/scarecrow_h.rsi
+
+# Bear Pelts for the Salvies, Jamboree
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadBlackBearPelt
+  name: black bear pelt
+  description: "If the bear is black, fight back."
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Misc/bearpelt_black.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Misc/bearpelt_black.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadBrownBearPelt
+  name: brown bear pelt
+  description: "If the bear is brown, lay down."
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Misc/bearpelt_brown.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Misc/bearpelt_brown.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: JamboreeClothingHeadPolarBearPelt
+  name: polar bear pelt
+  description: "If the bear is white, say goodnight."
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/Head/Misc/bearpelt_polar.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/Head/Misc/bearpelt_polar.rsi

@@ -1,33 +1,15 @@
 using Content.Server._EinsteinEngines.Psionics;
-using Content.Shared.Chemistry.Reagent;
+using Content.Shared._EinsteinEngines.Psionics;
 using Content.Shared.EntityEffects;
-using JetBrains.Annotations;
-using Robust.Shared.Prototypes;
 
-namespace Content.Server._Nyanotrasen.Chemistry.Effects
+namespace Content.Server._Nyanotrasen.Chemistry.Effects;
+
+public sealed partial class ChemRerollPsionicSystem : EntityEffectSystem<MetaDataComponent, ChemRerollPsionic>
 {
-    /// <summary>
-    /// Rerolls psionics once.
-    /// </summary>
-    [UsedImplicitly]
-    public sealed partial class ChemRerollPsionic : EntityEffect
+    [Dependency] private PsionicsSystem _psionics = default!;
+
+    protected override void Effect(Entity<MetaDataComponent> entity, ref EntityEffectEvent<ChemRerollPsionic> args)
     {
-        protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-            => Loc.GetString("reagent-effect-guidebook-chem-reroll-psionic", ("chance", Probability));
-
-        /// <summary>
-        /// Reroll multiplier.
-        /// </summary>
-        [DataField("bonusMultiplier")]
-        public float BonusMuliplier = 1f;
-
-        public override void Effect(EntityEffectBaseArgs args)
-        {
-            if (args is not EntityEffectReagentArgs _)
-                return;
-
-            var psySys = args.EntityManager.EntitySysManager.GetEntitySystem<PsionicsSystem>();
-            psySys.RerollPsionics(args.TargetEntity, bonusMuliplier: BonusMuliplier);
-        }
+        _psionics.RerollPsionics(entity, bonusMuliplier: args.Effect.BonusMuliplier);
     }
 }

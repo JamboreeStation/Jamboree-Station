@@ -72,6 +72,16 @@
     <GuideEntityEmbed Entity="Syringe" Caption=""/>
   </Box>
 
+ ## Plasmaman Naming Conventions
+
+  Plasmamen typically have names which have a basis upon an element or elemental compound followed by a roman numeral.
+  Some Plasmamen also elect to take up names based off of the naming schemes of skeletons, despite it not being humerus.
+  - [color=#449944]Acceptable:[/color] Sodium V
+  - [color=#449944]Acceptable:[/color] Nitrogen II
+  - [color=#449944]Acceptable:[/color] Ribs C
+  - [color=#994444]Bad:[/color] Sans U
+  - [color=#994444]Bad:[/color] Papyrus
+
   ## Lore
 
   It is unknown as to exactly why the Plasmaman species bears such a striking resemblance to the anatomical structure of the human species. While some suspect it is another, albeit far more extreme than normal, instance of

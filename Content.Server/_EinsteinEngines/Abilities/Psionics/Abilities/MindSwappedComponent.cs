@@ -4,7 +4,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server._EinsteinEngines.Abilities.Psionics
 {
@@ -13,9 +12,8 @@ namespace Content.Server._EinsteinEngines.Abilities.Psionics
     {
         [ViewVariables]
         public EntityUid OriginalEntity = default!;
-        [DataField("mindSwapReturnActionId",
-        customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-        public string? MindSwapReturnActionId = "ActionMindSwapReturn";
+        [DataField("mindSwapReturnActionId")]
+        public ProtoId<EntityPrototype>? MindSwapReturnActionId = "ActionMindSwapReturn";
 
         [DataField("mindSwapReturnActionEntity")]
         public EntityUid? MindSwapReturnActionEntity;

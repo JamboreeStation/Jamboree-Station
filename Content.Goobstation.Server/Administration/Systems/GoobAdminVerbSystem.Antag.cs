@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
@@ -27,8 +19,8 @@ namespace Content.Goobstation.Server.Administration.Systems;
 
 public sealed partial class GoobAdminVerbSystem
 {
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly IAdminManager _admin = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private IAdminManager _admin = default!;
 
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
     {
@@ -99,6 +91,7 @@ public sealed partial class GoobAdminVerbSystem
             Message = Loc.GetString("admin-verb-make-shadowling"),
         };
         args.Verbs.Add(shadowling);
+
     }
 
     public bool AntagVerbAllowed(GetVerbsEvent<Verb> args, [NotNullWhen(true)] out ICommonSession? target)

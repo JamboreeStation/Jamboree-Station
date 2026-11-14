@@ -9,14 +9,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Shared.Wraith.Curses;
 
-public abstract class SharedCurseHolderSystem : EntitySystem
+public abstract partial class SharedCurseHolderSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly EntityEffectSystem _effect = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _netManager = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedEntityEffectsSystem _effect = default!;
 
     public override void Initialize()
     {
@@ -100,14 +100,15 @@ public abstract class SharedCurseHolderSystem : EntitySystem
         if (!_proto.TryIndex(curse, out var curseIndex))
             return;
 
-        var args = new EntityEffectBaseArgs(target, EntityManager);
         // roll the chance
         foreach (var (chance, curseEffects) in curseIndex.Effects)
         {
             if (_random.Prob(chance))
             {
                 foreach (var effect in curseEffects)
-                    _effect.Effect(effect, args);
+                {
+                    _effect.TryApplyEffect(target, effect);
+                }
 
                 curseHolder.CurseUpdate[curse] = _timing.CurTime + TimeSpan.FromSeconds(curseIndex.Update);
                 Dirty(target, curseHolder);

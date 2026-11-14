@@ -1,7 +1,11 @@
-﻿- type: entity
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
   id: CartridgeMagnum22
   name: cartridge (.22 magnum)
-  description: A small coin modeled after one used by an insignificant nation from the Sol system.
+  description: A small cartridge used exclusively by the derringer.
   parent: [ BaseCartridgeMagnum, BaseCommandContraband ]
   components:
   - type: Tag

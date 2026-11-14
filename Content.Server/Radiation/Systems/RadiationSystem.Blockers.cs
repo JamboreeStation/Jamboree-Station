@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Content.Server.Radiation.Components;
@@ -19,7 +15,6 @@ public partial class RadiationSystem
         SubscribeLocalEvent<RadiationBlockerComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<RadiationBlockerComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<RadiationBlockerComponent, AnchorStateChangedEvent>(OnAnchorChanged);
-        SubscribeLocalEvent<RadiationBlockerComponent, ReAnchorEvent>(OnReAnchor);
 
         SubscribeLocalEvent<RadiationBlockerComponent, DoorStateChangedEvent>(OnDoorChanged);
 
@@ -50,15 +45,6 @@ public partial class RadiationSystem
         {
             RemoveTile(uid, component);
         }
-    }
-
-    private void OnReAnchor(EntityUid uid, RadiationBlockerComponent component, ref ReAnchorEvent args)
-    {
-        // probably grid was split
-        // we need to remove entity from old resistance map
-        RemoveTile(uid, component);
-        // and move it to the new one
-        AddTile(uid, component);
     }
 
     private void OnDoorChanged(EntityUid uid, RadiationBlockerComponent component, DoorStateChangedEvent args)
@@ -114,7 +100,7 @@ public partial class RadiationSystem
 
         // save resistance into rad protection grid
         var gridId = trs.GridUid.Value;
-        var tilePos = grid.TileIndicesFor(trs.Coordinates);
+        var tilePos = _mapSystem.TileIndicesFor(trs.GridUid.Value, grid, trs.Coordinates);
         AddToTile(gridId, tilePos, component.RadResistance);
 
         // and remember it as last valid position

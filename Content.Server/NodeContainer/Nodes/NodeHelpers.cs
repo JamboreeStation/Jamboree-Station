@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
@@ -21,9 +12,11 @@ namespace Content.Server.NodeContainer.Nodes
     /// </summary>
     public static class NodeHelpers
     {
+        private static SharedMapSystem MapSystem => IoCManager.Resolve<IEntityManager>().System<SharedMapSystem>();
+
         public static IEnumerable<Node> GetNodesInTile(EntityQuery<NodeContainerComponent> nodeQuery, MapGridComponent grid, Vector2i coords)
         {
-            foreach (var entityUid in grid.GetAnchoredEntities(coords))
+            foreach (var entityUid in MapSystem.GetAnchoredEntities(grid.Owner, grid, coords))
             {
                 if (!nodeQuery.TryGetComponent(entityUid, out var container))
                     continue;
@@ -61,20 +54,20 @@ namespace Content.Server.NodeContainer.Nodes
         {
             if (includeSameTile)
             {
-                foreach (var uid in grid.GetAnchoredEntities(coords))
+                foreach (var uid in MapSystem.GetAnchoredEntities(grid.Owner, grid, coords))
                     yield return (Direction.Invalid, uid);
             }
 
-            foreach (var uid in grid.GetAnchoredEntities(coords + (0, 1)))
+            foreach (var uid in MapSystem.GetAnchoredEntities(grid.Owner, grid, coords + (0, 1)))
                 yield return (Direction.North, uid);
 
-            foreach (var uid in grid.GetAnchoredEntities(coords + (0, -1)))
+            foreach (var uid in MapSystem.GetAnchoredEntities(grid.Owner, grid, coords + (0, -1)))
                 yield return (Direction.South, uid);
 
-            foreach (var uid in grid.GetAnchoredEntities(coords + (1, 0)))
+            foreach (var uid in MapSystem.GetAnchoredEntities(grid.Owner, grid, coords + (1, 0)))
                 yield return (Direction.East, uid);
 
-            foreach (var uid in grid.GetAnchoredEntities(coords + (-1, 0)))
+            foreach (var uid in MapSystem.GetAnchoredEntities(grid.Owner, grid, coords + (-1, 0)))
                 yield return (Direction.West, uid);
         }
     }

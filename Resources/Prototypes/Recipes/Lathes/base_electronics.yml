@@ -45,6 +45,17 @@
 - type: latheRecipe
   parent: BaseCircuitboardRecipe
   abstract: true
+  id: BaseGoldCircuitboardRecipeHigh
+  materials:
+    Steel: 100
+    Glass: 500
+    Gold: 100
+    Silver: 100
+    Plasma: 100
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  abstract: true
   id: BaseSilverCircuitboardRecipe
   materials:
     Steel: 100

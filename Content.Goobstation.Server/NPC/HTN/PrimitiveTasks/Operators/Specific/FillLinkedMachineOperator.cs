@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-// SPDX-FileCopyrightText: 2025 Timfa <timfalken@hotmail.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Silicon.Bots;
@@ -21,7 +16,7 @@ namespace Content.Goobstation.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
 
 public sealed partial class FillLinkedMachineOperator : HTNOperator
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
     private SharedMaterialStorageSystem _sharedMaterialStorage = default!;
     private SharedDisposalUnitSystem _sharedDisposalUnitSystem = default!;
     private SharedHandsSystem _sharedHandsSystem = default!;

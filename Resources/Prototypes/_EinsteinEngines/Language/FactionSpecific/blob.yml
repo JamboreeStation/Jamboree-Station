@@ -1,6 +1,12 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Used by Blob.
 - type: language
   id: Blob
+  isVisibleLanguage: true
+  icon: LanguageIconBlob
   speech:
     fontId: Monospace # TODO - Make a better font selection instead of copying Silicon.
     boldFontId: MonospaceBold

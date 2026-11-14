@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -34,24 +26,24 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Server.Blob;
 
-public sealed class BlobObserverSystem : SharedBlobObserverSystem
+public sealed partial class BlobObserverSystem : SharedBlobObserverSystem
 {
-    [Dependency] private readonly ActionsSystem _action = default!;
-    [Dependency] private readonly BlobCoreSystem _blobCoreSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    [Dependency] private readonly MindSystem _mindSystem = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly ILogManager _logMan = default!;
-    [Dependency] private readonly RoleSystem _roleSystem = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
-    [Dependency] private readonly ISharedPlayerManager _actorSystem = default!;
-    [Dependency] private readonly ViewSubscriberSystem _viewSubscriberSystem = default!;
-    [Dependency] private readonly MapSystem _mapSystem = default!;
-    [Dependency] private readonly HandsSystem _hands = default!;
-    [Dependency] private readonly BlobTileSystem _blobTileSystem = default!;
+    [Dependency] private ActionsSystem _action = default!;
+    [Dependency] private BlobCoreSystem _blobCoreSystem = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private ActionBlockerSystem _blocker = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private MindSystem _mindSystem = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private ILogManager _logMan = default!;
+    [Dependency] private RoleSystem _roleSystem = default!;
+    [Dependency] private IChatManager _chatManager = default!;
+    [Dependency] private ISharedPlayerManager _actorSystem = default!;
+    [Dependency] private ViewSubscriberSystem _viewSubscriberSystem = default!;
+    [Dependency] private MapSystem _mapSystem = default!;
+    [Dependency] private HandsSystem _hands = default!;
+    [Dependency] private BlobTileSystem _blobTileSystem = default!;
 
     private EntityQuery<BlobTileComponent> _tileQuery;
 
@@ -60,9 +52,9 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
     private ISawmill _logger = default!;
 
-    [ValidatePrototypeId<EntityPrototype>] private const string BlobCaptureObjective = "BlobCaptureObjective";
-    [ValidatePrototypeId<EntityPrototype>] private const string MobObserverBlobController = "MobObserverBlobController";
-    [ValidatePrototypeId<AlertPrototype>] private const string BlobHealth = "BlobHealth";
+    private static readonly EntProtoId BlobCaptureObjective = "BlobCaptureObjective";
+    private static readonly EntProtoId MobObserverBlobController = "MobObserverBlobController";
+    private static readonly ProtoId<AlertPrototype> BlobHealth = "BlobHealth";
 
     public override void Initialize()
     {
@@ -325,7 +317,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
             }
         }
 
-        if (blobTile == null || !HasComp<BlobNodeComponent>(blobTile))
+        if (blobTile == null || !HasComp<BlobNodeComponent>(blobTile) || HasComp<BlobCoreComponent>(blobTile))
         {
             _popup.PopupEntity(Loc.GetString("blob-target-node-blob-invalid"), args.Performer, args.Performer, PopupType.Large);
             args.Handled = true;

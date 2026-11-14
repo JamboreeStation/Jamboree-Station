@@ -1,0 +1,45 @@
+# SPDX-FileCopyrightText: 2025 Baine Junk <wym0n@proton.me>
+# SPDX-FileCopyrightText: 2025 JamboreeBot <JamboreeBot@proton.me>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+
+
+#Section
+- type: guideEntry
+  id: ExoticSpecies
+  name: guide-entry-exotic-species
+  text: "/ServerInfo/_Jamboree/Guidebook/ExoticMobs.xml"
+  children:
+  - Ant
+  - BananaMen
+  - Resomi
+  - Skeleton
+  - Xeeplian
+
+
+#Subsections
+- type: guideEntry
+  id: Skeleton
+  name: guide-entry-skeleton
+  text: "/ServerInfo/_Jamboree/Guidebook/ExoticMobs/Skeleton.xml"
+
+- type: guideEntry
+  id: Ant
+  name: species-name-ant
+  text: "/ServerInfo/_Jamboree/Guidebook/ExoticMobs/Ant.xml"
+
+- type: guideEntry
+  id: BananaMen
+  name: guide-entry-bananamen
+  text: "/ServerInfo/_Jamboree/Guidebook/ExoticMobs/Bananamen.xml"
+
+- type: guideEntry
+  id: Xeeplian
+  name: guide-entry-xeeplian
+  text: "/ServerInfo/_Jamboree/Guidebook/ExoticMobs/Xeeplian.xml"
+
+- type: guideEntry
+  id: Resomi
+  name: species-name-resomi
+  text: "/ServerInfo/Guidebook/Mobs/Resomi.xml"

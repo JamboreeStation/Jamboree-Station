@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Weapons.Ranged.Components;
@@ -6,7 +9,7 @@ namespace Content.Shared.Weapons.Ranged.Components;
 /// This component modifies the spread of the gun it is attached to.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-public sealed partial class GunSpreadModifierComponent: Component
+public sealed partial class GunSpreadModifierComponent : Component
 {
     /// <summary>
     /// A scalar value multiplied by the spread built into the ammo itself.

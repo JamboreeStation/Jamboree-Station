@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2025 Rinary <72972221+Rinary1@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2025 ss14-Starlight <ss14-Starlight@outlook.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Atmos.EntitySystems;
@@ -66,7 +59,7 @@ public sealed class BeingVentCrawSystem : EntitySystem
         }
     }
 
-    private void OnInhaleLocation(EntityUid uid, BeingVentCrawlerComponent component, InhaleLocationEvent args)
+    private void OnInhaleLocation(EntityUid uid, BeingVentCrawlerComponent component, ref InhaleLocationEvent args)
     {
         if (!TryComp<VentCrawlerHolderComponent>(component.Holder, out var holder))
             return;
@@ -86,7 +79,7 @@ public sealed class BeingVentCrawSystem : EntitySystem
         }
     }
 
-    private void OnExhaleLocation(EntityUid uid, BeingVentCrawlerComponent component, ExhaleLocationEvent args)
+    private void OnExhaleLocation(EntityUid uid, BeingVentCrawlerComponent component, ref ExhaleLocationEvent args)
     {
         if (!TryComp<VentCrawlerHolderComponent>(component.Holder, out var holder))
             return;

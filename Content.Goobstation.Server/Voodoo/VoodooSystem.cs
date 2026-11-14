@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.Voodoo;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
@@ -7,20 +11,21 @@ using Robust.Shared.Prototypes;
 using Robust.Server.Player;
 using Robust.Shared.Random;
 using System.Numerics;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Goobstation.Server.Voodoo
 {
     /// <summary>
     /// System used for the voodoo component for making someone take damage, and throw them when their counterpart "voodoo doll" takes damage.
     /// </summary>
-    public sealed class VengeanceSystem : EntitySystem
+    public sealed partial class VengeanceSystem : EntitySystem
     {
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
-        [Dependency] private readonly DamageableSystem _damageable = default!;
-        [Dependency] private readonly IPrototypeManager _proto = default!;
-        [Dependency] private readonly SharedBodySystem _bodySystem = default!;
-        [Dependency] private readonly ThrowingSystem _throwing = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private DamageableSystem _damageable = default!;
+        [Dependency] private IPrototypeManager _proto = default!;
+        [Dependency] private SharedBodySystem _bodySystem = default!;
+        [Dependency] private ThrowingSystem _throwing = default!;
+        [Dependency] private IRobustRandom _random = default!;
 
         public override void Initialize()
         {
@@ -28,7 +33,7 @@ namespace Content.Goobstation.Server.Voodoo
 
             SubscribeLocalEvent<VoodooComponent, DamageChangedEvent>(OnDamaged);
             SubscribeLocalEvent<VoodooComponent, DestructionEventArgs>(OnDestroyed);
-            SubscribeLocalEvent<VoodooComponent, ThrownEvent>(OnThrow);
+            SubscribeLocalEvent<VoodooComponent, ThrowEvent>(OnThrow);
         }
 
         /// <summary>
@@ -89,7 +94,7 @@ namespace Content.Goobstation.Server.Voodoo
         /// <summary>
         /// Whenever the voodoo item is thrown, throw the player in a random direction
         /// </summary>
-        private void OnThrow(Entity<VoodooComponent> ent, ref ThrownEvent args)
+        private void OnThrow(Entity<VoodooComponent> ent, ref ThrowEvent args)
         {
             foreach (var session in _playerManager.Sessions)
             {
@@ -110,7 +115,8 @@ namespace Content.Goobstation.Server.Voodoo
                 if (direction == Vector2.Zero)
                     direction = _random.NextVector2(1f);
 
-                _throwing.TryThrow(target, direction, strength, args.User);
+                _throwing.TryThrow(target, direction, strength, args.User,
+                    predicted: false); // Trauma
             }
         }
     }

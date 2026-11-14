@@ -1,10 +1,6 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Goobstation.Server.StationEvents.Metric.Components;
 using Content.Shared._EinsteinEngines.Silicon.Components;
 using Content.Goobstation.Maths.FixedPoint;
@@ -98,6 +94,22 @@ public sealed class FoodMetricSystem : ChaosMetricSystem<FoodMetricComponent>
             {ChaosMetric.Charge, chargeSc},
         });
         return chaos;
+    }
+
+    protected override void ResetMetrics()
+    {
+        HungerChaosCalculated.Set(0);
+        ThirstChaosCalculated.Set(0);
+        ChargeChaosCalculated.Set(0);
+        RemoveAllLabels(HungerThresholdCount);
+        RemoveAllLabels(ThirstThresholdCount);
+        RemoveAllLabels(SiliconChargeStateCount);
+    }
+
+    private static void RemoveAllLabels(Gauge gauge)
+    {
+        foreach (var labels in gauge.GetAllLabelValues().ToList())
+            gauge.RemoveLabelled(labels);
     }
 
     private double CalculateCharge(FoodMetricComponent component,

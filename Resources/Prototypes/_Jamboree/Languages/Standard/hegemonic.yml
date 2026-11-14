@@ -1,0 +1,40 @@
+# Spoken by Hegemony.
+- type: language
+  icon: LanguageIconHegemonic
+  id: Hegemonic
+  iconUnderstood: false
+  isVisibleLanguage: true
+  speech:
+    color: "#bddeff"
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 4
+    maxSyllables: 8
+    replacement:
+    - A
+    - β
+    - Γ
+    - Y
+    - Δ
+    - δ
+    - ε
+    - ζ
+    - η
+    - H
+    - Θ
+    - ϑ
+    - K
+    - Λ
+    - λ
+    - M
+    - μ
+    - Ξ
+    - O
+    - €
+    - Ï
+    - P
+    - Σ
+    - Φ
+    - φ
+    - Ψ
+    - Ω

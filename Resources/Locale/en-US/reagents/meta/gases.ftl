@@ -36,3 +36,6 @@ reagent-desc-kaltrenoxide = You think Frezon would be jealous? It feels unnatura
 
 reagent-name-infernazim = Infernazim
 reagent-desc-infernazim = A gas mined from the burning anger of a dying star...
+
+reagent-name-seawater = Sea Water
+reagent-desc-seawater = The water from the ocean, yet it feels intoxicating.

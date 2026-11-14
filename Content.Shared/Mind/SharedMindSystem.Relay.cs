@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.NameModifier.EntitySystems;
 using Content.Shared.Mind.Components;
 
@@ -23,7 +26,7 @@ public abstract partial class SharedMindSystem : EntitySystem
         {
             RaiseLocalEvent(mindId, ref ev);
 
-            foreach (var role in mindComp.MindRoles)
+            foreach (var role in mindComp.MindRoleContainer.ContainedEntities)
                 RaiseLocalEvent(role, ref ev);
         }
     }
@@ -36,7 +39,7 @@ public abstract partial class SharedMindSystem : EntitySystem
         {
             RaiseLocalEvent(mindId, ref ev);
 
-            foreach (var role in mindComp.MindRoles)
+            foreach (var role in mindComp.MindRoleContainer.ContainedEntities)
                 RaiseLocalEvent(role, ref ev);
         }
 

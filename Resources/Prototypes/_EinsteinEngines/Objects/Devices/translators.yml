@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Marty <martynashagriefer@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # Translator that doesn't need power to work.
@@ -262,23 +258,6 @@
     requires:
     - TauCetiBasic
     - ValyrianStandard
-
-- type: entity
-  id: AzazibaTranslator
-  parent: [ TranslatorPoweredBase ]
-  name: Azaziba translator
-  description: Translates speech between Unathi and Azaziba. For Unathi to speak the Archaic form of their native tongue! # Intended for Admins Only, this item is for lore reasons not obtainable.
-  components:
-  - type: HandheldTranslator
-    spoken:
-    - Draconic
-    - Azaziba
-    understood:
-    - Draconic
-    - Azaziba
-    requires:
-    - Draconic
-    - Azaziba
 
 - type: entity
   id: ChittinTranslator

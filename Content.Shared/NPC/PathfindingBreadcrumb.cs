@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Robust.Shared.Serialization;
@@ -79,14 +75,14 @@ public struct PathfindingData : IEquatable<PathfindingData>
     {
         return CollisionLayer.Equals(other.CollisionLayer) &&
                CollisionMask.Equals(other.CollisionMask) &&
-               Flags.Equals(other.Flags);
+               Flags == other.Flags; // Goob
     }
 
     public bool Equals(PathfindingData other)
     {
         return CollisionLayer.Equals(other.CollisionLayer) &&
                CollisionMask.Equals(other.CollisionMask) &&
-               Flags.Equals(other.Flags) &&
+               Flags == other.Flags && // Goob
                Damage.Equals(other.Damage);
     }
 

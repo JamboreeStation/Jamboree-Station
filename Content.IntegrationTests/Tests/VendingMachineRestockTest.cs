@@ -1,15 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Tayrtahn <tayrtahn@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 #nullable enable
@@ -17,10 +5,13 @@ using System.Collections.Generic;
 using Content.Server.VendingMachines;
 using Content.Server.Wires;
 using Content.Shared.Cargo.Prototypes;
+using Content.Shared.Containers;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
+using Content.Shared.EntityTable;
 using Content.Shared.Prototypes;
-using Content.Shared.Storage.Components;
+using Content.Shared.Storage.EntitySystems;
 using Content.Shared.VendingMachines;
 using Content.Shared.Wires;
 using Robust.Shared.GameObjects;
@@ -128,6 +119,7 @@ namespace Content.IntegrationTests.Tests
 
             var prototypeManager = server.ResolveDependency<IPrototypeManager>();
             var compFact = server.ResolveDependency<IComponentFactory>();
+            var entityTable = server.EntMan.System<EntityTableSystem>();
 
             await server.WaitAssertion(() =>
             {
@@ -147,17 +139,23 @@ namespace Content.IntegrationTests.Tests
                     restocks.Add(proto.ID);
                 }
 
-                // Collect all the prototypes with StorageFills referencing those entities.
+                // Collect all the prototypes with EntityTableContainerFills referencing those entities.
                 foreach (var proto in prototypeManager.EnumeratePrototypes<EntityPrototype>())
                 {
-                    if (!proto.TryGetComponent<StorageFillComponent>(out var storage, compFact))
+                    if (!proto.TryGetComponent<EntityTableContainerFillComponent>(out var storage, compFact))
+                        continue;
+
+                    var containers = storage.Containers;
+
+                    if (!containers.TryGetValue(SharedEntityStorageSystem.ContainerName, out var container)) // We only care about this container type.
                         continue;
 
                     List<string> restockStore = new();
-                    foreach (var spawnEntry in storage.Contents)
+
+                    foreach (var spawnEntry in entityTable.GetSpawns(container))
                     {
-                        if (spawnEntry.PrototypeId != null && restocks.Contains(spawnEntry.PrototypeId))
-                            restockStore.Add(spawnEntry.PrototypeId);
+                        if (restocks.Contains(spawnEntry))
+                            restockStore.Add(spawnEntry);
                     }
 
                     if (restockStore.Count > 0)
@@ -166,7 +164,7 @@ namespace Content.IntegrationTests.Tests
 
                 // Iterate through every CargoProduct and make sure each
                 // prototype with a restock component is referenced in a
-                // purchaseable entity with a StorageFill.
+                // purchaseable entity with an EntityTableContianerFill.
                 foreach (var proto in prototypeManager.EnumeratePrototypes<CargoProductPrototype>())
                 {
                     if (restockStores.ContainsKey(proto.Product))
@@ -310,14 +308,12 @@ namespace Content.IntegrationTests.Tests
 
                 restock = entityManager.SpawnEntity("TestRestockExplode", coordinates);
                 var damageSpec = new DamageSpecifier(prototypeManager.Index(TestDamageType), 100);
-                var damageResult = damageableSystem.TryChangeDamage(restock, damageSpec);
+                var damageResult = damageableSystem.ChangeDamage(restock, damageSpec);
 
 #pragma warning disable NUnit2045
-                Assert.That(damageResult, Is.Not.Null,
-                    "Received null damageResult when attempting to damage restock box.");
+                Assert.That(!damageResult.Empty, "Received empty damageResult when attempting to damage restock box.");
 
-                Assert.That((int) damageResult!.GetTotal(), Is.GreaterThan(0),
-                    "Box damage result was not greater than 0.");
+                Assert.That((int) damageResult.GetTotal(), Is.GreaterThan(0), "Box damage result was not greater than 0.");
 #pragma warning restore NUnit2045
             });
             await server.WaitRunTicks(15);
@@ -348,7 +344,7 @@ namespace Content.IntegrationTests.Tests
             var server = pair.Server;
             await server.WaitIdleAsync();
 
-            var mapManager = server.ResolveDependency<IMapManager>();
+            var mapManager = server.System<SharedMapSystem>();
             var entityManager = server.ResolveDependency<IEntityManager>();
             var entitySystemManager = server.ResolveDependency<IEntitySystemManager>();
 

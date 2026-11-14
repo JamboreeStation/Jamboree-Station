@@ -56,12 +56,15 @@ chat-manager-sender-announcement-wrap-message = [font size=14][bold]{$sender} An
 # Einstein Engines - Language begin (changing colors for text based on language color in handler)
 # For the message in double quotes, the font/color/bold/italic elements are repeated twice, outside the double quotes and inside.
 # The outside elements are for formatting the double quotes, and the inside elements are for formatting the text in speech bubbles ([BubbleContent]).
-chat-manager-entity-say-wrap-message = [BubbleHeader][bold][Name]{$entityName}[/Name][/bold][/BubbleHeader] {$verb}, [font={$fontType} size={$fontSize}]"[BubbleContent][font="{$fontType}" size={$fontSize}][color={$color}]{$message}[/color][/font][/BubbleContent]"[/font]
-chat-manager-entity-say-bold-wrap-message = [BubbleHeader][bold][Name]{$entityName}[/Name][/bold][/BubbleHeader] {$verb}, [font={$fontType} size={$fontSize}]"[BubbleContent][font="{$fontType}" size={$fontSize}][bold][color={$color}]{$message}[/color][/bold][/font][/BubbleContent]"[/font]
+chat-manager-entity-say-wrap-message = [BubbleHeader]{$languageIcon}[bold][Name]{$entityName}[/Name][/bold][/BubbleHeader] {$verb}, [font={$fontType} size={$fontSize}]"[BubbleContent][font="{$fontType}" size={$fontSize}][color={$color}]{$message}[/color][/font][/BubbleContent]"[/font]{$language}
+chat-manager-entity-say-bold-wrap-message = [BubbleHeader]{$languageIcon}[bold][Name]{$entityName}[/Name][/bold][/BubbleHeader] {$verb}, [font={$fontType} size={$fontSize}]"[BubbleContent][font="{$fontType}" size={$fontSize}][bold][color={$color}]{$message}[/color][/bold][/font][/BubbleContent]"[/font]{$language}
 
-chat-manager-entity-whisper-wrap-message = [font size=11][italic][BubbleHeader][Name]{$entityName}[/Name][/BubbleHeader] whispers, "[BubbleContent][color={$color}][font="{$fontType}"]{$message}[/font][/color][/BubbleContent][font size=11]"[/italic][/font]
-chat-manager-entity-whisper-unknown-wrap-message = [font size=11][italic][BubbleHeader]Someone[/BubbleHeader] whispers, "[BubbleContent][color={$color}][font="{$fontType}"]{$message}[/color][/font][/BubbleContent][font size=11]"[/italic][/font]
+chat-manager-entity-whisper-wrap-message = [font size=11][italic][BubbleHeader]{$languageIcon}[Name]{$entityName}[/Name][/BubbleHeader] whispers, "[BubbleContent][color={$color}][font="{$fontType}"]{$message}[/font][/color][/BubbleContent][font size=11]"[/italic][/font]{$language}
+chat-manager-entity-whisper-unknown-wrap-message = [font size=11][italic][BubbleHeader]{$languageIcon}Someone[/BubbleHeader] whispers, "[BubbleContent][color={$color}][font="{$fontType}"]{$message}[/color][/font][/BubbleContent][font size=11]"[/italic][/font]{$language}
 # Einstein Engines - Language end
+
+# Language icon feature - Starlight port
+chat-manager-language-icon = [color=#888888][icon src="{$icon}" size=20 tooltip="{$language}"][/color]{" "}
 
 # chat-manager-language-prefix = ({ $language }){" "} - Removed so it doesn't show up, not wanted, but part of the language system.
 
@@ -73,7 +76,6 @@ chat-manager-entity-me-wrap-message = [italic]{ PROPER($entity) ->
 
 chat-manager-entity-looc-wrap-message = LOOC: [bold]{$entityName}:[/bold] {$message}
 chat-manager-send-ooc-wrap-message = OOC: [bold]{$playerName}:[/bold] {$message}
-chat-manager-send-ooc-patron-wrap-message = OOC: [bold][color={$patronColor}]{$playerName}[/color]:[/bold] {$message}
 
 chat-manager-send-dead-chat-wrap-message = {$deadChannelName}: [bold][BubbleHeader]{$playerName}[/BubbleHeader][/bold] {$verb}: "[BubbleContent]{$message}[/BubbleContent]"
 chat-manager-send-admin-dead-chat-wrap-message = {$adminChannelName}: [bold]([BubbleHeader]{$userName}[/BubbleHeader])[/bold] {$verb}: "[BubbleContent]{$message}[/BubbleContent]"
@@ -197,8 +199,16 @@ chat-speech-verb-electricity-1 = crackles
 chat-speech-verb-electricity-2 = buzzes
 chat-speech-verb-electricity-3 = screeches
 
+# Goob
+#chat-speech-verb-vulpkanin-1 = rawrs
+#chat-speech-verb-vulpkanin-2 = barks
+#chat-speech-verb-vulpkanin-3 = rurs
+#chat-speech-verb-vulpkanin-4 = yaps
+#chat-speech-verb-vulpkanin = Vulpkanin
+
 chat-speech-verb-name-wawa = Wawa
 chat-speech-verb-wawa-1 = intones
 chat-speech-verb-wawa-2 = states
 chat-speech-verb-wawa-3 = declares
 chat-speech-verb-wawa-4 = ponders
+

@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Movement.Components;
@@ -11,9 +7,9 @@ using Robust.Shared.IoC;
 
 namespace Content.Goobstation.Shared.MisandryBox.Smites;
 
-public sealed class FlipEyeSystem : ToggleableSmiteSystem<FlipEyeComponent>
+public sealed partial class FlipEyeSystem : ToggleableSmiteSystem<FlipEyeComponent>
 {
-    [Dependency] private readonly SharedContentEyeSystem _eyeSystem = default!;
+    [Dependency] private SharedContentEyeSystem _eyeSystem = default!;
 
     public override void Set(EntityUid owner)
     {

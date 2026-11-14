@@ -1,0 +1,402 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# HEAD
+
+## DEFAULTS
+#head
+
+- type: marking
+  id: ADTUrsineMuzzle
+  bodyPart: Head
+  markingCategory: Snout
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: muzzle
+
+- type: marking
+  id: ADTUrsineMuzzle2
+  bodyPart: Head
+  markingCategory: Snout
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: muzzle2
+
+- type: marking
+  id: ADTUrsinenose
+  bodyPart: Head
+  markingCategory: Snout
+  speciesRestriction: [Ursine]
+  forcedColoring: false
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+  followSkinColor: false
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: nose
+
+- type: marking
+  id: ADTUrsinespots
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: spots
+
+- type: marking
+  id: ADTUrsinespots_left
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: spots_left
+
+- type: marking
+  id: ADTUrsinespots_right
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: spots_right
+
+- type: marking
+  id: ADTUrsinestar
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: star
+
+- type: marking
+  id: ADTUrsinekiss
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: kiss
+
+- type: marking
+  id: ADTUrsineeyeliner
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: eyeliner
+
+# Head Top
+
+- type: marking
+  id: ADTUrsineears
+  markingCategory: HeadTop
+  bodyPart: HeadTop
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: ears
+
+- type: marking
+  id: ADTUrsineears2
+  markingCategory: HeadTop
+  bodyPart: HeadTop
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: ears2
+
+- type: marking
+  id: ADTUrsinearrow
+  markingCategory: HeadTop
+  bodyPart: HeadTop
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: arrow
+
+# Eyes
+
+- type: marking
+  id: ADTUrsineright_eye
+  bodyPart: Eyes
+  markingCategory: Face
+  speciesRestriction: [Ursine]
+  forcedColoring: false
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+  followSkinColor: false
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: right_eye
+
+- type: marking
+  id: ADTUrsineleft_eye
+  bodyPart: Eyes
+  markingCategory: Face
+  speciesRestriction: [Ursine]
+  forcedColoring: false
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+  followSkinColor: false
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: left_eye
+
+- type: marking
+  id: ADTUrsinethird_eye
+  bodyPart: Eyes
+  markingCategory: Face
+  speciesRestriction: [Ursine]
+  forcedColoring: false
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+  followSkinColor: false
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: third_eye
+
+#Overlay
+
+- type: marking
+  id: ADTUrsinefluffiness
+  bodyPart: LLeg #Apparently, for some reason, this is the only bodypart that has everything show on every part of the body.
+  markingCategory: Overlay
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: fluffiness
+
+- type: marking
+  id: ADTUrsinefluffiness2
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: fluffiness2
+
+- type: marking
+  id: ADTUrsinefluffiness3
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: fluffiness3
+
+- type: marking
+  id: ADTUrsinepanda
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: panda
+
+- type: marking
+  id: ADTUrsinespace_bear
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Ursine]
+  forcedColoring: true
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+        color: "#FFFFFF"
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: space_bear
+
+- type: marking
+  id: ADTUrsinetattoo_leader
+  bodyPart: LLeg
+  markingCategory: Overlay
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: tattoo_leader
+
+# Chest
+
+- type: marking
+  id: ADTUrsinegrizzly_necklace
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: grizzly_necklace
+
+- type: marking
+  id: ADTUrsinegrizzly_necklace2
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: grizzly_necklace2
+
+- type: marking
+  id: ADTUrsinegrizzly_necklace3
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: grizzly_necklace3
+
+- type: marking
+  id: ADTUrsinebig_heart
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: big_heart
+
+- type: marking
+  id: ADTUrsinesoft_belly
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: soft_belly
+
+- type: marking
+  id: ADTUrsinesoft_belly2
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: soft_belly2
+
+#Left Hand
+- type: marking
+  id: ADTUrsinehand_left
+  bodyPart: LHand
+  markingCategory: LeftHand
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: hand_left
+
+- type: marking
+  id: ADTUrsinegradienthand_left
+  bodyPart: LHand
+  markingCategory: LeftHand
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: gradienthand_left
+
+- type: marking
+  id: ADTUrsinegradienthand_left2
+  bodyPart: LArm
+  markingCategory: LeftHand
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: gradienthand_left2
+
+# Right Hand
+
+- type: marking
+  id: ADTUrsinehand_right
+  bodyPart: RHand
+  markingCategory: RightHand
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: hand_right
+
+- type: marking
+  id: ADTUrsinegradienthand_right
+  bodyPart: RHand
+  markingCategory: RightHand
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: gradienthand_right
+
+- type: marking
+  id: ADTUrsinegradienthand_right2
+  bodyPart: RArm
+  markingCategory: RightHand
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: gradienthand_right2
+
+# Left Foot
+
+- type: marking
+  id: ADTUrsinefoot_left
+  bodyPart: LFoot
+  markingCategory: LeftFoot
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: foot_left
+
+- type: marking
+  id: ADTUrsinegradientfoot_left
+  bodyPart: LFoot
+  markingCategory: LeftFoot
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: gradientfoot_left
+
+- type: marking
+  id: ADTUrsinegradientfoot_left2
+  bodyPart: LLeg
+  markingCategory: LeftFoot
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: gradientfoot_left2
+
+# Right Foot
+
+- type: marking
+  id: ADTUrsinefoot_right
+  bodyPart: RFoot
+  markingCategory: RightFoot
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: foot_right
+
+- type: marking
+  id: ADTUrsinegradientfoot_right
+  bodyPart: RFoot
+  markingCategory: RightFoot
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: gradientfoot_right
+
+- type: marking
+  id: ADTUrsinegradientfoot_right2
+  bodyPart: RLeg
+  markingCategory: RightFoot
+  speciesRestriction: [Ursine]
+  sprites:
+    - sprite: _ADT/Mobs/Customization/Ursine/ursine.rsi
+      state: gradientfoot_right2
+

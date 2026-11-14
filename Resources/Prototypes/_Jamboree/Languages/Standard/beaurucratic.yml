@@ -1,0 +1,51 @@
+# Spoken by the Nanotrasen Representative. Nobody else on the station is expected to keep up.
+- type: language
+  icon: LanguageIconBureaucratic
+  id: Bureaucratic
+  iconUnderstood: false
+  isVisibleLanguage: true
+  speech:
+    color: "#96dd90"
+    fontId: AkayaKanadaka
+    boldFontId: AkayaKanadaka
+    fontSize: 15
+  obfuscation:
+    !type:PhraseObfuscation
+    minPhrases: 1
+    maxPhrases: 2
+    replacement:
+    - pursuant to the aforementioned memorandum
+    - herewith advised, in accordance with policy
+    - notwithstanding the pending requisition
+    - vide section twelve, paragraph four
+    - please see the attached appendix
+    - per annum, per the attached schedule
+    - awaiting countersignature
+    - initialed, stamped and notarised
+    - in triplicate, as per regulation
+    - no further action is required on your part
+    - caveat, the foregoing does not extend to this quarter
+    - mutatis mutandis
+    - de facto, pending approval
+    - ipsum
+    - ergo
+    - ex gratia
+    - pro bono, at the discretion of the board
+    - quibusmodi
+    - nunc pro tunc
+    - sub rosa
+    - imprimatur
+    - ratio
+    - personam
+    - in camera
+    - nota bene
+    - do not bend the ledger
+    - handle with care
+    - hereby dismissed
+    - repsectfully declined
+    - in the aformentioned timestamp
+    - glory to Nanotrasen
+    - of in great wellbeing to crew
+    - nanotrasen codex
+    - in due time
+    - corruption has no place in NanoTrasen

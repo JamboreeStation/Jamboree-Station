@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+SPDX-License-Identifier: MIT
+-->
+
 <DefaultWindow xmlns="https://spacestation14.io"
                Title="{Loc nano-task-ui-item-title}"
                MinSize="300 300">

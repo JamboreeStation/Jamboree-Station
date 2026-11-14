@@ -1,0 +1,31 @@
+# Spoken by Ursine.
+- type: language
+  icon: LanguageIconBruin
+  id: Bruin
+  iconUnderstood: false
+  isVisibleLanguage: true
+  speech:
+    color: "#6e4a3b"
+  obfuscation:
+    !type:SyllableObfuscation
+    minSyllables: 1
+    maxSyllables: 3
+    replacement:
+    - rur
+    - rawr
+    - bar
+    - grur
+    - grawr
+    - pft
+    - humph
+    - grumph
+    - huff
+    - grr
+    - gro
+    - growr
+    - woof
+    - hmph
+    - mph
+    - roo
+
+

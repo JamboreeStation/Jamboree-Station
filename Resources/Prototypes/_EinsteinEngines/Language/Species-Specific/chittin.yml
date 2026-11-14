@@ -1,10 +1,15 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Spoken by Chitinids.
 - type: language
   id: Chittin
   isVisibleLanguage: true
+  icon: LanguageIconChittin
   speech:
     color: "#7d7d7d"
-#    fontId: Only_You # TODO: If we use fonts, this needs to be changed because this underscore breaks parser and throws error.
+    fontId: OnlyYou 
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1 # Replacements are really short

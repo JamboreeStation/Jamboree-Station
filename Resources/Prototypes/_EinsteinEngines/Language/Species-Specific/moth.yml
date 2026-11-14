@@ -1,11 +1,17 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Spoken by moths and mothroaches.
 # TODO: Replace this with a much better language.
 - type: language
+  icon: LanguageIconMoffic
   id: Moffic
+  iconUnderstood: false
   isVisibleLanguage: true
   speech:
     color: "#c7df2edd"
-    # fontId: Copperplate #* FONTS NOT ALREADY HERE ARE NOT BEING ADDED
+    fontId: Copperplate
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 2 # Replacements are really short
@@ -68,3 +74,7 @@
     - kön
     - we
     - hön
+
+
+
+

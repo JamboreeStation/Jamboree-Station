@@ -28,6 +28,20 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   Thanks to their innate agility, they [color=#1e90ff]take reduced damage from impacts or falls[/color], and their soft feet allow them to [color=#1e90ff]walk shoeless without making noise[/color].
 
+ ## Tajaran Naming Conventions
+
+  Tajaran have a naming convention heavily tied to their homeworld's languages and cultures,
+  usually consisting of multiple syllables placed together. Occassionally these
+  syllables are seperated by a apostrophe, typically coming after the letter "i" in a syllable, but this is not required.
+  Names should not be so long that they are unintelligible.
+  - [color=#449944]Acceptable:[/color] Halthaa Aravah
+  - [color=#449944]Acceptable:[/color] Jurlzirkalmanq Krajurlcresh
+  - [color=#449944]Acceptable:[/color] Ii'rdynhrr Hharar
+  - [color=#449944]Acceptable:[/color] Azukhaztul Wami
+  - [color=#994444]Bad:[/color] Arazirrrhazhalnalirrfarqka Kaytam-Khazanrar'Akhan
+  - [color=#994444]Bad:[/color] Garfield
+  - [color=#994444]Bad:[/color] Big the Cat
+
   ## Lore
 
   The Tajaran, hailing from their icy origin world of Ahdomai, have a long history of civil wars amongst different local clans, with many escaping into space to avoid endless strife.

@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: 2026 PureBreadBagel <purebreadbagel@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: EnergyBoozeDispenserMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: energy booze dispenser machine board
+  description: A machine printed circuit board for an energy booze dispenser.
+  components:
+    - type: Sprite
+      state: service
+    - type: MachineBoard
+      prototype: EnergyBoozeDispenser
+      stackRequirements:
+        Manipulator: 1
+        Glass: 5
+        Steel: 5
+        BSCrystal: 1
+      tagRequirements:
+        GlassBeaker:
+          amount: 2
+          defaultPrototype: Beaker
+    - type: PhysicalComposition
+      materialComposition:
+        Glass: 5
+        Steel: 5
+      chemicalComposition:
+        Silicon: 5
+
+- type: entity
+  id: EnergySodaDispenserMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: energy soda dispenser machine board
+  description: A machine printed circuit board for an energy soda dispenser.
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: EnergySodaDispenser
+    stackRequirements:
+      Manipulator: 1
+      Glass: 5
+      Steel: 5
+      BSCrystal: 2
+    tagRequirements:
+      GlassBeaker:
+        amount: 2
+        defaultPrototype: Beaker
+  - type: PhysicalComposition
+    materialComposition:
+      Glass: 5
+      Steel: 5
+    chemicalComposition:
+      Silicon: 5
+
+- type: entity  # Food synthesizer
+  parent: BaseMachineCircuitboard
+  id: ServiceEnergyChemMachineCircuitboard
+  name: energy food synthesizer machine board
+  description: A machine printed circuit board for a energy food synthesizer.
+  components:
+  - type: Sprite
+    state: service
+  - type: MachineBoard
+    prototype: ServiceEnergyChemDispenser
+    stackRequirements:
+      Manipulator: 3
+      BSCrystal: 2
+    tagRequirements:
+      GlassBeaker:
+        amount: 2
+        defaultPrototype: Beaker

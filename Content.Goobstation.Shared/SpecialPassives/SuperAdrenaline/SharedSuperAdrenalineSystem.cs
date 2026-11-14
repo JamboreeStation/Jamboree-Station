@@ -12,6 +12,7 @@ using Content.Shared.Alert;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Stunnable;
@@ -20,14 +21,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Shared.SpecialPassives.SuperAdrenaline;
 
-public sealed class SharedSuperAdrenalineSystem : EntitySystem
+public sealed partial class SharedSuperAdrenalineSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly ConsciousnessSystem _consciousness = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly PainSystem _pain = default!;
-    [Dependency] private readonly SleepingSystem _sleep = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private ConsciousnessSystem _consciousness = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private PainSystem _pain = default!;
+    [Dependency] private SleepingSystem _sleep = default!;
 
     private EntityQuery<MobStateComponent> _mobstateQuery;
     private EntityQuery<NerveSystemComponent> _nerveQuery;
@@ -113,7 +114,7 @@ public sealed class SharedSuperAdrenalineSystem : EntitySystem
     private void OnRemoved(Entity<SuperAdrenalineComponent> ent, ref ComponentRemove args)
     {
         if (ent.Comp.AlertId != null)
-            _alerts.ClearAlert(ent, (ProtoId<AlertPrototype>) ent.Comp.AlertId); // incase there was still time left on removal
+            _alerts.ClearAlert(ent.Owner, (ProtoId<AlertPrototype>) ent.Comp.AlertId); // incase there was still time left on removal
     }
 
     public override void Update(float frameTime)
@@ -152,7 +153,7 @@ public sealed class SharedSuperAdrenalineSystem : EntitySystem
 
         if (ent.Comp.PassiveDamage != null)
             _damageable.TryChangeDamage(
-                ent,
+                ent.Owner,
                 ent.Comp.PassiveDamage,
                 true,
                 false,

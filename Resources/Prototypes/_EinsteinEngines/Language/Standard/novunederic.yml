@@ -2,6 +2,7 @@
 - type: language
   id: NovuNederic
   isVisibleLanguage: true
+  icon: LanguageIconGrumbakul
   speech:
     color: "#df6e14dd"
   obfuscation:

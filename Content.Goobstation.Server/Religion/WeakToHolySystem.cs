@@ -1,17 +1,10 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
 using Content.Goobstation.Common.Religion;
 using Content.Goobstation.Shared.Bible;
 using Content.Goobstation.Shared.Religion.Nullrod;
+using Content.Server.Heretic.EntitySystems;
 using Content.Shared._Shitmed.Medical.Surgery.Wounds.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Heretic;
@@ -22,20 +15,27 @@ using Robust.Shared.Timing;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
-using Content.Shared.Timing; // Shitmed Change
-using Content.Shared._Shitmed.Damage; // Shitmed Change
+using Content.Shared.Timing;
+using Content.Shared._Shitmed.Damage;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Components;
+using Robust.Shared.Prototypes;
+using Content.Shared.Damage.Prototypes;
 
 namespace Content.Goobstation.Shared.Religion;
 
-public sealed class WeakToHolySystem : EntitySystem
+public sealed partial class WeakToHolySystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly GoobBibleSystem _goobBible = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
-    [Dependency] private readonly WoundSystem _wound = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private DamageableSystem _damageableSystem = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private GoobBibleSystem _goobBible = default!;
+    [Dependency] private SharedBodySystem _body = default!;
+    [Dependency] private WoundSystem _wound = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
+    [Dependency] private HereticSystem _heretic = default!;
+
+
     public override void Initialize()
     {
         base.Initialize();
@@ -65,40 +65,53 @@ public sealed class WeakToHolySystem : EntitySystem
 
     #region Holy Damage Dealing
 
+    private static readonly DamageModifierSet HolyImmunity = new()
+    {
+        Coefficients = new Dictionary<ProtoId<DamageTypePrototype>, float>
+        {
+            { "Holy", 0f },
+        },
+    };
+
     private void OnHolyDamageModify(Entity<DamageableComponent> ent, ref DamageModifyEvent args)
     {
+        if (!args.Damage.DamageDict.TryGetValue("Holy", out var holy) || holy <= 0)
+            return;
+
+        if (!TryComp<BodyComponent>(ent, out var body)
+            || !_body.TryGetRootPart(ent, out var rootPart, body: body)
+            || !HasDamageableWoundable(rootPart.Value))
+            return;
+
         var unholyEvent = new DamageUnholyEvent(args.Target, args.Origin);
         RaiseLocalEvent(args.Target, ref unholyEvent);
 
-        var holyCoefficient = 0f; // Default resistance
-
         if (unholyEvent.ShouldTakeHoly)
-            holyCoefficient = 1f; //Allow holy damage
-
-        DamageModifierSet modifierSet = new()
-        {
-            Coefficients = new Dictionary<string, float>
-            {
-                { "Holy", holyCoefficient },
-            },
-        };
-
-        if (!TryComp<BodyComponent>(ent, out var body))
             return;
 
-        if (!_body.TryGetRootPart(ent, out var rootPart, body: body))
-            return;
+        args.Damage = DamageSpecifier.ApplyModifierSet(args.Damage, HolyImmunity);
+    }
 
-        foreach (var woundable in _wound.GetAllWoundableChildren(rootPart.Value))
+    private bool HasDamageableWoundable(EntityUid rootPart)
+    {
+        foreach (var woundable in _wound.GetAllWoundableChildren(rootPart))
         {
             if (HasComp<DamageableComponent>(woundable))
-                args.Damage = DamageSpecifier.ApplyModifierSet(args.Damage, modifierSet);
+                return true;
         }
+
+        return false;
     }
 
     private void OnUnholyItemDamage(Entity<WeakToHolyComponent> uid, ref DamageUnholyEvent args)
     {
-        if (uid.Comp.AlwaysTakeHoly || TryComp<HereticComponent>(uid, out var heretic) && heretic.Ascended)
+        if (uid.Comp.AlwaysTakeHoly)
+        {
+            args.ShouldTakeHoly = true;
+            return;
+        }
+
+        if (_heretic.TryGetHereticComponent(uid, out var heretic, out _) && heretic.Ascended)
         {
             args.ShouldTakeHoly = true;
             return;

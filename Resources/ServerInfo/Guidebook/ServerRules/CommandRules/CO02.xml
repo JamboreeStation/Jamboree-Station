@@ -1,11 +1,18 @@
 <Document>
-  2. Follow Chain of Command
+  2. Follow the Chain of Command
   - You are expected to follow the Chain of Command.
+    - Example: If you are a Quartermaster, you listen to the Captain or ACO.
+      - The process of selecting an ACO is detailed further in the Guidebook. A generalization of the process is as:
+        - No Captain? Head of Personnel is in charge!
+        - No Captain or Head of Personnel? Head of Security is in charge!
+        - No Captain, Head of Personnel, or Head of Security? All of command votes for an ACO!
+        - No Command? The crew votes!
 
   ##Examples
   - As a Research Director, you are expected to listen and follow
     the orders of the Captain or of Central Command members.
-
   - As a Security Officer, you are expected to listen to and follow
     the orders of the Head of Security.
+  - As a Detective, you are expected to NOT barge into the medical
+    department and order them around.
 </Document>

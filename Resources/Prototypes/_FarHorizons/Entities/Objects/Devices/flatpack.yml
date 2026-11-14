@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseFlatpack
+  id: NuclearReactorFlatpack
+  name: nuclear reactor flatpack
+  description: A flatpack used for constructing a nuclear reactor. Parts sold separately.
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/flatpack.rsi
+    layers:
+    - state: base
+    - state: overlay
+      color: "#cec8ac"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: large
+  - type: Flatpack
+    entity: NuclearReactorEmpty
+
+- type: entity
+  parent: BaseFlatpack
+  id: GasTurbineFlatpack
+  name: gas turbine flatpack
+  description: A flatpack used for constructing a gas turbine.
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/flatpack.rsi
+    layers:
+    - state: base
+    - state: overlay
+      color: "#cec8ac"
+      map: ["enum.FlatpackVisualLayers.Overlay"]
+    - state: large
+  - type: Flatpack
+    entity: Turbine

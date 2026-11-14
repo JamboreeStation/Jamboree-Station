@@ -1,0 +1,6 @@
+- type: newsEntry
+  id: NewLobby
+  title: news-new-lobby-title
+  summary: news-new-lobby-summary
+  date: 2026-10-27
+  document: /ServerInfo/_Goobstation/News/NewLobby.xml

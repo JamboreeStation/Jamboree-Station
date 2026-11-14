@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Buckle.Components;
 using Robust.Shared.GameStates;
 
@@ -7,7 +10,7 @@ namespace Content.Shared.Bed.Components;
 /// A <see cref="StrapComponent"/> that modifies a strapped entity's metabolic rate by the given multiplier
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedBedSystem))]
+[Access(typeof(BedSystem))]
 public sealed partial class StasisBedComponent : Component
 {
     /// <summary>

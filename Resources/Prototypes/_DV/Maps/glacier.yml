@@ -25,12 +25,13 @@
         availableJobs:
           Captain: [ 1, 1 ]
           NanotrasenRepresentative: [ 1, 1 ] # added by jamboree
+ #         NanotrasenCareerTrainer: [ 1, 1 ]
           StationAi: [ 1, 1 ]
         #service
           HeadOfPersonnel: [ 1, 1 ]
           Bartender: [ 2, 2 ]
           Botanist: [ 2, 3 ]
-          Boxer: [ 1, 2 ]
+          Boxer: [ 2, 2 ]
           Chaplain: [ 1, 1 ]
           Chef: [ 2, 3 ]
           Clown: [ 1, 2 ]

@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2023 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using System.Linq;
@@ -30,7 +23,7 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     [Dependency] private readonly PoissonDiskSampler _sampler = default!;
     [Dependency] private readonly TransformSystem _xformSys = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private ISawmill _sawmill = default!;
@@ -244,7 +237,7 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     private bool HasCollisions(MapId mapId, Box2 point)
     {
         _mapGrids.Clear();
-        _mapManager.FindGridsIntersecting(mapId, point, ref _mapGrids);
+        _mapSystem.FindGridsIntersecting(mapId, point, ref _mapGrids);
         return _mapGrids.Count > 0;
     }
 

@@ -1,0 +1,28 @@
+<Document>
+  # Ants
+
+  <Box>
+    <GuideEntityEmbed Entity="MobAnt" Caption=""/>
+  </Box>
+
+   [color=red]Ants die in a single hit. Don't be surprised if you take an ant ghost role and die quickly.[/color]
+
+  Ants are a rare and reclusive species, and also the most diminuitive. They make up for their small size with their [color=#1e90ff]surprising strength[/color], allowing them to carry most items a larger species could.
+  Unfortunately, ants are [color=#ffa500]extremely fragile[/color], rarely surviving after even the most minor injuries.
+
+ ## Ant Naming Conventions
+
+  Ants names are rarely unique to themselves, and instead are generally an adjective followed by Ant.
+  - [color=#449944]Acceptable:[/color] Shy Ant
+  - [color=#449944]Acceptable:[/color] Scary Ant
+  - [color=#449944]Acceptable:[/color] Happy Ant
+  - [color=#994444]Bad:[/color] Joe
+
+  ## Lore
+
+  Despite their fragile and reclusive nature, Ants have found themselves at the center of many critical moments in the Jamboree sector. Most of these times they are
+  on the recieving end of a major amount of strife, such as when many members were taken by the Abductor Counsel in order to create the pleebnar. A notable moment, however, in
+  which the Ants were the ones to save the rest of the universe was during the first few encounters blobs. The Ant species lead the charge against the Blob by fighting on
+  a molecular level using their specialized Micro-Fighters.
+
+</Document>

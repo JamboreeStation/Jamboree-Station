@@ -29,6 +29,7 @@
         stomach: OrganGoblinStomach
         liver: OrganGoblinLiver
         kidneys: OrganGoblinKidneys
+        butt: Butt # Goob
     right arm:
       part: RightArmGoblin
       connections:

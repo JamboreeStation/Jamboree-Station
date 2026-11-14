@@ -1,15 +1,7 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 amogus <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Pirates;
-using Content.Goobstation.Server.Pirates.Roles;
+using Content.Goobstation.Shared.Pirates.Roles;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
@@ -24,10 +16,10 @@ namespace Content.Goobstation.Server.Pirates.GameTicking.Rules;
 
 public sealed partial class ActivePirateRuleSystem : GameRuleSystem<ActivePirateRuleComponent>
 {
-    [Dependency] private readonly MindSystem _mind = default!;
-    [Dependency] private readonly RoleSystem _role = default!;
-    [Dependency] private readonly AntagSelectionSystem _antag = default!;
-    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
+    [Dependency] private MindSystem _mind = default!;
+    [Dependency] private RoleSystem _role = default!;
+    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private NpcFactionSystem _npcFaction = default!;
 
     private static readonly SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/Ambience/Antag/pirate_start.ogg");
     private static readonly EntProtoId MindRole = "MindRolePirate";

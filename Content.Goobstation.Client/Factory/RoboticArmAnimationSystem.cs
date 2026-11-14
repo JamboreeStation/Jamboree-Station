@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Factory;
@@ -13,9 +10,9 @@ namespace Content.Goobstation.Client.Factory;
 /// Animations robotic arm's arm layer swinging.
 /// Can't be done with engine AnimationPlayer as it can't animate individual layers.
 /// </summary>
-public sealed class RoboticArmAnimationSystem : EntitySystem
+public sealed partial class RoboticArmAnimationSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void FrameUpdate(float frameTime)
     {

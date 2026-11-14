@@ -1,10 +1,3 @@
-# SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 Morb <14136326+Morb0@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2023 brainfood1183 <113240905+brainfood1183@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: soundCollection
@@ -42,8 +35,16 @@
 - type: soundCollection
   id: MonkeyScreeches
   files:
-  - /Audio/Effects/Diseases/monkey1.ogg
+#  - /Audio/Effects/Diseases/monkey1.ogg #Jamboree, is kinda funny at first but does get pretty annoying with time
   - /Audio/Effects/Diseases/monkey2.ogg
+  - /Audio/_Jamboree/Animals/Monkey/monkey_screech_1.ogg
+  - /Audio/_Jamboree/Animals/Monkey/monkey_screech_2.ogg
+  - /Audio/_Jamboree/Animals/Monkey/monkey_screech_3.ogg
+  - /Audio/_Jamboree/Animals/Monkey/monkey_screech_4.ogg
+  - /Audio/_Jamboree/Animals/Monkey/monkey_screech_5.ogg
+  - /Audio/_Jamboree/Animals/Monkey/monkey_screech_6.ogg
+  - /Audio/_Jamboree/Animals/Monkey/monkey_screech_7.ogg
+
 
 - type: soundCollection
   id: RobotBeeps

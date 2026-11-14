@@ -1,0 +1,24 @@
+# SPDX-FileCopyrightText: 2026 Jamboree Station Contributors (Far-Horizons-SS14)
+# SPDX-License-Identifier: MIT
+# Far Horizons post-cutoff original (commit 21680b3e6b282, 2026-08-18)
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: NuclearReactorMonitorComputerCircuitboard
+  name: nuclear reactor monitor computer board
+  description: A computer printed circuit board for a nuclear reactor monitor.
+  components:
+    - type: Sprite
+      state: cpu_engineering
+    - type: ComputerBoard
+      prototype: NuclearReactorMonitor
+
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: GasTurbineMonitorComputerCircuitboard
+  name: gas turbine monitor computer board
+  description: A computer printed circuit board for a gas turbine monitor.
+  components:
+    - type: Sprite
+      state: cpu_engineering
+    - type: ComputerBoard
+      prototype: GasTurbineMonitor

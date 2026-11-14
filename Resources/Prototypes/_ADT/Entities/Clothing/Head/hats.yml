@@ -215,7 +215,11 @@
   - type: Spillable
     solution: drink
   - type: DnaSubstanceTrace
-  - type: Drink #added
+  - type: Edible
+    edible: Drink
+    solution: drink
+    destroyOnEmpty: false
+    utensil: None
 
 - type: entity
   parent: ClothingHeadBase

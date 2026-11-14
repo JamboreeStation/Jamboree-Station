@@ -1,4 +1,5 @@
-      
+
+
 # SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Aidenkrz <28298836+Aidenkrz@users.noreply.github.com>
 #
@@ -18,13 +19,8 @@ jobs:
   update_headers:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
+      - name: Checkout Base
         uses: actions/checkout@v4
-        with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.head_ref }}
-          fetch-depth: 0
-          token: ${{ secrets.BOT_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -34,10 +30,10 @@ jobs:
       - name: Get Changed Files and PR Info
         id: changed_files
         env:
-           PR_BODY: ${{ github.event.pull_request.body }}
-           GH_TOKEN: ${{ secrets.BOT_TOKEN }}
-           GH_REPO: ${{ github.repository }}
-           PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          GH_TOKEN: ${{ secrets.BOT_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           set -e # Exit script on first error
 
@@ -50,7 +46,7 @@ jobs:
             echo "Error fetching PR files from GitHub API."
             exit 1
           fi
-          
+
           if ! echo "$PR_FILES_JSON" | jq -e . > /dev/null; then
              echo "Warning: Received empty or invalid JSON from GitHub API for PR files."
              PR_FILES="" # Set PR_FILES to empty to avoid errors below
@@ -63,8 +59,11 @@ jobs:
             ADDED_FILES=""
             MODIFIED_FILES=""
           else
-            ADDED_FILES=$(echo "$PR_FILES" | grep "^added" | grep -E '\.(cs|ya?ml)$' | sed 's/^added //' | xargs) || true
-            MODIFIED_FILES=$(echo "$PR_FILES" | grep "^modified" | grep -E '\.(cs|ya?ml)$' | sed 's/^modified //' | xargs) || true
+            # Skip .github/ (especially .github/workflows/) - App tokens can only push
+            # changes to workflow files if they have the "workflows" permission,
+            # otherwise GitHub rejects the push.
+            ADDED_FILES=$(echo "$PR_FILES" | grep "^added" | grep -E '\.(cs|ya?ml)$' | grep -v '^\.github/' | sed 's/^added //' | xargs) || true
+            MODIFIED_FILES=$(echo "$PR_FILES" | grep "^modified" | grep -E '\.(cs|ya?ml)$' | grep -v '^\.github/' | sed 's/^modified //' | xargs) || true
           fi
 
           echo "Added Files: $ADDED_FILES"
@@ -93,9 +92,43 @@ jobs:
             echo "No license specified in PR, using default: AGPL"
           fi
 
+      - name: Checkout PR Branch
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_REF: ${{ github.head_ref }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -e
+
+          git remote add pr "https://x-access-token:${BOT_TOKEN}@github.com/${HEAD_REPO}.git"
+          git fetch pr "${HEAD_REF}"
+          git checkout -B pr-head "${HEAD_SHA}"
+
+      - name: Fetch PR Files
+        env:
+          GH_TOKEN: ${{ secrets.BOT_TOKEN }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -e
+
+          for file in $ADDED_FILES_LIST $MODIFIED_FILES_LIST; do
+            [ -z "$file" ] && continue
+            mkdir -p "$(dirname "$file")"
+            encoded=$(jq -rn --arg v "$file" '$v|@uri')
+            echo "Downloading $file from ${HEAD_REPO}@${HEAD_SHA}"
+            curl -sS -f -H "Authorization: token ${GH_TOKEN}" \
+              "https://api.github.com/repos/${HEAD_REPO}/contents/${encoded}?ref=${HEAD_SHA}" \
+              | jq -r '.content' | base64 -d > "$file"
+          done
+
+          git add -A
+
       - name: Run REUSE Header Update Script
         run: |
-          python Tools/update_pr_reuse_headers.py \
+          git show HEAD:Tools/update_pr_reuse_headers.py > /tmp/update_pr_reuse_headers.py
+          python /tmp/update_pr_reuse_headers.py \
             --files-added ${{ env.ADDED_FILES_LIST }} \
             --files-modified ${{ env.MODIFIED_FILES_LIST }} \
             --pr-license ${{ env.PR_LICENSE }} \
@@ -103,14 +136,25 @@ jobs:
             --pr-head-sha ${{ github.event.pull_request.head.sha }}
         working-directory: ${{ github.workspace }}
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "chore: Automatically update REUSE headers"
-          commit_user_name: ${{ vars.CHANGELOG_USER }}
-          commit_user_email: ${{ vars.CHANGELOG_EMAIL }}
-          commit_author: ${{ vars.CHANGELOG_USER }} <${{ vars.CHANGELOG_EMAIL }}>
-          skip_dirty_check: false
-          skip_fetch: true
+      - name: Commit changes to PR branch
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+          CHANGELOG_USER: ${{ vars.CHANGELOG_USER }}
+          CHANGELOG_EMAIL: ${{ vars.CHANGELOG_EMAIL }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          set -e
 
-    
+          if git diff --quiet; then
+            echo "No header changes to commit."
+            exit 0
+          fi
+
+          git remote set-url pr "https://x-access-token:${BOT_TOKEN}@github.com/${HEAD_REPO}.git"
+          git fetch pr "${HEAD_REF}"
+
+          git add -A
+          git -c user.name="${CHANGELOG_USER}" -c user.email="${CHANGELOG_EMAIL}" \
+            commit -m "chore: Automatically update REUSE headers"
+          git push pr HEAD:"${HEAD_REF}"

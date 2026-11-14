@@ -1,15 +1,11 @@
-# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 meta:
   format: 7
   category: Map
   engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 05/03/2026 06:04:57
-  entityCount: 19086
+  time: 09/04/2026 02:02:32
+  entityCount: 19084
 maps:
 - 1
 grids:
@@ -11753,7 +11749,7 @@ entities:
     - type: Transform
       pos: 27.5,20.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: AnalysisComputerCircuitboard
   entities:
@@ -37380,15 +37376,6 @@ entities:
     - type: Transform
       pos: 57.5378,36.61296
       parent: 2
-- proto: CaptainIDCard
-  entities:
-  - uid: 10108
-    components:
-    - type: Transform
-      parent: 10104
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: CarbonDioxideCanister
   entities:
   - uid: 2423
@@ -37484,7 +37471,7 @@ entities:
     - type: Transform
       pos: -17.5,-10.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: Carpet
   entities:
@@ -43004,14 +42991,14 @@ entities:
     - type: Transform
       pos: -5.5,8.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
   - uid: 15744
     components:
     - type: Transform
       pos: 28.5,-14.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: CircuitImprinterMachineCircuitboard
   entities:
@@ -44175,18 +44162,6 @@ entities:
     - type: Transform
       pos: 28.538967,58.737675
       parent: 2
-- proto: ClothingHeadHatCommandSoft
-  entities:
-  - uid: 10106
-    components:
-    - type: MetaData
-      desc: I guess even the cap needs a stand-in...
-      name: acting commanding officer's cap
-    - type: Transform
-      parent: 10104
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: ClothingHeadHatCone
   entities:
   - uid: 4741
@@ -46467,7 +46442,7 @@ entities:
       pos: 5.5,24.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -9844.813
+      secondsUntilStateChange: -10182.448
       state: Opening
 - proto: CurtainsGreenOpen
   entities:
@@ -54928,7 +54903,7 @@ entities:
     - type: Transform
       pos: -4.5,8.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: EngineeringTechFabCircuitboard
   entities:
@@ -54990,7 +54965,7 @@ entities:
     - type: Transform
       pos: 55.5,-15.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: ExplosivesSignMed
   entities:
@@ -91453,6 +91428,13 @@ entities:
         9608:
         - - Pressed
           - Toggle
+- proto: LockerACOFilled
+  entities:
+  - uid: 8375
+    components:
+    - type: Transform
+      pos: 21.5,26.5
+      parent: 2
 - proto: LockerAtmosphericsFilledHardsuit
   entities:
   - uid: 6403
@@ -92016,50 +91998,6 @@ entities:
           - 6069
           - 6042
           - 6037
-        paper_label: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: null
-  - uid: 10104
-    components:
-    - type: MetaData
-      name: acting commanding officer supplies locker
-    - type: Transform
-      pos: 21.5,26.5
-      parent: 2
-    - type: AccessReader
-      access:
-      - - Command
-    - type: EntityStorage
-      air:
-        volume: 200
-        immutable: False
-        temperature: 293.14673
-        moles:
-        - 1.7459903
-        - 6.568249
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-        - 0
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 10106
-          - 10108
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -92821,6 +92759,18 @@ entities:
           - FillbotAnyItem
         - - MaterialSilo
           - MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 1339
+      - 1525
+      - 3135
+      - 6577
+      - 7038
+      - 7728
+      - 9062
+      - 15744
+      - 15808
+      - 16796
 - proto: MaterialToothSpaceCarp1
   entities:
   - uid: 7990
@@ -92967,7 +92917,7 @@ entities:
     - type: Transform
       pos: 1.5,-21.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: MedicalTechFabCircuitboard
   entities:
@@ -93642,7 +93592,7 @@ entities:
     - type: Transform
       pos: -21.5,-3.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
 - proto: OreProcessorMachineCircuitboard
   entities:
@@ -102305,7 +102255,7 @@ entities:
     - type: Transform
       pos: 25.5,25.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
     - type: TechnologyDatabase
       supportedDisciplines:
@@ -102339,7 +102289,7 @@ entities:
     - type: Transform
       pos: 20.5,35.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 8591
     - type: TechnologyDatabase
       supportedDisciplines:
@@ -123707,7 +123657,6 @@ entities:
       pos: 76.5,-18.5
       parent: 2
     - type: DeviceNetwork
-      configurators: []
       deviceLists:
       - 6734
       - 8646
@@ -123717,7 +123666,6 @@ entities:
       pos: 89.5,-17.5
       parent: 2
     - type: DeviceNetwork
-      configurators: []
       deviceLists:
       - 6734
       - 8646
@@ -123727,7 +123675,6 @@ entities:
       pos: 83.5,-11.5
       parent: 2
     - type: DeviceNetwork
-      configurators: []
       deviceLists:
       - 6734
       - 8646
@@ -123737,7 +123684,6 @@ entities:
       pos: 83.5,-17.5
       parent: 2
     - type: DeviceNetwork
-      configurators: []
       deviceLists:
       - 6734
       - 8646
@@ -123747,7 +123693,6 @@ entities:
       pos: 89.5,-11.5
       parent: 2
     - type: DeviceNetwork
-      configurators: []
       deviceLists:
       - 6734
       - 8646
@@ -123788,7 +123733,6 @@ entities:
       pos: 77.5,-15.5
       parent: 2
     - type: DeviceNetwork
-      configurators: []
       deviceLists:
       - 6735
       - 8646

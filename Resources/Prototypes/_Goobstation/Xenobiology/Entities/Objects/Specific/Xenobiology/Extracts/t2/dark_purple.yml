@@ -1,0 +1,41 @@
+- type: entity
+  id: DarkPurpleSlimeExtract
+  parent: BaseSlimeExtract
+  name: dark purple slime extract
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Goobstation/Xenobiology/Specific/Xenobiology/extract.rsi
+      state: core
+      color: "#8e0ff0"
+  - type: Reactive
+    reactions:
+    - reagents: [ Water ]
+      methods: [ Touch, Injection ]
+      effects:
+      - !type:NestedEffect
+        proto: XenobioExtractReaction
+      - !type:SpawnEntity
+        entity: SheetPlastic10
+        number: 3
+        shouldScale: false
+    - reagents: [ Plasma ]
+      methods: [ Touch, Injection ]
+      effects:
+      - !type:NestedEffect
+        proto: XenobioExtractReaction
+      - !type:SpawnEntity
+        entity: SheetPlasma1
+        number: 3
+        shouldScale: false
+    - reagents: [ Blood ]
+      methods: [ Touch, Injection ]
+      effects:
+      - !type:NestedEffect
+        proto: XenobioExtractReaction
+      - !type:CreateGas
+        gas: Plasma
+        moles: 55
+  - type: Tag
+    tags:
+    - XenobiologyDarkPurpleExtract

@@ -89,9 +89,8 @@ namespace Content.Server._EinsteinEngines.Abilities.Psionics
 
             var solution = new Solution();
             solution.AddReagent("PsionicRegenerationEssence", FixedPoint2.New(component.EssenceAmount * percentageComplete));
-            _bloodstreamSystem.TryAddToChemicals((uid, stream), solution);
+            _bloodstreamSystem.TryAddToBloodstream((uid, stream), solution);
             // _bloodstreamSystem.TryAddToChemicals(uid, solution, stream); # - Jamboree
         }
     }
 }
-

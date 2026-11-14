@@ -8,7 +8,9 @@ using Content.Shared.Alert;
 using Content.Shared.Body.Systems;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Drunk;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs;
@@ -20,16 +22,16 @@ using System.Linq;
 
 namespace Content.Goobstation.Shared.SpecialPassives.BoostedImmunity;
 
-public abstract class SharedBoostedImmunitySystem : EntitySystem
+public abstract partial class SharedBoostedImmunitySystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly BlindableSystem _blindSys = default!;
-    [Dependency] private readonly DamageableSystem _dmg = default!;
-    [Dependency] private readonly SharedBloodstreamSystem _bloodSys = default!;
-    [Dependency] private readonly SharedDrunkSystem _drunkSys = default!;
-    [Dependency] private readonly StatusEffectsSystem _status = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private BlindableSystem _blindSys = default!;
+    [Dependency] private DamageableSystem _dmg = default!;
+    [Dependency] private SharedBloodstreamSystem _bloodSys = default!;
+    [Dependency] private SharedDrunkSystem _drunkSys = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
 
     private EntityQuery<DamageableComponent> _damageableQuery;
     private EntityQuery<MobStateComponent> _mobStateQuery;
@@ -75,7 +77,7 @@ public abstract class SharedBoostedImmunitySystem : EntitySystem
     private void OnRemoved(Entity<BoostedImmunityComponent> ent, ref ComponentRemove args)
     {
         if (ent.Comp.AlertId != null)
-            _alerts.ClearAlert(ent, (ProtoId<AlertPrototype>) ent.Comp.AlertId); // incase there was still time left on removal
+            _alerts.ClearAlert(ent.Owner, (ProtoId<AlertPrototype>) ent.Comp.AlertId); // incase there was still time left on removal
     }
 
     public override void Update(float frameTime)
@@ -117,7 +119,7 @@ public abstract class SharedBoostedImmunitySystem : EntitySystem
         }
 
         if (ent.Comp.CleanseChemicals)
-            _bloodSys.FlushChemicals(ent.Owner, null, ent.Comp.CleanseChemicalsAmount);
+            _bloodSys.FlushChemicals(ent.Owner, ent.Comp.CleanseChemicalsAmount, null);
 
         HealDamage(ent);
     }
@@ -161,7 +163,7 @@ public abstract class SharedBoostedImmunitySystem : EntitySystem
         healSpec.DamageDict.Add("Cellular", ent.Comp.CellularHeal);
 
         // heal the damage
-        _dmg.TryChangeDamage(ent, healSpec, true, false, targetPart: TargetBodyPart.All, splitDamage: SplitDamageBehavior.SplitEnsureAllOrganic);
+        _dmg.TryChangeDamage(ent.Owner, healSpec, true, false, targetPart: TargetBodyPart.All, splitDamage: SplitDamageBehavior.SplitEnsureAllOrganic);
         HealEyes(ent);
     }
 

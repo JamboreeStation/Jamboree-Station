@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Robust.Shared;
@@ -21,13 +15,13 @@ namespace Content.Goobstation.Server.Hostname;
 /// <summary>
 /// This handles dynamically updating hostnames.
 /// </summary>
-public sealed class DynamicHostnameSystem : EntitySystem
+public sealed partial class DynamicHostnameSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _configuration = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IJoinQueueManager _queue = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private IConfigurationManager _configuration = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IJoinQueueManager _queue = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     private static readonly ProtoId<LocalizedDatasetPrototype> _messagesProto = "MessageOfTheDay";
     private LocalizedDatasetPrototype? _messages;

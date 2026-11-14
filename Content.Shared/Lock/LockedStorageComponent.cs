@@ -1,0 +1,13 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Storage;
+using Robust.Shared.GameStates;
+
+namespace Content.Shared.Lock;
+
+/// <summary>
+/// Prevents using an entity's <see cref="StorageComponent"/> if its <see cref="LockComponent"/> is locked.
+/// </summary>
+[RegisterComponent, NetworkedComponent]
+public sealed partial class LockedStorageComponent : Component;

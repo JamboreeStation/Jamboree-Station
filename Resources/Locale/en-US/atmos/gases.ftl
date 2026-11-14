@@ -13,3 +13,11 @@ gas-plasma-abbreviation = P
 gas-tritium-abbreviation = T
 gas-water-vapor-abbreviation = H₂O
 gas-unknown-abbreviation = X
+gas-infernazim-abbreviation = INF
+gas-kaltrenoxide-abbreviation = KLT
+gas-water-gas-abbreviation = H₂O*
+
+gas-bz-abbreviation = BZ
+gas-healium-abbreviation = H
+gas-nitrium-abbreviation = Ni
+gas-pluoxium-abbreviation = Pl

@@ -1,10 +1,7 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.NPC.Queries;
 
@@ -23,8 +20,8 @@ public sealed partial class UtilityService
     /// <summary>
     /// Prototype of the utility query.
     /// </summary>
-    [DataField("proto", required: true, customTypeSerializer:typeof(PrototypeIdSerializer<UtilityQueryPrototype>))]
-    public string Prototype = string.Empty;
+    [DataField("proto", required: true)]
+    public ProtoId<UtilityQueryPrototype> Prototype = string.Empty;
 
     [DataField("minCooldown")]
     public float MinCooldown = 0.25f;

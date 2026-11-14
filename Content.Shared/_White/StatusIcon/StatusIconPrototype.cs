@@ -4,15 +4,14 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 
 namespace Content.Shared._White.StatusIcon;
 
-[Prototype]
 public sealed partial class InfectionIconPrototype : StatusIconPrototype, IInheritingPrototype
 {
     /// <inheritdoc />
     [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<InfectionIconPrototype>))]
-    public string[]? Parents { get; }
+    public string[]? Parents { get; private set; }
 
     /// <inheritdoc />
     [NeverPushInheritance]
     [AbstractDataField]
-    public bool Abstract { get; }
+    public bool Abstract { get; private set; }
 }

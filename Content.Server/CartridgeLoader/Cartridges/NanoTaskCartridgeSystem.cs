@@ -1,8 +1,13 @@
+// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared.CartridgeLoader.Cartridges;
 using Content.Shared.CartridgeLoader;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Paper;
+using Content.Shared._EinsteinEngines.Language.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
@@ -68,7 +73,7 @@ public sealed class NanoTaskCartridgeSystem : SharedNanoTaskCartridgeSystem
         UpdateUiState(ent, args.Loader);
     }
 
-    private void SetupPrintedTask(EntityUid uid, NanoTaskItem item)
+    private void SetupPrintedTask(EntityUid uid, NanoTaskItem item, EntityUid actor) // JAMBOREE -  Get the PDA owners EntityID for language.
     {
         PaperComponent? paper = null;
         NanoTaskPrintedComponent? printed = null;
@@ -77,11 +82,11 @@ public sealed class NanoTaskCartridgeSystem : SharedNanoTaskCartridgeSystem
 
         printed.Task = item;
         var msg = new FormattedMessage();
-        msg.AddText(Loc.GetString("nano-task-printed-description", ("description", item.Description)));
+        msg.AddMarkupOrThrow(Loc.GetString("nano-task-printed-description", ("description", FormattedMessage.EscapeText(item.Description))));
         msg.PushNewline();
-        msg.AddText(Loc.GetString("nano-task-printed-requester", ("requester", item.TaskIsFor)));
+        msg.AddMarkupOrThrow(Loc.GetString("nano-task-printed-requester", ("requester", FormattedMessage.EscapeText(item.TaskIsFor))));
         msg.PushNewline();
-        msg.AddText(item.Priority switch {
+        msg.AddMarkupOrThrow(item.Priority switch {
             NanoTaskPriority.High => Loc.GetString("nano-task-printed-high-priority"),
             NanoTaskPriority.Medium => Loc.GetString("nano-task-printed-medium-priority"),
             NanoTaskPriority.Low => Loc.GetString("nano-task-printed-low-priority"),
@@ -89,6 +94,9 @@ public sealed class NanoTaskCartridgeSystem : SharedNanoTaskCartridgeSystem
         });
 
         _paper.SetContent((uid, paper), msg.ToMarkup());
+
+        if (TryComp<LanguageSpeakerComponent>(actor, out var speaker))
+            paper.WrittenLanguage = speaker.CurrentLanguage; // JAMBOREE - Set the papers language to the PDA owners current selected language.
     }
 
     /// <summary>
@@ -134,7 +142,7 @@ public sealed class NanoTaskCartridgeSystem : SharedNanoTaskCartridgeSystem
                 var printed = Spawn("PaperNanoTaskItem", Transform(message.Actor).Coordinates);
                 _hands.PickupOrDrop(message.Actor, printed);
                 _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/printer.ogg"), ent.Owner);
-                SetupPrintedTask(printed, task.Item);
+                SetupPrintedTask(printed, task.Item, message.Actor); // JAMBOREE - Make it so it knows who wrote in it.
                 break;
             }
         }

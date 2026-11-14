@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Charges.Components;
@@ -69,7 +65,7 @@ public sealed class ChargeHolosignSystem : EntitySystem
             ent.Comp.Signs.Add(signUid.Value);
         }
 
-        DirtyField(ent, ent.Comp, nameof(ChargeHolosignProjectorComponent.Signs));
+        Dirty(ent);
     }
 
     private void OnBeforeInteract(Entity<ChargeHolosignProjectorComponent> ent, ref BeforeRangedInteractEvent args)
@@ -79,6 +75,9 @@ public sealed class ChargeHolosignSystem : EntitySystem
             HasComp<StorageComponent>(args.Target) || // if it's a storage component like a bag, we ignore usage so it can be stored
             !TryComp<LimitedChargesComponent>(ent, out var charges))
             return;
+
+        if (ent.Comp.Signs.RemoveAll(s => TerminatingOrDeleted(s)) > 0)
+            Dirty(ent);
 
         // first check if there's any existing holofans to clear
         var coords = args.ClickLocation.SnapToGrid(EntityManager);
@@ -140,7 +139,7 @@ public sealed class ChargeHolosignSystem : EntitySystem
             ent.Comp.Signs.Add(signUid.Value);
         }
 
-        DirtyField(ent, ent.Comp, nameof(ChargeHolosignProjectorComponent.Signs));
+        Dirty(ent);
     }
 
     public bool TryPlaceSign(Entity<ChargeHolosignProjectorComponent?, LimitedChargesComponent?> ent, EntityCoordinates coords, EntityUid user)

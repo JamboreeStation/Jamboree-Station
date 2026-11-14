@@ -1,22 +1,18 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.RichText;
 using Robust.Shared.Utility;
-using System.Numerics;
 
 namespace Content.Goobstation.UIKit.UserInterface.Controls;
 
-[Virtual]
-public sealed class CustomOutputPanel : Control
+public sealed partial class CustomOutputPanel : Control
 {
-    [Dependency] private readonly MarkupTagManager _tagManager = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private MarkupTagManager _tagManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
 
     public const string StylePropertyStyleBox = "stylebox";
 
@@ -51,7 +47,7 @@ public sealed class CustomOutputPanel : Control
 
     public void UpdateLastMessage(FormattedMessage message)
     {
-        var newEnt = new CustomRichTextEntry(message, this, _tagManager, _entManager, null);
+        var newEnt = new CustomRichTextEntry(message, this, _tagManager, _entManager);
         newEnt.Update(_tagManager, _getFont(), _getContentBox().Width, UIScale);
         _entries[_entries.Count - 1] = newEnt;
     }
@@ -101,12 +97,17 @@ public sealed class CustomOutputPanel : Control
     {
         var msg = new FormattedMessage();
         msg.AddText(text);
-        AddMessage(msg);
+        AddMessage(msg, null);
     }
 
     public void AddMessage(FormattedMessage message)
     {
-        var entry = new CustomRichTextEntry(message, this, _tagManager, _entManager, null);
+        AddMessage(message, CustomRichTextEntry.DefaultTags);
+    }
+
+    public void AddMessage(FormattedMessage message, Type[]? tagsAllowed)
+    {
+        var entry = new CustomRichTextEntry(message, this, _tagManager, _entManager, tagsAllowed);
 
         entry.Update(_tagManager, _getFont(), _getContentBox().Width, UIScale);
 

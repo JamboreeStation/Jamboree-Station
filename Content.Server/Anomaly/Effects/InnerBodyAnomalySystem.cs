@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Patrik Caes-Sayrs <heartofgoldfish@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX_7 <sn1.test.preria.2002@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.Logs;
@@ -27,7 +22,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Anomaly.Effects;
 
-public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
+public sealed partial class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem // Goob
 {
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
     [Dependency] private readonly AnomalySystem _anomaly = default!;
@@ -93,7 +88,7 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
 
     private void AddAnomalyToBody(Entity<InnerBodyAnomalyComponent> ent)
     {
-        if (!_proto.TryIndex(ent.Comp.InjectionProto, out var injectedAnom))
+        if (!_proto.Resolve(ent.Comp.InjectionProto, out var injectedAnom))
             return;
 
         if (ent.Comp.Injected)
@@ -101,9 +96,9 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
 
         ent.Comp.Injected = true;
 
-        EntityManager.AddComponents(ent, injectedAnom.Components);
+        GoobAddInjectedComponents(ent, injectedAnom.Components); // Goob
 
-        _stun.TryParalyze(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration), true);
+        _stun.TryUpdateParalyzeDuration(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration));
         _jitter.DoJitter(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration), true);
 
         if (ent.Comp.StartSound is not null)
@@ -132,7 +127,7 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
 
     private void OnAnomalyPulse(Entity<InnerBodyAnomalyComponent> ent, ref AnomalyPulseEvent args)
     {
-        _stun.TryParalyze(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration / 2 * args.Severity), true);
+        _stun.TryUpdateParalyzeDuration(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration / 2 * args.Severity));
         _jitter.DoJitter(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration / 2 * args.Severity), true);
     }
 
@@ -217,10 +212,9 @@ public sealed class InnerBodyAnomalySystem : SharedInnerBodyAnomalySystem
         if (!ent.Comp.Injected)
             return;
 
-        if (_proto.TryIndex(ent.Comp.InjectionProto, out var injectedAnom))
-            EntityManager.RemoveComponents(ent, injectedAnom.Components);
+        GoobRemoveInjectedComponents(ent); // Goob
 
-        _stun.TryParalyze(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration), true);
+        _stun.TryUpdateParalyzeDuration(ent, TimeSpan.FromSeconds(ent.Comp.StunDuration));
 
         if (ent.Comp.EndMessage is not null &&
             _mind.TryGetMind(ent, out _, out var mindComponent) &&

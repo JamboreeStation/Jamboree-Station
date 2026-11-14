@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Conchelle <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.MisandryBox.JumpScare;
@@ -10,9 +7,9 @@ using Robust.Shared.Utility;
 
 namespace Content.Goobstation.Server.MisandryBox.JumpScare;
 
-public sealed class ServerFullScreenImageJumpscare : IFullScreenImageJumpscare, IPostInjectInit
+public sealed partial class ServerFullScreenImageJumpscare : IFullScreenImageJumpscare, IPostInjectInit
 {
-    [Dependency] private readonly INetManager _netManager = default!;
+    [Dependency] private INetManager _netManager = default!;
 
     public void Jumpscare(SpriteSpecifier.Texture image, ICommonSession? session)
     {

@@ -4,10 +4,13 @@
 
 # Spoken by Abductors
 - type: language
+  icon: LanguageIconUnknown
   id: Xeeplian
+  iconUnderstood: false
+  isVisibleLanguage: true
   speech:
     color: "#a4bb98"
-    # fontId: YoureGone #* FONTS NOT ALREADY HERE ARE NOT BEING ADDED
+    fontId: YoureGone
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -75,3 +78,7 @@
     - Jorp
     - Cluuump
     - Wawiwi
+
+
+
+

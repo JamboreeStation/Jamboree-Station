@@ -1837,3 +1837,638 @@ Entries:
         vision rotation de-sync.
   id: 159
   time: '2026-07-19T19:43:47.0000000+00:00'
+- author: Gorse1
+  changes:
+    - type: Add
+      message: >-
+        Added a purchasable plague mouse crate. Virologists now have something
+        to do!
+  id: 160
+  time: '2026-08-02T03:20:51.0000000+00:00'
+- author: 0vrseer
+  changes:
+    - type: Remove
+      message: Removed purchasable plague mouse crate. Virologists have nothing to do!
+  id: 161
+  time: '2026-08-03T19:16:52.0000000+00:00'
+- author: EchoOfNothing
+  changes:
+    - type: Add
+      message: Automatic crew transfer votes will now appear.
+  id: 162
+  time: '2026-08-11T08:31:41.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Anomalocarids have arrived to the Jamboree sector! They are shrimply
+        amazing!
+    - type: Add
+      message: >-
+        New naming conventions exist for Dwarves, Avali, and Gingerbread! Go
+        ahead and make one RIGHT NOW!!!
+    - type: Add
+      message: >-
+        Naming conventions have been added to the guidebook, to give players
+        ideas when making their characters and to clarify what would be some
+        names that could violate our rules!
+    - type: Add
+      message: Tropico is now a ghost role! It's power has grown...
+    - type: Tweak
+      message: >-
+        The Language traits section has one more point to it now! Finally, you
+        can be multilingual as a mute person!
+    - type: Fix
+      message: >-
+        The meta-physics of psionic traits have been patched finally! It's been
+        so long...
+    - type: Remove
+      message: >-
+        Thaven know longer innately know Bieselized Eckeckyik. I think that's
+        how it's spelt...
+    - type: Remove
+      message: >-
+        Yowie no longer innately know Sol Common. Just cause you're from Terra
+        don't mean ya speak the language!
+    - type: Tweak
+      message: Dwarves now know Novu-Nederic instead of Sol Common. It just fits!
+    - type: Tweak
+      message: >-
+        Gingerbread now know Freespeak. Perhaps a unique language is in their
+        future???
+  id: 163
+  time: '2026-08-11T08:41:21.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Added an "Exotic Species" section to the guidebook for non-round start
+        species! Check them and their lore out today!
+    - type: Fix
+      message: >-
+        Every Anomalocarid's mother came to the station cause they forgot their
+        lunch! (They have survival boxes now)
+  id: 164
+  time: '2026-08-12T03:58:00.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Add
+      message: >-
+        The head researchers at NanoTrasen has made a new gadget for all CMO's!
+        The Emergichemical Dispenser! Now you can have eChem on the go! Powered
+        by power cells! (microreactors not supported).
+    - type: Add
+      message: The Emergichemical Dispenser is a steal objective for antags!
+    - type: Add
+      message: >-
+        Central Command Officials get their own version of the Emergichemical
+        Dispenser.
+    - type: Remove
+      message: delayroundend got removed because its borked. Did nothing.
+    - type: Add
+      message: 'Rounds can be un-ended by admins. Never let them know your next move. '
+    - type: Add
+      message: Rounds restart timers can be edited freely by admins.
+    - type: Tweak
+      message: When a round ends, its now 10 minutes to get to the lobby, instead of 5.
+    - type: Fix
+      message: >-
+        Kaltrenoxide and Infernazium no longer lose moles of gas or change
+        pressure in their canisters. 
+    - type: Add
+      message: Sprites for the Emergichemical Dispenser.
+  id: 165
+  time: '2026-08-16T03:02:23.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Add
+      message: >-
+        Added a zookeeper translator implant. Zookeepers can now understand all
+        animal languages.
+    - type: Fix
+      message: The emergichemical device no longer accepts the xenobio cell.
+    - type: Tweak
+      message: >-
+        Librarians now strictly understand species only languages and not animal
+        languages.
+    - type: Fix
+      message: >-
+        The cassette player no longer translates all languages. It plays back
+        the language it heard, but not the translation in its transcript.
+  id: 166
+  time: '2026-08-17T02:27:59.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Ants are visiting the Jamboree Sector. They're small, so keep an eye
+        out!
+  id: 167
+  time: '2026-08-18T00:23:03.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Add
+      message: >-
+        Nuclear Power has been successfully researched and in the market!
+        Purchase it for 10,000 and 15,000 Spesos!
+    - type: Add
+      message: >-
+        Code Orange has been made due to crew incompetence! Tesloose?
+        Singuloose? Meltdown? Code Orange!
+    - type: Tweak
+      message: >-
+        The Radiation collector can only get power from the Super Matter or
+        Singularity.
+    - type: Add
+      message: Sea Water exists as a tile that can spread! Now you can drown in style!
+    - type: Add
+      message: >-
+        A third tier of the SMES has been researched by our head of research at
+        Centcomm! Now you can store even more power!
+    - type: Add
+      message: >-
+        A new type of telecommunication tower has been made! Currently
+        un-craftable.
+    - type: Add
+      message: >-
+        Emergichemical dispensers for the CCO sprites have been added! (Made by
+        Yoru.)
+    - type: Tweak
+      message: SMES sprites have been updated.
+    - type: Tweak
+      message: Tetrasolcincide has been buffed a bit.
+    - type: Tweak
+      message: >-
+        The emergichemical dispenser for CMO has had its dispense values
+        updated.
+    - type: Tweak
+      message: >-
+        the emergichemical dispenser can now be put into rechargers. Saves you
+        from having to keep extracting the power cell from within.
+    - type: Fix
+      message: The emergichemical dispenser no longer takes the xenobio cell.
+    - type: Fix
+      message: The emergichemical dispenser now counts as Command contraband.
+  id: 168
+  time: '2026-08-20T03:32:57.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: the air alarm should be fixed. forgot to make it detect new gas.
+  id: 169
+  time: '2026-08-21T03:02:03.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Add
+      message: >-
+        Papers have Languages now! NanoTasks and Papers written by folk can only
+        be understood by those who can understand the language. Any language you
+        can understand (but not speak) will be counted as a language you can
+        write the paper in. (You can not currently add more than one language to
+        a paper).
+    - type: Add
+      message: Faxes now rely the papers current Language.
+    - type: Tweak
+      message: >-
+        Changed the power transmission laser to produce 3x less than its
+        original.
+    - type: Tweak
+      message: Changed the bluespace crystal sprite back to GoobStations.
+    - type: Fix
+      message: >-
+        Bluespace crystals were meant to teleport you around randomly when you
+        use them. Now you can!
+    - type: Fix
+      message: >-
+        Tazers now no longer spam your console with errors about an upgrade. As
+        they were parented off of the salvagers PKA.
+    - type: Fix
+      message: 'Portable scrubbers now suck up water. '
+  id: 170
+  time: '2026-08-31T11:17:32.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Tweak
+      message: >-
+        HECU operatives are now referred to as the APO (Asset Protection
+        Operative)
+    - type: Tweak
+      message: >-
+        Nonalphabetic characters are now allowed in character names roundstart!
+        Just keep in mind our RP rules!
+    - type: Add
+      message: Yowie now have a unique selection of sounds! GRAAAAGH!!!
+    - type: Add
+      message: Monkeys now have a wider variety of screams! OOK OOK OOK!!!
+    - type: Fix
+      message: >-
+        Multiple minor spelling mistakes have been corrected. Please report any
+        others you find in the discord!
+  id: 171
+  time: '2026-09-03T19:25:14.0000000+00:00'
+- author: Gorse1
+  changes:
+    - type: Fix
+      message: >-
+        Derringer ammo now has the correct description and can be made in the
+        secfab from roundstart
+    - type: Fix
+      message: >-
+        HOS railgun and quarter cannon magazines no longer have the quarter
+        cannon inhand sprites
+    - type: Add
+      message: >-
+        You can now butcher 1 steel sheet for 5 quarters (you cannot do a stack
+        of steel at once)
+  id: 172
+  time: '2026-09-04T00:08:29.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Add
+      message: >-
+        ring ring its phone time. Phones are now a thing you can call any
+        department and ANNOY THEM.
+  id: 173
+  time: '2026-09-04T20:09:40.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Train has returned to the Jamboree Sector's default rotation!!! CHUGGA
+        CHUGGA!!!
+    - type: Add
+      message: >-
+        Several maps have recieved a proper ACO locker! Get the card in the
+        bridge or vault, and wear that pin with pride!
+    - type: Tweak
+      message: Atlas has been changed to being based on nuclear power!
+    - type: Tweak
+      message: >-
+        Amber, Atlas, Byoin, Cluster, Glacier, Omega, Packed, Reach, Saltern,
+        and Train have all been updated!
+    - type: Fix
+      message: LPOs now are able to get the binary decoder implant!
+    - type: Add
+      message: >-
+        Intel says the Syndicate has reactivated their Gun Bot factories, and
+        have deployed their first wave to different outposts throughout the
+        Jamboree sector!
+  id: 174
+  time: '2026-09-04T22:53:30.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: >-
+        Salvage expedition ships no longer get permanently stuck when being
+        force-returned from a planet expedition.
+    - type: Fix
+      message: >-
+        The respawn timer can no longer be bypassed, so `ghostrespawn` can't be
+        used to instantly respawn.
+  id: 175
+  time: '2026-09-06T00:15:48.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Tweak
+      message: >-
+        IPC chassises, as agreed on by several companies, now have had
+        technology put in place that provides them both fingerprints and DNA!
+    - type: Tweak
+      message: >-
+        IPC chassises now take barotrauma damage, at a slightly better rate than
+        humans!
+    - type: Tweak
+      message: IPCs are now more affected by the cold present in the vacuum of space!
+    - type: Tweak
+      message: >-
+        IPCs now, rather than secretly taking less damage to Ion damage, take
+        more substantial amounts of Ion damage.
+    - type: Tweak
+      message: >-
+        IPCs have been refactored to use METAL SHEETS instead of CABLES to heal
+        burn damage. Emergency Boxes have been updated as well.
+    - type: Tweak
+      message: >-
+        Salvagers now are mindshielded upon round start. Visitor ones, however,
+        are not, so keep an eye out!
+    - type: Fix
+      message: >-
+        Shadowkin's Guidebook entry has been changed to be accurate to how
+        Shadowkin function in Jamboree!
+    - type: Fix
+      message: >-
+        CC Items that were meant to have armor values have had armor values
+        added!
+  id: 176
+  time: '2026-09-07T05:54:31.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Ursine have arrived in the Jamboree Sector! These bear folk will throw
+        you to the wall if you make them mad!
+    - type: Add
+      message: >-
+        Gingerbread now have a unique language known as Umamese! Speak sweet to
+        all your coworkers!
+    - type: Add
+      message: >-
+        Three new language traits have been added! Become truly Spanish with the
+        Spessnish language! Explore being a citizen of the Galactic Hegemony
+        with Hegemonic! Or become a cosmonaut with Sovblov!
+    - type: Tweak
+      message: >-
+        Exotic Species guidebook entry has been moved and had it's name changed
+        to "Uncommon Species"
+    - type: Remove
+      message: Removed Herobrine.
+  id: 177
+  time: '2026-09-20T06:00:22.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Fix
+      message: Ursine now round-start spawn with a survival kit!
+  id: 178
+  time: '2026-09-21T10:35:38.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: The hotdog costume's texture has been updated! WEAR IT NOW!!!
+    - type: Tweak
+      message: >-
+        The inventories of the Clothesmate, AutoDrobe, and Winterdrobe have been
+        shifted! Be sure to get reaquainted!
+    - type: Tweak
+      message: >-
+        Bread Dogs and Caks now speak Umamese! Gingerbread chefs, get ready to
+        get into some fantastic conversations!
+  id: 179
+  time: '2026-09-25T02:57:00.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: Shoko, a lowpop map, has arrived from DV to the Jamboree sector!
+    - type: Tweak
+      message: >-
+        Barry Burger's memorial statue has finished construction at Central
+        Command. Press b to pay your burger.
+  id: 180
+  time: '2026-09-25T03:42:13.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: Added 2 new hairstyles! If you're a clown fan, you'll love this!
+    - type: Add
+      message: >-
+        Added 5 new facial hair styles! Finally, you can have a brilliant
+        moustache!
+  id: 181
+  time: '2026-09-25T08:57:31.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Tweak
+      message: Shoko has recieved proper funding for the AME!
+  id: 182
+  time: '2026-09-26T03:29:16.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Add
+      message: >-
+        Added the DNA Molecular Synthesizer to Centcomm, do you ever wonder why
+        crew can come back from death even when they touched a singularity? Well
+        now you have an answer!
+    - type: Add
+      message: >-
+        Bureaucracy has now been defined as a language. Rumors say the Central
+        Command personnel...and the Librarian are ones who only know how to
+        speak it...
+    - type: Add
+      message: Lizards can now have dragon wings! Though you cannot fly with them...
+    - type: Fix
+      message: >-
+        The shuttles should no longer get stuck in static mode, meaning they
+        were unable to move.
+  id: 183
+  time: '2026-09-28T21:17:07.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: 'You can no longer edit a paper in a language that you do not know. '
+  id: 184
+  time: '2026-10-01T20:21:36.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Added 7 new cosmetics to the loadout menu! HOP and Assistants are
+        getting some big shirts, Clowns have busted out the balloons, and
+        Salvage Specialists have trophies from bear fights!
+    - type: Add
+      message: Assistants have received a variety of differently colored winter coats!
+    - type: Add
+      message: >-
+        Over 20 new costumes have made their way to the AutoDrobe! Get dressed
+        up for Halloween as a lobster, scarecrow, and more!
+    - type: Add
+      message: >-
+        All crew members can now pick up a candy bucket in the trinket menu in
+        the loadout or at their nearest Good Clean Fun Vendor! Trick or Treat!
+    - type: Add
+      message: >-
+        All command and dignitary lockers now come with a candy bowl filled with
+        lollypops! Prepare for Trick or Treaters or be pranked severely.
+    - type: Add
+      message: >-
+        Reports have spotted unusually tall and slender mimes about the Jamboree
+        sector. Caution is advised when engaging.
+    - type: Add
+      message: >-
+        Legends tell of deer headed beasts wandering the Jamboree sector known
+        as... Wendigos...
+    - type: Add
+      message: >-
+        Bubblegum has broken free from the Pits of Hell. May Space God have
+        mercy on us all.
+    - type: Fix
+      message: Fixed various naming and improper classification issues!
+  id: 185
+  time: '2026-10-04T09:28:18.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: >-
+        The Deck Tape can now understand the 8 basic languages instead of null.
+        Now its transcript shouldnt display gibberish.
+  id: 186
+  time: '2026-10-09T18:11:47.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Add
+      message: Added the ability for admins to edit eChem reagents.
+    - type: Fix
+      message: The DNA molecularsynthesiser no longer can fetch aGhost minds.
+    - type: Tweak
+      message: >-
+        The DNA molecularsynthesiser can no longer fetch minds in ghost roles!
+        Centcomm unfortunatley does not have ghost roles on DNA file.
+    - type: Fix
+      message: 'The Bye! round end timer now changes depending on admin interference. '
+  id: 187
+  time: '2026-10-18T20:10:34.0000000+00:00'
+- author: >-
+    11BelowStudio, 8Platanus8, Aidenkrz, Arraydeess, Arraydeess14,
+    AverageNotDoingAnythingEnjoyer, Aviu00, balt-dev, Baptr0b0t, BasedUser,
+    BeanyBoi69, BeeRobynn, bobbble, cfif126, charcuteriesampler, CliveOcelot,
+    codeduck101, cohanna, Connor Huffine, CosmicTheDiscommunicator, CryoDoctor,
+    cwestkaemper, Discommunicator, DoremyZerg, Errant-4, FairlySadPanda,
+    Firemixx, fourveeveevee, GNUtopia, H2Owe, HarelNo, harryhulse-12,
+    harryhulse12-alt, hzlayer, ishkab, IvanKuvalda, Jerulean, JohnJJohn,
+    JohnOakman, Kenkaitos, lacedfent, loltart, madeline-celeste, Makar0v-fr,
+    mrs-teg, nlaky, NotActuallyMarty, OnsenCapy, PhantomDergwulf,
+    PhosphateWithManyOs, Princess-Cheeseballs, PureBreadBagel,
+    QuantumPotatoGlitch, redmagicspider, Redrover1760, RedTerrorDark, Roudenn,
+    Samuka-C, Sanyato, Sarahon, SirCannonFodder, SkippyMcSkips, slarticodefast,
+    Snorkcom, spg-q, SSpetishes, thefirstLtaker, thinkfast1337-2, Toaster-Box,
+    Tony-251, Verbalase, YeenJunk
+  changes:
+    - type: Add
+      message: Feroxi can now breathe pluoxium!
+    - type: Fix
+      message: Wires when hacking a door now appear correctly.
+    - type: Fix
+      message: APCs GUIs now open correctly.
+    - type: Fix
+      message: >-
+        Text appending like [bold] tags in the examine menu now actually show
+        correctly.
+    - type: Fix
+      message: You can now revive a player with a defibrilator.
+    - type: Fix
+      message: Borg welding has been fixed.
+    - type: Add
+      message: >-
+        Central Command Officials spawn with cybernetic organs, whereas DS spawn
+        with advanced cybernetic organs.
+    - type: Add
+      message: Goob Upstream merge. Check the GoobStation log for everything!
+    - type: Tweak
+      message: buffed cybernetic organ integrities
+  id: 188
+  time: '2026-10-20T20:12:39.0000000+00:00'
+- author: Aidenkrz, Baptr0b0t, fiestyfedora, madeline-celeste, PureBreadBagel
+  changes:
+    - type: Add
+      message: You can reattach your butt with surgery.
+    - type: Add
+      message: >-
+        WASH WASH WASH YOUR CLOTHES WITH THE WASHING MACHINE!! (ur clothes can
+        get stained now...)
+    - type: Add
+      message: Gun + throwing client prediction was added, to help with lag.
+    - type: Fix
+      message: Made moving prediction also account for running.
+    - type: Fix
+      message: atmos belts are now belts and not jumpsuits...
+    - type: Add
+      message: Mice can eat corpses!
+    - type: Fix
+      message: cameras work again!
+    - type: Add
+      message: >-
+        Slimefolk can regrow their limbs with a long cooldown. Though it costs
+        you food and blood..
+  id: 189
+  time: '2026-10-24T02:10:35.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: Fixed most .ftl entries, spam mail shouldnt display its .ftl tag anymore
+    - type: Fix
+      message: >-
+        Supermatter console should now display properly instead of crashing the
+        client.
+    - type: Fix
+      message: Footsteps should now calculate their direction once instead of twice.
+    - type: Fix
+      message: Respawn system when you observe should work now.
+  id: 190
+  time: '2026-10-24T18:57:02.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: paper language system should display correctly now.
+    - type: Fix
+      message: Examine text has been fixed for icons showing.
+  id: 191
+  time: '2026-10-26T23:24:19.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: >-
+        A surgery bug fix regarding not being able to select "Close Incision".
+        (It secretly denied it).
+    - type: Fix
+      message: You can finally leave by pressing escape in the new lobby gui...
+    - type: Tweak
+      message: Hotplates no more....They have been replaced by THERMOBATHS.
+    - type: Fix
+      message: The new lobby UI has got some FIXES. SHould now display
+    - type: Fix
+      message: >-
+        Fear bubblegum for they no longer use GIB. They have been fixed to
+        simple damage.
+  id: 192
+  time: '2026-11-03T01:24:56.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Add
+      message: >-
+        Honk.CO, late as always, have introduced a new modification set to IPCs!
+        Change yourself today!\
+    - type: Add
+      message: Multiple foxwithguns songs have been added as lobby music!
+    - type: Remove
+      message: Several Goob-Specific lobby arts have been removed!
+    - type: Fix
+      message: Butts are now back to being wearable as hats!
+    - type: Tweak
+      message: The Bubblegum on Lavaland has been renamed to Bubblegum Jr.
+    - type: Tweak
+      message: >-
+        The Wizard's Theory by foxwithguns and the Middlemen has had it's volume
+        increased. Please notify if it is too loud!
+  id: 193
+  time: '2026-11-03T08:12:05.0000000+00:00'
+- author: PureBreadBagel
+  changes:
+    - type: Fix
+      message: Fixed modsuits not working.
+    - type: Fix
+      message: Bumped the engine from 293.0.0 to 293.0.2 to fix a DDOS vulnerability.
+  id: 194
+  time: '2026-11-05T15:40:32.0000000+00:00'
+- author: Bibble-B
+  changes:
+    - type: Tweak
+      message: >-
+        The Rules, Legal Mandate, and Code of Conduct have all been updated.
+        Please read up on them once the update is out!
+    - type: Add
+      message: >-
+        Lawyers now have new capabilities because of the Legal Mandate. These
+        include: Trials, Lawsuits, Weddings, and more! 
+    - type: Tweak
+      message: >-
+        All command kits and security kits have been updated to use a texture
+        more visible to color blind individuals! If you know your job icon, you
+        know your kit!
+    - type: Remove
+      message: >-
+        Shaft Miner has, temporarily, been removed from the roundstart
+        selection.
+    - type: Remove
+      message: >-
+        Being lobotomized no longer gives you skibidi brainrot! No more
+        Fortnite! No more Ohio! No more rizz!
+  id: 195
+  time: '2026-11-11T06:56:52.0000000+00:00'

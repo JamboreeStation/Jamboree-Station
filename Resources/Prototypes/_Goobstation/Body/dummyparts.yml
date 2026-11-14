@@ -1,15 +1,17 @@
-# SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
   id: Butt
-  name: butt #changed bunch of stuff (as in adding butts from Monke/Boomerstation)
-  description: The begining of the first joke. The end of the last.
-  parent: [BaseItem, ClothingHeadBase]
+  parent: [BaseItem, ClothingHeadBase] #Jamboree, butthead update
+  name: butt
+  description: The beginning of the first joke. The end of the last.
   components:
   - type: Sprite
     sprite: _Monkestation/Species/Human/butt.rsi
   - type: Clothing
     sprite: _Monkestation/Species/Human/butt.rsi
+  - type: Item
+    size: Small
+  - type: Organ
+    slotId: butt
+  - type: Butt

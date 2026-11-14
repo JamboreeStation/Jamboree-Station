@@ -161,6 +161,7 @@ using static Robust.Client.UserInterface.Controls.MultiselectOptionButton<
     Content.Client.UserInterface.Systems.Actions.Windows.ActionsWindow.Filters>;
 using static Robust.Client.UserInterface.Controls.TextureRect;
 using static Robust.Shared.Input.Binding.PointerInputCmdHandler;
+using Content.Shared.Damage.Components;
 
 namespace Content.Client.UserInterface.Systems.Actions;
 
@@ -1029,7 +1030,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         if (_window is {UpdateNeeded: true})
             SearchAndDisplay();
 
-        // Goobstation start
+        // <Goob> The Swap bullshit
         if (_mark == null)
             return;
 
@@ -1071,7 +1072,7 @@ public sealed class ActionUIController : UIController, IOnStateChanged<GameplayS
         }
 
         _mark.SetMark(selectedTargets.MinBy(x => x.range).target);
-        // Goobstation end
+        // </Goob>
     }
 
     private void OnComponentLinked(ActionsComponent component)

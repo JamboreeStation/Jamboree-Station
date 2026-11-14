@@ -17,11 +17,11 @@
     - HeadTop
     - HeadSide
   - type: HideLayerClothing
-    slots:
-    - Hair
-    - Snout
-    - HeadTop
-    - HeadSide
+    layers:
+      Hair: MASK
+      Snout: MASK
+      HeadTop: MASK
+      HeadSide: MASK
     hideOnToggle: true
   - type: Sprite
     sprite: _NF/Clothing/Mask/balaclava.rsi

@@ -1,20 +1,16 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SomethingUnbearable <mewatcher102@gmail.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.DeviceLinking.Systems;
 using Content.Server.Explosion.EntitySystems;
+using Content.Shared.Trigger;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Server.MiscSignaller;
 
-public sealed class MiscSignallerSystem : EntitySystem
+public sealed partial class MiscSignallerSystem : EntitySystem
 {
-    [Dependency] private readonly DeviceLinkSystem _link = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private DeviceLinkSystem _link = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -26,7 +22,7 @@ public sealed class MiscSignallerSystem : EntitySystem
     private void OnInit(EntityUid uid, MiscSignallerComponent component, ComponentInit args)
         => _link.EnsureSourcePorts(uid, component.Port);
 
-    private void OnTrigger(EntityUid uid, MiscSignallerComponent component, TriggerEvent args)
+    private void OnTrigger(EntityUid uid, MiscSignallerComponent component, ref TriggerEvent args)
     {
         if (component.NextActivationWindow > _timing.CurTime)
         {

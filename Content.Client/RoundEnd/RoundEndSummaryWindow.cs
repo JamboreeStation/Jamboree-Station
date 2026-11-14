@@ -90,7 +90,7 @@ namespace Content.Client.RoundEnd
             roundEndTabs.AddChild(MakePlayerManifestTab(info));
             roundEndTabs.AddChild(MakeStationReportTab()); //goob
 
-            Contents.AddChild(roundEndTabs);
+            ContentsContainer.AddChild(roundEndTabs);
 
             OpenCenteredRight();
             MoveToFront();
@@ -136,7 +136,7 @@ namespace Content.Client.RoundEnd
             if (!string.IsNullOrEmpty(roundEnd))
             {
                 var roundEndLabel = new RichTextLabel();
-                roundEndLabel.SetMarkup(roundEnd);
+                roundEndLabel.SetMessage(FormattedMessage.FromMarkupOrThrow(roundEnd), tagsAllowed: null); // Goob
                 roundEndSummaryContainer.AddChild(roundEndLabel);
             }
 
@@ -396,7 +396,7 @@ namespace Content.Client.RoundEnd
             };
             var StationReportLabel = new RichTextLabel();
             var StationReportmessage = new FormattedMessage();
-            StationReportmessage.AddMarkupOrThrow(stationReportText);
+            StationReportmessage.AddMarkupPermissive(stationReportText);
             StationReportLabel.SetMessage(StationReportmessage);
             StationReportContainer.AddChild(StationReportLabel);
 

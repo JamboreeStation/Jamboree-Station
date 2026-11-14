@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.FingerprintReader;
@@ -20,16 +23,4 @@ public sealed partial class FingerprintReaderComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool IgnoreGloves;
-
-    /// <summary>
-    /// The popup to show when access is denied due to fingerprint mismatch.
-    /// </summary>
-    [DataField]
-    public LocId? FailPopup;
-
-    /// <summary>
-    /// The popup to show when access is denied due to wearing gloves.
-    /// </summary>
-    [DataField]
-    public LocId? FailGlovesPopup;
 }

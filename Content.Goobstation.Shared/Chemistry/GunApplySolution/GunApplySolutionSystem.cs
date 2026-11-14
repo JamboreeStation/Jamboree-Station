@@ -1,5 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Chemistry.Components;
@@ -9,9 +7,9 @@ using Content.Shared.Weapons.Ranged.Systems;
 
 namespace Content.Goobstation.Shared.Chemistry.GunApplySolution;
 
-public sealed class GunApplySolutionSystem : EntitySystem
+public sealed partial class GunApplySolutionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     public override void Initialize()
     {
         base.Initialize();

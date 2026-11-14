@@ -1,0 +1,87 @@
+- type: entity
+  parent: BaseMachinePowered
+  id: TP14TelecomRelay
+  name: communications array
+  description: Boosts received radio signals across a wide range, allowing communication across vast distances.
+  components:
+  - type: Relay
+  - type: Sprite
+    sprite: _TP/Structures/Machines/array.rsi
+    layers:
+    - state: array_INTACT
+  - type: AmbientSound
+    volume: -4
+    range: 3
+    sound:
+      path: /Audio/Ambience/Objects/hdd_buzz.ogg
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 300
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -4
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          TP14TelecomRelayDestroyed:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: BaseStructure
+  id: TP14TelecomRelayDestroyed
+  name: broken communications array
+  description: It once broadcasted signals into the far distance. It's broken now, though.
+  components:
+  - type: Sprite
+    sprite: _TP/Structures/Machines/array.rsi
+    layers:
+    - state: array_DESTROYED
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -4
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 3
+          SheetGlass1:
+            min: 0
+            max: 2
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: Transform
+    anchored: true

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Content.Shared.Security.Components;
 using JetBrains.Annotations;
 
@@ -16,7 +19,7 @@ public sealed class GenpopLockerBoundUserInterface(EntityUid owner, Enum uiKey) 
 
         _menu.OnConfigurationComplete += (name, time, crime) =>
         {
-            SendMessage(new GenpopLockerIdConfiguredMessage(name, time, crime));
+            SendPredictedMessage(new GenpopLockerIdConfiguredMessage(name, time, crime));
             Close();
         };
 

@@ -38,6 +38,16 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   Vox deal Slash damage with their unarmed attack.
 
+  ## Vox Naming Conventions
+
+  Vox typically use a single name made of random syllables, often with repeating patterns.
+  Names should not be excessively long or be so repetitive/convoluted as to be unreadable.
+
+  - [color=#449944]Acceptable:[/color] Hirixashahre
+  - [color=#449944]Acceptable:[/color] Xapikrikrik
+  - [color=#994444]Bad:[/color] Chipikirchitchitchitbecretretrer
+  - [color=#994444]Bad:[/color] Trololol
+
   ## Lore
 
   Vox originate from the world of Voxix, a world which in the ancient past was used as a dumping site which, in an effort to keep habitable, was pumped with an exhorborent amount of nitrogen. Many vox have a culture which

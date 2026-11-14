@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2024 MilenVolf <63782763+MilenVolf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration;
@@ -23,13 +19,13 @@ public sealed partial class DungeonSystem
     {
         if (args.Length < 4)
         {
-            shell.WriteError("cmd-dungen-arg-count");
+            shell.WriteError(Loc.GetString("cmd-dungen-arg-count"));
             return;
         }
 
         if (!int.TryParse(args[0], out var mapInt))
         {
-            shell.WriteError("cmd-dungen-map-parse");
+            shell.WriteError(Loc.GetString("cmd-dungen-map-parse"));
             return;
         }
 
@@ -161,7 +157,7 @@ public sealed partial class DungeonSystem
         }
 
         _maps.SetTiles(mapUid, grid, tiles);
-        shell.WriteLine(Loc.GetString("cmd-dungen_pack_vis"));
+        shell.WriteLine(Loc.GetString("cmd-dungen_pack_vis-success"));
     }
 
     [AdminCommand(AdminFlags.Mapping)]
@@ -202,7 +198,7 @@ public sealed partial class DungeonSystem
         }
 
         _maps.SetTiles(mapUid, grid, tiles);
-        shell.WriteLine(Loc.GetString("cmd-dungen_pack_vis"));
+        shell.WriteLine(Loc.GetString("cmd-dungen_pack_vis-success"));
     }
 
     private CompletionResult PresetCallback(IConsoleShell shell, string[] args)

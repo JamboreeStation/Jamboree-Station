@@ -1,3 +1,4 @@
+using Content.Shared.Damage.Systems;
 using Content.Shared.Abilities.Psionics;
 using Content.Shared.StatusEffect;
 using Content.Shared.CCVar;
@@ -6,7 +7,6 @@ using Content.Shared._EinsteinEngines.Psionics;
 using Content.Shared._EinsteinEngines.Psionics.Glimmer;
 using Content.Shared.Random;
 using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.CCVar;
 using Content.Server._EinsteinEngines.Abilities.Psionics;
 using Content.Server.Electrocution;
 using Content.Server.NPC.Components;

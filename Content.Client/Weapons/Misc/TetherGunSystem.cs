@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Kyle Tyo <36606155+VerinSenpai@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Weapons.Misc;
@@ -24,7 +15,6 @@ public sealed class TetherGunSystem : SharedTetherGunSystem
     [Dependency] private readonly IEyeManager _eyeManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IInputManager _input = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
@@ -84,7 +74,7 @@ public sealed class TetherGunSystem : SharedTetherGunSystem
 
         EntityCoordinates coords;
 
-        if (_mapManager.TryFindGridAt(mouseWorldPos, out var gridUid, out _))
+        if (_mapSystem.TryFindGridAt(mouseWorldPos, out var gridUid, out _))
         {
             coords = TransformSystem.ToCoordinates(gridUid, mouseWorldPos);
         }

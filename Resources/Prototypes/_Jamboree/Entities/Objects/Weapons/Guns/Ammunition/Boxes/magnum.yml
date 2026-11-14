@@ -1,8 +1,12 @@
-﻿- type: entity
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
   id: MagazineBoxMagnum22
   parent: BaseMagazineBoxMagnum
   name: ammunition box (.22 magnum)
-  description: A cardboard box of .45 magnum rounds. Intended to hold self-igniting incendiary ammunition.
+  description: A cardboard box of .22 magnum rounds. These rounds will only fit the derringer.
   components:
   - type: BallisticAmmoProvider
     mayTransfer: true

@@ -1,15 +1,8 @@
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2022 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.Holiday.Christmas;
 
@@ -22,8 +15,8 @@ public sealed partial class RandomGiftComponent : Component
     /// <summary>
     /// The wrapper entity to spawn when unwrapping the gift.
     /// </summary>
-    [DataField("wrapper", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string? Wrapper;
+    [DataField("wrapper", required: true)]
+    public EntProtoId? Wrapper;
 
     /// <summary>
     ///     A sound to play when the items are spawned. For example, gift boxes being unwrapped.

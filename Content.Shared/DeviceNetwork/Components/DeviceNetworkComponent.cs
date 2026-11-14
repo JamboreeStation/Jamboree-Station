@@ -1,25 +1,7 @@
-// SPDX-FileCopyrightText: 2021 Julian Giebel <j.giebel@netrocks.info>
-// SPDX-FileCopyrightText: 2021 mirrorcult <notzombiedude@gmail.com>
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Zachary Yona <58833995+Magicalus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Zachary Yona <magicalusf@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 PJB3005 <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.DeviceNetwork.Components
 {
@@ -54,8 +36,8 @@ namespace Content.Shared.DeviceNetwork.Components
         ///     frequency prototype. Used to select a default frequency to listen to on. Used when the map is
         ///     initialized.
         /// </summary>
-        [DataField("receiveFrequencyId", customTypeSerializer: typeof(PrototypeIdSerializer<DeviceFrequencyPrototype>))]
-        public string? ReceiveFrequencyId;
+        [DataField("receiveFrequencyId")]
+        public ProtoId<DeviceFrequencyPrototype>? ReceiveFrequencyId;
 
         /// <summary>
         ///     The frequency that this device going to try transmit on.
@@ -68,8 +50,8 @@ namespace Content.Shared.DeviceNetwork.Components
         ///     frequency prototype. Used to select a default frequency to transmit on. Used when the map is
         ///     initialized.
         /// </summary>
-        [DataField("transmitFrequencyId", customTypeSerializer: typeof(PrototypeIdSerializer<DeviceFrequencyPrototype>))]
-        public string? TransmitFrequencyId;
+        [DataField("transmitFrequencyId")]
+        public ProtoId<DeviceFrequencyPrototype>? TransmitFrequencyId;
 
         /// <summary>
         ///     The address of the device, either on the network it is currently connected to or whatever address it

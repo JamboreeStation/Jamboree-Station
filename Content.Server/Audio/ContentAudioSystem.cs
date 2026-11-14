@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Fildrance <fildrance@gmail.com>
-// SPDX-FileCopyrightText: 2024 pa.pecherskij <pa.pecherskij@interfax.ru>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using System.Linq;
@@ -60,6 +53,7 @@ public sealed class ContentAudioSystem : SharedContentAudioSystem
             true);
 
         SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd);
+        SubscribeLocalEvent<RoundEndCancelMessageEvent>(OnRoundEndCancelMessage); // Starlight
         SubscribeLocalEvent<PlayerJoinedLobbyEvent>(OnPlayerJoinedLobby);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
@@ -102,6 +96,12 @@ public sealed class ContentAudioSystem : SharedContentAudioSystem
         _lobbyPlaylist = ShuffleLobbyPlaylist();
         RaiseNetworkEvent(new LobbyPlaylistChangedEvent(_lobbyPlaylist));
     }
+
+    #region Starlight
+
+    private void OnRoundEndCancelMessage(RoundEndCancelMessageEvent ev) => _serverAudio.ReloadPresets();
+
+    #endregion
 
     private string[] ShuffleLobbyPlaylist()
     {

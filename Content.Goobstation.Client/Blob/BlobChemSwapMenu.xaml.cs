@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2024 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -22,8 +15,8 @@ namespace Content.Goobstation.Client.Blob;
 [GenerateTypedNameReferences]
 public sealed partial class BlobChemSwapMenu : DefaultWindow
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
     private readonly SpriteSystem _sprite;
     public event Action<BlobChemType>? OnIdSelected;
 
@@ -54,8 +47,7 @@ public sealed partial class BlobChemSwapMenu : DefaultWindow
         ClearGrid();
     }
 
-    [ValidatePrototypeId<EntityPrototype>]
-    private const string NormalBlobTile = "NormalBlobTile";
+    private static readonly EntProtoId NormalBlobTile = "NormalBlobTile";
 
     private void UpdateGrid()
     {
@@ -73,7 +65,7 @@ public sealed partial class BlobChemSwapMenu : DefaultWindow
                 MinSize = new Vector2(64, 64),
                 HorizontalExpand = true,
                 Group = group,
-                StyleClasses = {StyleBase.ButtonSquare},
+                StyleClasses = {StyleClass.ButtonSquare},
                 ToggleMode = true,
                 Pressed = _selectedId == blobChem,
                 ToolTip = Loc.GetString($"blob-chem-{blobChem.ToString().ToLower()}-info"),

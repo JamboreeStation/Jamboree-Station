@@ -1,32 +1,10 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Baptr0b0t <152836416+Baptr0b0t@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Baptr0b0t <152836416+baptr0b0t@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Bokser815 <70928915+Bokser815@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Lincoln McQueen <lincoln.mcqueen@gmail.com>
-// SPDX-FileCopyrightText: 2025 Lumminal <81829924+Lumminal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Marcus F <marcus2008stoke@gmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-// SPDX-FileCopyrightText: 2025 thebiggestbruh <199992874+thebiggestbruh@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 thebiggestbruh <marcus2008stoke@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Goobstation.Common.Grab;
 using Content.Goobstation.Common.MartialArts;
 using Content.Goobstation.Shared.Changeling.Components;
+using Content.Goobstation.Shared.GrabIntent;
 using Content.Goobstation.Shared.MartialArts.Components;
 using Content.Goobstation.Shared.Sprinting;
 using Content.Goobstation.Shared.Stealth;
@@ -70,6 +48,9 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Inventory;
+using Robust.Shared.Toolshed.Commands.Values;
+using Content.Shared.Damage.Prototypes;
 
 namespace Content.Goobstation.Shared.MartialArts;
 
@@ -78,36 +59,41 @@ namespace Content.Goobstation.Shared.MartialArts;
 /// </summary>
 public abstract partial class SharedMartialArtsSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly PullingSystem _pulling = default!;
-    [Dependency] private readonly Content.Shared.StatusEffect.StatusEffectsSystem _status = default!;
-    [Dependency] private readonly Content.Shared.StatusEffectNew.StatusEffectsSystem _newStatus = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-    [Dependency] private readonly GrabThrownSystem _grabThrowing = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
-    [Dependency] private readonly StandingStateSystem _standingState = default!;
-    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _modifier = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly SharedMeleeWeaponSystem _melee = default!;
-    [Dependency] private readonly BackStabSystem _backstab = default!;
-    [Dependency] private readonly SharedGoobStealthSystem _stealth = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly NpcFactionSystem _faction = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
-    [Dependency] private readonly TraumaSystem _trauma = default!;
-    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-    [Dependency] private readonly SharedSprintingSystem _sprinting = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private PullingSystem _pulling = default!;
+    [Dependency] private Content.Shared.StatusEffect.StatusEffectsSystem _status = default!;
+    [Dependency] private Content.Shared.StatusEffectNew.StatusEffectsSystem _newStatus = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private GrabIntentSystem _grab = default!;
+    [Dependency] private SharedStaminaSystem _stamina = default!;
+    [Dependency] private GrabThrownSystem _grabThrowing = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private MovementModStatusSystem _movementMod = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private INetManager _netManager = default!;
+    [Dependency] private StandingStateSystem _standingState = default!;
+    [Dependency] private ActionBlockerSystem _blocker = default!;
+    [Dependency] private MovementSpeedModifierSystem _modifier = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private SharedMeleeWeaponSystem _melee = default!;
+    [Dependency] private BackStabSystem _backstab = default!;
+    [Dependency] private SharedGoobStealthSystem _stealth = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private NpcFactionSystem _faction = default!;
+    [Dependency] private SharedBodySystem _body = default!;
+    [Dependency] private TraumaSystem _trauma = default!;
+    [Dependency] private MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private SharedSprintingSystem _sprinting = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+
+    public static readonly EntProtoId MartsGenericSlow = "MartialArtsGenericSlowdownEffect";
 
     public override void Initialize()
     {
@@ -307,11 +293,9 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
         return new()
         {
             Coefficients = specifier.DamageDict
-                .Select(x => KeyValuePair.Create(x.Key, multiplier))
-                .ToDictionary(),
+                .ToDictionary(x => (ProtoId<DamageTypePrototype>) x.Key, _ => multiplier),
             FlatReduction = specifier.DamageDict
-                .Select(x => KeyValuePair.Create(x.Key, -modifier)) // Minus mod because it subtracts values from damage
-                .ToDictionary(),
+                .ToDictionary(x => (ProtoId<DamageTypePrototype>) x.Key, _ => -modifier), // Minus mod because it subtracts values from damage
         };
     }
 
@@ -463,7 +447,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
         if (!_netManager.IsServer || MetaData(user).EntityLifeStage >= EntityLifeStage.Terminating)
             return false;
 
-        if (HasComp<ChangelingIdentityComponent>(user))
+        if (HasComp<ChangelingComponent>(user))
         {
             _popupSystem.PopupEntity(Loc.GetString("cqc-fail-changeling"), user, user);
             return false;
@@ -521,7 +505,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
             case MartialArtsForms.CloseQuartersCombat:
                 var itcryeverytime =
                     new CanDoCQCEvent();
-                  /*  
+                  /*
                 var riposte = EnsureComp<RiposteeComponent>(user);
                 riposte.Data.TryAdd("CQC",
                     new(0.1f,
@@ -599,6 +583,35 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
         downed = IsDown(ent.Comp.CurrentTarget.Value);
         target = ent.Comp.CurrentTarget.Value;
 
+        foreach (var hand in _hands.EnumerateHands(ent.Owner)) //to do arts you have to have hands right???
+        {
+            if (!_hands.TryGetHeldItem(ent.Owner, hand, out var held))
+                continue;
+
+            if (TryComp<MartialArtBlockedComponent>(held, out var slotblockedComp)
+                    && TryComp<MartialArtsKnowledgeComponent>(ent, out var knowledgeComp)
+                    && knowledgeComp.MartialArtsForm == slotblockedComp.Form)
+            {
+                return false;
+            }
+        }
+
+        if (_inventory.TryGetSlots(ent, out var inv)) //checks for Blocked comp and type from the inventory
+        {
+            foreach (var slot in inv)
+            {
+                if (!_inventory.TryGetSlotEntity(ent, slot.Name, out var slotEnt))
+                    continue;
+
+                if (TryComp<MartialArtBlockedComponent>(slotEnt, out var slotblockedComp)
+                    && TryComp<MartialArtsKnowledgeComponent>(ent, out var knowledgeComp)
+                    && knowledgeComp.MartialArtsForm == slotblockedComp.Form)
+                {
+                    return false;
+                }
+            }
+        }
+
         if (!knowledgeComponent.Blocked)
             return true;
 
@@ -612,7 +625,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
             if (!TryComp<StandingStateComponent>(uid, out var standingState))
                 return false;
 
-            return standingState.CurrentState != StandingState.Standing;
+            return !standingState.Standing;
         }
     }
 

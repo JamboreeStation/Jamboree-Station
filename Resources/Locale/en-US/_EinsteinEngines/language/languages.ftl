@@ -17,16 +17,10 @@ language-Draconic-name = Sinta'Unathi
 language-Draconic-description =
     The common language of Moghes - composed of sibilant hisses and rattles. Spoken natively by Unathi.
 
-language-Azaziba-name = Sinta'Azaziba
-language-Azaziba-description =
-    A language of Moghes consisting of a combination of spoken word and gesticulation.
-    While waning since Moghes entered the galactic stage - it enjoys popular use by Unathi that never fell to the Galactic Hegemony's cultural dominance.
-# changed to fit Jamboree lore
-
 language-SolCommon-name = Sol common
 language-SolCommon-description =
-    With its roots in Mandarin Chinese - Common evolved as the official language of the Sol Alliance - with officials working to tie it together with a common tongue.
-    It's spoken by state officials - taught in schools - and spoken by those who either feel a sense of national pride in the Sol Alliance or otherwise fell sway to the culture.
+    With its roots in Mandarin Chinese - Common evolved as the official language of Terra - with officials working to tie it together with a common tongue.
+    It's spoken by state officials - taught in schools - and spoken by those who either feel a sense of national pride in Terra or otherwise fell sway to the culture.
 # changed for clarity
 language-NovuNederic-name = Novu-Nederic
 language-NovuNederic-description =
@@ -34,7 +28,7 @@ language-NovuNederic-description =
     Spoken in the New-Netherlands, this direct and pragmatic trade language carries the sharp consonants and clipped vowels of its old-world roots.
     Built on centuries of seafaring, land reclamation, and commerce, it thrives among those who shape entire worlds — just as their ancestors shaped the land from the sea.
 
-language-TauCetiBasic-name = Tau-Ceti Basic
+language-TauCetiBasic-name = Tau Ceti Basic
 language-TauCetiBasic-description =
     A spiritual successor of Galactic Basic, established in 2XXX on Tau Ceti by Ceti intellectuals.
     Its unique, fully customized alphabet and structure allow it to be spoken even by most alien species.
@@ -42,7 +36,7 @@ language-TauCetiBasic-description =
 # changed to fit jamboree lore
 language-Tradeband-name = Tradeband
 language-Tradeband-description =
-    Descended from latin and romance languages of old Earth - Tradeband remains the main tongue of the upper class of humanity.
+    Descended from latin and romance languages of Terra - Tradeband remains the main tongue of the upper class of humanity.
     The language sounds elegant and well structured to most ears. It remains in popular use with traders - diplomats - and those seeking to hold onto a piece of a romantic past.
 
 language-Freespeak-name = Freespeak
@@ -50,11 +44,10 @@ language-Freespeak-description =
     A language of renegades and frontiersmen descending from various languages from Earth-- like Hindi,
     combined into a multi-rooted jumble that sounds incoherent or even barbarian to non-native speakers.
     This language is the only common cultural identity for humans in the frontier. Speaking this language in itself boldly declares the speaker a free spirit.
-    It is often called 'Gutter' by Sol Alliance citizens.
 # changed for clarity
 language-Elyran-name = Elyran Standard
 language-Elyran-description =
-    Elyran Standard is the official tongue of the Republic of Elyra, once known as the planet Jupiter. Constructed using elements of Farsi - Arabic - and Turkish.
+    Elyran Standard is the official tongue of the Planetary Kingdom of Elyra, once known as the planet Jupiter. Constructed using elements of Farsi - Arabic - and Turkish.
     Influence from all three of these languages can be seen throughout its grammar and vocabulary.
 # changed to fit jamboree lore
 language-Canilunzt-name = Canilunzt
@@ -87,7 +80,7 @@ language-Marish-description =
 # changed to fit jamboree lore
 language-ValyrianStandard-name = Valyrian Standard
 language-ValyrianStandard-description =
-    A language descended from a combination of eastern European languages of old Earth combined with the language of the extinct species that created them
+    A language descended from a combination of eastern European languages of Terra combined with the language of the extinct species that created them
     - Valyrian Standard is the commonly spoken tongue of Harpies brought up on their origin world of Valyrian-B.
     It is rarely spoken outside of the worlds of its native speakers, and has in modern times been supplanted by the 'Conlangs of the Sol Alliance.
     Many of its speakers speak this language as a way to honor both ancient humanity and the ancient species which gave Harpies existence.
@@ -144,8 +137,10 @@ language-Kangaroo-description = Chuu!
 language-Pig-name = Pig
 language-Pig-description = Oink!
 
-language-Crab-name = Crab
-language-Crab-description = Click!
+language-Crab-name = Crabbish
+language-Crab-description =
+    The language of the Anomalocarid species, derived from the sounds produced by several other crustaceans surrounding the thermal vents
+    that served as the inception point of their species.
 
 language-Kobold-name = Kobold
 language-Kobold-description = Hiss!
@@ -171,22 +166,6 @@ language-SiikMaas-name = Siik'maas
 language-SiikMaas-description =
     The ancient religious tongue of the Tajara, now the most widely spoken and taught language on Adhomai.
 
-language-NalRasan-name = Nal'rasan
-language-NalRasan-description =
-    A body-language-heavy dialect created by M'sai hunters for stealth, later adopted by rebels for covert communication during the Great War.
-
-language-SiikTajr-name = Siik'tajr
-language-SiikTajr-description =
-    A revolutionary language blending Siik'maas and Nal'rasan, designed for secrecy during the overthrow of the plutocracy and used heavily in the Great War.
-
-language-YaSsa-name = Ya'ssa
-language-YaSsa-description =
-    A refined Siik'maas dialect once spoken by Njarir nobility, revived by the New Kingdom of Adhomai after centuries of disuse.
-
-language-Delvahii-name = Delvahii
-language-Delvahii-description =
-    A Zhan-Khazan language tied to Ma'take worship, still used in religious rites and favored by farmers resisting government control.
-
 language-Shadowmind-name = Shadowmind
 language-Shadowmind-description =
     A language spoken by the shadowlings. Not much is known about it, except that Thralls can understand it.
@@ -205,3 +184,46 @@ language-NewKinPidgin-description = A language which has been developed by combi
     Many Vox who speak this language lement that they cannot speak the "true" Vox language, often the one that is native to their clan.
     It sounds like chaotic shrieking to everyone else.
 # changed for jamboree lore
+
+# Language icon names, when you hover over the icon in the chat!
+language-icon-unknown = Unknown language??
+language-icon-galactic-common = Tau Ceti Basic
+language-icon-sol-common = Sol Common
+language-icon-gutter = Gutter
+language-icon-tradeband = Tradeband
+language-icon-freespeak = Freespeak
+language-icon-sign = Sign language
+language-icon-robot-talk = Robot Talk
+language-icon-drone-talk = Drone Talk
+language-icon-psychomantic = Psychomantic
+language-icon-animal = Animal
+language-icon-bubblish = Bubblish
+language-icon-newkin-pidgin = Ka'rakk
+language-icon-canilunzt = Canilunzt
+language-icon-marish = Marish
+language-icon-carptongue = Carptongue
+language-icon-xeno-hivemind = Hivemind
+language-icon-draconic = Sinta'Unathi
+language-icon-moffic = Moffic
+language-icon-nekomimetic = Nekomimetic
+language-icon-root-speak = Rootspeak
+language-icon-chittin = Chittin
+language-icon-schechi = Schechi
+language-icon-thaveyan = Thaveyan
+language-icon-felyaic = Felyaic
+language-icon-machine = Machine
+language-icon-codespeak = Codespeak
+language-icon-scurret = Scurret
+language-icon-terrum = Terrum
+language-icon-brain = Brain
+language-icon-aielic = Aielic
+language-icon-darktongue = Darktongue
+language-icon-classical = Classical
+language-icon-grumbakul = Grumbakul
+language-icon-lagomorph = Lagomorph
+language-icon-squeakish = Squeakish
+language-icon-blob = Blob
+language-icon-calcic = Calcic
+language-icon-elyran = Elyran Standard
+
+

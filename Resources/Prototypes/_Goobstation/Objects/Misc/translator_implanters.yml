@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 ImWeax <59857479+ImWeax@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Weax <59857479+ImWeax@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Orion-416 <cliveocelot@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
@@ -13,6 +7,22 @@
   components:
   - type: Implanter
     implant: LibrarianTranslatorImplant
+
+- type: entity
+  id: CentcommTranslatorImplanter
+  parent: BaseImplantOnlyImplanterCentcomm
+  suffix: Translator
+  components:
+  - type: Implanter
+    implant: CentcommTranslatorImplant
+
+- type: entity
+  id: ZookeeperTranslatorImplanter
+  parent: [ BaseTranslatorImplanter ]
+  suffix: Zookeeper
+  components:
+  - type: Implanter
+    implant: ZookeeperTranslatorImplant
 
 - type: entity
   id: ChevalTranslatorImplanter
@@ -50,8 +60,16 @@
 
 - type: entity
   id: SignTranslatorImplanter
-  parent: BaseTranslatorImplanter
+  parent: [ BaseTranslatorImplanter ]
   suffix: Sign
   components:
   - type: Implanter
     implant: SignTranslatorImplant
+
+- type: entity
+  id: BureaucraticTranslatorImplanter
+  parent: [ BaseTranslatorImplanter ]
+  suffix: Bureaucratic
+  components:
+  - type: Implanter
+    implant: BureaucraticTranslatorImplant

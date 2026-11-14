@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
+using Content.Shared.Damage.Systems;
 using System.Linq;
 using Content.Server.Actions;
 using Content.Server.Administration.Managers;
@@ -138,7 +139,7 @@ public sealed partial class ThavenMoodsSystem : SharedThavenMoodSystem
         _bui.TryToggleUi(uid, ThavenMoodsUiKey.Key, actor.PlayerSession);
     }
 
-    private bool TryPick(string datasetProto, [NotNullWhen(true)] out ThavenMoodPrototype? proto, IEnumerable<ThavenMood>? currentMoods = null, HashSet<string>? conflicts = null)
+    private bool TryPick(string datasetProto, [NotNullWhen(true)] out ThavenMoodPrototype? proto, IEnumerable<ThavenMood>? currentMoods = null, HashSet<ProtoId<ThavenMoodPrototype>>? conflicts = null)
     {
         var dataset = _proto.Index<DatasetPrototype>(datasetProto);
         var choices = dataset.Values.ToList();
@@ -151,10 +152,11 @@ public sealed partial class ThavenMoodsSystem : SharedThavenMoodSystem
         while (choices.Count > 0)
         {
             var moodId = _random.PickAndTake(choices);
-            if (conflicts.Contains(moodId))
+            var moodProtoId = new ProtoId<ThavenMoodPrototype>(moodId);
+            if (conflicts.Contains(moodProtoId))
                 continue; // Skip proto if an existing mood conflicts with it
 
-            var moodProto = _proto.Index<ThavenMoodPrototype>(moodId);
+            var moodProto = _proto.Index(moodProtoId);
             if (moodProto.Conflicts.Overlaps(currentMoodProtos))
                 continue; // Skip proto if it conflicts with an existing mood
 
@@ -319,9 +321,9 @@ var datasetProto = _proto.Index(GetMoodConfig(comp).RandomMoodDataset).Pick();
         }
     }
 
-    public HashSet<string> GetConflicts(IEnumerable<ThavenMood> moods)
+    public HashSet<ProtoId<ThavenMoodPrototype>> GetConflicts(IEnumerable<ThavenMood> moods)
     {
-        var conflicts = new HashSet<string>();
+        var conflicts = new HashSet<ProtoId<ThavenMoodPrototype>>();
 
         foreach (var mood in moods)
         {
@@ -332,7 +334,7 @@ var datasetProto = _proto.Index(GetMoodConfig(comp).RandomMoodDataset).Pick();
         return conflicts;
     }
 
-    public HashSet<string> GetConflicts(EntityUid uid, ThavenMoodsComponent? moods = null)
+    public HashSet<ProtoId<ThavenMoodPrototype>> GetConflicts(EntityUid uid, ThavenMoodsComponent? moods = null)
     {
         // TODO: Should probably cache this when moods get updated
 
@@ -344,9 +346,9 @@ var datasetProto = _proto.Index(GetMoodConfig(comp).RandomMoodDataset).Pick();
         return conflicts;
     }
 
-    public HashSet<string> GetMoodProtoSet(IEnumerable<ThavenMood> moods)
+    public HashSet<ProtoId<ThavenMoodPrototype>> GetMoodProtoSet(IEnumerable<ThavenMood> moods)
     {
-        var moodProtos = new HashSet<string>();
+        var moodProtos = new HashSet<ProtoId<ThavenMoodPrototype>>();
         foreach (var mood in moods)
             if (!string.IsNullOrEmpty(mood.ProtoId))
                 moodProtos.Add(mood.ProtoId);

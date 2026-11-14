@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -38,23 +31,25 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Goobstation.Shared.Changeling.Components;
+using Content.Goobstation.Shared.Slasher.Components;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Goobstation.Server.Devil.Contract;
 
 public sealed partial class DevilContractSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPopupSystem _popupSystem = null!;
-    [Dependency] private readonly DamageableSystem _damageable = null!;
-    [Dependency] private readonly HandsSystem _hands = null!;
-    [Dependency] private readonly SharedAudioSystem _audio = null!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = null!;
-    [Dependency] private readonly BodySystem _bodySystem = null!;
-    [Dependency] private readonly WoundSystem _wounds = null!;
-    [Dependency] private readonly IRobustRandom _random = null!;
-    [Dependency] private readonly SubdermalImplantSystem _implant = null!;
-    [Dependency] private readonly PolymorphSystem _polymorph = null!;
-    [Dependency] private readonly ExplosionSystem _explosion = null!;
-    [Dependency] private readonly MindSystem _mind = null!;
+    [Dependency] private SharedPopupSystem _popupSystem = null!;
+    [Dependency] private DamageableSystem _damageable = null!;
+    [Dependency] private HandsSystem _hands = null!;
+    [Dependency] private SharedAudioSystem _audio = null!;
+    [Dependency] private IPrototypeManager _prototypeManager = null!;
+    [Dependency] private BodySystem _bodySystem = null!;
+    [Dependency] private WoundSystem _wounds = null!;
+    [Dependency] private IRobustRandom _random = null!;
+    [Dependency] private SubdermalImplantSystem _implant = null!;
+    [Dependency] private PolymorphSystem _polymorph = null!;
+    [Dependency] private ExplosionSystem _explosion = null!;
+    [Dependency] private MindSystem _mind = null!;
 
     private ISawmill _sawmill = null!;
 
@@ -68,7 +63,7 @@ public sealed partial class DevilContractSystem : EntitySystem
         SubscribeLocalEvent<DevilContractComponent, ExaminedEvent>(OnExamined);
         SubscribeLocalEvent<DevilContractComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerbs);
         SubscribeLocalEvent<DevilContractComponent, SignSuccessfulEvent>(OnSignStep);
-        SubscribeLocalEvent<DevilContractComponent, AfterFullyEatenEvent>(OnEaten);
+        SubscribeLocalEvent<DevilContractComponent, FullyEatenEvent>(OnEaten);
 
         _sawmill = Logger.GetSawmill("devil-contract");
     }
@@ -133,7 +128,7 @@ public sealed partial class DevilContractSystem : EntitySystem
         args.PushMarkup(Loc.GetString("devil-contract-examined", ("weight", contract.Comp.ContractWeight)));
     }
 
-    private void OnEaten(Entity<DevilContractComponent> contract, ref AfterFullyEatenEvent args)
+    private void OnEaten(Entity<DevilContractComponent> contract, ref FullyEatenEvent args)
     {
         _explosion.QueueExplosion(
             args.User,
@@ -219,6 +214,9 @@ public sealed partial class DevilContractSystem : EntitySystem
             paper.EditingDisabled = true;
 
         _popupSystem.PopupEntity(Loc.GetString("contract-victim-signed"), signed, signer);
+
+        var signedEv = new DevilContractSignedEvent(contract);
+        RaiseLocalEvent(signer, ref signedEv);
     }
 
     private void HandleDevilSign(Entity<DevilContractComponent> contract, EntityUid signed, EntityUid signer)
@@ -246,8 +244,9 @@ public sealed partial class DevilContractSystem : EntitySystem
         if (HasComp<CondemnedComponent>(user)
             || HasComp<SiliconComponent>(user)
             || HasComp<DroneComponent>(user)
-            || HasComp<ChangelingIdentityComponent>(user)
-            || HasComp<BorgChassisComponent>(user))
+            || HasComp<ChangelingComponent>(user)
+            || HasComp<BorgChassisComponent>(user)
+            || HasComp<SoullessComponent>(user))
         {
             failReason = Loc.GetString("devil-contract-no-soul-sign-failed");
             return false;
@@ -271,8 +270,12 @@ public sealed partial class DevilContractSystem : EntitySystem
     }
     public bool TryTransferSouls(EntityUid devil, EntityUid contractee, int added)
     {
+        if (TerminatingOrDeleted(contractee))
+            return false;
+
         // Can't sell what doesn't exist.
         if (HasComp<CondemnedComponent>(contractee)
+            || HasComp<SoullessComponent>(contractee)
             || devil == contractee)
             return false;
 
@@ -365,6 +368,9 @@ public sealed partial class DevilContractSystem : EntitySystem
     private void ApplyEffectToTarget(EntityUid target, DevilClausePrototype clause, Entity<DevilContractComponent>? contract)
     {
         //_sawmill.Debug($"Applying {clause.ID} effect to {ToPrettyString(target)}");
+
+        if (TerminatingOrDeleted(target))
+            return;
 
         DoPolymorphs(target, clause);
 

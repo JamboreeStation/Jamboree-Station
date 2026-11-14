@@ -1,0 +1,56 @@
+- type: body
+  id: Anomalocarid
+  name: "anomalocarid"
+  root: chest
+  slots:
+    head:
+      part: HeadAnomalocarid
+      connections:
+      - chest
+      organs:
+        brain: OrganAnomalocaridBrain
+        eyes: OrganAnomalocaridEyes
+    chest:
+      part: ChestAnomalocarid
+      connections:
+      - groin
+      - right arm
+      - left arm
+      - head
+      organs:
+        heart: OrganAnomalocaridHeart
+        lungs: OrganAnomalocaridLungs
+    groin:
+      part: GroinAnomalocarid
+      connections:
+      - right leg
+      - left leg
+      organs:
+        stomach: OrganAnomalocaridStomach
+        liver: OrganAnomalocaridLiver
+        kidneys: OrganAnomalocaridKidneys
+        butt: Butt # Goob
+    right arm:
+      part: RightArmAnomalocarid
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmAnomalocarid
+      connections:
+      - left hand
+    right hand:
+      part: RightHandAnomalocarid
+    left hand:
+      part: LeftHandAnomalocarid
+    right leg:
+      part: RightLegAnomalocarid
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegAnomalocarid
+      connections:
+      - left foot
+    right foot:
+      part: RightFootAnomalocarid
+    left foot:
+      part: LeftFootAnomalocarid

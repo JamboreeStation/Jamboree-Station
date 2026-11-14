@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
@@ -36,13 +31,13 @@ namespace Content.Goobstation.Server.PlayerListener;
 ///     Fires faster if at least 1 out of 2 or more players has nothing in their body clothing slot.
 ///     This is called "expedited" here.
 /// </remarks>
-public sealed class DormNotifier : EntitySystem
+public sealed partial class DormNotifier : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly IAfkManager _afk = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private IAfkManager _afk = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private ChatSystem _chat = default!;
 
     private HashSet<CancellationTokenSource> _tokens = [];
 

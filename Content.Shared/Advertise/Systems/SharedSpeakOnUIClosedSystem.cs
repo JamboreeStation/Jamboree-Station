@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using SpeakOnUIClosedComponent = Content.Shared.Advertise.Components.SpeakOnUIClosedComponent;
 
 namespace Content.Shared.Advertise.Systems;

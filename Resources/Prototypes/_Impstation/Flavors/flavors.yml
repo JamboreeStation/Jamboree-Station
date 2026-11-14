@@ -1,4 +1,8 @@
-﻿- type: flavor
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: flavor
   id: thavenbad
   flavorType: Complex
   description: flavor-complex-thavenbad
@@ -22,3 +26,8 @@
   id: feverdream
   flavorType: Complex
   description: flavor-complex-feverdream
+
+- type: flavor
+  id: ants
+  flavorType: Base
+  description: flavor-base-ants

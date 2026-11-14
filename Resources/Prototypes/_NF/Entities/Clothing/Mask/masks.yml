@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingMaskClown
+  parent: ClothingMaskClownBase
   id: ClothingMaskClownBald
   name: bald clown mask #changed from just clown mask
   description: If clowning doesn't work out, maybe you can rob a bank.

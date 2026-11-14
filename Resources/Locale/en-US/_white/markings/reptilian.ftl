@@ -54,6 +54,11 @@ marking-SnakeLargeTail = Lizard, large snake tail
 marking-SnakeLargeTail-tail_snakelarge = Inner
 marking-SnakeLargeTail-tail_snakelarge_overlay = Outer
 
+# WINGS
+marking-LizardChestDragonwings = Lizard, draconic wings
+marking-LizardChestDragonwings-body_dragonwings = Wings
+marking-LizardChestDragonwings-body_dragonwings_membrane = Membrane
+
 # SPINES
 marking-LizardChestSpinesAquatic = Lizard, chest, spines (Aquatic)
 marking-LizardChestSpinesAquatic-spines_aquatic = Spikes

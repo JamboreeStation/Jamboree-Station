@@ -1,8 +1,4 @@
 <!--
-SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
@@ -11,6 +7,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
          Orientation="Horizontal">
     <!--Width set to slightly wider than the longest job name (NTR) to place the option buttons consistently.-->
     <Label Name="TitleLabel"
+           StyleClasses="HullText"
            Margin="5 0"
            SetWidth="220"
            MouseFilter="Stop"/>

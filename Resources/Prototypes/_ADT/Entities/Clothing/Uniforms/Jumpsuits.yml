@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Centcom Consultant
 - type: entity
   parent: ClothingUniformBase
@@ -27,7 +31,7 @@
   parent: ClothingUniformBase
   id: ADTClothingUniformJumpsuitAnarchyTshirt
   name: anarchy t-shirt #changed name
-  description: "NANOTRASEN IS UNFAIR! MR.BURGER IS IN THERE! STANDING AT THE CONCESSION! PLOTTING HIS OPPRESSION!" #changed description, also yooo, first Barry Burger reference
+  description: "NANOTRASEN IS UNFAIR! CENTCOMM IS IN THERE! STANDING AT THE CONCESSION! PLOTTING THEIR OPPRESSION!" #changed description, also yooo, first Barry Burger reference
   components:
   - type: Sprite
     sprite: ADT/Clothing/Uniforms/Jumpsuit/black_anarchy.rsi
@@ -502,7 +506,6 @@
   id: ADTHalloweenEmpressOfLightSuitYellow
   name: empress under suit #changed name
   description: This suit is a replica of the one worn by a far off empress of a powerful spacefaring nation. #changed description
-  suffix: Halloween
   components:
   - type: Sprite
     sprite: ADT/Clothing/Uniforms/Jumpsuit/empress_of_light_yellow.rsi
@@ -514,7 +517,6 @@
   id: ADTHalloweenLethalCompanySuit
   name: scavenger's suit #changed name
   description: A contracted scavenger's suit. There's a lot of missing persons who have put this uniform on... #changed description
-  suffix: Halloween
   components:
   - type: Sprite
     sprite: ADT/Clothing/Uniforms/Jumpsuit/lethal_company.rsi

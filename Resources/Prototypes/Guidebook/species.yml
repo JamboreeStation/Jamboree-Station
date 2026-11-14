@@ -27,31 +27,32 @@
   name: guide-entry-species
   text: "/ServerInfo/Guidebook/Mobs/Species.xml"
   children:
+    - Anomalocarid # imp
     - Arachnid
+    - Avali # Starlight
+    - Chitinid
     - Diona
     - Dwarf
-    - Human
-    - Moth
-    - Reptilian
-    - SlimePerson
     - Felinid
+    - Feroxi
     - Gingerbread
+    - Goblin # Frontier
     - Harpy
+    - Human
+    - IPC
+    - Moth
+    - Oni
+    - Plasmaman
+    - Reptilian
+    - Rodentia
+    - Shadowkin
+    - SlimePerson
+    - Tajaran
+    - Thaven
+    - Ursine #ADT/Jamboree Adaptation
     - Vox
     - Vulpkanin
-    - Rodentia
     - Yowie # Jamboree, return of the Yowie
-    - IPC
-#    - Resomi  Jamboree
-    - Oni
-    - Shadowkin
-    - Tajaran
-    - Chitinid
-    - Plasmaman
-    - Feroxi
-    - Thaven
-    - Goblin # Frontier
-    - Avali # Starlight
 
 - type: guideEntry
   id: Arachnid
@@ -124,11 +125,6 @@
   name: species-name-ipc
   text: "/ServerInfo/Guidebook/Mobs/IPCs.xml"
 
-#- type: guideEntry   Jamboree
-#  id: Resomi
-#  name: species-name-resomi
-#  text: "/ServerInfo/Guidebook/Mobs/Resomi.xml"
-
 - type: guideEntry
   id: Tajaran
   name: species-name-tajaran
@@ -148,3 +144,8 @@
   id: Avali
   name: species-name-avali
   text: "/ServerInfo/Guidebook/Mobs/Avali.xml"
+
+- type: guideEntry #ADT/Jamboree
+  id: Ursine
+  name: species-name-ursine
+  text: "/ServerInfo/_ADT/Guidebook/Mobs/Ursine.xml"

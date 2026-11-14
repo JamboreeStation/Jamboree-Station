@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client.Construction;
@@ -19,9 +14,9 @@ using System.Linq;
 
 namespace Content.Goobstation.Client.Factory.UI;
 
-public sealed class ConstructorBUI : BoundUserInterface
+public sealed partial class ConstructorBUI : BoundUserInterface
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
     private readonly ConstructionSystem _construction;
     private readonly EntityWhitelistSystem _whitelist;
     private readonly SpriteSystem _sprite;

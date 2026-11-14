@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client.Construction;
@@ -33,7 +29,6 @@ public sealed class AlignAtmosPipeLayers : SnapgridCenter
 {
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
 
     private readonly SharedMapSystem _mapSystem;
@@ -93,7 +88,7 @@ public sealed class AlignAtmosPipeLayers : SnapgridCenter
         if (pManager.PlacementType != PlacementTypes.None)
             return;
 
-        MouseCoords = _unalignedMouseCoords.AlignWithClosestGridTile(SearchBoxSize, _entityManager, _mapManager);
+        MouseCoords = _unalignedMouseCoords.AlignWithClosestGridTile(SearchBoxSize, _entityManager);
 
         var gridId = _transformSystem.GetGrid(MouseCoords);
 
@@ -140,7 +135,7 @@ public sealed class AlignAtmosPipeLayers : SnapgridCenter
 
         var newProtoId = altPrototypes[(int)layer];
 
-        if (!_protoManager.TryIndex(newProtoId, out var newProto))
+        if (!_protoManager.Resolve(newProtoId, out var newProto))
             return;
 
         if (newProto.Type != ConstructionType.Structure)

@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2022 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration;
@@ -19,7 +11,7 @@ namespace Content.Server.Salvage;
 sealed class SalvageRulerCommand : IConsoleCommand
 {
     [Dependency] private readonly IEntityManager _entities = default!;
-    [Dependency] private readonly IMapManager _maps = default!;
+    private SharedMapSystem _mapSystem => _entities.System<SharedMapSystem>();
 
     public string Command => "salvageruler";
 
@@ -52,7 +44,7 @@ sealed class SalvageRulerCommand : IConsoleCommand
         var entityTransform = _entities.GetComponent<TransformComponent>(entity.Value);
         var total = Box2.UnitCentered;
         var first = true;
-        foreach (var mapGrid in _maps.GetAllGrids(entityTransform.MapID))
+        foreach (var mapGrid in _mapSystem.GetAllGrids(entityTransform.MapID))
         {
             var aabb = _entities.System<SharedTransformSystem>().GetWorldMatrix(mapGrid).TransformBox(mapGrid.Comp.LocalAABB);
             if (first)

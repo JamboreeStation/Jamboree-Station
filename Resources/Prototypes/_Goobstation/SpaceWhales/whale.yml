@@ -9,6 +9,7 @@
   description: When the space becomes too quiet, there is no hope, there is no escape, but there is this.
   suffix: keeps tiles, no despawn
   components:
+  - type: SpaceWhale
   - type: TailedEntity
     amount: 65
     speed: 13
@@ -22,7 +23,7 @@
     shape: hexagon
     visibleFromOtherGrids: true
   - type: MovementIgnoreGravity
-    gravityState: true # wtf lol?
+    weightless: true # wtf lol?
   - type: WarpPoint
     follow: true
     location: space leviathan

@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.DoAfter;
@@ -21,17 +16,17 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Goobstation.Shared.Factory;
 
-public abstract class SharedInteractorSystem : EntitySystem
+public abstract partial class SharedInteractorSystem : EntitySystem
 {
-    [Dependency] private readonly AutomationSystem _automation = default!;
-    [Dependency] private readonly AutomationFilterSystem _filter = default!;
-    [Dependency] private readonly CollisionWakeSystem _wake = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
-    [Dependency] protected readonly StartableMachineSystem Machine = default!;
+    [Dependency] private AutomationSystem _automation = default!;
+    [Dependency] private AutomationFilterSystem _filter = default!;
+    [Dependency] private CollisionWakeSystem _wake = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedMapSystem _map = default!;
+    [Dependency] protected StartableMachineSystem Machine = default!;
 
     private EntityQuery<ActiveDoAfterComponent> _doAfterQuery;
     private EntityQuery<HandsComponent> _handsQuery;

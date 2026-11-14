@@ -107,6 +107,7 @@
   - NanotrasenRepresentativeBelt
   - Glasses
   - Trinkets
+  - NanotrasenRepresentativeJobTrinkets
   - Animals
   - Drip # Jamboree
   - GroupSpeciesBreathTool
@@ -130,6 +131,7 @@
   - BlueshieldOfficerMask
   - BlueshieldOfficerShoes
   - Trinkets
+  - BlueshieldOfficerJobTrinkets
   - Animals
   - GroupSpeciesBreathTool
   - SurvivalSecurity
@@ -154,6 +156,7 @@
   - NanotrasenTrainerGloves
   - NanotrasenTrainerBelt
   - Trinkets
+  - NanotrasenTrainerJobTrinkets
   - Animals
   - GroupSpeciesBreathTool
   - Survival
@@ -213,6 +216,7 @@
   - SecurityNeck
   - SurvivalSecurity
   - Trinkets
+  - BrigmedicJobTrinkets
   - Animals
   - SecurityStar
   - Drip # Jamboree
@@ -285,22 +289,24 @@
 - type: roleLoadout
   id: JobVirologist
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
-  - GroupTankHarness
-  - VirologistHead #jamboree
-  - VirologistMask #jamboree
-  - VirologistJumpsuit
-  - MedicalGloves
-  - VirologistBackpack
-  - VirologistOuterClothing
-  - MedicalShoes
-  - VirologistPDA
-  - SurvivalMedical
-  - Trinkets
-  - Animals # Jamboree, parity with other roles
-  - Drip # Jamboree
-  - GroupSpeciesBreathToolMedical
-  - VirologyEnvirohelm
-  - VirologyEnvirosuit
-  - VirologyEnvirogloves
+   - GnomePointyHats # Gnome
+   - GnomeUniforms # Gnome
+   - GroupTankHarness
+   - VirologistHead #jamboree
+   - VirologistMask #jamboree
+   - VirologistJumpsuit
+   - MedicalGloves
+   - VirologistBackpack
+   - MedicalNeck #jamboree
+   - VirologistOuterClothing
+   - MedicalShoes
+   - VirologistPDA
+   - VirologistJobTrinkets
+   - SurvivalMedical
+   - Trinkets
+   - Animals # Jamboree, parity with other roles
+   - Drip # Jamboree
+   - GroupSpeciesBreathToolMedical
+   - VirologyEnvirohelm
+   - VirologyEnvirosuit
+   - VirologyEnvirogloves

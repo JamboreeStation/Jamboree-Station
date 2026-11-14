@@ -2,3 +2,8 @@
   id: Thaven
   name: species-name-thaven
   text: /ServerInfo/Guidebook/Mobs/_Impstation/Thaven.xml
+
+- type: guideEntry
+  id: Anomalocarid
+  name: species-name-anomalocarid
+  text: "/ServerInfo/_Impstation/Guidebook/Mobs/Anomalocarid.xml"

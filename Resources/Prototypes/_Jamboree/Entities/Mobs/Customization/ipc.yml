@@ -1,0 +1,61 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# HEAD
+
+## DEFAULTS
+
+# General
+- type: marking
+  id: CyberLimbsMarkingMannequinHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [IPC]
+  sprites:
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: headmannequin
+
+- type: marking
+  id: CyberLimbsMarkingJarHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [IPC]
+  sprites:
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: jarheadlower
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: jarheadbrain
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: jarheadglass
+
+# Honk.CO's Animatronic
+- type: marking
+  id: CyberLimbsMarkingMannimatronicHead
+  bodyPart: Head
+  markingCategory: Head
+  speciesRestriction: [IPC]
+  sprites:
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: mannimatronicbase
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: mannimatronicteeth
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: mannimatroniceyesouter
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: mannimatroniceyesinner
+
+- type: marking
+  id: CyberLimbsMarkingClawRHand
+  bodyPart: RHand
+  markingCategory: RightHand
+  speciesRestriction: [IPC, Moth, Dwarf, Human, Arachnid, Felinid, Oni, Vulpkanin, HumanoidFoxes, Reptilian, Tajaran, Goblin] # Goobstation - Tajaran, Frontier - Goblin
+  sprites:
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: clawhandright
+
+- type: marking
+  id: CyberLimbsMarkingClawLHand
+  bodyPart: LHand
+  markingCategory: LeftHand
+  speciesRestriction: [IPC, Moth, Dwarf, Human, Arachnid, Felinid, Oni, Vulpkanin, HumanoidFoxes, Reptilian, Tajaran, Goblin] # Goobstation - Tajaran, Frontier - Goblin
+  sprites:
+  - sprite: _Jamboree/Mobs/Customization/ipc.rsi
+    state: clawhandleft

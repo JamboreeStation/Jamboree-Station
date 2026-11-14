@@ -1,6 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Used by followers of Nar'Sie
 - type: language
   id: Eldritch
+  iconUnderstood: false
+  isVisibleLanguage: true
+  icon: LanguageIconDarktongue
   speech:
     color: "#dc143c"
   obfuscation:

@@ -1,13 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared._DV.Polymorph;
@@ -35,6 +25,8 @@ using Content.Shared.Throwing;
 using Content.Shared.Verbs;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Network;
+using Robust.Shared.Timing; // Goob edit
+using Content.Goobstation.Common.Carrying; // Goob
 using System.Numerics;
 using Content.Shared._EinsteinEngines.Contests;
 using Content.Shared.Hands.EntitySystems;
@@ -57,6 +49,7 @@ public sealed class CarryingSystem : EntitySystem
     [Dependency] private readonly SharedVirtualItemSystem  _virtualItem = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly ContestsSystem _contests = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -79,7 +72,7 @@ public sealed class CarryingSystem : EntitySystem
         SubscribeLocalEvent<BeingCarriedComponent, UnbuckledEvent>(OnDrop);
         SubscribeLocalEvent<BeingCarriedComponent, StrappedEvent>(OnDrop);
         SubscribeLocalEvent<BeingCarriedComponent, UnstrappedEvent>(OnDrop);
-        SubscribeLocalEvent<BeingCarriedComponent, EscapeInventoryEvent>(OnDrop);
+        SubscribeLocalEvent<BeingCarriedComponent, EscapeInventoryEvent>(OnEscapeDrop); // Goob
         SubscribeLocalEvent<CarriableComponent, CarryDoAfterEvent>(OnDoAfter);
         SubscribeLocalEvent<BeingCarriedComponent, EntityTerminatingEvent>(OnDelete);
     }
@@ -164,6 +157,9 @@ public sealed class CarryingSystem : EntitySystem
 
     private void OnParentChanged(Entity<CarryingComponent> ent, ref EntParentChangedMessage args)
     {
+        // Goob edit: the server already networks the drop, and Carried may not be resolvable on the client yet.
+        if (_timing.ApplyingState)
+            return;
         var xform = Transform(ent);
         if (xform.MapUid != args.OldMapId)
             return;
@@ -177,6 +173,10 @@ public sealed class CarryingSystem : EntitySystem
 
     private void OnMobStateChanged(Entity<CarryingComponent> ent, ref MobStateChangedEvent args)
     {
+        // Goob edit: this fires from DamageableHandleState while applying server state, where Carried can be
+        // EntityUid.Invalid (not in PVS). The server networks the drop itself.
+        if (_timing.ApplyingState)
+            return;
         DropCarried(ent, ent.Comp.Carried);
     }
 
@@ -225,6 +225,14 @@ public sealed class CarryingSystem : EntitySystem
     private void OnDrop<TEvent>(Entity<BeingCarriedComponent> ent, ref TEvent args) // Augh
     {
         DropCarried(ent.Comp.Carrier, ent);
+    }
+
+    // Separate event so that cancels dont just drop the ent
+    private void OnEscapeDrop(Entity<BeingCarriedComponent> ent, ref EscapeInventoryEvent args)
+    {
+        if (args.Cancelled)
+            return;
+        DropCarried(ent.Comp.Carrier, ent.Owner);
     }
 
     private void OnDoAfter(Entity<CarriableComponent> ent, ref CarryDoAfterEvent args)
@@ -326,6 +334,9 @@ public sealed class CarryingSystem : EntitySystem
 
     private void Drop(EntityUid carried)
     {
+        // Goob edit: carried can be invalid/deleted (e.g. out of PVS on the client), nothing to drop then.
+        if (TerminatingOrDeleted(carried))
+            return;
         RemComp<BeingCarriedComponent>(carried);
         RemComp<KnockedDownComponent>(carried); // TODO SHITMED: make sure this doesnt let you make someone with no legs walk
         _actionBlocker.UpdateCanMove(carried);
@@ -367,6 +378,10 @@ public sealed class CarryingSystem : EntitySystem
 
         var mod = _contests.MassContest(carried, carrier);
         length *= mod;
+
+        var ev = new ModifyCarryDurationEvent(carried); // Goob
+        RaiseLocalEvent(carrier, ref ev); // Goob
+        length *= ev.Multiplier; // Goob
 
         return length;
     }

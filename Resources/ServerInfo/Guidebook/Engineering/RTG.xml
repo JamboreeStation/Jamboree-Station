@@ -1,10 +1,4 @@
 <!--
-SPDX-FileCopyrightText: 2024 Ben Velie <veliebm@gmail.com>
-SPDX-FileCopyrightText: 2024 Kira Bridgeton <161087999+Verbalase@users.noreply.github.com>
-SPDX-FileCopyrightText: 2024 Terraspark4941 <terraspark4941@gmail.com>
-SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
@@ -30,6 +24,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   If RTGs take enough damage, they can become damaged RTGs.
   Damaged RTGs behave just like regular ones, but they're [color=yellow]radioactive[/color].
 
-  That means they're more dangerous, but on the bright side, you can put radiation collectors next to them to turn that radiation into more power.
-  This is usually more worthwhile, considering the power is still free, so long as you can find a safe spot to put the RTG(s) in.
+  That means they're more dangerous, and will emit [color=yellow]radiation[/color] which will be a bad day for those without radiation protection.
+  [color=red]You can not [/color] use a radiation collector to collect power from damage RTGs.
 </Document>

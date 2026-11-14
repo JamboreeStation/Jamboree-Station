@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -24,10 +19,10 @@ namespace Content.Goobstation.Client.ServerCurrency.UI
     [GenerateTypedNameReferences]
     public sealed partial class CurrencyWindow : DefaultWindow
     {
-        [Dependency] private readonly ICommonCurrencyManager _serverCur = default!;
-        [Dependency] private readonly IClientAdminManager _adminManager = default!;
-        [Dependency] private readonly IClientConsoleHost _consoleHost = default!;
-        [Dependency] private readonly IPrototypeManager _protoManager = default!;
+        [Dependency] private ICommonCurrencyManager _serverCur = default!;
+        [Dependency] private IClientAdminManager _adminManager = default!;
+        [Dependency] private IClientConsoleHost _consoleHost = default!;
+        [Dependency] private IPrototypeManager _protoManager = default!;
         public event Action<ProtoId<TokenListingPrototype>>? OnBuy;
         private bool isAdmin = false;
         private Dictionary<Button, (DateTime LastClick, TokenListingPrototype Listing)> _buttonClickTimes = new();

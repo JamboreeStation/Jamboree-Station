@@ -5,108 +5,6 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
-  id: EnergyReagentDispenserBase
-  abstract: true
-  parent: SmallConstructibleMachine
-  components:
-  - type: Transform
-    anchored: true
-    noRot: true
-  - type: Clickable
-  - type: InteractionOutline
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.25, -0.4, 0.25, 0.4"
-        density: 190
-        mask:
-        - MachineMask
-        layer:
-        - MachineLayer
-  - type: Battery
-    maxCharge: 1500
-    startingCharge: 1500
-  - type: ApcPowerReceiverBattery
-    idleLoad: 65
-    batteryRechargeRate: 30
-    batteryRechargeEfficiency: 1.0
-  - type: ApcPowerReceiver
-    powerLoad: 65
-  - type: ExtensionCableReceiver
-  - type: Anchorable
-  - type: Pullable
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: Metallic
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: MetalGlassBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: machineFrame
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-  - type: ContainerContainer
-    containers:
-      machine_board: !type:Container
-      machine_parts: !type:Container
-      energyBeakerSlot: !type:ContainerSlot
-      storagebase: !type:Container
-  - type: StaticPrice
-    price: 1000
-  - type: WiresPanel
-  - type: StealTarget
-    stealGroup: ChemDispenser
-  - type: ActivatableUI
-    key: enum.EnergyReagentDispenserUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.EnergyReagentDispenserUiKey.Key:
-        type: EnergyReagentDispenserBoundUserInterface
-      enum.StorageUiKey.Key:
-        type: StorageBoundUserInterface
-  - type: EnergyReagentDispenser
-    energyBeakerSlot:
-      whitelistFailPopup: reagent-dispenser-component-cannot-put-entity-message
-      whitelist:
-        components:
-        - FitsInDispenser
-    reagents: {}
-
-
-- type: entity
-  id: EnergyReagentDispenserPortableBase
-  abstract: true
-  parent: EnergyReagentDispenserBase
-  placement:
-    mode: SnapgridCenter
-  components:
-  - type: Transform
-    anchored: false
-    noRot: true
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.25, -0.4, 0.25, 0.4"
-        density: 190
-        mask:
-        - TabletopMachineMask
-        layer:
-        - TabletopMachineLayer
-
-
-- type: entity
   id: EnergyChemDispenser
   parent: EnergyReagentDispenserBase
   name: Energy chemical dispenser
@@ -127,18 +25,18 @@
     reagents:
       Aluminium: 8
       Blood: 6
-      Cryoxadone: 30
       Carbon: 10
-      Copper: 8
       Chlorine: 10
+      Copper: 8
+      Cryoxadone: 30
       Ethanol: 8
       Fluorine: 10
       Hydrogen: 10
-      Iron: 6
       Iodine: 10
+      Iron: 6
       Lithium: 5
-      Oxygen: 10
       Nitrogen: 10
+      Oxygen: 10
       Phosphorus: 8
       Potassium: 8
       Radium: 10
@@ -150,140 +48,3 @@
   - type: Battery
     maxCharge: 3000
     startingCharge: 400
-
-
-
-- type: entity
-  id: EnergyBoozeDispenser
-  parent: EnergyReagentDispenserPortableBase
-  name: Energy booze dispenser
-  description: A drunk mans best dream. Using the power of bluespace, this dispenser uses station energy to produce alcoholic beverages! Now you can get wasted without leaving the bar to restock! Ever!
-  components:
-  - type: Sprite
-    sprite: Structures/smalldispensers.rsi
-    state: booze
-    drawdepth: SmallObjects
-    snapCardinals: false
-  - type: Rotatable
-  - type: Transform
-    noRot: false
-  - type: Machine
-    board: EnergyBoozeDispenserMachineCircuitboard
-  - type: GuideHelp
-    guides:
-    - Bartender
-    - Drinks
-  - type: EnergyReagentDispenser
-    reagents:
-      Ale: 5
-      Beer: 5
-      CoffeeLiqueur: 5
-      Cognac: 5
-      Gin: 5
-      Mead: 5
-      Rum: 5
-      Tequila: 5
-      Vermouth: 5
-      Vodka: 5
-      Whiskey: 5
-      Wine: 5
-  - type: Battery
-    maxCharge: 2500
-    startingCharge: 100
-
-
-- type: entity
-  id: EnergySodaDispenser
-  parent: EnergyReagentDispenserPortableBase
-  name: Energy soda dispenser
-  description: Soda? We got it! This bluespace dispenser, using station energy, produces a variety of non alchoholic drinks for the thirsty and the health conscious alike!
-  components:
-  - type: Sprite
-    sprite: Structures/smalldispensers.rsi
-    state: soda
-    drawdepth: SmallObjects
-    snapCardinals: false
-  - type: Machine
-    board: EnergySodaDispenserMachineCircuitboard
-  - type: GuideHelp
-    guides:
-    - Bartender
-    - Drinks
-  - type: EnergyReagentDispenser
-    reagents:
-      CoconutWater: 5
-      Coffee: 5
-      Cola: 5
-      Cream: 5
-      DrGibb: 5
-      EnergyDrink: 5
-      GreenTea: 5
-      Ice: 5
-      JuiceLime: 5
-      JuiceOrange: 5
-      JuiceWatermelon: 5
-      JuiceTomato: 5
-      LemonLime: 5
-      RootBeer: 5
-      SodaWater: 5
-      SpaceMountainWind: 5
-      SpaceUp: 5
-      Sugar: 5
-      Tea: 5
-      TonicWater: 5
-      Water: 1
-  - type: Battery
-    maxCharge: 2500
-    startingCharge: 100
-
-
-
-- type: entity
-  id: ServiceEnergyChemDispenser
-  parent: EnergyReagentDispenserBase
-  name: Energy food synthesizer
-  description: A bluespace food synthesizer that uses station energy to create a variety of food based reagents! Now you can create terrible food without worry and bring shame to all chefs!
-  components:
-  - type: Sprite
-    sprite: Structures/dispensers.rsi
-    state: industrial-working
-    snapCardinals: false
-  - type: Machine
-    board: ServiceEnergyChemMachineCircuitboard
-  - type: EnergyReagentDispenser
-    reagents:
-      Flour: 4
-      Cornmeal: 4
-      Rice: 4
-      Egg: 12
-      Milk: 12
-      Sugar: 5
-      Water: 1
-      # Uncommon ingredients
-      Enzyme: 30
-      Fat: 20
-      UncookedAnimalProteins: 20
-      MilkSoy: 16
-      Oats: 14
-      Vinegar: 8
-      OilOlive: 5
-      JuiceLime: 5
-      JuicePineapple: 11
-      # Condiments
-      TableSalt: 20
-      Blackpepper: 10
-      BbqSauce: 5
-      Coldsauce: 5
-      Soysauce: 4
-      Mustard: 5
-      Ketchup: 5
-      Mayo: 5
-      Hotsauce: 6
-      Syrup: 20
-      Vinaigrette: 9
-      Astrotame: 8
-      HorseradishSauce: 4
-      Cornoil: 4
-  - type: Battery
-    maxCharge: 3000
-    startingCharge: 100

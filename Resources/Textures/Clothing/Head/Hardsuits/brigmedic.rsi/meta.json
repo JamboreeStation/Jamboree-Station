@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Made by PuroSlavKing (github) for SS14, Vulp version made by YERO",
+  "copyright": "Made by PuroSlavKing (github) for SS14. Anom edits by Doop, Vulp version made by YERO",
   "size": {
     "x": 32,
     "y": 32
@@ -30,6 +30,14 @@
       "directions": 4
     },
     {
+      "name": "on-equipped-HELMET-anomalocarid",
+      "directions": 4
+    },
+    {
+      "name": "off-equipped-HELMET-anomalocarid",
+      "directions": 4
+    },
+    {
       "name": "on-inhand-left",
       "directions": 4
     },
@@ -51,6 +59,14 @@
     },
     {
       "name": "off-equipped-HELMET-vulpkanin",
+      "directions": 4
+    },
+    {
+      "name": "on-equipped-HELMET-feroxi",
+      "directions": 4
+    },
+    {
+      "name": "off-equipped-HELMET-feroxi",
       "directions": 4
     }
   ]

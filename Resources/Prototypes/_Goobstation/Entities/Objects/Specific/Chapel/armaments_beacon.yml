@@ -43,6 +43,10 @@
       icon:
         sprite: _ShitChap/Clothing/OuterClothing/Misc/clock.rsi
         state: icon
+    - prototype: SpawnArmamentsDraconic
+      icon:
+        sprite: _ShitChap/Clothing/OuterClothing/Misc/dragonsuit.rsi
+        state: icon
   #  - prototype: SpawnArmamentsMonk
    #   icon:
    #     sprite: _ShitChap/Clothing/OuterClothing/Misc/monkrobe.rsi

@@ -1,6 +1,8 @@
-﻿#spoken by thaven
+#spoken by thaven
 - type: language
   id: Eckeckyik
+  iconUnderstood: false
+  icon: LanguageIconThaveyan
   isVisibleLanguage: true
   speech:
     color: "#5dd4a0"
@@ -38,6 +40,8 @@
 
 - type: language
   id: BieselEckeckyik
+  iconUnderstood: false
+  icon: LanguageIconThaveyan
   isVisibleLanguage: true
   speech:
     color: "#5dd4a0"

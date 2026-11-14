@@ -1,26 +1,14 @@
 using Content.Shared.Abilities.Psionics;
+using Content.Shared._EinsteinEngines.Psionics;
 using Content.Shared.EntityEffects;
-using JetBrains.Annotations;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Nyanotrasen.Chemistry.Effects;
 
-[UsedImplicitly]
-public sealed partial class ChemRestorePsionicReroll : EntityEffect
+public sealed partial class ChemRestorePsionicRerollSystem : EntityEffectSystem<PsionicComponent, ChemRestorePsionicReroll>
 {
-    [DataField]
-    public bool BypassRoller;
-
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-chem-restorereroll-psionic");
-
-    public override void Effect(EntityEffectBaseArgs args)
+    protected override void Effect(Entity<PsionicComponent> entity, ref EntityEffectEvent<ChemRestorePsionicReroll> args)
     {
-        if (args is not EntityEffectReagentArgs _
-            || !args.EntityManager.TryGetComponent(args.TargetEntity, out PsionicComponent? psionicComp)
-            || !psionicComp.Roller && !BypassRoller)
-            return;
-
-        psionicComp.CanReroll = true;
+        if (entity.Comp.Roller || args.Effect.BypassRoller)
+            entity.Comp.CanReroll = true;
     }
 }

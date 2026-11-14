@@ -1,4 +1,7 @@
-using Content.Server.Cargo.Systems;
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
+using Content.Shared.Cargo;
 using Content.Shared.Xenoarchaeology.Artifact;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 

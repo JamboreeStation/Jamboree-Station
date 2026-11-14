@@ -1,0 +1,5 @@
+﻿- type: localizedDataset
+  id: NamesBananamen
+  values:
+    prefix: names-bananamen-
+    count: 22

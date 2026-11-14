@@ -1,0 +1,59 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: body
+  id: Ant
+  name: "ant"
+  root: chest
+  slots:
+    head:
+      part: HeadAnt
+      connections:
+      - chest
+      organs:
+        brain: OrganAntBrain
+        eyes: OrganAntEyes
+    chest:
+      part: ChestAnt
+      connections:
+      - groin
+      - right arm
+      - left arm
+      - head
+      organs:
+        heart: OrganAntHeart
+        lungs: OrganAntLungs
+    groin:
+      part: GroinAnt
+      connections:
+      - right leg
+      - left leg
+      organs:
+        stomach: OrganAntStomach
+        liver: OrganAntLiver
+        kidneys: OrganAntKidneys
+    right arm:
+      part: RightArmAnt
+      connections:
+      - right hand
+    left arm:
+      part: LeftArmAnt
+      connections:
+      - left hand
+    right hand:
+      part: RightHandAnt
+    left hand:
+      part: LeftHandAnt
+    right leg:
+      part: RightLegAnt
+      connections:
+      - right foot
+    left leg:
+      part: LeftLegAnt
+      connections:
+      - left foot
+    right foot:
+      part: RightFootAnt
+    left foot:
+      part: LeftFootAnt

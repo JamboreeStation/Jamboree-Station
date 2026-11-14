@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2022 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 0x6273 <0x40@keemail.me>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Thomas <87614336+Aeshus@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Radiation.Components;
@@ -21,7 +12,7 @@ namespace Content.Server.Radiation.Systems;
 
 public sealed partial class RadiationSystem : EntitySystem
 {
-    [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedStackSystem _stack = default!;
@@ -59,9 +50,9 @@ public sealed partial class RadiationSystem : EntitySystem
         _accumulator = 0f;
     }
 
-    public void IrradiateEntity(EntityUid uid, float radsPerSecond, float time)
+    public void IrradiateEntity(EntityUid uid, float radsPerSecond, float time, List<EntityUid>? sources = null)
     {
-        var msg = new OnIrradiatedEvent(time, radsPerSecond, uid);
+        var msg = new OnIrradiatedEvent(time, radsPerSecond, uid, sources);
         RaiseLocalEvent(uid, msg);
     }
 

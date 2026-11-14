@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -21,9 +16,9 @@ namespace Content.Goobstation.Server.StationEvents.Metric;
 ///
 ///   Jani - JaniMetricComponent.Puddles points per BaselineQty of various substances
 /// </summary>
-public sealed class PuddleMetricSystem : ChaosMetricSystem<PuddleMetricComponent>
+public sealed partial class PuddleMetricSystem : ChaosMetricSystem<PuddleMetricComponent>
 {
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
 
     private static readonly Gauge PuddlesTotal = Metrics.CreateGauge(
         "game_director_metric_puddle_total",
@@ -41,13 +36,17 @@ public sealed class PuddleMetricSystem : ChaosMetricSystem<PuddleMetricComponent
     protected override ChaosMetrics CalculateChaos(EntityUid uid, PuddleMetricComponent component, CalculateChaosEvent args)
     {
         // Add up the pain of all the puddles
-        var query = EntityQueryEnumerator<PuddleComponent, SolutionContainerManagerComponent>();
+        var query = EntityQueryEnumerator<PuddleComponent, SolutionContainerManagerComponent, TransformComponent>();
+        var stationGrids = GetEventStationGrids();
         double messChaos = 0;
         var puddleCount = 0;
         double totalPuddleVolume = 0;
 
-        while (query.MoveNext(out var puddleUid, out var puddle, out var solutionMgr))
+        while (query.MoveNext(out var puddleUid, out var puddle, out _, out var xform))
         {
+            if (!OnGrids(xform, stationGrids))
+                continue;
+
             puddleCount++;
 
             if (!_solutionContainerSystem.TryGetSolution(puddleUid, puddle.SolutionName, out var puddleSolution, out _))
@@ -76,5 +75,12 @@ public sealed class PuddleMetricSystem : ChaosMetricSystem<PuddleMetricComponent
             {ChaosMetric.Mess, messChaos},
         });
         return chaos;
+    }
+
+    protected override void ResetMetrics()
+    {
+        PuddlesTotal.Set(0);
+        PuddleVolumeTotal.Set(0);
+        MessChaosCalculated.Set(0);
     }
 }

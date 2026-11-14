@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-// SPDX-FileCopyrightText: 2025 Timfa <timfalken@hotmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.DeviceLinking;
@@ -10,10 +6,10 @@ using Content.Shared.Hands.EntitySystems;
 
 namespace Content.Goobstation.Shared.Silicon.Bots;
 
-public sealed class FillbotSystem : EntitySystem
+public sealed partial class FillbotSystem : EntitySystem
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
 
     [Dependency] private SharedHandsSystem _sharedHandsSystem = default!;
 

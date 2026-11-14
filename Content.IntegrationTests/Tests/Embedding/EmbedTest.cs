@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Content.IntegrationTests.Tests.Interaction;
 using Content.Shared.Projectiles;
 using Robust.Shared.GameObjects;
@@ -132,7 +135,7 @@ public sealed class EmbedTest : InteractionTest
             "Target has unexpected EmbeddedObjects count.");
 
         // Wait for the cooldown between throws
-        await RunSeconds(Hands.ThrowCooldown.Seconds);
+        await RunSeconds(Hands!.ThrowCooldown.Seconds);
 
         // Throw the second projectile
         await ThrowItem();

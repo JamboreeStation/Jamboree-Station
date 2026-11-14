@@ -1,11 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-# SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 ## Navy Roles
 
@@ -133,8 +125,8 @@
 
 - type: job
   id: SpecialOperationsOfficer
-  name: job-name-special-operations-officer
-  description: job-description-operations-officer
+  name: ghost-role-information-special-operations-officer-name
+  description: job-description-navy-special-operations-officer
   playTimeTracker: JobSpecialOperationsOfficer
   setPreference: false
   startingGear: SpecialOperationsOfficerGear
@@ -214,7 +206,7 @@
 - type: job
   id: Inspector
   name: job-name-inspector
-  description: job-description-inspector
+  description: ghost-role-information-inspector-description
   playTimeTracker: JobInspector
   setPreference: false
   startingGear: InspectorGear

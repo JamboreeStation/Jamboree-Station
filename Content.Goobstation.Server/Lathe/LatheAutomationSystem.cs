@@ -5,10 +5,10 @@ using Content.Shared.Lathe;
 
 namespace Content.Goobstation.Server.Lathe;
 
-public sealed class LatheAutomationSystem : EntitySystem
+public sealed partial class LatheAutomationSystem : EntitySystem
 {
-    [Dependency] private readonly AutomationSystem _automation = default!;
-    [Dependency] private readonly LatheSystem _lathe = default!;
+    [Dependency] private AutomationSystem _automation = default!;
+    [Dependency] private LatheSystem _lathe = default!;
 
     public override void Initialize()
     {
@@ -34,7 +34,8 @@ public sealed class LatheAutomationSystem : EntitySystem
         if (ent.Comp.LastRecipe is not {} recipe)
             return;
 
-        _lathe.TryAddToQueue(ent.Owner, recipe);
-        _lathe.TryStartProducing(ent.Owner); // Won't do anything otherwise
+        _lathe.TryAddToQueue(ent.Owner, recipe, 1);
+        _lathe.TryStartProducing(ent.Owner);
     }
+
 }

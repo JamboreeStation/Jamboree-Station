@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 SlamBamActionman <slambamactionman@gmail.com>
-// SPDX-FileCopyrightText: 2024 wafehling <wafehling@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client.GameTicking.Managers;
@@ -55,4 +50,14 @@ public sealed class RoundEndSummaryUIController : UIController,
         _input.SetInputCommand(ContentKeyFunctions.ToggleRoundEndSummaryWindow,
             InputCmdHandler.FromDelegate(ToggleScoreboardWindow));
     }
+
+    #region Starlight
+
+    public void DeleteRoundEndSummaryWindow()
+    {
+        _window?.Close();
+        _window = null;
+    }
+
+    #endregion
 }

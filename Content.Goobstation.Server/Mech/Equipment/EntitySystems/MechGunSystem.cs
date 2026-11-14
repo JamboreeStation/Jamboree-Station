@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2024 NULL882 <gost6865@yandex.ru>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Mech.Systems;
@@ -13,20 +6,20 @@ using Content.Server.Power.EntitySystems;
 using Content.Shared.Mech.Components;
 using Content.Shared.Mech.EntitySystems;
 using Content.Shared.Mech.Equipment.Components;
+using Content.Shared.Power.Components;
 using Content.Shared.Weapons.Ranged.Components;
 
 namespace Content.Goobstation.Server.Mech.Equipment.EntitySystems;
-public sealed class MechGunSystem : EntitySystem
+public sealed partial class MechGunSystem : EntitySystem
 {
-    [Dependency] private readonly MechSystem _mech = default!;
-    [Dependency] private readonly BatterySystem _battery = default!;
+    [Dependency] private MechSystem _mech = default!;
+    [Dependency] private BatterySystem _battery = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<MechEquipmentComponent, HandleMechEquipmentBatteryEvent>(OnHandleMechEquipmentBattery);
-        SubscribeLocalEvent<HitscanBatteryAmmoProviderComponent, CheckMechWeaponBatteryEvent>(OnCheckBattery);
-        SubscribeLocalEvent<ProjectileBatteryAmmoProviderComponent, CheckMechWeaponBatteryEvent>(OnCheckBattery);
+        SubscribeLocalEvent<BatteryAmmoProviderComponent, CheckMechWeaponBatteryEvent>(OnCheckBattery);
     }
 
     private void OnHandleMechEquipmentBattery(EntityUid uid, MechEquipmentComponent component, HandleMechEquipmentBatteryEvent args)
@@ -49,9 +42,9 @@ public sealed class MechGunSystem : EntitySystem
         }
     }
 
-    private void OnCheckBattery(EntityUid uid, BatteryAmmoProviderComponent component, CheckMechWeaponBatteryEvent args)
+    private void OnCheckBattery(EntityUid uid, BatteryAmmoProviderComponent component, ref CheckMechWeaponBatteryEvent args)
     {
-        if (args.Battery.CurrentCharge > component.FireCost)
+        if (args.Battery.LastCharge > component.FireCost)
             args.Cancelled = true;
     }
 
@@ -64,7 +57,7 @@ public sealed class MechGunSystem : EntitySystem
             return;
 
         var maxCharge = component.MaxCharge;
-        var currentCharge = component.CurrentCharge;
+        var currentCharge = component.LastCharge;
 
         var chargeDelta = maxCharge - currentCharge;
 
@@ -75,7 +68,7 @@ public sealed class MechGunSystem : EntitySystem
         if (!_mech.TryChangeEnergy(mechEquipment.EquipmentOwner.Value, -chargeDelta, mech))
             return;
 
-        _battery.SetCharge(uid, component.MaxCharge, component);
+        _battery.SetCharge(uid, component.MaxCharge);
     }
 }
 

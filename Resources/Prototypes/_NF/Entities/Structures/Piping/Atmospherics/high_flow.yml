@@ -1,0 +1,263 @@
+# SPDX-FileCopyrightText: 2026 Jamboree-Station
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# JAMBOREE - Ported from HardLight!
+
+
+- type: entity
+  parent: GasVentPump
+  id: GasVentPumpHighFlow
+  name: high-flow air vent
+  description: A reinforced air vent, able to pressurize and siphon far past the rating of a standard vent.
+  components:
+  - type: GasVentPump
+    maxPressure: 13500
+    targetPressureChange: 300
+    pumpPower: 3.0
+  - type: ApcPowerReceiver
+    powerLoad: 400
+  - type: Construction
+    graph: GasUnaryHighFlow
+    node: ventpumphighflow
+
+# GasVentScrubberHighFlow
+
+- type: entity
+  parent: GasVentScrubber
+  id: GasVentScrubberHighFlow
+  name: high-flow air scrubber
+  description: A reinforced air scrubber, able to move gas at three times the rate of a standard scrubber.
+  components:
+  - type: GasVentScrubber
+    transferRate: 600
+    maxTransferRate: 600
+    maxPressure: 13500
+  - type: ApcPowerReceiver
+    powerLoad: 400
+  - type: Construction
+    graph: GasUnaryHighFlow
+    node: ventscrubberhighflow
+
+# GasOutletInjectorHighFlow
+
+- type: entity
+  parent: GasOutletInjector
+  id: GasOutletInjectorHighFlow
+  name: high-flow air injector
+  description: A reinforced air injector, able to move gas at three times the rate of a standard injector.
+  components:
+  - type: GasOutletInjector
+    transferRate: 600
+    maxTransferRate: 600
+    maxPressure: 13500
+  - type: Construction
+    graph: GasUnaryHighFlow
+    node: outletinjectorhighflow
+
+# Binary machines
+
+- type: entity
+  parent: GasPressurePump
+  id: GasPressurePumpHighFlow
+  name: high-flow gas pump
+  description: A reinforced gas pump, able to pressurize a line up to 13500 kPa.
+  components:
+  - type: AtmosPipeLayers
+    alternativePrototypes:
+      Primary: GasPressurePumpHighFlow
+      Secondary: GasPressurePumpHighFlowAlt1
+      Tertiary: GasPressurePumpHighFlowAlt2
+  - type: GasPressurePump
+    maxTargetPressure: 13500
+  - type: ApcPowerReceiver
+    powerLoad: 800
+  - type: Construction
+    graph: GasBinaryHighFlow
+    node: pressurepumpHighFlow
+
+- type: entity
+  parent: [GasPipeLayerAlt1, GasPressurePumpHighFlow]
+  id: GasPressurePumpHighFlowAlt1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/pump_alt1.rsi
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+      state: pipeStraight
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: pumpPressure
+      map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
+  - type: Construction
+    node: pressurepumpHighFlowAlt1
+
+- type: entity
+  parent: [GasPipeLayerAlt2, GasPressurePumpHighFlow]
+  id: GasPressurePumpHighFlowAlt2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/pump_alt2.rsi
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+      state: pipeStraight
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: pumpPressure
+      map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
+  - type: Construction
+    node: pressurepumpHighFlowAlt2
+
+- type: entity
+  parent: GasVolumePump
+  id: GasVolumePumpHighFlow
+  name: high-flow volumetric gas pump
+  description: A reinforced volumetric pump, able to move gas at three times the rate of a standard volumetric pump.
+  components:
+  - type: AtmosPipeLayers
+    alternativePrototypes:
+      Primary: GasVolumePumpHighFlow
+      Secondary: GasVolumePumpHighFlowAlt1
+      Tertiary: GasVolumePumpHighFlowAlt2
+  - type: GasVolumePump
+    transferRate: 600
+    maxTransferRate: 600
+    higherThreshold: 13500
+    overclockThreshold: 6000
+  - type: ApcPowerReceiver
+    powerLoad: 800
+  - type: Construction
+    graph: GasBinaryHighFlow
+    node: volumepumpHighFlow
+
+- type: entity
+  parent: [GasPipeLayerAlt1, GasVolumePumpHighFlow]
+  id: GasVolumePumpHighFlowAlt1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/pump_alt1.rsi
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+      state: pipeStraight
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: pumpVolume
+      map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
+  - type: Construction
+    node: volumepumpHighFlowAlt1
+
+- type: entity
+  parent: [GasPipeLayerAlt2, GasVolumePumpHighFlow]
+  id: GasVolumePumpHighFlowAlt2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/pump_alt2.rsi
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+      state: pipeStraight
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: pumpVolume
+      map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
+  - type: Construction
+    node: volumepumpHighFlowAlt2
+
+- type: entity
+  parent: GasDualPortVentPump
+  id: GasDualPortVentPumpHighFlow
+  name: high-flow dual-port air vent
+  description: A reinforced dual-port vent, able to pressurize and siphon far past the rating of a standard vent.
+  components:
+  - type: GasVentPump
+    inlet: inlet
+    outlet: outlet
+    canLink: true
+    maxPressure: 13500
+    targetPressureChange: 300
+    pumpPower: 3.0
+  - type: ApcPowerReceiver
+    powerLoad: 400
+  - type: Construction
+    graph: GasBinaryHighFlow
+    node: dualportventpumpHighFlow
+
+# Trinary machines
+
+- type: entity
+  parent: GasFilter
+  id: GasFilterHighFlow
+  name: high-flow gas filter
+  description: A reinforced gas filter, able to move gas at three times the rate of a standard filter.
+  components:
+  - type: GasFilter
+    transferRate: 3000
+    maxTransferRate: 3000
+    maxPressure: 13500
+  - type: Flippable
+    mirrorEntity: GasFilterFlippedHighFlow
+  - type: Construction
+    graph: GasTrinaryHighFlow
+    node: filterHighFlow
+
+- type: entity
+  parent: [GasTrinaryFlippedBase, GasFilterHighFlow]
+  id: GasFilterFlippedHighFlow
+  suffix: Flipped
+  components:
+  - type: Sprite
+    layers:
+    - sprite: Structures/Piping/Atmospherics/pipe.rsi
+      state: pipeTrinaryConnectors
+      map: [ "enum.PipeVisualLayers.Pipe" ]
+    - state: gasFilterF
+      map: [ "enum.SubfloorLayers.FirstLayer", "enabled" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.FilterVisuals.Enabled:
+        enabled:
+          True: { state: gasFilterFOn }
+          False: { state: gasFilterF }
+  - type: Flippable
+    mirrorEntity: GasFilterHighFlow
+  - type: Construction
+    node: filterflippedHighFlow
+
+- type: entity
+  parent: GasMixer
+  id: GasMixerHighFlow
+  name: high-flow gas mixer
+  description: A reinforced gas mixer, able to pressurize its outlet up to 13500 kPa.
+  components:
+  - type: GasMixer
+    maxTargetPressure: 13500
+  - type: Flippable
+    mirrorEntity: GasMixerFlippedHighFlow
+  - type: Construction
+    graph: GasTrinaryHighFlow
+    node: mixerHighFlow
+
+- type: entity
+  parent: GasMixerFlipped
+  id: GasMixerFlippedHighFlow
+  suffix: Flipped
+  components:
+  - type: GasMixer
+    maxTargetPressure: 13500
+  - type: Flippable
+    mirrorEntity: GasMixerHighFlow
+  # GasMixerFlipped inherits graph GasTrinary, which has no mixerflippedHighFlow.
+  - type: Construction
+    graph: GasTrinaryHighFlow
+    node: mixerflippedHighFlow
+
+- type: entity
+  parent: PressureControlledValve
+  id: PressureControlledValveHighFlow
+  name: high-pressure pneumatic valve
+  description: A reinforced pneumatic valve, able to pass gas at three times the rate of a standard valve.
+  components:
+  - type: PressureControlledValve
+    maxTransferRate: 600
+  - type: Construction
+    graph: GasTrinaryHighFlow
+    node: pneumaticvalveHighFlow

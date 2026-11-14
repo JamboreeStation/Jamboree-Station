@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Milon <milonpl.git@proton.me>
-// SPDX-FileCopyrightText: 2024 Skubman <ba.fallaria@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Access.Components;
@@ -18,6 +9,7 @@ using Content.Shared.Database;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Labels.EntitySystems;
 using Content.Shared.Paper;
+using Content.Shared._EinsteinEngines.Language.Components;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
@@ -137,6 +129,9 @@ public sealed partial class LogProbeCartridgeSystem : EntitySystem // DeltaV - M
 
         var paperComp = Comp<PaperComponent>(paper);
         _paper.SetContent((paper, paperComp), builder.ToString());
+
+        if (TryComp<LanguageSpeakerComponent>(user, out var speaker))
+            paperComp.WrittenLanguage = speaker.CurrentLanguage; // JAMBOREE - Sets the written language to the entities current selected one instead of null.
 
         _adminLogger.Add(LogType.EntitySpawn, LogImpact.Low, $"{ToPrettyString(user):user} printed out LogProbe logs ({paper}) of {ent.Comp.EntityName}");
     }

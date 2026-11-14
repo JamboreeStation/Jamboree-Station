@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Legacy language chat icons moved from Interface/Misc/job_icons.rsi (original authors credited there)",
+    "size": {
+        "x": 16,
+        "y": 16
+    },
+    "states": [
+        {
+            "name": "LanguageIconGutter"
+        },
+        {
+            "name": "LanguageIconTradeband"
+        },
+        {
+            "name": "LanguageIconFreespeak"
+        },
+        {
+            "name": "LanguageIconSign"
+        },
+        {
+            "name": "LanguageIconPsychomantic"
+        }
+    ]
+}

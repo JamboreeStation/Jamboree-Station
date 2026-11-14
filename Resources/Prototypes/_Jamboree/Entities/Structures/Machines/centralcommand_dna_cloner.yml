@@ -1,0 +1,59 @@
+  - type: entity
+    id: CentralCommandDnaCloner
+    parent: BaseMachinePowered
+    name: DNA Molecularsynthesis Machine
+    description: Central Command's DNA Molecularsynthesis Machine. Not even death can stop you from getting back to work. 100% reliable.
+    components:
+     - type: AccessReader
+       access: [["CentralCommand"]]
+     - type: Machine
+       board: CentralCommandDnaClonerMachineCircuitboard
+     - type: MaterialStorage
+       materialWhiteList:
+       - Biomass
+     - type: CentralCommandDnaClonerVat
+     - type: DeviceList
+     - type: DeviceNetwork
+       deviceNetId: Wired
+     - type: DeviceLinkSink
+       ports:
+       - CentralCommandDnaClonerReceiver
+     - type: Construction
+       graph: Machine
+       node: machine
+       containers:
+       - machine_board
+       - machine_parts
+       - centralcommand-dnaclone-container
+     - type: ContainerContainer
+       containers:
+         machine_board: !type:Container
+         machine_parts: !type:Container
+         centralcommand-dnaclone-container: !type:ContainerSlot
+     - type: EmptyOnMachineDeconstruct
+       containers:
+       - centralcommand-dnaclone-container
+     - type: Sprite
+       sprite: Structures/Machines/cloning.rsi
+       snapCardinals: true
+       layers:
+       - state: pod_0
+         map: ["base"]
+     - type: Appearance
+     - type: GenericVisualizer
+       visuals:
+         enum.CentralCommandDnaClonerVisuals.Status:
+           base:
+             Occupied: { state: pod_1 }
+             Idle: { state: pod_0 }
+     - type: Physics
+       bodyType: Static
+
+
+  - type: entity
+    id: CentralCommandDnaClonerMachineCircuitboard
+    parent: BaseMachineCircuitboard
+    description: Highly classified, yet highly wanted.
+    components:
+     - type: MachineBoard
+       prototype: CentralCommandDnaCloner

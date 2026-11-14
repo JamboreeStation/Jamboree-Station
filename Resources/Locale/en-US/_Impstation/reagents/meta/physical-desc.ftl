@@ -1,2 +1,15 @@
 ﻿reagent-physical-desc-shimmering-blood = nacreous
 reagent-physical-desc-thavenbad = unpleasant
+reagent-physical-desc-brotherly = brotherly
+reagent-physical-desc-thegrease = really greasy
+reagent-physical-desc-rodent = mousy
+reagent-physical-desc-lovepotion = romantic
+reagent-physical-desc-irwizine = Oceanian
+reagent-physical-desc-sad = sad
+reagent-physical-desc-nervous = nervous
+reagent-physical-desc-reallynervous = really nervous
+reagent-physical-desc-space-grease = dangerously shiny
+reagent-physical-desc-floral = floral
+reagent-physical-desc-ghostly = ghostly
+reagent-physical-desc-something = kind of
+reagent-physical-desc-ants = anty

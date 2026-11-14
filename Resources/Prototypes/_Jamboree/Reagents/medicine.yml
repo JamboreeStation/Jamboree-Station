@@ -1,0 +1,37 @@
+# SPDX-FileCopyrightText: 2026 PureBreadBagel <purebreadbagel@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: reagent
+  id: Tetrasolcincide
+  name: reagent-name-tetrasolcincide
+  group: Medicine
+  desc: reagent-desc-tetrasolcincide
+  physicalDesc: reagent-physical-desc-murky
+  flavor: bitter
+  color: "#5A4A84"
+  worksOnTheDead: true
+  metabolisms:
+    Medicine:
+      effects:
+        - !type:ReduceRotting
+          seconds: 10
+          conditions:
+          - !type:MobStateCondition
+            mobstate: Dead
+        - !type:HealthChange
+          damage:
+            groups:
+              Brute: -0.2
+              Burn: -0.2
+              Airloss: -0.2
+              Toxin: -0.2
+              Genetic: -0.5
+        - !type:HealthChange
+          conditions:
+          - !type:ReagentCondition
+            reagent: Tetrasolcincide
+            min: 30
+          damage:
+            types:
+              Blunt: 2

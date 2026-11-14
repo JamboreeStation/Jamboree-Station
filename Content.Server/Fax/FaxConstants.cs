@@ -1,14 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Morb <14136326+Morb0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2023 eoineoineoin <eoin.mcloughlin+gh@gmail.com>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2024 exincore <me@exin.xyz>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 namespace Content.Server.Fax;
@@ -49,6 +38,7 @@ public static class FaxConstants
     public const string FaxPaperStampedByData = "fax_data_stamped_by";
     public const string FaxSyndicateData = "fax_data_i_am_syndicate";
     public const string FaxPaperLockedData = "fax_data_locked";
+    public const string FaxPaperWrittenLanguageData = "fax_data_written_language"; // JAMBOREE - Relays the paper fax language.
 
     // Goobstation
     public const string FaxEntitySentData = "fax_data_entity_sent";

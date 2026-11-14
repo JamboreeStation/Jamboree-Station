@@ -5,6 +5,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Weapons.Melee;
@@ -86,7 +87,7 @@ public sealed class SharedTailLashSystem : EntitySystem
 
         _interaction.DoContactInteraction(uid, uid);
 
-        var hitEntities = results.Where(result => _interaction.InRangeUnobstructed(uid, result, range: range)).ToList();
+        var hitEntities = results.Where(result => _interaction.InRangeUnobstructed(uid, result, range: range)).ToHashSet();
         var hitEvent = new MeleeHitEvent(hitEntities, uid, uid, component.TailDamage, null, args.Target);
         RaiseLocalEvent(uid, hitEvent);
 
@@ -98,7 +99,7 @@ public sealed class SharedTailLashSystem : EntitySystem
             RaiseLocalEvent(hit, attackedEv);
 
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(component.TailDamage + hitEvent.BonusDamage + attackedEv.BonusDamage, hitEvent.ModifiersList);
-            _damageable.TryChangeDamage(hit, modifiedDamage, origin:uid);
+            _damageable.ChangeDamage(hit, modifiedDamage, origin:uid);
 
             if (component.Inject == null || !_solutionContainer.TryGetInjectableSolution(hit, out var solutionEnt, out _))
                 continue;

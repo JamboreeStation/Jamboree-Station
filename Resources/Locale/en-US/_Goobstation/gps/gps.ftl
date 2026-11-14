@@ -4,6 +4,7 @@ gps-window-name-label = Designation
 gps-window-gps-position-label = GPS Coords
 gps-window-tracked-position-label = Tracked Coords
 gps-window-position-none = N/A
+gps-window-position-unknown = Unknown
 
 gps-window-clear-tracking-button = Clear
 

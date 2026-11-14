@@ -46,3 +46,15 @@
 
 - type: Tag
   id: GlassesMedical
+
+- type: Tag
+  id: PowerCellMicroreactor
+
+- type: Tag
+  id: PowerCellAntique
+
+- type: Tag
+  id: PowerCellSelfRecharging
+
+- type: Tag
+  id: EmergencyChemDispenser

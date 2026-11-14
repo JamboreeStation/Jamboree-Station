@@ -1,4 +1,5 @@
 using Content.Server._EinsteinEngines.Abilities.Psionics;
+using Content.Shared.Damage.Components;
 using Content.Server._EinsteinEngines.Psionics.Glimmer;
 using Content.Server.Cloning.Components;
 using Content.Shared.Abilities.Psionics;

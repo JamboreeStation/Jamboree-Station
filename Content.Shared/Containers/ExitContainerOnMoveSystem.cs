@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Content.Shared.Climbing.Systems;
@@ -9,7 +6,7 @@ using Robust.Shared.Containers;
 
 namespace Content.Shared.Containers;
 
-public sealed class ExitContainerOnMoveSystem : EntitySystem
+public sealed partial class ExitContainerOnMoveSystem : EntitySystem // Goob - partial
 {
     [Dependency] private readonly ClimbSystem _climb = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
@@ -24,6 +21,9 @@ public sealed class ExitContainerOnMoveSystem : EntitySystem
     private void OnContainerRelay(Entity<ExitContainerOnMoveComponent> ent, ref ContainerRelayMovementEntityEvent args)
     {
         var (_, comp) = ent;
+        if (!CanExit(args.Entity)) // Goob
+            return;
+
         if (!TryComp<ContainerManagerComponent>(ent, out var containerManager))
             return;
 

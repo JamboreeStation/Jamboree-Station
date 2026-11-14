@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "copyright": "Made by YoruMidnight for Jamboree",
+    "license": "CC-BY-SA-3.0",
+    "states": [
+        {
+            "name": "headmannequin",
+            "directions": 4
+        },
+        {
+            "name": "clawhandleft",
+            "directions": 4
+        },
+        {
+            "name": "clawhandright",
+            "directions": 4
+        },
+        {
+            "name": "jarheadbrain",
+            "directions": 4
+        },
+        {
+            "name": "jarheadglass",
+            "directions": 4
+        },
+        {
+            "name": "jarheadlower",
+            "directions": 4
+        },
+        {
+            "name": "mannimatroniceyesinner",
+            "directions": 4
+        },
+        {
+            "name": "mannimatroniceyesouter",
+            "directions": 4
+        },
+        {
+            "name": "mannimatronicbase",
+            "directions": 4
+        },
+        {
+            "name": "mannimatronicteeth",
+            "directions": 4
+        }
+    ]
+}

@@ -2,13 +2,14 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects;
 using Content.Shared._EinsteinEngines.Psionics.Glimmer;
 using Robust.Shared.Prototypes;
+using Robust.Shared.IoC;
 
 namespace Content.Server._EinsteinEngines.Chemistry.EntityEffects;
 
 [DataDefinition]
 public sealed partial class ChangeGlimmerReactionEffect : EntityEffect
 {
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
+    public override string? EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-change-glimmer-reaction-effect", ("chance", Probability),
             ("count", Count));
 
@@ -18,13 +19,8 @@ public sealed partial class ChangeGlimmerReactionEffect : EntityEffect
     [DataField]
     public float Count = 1;
 
-    public override void Effect(EntityEffectBaseArgs args)
+    public override void RaiseEvent(EntityUid target, IEntityEffectRaiser raiser, float scale, EntityUid? user)
     {
-        if (args is not EntityEffectReagentArgs _)
-            return;
-
-        var glimmerSystem = args.EntityManager.EntitySysManager.GetEntitySystem<GlimmerSystem>();
-
-        glimmerSystem.DeltaGlimmerInput(Count);
+        IoCManager.Resolve<IEntitySystemManager>().GetEntitySystem<GlimmerSystem>().DeltaGlimmerInput(Count * scale);
     }
 }

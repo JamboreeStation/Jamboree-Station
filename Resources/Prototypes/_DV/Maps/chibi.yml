@@ -37,6 +37,7 @@
           Captain: [ 1, 1 ]
           NanotrasenRepresentative: [ 1, 1 ] # added by jamboree
           HeadOfPersonnel: [ 1, 1 ] #added by jamboree
+#          NanotrasenCareerTrainer: [ 1, 1 ]
 
           HeadOfSecurity: [ 1, 1 ]
           SecurityOfficer: [ 1, 2 ]

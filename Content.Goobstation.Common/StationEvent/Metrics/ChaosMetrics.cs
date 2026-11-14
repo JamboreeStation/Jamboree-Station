@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System;
@@ -34,6 +29,8 @@ public enum ChaosMetric
     Power,
     Atmos,
     Mess,
+    Infestation,
+    Fire,
 
     // Metrics calculated from above by Game Director:
     Combat,   // Friend + Hostile - <0 if crew is strong. 0 if balanced (fighting). >0 indicates crew is losing.

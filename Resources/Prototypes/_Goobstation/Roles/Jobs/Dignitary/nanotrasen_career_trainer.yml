@@ -20,7 +20,7 @@
   - BlueshieldOfficer
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, BluespaceLifelineImplant ]
+    implants: [ MindShieldImplant, BluespaceLifelineImplant, LibrarianTranslatorImplant ]
 #  - !type:AddComponentSpecial # Intentionally not command. I don't want them to ruin rev rounds.
 #    components:
 #    - type: CommandStaff
@@ -30,9 +30,10 @@
   equipment:
     id: TrainerPDA
     ears: ClothingHeadsetAltCentCom
-    eyes: ClothingEyesGlassesCentComm
-    pocket1: WeaponDisabler
-    pocket2: FoodSnackLollypopWrappedCentComm # Come on, it's a trademark at this point.
+    eyes: ClothingEyesGlassesCentCommNoThermal
+    neck: SecurityWhistle
+    pocket1: WeaponDisablerAdvanced
+    pocket2: CentCommMegaphone
   storage:
     back:
     - Flash

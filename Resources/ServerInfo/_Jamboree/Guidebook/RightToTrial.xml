@@ -1,0 +1,80 @@
+<Document>
+  #SUBSECTION 4: Right to Trial, Powers of Lawyers
+
+  ## Right to Trial
+
+  Offenders of Capital Level Violations have the right to invoke a trial to detest the ruling of their capital level violation, should
+  a lawyer be present during a shift and present to represent the offender. Some different types of trials include:
+  - Trial by Debate
+    - This type of trial consists of a short review of the evidence at hand to determine if the ruling was justly placed. The lawyer argues on
+      behalf of the offender(s), and a member of security or command arguing against the offender. A neutral party is needed to act as the judge,
+      typically someone from the command department. The offender's party is permitted to first present up to 3 pieces of evidence that proves the
+      offender's point. The opposing party can then present up to 3 evidence that proves the offender's point false. The neutral party then
+      determines which point is the "correct point". [bold]This type of trial should take no more time than 15 minutes.[/bold]
+        - Instead of the 3 pieces of evidence, either party can choose to call a witness to the violation. Both parties are permitted to call
+          upon the same witness.
+          - A testimony gave by a witness should not take longer than 5 minutes.
+          - Should a testimony be found to have been a lie, the witness is to be charged with Sabotage
+            and either party can request a do-over of the trial occurs.
+  - Trial by Combat
+    - This type of trial consists of a combat being fought by the offender in exchange, should they win said combat, for a reduced sentence.
+      The two options this type of trial presents include:
+      1. The offender engages in a one on one combat with a member of the crew, as selected by the Captain, Head of Security, or Warden. The terms of
+        said combat are agreed upon by both parties. The lawyer serves as a mediator, assisting in selecting the terms. Some terms include:
+        - Who will be the challenger to the offender?
+          - Should the selected person choose to not participate, a member of command or security is to act in their stead.
+        - Whether or not the duel is to the death or unconciousness.
+        - The weaponry which the duel requires, or a lack of weaponry required.
+        - A determination on if multiple rounds should occur. The maximum amount of permitted rounds for a trial decision is three rounds, overall
+          [bold]being about 15 minutes in total.[/bold]
+      2. The offender is placed in a space and is made to face, at minimum, 3 different monsters in a sequential order. Should no creatures be
+        available, default to the first option. The lawyer serves as a mediator, assisting in selecting the terms. Some terms include:
+        - How many creatures will the offender be facing?
+        - What weapons or armor may the offender use to combat the creatures?
+        - Will the combat be organized into waves of monsters or a multitude of creatures released at once?
+          - Note: This option takes a lot more time to organize in the moment. As such, it is not recommended.
+  - Trial by Contest
+    - This type of trial consists of a contest between the offender and a member of the crew, as selected by the Captain, Head of Security , or Warden
+      in exchange for a reduced sentence. [bold]This type of trial should take no more time than 15 minutes.[/bold]
+      The lawyer serves as a mediator, assisting in selecting the terms. Some terms include:
+        - What does the contest center upon?
+        - Who is competing in the contest/How many contestants are competing?
+        - If there are multiple rounds, how many will there be?
+  - Alternate Method
+    - If agreed upon by the Captain, Head of Security, or Warden and the offender, an different type of trial can be proposed that does fall within one
+      of these categories. [bold]The duration of any selected trial should be no more than 15 minutes.[/bold]
+
+  ## Powers of Lawyers
+
+  As a lawyer, you are given different legal freedoms to other members of the crew. These powers include:
+    - Restraining Order: You have the legal capability to order an individual to not come within a distance, up to 10 tiles, within another individual.
+      - Caveats:
+        - This restraining order must be specifically requested by the individual who would like someone to stay away from them.
+        - This restraining order must be in writing, and delivered to both parties.
+        - The restraining order must be stamped by the lawyer and signed by the requesting individual.
+        - Restraining orders do not apply during Code Red situations.
+        - The Captain can overturn a restraining order should it prove to be disruptive to the wider crew.
+    - Marriage and Divorce: You have the legal capability to unite two sentient creatures within or seperate two sentient creatures from marriaage.
+      - Caveats:
+        - Both parties must agree to become married, should it be a marriage.
+        - The marriage/divorce papers must be in writing, and delivered to both parties.
+        - The marriage/divorce papers must be stamped by the lawyer and signed by both parties.
+    - Wills: You have the legal capability to establish what is to occur to a sentient creature's assets an self when they die.
+      - Caveats:
+        - The party the will refers to must have requested the will.
+        - The will must be in writing and given to the party.
+        - The will must be stamped by the lawyer and signed by the party.
+    - Lawsuits: You have the legal capability to request assets on behalf of one party wronged by another party.
+      - Caveats:
+        - Both parties must be aware of the lawsuit.
+        - Both parties must recieve documentation of the lawsuit in writing.
+        - The lawsuit must be stamped by the lawyer and signed by the party requesting the lawsuit.
+        - The lawsuit must be stamped by the Warden, Head of Security, Captain, or Head of Personnel to force it into effect.
+    - Cease and Desists: You have the legal capability to request a party cease a certain action on behalf of a wronged party.
+      - Caveats:
+        - Both parties must be aware of the cease and desist.
+        - Both parties must recieve documentation o fthe cease and desist in writing.
+        - The cease and desist must be stamped by the lawyer and signed by the party requesting the cease and desist.
+        - The cease and desist must be stamped by the Warden, Head of Security, Captain or Head of Personnel to force it into effect.
+
+</Document>

@@ -1,19 +1,22 @@
+using Content.Goobstation.Shared.Contraband;
 using Content.Goobstation.Shared.Slasher.Components;
-using Content.Goobstation.Shared.Slasher.Events;
-using Content.Server.Singularity.Events;
-using Content.Server.SurveillanceCamera;
+using Content.Goobstation.Shared.Slasher;
+using Content.Server.Atmos;
+using Content.Server.Atmos.EntitySystems;
 using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
-using Content.Server.Atmos.EntitySystems;
-using Content.Server.Atmos.Components;
-using Content.Server.Atmos;
+using Content.Server.Singularity.Events;
+using Content.Server.SurveillanceCamera;
+using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 using Content.Shared.Interaction;
-using Content.Shared.Physics;
 using Content.Shared.Light;
 using Content.Shared.Light.Components;
 using Content.Shared.Light.EntitySystems;
-using Content.Shared.Atmos;
+using Content.Shared.Physics;
+using Content.Shared.SurveillanceCamera.Components;
 using Robust.Server.GameObjects;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Spawners;
 
 namespace Content.Goobstation.Server.Slasher.Systems;
@@ -21,15 +24,15 @@ namespace Content.Goobstation.Server.Slasher.Systems;
 /// <summary>
 /// Server-side system for slasher incorporeal mechanics.
 /// </summary>
-public sealed class SlasherIncorporealCameraSystem : EntitySystem
+public sealed partial class SlasherIncorporealCameraSystem : EntitySystem
 {
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly PoweredLightSystem _light = default!;
-    [Dependency] private readonly SharedHandheldLightSystem _handheld = default!;
-    [Dependency] private readonly UnpoweredFlashlightSystem _unpowered = default!;
-    [Dependency] private readonly FlammableSystem _flammable = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private PoweredLightSystem _light = default!;
+    [Dependency] private SharedHandheldLightSystem _handheld = default!;
+    [Dependency] private UnpoweredFlashlightSystem _unpowered = default!;
+    [Dependency] private FlammableSystem _flammable = default!;
 
     private EntityQuery<PointLightComponent> _pointLightQuery;
     private EntityQuery<PoweredLightComponent> _poweredLightQuery;
@@ -52,9 +55,10 @@ public sealed class SlasherIncorporealCameraSystem : EntitySystem
         SubscribeLocalEvent<SlasherIncorporealCameraCheckEvent>(OnCameraCheck);
         SubscribeLocalEvent<SlasherIncorporealComponent, EventHorizonAttemptConsumeEntityEvent>(OnSingularityAttemptConsume);
         SubscribeLocalEvent<SlasherIncorporealComponent, SlasherIncorporealEnteredEvent>(OnIncorporealEntered);
-
         SubscribeLocalEvent<SlasherIncorporealComponent, IgnitedEvent>(OnIgnited);
         SubscribeLocalEvent<SlasherIncorporealComponent, TileFireEvent>(OnTileFire);
+
+        SubscribeLocalEvent<ContrabandDetectorComponent, PreventCollideEvent>(OnContrabandDetectorPreventCollide);
     }
 
     private void OnCameraCheck(ref SlasherIncorporealCameraCheckEvent args)
@@ -92,9 +96,7 @@ public sealed class SlasherIncorporealCameraSystem : EntitySystem
     {
         // Extinguish any fires on the slasher
         if (TryComp<FlammableComponent>(ent, out var flammable))
-        {
             _flammable.Extinguish(ent, flammable);
-        }
 
         DisableLightsInArea(ent);
     }
@@ -105,9 +107,7 @@ public sealed class SlasherIncorporealCameraSystem : EntitySystem
 
         // Get all entities in range and disable their lights
         foreach (var light in _lookup.GetEntitiesInRange(mapCoords, ent.Comp.LightDisableRange))
-        {
             TryDisableLight(light);
-        }
     }
 
     private void TryDisableLight(EntityUid uid)
@@ -156,26 +156,22 @@ public sealed class SlasherIncorporealCameraSystem : EntitySystem
 
     private void OnIgnited(EntityUid uid, SlasherIncorporealComponent comp, ref IgnitedEvent args)
     {
-        // If incorporeal, immediately extinguish any fire that was just applied
         if (comp.IsIncorporeal)
-        {
             if (TryComp<FlammableComponent>(uid, out var flammable))
-            {
                 _flammable.Extinguish(uid, flammable);
-            }
-        }
     }
 
     private void OnTileFire(EntityUid uid, SlasherIncorporealComponent comp, ref TileFireEvent args)
     {
-        // Prevent tile fires from adding fire stacks to incorporeal slashers
         if (comp.IsIncorporeal)
-        {
-            // Set firestacks to 0 if they were just modified
             if (TryComp<FlammableComponent>(uid, out var flammable) && flammable.FireStacks > 0)
-            {
                 _flammable.SetFireStacks(uid, 0, flammable);
-            }
-        }
+    }
+
+    private void OnContrabandDetectorPreventCollide(EntityUid uid, ContrabandDetectorComponent component, ref PreventCollideEvent args)
+    {
+        if (TryComp<SlasherIncorporealComponent>(args.OtherEntity, out var slasherComp) &&
+            slasherComp.IsIncorporeal)
+            args.Cancelled = true;
     }
 }

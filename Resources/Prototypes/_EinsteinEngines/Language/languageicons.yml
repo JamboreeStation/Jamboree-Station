@@ -1,0 +1,322 @@
+# SPDX-FileCopyrightText: 2025 CerberusWolfie <wb.johnb.willis@gmail.com>
+# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Base abstract icon for languages
+- type: jobIcon
+  id: LanguageIcon
+  abstract: true
+  priority: 1
+  locationPreference: Right
+  isShaded: true
+  allowSelection: false
+
+# Fallback icon for languages without a specific icon
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconUnknown
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: unknown
+  jobName: language-icon-unknown
+
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconTauCeti
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: galcom
+  jobName: language-icon-galactic-common
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconSolCommon
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: solcom
+  jobName: language-icon-sol-common
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconGutter
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/Misc/language_icons.rsi
+    state: LanguageIconGutter
+  jobName: language-icon-gutter
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconTradeband
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/Misc/language_icons.rsi
+    state: LanguageIconTradeband
+  jobName: language-icon-tradeband
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconFreespeak
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/Misc/language_icons.rsi
+    state: LanguageIconFreespeak
+  jobName: language-icon-freespeak
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconSign
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/Misc/language_icons.rsi
+    state: LanguageIconSign
+  jobName: language-icon-sign
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconPsychomantic
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/Misc/language_icons.rsi
+    state: LanguageIconPsychomantic
+  jobName: language-icon-psychomantic
+
+# Silicon languages
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconRobotTalk
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: machine
+  jobName: language-icon-robot-talk
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconDroneTalk
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: machine
+  jobName: language-icon-drone-talk
+
+# Species languages (Starlight port)
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconAnimal
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: animal
+  jobName: language-icon-animal
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconBubblish
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: slime
+  jobName: language-icon-bubblish
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconNewKinPidgin
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: vox
+  jobName: language-icon-newkin-pidgin
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconCanilunzt
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: vulp
+  jobName: language-icon-canilunzt
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconMarish
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: shadekin
+  jobName: language-icon-marish
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconCarptongue
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: fish
+  jobName: language-icon-carptongue
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconXenoHivemind
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: xeno
+  jobName: language-icon-xeno-hivemind
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconDraconic
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: lizard
+  jobName: language-icon-draconic
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconMoffic
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: moth
+  jobName: language-icon-moffic
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconNekomimetic
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: neko
+  jobName: language-icon-nekomimetic
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconRootSpeak
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: plant
+  jobName: language-icon-root-speak
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconChittin
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: buzz
+  jobName: language-icon-chittin
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconSchechi
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: avali
+  jobName: language-icon-schechi
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconThaveyan
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: thaveyan
+  jobName: language-icon-thaveyan
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconFelyaic
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: felyaic
+  jobName: language-icon-felyaic
+
+# Extra icons ported from Starlight for languages we may add later
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconMachine
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: machine
+  jobName: language-icon-machine
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconCodeSpeak
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: codespeak
+  jobName: language-icon-codespeak
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconScurret
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: survivor
+  jobName: language-icon-scurret
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconTerrum
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: golem
+  jobName: language-icon-terrum
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconBrain
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: brain
+  jobName: language-icon-brain
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconAielic
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: high-elven
+  jobName: language-icon-aielic
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconDarktongue
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: darktongue
+  jobName: language-icon-darktongue
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconClassical
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: classical
+  jobName: language-icon-classical
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconGrumbakul
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: dwarvish
+  jobName: language-icon-grumbakul
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconLagomorph
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: lagomorph
+  jobName: language-icon-lagomorph
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconSqueakish
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: squeakish
+  jobName: language-icon-squeakish
+
+# Jamboree Icons
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconBlob
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: blob
+  jobName: language-icon-blob
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconCalcic
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: calcic
+  jobName: language-icon-calcic
+
+
+- type: jobIcon
+  parent: LanguageIcon
+  id: LanguageIconElyran
+  icon:
+    sprite: /Textures/_EinsteinEngines/Interface/language_icon.rsi
+    state: elyran
+  jobName: language-icon-elyran
+

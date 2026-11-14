@@ -11,6 +11,7 @@ job-name-futureagent = Future Agent
 job-name-salvagediver = Salvage Diver
 job-name-ntr = Nanotrasen Representative
 job-name-bs = Blueshield
+job-name-bso = Blueshield Officer
 job-name-overall = Overall
 job-name-tider = Tider
 
@@ -29,10 +30,10 @@ job-name-nct = Nanotrasen Career Trainer
 
 job-name-highcommander = High Commander
 
-# Half Life
+# Half Life, changing names to be more neutral setting-wise
 
-job-name-hecu = HECU Operative
-job-name-governmentman = The G-Man
+job-name-hecu = Asset Protection Operative
+job-name-governmentman = Benefactor
 
 # Misc
 
@@ -45,12 +46,12 @@ job-name-radiohost = Radio Host
 JobBlueshieldOfficer = Blueshield Officer
 JobNanotrasenRepresentative = Nanotrasen Representative
 JobNanotrasenCareerTrainer = Nanotrasen Career Trainer
-JobHecuOperative = HECU Operative
+JobHecuOperative = Asset Protection Operative
 JobNavyOfficer = Navy Officer
 JobNavyOfficerUndercover = Undercover Navy Officer
 JobNavyCaptain = Navy Captain
 JobDiplomat = Diplomat
-JobGovernmentMan = The G-Man
+JobGovernmentMan = Benefactor
 JobConquest = Conquest
 JobInspector = Central Command Auditor
 JobMercenaryCaptain = Mercenary Captain

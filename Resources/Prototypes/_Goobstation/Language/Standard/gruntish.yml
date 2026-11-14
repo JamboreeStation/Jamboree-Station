@@ -1,5 +1,6 @@
 - type: language
   id: Gruntish
+  icon: LanguageIconUnknown
   isVisibleLanguage: true
   speech:
     fontSize: 14

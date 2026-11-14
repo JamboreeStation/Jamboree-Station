@@ -1,36 +1,12 @@
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Moony <moony@hellomouse.net>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Sam Weaver <weaversam8@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 moonheart08 <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Darkie <darksaiyanis@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
 using System.Text.Json.Serialization;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Goobstation.Maths.FixedPoint;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Dictionary;
 using Robust.Shared.Utility;
 using Robust.Shared.Serialization;
 
@@ -46,16 +22,21 @@ namespace Content.Shared.Damage
     [DataDefinition, Serializable, NetSerializable]
     public sealed partial class DamageSpecifier : IEquatable<DamageSpecifier>
     {
+        // For the record I regret so many of the decisions i made when rewriting damageable
+        // Why is it just shitting out dictionaries left and right
+        // One day Arrays, stackalloc spans, and SIMD will save the day.
+        // TODO DAMAGEABLE REFACTOR
+
         // These exist solely so the wiki works. Please do not touch them or use them.
         [JsonPropertyName("types")]
-        [DataField("types", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<FixedPoint2, DamageTypePrototype>))]
+        [DataField("types")]
         [UsedImplicitly]
-        private Dictionary<string, FixedPoint2>? _damageTypeDictionary;
+        private Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2>? _damageTypeDictionary;
 
         [JsonPropertyName("groups")]
-        [DataField("groups", customTypeSerializer: typeof(PrototypeIdDictionarySerializer<FixedPoint2, DamageGroupPrototype>))]
+        [DataField("groups")]
         [UsedImplicitly]
-        private Dictionary<string, FixedPoint2>? _damageGroupDictionary;
+        private Dictionary<ProtoId<DamageGroupPrototype>, FixedPoint2>? _damageGroupDictionary;
 
         /// <summary>
         ///     Main DamageSpecifier dictionary. Most DamageSpecifier functions exist to somehow modifying this.
@@ -74,8 +55,8 @@ namespace Content.Shared.Damage
         public float PartDamageVariation { get; set; }
 
         // Goobstation
-        [DataField(customTypeSerializer: typeof(PrototypeIdDictionarySerializer<FixedPoint2, DamageTypePrototype>))]
-        public Dictionary<string, FixedPoint2> WoundSeverityMultipliers { get; set; } = new();
+        [DataField]
+        public Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2> WoundSeverityMultipliers { get; set; } = new();
 
         /// <summary>
         ///     Returns a sum of the damage values.
@@ -130,7 +111,7 @@ namespace Content.Shared.Damage
         // Goobstation
         public DamageSpecifier(float armorPenetration,
             float partVariation,
-            Dictionary<string, FixedPoint2> severityMultipliers)
+            Dictionary<ProtoId<DamageTypePrototype>, FixedPoint2> severityMultipliers)
         {
             ArmorPenetration = armorPenetration;
             PartDamageVariation = partVariation;

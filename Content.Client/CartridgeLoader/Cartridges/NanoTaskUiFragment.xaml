@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+SPDX-License-Identifier: MIT
+-->
+
 <cartridges:NanoTaskUiFragment xmlns:cartridges="clr-namespace:Content.Client.CartridgeLoader.Cartridges"
                                xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                                xmlns="https://spacestation14.io" Margin="1 0 2 0">

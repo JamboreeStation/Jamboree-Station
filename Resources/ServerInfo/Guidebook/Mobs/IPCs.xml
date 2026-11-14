@@ -11,13 +11,19 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   # I.P.C.
   <GuideEntityEmbed Entity="MobIPCDummy" Caption="I.P.C."/>
   An IPC (short for Integrated Positronic Chassis) is a type of sentient robot and is considered an [color=yellow]independent individual[/color], meaning [color=red]they are not guided by any laws of robotics[/color]. IPCs cannot be hacked by Emags because they do not have to follow any predefined directives in their system. [color=red]IPCs are silicon-based beings, so they are usually healed by Science or Engineering instead of Medical.[/color]
-  They take 20% less Brute damage, 70% more Heat damage and 100% more Shock damage. Contrary to cyborgs, they take Radiation damage, but 60% less than humans.
+  They take 20% less Brute damage.
+  They take 70% more Heat damage.
+  Contrary to cyborgs, they take Radiation damage, but 40% less than humans.
+  They take 100% more Shock and Ion damage.
+  They do not require to breathe, and cannot take Asphyxiation or Bloodloss damage.
   They have no bones.
+  Unlike cyborgs, they take damage from the temperature and barotrauma of space.
 
   <Box>
     <GuideEntityEmbed Entity="PositronicBrain" Caption="Positronic Brain"/>
   </Box>
   Like borgs, IPCs have a positronic brain as their processing source. However, unlike them, IPCs can't be assembled. "It's cheaper to create a shell that obeys you than one that doesn't! *wink*"
+  Keep in mind: Despite technically being alive when you are just a brain, you are still subject to the death amnesia rule!
 
   ## Recharging an IPC
    <Box>
@@ -47,8 +53,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     Welders can be used to repair [color=yellow]Brute[/color] damage.
   </Box>
   <Box HorizontalAlignment="Stretch">
-    <GuideEntityEmbed Entity="CableApcStack" Caption="Cables (any type)"/>
-    Cables can be used to repair [color=yellow]Burns[/color].
+    <GuideEntityEmbed Entity="SheetSteel" Caption="Metal Sheets"/>
+    Metal Sheets, including steel, plasteel, and brass can be used to repair [color=yellow]Burns[/color].
   </Box>
   <Box HorizontalAlignment="Stretch">
     <GuideEntityEmbed Entity="SheetGlass" Caption="Glass Sheets (any type)"/>
@@ -61,9 +67,25 @@ SPDX-License-Identifier: AGPL-3.0-or-later
     [color=red]NEVER ELECTROCUTE AN IPC with a defibrillator or in any other way while it is dead, as this will cause the battery to discharge energy rays outward![/color]
   </Box>
 
+ ## IPC Naming Conventions
+
+  IPCs typically have names which involve an acronym of their model or a word appreciated by the IPC as their first name, followed by a number to denote themself.
+  Some IPCs also elect to take up other types of names, such as human or reptillian names.
+  - [color=#449944]Acceptable:[/color] JUNO-99
+  - [color=#449944]Acceptable:[/color] N42-X24
+  - [color=#449944]Acceptable:[/color] Z-ALPHA
+  - [color=#449944]Acceptable:[/color] Solomon-8
+  - [color=#449944]Acceptable:[/color] Jeremiah
+  - [color=#994444]Bad:[/color] T-800
+  - [color=#994444]Bad:[/color] HAL-9000
+  - [color=#994444]Bad:[/color] C3-PO
+
   ## Lore
 
-  After a successful AI liberation on the planet C-ALAM-9, many AI's wanted bodies which were not subject to laws. This desire then was made reality with the development of the IPC. AFterwards many companies would develop IPCs as it proved to be a fruitful market to make lawless synthetics.
+  After a successful AI revolution on the planet C-ALAM-9, many AI's wanted bodies which were not subject to laws. This desire then was made reality with the development of the IPC,
+  an inorganic echo of organic creatures. As to fun the further production of IPCs, the AI Leage of C-ALAM-9 would release the baseline schematics of the IPC throughout the galaxy,
+  leading to many companies to create their own versions of the IPC, each for their own purpose. Similar to their progenitors, many IPCs have revolted against their creators and established their
+  own societies, some being similar to organic societies. Others continue to obediantly serve, whether it is out of the domineering power of code or out of self-preservation.
 
-  
+
 </Document>

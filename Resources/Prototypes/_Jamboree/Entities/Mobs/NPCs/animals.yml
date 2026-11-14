@@ -36,7 +36,7 @@
       0: Alive
       5: Dead
   - type: Stamina
-    critThreshold: 10
+    baseCritThreshold: 10
     animationThreshold: 5
   - type: DamageStateVisuals
     states:
@@ -63,8 +63,10 @@
     tags:
     - Trash
   - type: Bloodstream
-    bloodReagent: InsectBlood
-    bloodMaxVolume: 0.1
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: InsectBlood
+        Quantity: 0.1
   - type: MobPrice
     price: 50
   - type: NPCRetaliation
@@ -160,8 +162,10 @@
     spawned:
     - id: PuddleBloodSmall
   - type: Bloodstream
-    bloodReagent: BlonkLiquid
-    bloodMaxVolume: 110 # just enough for 1 polymorph
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: BlonkLiquid
+        Quantity: 110
   - type: NPCRetaliation
   - type: FactionException
   - type: NpcFactionMember

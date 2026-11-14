@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Coordinates.Helpers;
@@ -11,14 +7,15 @@ using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using Content.Goobstation.Common.Religion;
 
-namespace Content.Goobstation.Shared.Religion.Nullrod;
+namespace Content.Goobstation.Shared.Religion.Nullrod.Systems;
 
-public sealed class NullrodTransformSystem : EntitySystem
+public sealed partial class NullrodTransformSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
-    [Dependency] private readonly TagSystem _tagSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private INetManager _netManager = default!;
+    [Dependency] private TagSystem _tagSystem = default!;
 
 
     public override void Initialize()
@@ -41,6 +38,10 @@ public sealed class NullrodTransformSystem : EntitySystem
 
         // Spawn proto associated with the altar.
         Spawn(component.RodProto, args.ClickLocation.SnapToGrid(EntityManager));
+
+        //Unassign original nullrod
+        if (TryComp<BibleUserComponent>(args.User, out var bibleComp))
+            bibleComp.NullRod = null;
 
         // Remove the nullrod
         QueueDel(args.Used);

@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Lumminal <81829924+Lumminal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Roudenn <romabond091@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Shadowling.Components;
@@ -15,9 +11,9 @@ namespace Content.Goobstation.Client.Shadowling;
 /// This handles status icons for slings and thralls
 /// This also handles alerts
 /// </summary>
-public sealed class ShadowlingSystem : SharedShadowlingSystem
+public sealed partial class ShadowlingSystem : SharedShadowlingSystem
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public override void Initialize()
     {

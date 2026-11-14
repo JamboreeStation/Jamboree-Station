@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Shared._EinsteinEngines.Language.Components;
 using Content.Shared.GameTicking;
 using Robust.Shared.Prototypes;
@@ -10,20 +14,17 @@ public abstract class SharedLanguageSystem : EntitySystem
     /// <summary>
     ///     The language used as a fallback in cases where an entity suddenly becomes a Language Speaker (e.g. the usage of make-sentient).
     /// </summary>
-    [ValidatePrototypeId<LanguagePrototype>]
-    public static readonly string FallbackLanguagePrototype = "TauCetiBasic";
+    public static readonly ProtoId<LanguagePrototype> FallbackLanguagePrototype = "TauCetiBasic";
 
     /// <summary>
     ///     The language whose speakers are assumed to understand and speak every language. Should never be added directly.
     /// </summary>
-    [ValidatePrototypeId<LanguagePrototype>]
-    public static readonly string UniversalPrototype = "Universal";
+    public static readonly ProtoId<LanguagePrototype> UniversalPrototype = "Universal";
 
     /// <summary>
     ///     Language used for Xenoglossy, should have same effects as Universal but with different language prototype.
     /// </summary>
-    [ValidatePrototypeId<LanguagePrototype>]
-    public static readonly string PsychomanticPrototype = "Psychomantic";
+    public static readonly ProtoId<LanguagePrototype> PsychomanticPrototype = "Psychomantic";
 
     /// <summary>
     /// A cached instance of <see cref="PsychomanticPrototype"/>.
@@ -63,6 +64,20 @@ public abstract class SharedLanguageSystem : EntitySystem
     }
 
     /// <summary>
+    ///     Returns whether the language icon should be displayed for the given language and obfuscation state.
+    /// </summary>
+    public bool GetLanguageIcon(LanguagePrototype language, bool obfuscated)
+    {
+        if (!obfuscated && language.IconUnderstood)
+            return true;
+
+        if (obfuscated && language.IconNotUnderstood)
+            return true;
+
+        return false;
+    }
+
+    /// <summary>
     ///     Generates a stable pseudo-random number in the range (min, max) (inclusively) for the given seed.
     ///     One seed always corresponds to one number, however the resulting number also depends on the current round number.
     ///     This method is meant to be used in <see cref="ObfuscationMethod"/> to provide stable obfuscation.
@@ -92,5 +107,19 @@ public abstract class SharedLanguageSystem : EntitySystem
             return false;
 
         return ent.Comp.SpokenLanguages.Contains(language);
+    }
+
+    /// <summary>
+    ///     Returns the current language of the given entity, assumes Universal if it's not a language speaker.
+    /// </summary>
+    public LanguagePrototype GetLanguage(Entity<LanguageSpeakerComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp, logMissing: false)
+            || string.IsNullOrEmpty(ent.Comp.CurrentLanguage)
+            || !_prototype.TryIndex<LanguagePrototype>(ent.Comp.CurrentLanguage, out var proto)
+           )
+            return Universal;
+
+        return proto;
     }
 }

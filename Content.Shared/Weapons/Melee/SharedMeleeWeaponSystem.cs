@@ -1,123 +1,3 @@
-// SPDX-FileCopyrightText: 2022 metalgearsloth <metalgearsloth@gmail.com>
-// SPDX-FileCopyrightText: 2023 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Darkie <darksaiyanis@gmail.com>
-// SPDX-FileCopyrightText: 2023 Errant <35878406+dmnct@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 I.K <45953835+notquitehadouken@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Justin Trotter <trotter.justin@gmail.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 jicksaw <jicksaw@pm.me>
-// SPDX-FileCopyrightText: 2023 notquitehadouken <1isthisameme>
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Alzore <140123969+Blackern5000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Armok <155400926+ARMOKS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Bixkitts <72874643+Bixkitts@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Brandon Hu <103440971+Brandon-Huu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 CaasGit <87243814+CaasGit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Calecute <34964590+Calecute@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Cojoke <83733158+Cojoke-dot@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Emisse <99158783+Emisse@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 EmoGarbage404 <retron404@gmail.com>
-// SPDX-FileCopyrightText: 2024 Eoin Mcloughlin <helloworld@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Flareguy <78941145+Flareguy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Hrosts <35345601+Hrosts@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 IProduceWidgets <107586145+IProduceWidgets@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ian <ignaz.k@live.de>
-// SPDX-FileCopyrightText: 2024 Joel Zimmerman <JoelZimmerman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 JustCone <141039037+JustCone14@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2024 Killerqu00 <47712032+Killerqu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ko4ergaPunk <62609550+Ko4ergaPunk@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kukutis96513 <146854220+Kukutis96513@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Lye <128915833+Lyroth001@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MerrytheManokit <167581110+MerrytheManokit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Mervill <mervills.email@gmail.com>
-// SPDX-FileCopyrightText: 2024 Mr. 27 <45323883+Dutch-VanDerLinde@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 MureixloI <132683811+MureixloI@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 NakataRin <45946146+NakataRin@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 OrangeMoronage9622 <whyteterry0092@gmail.com>
-// SPDX-FileCopyrightText: 2024 PJBot <pieterjan.briers+bot@gmail.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Preston Smith <92108534+thetolbean@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Psychpsyo <60073468+Psychpsyo@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Repo <47093363+Titian3@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 RiceMar1244 <138547931+RiceMar1244@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Scribbles0 <91828755+Scribbles0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 ShadowCommander <10494922+ShadowCommander@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Simon <63975668+Simyon264@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Stalen <33173619+stalengd@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TakoDragon <69509841+BackeTako@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Unkn0wn_Gh0st <shadowstalkermll@gmail.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Veritius <veritiusgaming@gmail.com>
-// SPDX-FileCopyrightText: 2024 Vigers Ray <60344369+VigersRay@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deathride58 <deathride58@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 dffdff2423 <dffdff2423@gmail.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 foboscheshir <156405958+foboscheshir@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <comedian_vs_clown@hotmail.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 saintmuntzer <47153094+saintmuntzer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 shamp <140359015+shampunj@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 strO0pwafel <153459934+strO0pwafel@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 stroopwafel <j.o.luijkx@student.tudelft.nl>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 voidnull000 <18663194+voidnull000@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Джексон Миссиссиппи <tripwiregamer@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aineias1 <dmitri.s.kiselev@gmail.com>
-// SPDX-FileCopyrightText: 2025 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 Avalon <jfbentley1@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Eagle <lincoln.mcqueen@gmail.com>
-// SPDX-FileCopyrightText: 2025 FaDeOkno <143940725+FaDeOkno@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
-// SPDX-FileCopyrightText: 2025 Lincoln McQueen <lincoln.mcqueen@gmail.com>
-// SPDX-FileCopyrightText: 2025 McBosserson <148172569+McBosserson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Milon <plmilonpl@gmail.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Princess Cheeseballs <66055347+Pronana@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Unlumination <144041835+Unlumy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 VMSolidus <evilexecutive@gmail.com>
-// SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 vanx <61917534+Vaaankas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Diagnostics.CodeAnalysis;
@@ -134,9 +14,13 @@ using Content.Shared.Administration.Logs;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Events;
+using Content.Shared.Damage.Components; // DeltaV - Melee Stamina Resistance Override
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared._Lavaland.Weapons;
+using Content.Shared._Shitcode.Heretic.Components;
 using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Coordinates;
 using Content.Shared.Hands;
@@ -175,10 +59,10 @@ using ItemToggleMeleeWeaponComponent = Content.Shared.Item.ItemToggle.Components
 
 namespace Content.Shared.Weapons.Melee;
 
-public abstract class SharedMeleeWeaponSystem : EntitySystem
+public abstract partial class SharedMeleeWeaponSystem : EntitySystem // Goob - partial
 {
     [Dependency] protected readonly IGameTiming Timing = default!;
-    [Dependency] protected readonly IMapManager MapManager = default!;
+    [Dependency] protected readonly SharedMapSystem MapSystem = default!;
     [Dependency] private   readonly INetManager _netMan = default!;
     [Dependency] private   readonly IPrototypeManager _protoManager = default!;
     [Dependency] private   readonly IRobustRandom _random = default!;
@@ -199,6 +83,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] private   readonly ThrowingSystem _throwing = default!;
     [Dependency] private   readonly INetConfigurationManager _config = default!;
     [Dependency] private   readonly SharedStaminaSystem _stamina = default!;
+    [Dependency] private   readonly DamageExamineSystem _damageExamine = default!;
     [Dependency] private   readonly TagSystem _tag = default!;
 
     //Goob - Shove
@@ -243,6 +128,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         SubscribeLocalEvent<MeleeWeaponComponent, HandSelectedEvent>(OnMeleeSelected);
         SubscribeLocalEvent<MeleeWeaponComponent, ShotAttemptedEvent>(OnMeleeShotAttempted);
         SubscribeLocalEvent<MeleeWeaponComponent, GunShotEvent>(OnMeleeShot);
+        SubscribeLocalEvent<MeleeWeaponComponent, DamageExamineEvent>(OnMeleeExamineDamage);
         SubscribeLocalEvent<BonusMeleeDamageComponent, GetMeleeDamageEvent>(OnGetBonusMeleeDamage);
         SubscribeLocalEvent<BonusMeleeDamageComponent, GetHeavyDamageModifierEvent>(OnGetBonusHeavyDamageModifier);
         SubscribeLocalEvent<BonusMeleeAttackRateComponent, GetMeleeAttackRateEvent>(OnGetBonusMeleeAttackRate);
@@ -259,8 +145,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         Subs.CVar(_config, GoobCVars.ShoveMassFactor, SetShoveMass, true);
 
 #if DEBUG
-        SubscribeLocalEvent<MeleeWeaponComponent,
-                            MapInitEvent>                   (OnMapInit);
+        SubscribeLocalEvent<MeleeWeaponComponent, MapInitEvent>(OnMapInit);
     }
 
     private void OnMapInit(EntityUid uid, MeleeWeaponComponent component, MapInitEvent args)
@@ -288,6 +173,19 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         }
     }
 
+    private void OnMeleeExamineDamage(EntityUid uid, MeleeWeaponComponent component, ref DamageExamineEvent args)
+    {
+        if (component.Hidden)
+            return;
+
+        var damageSpec = GetDamage(uid, args.User, component);
+
+        if (damageSpec.Empty)
+            return;
+
+        _damageExamine.AddDamageExamine(args.Message, Damageable.ApplyUniversalAllModifiers(damageSpec), Loc.GetString("damage-melee"));
+        AddArmorPenetrationExamine(args.Message, damageSpec); // Goob
+    }
     private void OnMeleeSelected(EntityUid uid, MeleeWeaponComponent component, HandSelectedEvent args)
     {
         var attackRate = GetAttackRate(uid, args.User, component);
@@ -482,6 +380,20 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             if (TryComp(held, out melee) &&
                 !melee.MustBeEquippedToUse)
             {
+                // Lavaland Change start
+                if (HasComp<MeleeWeaponRelayComponent>(held.Value))
+                {
+                    var relay = new GetRelayMeleeWeaponEvent();
+                    RaiseLocalEvent(held.Value, ref relay);
+                    if (relay.Handled && TryComp(relay.Found, out MeleeWeaponComponent? relayMelee))
+                    {
+                        weaponUid = relay.Found.Value;
+                        melee = relayMelee;
+                        return true;
+                    }
+                }
+                // Lavaland Change end
+
                 weaponUid = held.Value;
                 return true;
             }
@@ -528,7 +440,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         return AttemptAttack(user,
             weaponUid,
             weapon,
-            new HeavyAttackEvent(GetNetEntity(weaponUid), GetNetEntityList(targets), GetNetCoordinates(coordinates)),
+            new HeavyAttackEvent(GetNetEntity(weaponUid), GetNetEntitySet(targets.ToHashSet()), GetNetCoordinates(coordinates)),
             null);
     }
 
@@ -564,6 +476,18 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                     return false;
                 }
 
+                // <Trauma>
+                if (TryComp(target, out TargetInteractionRelayComponent? relay) && relay.RelayMelee &&
+                    Exists(relay.RelayEntity) && relay.RelayEntity.Value != target)
+                {
+                    return AttemptAttack(user,
+                        weaponUid,
+                        weapon,
+                        new LightAttackEvent(GetNetEntity(relay.RelayEntity.Value), light.Weapon, light.Coordinates),
+                        session);
+                }
+                // </Trauma>
+
                 if (!Blocker.CanAttack(user, target, (weaponUid, weapon)))
                     return false;
 
@@ -585,6 +509,17 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                     // Target was lightly attacked & deleted.
                     return false;
                 }
+
+                // <Trauma>
+                if (TryComp(target, out relay) && relay.RelayMelee && Exists(relay.RelayEntity))
+                {
+                    return AttemptAttack(user,
+                        weaponUid,
+                        weapon,
+                        new DisarmAttackEvent(GetNetEntity(relay.RelayEntity.Value), disarm.Coordinates),
+                        session);
+                }
+                // </Trauma>
 
                 if (!Blocker.CanAttack(user, target, (weaponUid, weapon), true))
                     return false;
@@ -618,6 +553,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var ev = new AttemptMeleeEvent(user, weaponUid, weapon, attack is HeavyAttackEvent); // Goob edit
         RaiseLocalEvent(weaponUid, ref ev);
         RaiseLocalEvent(user, ref ev); // Shitmed Change
+
+        if (weapon.SwingBeverage)
+        {
+            weapon.SwingLeft = !weapon.SwingLeft;
+            DirtyField(weaponUid, weapon, nameof(MeleeWeaponComponent.SwingLeft));
+        }
 
         if (ev.Cancelled)
         {
@@ -711,7 +652,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                     LogImpact.Low,
                     $"{ToPrettyString(user):actor} melee attacked (light) using {ToPrettyString(meleeUid):tool} and missed");
             }
-            var missEvent = new MeleeHitEvent(new List<EntityUid>(), user, meleeUid, damage, null, GetCoordinates(ev.Coordinates)); // Goob edit
+            var missEvent = new MeleeHitEvent(new HashSet<EntityUid>(), user, meleeUid, damage, null, GetCoordinates(ev.Coordinates)); // Goob edit
             RaiseLocalEvent(meleeUid, missEvent, true); // Goob station - broadcast
             _meleeSound.PlaySwingSound(user, meleeUid, component);
             DoLungeAnimation(user, weapon, component.Angle, TransformSystem.ToMapCoordinates(ev.Coordinates), rangeEv.Range, component.MissAnimation, component.AnimationRotation, component.FlipAnimation); // Goobstation - Edit
@@ -728,14 +669,14 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         // Sawmill.Debug($"Melee damage is {damage.Total} out of {component.Damage.Total}");
 
         // Raise event before doing damage so we can cancel damage if the event is handled
-        var hitEvent = new MeleeHitEvent(new List<EntityUid> { target.Value }, user, meleeUid, damage, null, GetCoordinates(ev.Coordinates)); // Goob edit
+        var hitEvent = new MeleeHitEvent(new HashSet<EntityUid> { target.Value }, user, meleeUid, damage, null, GetCoordinates(ev.Coordinates)); // Goob edit
         RaiseLocalEvent(meleeUid, hitEvent, true); // Goob station - broadcast
 
 
         if (hitEvent.Handled)
             return;
 
-        var targets = new List<EntityUid>(1)
+        var targets = new HashSet<EntityUid>(1)
         {
             target.Value
         };
@@ -753,16 +694,28 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         RaiseLocalEvent(target.Value, attackedEvent);
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
         modifiedDamage = DamageSpecifier.ApplyModifierSets(modifiedDamage, attackedEvent.ModifiersList); // Goobstation
-        var damageResult = Damageable.TryChangeDamage(target, modifiedDamage, origin: user, partMultiplier: component.ClickPartDamageMultiplier); // Shitmed Change
+
+        // Goob - this is moved to hit variable so we do event after damage but before everything else
+        var hit = Damageable.TryChangeDamage(
+            target.Value, modifiedDamage, out var damageResult, origin:user,
+            ignoreResistances: resistanceBypass, partMultiplier: component.ClickPartDamageMultiplier); // Goob - Shitmed Change
+        // Goob start - Martial Arts
         var comboEv = new ComboAttackPerformedEvent(user, target.Value, meleeUid, ComboAttackType.Harm);
         RaiseLocalEvent(user, comboEv);
+        // Goob end
 
-        if (damageResult is {Empty: false})
+        if (hit)
         {
             // If the target has stamina and is taking blunt damage, they should also take stamina damage based on their blunt to stamina factor
             if (damageResult.DamageDict.TryGetValue("Blunt", out var bluntDamage))
             {
-                _stamina.TakeStaminaDamage(target.Value, (bluntDamage * component.BluntStaminaDamageFactor).Float(), visual: false, source: user, with: meleeUid == user ? null : meleeUid);
+                //DeltaV - No Stamina Resistance Doubledipping, unless we want to.
+                var ignoreResist = true;
+                if (TryComp<StaminaResistanceComponent>(target, out var staminaResist))
+                    ignoreResist = !staminaResist.MeleeResistance;
+
+                _stamina.TakeStaminaDamage(target.Value, (bluntDamage * component.BluntStaminaDamageFactor).Float(), visual: false, source: user, with: meleeUid == user ? null : meleeUid, ignoreResist: ignoreResist);
+                // END DeltaV
             }
 
             if (meleeUid == user)
@@ -782,13 +735,14 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         _meleeSound.PlayHitSound(target.Value, user, GetHighestDamageSound(modifiedDamage, _protoManager), hitEvent.HitSoundOverride, component);
 
-        if (damageResult?.GetTotal() > FixedPoint2.Zero)
+        if (damageResult.GetTotal() > FixedPoint2.Zero)
         {
             DoDamageEffect(targets, user, targetXform);
+            DoMeleeScreenshake(user, targets); // Goob
         }
     }
 
-    protected abstract void DoDamageEffect(List<EntityUid> targets, EntityUid? user,  TransformComponent targetXform);
+    protected abstract void DoDamageEffect(HashSet<EntityUid> targets, EntityUid? user,  TransformComponent targetXform);
 
     private bool DoHeavyAttack(EntityUid user, HeavyAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
     {
@@ -807,7 +761,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         var damage = GetDamage(meleeUid, user, component);
         var resistanceBypass = GetResistanceBypass(meleeUid, user, component);
-        var entities = GetEntityList(ev.Entities);
+        var entities = GetEntitySet(ev.Entities);
 
         if (entities.Count == 0)
         {
@@ -823,7 +777,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                     LogImpact.Low,
                     $"{ToPrettyString(user):actor} melee attacked (heavy) using {ToPrettyString(meleeUid):tool} and missed");
             }
-            var missEvent = new MeleeHitEvent(new List<EntityUid>(), user, meleeUid, damage, direction, GetCoordinates(ev.Coordinates)); // Goob edit
+            var missEvent = new MeleeHitEvent(new HashSet<EntityUid>(), user, meleeUid, damage, direction, GetCoordinates(ev.Coordinates)); // Goob edit
             RaiseLocalEvent(meleeUid, missEvent, true); // Goob station - broadcast
 
             // immediate audio feedback
@@ -835,45 +789,30 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         // Naughty input
         if (entities.Count > MaxTargets)
         {
-            entities.RemoveRange(MaxTargets, entities.Count - MaxTargets);
+            entities = entities.Take(MaxTargets).ToHashSet();
         }
 
         // Validate client
-        for (var i = entities.Count - 1; i >= 0; i--)
-        {
-            // Goob Fix Start
-            var entity = entities[i];
+        entities.RemoveWhere(entity => !entity.IsValid() || TerminatingOrDeleted(entity) ||
+                                       !ArcRaySuccessful(entity,
+                                           userPos,
+                                           direction.ToWorldAngle(),
+                                           component.Angle,
+                                           distance,
+                                           userXform.MapID,
+                                           user,
+                                           session));
 
-            if (!entity.IsValid() || TerminatingOrDeleted(entity))
-            {
-                entities.RemoveAt(i);
-                continue;
-            }
-            // Goob Fix End
-
-            if (ArcRaySuccessful(entity,
-                    userPos,
-                    direction.ToWorldAngle(),
-                    component.Angle,
-                    distance,
-                    userXform.MapID,
-                    user,
-                    session))
-            {
-                continue;
-            }
-
-            // Bad input
-            entities.RemoveAt(i);
-        }
-
-        var targets = new List<EntityUid>();
+        var targets = new HashSet<EntityUid>();
         var damageQuery = GetEntityQuery<DamageableComponent>();
 
         foreach (var entity in entities)
         {
             if (entity == user ||
                 !damageQuery.HasComponent(entity))
+                continue;
+
+            if (IsHeavyAttackTargetBlocked(entity, user, meleeUid)) // Goob
                 continue;
 
             // Goobstation start
@@ -911,39 +850,54 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         var appliedDamage = new DamageSpecifier();
         var random = new System.Random((int) Timing.CurTick.Value); // Goobstation
+        var filteredTargets = new HashSet<EntityUid>();
 
-        for (var i = targets.Count - 1; i >= 0; i--)
+        foreach (var entity in targets)
         {
-            var entity = targets[i];
             // We raise an attack attempt here as well,
             // primarily because this was an untargeted wideswing: if a subscriber to that event cared about
             // the potential target (such as for pacifism), they need to be made aware of the target here.
             // In that case, just continue.
             if (!Blocker.CanAttack(user, entity, (weapon, component)))
             {
-                targets.RemoveAt(i);
+                filteredTargets.Add(entity);
                 continue;
             }
 
             var attackedEvent = new AttackedEvent(meleeUid, user, GetCoordinates(ev.Coordinates));
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
-            modifiedDamage = DamageSpecifier.ApplyModifierSets(modifiedDamage, attackedEvent.ModifiersList); // Goobstation
-            foreach (var type in modifiedDamage.DamageDict.Keys) // Goobstation
+
+            // Goob start - shitmed
+            modifiedDamage = DamageSpecifier.ApplyModifierSets(modifiedDamage, attackedEvent.ModifiersList);
+
+            foreach (var type in modifiedDamage.DamageDict.Keys)
             {
                 if (!modifiedDamage.WoundSeverityMultipliers.TryAdd(type, component.HeavyAttackWoundMultiplier))
                     modifiedDamage.WoundSeverityMultipliers[type] *= component.HeavyAttackWoundMultiplier;
             }
-            var damageResult = Damageable.TryChangeDamage(entity, modifiedDamage, origin: user, ignoreResistances: resistanceBypass, partMultiplier: component.HeavyPartDamageMultiplier); // Shitmed Change
+            // Goob end
+
+
+            // Goob start - Martial Arts
             var comboEv = new ComboAttackPerformedEvent(user, entity, meleeUid, ComboAttackType.HarmLight);
             RaiseLocalEvent(user, comboEv);
+            // Goob end
 
-            if (damageResult != null && damageResult.GetTotal() > FixedPoint2.Zero)
+            var damageResult = Damageable.ChangeDamage(entity, modifiedDamage, origin: user, ignoreResistances: resistanceBypass, partMultiplier: component.HeavyPartDamageMultiplier); // Goob - Shitmed Change
+
+            if (damageResult.GetTotal() > FixedPoint2.Zero)
             {
                 // If the target has stamina and is taking blunt damage, they should also take stamina damage based on their blunt to stamina factor
                 if (damageResult.DamageDict.TryGetValue("Blunt", out var bluntDamage))
                 {
-                    _stamina.TakeStaminaDamage(entity, (bluntDamage * component.BluntStaminaDamageFactor).Float(), visual: false, source: user, with: meleeUid == user ? null : meleeUid);
+                    //DeltaV - No Stamina Resistance Doubledipping, unless we want to.
+                    var ignoreResist = true;
+                    if (TryComp<StaminaResistanceComponent>(entity, out var staminaResist))
+                        ignoreResist = !staminaResist.MeleeResistance;
+
+                    _stamina.TakeStaminaDamage(entity, (bluntDamage * component.BluntStaminaDamageFactor).Float(), visual: false, source: user, with: meleeUid == user ? null : meleeUid, ignoreResist: ignoreResist);
+                    // END DeltaV
                 }
 
                 appliedDamage += damageResult;
@@ -961,7 +915,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                         $"{ToPrettyString(user):actor} melee attacked (heavy) {ToPrettyString(entity):subject} using {ToPrettyString(meleeUid):tool} and dealt {damageResult.GetTotal():damage} damage");
                 }
             }
+
+            if (TerminatingOrDeleted(entity))
+                filteredTargets.Add(entity);
         }
+
+        targets.ExceptWith(filteredTargets);
 
         if (entities.Count != 0)
         {
@@ -969,9 +928,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, _protoManager), hitEvent.HitSoundOverride, component);
         }
 
-        if (appliedDamage.GetTotal() > FixedPoint2.Zero)
+        DoMeleeScreenshake(user, targets); // Goob
+
+        if (targets.Count > 0 && appliedDamage.GetTotal() > FixedPoint2.Zero)
         {
-            DoDamageEffect(targets, user, Transform(targets[0]));
+            DoDamageEffect(targets, user, Transform(targets.First()));
         }
 
         // goob edit - stunmeta
@@ -1131,8 +1092,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         RaiseLocalEvent(user, comboEv);
         // Goobstation end
 
+        if (IsShoveBlocked(target, user)) // Goob
+            return true;
+
         PhysicalShove(user, target);
-        Interaction.DoContactInteraction(user, target);
+        Interaction.DoContactInteraction(user, target, null, true); // Goob
 
         if (MobState.IsIncapacitated(target))
             return true;
@@ -1250,9 +1214,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var userPos = TransformSystem.ToMapCoordinates(user.ToCoordinates()).Position;
         var targetPos = TransformSystem.ToMapCoordinates(target.ToCoordinates()).Position;
         var pushVector = (targetPos - userPos).Normalized() * force;
-
         var animated = HasComp<ItemComponent>(target);
-
         _throwing.TryThrow(target, pushVector, force * _shoveSpeed, animated: animated);
     }
 

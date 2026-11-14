@@ -1,12 +1,18 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Spoken by Felinids.
 # Jargon language of Japanese tidbits and memes.
 # TODO: Replace this with a much better language.
 - type: language
+  icon: LanguageIconNekomimetic
   id: Nekomimetic
+  iconUnderstood: false
   isVisibleLanguage: true
   speech:
     color: "#df57aaee"
-    # fontId: Manga #* FONTS NOT ALREADY HERE ARE NOT BEING ADDED
+    fontId: Manga 
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -60,3 +66,7 @@
     - ira
     - heto
     - etto
+
+
+
+

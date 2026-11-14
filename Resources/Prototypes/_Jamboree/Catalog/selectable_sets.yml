@@ -677,6 +677,27 @@
   content:
   - CMOMedigunBackpack
 
+- type: selectableSet
+  id: CMOEchemerKit
+  name: Emergency Chemical Kit
+  description: |
+     - CMO Portable Emergichemical Dispenser
+        A compact bluespace dispenser for the Chief
+        Medical Officer, it can use powercells to
+        synthesize chemicals on the fly in an emergency!
+        This will NOT SELF RECHARGE, meaning you can not use a microreactor power cell.
+
+
+     - Vial Box
+        A box of vials to fill with whatever the
+        dispenser synthesizes.
+  sprite:
+    sprite: _Jamboree/Objects/Devices/energycmodispenser.rsi
+    state: icon
+  content:
+  - EnergyCMODispenser
+  - BoxVial
+
 # Quartermaster
 
 - type: selectableSet

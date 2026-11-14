@@ -1,0 +1,38 @@
+<!--
+SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
+<Document>
+  # Skeletons
+
+  <Box>
+    <GuideEntityEmbed Entity="MobSkeletonPerson" Caption=""/>
+  </Box>
+
+  Hidden away in the darkest and most forgotten places of stations, Skeletons find these places the best for taking naps.
+
+  They do not need to breathe, do not take damage from the pressure of space, and are not affected by temperature.
+  They cannot ingest chemicals, but are able to be healed by splashing milk upon themself.
+
+  ## Skeleton Naming Conventions
+
+  Skeletons often have names which have a bone related pun for a first name and then a more human-esque last name.
+  - [color=#449944]Acceptable:[/color] Tarsals Fisher
+  - [color=#449944]Acceptable:[/color] Sternum Chapman
+  - [color=#449944]Acceptable:[/color] Radius Menthols
+  - [color=#449944]Acceptable:[/color] Rib Reeds
+  - [color=#994444]Bad:[/color] Sans Undertale
+  - [color=#994444]Bad:[/color] Jim Boner
+  - [color=#994444]Bad:[/color] Skeletor
+
+  ## Lore
+
+  Skeletons hold an odd place as denizens of the stars as their cause is one of the universe's biggest mysteries. Is it the ambient magic of space?
+  A curse upon the sector? The same skeleton on every station with amnesia? This remains a mystery to Skeletons and non-skeletons alike across the galaxy.
+  The only consistent thing that all know of skeletons is the law they hold in their bones, that being: "I do what I want."
+
+</Document>

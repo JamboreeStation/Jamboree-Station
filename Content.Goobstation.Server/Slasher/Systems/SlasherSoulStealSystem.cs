@@ -1,6 +1,6 @@
 using Content.Goobstation.Server.Devil.Contract;
 using Content.Goobstation.Shared.Slasher.Components;
-using Content.Goobstation.Shared.Slasher.Events;
+using Content.Goobstation.Shared.Slasher;
 using Content.Goobstation.Shared.Slasher.Objectives;
 using Content.Goobstation.Shared.Slasher.Systems;
 using Content.Server.AlertLevel;
@@ -31,36 +31,43 @@ using Robust.Shared.Timing;
 using FixedPoint2 = Content.Goobstation.Maths.FixedPoint.FixedPoint2;
 using System.Linq;
 using Content.Server.Light.Components;
+using Content.Shared.Light.Components;
 using Robust.Server.GameObjects;
+using Content.Shared.Inventory;
+using Content.Shared.Roles;
+using Content.Shared.Station;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Goobstation.Server.Slasher.Systems;
 
 /// <summary>
 /// Soul steal system for the slasher. Gives bonuses for stealing souls from incapacitated or dead targets.
 /// </summary>
-public sealed class SlasherSoulStealSystem : EntitySystem
+public sealed partial class SlasherSoulStealSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly StandingStateSystem _standing = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly DevilContractSystem _devilContractSystem = default!;
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly AtmosphereSystem _atmos = default!;
-    [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly ChatSystem _chatSystem = default!;
-    [Dependency] private readonly AlertLevelSystem _alertLevel = default!;
-    [Dependency] private readonly SharedWeatherSystem _weather = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly PoweredLightSystem _light = default!;
-    [Dependency] private readonly SlasherRegenerateSystem _regenerate = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private StandingStateSystem _standing = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private DevilContractSystem _devilContractSystem = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private AtmosphereSystem _atmos = default!;
+    [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private ChatSystem _chatSystem = default!;
+    [Dependency] private AlertLevelSystem _alertLevel = default!;
+    [Dependency] private SharedWeatherSystem _weather = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private PoweredLightSystem _light = default!;
+    [Dependency] private SlasherRegenerateSystem _regenerate = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private SharedStationSpawningSystem _spawning = default!;
 
     public override void Initialize()
     {
@@ -80,6 +87,7 @@ public sealed class SlasherSoulStealSystem : EntitySystem
     private void OnMapInit(Entity<SlasherSoulStealComponent> ent, ref MapInitEvent args)
     {
         _actions.AddAction(ent.Owner, ref ent.Comp.ActionEntity, ent.Comp.ActionId);
+        Dirty(ent);
     }
 
     private void OnShutdown(Entity<SlasherSoulStealComponent> ent, ref ComponentShutdown args)
@@ -125,7 +133,10 @@ public sealed class SlasherSoulStealSystem : EntitySystem
         }
 
         // check if target is downed, incapacitated, or dead
-        if (!CanStartSoulSteal(target))
+        if (!_mobState.IsCritical(target)
+            && !_mobState.IsIncapacitated(target)
+            && !_standing.IsDown(target)
+            && !_mobState.IsDead(target))
         {
             _popup.PopupEntity(Loc.GetString("slasher-soulsteal-fail-not-down"), user, user);
             args.Handled = true;
@@ -153,15 +164,6 @@ public sealed class SlasherSoulStealSystem : EntitySystem
         // Popup for victim only
         _popup.PopupEntity(Loc.GetString("slasher-soulsteal-start-victim", ("user", user)), target, target, PopupType.MediumCaution);
         args.Handled = true;
-    }
-
-    // Checks to ensure our target is valid (alive & not downed, incapacitated, or dead)
-    private bool CanStartSoulSteal(EntityUid target)
-    {
-        return _mobState.IsCritical(target)
-               || _mobState.IsIncapacitated(target)
-               || _standing.IsDown(target)
-               || _mobState.IsDead(target);
     }
 
     /// <summary>
@@ -195,9 +197,8 @@ public sealed class SlasherSoulStealSystem : EntitySystem
             comp.DeadSouls++;
 
         // Update absorb souls objective progress
-        if (_mindSystem.TryGetMind(user, out var mindId, out var mind))
-        {
-            foreach (var objUid in mind.Objectives)
+        if (_mindSystem.TryGetMind(user, out _, out var mind))
+            foreach (var objUid in mind.Objectives.ToList())
             {
                 if (!TryComp<SlasherAbsorbSoulsConditionComponent>(objUid, out var absorbObj))
                     continue;
@@ -206,7 +207,6 @@ public sealed class SlasherSoulStealSystem : EntitySystem
                 Dirty(objUid, absorbObj);
                 break;
             }
-        }
 
         // Apply devil clause downside
         _devilContractSystem.AddRandomNegativeClauseSlasher(target);
@@ -218,11 +218,28 @@ public sealed class SlasherSoulStealSystem : EntitySystem
         ApplyArmorBonus(user, armorBonus, comp);
         ApplyMacheteBonus(user, bruteBonus, comp);
 
-        // Check for ascendance at 15 total souls
         var totalSouls = comp.AliveSouls + comp.DeadSouls;
-        if (!comp.HasAscended && totalSouls >= comp.AscendanceSoulThreshold)
+
+        var specialUnlockHappened = false;
+
+        // Check for possession unlock at 10 souls
+        if (!comp.HasUnlockedPossession
+            && totalSouls >= comp.PossessionSoulThreshold)
+        {
+            comp.HasUnlockedPossession = true;
+            EnsureComp<SlasherPossessionComponent>(user);
+
+            _popup.PopupEntity(Loc.GetString("slasher-soulsteal-unlock-possession"), user, user, PopupType.LargeCaution);
+            specialUnlockHappened = true;
+        }
+
+        // Check for ascendance at 15 total souls
+        if (!comp.HasAscended
+            && totalSouls >= comp.AscendanceSoulThreshold)
         {
             comp.HasAscended = true;
+
+            RaiseLocalEvent(new SlasherAscendedEvent(user));
 
             // Initialize the light flicker timer when ascending
             comp.NextLightFlicker = _timing.CurTime + comp.LightFlickerInterval;
@@ -237,10 +254,14 @@ public sealed class SlasherSoulStealSystem : EntitySystem
                 var xform = Transform(user);
                 _weather.SetWeather(xform.MapID, _protoMan.Index<WeatherPrototype>("Storm"), null);
 
+                // Swap clothing if the kit defines ascension gear
+                if (comp.AscensionGear != null)
+                    ApplyAscensionGear(user, comp.AscensionGear.Value);
+
                 // Make station announcement from Central Command
                 _chatSystem.DispatchStationAnnouncement(
                     station.Value,
-                    Loc.GetString("slasher-soulsteal-ascendance"),
+                    Loc.GetString(comp.AscendanceAnnouncementKey),
                     sender: Loc.GetString("comms-console-announcement-title-centcom"),
                     playDefaultSound: false,
                     announcementSound: null,
@@ -253,14 +274,41 @@ public sealed class SlasherSoulStealSystem : EntitySystem
         // Grant a soul for regenerate
         _regenerate.GrantSoul(user);
 
-        // Popup for user
-        _popup.PopupEntity(Loc.GetString("slasher-soulsteal-success", ("target", target)), user, user, PopupType.LargeCaution);
+        // Popup for user only
+        if (!specialUnlockHappened)
+            _popup.PopupEntity(Loc.GetString("slasher-soulsteal-success", ("target", target)), user, user, PopupType.LargeCaution);
+
         // Popup for victim only
         _popup.PopupEntity(Loc.GetString("slasher-soulsteal-success-victim", ("user", user)), target, target, PopupType.LargeCaution);
         Dirty(user, comp);
     }
 
-    private void ApplyArmorBonus(EntityUid user, float percent, SlasherSoulStealComponent comp)
+    /// <summary>
+    /// Strips the slots covered by the ascension gear, then equips it.
+    /// </summary>
+    private void ApplyAscensionGear(EntityUid user, ProtoId<StartingGearPrototype> gearProto)
+    {
+        if (!_protoMan.TryIndex(gearProto, out var loadout))
+            return;
+
+        // Strip any slot the ascension gear will fill so items don't stack
+        if (_inventory.TryGetSlots(user, out var slots))
+            foreach (var slot in slots)
+            {
+                if (string.IsNullOrEmpty(((IEquipmentLoadout) loadout).GetGear(slot.Name)))
+                    continue;
+
+                if (_inventory.TryGetSlotEntity(user, slot.Name, out var worn) && worn != null)
+                {
+                    _inventory.TryUnequip(user, slot.Name, silent: true, force: true);
+                    QueueDel(worn.Value);
+                }
+            }
+
+        _spawning.EquipStartingGear(user, loadout);
+    }
+
+    private static void ApplyArmorBonus(EntityUid user, float percent, SlasherSoulStealComponent comp)
     {
         if (percent <= 0f)
             return;
@@ -298,10 +346,8 @@ public sealed class SlasherSoulStealSystem : EntitySystem
             return null;
 
         foreach (var held in _hands.EnumerateHeld((user, hands)))
-        {
             if (HasComp<SlasherMassacreMacheteComponent>(held))
                 return held;
-        }
 
         return null;
     }
@@ -422,24 +468,22 @@ public sealed class SlasherSoulStealSystem : EntitySystem
         var flickerCounter = 0;
         foreach (var entity in entities)
         {
-            if (!HasComp<PointLightComponent>(entity) && !HasComp<PoweredLightComponent>(entity))
+            if (!HasComp<PointLightComponent>(entity))
                 continue;
 
             var handled = false;
 
-            // For powered lights, 50/50 chance to either flicker or destroy the bulb
-            if (TryComp<PoweredLightComponent>(entity, out var lightComp) && _random.Prob(0.5f))
+            if (TryComp<PoweredLightComponent>(entity, out var lightComp)
+                && _random.Prob(0.85f))
             {
-                // Destroy the light bulb
-                if (_light.TryDestroyBulb(entity, lightComp))
+                if (_random.Prob(0.2f) && _light.TryDestroyBulb(entity, lightComp))
                     handled = true;
-            }
-            else
-            {
-                // Flicker the light via ghost boo event
-                var ev = new GhostBooEvent();
-                RaiseLocalEvent(entity, ev);
-                handled = ev.Handled;
+                else
+                {
+                    var ev = new GhostBooEvent();
+                    RaiseLocalEvent(entity, ev);
+                    handled = ev.Handled;
+                }
             }
 
             if (handled)

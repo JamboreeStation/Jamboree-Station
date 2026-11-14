@@ -1,9 +1,0 @@
-# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-# Head
-- type: loadout
-  id: MedicalBucket
-  equipment:
-    head: TP14ClothingHeadMedicalBucket

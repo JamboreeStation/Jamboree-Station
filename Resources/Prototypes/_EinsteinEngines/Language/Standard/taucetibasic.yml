@@ -2,6 +2,9 @@
 # Previously known as GalacticCommon, assume any reference is to this.
 - type: language
   id: TauCetiBasic
+  iconUnderstood: false
+  isVisibleLanguage: true
+  icon: LanguageIconTauCeti
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
@@ -47,7 +50,7 @@
       - ce
       - cer
       - chun
-      -	ci
+      - ci
       - cion
       - coj
       - cor
@@ -132,7 +135,7 @@
       - li
       - liao
       - lib
-      -	ling
+      - ling
       - lis
       - lo
       - lon

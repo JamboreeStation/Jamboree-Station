@@ -1,0 +1,37 @@
+<!--
+SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
+SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
+<Document>
+  # Bananamen
+
+  <Box>
+    <GuideEntityEmbed Entity="MobBananaMen" Caption=""/>
+  </Box>
+
+  A species of banana-shaped individuals who hail from the mythical "Banana Planet".
+
+  They have similar stats to a baseline human, but with the notable features of bleeding [color=#f8ff75]potassium[/color] and having organs consisting of [color=#f8ff75]solely bananas[/color].
+  A person will transform into a Bananaman upon ingesting 30u of [color=#f8ff75]Honk[/color]
+
+  ## Bananamen Naming Conventions
+
+  Bananamen names typically are a singular word which is referential to the fruit they share similarities with.
+  - [color=#449944]Acceptable:[/color] Peel
+  - [color=#449944]Acceptable:[/color] Slippy
+  - [color=#449944]Acceptable:[/color] Chiquita
+  - [color=#994444]Bad:[/color] Apple
+  - [color=#994444]Bad:[/color] Annoying Orange
+
+  ## Lore
+
+  Though the endless civil wars occurring on Banana Planet should, at a glance, warrant intervention from the Galactic Hegemony upon their world, there
+  are numerous reasons that they have not. The main two however are as follows. Firstly, the Bananamen have developed enough weaponry that if intervention
+  were to occur, it could lead to the total destruction of the Banana Planet. Secondly, the method of reproduction used by Bananamen is more akin to
+  a viral infection than traditional copulation. These two factors have led to their extreme isolation, though rarely Banamen do find themselves in the
+  galactic stage.
+</Document>

@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -29,9 +23,8 @@ using Content.Shared.Examine;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Verbs;
-using Robust.Shared.Utility;
 using Content.Shared.HealthExaminable;
-using Robust.Shared.Prototypes;
+using Content.Shared.Damage.Components;
 
 namespace Content.Server._Shitmed.PartStatus;
 
@@ -42,7 +35,6 @@ public sealed class PartStatusSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly TraumaSystem _trauma = default!;
     [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
 
     private static readonly IReadOnlyList<BodyPartType> BodyPartOrder = new List<BodyPartType>
@@ -142,9 +134,10 @@ public sealed class PartStatusSystem : EntitySystem
 
         foreach (var woundable in _woundSystem.GetAllWoundableChildren(rootPart))
         {
-            if (!TryComp<BodyPartComponent>(woundable, out var bodyPartComponent) ||
-                !TryComp<BoneComponent>(woundable.Comp.Bone.ContainedEntities.FirstOrNull(), out var bone))
+            if (!TryComp<BodyPartComponent>(woundable, out var bodyPartComponent))
                 continue;
+
+            TryComp<BoneComponent>(woundable.Comp.Bone.ContainedEntities.FirstOrNull(), out var bone);
 
             var partName = bodyPartComponent.ParentSlot?.Id ?? bodyPartComponent.PartType.ToString().ToLower();
             var (damageSeverities, isBleeding) = AnalyzeWounds(woundable);
@@ -155,7 +148,7 @@ public sealed class PartStatusSystem : EntitySystem
                 partName,
                 woundable.Comp.WoundableSeverity,
                 damageSeverities,
-                bone.BoneSeverity,
+                bone?.BoneSeverity ?? BoneSeverity.Normal,
                 isBleeding));
         }
 
@@ -174,9 +167,10 @@ public sealed class PartStatusSystem : EntitySystem
                 || wound.Comp.WoundSeverity == WoundSeverity.Healed)
                 continue;
 
-            if (!damageSeverities.TryGetValue(wound.Comp.DamageType, out var existingSeverity) ||
+            var group = wound.Comp.DamageGroup.Value.Id;
+            if (!damageSeverities.TryGetValue(group, out var existingSeverity) ||
                 wound.Comp.WoundSeverity > existingSeverity)
-                damageSeverities[_proto.Index(wound.Comp.DamageGroup).LocalizedName] = wound.Comp.WoundSeverity;
+                damageSeverities[group] = wound.Comp.WoundSeverity;
 
             if (TryComp<BleedInflicterComponent>(wound, out var bleeds) && bleeds.IsBleeding)
                 isBleeding = true;

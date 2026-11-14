@@ -66,6 +66,16 @@
   equipment:
     outerClothing: ClothingOuterArmorMonk
 
+- type: loadout
+  id: DragonHelmet
+  equipment:
+    head: ClothingHeadHatHelmetDragon
+
+- type: loadout
+  id: DragonSuit
+  equipment:
+    outerClothing: ClothingOuterArmorDragon
+
 # Jamboree, moving Resonant stuff from the theater vending machine
 - type: loadout
   id: ResonantCloak

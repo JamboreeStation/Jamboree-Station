@@ -1,10 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Francesco <frafonia@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Atmos.EntitySystems;
@@ -51,7 +44,7 @@ namespace Content.Server.Medical
             }
         }
 
-        private void OnInhaleLocation(EntityUid uid, InsideCryoPodComponent component, InhaleLocationEvent args)
+        private void OnInhaleLocation(EntityUid uid, InsideCryoPodComponent component, ref InhaleLocationEvent args) // Goob - by-ref
         {
             if (TryComp<CryoPodAirComponent>(Transform(uid).ParentUid, out var cryoPodAir))
             {
@@ -59,7 +52,7 @@ namespace Content.Server.Medical
             }
         }
 
-        private void OnExhaleLocation(EntityUid uid, InsideCryoPodComponent component, ExhaleLocationEvent args)
+        private void OnExhaleLocation(EntityUid uid, InsideCryoPodComponent component, ref ExhaleLocationEvent args) // Goob - by-ref
         {
             if (TryComp<CryoPodAirComponent>(Transform(uid).ParentUid, out var cryoPodAir))
             {

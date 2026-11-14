@@ -1,8 +1,4 @@
 <!--
-SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
-SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
@@ -10,6 +6,6 @@ SPDX-License-Identifier: AGPL-3.0-or-later
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <BoxContainer Name="Container"
                       Orientation="Horizontal">
-            <CheckBox Name="Checkbox" Access="Public"/>
+            <Button Name="Checkbox" Access="Public" ToggleMode="True" StyleClasses="HullTab" TextAlign="Left" HorizontalExpand="True"/> <!-- Goob -->
         </BoxContainer>
 </Control>

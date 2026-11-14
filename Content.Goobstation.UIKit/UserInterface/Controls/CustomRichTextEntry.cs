@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -17,8 +14,23 @@ using Robust.Shared.Utility;
 
 namespace Content.Goobstation.UIKit.UserInterface.Controls;
 
-internal struct CustomRichTextEntry
+public struct CustomRichTextEntry
 {
+    public static readonly Type[] DefaultTags =
+    [
+        typeof(BoldItalicTag),
+        typeof(BoldTag),
+        typeof(BulletTag),
+        typeof(ColorTag),
+        typeof(HeadingTag),
+        typeof(ItalicTag),
+        typeof(ButtonTag),
+        typeof(IconTag),
+        typeof(EntityTextureTag),
+        typeof(RadioIconTag),
+        typeof(TextureTag),
+    ];
+
     private readonly Color _defaultColor;
     private readonly Type[]? _tagsAllowed;
 
@@ -50,9 +62,17 @@ internal struct CustomRichTextEntry
     public CustomRichTextEntry(
             FormattedMessage message,
             Control parent,
+            MarkupTagManager tagMan,
+            IEntityManager entMan,
+            Color? defaultColor = null)
+        : this(message, parent, tagMan, entMan, DefaultTags, defaultColor) {}
+
+    public CustomRichTextEntry(
+            FormattedMessage message,
+            Control parent,
             MarkupTagManager tagManager,
             IEntityManager entManager,
-            Type[]? tagsAllowed = null,
+            Type[]? tagsAllowed,
             Color? defaultColor = null)
     {
         Message = message;
@@ -87,7 +107,11 @@ internal struct CustomRichTextEntry
             // StaticSprite
             var controlTyped = control as StaticSpriteView;
             if (controlTyped is not null)
+            {
+                // Manually drawn sprites still need to occupy space in the text layout.
+                control.ReservesSpace = true;
                 control.Visible = false;
+            }
 
             tagControls ??= new Dictionary<int, Control>();
             tagControls.Add(nodeIndex, control);
@@ -275,7 +299,7 @@ internal struct CustomRichTextEntry
         DrawBoxContent(tagManager, handle, defaultFont, drawBox, verticalOffset, scrollBarPixelSize, context, uiScale, lineHeightScale);
     }
 
-    private UIBox2 DrawBoxContent(
+    private readonly UIBox2 DrawBoxContent(
         MarkupTagManager tagManager,
         DrawingHandleBase handle,
         Font defaultFont,
@@ -347,8 +371,8 @@ internal struct CustomRichTextEntry
 
             var invertedScale = 1f / uiScale;
             var pos = new Vector2(baseLine.X * invertedScale, (baseLine.Y - defaultFont.GetAscent(uiScale)) * invertedScale);
-            LayoutContainer.SetPosition(control, pos);
             control.Measure(new Vector2(Width, Height));
+            control.Arrange(UIBox2.FromDimensions(pos, control.DesiredSize));
             if (staticSprite is not null &&
                 staticSprite.IsVisible &&
                 staticSprite.Entity is not null &&
@@ -378,16 +402,21 @@ internal struct CustomRichTextEntry
                         Angle.Zero);
             }
 
-            var advanceX = control.SetWidth;
+            var advanceX = control.DesiredPixelSize.X;
             controlYAdvance = Math.Max(0f, (control.DesiredPixelSize.Y - GetLineHeight(font, uiScale, lineHeightScale)) * invertedScale);
             baseLine += new Vector2(advanceX, 0);
         }
 
         var boxPadding = (BoxPadding * uiScale);
 
+        var left = drawBox.Left + (margin - boxPadding) - sPixelWidth;
+        var right = drawBox.Right - (margin - boxPadding) - sPixelWidth;
+        var top = baseLineBase.Y - boxPadding;
+        var bottom = baseLine.Y - GetLineHeight(defaultFont, uiScale, lineHeightScale) + boxPadding;
+
         return new UIBox2(
-                new Vector2(drawBox.Left + (margin - boxPadding) - sPixelWidth, baseLineBase.Y - boxPadding),
-                new Vector2(drawBox.Right - (margin - boxPadding) - sPixelWidth, baseLine.Y - GetLineHeight(defaultFont, uiScale, lineHeightScale) + boxPadding));
+                new Vector2(MathF.Min(left, right), MathF.Min(top, bottom)),
+                new Vector2(MathF.Max(left, right), MathF.Max(top, bottom)));
     }
 
     private readonly string ProcessNode(MarkupTagManager tagManager, MarkupNode node, MarkupDrawingContext context)
@@ -406,7 +435,14 @@ internal struct CustomRichTextEntry
             return tag.TextBefore(node);
         }
 
-        tag.PopDrawContext(node, context);
+        try
+        {
+            tag.PopDrawContext(node, context);
+        }
+        catch
+        {
+            throw new Exception($"Bad closing tag for {node.Name}");
+        }
         return tag.TextAfter(node);
     }
 

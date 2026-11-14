@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Sprited by Roudenn(https://github.com/Roudenn)",
+  "copyright": "Sprited by Roudenn(https://github.com/Roudenn). Anom states by Doop for Impstation.",
   "size": {
     "x": 32,
     "y": 32
@@ -18,6 +18,10 @@
       "directions": 4
     },
     {
+      "name": "off-equipped-HELMET-anomalocarid",
+      "directions": 4
+    },
+    {
       "name": "on-equipped-HELMET",
       "directions": 4
     },
@@ -27,6 +31,10 @@
     },
     {
       "name": "on-equipped-HELMET-reptilian",
+      "directions": 4
+    },
+    {
+      "name": "on-equipped-HELMET-anomalocarid",
       "directions": 4
     }
   ]

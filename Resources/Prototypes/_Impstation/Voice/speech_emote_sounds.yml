@@ -1,6 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Froffy025 <scotttaco025@gmail.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: emoteSounds
@@ -39,3 +36,52 @@
       path: /Audio/_Impstation/Animals/pleebnar_scream.ogg
     Squeak:
       path: /Audio/_Impstation/Animals/pleebnar_squeak.ogg
+
+- type: emoteSounds
+  id: UnisexAnt
+  sounds:
+    Scream:
+      collection: MaleScreams
+    Laugh:
+      collection: MaleLaugh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    CatMeow:
+      collection: CatMeows
+    CatHisses:
+      collection: CatHisses
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    RobotBeep:
+      collection: RobotBeeps
+    Yawn:
+      collection: MaleYawn
+    Snore:
+      collection: Snores
+    Sigh:
+      collection: MaleSigh
+    Honk:
+      collection: BikeHorn
+    Crying:
+      collection: MaleCry
+    Chitter:
+      path: /Audio/Voice/Arachnid/arachnid_chitter.ogg
+    Weh:
+      collection: Weh
+    Hew:
+      collection: Hew
+    GoblinThroatSinging:
+      collection: GoblinThroatSingingCollection
+    Gasp:
+      collection: MaleGasp
+    DefaultDeathgasp:
+      collection: MaleDeathGasp
+    Gulp: # goob
+      path: /Audio/_Goobstation/Voice/gulpexotic.ogg
+    Surprised: # Goob
+      path: /Audio/_Goobstation/Voice/surprised.ogg
+  params:
+    variation: 0.125
+    pitch: 3

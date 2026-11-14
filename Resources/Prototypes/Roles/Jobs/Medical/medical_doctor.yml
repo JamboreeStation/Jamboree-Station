@@ -84,7 +84,7 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 9000 #2.5 hrs
+      time: 2.5h
   startingGear: DoctorGear
   icon: "JobIconMedicalDoctor"
   supervisors: job-supervisors-cmo
@@ -114,6 +114,7 @@
   equipment:
     ears: ClothingHeadsetMedical
     belt: ClothingBeltMedicalFilled
+    pocket1: Syringe #jamboree
   #storage:
     #back:
     #- Stuff

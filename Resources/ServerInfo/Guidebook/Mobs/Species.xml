@@ -1,55 +1,52 @@
 <!--
-SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-SPDX-FileCopyrightText: 2024 BeeRobynn <166929042+BeeRobynn@users.noreply.github.com>
-SPDX-FileCopyrightText: 2024 BeeRobynn <robynthewarcrime@proton.me>
-SPDX-FileCopyrightText: 2024 Errant <35878406+Errant-4@users.noreply.github.com>
-SPDX-FileCopyrightText: 2024 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 AstroDogeDX <48888500+AstroDogeDX@users.noreply.github.com>
-SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-
 SPDX-License-Identifier: AGPL-3.0-or-later
 -->
 
 <Document>
   # Species
 
-  Nanotrasen employs a variety of sapient species.
+  NanoTrasen employs a variety of sapient species.
 
   <Box>
+    <GuideEntityEmbed Entity="MobAnomalocarid" Caption="Anomalocarid"/> <!-- Impstation -->
     <GuideEntityEmbed Entity="MobArachnid" Caption="Arachnid"/>
+    <GuideEntityEmbed Entity="MobAvali" Caption="Avali"/> <!-- Starlight -->
+    <GuideEntityEmbed Entity="MobChitinid" Caption="Chitinid"/> <!-- Jamboree, doing this so it isn't being cut off -->
     <GuideEntityEmbed Entity="MobDiona" Caption="Diona"/>
     <GuideEntityEmbed Entity="MobDwarf" Caption="Dwarf"/>
-    <GuideEntityEmbed Entity="MobGingerbread" Caption="Gingerbread"/>
-    <GuideEntityEmbed Entity="MobHarpy" Caption="Harpy"/>
   </Box>
   <Box>
+    <GuideEntityEmbed Entity="MobShadowkin" Caption="Shadowkin"/>
+  </Box>
+
+  <Box>
+    <GuideEntityEmbed Entity="MobFeroxi" Caption="Feroxi"/>
+    <GuideEntityEmbed Entity="MobGingerbread" Caption="Gingerbread"/>
+    <GuideEntityEmbed Entity="MobGoblin" Caption="Goblin"/> <!-- Frontier specific species -->
+    <GuideEntityEmbed Entity="MobHarpy" Caption="Harpy"/>
     <GuideEntityEmbed Entity="MobHuman" Caption="Human"/>
     <GuideEntityEmbed Entity="MobIPCDummy" Caption="IPC"/>
+  </Box>
+
+  <Box>
     <GuideEntityEmbed Entity="MobMoth" Caption="Moth Person"/>
     <GuideEntityEmbed Entity="MobOni" Caption="Oni"/>
+    <GuideEntityEmbed Entity="MobPlasmaman" Caption="Plasmaman"/> <!-- Jamboree, doing this cause it was left out of the crew -->
     <GuideEntityEmbed Entity="MobReptilian" Caption="Reptilian"/>
-<!--    <GuideEntityEmbed Entity="MobResomi" Caption="Resomi"/>   Jamboree -->
     <GuideEntityEmbed Entity="MobRodentia" Caption="Rodentia"/>
   </Box>
+
   <Box>
+    <GuideEntityEmbed Entity="MobShadowkin" Caption="Shadowkin"/>
     <GuideEntityEmbed Entity="MobSlimePerson" Caption="Slime Person"/>
     <GuideEntityEmbed Entity="MobTajaran" Caption="Tajaran"/>
-    <GuideEntityEmbed Entity="MobShadowkin" Caption="Shadowkin"/>
+    <GuideEntityEmbed Entity="MobThaven" Caption="Thaven"/> <!-- Omu: ported from Impstation -->
+  </Box>
+
+  <Box>
+    <GuideEntityEmbed Entity="MobUrsine" Caption="Ursine"/> <!-- Jamboree/ADT adaption -->
     <GuideEntityEmbed Entity="MobVox" Caption="Vox"/>
     <GuideEntityEmbed Entity="MobVulpkanin" Caption="Vulpkanin"/>
-  </Box>
-  <Box>
-    <GuideEntityEmbed Entity="MobPlasmaman" Caption="Plasmaman"/> <!-- Jamboree, doing this cause it was left out of the crew -->
-    <GuideEntityEmbed Entity="MobChitinid" Caption="Chitinid"/> <!-- Jamboree, doing this so it isn't being cut off -->
-    <GuideEntityEmbed Entity="MobThaven" Caption="Thaven"/> <!-- Omu: ported from Impstation -->
-    <GuideEntityEmbed Entity="MobFeroxi" Caption="Feroxi"/>
     <GuideEntityEmbed Entity="MobYowie" Caption="Yowie"/> <!-- Jamboree, return of the Yowie -->
-  </Box>
-  <Box>
-    <GuideEntityEmbed Entity="MobGoblin" Caption="Goblin"/> <!-- Frontier specific species -->
-
-    <GuideEntityEmbed Entity="MobAvali" Caption="Avali"/> <!-- Starlight -->
   </Box>
 </Document>

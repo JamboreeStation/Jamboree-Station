@@ -8,6 +8,18 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 guidebook-reagent-effect-description =
+    {$quantity ->
+        [0] {""}
+        *[other] If there is at least {$quantity}u {$reagent},{" "}
+    }{$chance ->
+        [1] { $effect }
+        *[other] Has a { NATURALPERCENT($chance, 2) } chance to { $effect }
+    }{ $conditionCount ->
+        [0] .
+        *[other] {" "}when { $conditions }.
+    }
+
+guidebook-nested-effect-description =
     {$chance ->
         [1] { $effect }
         *[other] Has a { NATURALPERCENT($chance, 2) } chance to { $effect }

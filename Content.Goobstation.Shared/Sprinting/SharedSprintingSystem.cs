@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 August Eymann <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Movement;
@@ -33,20 +28,21 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using System.Numerics;
+using Content.Shared.Movement.Events;
 
 namespace Content.Goobstation.Shared.Sprinting;
-public abstract class SharedSprintingSystem : EntitySystem
+public abstract partial class SharedSprintingSystem : EntitySystem
 {
-    [Dependency] private readonly SharedStaminaSystem _staminaSystem = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly StandingStateSystem _standing = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedMoverController _moverController = default!;
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private SharedStaminaSystem _staminaSystem = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeed = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
+    [Dependency] private SharedPopupSystem _popupSystem = default!;
+    [Dependency] private StandingStateSystem _standing = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedMoverController _moverController = default!;
+    [Dependency] private INetManager _net = default!;
     public override void Initialize()
     {
         SubscribeLocalEvent<SprinterComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
@@ -73,7 +69,7 @@ public abstract class SharedSprintingSystem : EntitySystem
 
     #region Core Functions
 
-    private sealed class SprintInputCmdHandler(SharedSprintingSystem system) : InputCmdHandler
+    private sealed partial class SprintInputCmdHandler(SharedSprintingSystem system) : InputCmdHandler
     {
         public override bool HandleCmdMessage(IEntityManager entManager, ICommonSession? session, IFullInputCmdMessage message)
         {
@@ -90,7 +86,7 @@ public abstract class SharedSprintingSystem : EntitySystem
         base.Update(frameTime);
 
         // We dont add it to the EQE since the comp might get added as this runs.
-        var query = EntityQueryEnumerator<SprinterComponent, StaminaModifierComponent>();
+        var query = EntityQueryEnumerator<SprinterComponent, StaminaModifierStatusEffectComponent>();
         while (query.MoveNext(out var uid, out var sprinterComp, out var staminaComp))
         {
             if (!sprinterComp.IsSprinting
@@ -194,7 +190,7 @@ public abstract class SharedSprintingSystem : EntitySystem
 
     private void OnStandingStateSprintAttempt(EntityUid uid, StandingStateComponent component, ref SprintAttemptEvent args)
     {
-        if (!_standing.IsDown(uid, component))
+        if (!_standing.IsDown(uid))
             return;
 
         _popupSystem.PopupClient(Loc.GetString("no-sprint-while-lying"), uid, uid, PopupType.Medium);
@@ -290,7 +286,7 @@ public abstract class SharedSprintingSystem : EntitySystem
         if (!sprinter.IsSprinting)
             return;
 
-        _staminaSystem.TakeStaminaDamage(uid, sprinter.StaminaPenaltyOnShove, applyResistances: true, logDamage: false);
+        _staminaSystem.TakeStaminaDamage(uid, sprinter.StaminaPenaltyOnShove, logDamage: false);
         ToggleSprint(uid, sprinter, false, gracefulStop: true);
     }
 

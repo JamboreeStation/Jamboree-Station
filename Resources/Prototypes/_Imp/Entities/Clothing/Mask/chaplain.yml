@@ -12,6 +12,7 @@
     sprite: _Impstation/Clothing/Mask/clayshapermask.rsi
   - type: Clothing
     sprite: _Impstation/Clothing/Mask/clayshapermask.rsi
+  - type: HideLayerClothing
 
 - type: entity
   parent: ClothingMaskPullableBase
@@ -34,3 +35,4 @@
     sprite: _Impstation/Clothing/Mask/silentmask.rsi
   - type: Clothing
     sprite: _Impstation/Clothing/Mask/silentmask.rsi
+  - type: HideLayerClothing

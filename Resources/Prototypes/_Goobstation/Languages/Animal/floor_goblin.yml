@@ -1,5 +1,8 @@
 - type: language
   id: FloorGoblin
+  iconUnderstood: false
+  isVisibleLanguage: true
+  icon: LanguageIconAnimal
   speech:
     color: "#288f43"
   obfuscation:

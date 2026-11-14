@@ -40,6 +40,18 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   - Always triggers mousetraps, regardless of whether or not they are wearing shoes.
   - Gets hungry 33% faster.
 
+ ## Rodentia Naming Conventions
+
+  Rodentia use a naming scheme which features a descriptor as their first name and a last name typically
+  inspired by onomatopoeia, a food, or a name derived from another species.
+  - [color=#449944]Acceptable:[/color] Big Muffin
+  - [color=#449944]Acceptable:[/color] Fast-moving Comet
+  - [color=#449944]Acceptable:[/color] Quiet Squeaks
+  - [color=#449944]Acceptable:[/color] Sharp Jesse
+  - [color=#994444]Bad:[/color] Fucking Jim
+  - [color=#994444]Bad:[/color] Stilted Jeronimo
+  - [color=#994444]Bad:[/color] Stuart Little
+
   ## Lore
 
   Rodentia, rather than simply being a singular species, is the general term for a multitude of rodent resembling species throughout the galaxy. Interestingly, most of the Rodentia collective originated from the same world

@@ -13,6 +13,7 @@
       Hostile: 400
       Medical: 400
       Death: 400
+    destruction: 2 # Goobstation
     eventType: HostilesSpawn
   - type: GameRule
     chaosScore: 400
@@ -20,6 +21,9 @@
   - type: AntagSpawner
     prototype: MobXenomorphLarva
   - type: XenomorphsRule
+    xenomorphInfestationSound:
+      collection: xeno_start #Goobstation
+      volume: -2
   - type: AntagObjectives
     objectives:
     - XenomorphSurviveObjective

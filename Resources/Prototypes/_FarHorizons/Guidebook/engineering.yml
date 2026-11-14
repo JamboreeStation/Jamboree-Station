@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2026 Jamboree Station Contributors (Far-Horizons-SS14)
+# SPDX-License-Identifier: MIT
+# Far Horizons post-cutoff original (commit 21680b3e6b282, 2026-08-18)
+- type: guideEntry
+  id: NuclearReactor
+  name: guide-entry-nuclear-reactor
+  text: "/ServerInfo/_FarHorizons/Guidebook/Engineering/NuclearReactor.xml"
+  children:
+  - NuclearMaterials
+
+- type: guideEntry
+  id: NuclearMaterials
+  name: guide-entry-nuclear-materials
+  text: "/ServerInfo/_FarHorizons/Guidebook/Engineering/NuclearMaterials.xml"

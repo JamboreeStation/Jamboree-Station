@@ -18,10 +18,10 @@ namespace Content.Goobstation.Client.GPS;
 [GenerateTypedNameReferences]
 public sealed partial class GpsWindow : BaseWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IResourceCache _cache = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IResourceCache _cache = default!;
+    [Dependency] private IGameTiming _timing = default!;
 
     private readonly SharedTransformSystem _transform;
     private readonly SpriteSystem _sprite;
@@ -139,11 +139,6 @@ public sealed partial class GpsWindow : BaseWindow
 
         foreach (var entry in sortedEntries)
         {
-            const int maxLength = 10;
-
-            var text = entry.Name ?? Loc.GetString("generic-unknown-title");
-            text = text.Length > maxLength ? text.Substring(0, maxLength) : text;
-
             IRsiStateLike? sprite;
             if (entry.IsDistress)
             {
@@ -160,7 +155,7 @@ public sealed partial class GpsWindow : BaseWindow
                 sprite = icon.Default;
             }
 
-            var item = new GpsListEntry(text, entry.NetEntity, sprite, entry.Color);
+            var item = new GpsListEntry(entry.Name ?? Loc.GetString("generic-unknown-title"), entry.NetEntity, sprite, entry.Color);
 
             item.OnPressed += _ => TrackedEntitySelected?.Invoke(entry.NetEntity);
 

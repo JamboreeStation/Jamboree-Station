@@ -65,21 +65,19 @@ public sealed class GhostRespawnCommand : IConsoleCommand
             return;
         }
 
-        var respawnResetTime = _entity.GetEntitySystem<RespawnSystem>().GetRespawnResetTime(shell.Player);
+         var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+        var respawnResetTime = _entity.GetEntitySystem<RespawnSystem>().GetRespawnResetTime(shell.Player) ?? _gameTiming.CurTime;
 
-        if (respawnResetTime is not null)
+        var time = _gameTiming.CurTime - respawnResetTime;
+        var respawnTime = _configurationManager.GetCVar(NF14CVars.RespawnTime);
+
+        if (respawnTime > time.TotalSeconds)
         {
-            var time = _gameTiming.CurTime - respawnResetTime.Value;
-            var respawnTime = _configurationManager.GetCVar(NF14CVars.RespawnTime);
-
-            if (respawnTime > time.TotalSeconds)
-            {
-                shell.WriteLine($"You haven't been dead long enough. You have been dead {time.TotalSeconds} seconds of the required {respawnTime}.");
-                return;
-            }
+            shell.WriteLine($"You haven't been dead long enough. You have been dead {time.TotalSeconds} seconds of the required {respawnTime}.");
+            return;
         }
 
-        var gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+
         gameTicker.Respawn(shell.Player);
     }
 }

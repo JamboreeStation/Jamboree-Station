@@ -1,12 +1,7 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Julian Giebel <juliangiebel@live.de>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Content.Server.DeviceLinking.Systems;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server.DeviceLinking.Components.Overload;
 
@@ -22,6 +17,6 @@ public sealed partial class SpawnOnOverloadComponent : Component
     /// <summary>
     /// The entity prototype to spawn when the device overloads
     /// </summary>
-    [DataField("spawnedPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string Prototype = "PuddleSparkle";
+    [DataField("spawnedPrototype")]
+    public EntProtoId Prototype = "PuddleSparkle";
 }

@@ -1,14 +1,11 @@
-# SPDX-FileCopyrightText: 2025 CerberusWolfie <wb.johnb.willis@gmail.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Mnemotechnican <69920617+Mnemotechnician@users.noreply.github.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # The universal language. This is technically used as a fallback for simulating the pre-languages
 # style of Chat, and is not normally accessible by players.
 - type: language
   id: Universal
+  isVisibleLanguage: false
+  icon: LanguageIconUnknown
   obfuscation:
     !type:ReplacementObfuscation
     replacement:
@@ -19,6 +16,7 @@
 - type: language
   id: RobotTalk
   isVisibleLanguage: true
+  icon: LanguageIconRobotTalk
   speech:
     fontId: Monospace
     boldFontId: MonospaceBold
@@ -34,6 +32,7 @@
 - type: language
   id: DroneTalk
   isVisibleLanguage: true
+  icon: LanguageIconDroneTalk
   speech:
     fontId: Monospace
     boldFontId: MonospaceBold
@@ -302,9 +301,12 @@
 # Example of a sign language. Used by the Sign Language trait.
 - type: language
   id: Sign
+  isVisibleLanguage: true
+  icon: LanguageIconSign
   speech:
     allowRadio: false
     requireSpeech: false
+    requireSight: true # Goob - the blind dont see
     requireLOS: true # Floofstation - Check Line-Of-Sight
     color: "#dddddd"
     messageWrapOverrides:
@@ -325,9 +327,11 @@
     #Used for Xenoglossy, and anything else with the UniversalLanguageSpeaker component
 - type: language
   id: Psychomantic
+  icon: LanguageIconPsychomantic
+  isVisibleLanguage: false
   speech:
     color: "#C29EFF" # a nice psychic purple, a bit lighter than Ya'ssa
-    # fontId: Megrim # Experimental and alien, but still hopefully clean enough to read #* FONTS NOT ALREADY HERE ARE NOT BEING ADDED
+    fontId: Megrim # Experimental and alien, but still hopefully clean enough to read #* FONTS NOT ALREADY HERE ARE NOT BEING ADDED
     speechVerbOverrides:
     - chat-speech-verb-Psychomantic-1
     - chat-speech-verb-Psychomantic-2

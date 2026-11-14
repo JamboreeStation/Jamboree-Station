@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later AND MIT
 
 - type: entity
-  parent: ClothingMaskClown
+  parent: ClothingMaskClownBase
   id: ClothingMaskClownDevil
   name: devil clown mask
   description: You can do anything!
@@ -16,7 +16,7 @@
     sprite: _Funkystation/Clothing/Mask/devilclown.rsi
 
 - type: entity
-  parent: ClothingMaskClown
+  parent: ClothingMaskClownBase
   id: ClothingMaskClownGamble
   name: gambling clown mask
   description: Looks like you weren't bluffing!
@@ -27,7 +27,7 @@
     sprite: _Funkystation/Clothing/Mask/gambleclown.rsi
 
 - type: entity
-  parent: ClothingMaskClown
+  parent: ClothingMaskClownBase
   id: ClothingMaskClownJuggle
   name: juggling clown mask
   description: It's a miracle that you are able to keep all those objects in the air.

@@ -1,23 +1,18 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Explosion.EntitySystems;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Goobstation.Maths.FixedPoint;
+using Content.Shared.Trigger.Systems;
 using Robust.Shared.Containers;
 
 namespace Content.Goobstation.Server.Trigger;
 
-public sealed class TriggerOnSolutionInsertSystem : EntitySystem
+public sealed partial class TriggerOnSolutionInsertSystem : EntitySystem
 {
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainers = default!;
-    [Dependency] private readonly TriggerSystem _triggersystem = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainers = default!;
+    [Dependency] private TriggerSystem _triggersystem = default!;
 
     public override void Initialize()
     {

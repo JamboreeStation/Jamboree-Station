@@ -43,5 +43,5 @@
       - MediGun
   - type: ApcPowerReceiver
     needsPower: false
-    powerLoad: 0
+    powerLoad: 1
 

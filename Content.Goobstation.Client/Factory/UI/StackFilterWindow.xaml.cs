@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client.UserInterface.Controls;
@@ -13,7 +10,7 @@ namespace Content.Goobstation.Client.Factory.UI;
 [GenerateTypedNameReferences]
 public sealed partial class StackFilterWindow : FancyWindow
 {
-    [Dependency] private readonly EntityManager _entMan = default!;
+    [Dependency] private EntityManager _entMan = default!;
 
     public event Action<int>? OnSetMin;
     public event Action<int>? OnSetSize;

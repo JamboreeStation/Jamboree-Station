@@ -1,6 +1,12 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Spoken by Unathi, reptilians.
 - type: language
+  icon: LanguageIconDraconic
   id: Draconic
+  iconUnderstood: false
   isVisibleLanguage: true
   speech:
     color: "#2aca2add"
@@ -94,25 +100,6 @@
     - s
     - s
 
-# Reptilian-Specific "Rare" Language
-# !Do Not Make A Translator For This Language.
-- type: language
-  id: Azaziba
-  speech:
-    color: "#2aca2add"
-  obfuscation:
-    !type:SyllableObfuscation
-    minSyllables: 2
-    maxSyllables: 4
-    replacement:
-    - azs
-    - zis
-    - zau
-    - azua
-    - skiu
-    - zuakz
-    - izo
-    - aei
-    - ki
-    - kut
-    - zo
+
+
+

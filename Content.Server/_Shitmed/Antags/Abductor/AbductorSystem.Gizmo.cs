@@ -1,9 +1,6 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Shared._Shitmed.Antags.Abductor;
 using Content.Shared._Shitmed.Medical.Surgery;
 using Content.Shared.ActionBlocker;
@@ -35,7 +32,7 @@ public sealed partial class AbductorSystem : SharedAbductorSystem
     private void OnGizmoHitInteract(Entity<AbductorGizmoComponent> ent, ref MeleeHitEvent args)
     {
         if (args.HitEntities.Count != 1) return;
-        var target = args.HitEntities[0];
+        var target = args.HitEntities.First();
         if (!HasComp<SurgeryTargetComponent>(target)) return;
         GizmoUse(ent, target, args.User);
     }

@@ -1,9 +1,9 @@
 - type: traitCategory
   id: LanguageTraits
   name: trait-category-languages
-  maxTraitPoints: 1 # Leaving this at 1 in case we add nationalities that give languages as well.
+  maxTraitPoints: 2 # Jamboree, raised to 2
 
 - type: traitCategory
   id: Psionics
   name: trait-category-Psionics
-  maxTraitPoints: 10
+  maxTraitPoints: 1

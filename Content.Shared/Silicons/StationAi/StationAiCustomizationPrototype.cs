@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 using Robust.Shared.Utility;
@@ -41,7 +44,7 @@ public sealed partial class StationAiCustomizationPrototype : IPrototype, IInher
     /// The prototype we inherit from.
     /// </summary>
     [ViewVariables]
-    [ParentDataFieldAttribute(typeof(AbstractPrototypeIdArraySerializer<StationAiCustomizationPrototype>))]
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<StationAiCustomizationPrototype>))]
     public string[]? Parents { get; private set; }
 
     /// <summary>

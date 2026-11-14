@@ -15,15 +15,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   They are slow breathers, taking a long time before requiring internals when in a vacuum.
   They have innate, toggleable night vision.
-  They take 85% less cellular damage.
 
 
   Their unarmed claw attacks deal Slash damage instead of Blunt.
 
   Stun times from flashes are doubled.
-  They take 20% more heat damage.
-  They take 25% more shock and bloodloss damage.
-  They take 30% more radiation damage
+  They take 25% more brute damage.
+  They take 40% more heat damage.
+  They take 50% less asphyxiation damage
 
   ## Light Exposure
 
@@ -44,9 +43,25 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   Light Exposure: EXTREME
   - You begin to take 1 heat damage per second exposed.
 
+ ## Shadowkin Naming Conventions
+
+  Shadowkin typically take up one of three types of naming conventions. The first
+  is a word which exists in their native language. The second is a name which denotes
+  their current or a former position in society. The third is a name which is based off
+  of an aspect of nature. The first naming convention should not be so long that it is
+  unintelligible.
+  - [color=#449944]Acceptable:[/color] Lwmar
+  - [color=#449944]Acceptable:[/color] UurlmmrwlAmur
+  - [color=#449944]Acceptable:[/color] Paramedic
+  - [color=#449944]Acceptable:[/color] Stone
+  - [color=#994444]Bad:[/color] MaarLwmarMwaarlwurmAralwurmar
+  - [color=#994444]Bad:[/color] John Shadowkin
+
   ## Lore
 
   Once hidden away in the darkest crevices of their origin world, Mars, the Shadowkin are a very reserved species.
   As such, much of their culture is a mystery to the majority of the galaxy. What is known is that many take on names after an object, role, or sound sequence that is significant to them.
+  One of the few things that can be gleamed is that the environment of their culture, despite being on a planet far different from Earth and underground, must include concepts which exist
+  on Earth, as evidenced by Shadowkin who are named after pieces of nature which have yet to be found naturally occurring on Mars.
 
 </Document>

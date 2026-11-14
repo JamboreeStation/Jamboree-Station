@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Goob Station Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: cloningSettings
   id: Illusion
   components:
@@ -11,8 +15,15 @@
   # traits
   - BlackAndWhiteOverlay
   - LightweightDrunk
+  - Unrevivable # Goobstation - Unrevivable trait
+  - BibleUser # Goobstation - Chaplain bible user
   # job specific
   - MindShield
+  # special components for antags/roles
+  - Condemned # Goobstation - Chaplain soul protection
+  - CanEnchant # Goobstation
+  - InnatePsionicPowers # Goobstation - HealingWordPower, SummonRemiliaPower
+  - CurseImmune # Goobstation - Immune to curses
   # accents
   - Accentless
   - BackwardsAccent
@@ -49,6 +60,7 @@
   blacklist:
     components:
     - AttachedClothing # helmets, which are part of the suit
+    - ModPart # Goob
     - HumanoidAppearance # will cause problems for downstream felinids getting cloned as Urists
     - Implanter # they will spawn full again, but you already get the implant. And we can't do item slot copying yet
     - VirtualItem

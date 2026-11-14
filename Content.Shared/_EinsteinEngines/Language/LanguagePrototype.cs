@@ -1,11 +1,7 @@
-// SPDX-FileCopyrightText: 2025 CerberusWolfie <wb.johnb.willis@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Mnemotechnican <69920617+Mnemotechnician@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Chat;
+using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._EinsteinEngines.Language;
@@ -33,6 +29,24 @@ public sealed partial class LanguagePrototype : IPrototype
     /// </summary>
     [DataField("speech")]
     public SpeechOverrideInfo SpeechOverride = new();
+
+    /// <summary>
+    ///     Icon of the language visible in chat/bubbles.
+    /// </summary>
+    [DataField]
+    public ProtoId<JobIconPrototype> Icon = "LanguageIconUnknown";
+
+    /// <summary>
+    ///     Show the Icon if understood.
+    /// </summary>
+    [DataField]
+    public bool IconUnderstood = true;
+
+    /// <summary>
+    ///     Show the Icon if not understood.
+    /// </summary>
+    [DataField]
+    public bool IconNotUnderstood = true;
 
     #region utility
     /// <summary>

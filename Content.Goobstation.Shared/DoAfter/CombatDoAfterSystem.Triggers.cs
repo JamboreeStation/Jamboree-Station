@@ -1,8 +1,6 @@
-// SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Linq;
 using Content.Goobstation.Common.DoAfter;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
@@ -19,7 +17,7 @@ public sealed partial class CombatDoAfterSystem
     private void InitializeTriggers()
     {
         SubscribeLocalEvent<CombatDoAfterComponent, MeleeHitEvent>(OnHit);
-        SubscribeLocalEvent<CombatDoAfterComponent, ThrownEvent>(OnThrow);
+        SubscribeLocalEvent<CombatDoAfterComponent, ThrowEvent>(OnThrow);
 
         SubscribeLocalEvent<InjectorComponent, CombatSyringeTriggerEvent>(OnCombatSyringeHit);
         SubscribeLocalEvent<EnsnaringComponent, CombatDoAfterThrownEvent>(OnEnsnaringThrow);
@@ -35,7 +33,7 @@ public sealed partial class CombatDoAfterSystem
 
     private void OnEnsnared(Entity<EnsnaringKnockdownComponent> ent, ref EnsnaredEvent args)
     {
-        _layingDown.TryLieDown(args.Target);
+        _stun.TryCrawling(args.Target);
         RemCompDeferred(ent.Owner, ent.Comp);
     }
 
@@ -49,7 +47,7 @@ public sealed partial class CombatDoAfterSystem
         if (args.Targets.Count == 0)
             return;
 
-        var target = args.Targets[0];
+        var target = args.Targets.First();
 
         if (!HasComp<MobStateComponent>(target))
             return;
@@ -77,7 +75,7 @@ public sealed partial class CombatDoAfterSystem
         QueueDel(ent);
     }
 
-    private void OnThrow(Entity<CombatDoAfterComponent> ent, ref ThrownEvent args)
+    private void OnThrow(Entity<CombatDoAfterComponent> ent, ref ThrowEvent args)
     {
         if (args.User == null)
             return;

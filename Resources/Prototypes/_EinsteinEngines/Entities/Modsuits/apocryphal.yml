@@ -1,13 +1,3 @@
-# SPDX-FileCopyrightText: 2025 CliveOcelot <165305605+Orion-416@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Marty <martynashagriefer@gmail.com>
-# SPDX-FileCopyrightText: 2025 NotActuallyMarty <martynashagriefer@gmail.com>
-# SPDX-FileCopyrightText: 2025 Orion-416 <cliveocelot@gmail.com>
-# SPDX-FileCopyrightText: 2025 PunishedJoe <PunishedJoeseph@proton.me>
-# SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 # The Modsuit Itself, This is just a Deathsquad modsuit
@@ -19,26 +9,34 @@
   components:
     - type: Sprite
       sprite: _EinsteinEngines/Clothing/NanoTrasen/Modsuits/apocryphal.rsi
-    - type: ToggleableClothing
-      clothingPrototypes:
+    - type: ModSuit
+      theme: ModThemeApocryphal
+      parts:
         head: ClothingModsuitHelmetApocryphal
         gloves: ClothingModsuitGauntletsApocryphal
         outerClothing: ClothingModsuitChestplateApocryphal
         shoes: ClothingModsuitBootsApocryphal
+      startingModules:
+      - ModsuitModuleStorageBluespace
+      - ModsuitModuleFlashlight
+      - ModsuitModuleMagboots
+      inbuiltModules:
+      - ModsuitModuleBuiltinThermal
+      - ModsuitModuleBuiltinSecHud
+      - ModsuitModuleBuiltinMedHud
+      - ModsuitModuleBuiltinFlashProtection
+      - ModsuitModuleBuiltinInsulation
     - type: ItemSlots
       slots:
-        cell_slot:
-          name: power-cell-slot-component-slot-name-default
-          startingItem: PowerCellAntiqueProto
+        mod-core:
+          name: modsuit-core-slot-name
+          startingItem: ModsuitCoreStandardAntique
           whitelist:
             components:
-              - PowerCell
-    - type: Storage
-      grid:
-        - 0,0,7,6
+            - ModCore
     - type: ExplosionResistance
       damageCoefficient: 0.1
-    - type: SealableClothingVisuals
+    - type: ModSuitSealedVisuals
       spriteLayer: sealed
       clothingVisuals:
         back:
@@ -53,16 +51,20 @@
   components:
     - type: Sprite
       sprite: _EinsteinEngines/Clothing/NanoTrasen/Modsuits/apocryphal.rsi
-    - type: SealableClothingVisuals
+    - type: ModSuitSealedVisuals
       spriteLayer: sealed
       clothingVisuals:
         gloves:
         - state: equipped-HAND-sealed
         - state: equipped-HAND-sealed-unshaded
           shader: unshaded
+        gloves-vox:
+        - state: equipped-HAND-sealed-vox
+        - state: equipped-HAND-sealed-unshaded-vox
+          shader: unshaded
 
 - type: entity
-  parent: [ClothingModsuitHelmetStandard, ShowSecurityIcons]
+  parent: [ClothingModsuitHelmetStandard]
   id: ClothingModsuitHelmetApocryphal
   name: Apocryphal modsuit helmet # Goob edit
   description: A state-of-the-art helmet designed by NanoTrasen for the Apocryphal modsuit. It includes a built-in HUD.
@@ -90,26 +92,51 @@
           Cellular: 0.1
           Radiation: 0.1
           Caustic: 0.1
-    - type: ThermalVision
-      isEquipment: true
-      color: "#98EEFB"
-      lightRadius: 15
-    - type: FlashImmunity # Goobstation
     - type: FlashSoundSuppression # Goobstation
       protectionRange: 0
-    - type: ShowHealthBars
-      damageContainers:
-        - Biological
     - type: PointLight
       color: "#FFDF00"
-    - type: SealableClothingVisuals
+    - type: ModSuitSealedVisuals
       spriteLayer: sealed
       clothingVisuals:
+        head-hydrakin:
+        - state: equipped-HEAD-sealed
+        - state: equipped-HEAD-sealed-unshaded
+          shader: unshaded
+        head-feroxi:
+        - state: equipped-HEAD-sealed
+        - state: equipped-HEAD-sealed-unshaded
+          shader: unshaded
+        head-vulpkanin:
+        - state: equipped-HEAD-sealed
+        - state: equipped-HEAD-sealed-unshaded
+          shader: unshaded
+        head-resomi:
+        - state: equipped-HEAD-sealed
+        - state: equipped-HEAD-sealed-unshaded
+          shader: unshaded
         head:
         - state: equipped-HEAD-sealed
         - state: equipped-HEAD-sealed-unshaded
           shader: unshaded
-
+        head-vox:
+        - state: equipped-HEAD-sealed-vox
+        - state: equipped-HEAD-sealed-unshaded-vox
+          shader: unshaded
+    - type: Clothing
+      clothingVisuals:
+        head-vulpkanin:
+        - state: equipped-HEAD-sealed
+        - state: equipped-HEAD-sealed-unshaded
+          shader: unshaded
+        head-feroxi:
+        - state: equipped-HEAD-sealed
+        - state: equipped-HEAD-sealed-unshaded
+          shader: unshaded
+        head-hydrakin:
+        - state: equipped-HEAD-sealed
+        - state: equipped-HEAD-sealed-unshaded
+          shader: unshaded
 - type: entity
   parent: ClothingModsuitChestplateStandard
   id: ClothingModsuitChestplateApocryphal
@@ -139,11 +166,15 @@
           Cellular: 0.1
           Radiation: 0.1
           Caustic: 0.1
-    - type: SealableClothingVisuals
+    - type: ModSuitSealedVisuals
       spriteLayer: sealed
       clothingVisuals:
+        outerClothing-resomi:
+        - state: equipped-OUTERCLOTHING-sealed
         outerClothing:
         - state: equipped-OUTERCLOTHING-sealed
+        outerClothing-vox:
+        - state: equipped-OUTERCLOTHING-sealed-vox
     - type: StaminaResistance
       damageCoefficient: 0 # 100%
     - type: PressureProtection
@@ -164,19 +195,13 @@
     - type: Appearance
     - type: Sprite
       sprite: _EinsteinEngines/Clothing/NanoTrasen/Modsuits/apocryphal.rsi
-    - type: SealableClothingVisuals
+    - type: ModSuitSealedVisuals
       spriteLayer: sealed
       clothingVisuals:
         shoes:
         - state: equipped-FEET-sealed
-    - type: ItemToggle
-    - type: ToggleClothing
-      action: ActionToggleMagboots
-    - type: ComponentToggler
-      components:
-      - type: NoSlip
-    - type: Magboots
-      enabledPrefix: null
+        shoes-vox:
+        - state: equipped-FEET-sealed-vox
     - type: ClothingSpeedModifier
       walkModifier: 1.1
       sprintModifier: 1.1

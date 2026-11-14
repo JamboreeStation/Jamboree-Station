@@ -1,20 +1,8 @@
-// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Marcus F <199992874+thebiggestbruh@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 the biggest bruh <199992874+thebiggestbruh@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 whateverusername0 <whateveremail>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server._Goobstation.Heretic.EntitySystems.PathSpecific;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Atmos.Components;
+using Content.Shared.Atmos.Components;
 using Content.Server.Audio;
 using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
@@ -42,6 +30,7 @@ using Content.Shared._Shitcode.Heretic.Components;
 using Content.Shared.Doors.Components;
 using Content.Shared.Effects;
 using Content.Shared.Heretic;
+using Content.Shared.Light.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Projectiles;
 using Content.Shared.Standing;
@@ -51,6 +40,8 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
+using Content.Server.Atmos.Components;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server.Heretic.EntitySystems.PathSpecific;
 
@@ -60,7 +51,7 @@ public sealed class AristocratSystem : EntitySystem
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly IRobustRandom _rand = default!;
     [Dependency] private readonly IPrototypeManager _prot = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -78,12 +69,13 @@ public sealed class AristocratSystem : EntitySystem
     [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
     [Dependency] private readonly StatusEffectsSystem _status = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly HereticSystem _heretic = default!;
 
     private static readonly EntProtoId IceTilePrototype = "IceCrust";
     private static readonly ProtoId<ContentTileDefinition> SnowTilePrototype = "FloorAstroSnow";
     private static readonly EntProtoId IceWallPrototype = "WallIce";
 
-    private const float ConduitDelay = 1f;
+    private const float ConduitDelay = 2f;
 
     private float _accumulator;
 
@@ -275,7 +267,7 @@ public sealed class AristocratSystem : EntitySystem
             {
                 var offset = new Vector2(x, y);
 
-                var pos = coords.Offset(offset).SnapToGrid(EntityManager, _mapMan);
+                var pos = coords.Offset(offset).SnapToGrid(EntityManager);
                 tiles.Add(pos);
             }
         }
@@ -316,6 +308,12 @@ public sealed class AristocratSystem : EntitySystem
         var conduitQuery = EntityQueryEnumerator<VoidConduitComponent, TransformComponent>();
         while (conduitQuery.MoveNext(out var uid, out var conduit, out var xform))
         {
+            if (!conduit.Active) // Skip first iteration
+            {
+                conduit.Active = true;
+                continue;
+            }
+
             FreezeAtmos((uid, xform));
 
             var (pos, rot) = _xform.GetWorldPositionRotation(xform, xformQuery);
@@ -330,7 +328,7 @@ public sealed class AristocratSystem : EntitySystem
                 if (ignored.Contains(ent))
                     continue;
 
-                if (hereticQuery.HasComp(ent) || ghoulQuery.HasComp(ent))
+                if (_heretic.IsHereticOrGhoul(ent))
                 {
                     ignored.Add(ent);
                     if (statusQuery.TryComp(ent, out var status))
@@ -377,6 +375,12 @@ public sealed class AristocratSystem : EntitySystem
 
             if (affected.Count > 0)
                 _color.RaiseEffect(Color.Black, affected, Filter.Pvs(uid, 3f, EntityManager));
+
+            if (conduit.Range < conduit.MaxRange)
+            {
+                conduit.Range++;
+                Dirty(uid, conduit);
+            }
         }
     }
 
@@ -458,7 +462,7 @@ public sealed class AristocratSystem : EntitySystem
 
         // If heretic is lying down, walking or moving slowly, bullets are slowed down even more
         var waltzMultiplier = TryComp(ent, out InputMoverComponent? mover) && !mover.Sprinting ||
-            _standing.IsDown(ent) || ent.Comp3.LinearVelocity.Length() <= 2.5f
+            _standing.IsDown(ent.Owner) || ent.Comp3.LinearVelocity.Length() <= 2.5f
             ? 1f
             : 2f;
 

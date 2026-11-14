@@ -203,7 +203,6 @@ using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
-using Content.Server._RMC14.LinkAccount; // RMC - Patreon
 
 namespace Content.Server.Chat.Managers;
 
@@ -212,14 +211,6 @@ namespace Content.Server.Chat.Managers;
 /// </summary>
 internal sealed partial class ChatManager : IChatManager
 {
-    private static readonly Dictionary<string, string> PatronOocColors = new()
-    {
-        // I had plans for multiple colors and those went nowhere so...
-        { "nuclear_operative", "#aa00ff" },
-        { "syndicate_agent", "#aa00ff" },
-        { "revolutionary", "#aa00ff" }
-    };
-
     [Dependency] private readonly IReplayRecordingManager _replay = default!;
     [Dependency] private readonly IServerNetManager _netManager = default!;
     [Dependency] private readonly IAdminManager _adminManager = default!;
@@ -230,8 +221,9 @@ internal sealed partial class ChatManager : IChatManager
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly PlayerRateLimitManager _rateLimitManager = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
-    [Dependency] private readonly LinkAccountManager _linkAccount = default!; // RMC - Patreon
     [Dependency] private readonly DiscordChatLink _discordLink = default!;
+    [Dependency] private readonly ILogManager _logManager = default!;
+    private ISawmill _sawmill = default!;
 
     /// <summary>
     /// The maximum length a player-sent message can be sent
@@ -250,6 +242,8 @@ internal sealed partial class ChatManager : IChatManager
 
         _configurationManager.OnValueChanged(CCVars.OocEnabled, OnOocEnabledChanged, true);
         _configurationManager.OnValueChanged(CCVars.AdminOocEnabled, OnAdminOocEnabledChanged, true);
+
+        _sawmill = _logManager.GetSawmill("SERVER");
 
         RegisterRateLimits();
     }
@@ -298,7 +292,7 @@ internal sealed partial class ChatManager : IChatManager
     {
         var wrappedMessage = Loc.GetString("chat-manager-server-wrap-message", ("message", FormattedMessage.EscapeText(message)));
         ChatMessageToAll(ChatChannel.Server, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride);
-        Logger.InfoS("SERVER", message);
+        _sawmill.Info(message);
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Server announcement: {message}");
     }
@@ -347,13 +341,19 @@ internal sealed partial class ChatManager : IChatManager
 
     public void SendAdminAlert(string message)
     {
-        var clients = _adminManager.ActiveAdmins.Select(p => p.Channel);
-
         var wrappedMessage = Loc.GetString("chat-manager-send-admin-announcement-wrap-message",
             ("adminChannelName", Loc.GetString("chat-manager-admin-channel-name")), ("message", FormattedMessage.EscapeText(message)));
 
-        ChatMessageToMany(ChatChannel.AdminAlert, message, wrappedMessage, default, false, true, clients);
+        SendAdminAlertNoFormatOrEscape(wrappedMessage);
     }
+
+    public void SendAdminAlertNoFormatOrEscape(string message)
+    {
+        var clients = _adminManager.ActiveAdmins.Select(p => p.Channel);
+
+        ChatMessageToMany(ChatChannel.AdminAlert, message, message, default, false, true, clients);
+    }
+
 
     public void SendAdminAlert(EntityUid player, string message)
     {
@@ -466,11 +466,6 @@ internal sealed partial class ChatManager : IChatManager
             var prefs = _preferencesManager.GetPreferences(player.UserId);
             colorOverride = prefs.AdminOOCColor;
         }
-        if (  _netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) &&
-            _linkAccount.GetPatron(player)?.Tier != null) // RMC - Patreon
-        {
-            wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message", ("patronColor", "#aa00ff"),("playerName", player.Name), ("message", FormattedMessage.EscapeText(message))); // RMC - Patreon
-        }
 
         //TODO: player.Name color, this will need to change the structure of the MsgChatMessage
         ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);
@@ -513,14 +508,14 @@ internal sealed partial class ChatManager : IChatManager
 
     #region Utility
 
-    // Goobstation Edit - Coalescing Chat
-    public void ChatMessageToOne(ChatChannel channel, string message, string wrappedMessage, EntityUid source, bool hideChat, INetChannel client, Color? colorOverride = null, bool recordReplay = false, string? audioPath = null, float audioVolume = 0, NetUserId? author = null, bool canCoalesce = true)
+    // Goobstation Edit - Coalescing Chat, Trauma - added hidePopup
+    public void ChatMessageToOne(ChatChannel channel, string message, string wrappedMessage, EntityUid source, bool hideChat, INetChannel client, Color? colorOverride = null, bool recordReplay = false, string? audioPath = null, float audioVolume = 0, NetUserId? author = null, bool canCoalesce = true, bool hidePopup = false)
     {
         var user = author == null ? null : EnsurePlayer(author);
         var netSource = _entityManager.GetNetEntity(source);
         user?.AddEntity(netSource);
 
-        var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume, canCoalesce); // Goobstation Edit
+        var msg = new ChatMessage(channel, message, wrappedMessage, netSource, user?.Key, hideChat, colorOverride, audioPath, audioVolume, canCoalesce, hidePopup); // Goobstation Edit, Trauma - added hidePopup
         _netManager.ServerSendMessage(new MsgChatMessage() { Message = msg }, client);
 
         if (!recordReplay)

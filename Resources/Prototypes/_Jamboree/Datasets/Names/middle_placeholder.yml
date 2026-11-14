@@ -1,0 +1,5 @@
+﻿- type: localizedDataset
+  id: NamesMiddle
+  values:
+    prefix: names-middle-dataset-
+    count: 1

@@ -62,6 +62,7 @@
     - CMOInjectionKit
     - CMOReviveKit
     - CMODoktorKit
+    - CMOEchemerKit
 #    - CMOMindKit # TODO - finish this
 #    - CMOCloningKit # disabled for now, available in CMO's locker at roundstart
     maxSelectedSets: 1

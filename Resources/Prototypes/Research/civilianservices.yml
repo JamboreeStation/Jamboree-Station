@@ -131,6 +131,7 @@
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
     - BorgModuleLollypop # Goobstation
+    - CrayonRainbowLarge # Goobstation
   position: 0,2
 
 - type: technology
@@ -168,9 +169,14 @@
   - FauxTileAstroGrass
   - FauxTileMowedAstroGrass
   - FauxTileJungleAstroGrass
+  - FauxTileDarkAstroGrass
+  - FauxTileLightAstroGrass
   - FauxTileAstroIce
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
+  - FauxTileDesertAstroSand
+  - FauxTileAstroIronsand
+  - FauxTileAstroIronsandBorderless
   # Goobstation R&D Console rework start
   position: 1,5
   technologyPrerequisites:
@@ -192,30 +198,33 @@
   - CryoPodMachineCircuitboard
   - CryostasisBeaker
   - SyringeCryostasis
+  - CryostasisCigarette # goob cryo cigarette
   # Goobstation R&D Console rework start
   position: 3,5
   technologyPrerequisites:
   - AccessibilityTech
   # Goobstation R&D Console rework end
 
-# Goob edit
-#- type: technology # Merge with other T2 medical research if possible!
-#  id: MechanizedTreatment
-#  name: research-technology-mechanized-treatment
-#  icon:
-#    sprite: Mobs/Silicon/chassis.rsi
-#    state: medical
-#  discipline: CivilianServices
-#  tier: 2
-#  cost: 5000
-#  recipeUnlocks:
-#  - BorgModuleAdvancedChemical
-#  # Goobstation R&D Console rework start
-#  position: -1, 4
-#  technologyPrerequisites:
-#  - AdvancedEntertainment
-#  - BasicRobotics
-#  # Goobstation R&D Console rework end
+# marty todo
+- type: technology # Merge with other T2 medical research if possible!
+  id: MechanizedTreatment
+  name: research-technology-mechanized-treatment
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: medical
+  discipline: CivilianServices
+  tier: 2
+  cost: 5000
+  recipeUnlocks:
+  - BorgModuleAdvancedTopical
+  - BorgModuleAdvancedSurgery # Shitmed - does it make sense to have it before advanced surg? Don't know, but this spices up medborgs.
+  - AdvancedJetInjector
+  # Goobstation R&D Console rework start
+  position: -2, 4
+  technologyPrerequisites:
+  - AdvancedEntertainment
+  - BasicRobotics
+  # Goobstation R&D Console rework end
 
 
 - type: technology
@@ -311,13 +320,12 @@
   cost: 4000
   recipeUnlocks:
   - PushHorn
+  - BorgModuleAdvancedClowning
   # Goobstation R&D Console rework start
   position: 0,5
   technologyPrerequisites:
   - CritterMechs
   # Goobstation R&D Console rework end
-
-# Tier 3
 
 - type: technology
   id: QuantumFiberWeaving
@@ -369,6 +377,7 @@
   cost: 15000
   recipeUnlocks:
   - ServiceEnergyChemMachineCircuitboard
+  - DrinkShakerBluespace
   - EnergyBoozeDispenserMachineCircuitboard # Jamboree - add energy booze dispenser service circuitboard to research
   - EnergySodaDispenserMachineCircuitboard # Jamboree - add energy soda dispenser service circuitboard to research
   position: -4,7

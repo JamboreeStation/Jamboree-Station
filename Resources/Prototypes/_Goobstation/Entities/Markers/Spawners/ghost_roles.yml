@@ -36,12 +36,9 @@
     rules: ghost-role-information-silicon-rules
     mindRoles:
     - MindRoleGhostRoleSilicon
+    - MindRoleGhostRoleSoloAntagonistBorgGoob
     raffle:
       settings: default
-    requirements: # Jamboree, Fix for Syndie Borg
-    - !type:RoleTimeRequirement
-      role: JobBorg
-      time: 36000 #10 hours
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:
@@ -61,6 +58,7 @@
     rules: ghost-role-information-antagonist-rules
     mindRoles:
     - MindRoleGhostRoleSoloAntagonist
+    - MindRoleGhostRoleSoloAntagonistPassengerGoob
     raffle:
       settings: default
   - type: Sprite
@@ -82,6 +80,7 @@
     rules: ghost-role-information-antagonist-rules
     mindRoles:
     - MindRoleGhostRoleSoloAntagonist
+    - MindRoleGhostRoleSoloAntagonistClownGoob
     raffle:
       settings: default
   - type: Sprite
@@ -102,7 +101,7 @@
     description: ghost-role-information-Singuloth-Knight-description
     rules: ghost-role-information-freeagent-rules
     mindRoles:
-    - MindRoleGhostRoleFreeAgent
+    - MindRoleGhostRoleFreeAgentEngineeringGoob
     raffle:
       settings: default
   - type: Sprite
@@ -123,7 +122,7 @@
     description: ghost-role-information-dark-lord-description
     rules: ghost-role-information-antagonist-rules
     mindRoles:
-    - MindRoleGhostRoleSoloAntagonist
+    - MindRoleGhostRoleFreeAgentSecurityGoob
     raffle:
       settings: default
   - type: Sprite
@@ -145,7 +144,8 @@
     description: ghost-role-information-mime-Assassin-description
     rules: ghost-role-information-antagonist-rules
     mindRoles:
-    - MindRoleGhostRoleSoloAntagonist
+    - MindRoleGhostRoleSoloAntagonistGoob
+    - MindRoleGhostRoleSoloAntagonistMimeGoob
     raffle:
       settings: default
   - type: Sprite
@@ -167,6 +167,7 @@
     rules: ghost-role-information-nonantagonist-rules
     mindRoles:
     - MindRoleGhostRoleNeutral
+    - MindRoleGhostRoleFreeAgentSecurityGoob
     raffle:
       settings: default
   - type: Sprite
@@ -188,6 +189,7 @@
     rules: ghost-role-information-freeagent-rules
     mindRoles:
     - MindRoleGhostRoleFreeAgent
+    - MindRoleGhostRoleFreeAgentSecurityGoob
     raffle:
       settings: default
   - type: Sprite
@@ -209,6 +211,7 @@
     rules: ghost-role-information-antagonist-rules
     mindRoles:
     - MindRoleGhostRoleTeamAntagonist
+    - MindRoleGhostRoleFreeAgentSecurityGoob # todo marty
     raffle:
       settings: default
   - type: Sprite

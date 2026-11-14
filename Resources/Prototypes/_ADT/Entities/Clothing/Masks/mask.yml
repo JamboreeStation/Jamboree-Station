@@ -10,7 +10,7 @@
     sprite: ADT/Clothing/Mask/mfdoom.rsi
 
 - type: entity
-  parent: ClothingMaskClown
+  parent: ClothingMaskClownBase
   id: ADTClothingMaskClownAbyss
   name: abyssal clown mask #changed name
   description: The mask of clowns who serve in the depths of the ocean in submarines. There's not much difference between a submarine and a space station... right? #changed description

@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 262.0.0
+  engineVersion: 264.0.0
   forkId: ""
   forkVersion: ""
-  time: 08/14/2025 11:27:23
-  entityCount: 3531
+  time: 09/04/2026 21:10:05
+  entityCount: 3526
 maps: []
 grids:
 - 1
@@ -123,6 +123,11 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
+      dampingModifiers:
+        Cruise: 0.0075
+        Dampen: 0.25
+        Anchor: 2
+        None: 0.25
       dampingModifier: 0.25
     - type: GridPathfinding
     - type: Gravity
@@ -1437,7 +1442,7 @@ entities:
           5,2:
             0: 32
           6,1:
-            5: 1
+            7: 1
             1: 2810
             2: 4352
           7,1:
@@ -1594,12 +1599,32 @@ entities:
           - 0
           - 0
           - 0
+        - volume: 2500
+          temperature: 293.1492
+          moles:
+          - 18.472576
+          - 69.49208
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
+          - 0
         chunkSize: 4
     - type: GasTileOverlay
     - type: RadiationGridResistance
     - type: ImplicitRoof
     - type: IFF
       flags: HideLabel, Hide
+    - type: FTLDrive
   - uid: 3
     components:
     - type: MetaData
@@ -2105,7 +2130,7 @@ entities:
       pos: 25.5,0.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -103462.15
+      secondsUntilStateChange: -103684.9
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2126,7 +2151,7 @@ entities:
       pos: 12.5,2.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -47714.79
+      secondsUntilStateChange: -47937.543
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -2204,7 +2229,7 @@ entities:
       pos: 18.5,-3.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -117294.57
+      secondsUntilStateChange: -117517.32
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -6715,6 +6740,28 @@ entities:
     - type: Transform
       pos: 24.5,4.5
       parent: 1
+    - type: EntityStorage
+      air:
+        volume: 200
+        immutable: False
+        temperature: 293.14594
+        moles:
+        - 1.606311
+        - 6.042789
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
+        - 0
 - proto: CrateChemistryP
   entities:
   - uid: 908
@@ -6771,16 +6818,14 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 156
           - 155
-          - 149
-          - 150
-          - 151
-          - 152
-          - 153
-          - 154
           - 157
-          - 158
+          - 154
+          - 153
+          - 152
+          - 151
+          - 150
+          - 149
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -6818,18 +6863,18 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 168
-          - 169
-          - 170
-          - 171
-          - 172
-          - 173
-          - 174
-          - 175
-          - 176
-          - 177
-          - 166
           - 167
+          - 169
+          - 166
+          - 177
+          - 176
+          - 175
+          - 174
+          - 173
+          - 172
+          - 171
+          - 170
+          - 168
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -6867,13 +6912,13 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 918
           - 916
-          - 914
-          - 915
-          - 912
-          - 913
           - 917
+          - 913
+          - 912
+          - 915
+          - 914
+          - 918
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -6911,8 +6956,8 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 920
           - 921
+          - 920
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -6950,9 +6995,9 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 923
           - 924
           - 925
+          - 923
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -6990,10 +7035,10 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 930
           - 929
-          - 928
           - 927
+          - 928
+          - 930
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -7031,9 +7076,9 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 934
           - 933
           - 932
+          - 934
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -7102,7 +7147,7 @@ entities:
       pos: 14.5,-14.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -46035.355
+      secondsUntilStateChange: -46258.11
       state: Closing
 - proto: CurtainsRed
   entities:
@@ -7186,7 +7231,7 @@ entities:
     - type: Transform
       pos: 10.518856,-14.824022
       parent: 1
-- proto: DVSmartFridgeMedical
+- proto: SmartFridgeMedical
   entities:
   - uid: 4
     components:
@@ -7356,7 +7401,7 @@ entities:
       pos: 16.5,-11.5
       parent: 1
     - type: Door
-      secondsUntilStateChange: -123498.31
+      secondsUntilStateChange: -123721.06
       state: Closing
     - type: DeviceNetwork
       deviceLists:
@@ -17500,22 +17545,6 @@ entities:
     - type: Transform
       pos: 5.5,3.5
       parent: 1
-- proto: HappyHonkNukie
-  entities:
-  - uid: 156
-    components:
-    - type: Transform
-      parent: 148
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
-  - uid: 158
-    components:
-    - type: Transform
-      parent: 148
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: HighSecDoor
   entities:
   - uid: 2713
@@ -17955,7 +17984,10 @@ entities:
     - type: Paper
       stampState: paper_stamp-syndicate
       stampedBy:
-      - stampedColor: '#BB3232FF'
+      - hasIcon: True
+        stampFont: null
+        stampLargeIcon: null
+        stampedColor: '#BB3232FF'
         stampedName: Syndicate Logistics
       content: You broke your last arcade machine, we won't send you more.
       editingDisabled: True
@@ -18222,7 +18254,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -51721.92
+      secondsUntilStateChange: -51944.676
       state: Opening
     - type: Airlock
       autoClose: False
@@ -19761,6 +19793,18 @@ entities:
       rot: 3.141592653589793 rad
       pos: 12.5,-17.5
       parent: 1
+- proto: SpawnMobBrullbar
+  entities:
+  - uid: 3022
+    components:
+    - type: Transform
+      pos: -1.5,3.5
+      parent: 1
+  - uid: 3023
+    components:
+    - type: Transform
+      pos: 1.5,3.5
+      parent: 1
 - proto: SpawnMobMedibot
   entities:
   - uid: 3018
@@ -19768,47 +19812,57 @@ entities:
     - type: Transform
       pos: 22.5,-16.5
       parent: 1
-- proto: SpawnMobSyndicateFootsoldierPilot
+- proto: SpawnNukeGunBot
   entities:
-  - uid: 3019
+  - uid: 7
     components:
     - type: Transform
       pos: 10.5,10.5
       parent: 1
-  - uid: 3020
+  - uid: 8
     components:
     - type: Transform
       pos: 5.5,1.5
       parent: 1
-  - uid: 3021
+  - uid: 9
     components:
     - type: Transform
-      pos: 18.5,6.5
+      pos: 18.5,7.5
       parent: 1
-  - uid: 3022
+  - uid: 10
     components:
     - type: Transform
       pos: 28.5,1.5
       parent: 1
-  - uid: 3023
+  - uid: 156
     components:
     - type: Transform
       pos: -0.5,-20.5
       parent: 1
-  - uid: 3024
+  - uid: 158
     components:
     - type: Transform
-      pos: 30.5,-18.5
+      pos: 30.5,-17.5
       parent: 1
-  - uid: 3025
+  - uid: 1012
     components:
     - type: Transform
       pos: 12.5,-15.5
       parent: 1
-  - uid: 3026
+  - uid: 3019
     components:
     - type: Transform
       pos: 21.5,-17.5
+      parent: 1
+  - uid: 3020
+    components:
+    - type: Transform
+      pos: 16.5,-1.5
+      parent: 1
+  - uid: 3021
+    components:
+    - type: Transform
+      pos: 17.5,1.5
       parent: 1
 - proto: SpawnVehicleChairOfficeDark
   entities:
@@ -22397,18 +22451,6 @@ entities:
     components:
     - type: Transform
       pos: 31.5,-18.5
-      parent: 1
-- proto: WeaponDisablerSyndicate
-  entities:
-  - uid: 3498
-    components:
-    - type: Transform
-      pos: 26.330889,-3.443931
-      parent: 1
-  - uid: 3499
-    components:
-    - type: Transform
-      pos: 26.659014,-3.631431
       parent: 1
 - proto: WeaponPistolViper
   entities:

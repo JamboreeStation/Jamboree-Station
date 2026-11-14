@@ -1,17 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -36,16 +22,16 @@ using Robust.Shared.Utility;
 
 namespace Content.Goobstation.Shared.Weapons.Multishot;
 
-public sealed class SharedMultishotSystem : EntitySystem
+public sealed partial class SharedMultishotSystem : EntitySystem
 {
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combatSystem = default!;
-    [Dependency] private readonly SharedGunSystem _gunSystem = default!;
-    [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
-    [Dependency] private readonly MissChanceSystem _miss = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedStaminaSystem _staminaSystem = default!;
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private SharedBodySystem _bodySystem = default!;
+    [Dependency] private SharedCombatModeSystem _combatSystem = default!;
+    [Dependency] private SharedGunSystem _gunSystem = default!;
+    [Dependency] private SharedHandsSystem _handsSystem = default!;
+    [Dependency] private MissChanceSystem _miss = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedStaminaSystem _staminaSystem = default!;
+    [Dependency] private DamageableSystem _damageableSystem = default!;
 
     public override void Initialize()
     {
@@ -82,7 +68,7 @@ public sealed class SharedMultishotSystem : EntitySystem
             if (gunComp.Target == null || !gunComp.BurstActivated || !gunComp.LockOnTargetBurst)
                 gunComp.Target = target;
 
-            _gunSystem.AttemptShoot(user.Value, gunEnt, gunComp, shootCoords);
+            _gunSystem.AttemptShoot(user.Value, (gunEnt, gunComp), shootCoords, target);
         }
     }
 

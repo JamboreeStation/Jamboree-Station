@@ -1,10 +1,7 @@
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Speech;
+using Content.Shared._EinsteinEngines.Language;
 using Robust.Shared.Prototypes;
 
 namespace Content.Goobstation.Shared.TapeRecorder;
@@ -34,17 +31,32 @@ public sealed partial class TapeCassetteRecordedMessage : IComparable<TapeCasset
     public ProtoId<SpeechVerbPrototype>? Verb;
 
     /// <summary>
-    /// What was spoken
+    /// What was spoken, as heard. This is what gets played back.
     /// </summary>
     [DataField]
     public string Message = string.Empty;
 
-    public TapeCassetteRecordedMessage(float timestamp, string name, ProtoId<SpeechVerbPrototype> verb, string message)
+    /// <summary>
+    /// What the recorder writes down for this message. Obfuscated for languages the
+    /// recorder doesn't understand, null if it recorded the message verbatim.
+    /// </summary>
+    [DataField]
+    public string? ObfuscatedMessage;
+
+    /// <summary>
+    /// The language the message was spoken in, so playback can reproduce it faithfully.
+    /// </summary>
+    [DataField]
+    public ProtoId<LanguagePrototype>? Language;
+
+    public TapeCassetteRecordedMessage(float timestamp, string name, ProtoId<SpeechVerbPrototype> verb, string message, ProtoId<LanguagePrototype>? language = null, string? obfuscatedMessage = null)
     {
         Timestamp = timestamp;
         Name = name;
         Verb = verb;
         Message = message;
+        Language = language;
+        ObfuscatedMessage = obfuscatedMessage;
     }
 
     public int CompareTo(TapeCassetteRecordedMessage? other)

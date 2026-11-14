@@ -4,6 +4,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Actions;
+using Content.Shared.Damage.Components;
 using Content.Shared.Abilities.Psionics;
 using Content.Shared.Speech;
 using Content.Shared.Stealth.Components;

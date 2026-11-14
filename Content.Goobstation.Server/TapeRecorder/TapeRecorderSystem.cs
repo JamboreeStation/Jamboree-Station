@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Chat.Systems;
@@ -11,18 +7,20 @@ using Content.Server.Speech.Components;
 using Content.Shared.Chat;
 using Content.Shared.Paper;
 using Content.Shared.Speech;
+using Content.Shared._EinsteinEngines.Language.Systems;
 using Content.Goobstation.Shared.TapeRecorder;
 using Robust.Shared.Prototypes;
 using System.Text;
 
 namespace Content.Goobstation.Server.TapeRecorder;
 
-public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
+public sealed partial class TapeRecorderSystem : SharedTapeRecorderSystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly HandsSystem _hands = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly PaperSystem _paper = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private HandsSystem _hands = default!;
+    [Dependency] private SharedLanguageSystem _language = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private PaperSystem _paper = default!;
 
     public override void Initialize()
     {
@@ -51,8 +49,9 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
             // TODO: mimic the exact string chosen when the message was recorded
             var verb = message.Verb ?? SharedChatSystem.DefaultSpeechVerb;
             speech.SpeechVerb = _proto.Index<SpeechVerbPrototype>(verb);
-            //Play the message
-            _chat.TrySendInGameICMessage(ent, message.Message, InGameICChatType.Speak, false);
+            //Play the message back in the language it was originally heard in
+            var languageOverride = message.Language is { } language ? _language.GetLanguagePrototype(language) : null;
+            _chat.TrySendInGameICMessage(ent, message.Message, InGameICChatType.Speak, ChatTransmitRange.Normal, false, languageOverride: languageOverride);
         }
     }
 
@@ -72,6 +71,13 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
         if (!TryGetTapeCassette(ent, out var cassette))
             return;
 
+        // Only record the raw message for languages the recorder understands verbatim. Any other language
+        // gets its writing obfuscated, so a transcript can't be used as a universal translator for exotic
+        // or secret languages, while playback still reproduces the language it heard.
+        string? obfuscatedMessage = null;
+        if (!ent.Comp.UnderstoodLanguages.Contains(args.Language.ID))
+            obfuscatedMessage = _language.ObfuscateSpeech(args.Message, args.Language);
+
         // TODO: Handle "Someone" when whispering from far away, needs chat refactor
 
         //Handle someone using a voice changer
@@ -81,7 +87,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
         //Add a new entry to the tape
         var verb = _chat.GetSpeechVerb(args.Source, args.Message);
         var name = nameEv.VoiceName;
-        cassette.Comp.Buffer.Add(new TapeCassetteRecordedMessage(cassette.Comp.CurrentPosition, name, verb, args.Message));
+        cassette.Comp.Buffer.Add(new TapeCassetteRecordedMessage(cassette.Comp.CurrentPosition, name, verb, args.Message, args.Language.ID, obfuscatedMessage));
     }
 
     private void OnPrintMessage(Entity<TapeRecorderComponent> ent, ref PrintTapeRecorderMessage args)
@@ -122,7 +128,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
             text.AppendLine(Loc.GetString("tape-recorder-print-message-text",
                 ("time", time.ToString(@"hh\:mm\:ss")),
                 ("source", name),
-                ("message", message.Message)));
+                ("message", message.ObfuscatedMessage ?? message.Message)));
         }
         text.AppendLine();
         text.Append(Loc.GetString("tape-recorder-print-end-text"));

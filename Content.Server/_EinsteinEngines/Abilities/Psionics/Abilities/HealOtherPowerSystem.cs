@@ -4,6 +4,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Robust.Shared.Player;
+using Content.Shared.Damage.Components;
+using Content.Shared.Damage.Systems;
 using Content.Server.DoAfter;
 using Content.Shared.Abilities.Psionics;
 using Content.Server._EinsteinEngines.Abilities.Psionics;
@@ -134,7 +136,7 @@ public sealed class RevivifyPowerSystem : EntitySystem
             return;
 
         if (args.HealingAmount is not null)
-            _damageable.TryChangeDamage(args.Target.Value, args.HealingAmount /* * args.ModifiedAmplification */, true, false, damageableComponent, uid); // Jamboree - No mood system
+            _damageable.TryChangeDamage(args.Target.Value, args.HealingAmount /* * args.ModifiedAmplification */, true, false, uid); // Jamboree - No mood system
 
         if (!args.DoRevive
             || _rotting.IsRotten(args.Target.Value)
@@ -160,7 +162,7 @@ public sealed class RevivifyPowerSystem : EntitySystem
             return;
 
         if (args.HealingAmount is not null)
-            _damageable.TryChangeDamage(args.Target, args.HealingAmount /* * args.ModifiedAmplification */, true, false, damageableComponent, uid); // Jamboree - No mood system
+            _damageable.TryChangeDamage(args.Target, args.HealingAmount /* * args.ModifiedAmplification */, true, false, uid); // Jamboree - No mood system
 
         if (!args.DoRevive
             || _rotting.IsRotten(args.Target)

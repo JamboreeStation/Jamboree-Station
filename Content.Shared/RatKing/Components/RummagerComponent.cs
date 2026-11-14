@@ -1,0 +1,14 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
+using Robust.Shared.GameStates;
+
+namespace Content.Shared.RatKing.Components;
+
+/// <summary>
+/// This is used for entities that can rummage through entities
+/// with the <see cref="RummageableComponent"/>
+/// </summary>
+///
+[RegisterComponent, NetworkedComponent]
+public sealed partial class RummagerComponent : Component;

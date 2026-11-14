@@ -77021,6 +77021,9 @@ entities:
         12013:
         - - MaterialSilo
           - MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 12013
 - proto: MaterialWoodPlank
   entities:
   - uid: 10425
@@ -86452,7 +86455,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 10424
 - proto: SeedExtractor
   entities:

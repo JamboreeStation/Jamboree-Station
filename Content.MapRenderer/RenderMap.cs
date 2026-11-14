@@ -1,5 +1,8 @@
+// SPDX-FileCopyrightText: 2017-2026 Space Wizards Federation
+// SPDX-License-Identifier: MIT
+
 using System.IO;
-using Content.Server.Maps;
+using Content.Shared.Maps;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 

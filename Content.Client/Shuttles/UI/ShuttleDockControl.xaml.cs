@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -26,7 +20,6 @@ namespace Content.Client.Shuttles.UI;
 public sealed partial class ShuttleDockControl : BaseShuttleControl
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IMapManager _mapManager = default!;
     private readonly DockingSystem _dockSystem;
     private readonly SharedShuttleSystem _shuttles;
     private readonly SharedTransformSystem _xformSystem;
@@ -47,6 +40,8 @@ public sealed partial class ShuttleDockControl : BaseShuttleControl
 
     private readonly HashSet<DockingPortState> _drawnDocks = new();
     private readonly Dictionary<DockingPortState, Button> _dockButtons = new();
+
+    private readonly Color _fallbackHighlightedColor = Color.Magenta;
 
     /// <summary>
     /// Store buttons for every other dock
@@ -127,7 +122,7 @@ public sealed partial class ShuttleDockControl : BaseShuttleControl
         // Draw nearby grids
         var controlBounds = PixelSizeBox;
         _grids.Clear();
-        _mapManager.FindGridsIntersecting(gridXform.MapID, viewBoundsWorld, ref _grids);
+        Maps.FindGridsIntersecting(gridXform.MapID, viewBoundsWorld, ref _grids);
 
         // offset the dotted-line position to the bounds.
         Vector2? viewedDockPos = _viewedState != null ? MidPointVector : null;
@@ -221,11 +216,11 @@ public sealed partial class ShuttleDockControl : BaseShuttleControl
 
                 if (HighlightedDock == dock.Entity)
                 {
-                    otherDockColor = Color.ToSrgb(Color.Magenta);
+                    otherDockColor = Color.ToSrgb(dock.HighlightedColor);
                 }
                 else
                 {
-                    otherDockColor = Color.ToSrgb(Color.Purple);
+                    otherDockColor = Color.ToSrgb(dock.Color);
                 }
 
                 /*
@@ -311,15 +306,15 @@ public sealed partial class ShuttleDockControl : BaseShuttleControl
         var invertedPosition = Vector2.Zero;
         invertedPosition.Y = -invertedPosition.Y;
         var rotation = Matrix3Helpers.CreateRotation(-_angle.Value + MathF.PI);
-        var ourDockConnection = new UIBox2(
-            ScalePosition(Vector2.Transform(new Vector2(-0.2f, -0.7f), rotation)),
-            ScalePosition(Vector2.Transform(new Vector2(0.2f, -0.5f), rotation)));
+        var connPosA = ScalePosition(Vector2.Transform(new Vector2(-0.2f, -0.7f), rotation));
+        var connPosB = ScalePosition(Vector2.Transform(new Vector2(0.2f, -0.5f), rotation));
+        var ourDockConnection = new UIBox2(Vector2.Min(connPosA, connPosB), Vector2.Max(connPosA, connPosB));
 
-        var ourDock = new UIBox2(
-            ScalePosition(Vector2.Transform(new Vector2(-0.5f, 0.5f), rotation)),
-            ScalePosition(Vector2.Transform(new Vector2(0.5f, -0.5f), rotation)));
+        var dockPosA = ScalePosition(Vector2.Transform(new Vector2(-0.5f, 0.5f), rotation));
+        var dockPosB = ScalePosition(Vector2.Transform(new Vector2(0.5f, -0.5f), rotation));
+        var ourDock = new UIBox2(Vector2.Min(dockPosA, dockPosB), Vector2.Max(dockPosA, dockPosB));
 
-        var dockColor = Color.Magenta;
+        var dockColor = _viewedState?.HighlightedColor ?? _fallbackHighlightedColor;
         var connectionColor = Color.Pink;
 
         handle.DrawRect(ourDockConnection, connectionColor.WithAlpha(0.2f));

@@ -23,11 +23,9 @@
     speaks:
     - TauCetiBasic
     - Eckeckyik
-    - BieselEckeckyik
     understands:
     - TauCetiBasic
     - Eckeckyik
-    - BieselEckeckyik
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Thaven
@@ -88,7 +86,10 @@
     - Snout
     - Tail
   - type: Bloodstream
-    bloodReagent: ShimmeringBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: ShimmeringBlood
+        Quantity: 300
   - type: Inventory
     speciesId: thaven
     templateId: thaven

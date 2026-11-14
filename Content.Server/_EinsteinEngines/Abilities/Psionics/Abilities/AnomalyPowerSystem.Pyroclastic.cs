@@ -5,7 +5,7 @@
 
 using Content.Shared.Abilities.Psionics;
 using Content.Shared._EinsteinEngines.Actions.Events;
-using Content.Server.Atmos.Components;
+using Content.Shared.Atmos.Components;
 using Robust.Shared.Map;
 
 namespace Content.Server._EinsteinEngines.Abilities.Psionics;
@@ -47,8 +47,8 @@ public sealed partial class AnomalyPowerSystem
         {
             var ent = flammable.Owner;
             var stackAmount = 1 + (int) (severity / 0.15f);
-            _flammable.AdjustFireStacks(ent, stackAmount, flammable);
-            _flammable.Ignite(ent, uid, flammable);
+            _flammable.AdjustFireStacks(ent, stackAmount, flammable.Comp);
+            _flammable.Ignite(ent, uid, flammable.Comp);
         }
     }
 }

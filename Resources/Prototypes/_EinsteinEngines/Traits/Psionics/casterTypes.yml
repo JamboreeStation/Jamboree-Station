@@ -3,7 +3,7 @@
   name: trait-latentpsychic-name
   category: Psionics
 #  points: -4
-  cost: -4
+  cost: 1
 #  functions:
 #  - !type:TraitAddComponent
   components:
@@ -36,7 +36,7 @@
   name: trait-psionicinsulation-name
   category: Psionics
 #  points: -10 #Buy a significant disability to get this.
-  cost: -10
+  cost: 1
 #  functions:
 #  - !type:TraitAddComponent
   components:

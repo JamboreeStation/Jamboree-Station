@@ -1,4 +1,8 @@
-﻿- type: entity
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
   id: CartridgeQuarter
   name: quarter
   description: A small coin modeled after one used by an insignificant nation from the Sol system.
@@ -20,4 +24,4 @@
   - type: Appearance
   - type: SpentAmmoVisuals
   - type: StaticPrice
-    price: 10
+    price: 2

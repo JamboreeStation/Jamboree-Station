@@ -53,6 +53,18 @@
 
 - type: entity
   parent: Megaphone
+  id: CentCommMegaphone
+  name: central command megaphone
+  description: Apparently this variety was first developed as a counter-protest to protestors of NanoTrasen. Neat!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Objects/Tools/megaphones/centcomm.rsi
+    state: icon
+  - type: Item
+    sprite: _Jamboree/Objects/Tools/megaphones/centcomm.rsi
+
+- type: entity
+  parent: Megaphone
   id: ClownMegaphone
   name: clown megaphone
   description: A comedian has to make their voice known.

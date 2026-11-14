@@ -1,11 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Threading.Tasks;
@@ -17,11 +9,11 @@ using Robust.Shared.Network;
 
 namespace Content.Goobstation.Server.ServerCurrency
 {
-    public sealed class ServerCurrencyManager : ICommonCurrencyManager
+    public sealed partial class ServerCurrencyManager : ICommonCurrencyManager
     {
-        [Dependency] private readonly IServerDbManager _db = default!;
-        [Dependency] private readonly ITaskManager _task = default!;
-        [Dependency] private readonly IPlayerManager _player = default!;
+        [Dependency] private IServerDbManager _db = default!;
+        [Dependency] private ITaskManager _task = default!;
+        [Dependency] private IPlayerManager _player = default!;
         private readonly List<Task> _pendingSaveTasks = new();
 
         public event Action? ClientBalanceChange;

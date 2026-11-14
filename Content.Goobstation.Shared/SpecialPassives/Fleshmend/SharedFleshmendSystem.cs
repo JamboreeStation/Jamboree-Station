@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Marcus F <199992874+thebiggestbruh@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Atmos;
@@ -22,19 +19,23 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using System.Linq;
+using Content.Shared.Movement.Systems;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Components;
 
 namespace Content.Goobstation.Shared.SpecialPassives.Fleshmend;
 
-public sealed class SharedFleshmendSystem : EntitySystem
+public sealed partial class SharedFleshmendSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
-    [Dependency] private readonly DamageableSystem _dmg = default!;
-    [Dependency] private readonly WoundSystem _wound = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _netManager = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedBloodstreamSystem _bloodstream = default!;
+    [Dependency] private MovementSpeedModifierSystem _movement = default!;
+    [Dependency] private DamageableSystem _dmg = default!;
+    [Dependency] private WoundSystem _wound = default!;
 
     private EntityQuery<DamageableComponent> _damageableQuery;
     private EntityQuery<MobStateComponent> _mobstateQuery;
@@ -50,6 +51,12 @@ public sealed class SharedFleshmendSystem : EntitySystem
         SubscribeLocalEvent<FleshmendComponent, ComponentRemove>(OnRemoved);
 
         SubscribeLocalEvent<FleshmendComponent, MobStateChangedEvent>(OnMobStateChange);
+        SubscribeLocalEvent<FleshmendComponent, RefreshMovementSpeedModifiersEvent>(OnRefresh);
+    }
+
+    private void OnRefresh(EntityUid uid, FleshmendComponent component, RefreshMovementSpeedModifiersEvent args)
+    {
+        args.ModifySpeed(component.MovementSpeedDebuff, component.MovementSpeedDebuff);
     }
 
     private void OnMapInit(Entity<FleshmendComponent> ent, ref MapInitEvent args)
@@ -71,7 +78,7 @@ public sealed class SharedFleshmendSystem : EntitySystem
             RemoveFleshmendEffects(ent);
 
         if (ent.Comp.AlertId != null)
-            _alerts.ClearAlert(ent, (ProtoId<AlertPrototype>) ent.Comp.AlertId); // incase there was still time left on removal
+            _alerts.ClearAlert(ent.Owner, (ProtoId<AlertPrototype>) ent.Comp.AlertId); // incase there was still time left on removal
     }
 
     public override void Update(float frameTime)
@@ -156,7 +163,7 @@ public sealed class SharedFleshmendSystem : EntitySystem
         healSpec.DamageDict.Add("Asphyxiation", ent.Comp.AsphyxHeal);
 
         // heal the damage
-        _dmg.TryChangeDamage(ent, healSpec, true, false, targetPart: TargetBodyPart.All, splitDamage: SplitDamageBehavior.SplitEnsureAllOrganic);
+        _dmg.TryChangeDamage(ent.Owner, healSpec, true, false, targetPart: TargetBodyPart.All, splitDamage: SplitDamageBehavior.SplitEnsureAllOrganic);
 
         // heal bleeding and restore blood
         _bloodstream.TryModifyBleedAmount(ent.Owner, ent.Comp.BleedingAdjust);

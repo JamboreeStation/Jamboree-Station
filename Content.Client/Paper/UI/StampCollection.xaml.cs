@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2023 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using System.Numerics;
@@ -74,6 +71,7 @@ public sealed partial class StampCollection : Container
             var s = childHeLocal * MathF.Abs(MathF.Sin(stampOrientation));
             var childHePage = new Vector2(c.X + s.Y, s.X + c.Y);
             var controlBox = new UIBox2(PixelSizeBox.TopLeft, PixelSizeBox.TopLeft + finalSize * UIScale);
+            childHePage = Vector2.Min(childHePage, controlBox.Size * 0.5f);
             var clampedCenter = Clamp(Shrink(controlBox, childHePage), childCenterOnCircle);
             var finalPosition = clampedCenter - childHePage;
             var finalPositionAsInt = new Vector2i((int)finalPosition.X, (int)finalPosition.Y);

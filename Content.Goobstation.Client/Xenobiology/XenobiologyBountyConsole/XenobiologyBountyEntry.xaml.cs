@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
@@ -17,7 +14,7 @@ namespace Content.Goobstation.Client.Xenobiology.XenobiologyBountyConsole;
 [GenerateTypedNameReferences]
 public sealed partial class XenobiologyBountyEntry : BoxContainer
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     public Action? OnFulfillButtonPressed;
     public Action? OnSkipButtonPressed;

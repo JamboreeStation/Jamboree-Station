@@ -1,7 +1,9 @@
 # Spoken by Vulpknanin.
 # TODO: Replace this with a much better language.
 - type: language
+  icon: LanguageIconCanilunzt
   id: Canilunzt
+  iconUnderstood: false
   isVisibleLanguage: true
   speech:
     color: "#d69b3dcc"
@@ -67,3 +69,7 @@
     - cresthz
     - azunein
     - ghzth
+
+
+
+

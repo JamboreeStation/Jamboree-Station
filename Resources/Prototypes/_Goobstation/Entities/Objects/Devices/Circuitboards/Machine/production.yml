@@ -79,6 +79,23 @@
         defaultPrototype: Beaker
 
 - type: entity
+  id: ERTTechFabCircuitboard
+  parent: BaseMachineCircuitboard
+  name: ERT techfab machine board
+  description: A machine printed circuit board for a ERT techfab.
+  components:
+  - type: Sprite
+    state: ert
+  - type: MachineBoard
+    prototype: ERTTechFab
+    stackRequirements:
+      Manipulator: 4
+    tagRequirements:
+      GlassBeaker:
+        amount: 2
+        defaultPrototype: Beaker
+
+- type: entity
   id: TeslaCoilCircuitboard
   parent: BaseMachineCircuitboard
   name: tesla coil board
@@ -95,7 +112,7 @@
 - type: entity
   id: RadiationCollectorCircuitboard
   parent: BaseMachineCircuitboard
-  name: radiation collector board
+  name: cosmic radiation collector board
   components:
     - type: Sprite
       state: engineering
@@ -143,62 +160,6 @@
         GlassBeaker:
           amount: 2
           defaultPrototype: Beaker
-
-- type: entity
-  id: EnergyBoozeDispenserMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: energy booze dispenser machine board
-  description: A machine printed circuit board for an energy booze dispenser.
-  components:
-    - type: Sprite
-      state: service
-    - type: MachineBoard
-      prototype: EnergyBoozeDispenser
-      stackRequirements:
-        Manipulator: 1
-        Glass: 5
-        Steel: 5
-        BSCrystal: 1
-      tagRequirements:
-        GlassBeaker:
-          amount: 2
-          defaultPrototype: Beaker
-    - type: PhysicalComposition
-      materialComposition:
-        Glass: 5
-        Steel: 5
-      chemicalComposition:
-        Silicon: 5
-
-- type: entity
-  id: EnergySodaDispenserMachineCircuitboard
-  parent: BaseMachineCircuitboard
-  name: energy soda dispenser machine board
-  description: A machine printed circuit board for an energy soda dispenser.
-  components:
-  - type: Sprite
-    state: service
-  - type: MachineBoard
-    prototype: EnergySodaDispenser
-    stackRequirements:
-      Manipulator: 1
-      Glass: 5
-      Steel: 5
-      BSCrystal: 2
-    tagRequirements:
-      GlassBeaker:
-        amount: 2
-        defaultPrototype: Beaker
-  - type: PhysicalComposition
-    materialComposition:
-      Glass: 5
-      Steel: 5
-    chemicalComposition:
-      Silicon: 5
-
-
-
-
 
 - type: entity
   id: TelecomTransmitterCircuitboard

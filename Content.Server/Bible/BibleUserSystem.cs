@@ -1,36 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Flipp Syder <76629141+vulppine@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 Rane <60792108+Elijahrane@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Tomás Alves <tomasalves35@gmail.com>
-// SPDX-FileCopyrightText: 2022 keronshb <54602815+keronshb@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <drsmugleaf@gmail.com>
-// SPDX-FileCopyrightText: 2023 Jezithyr <jezithyr@gmail.com>
-// SPDX-FileCopyrightText: 2023 Pieter-Jan Briers <pieterjan.briers@gmail.com>
-// SPDX-FileCopyrightText: 2023 Visne <39844191+Visne@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 AJCM-git <60196617+AJCM-git@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2024 Dae <60460608+ZeroDayDaemon@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 double_b <40827162+benjamin-burges@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GMWQ <garethquaile@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 TheBorzoiMustConsume <197824988+TheBorzoiMustConsume@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Winkarst <74284083+Winkarst-cpu@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.Religion;
@@ -43,7 +10,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
 using Content.Shared.Bible;
 using Content.Shared.Bible.Components;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Ghost.Roles.Components;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -82,7 +49,6 @@ namespace Content.Server.Bible
             SubscribeLocalEvent<SummonableComponent, SummonActionEvent>(OnSummon);
             SubscribeLocalEvent<FamiliarComponent, MobStateChangedEvent>(OnFamiliarDeath);
             SubscribeLocalEvent<FamiliarComponent, GhostRoleSpawnerUsedEvent>(OnSpawned);
-
         }
 
         private readonly Queue<EntityUid> _addQueue = new();
@@ -139,33 +105,38 @@ namespace Content.Server.Bible
                 return;
 
             if (args.Target == null || args.Target == args.User || !_mobStateSystem.IsAlive(args.Target.Value))
-                return; // STOP WITH USELESS BRACES!! - Goobstation
+            {
+                return;
+            }
 
             if (!HasComp<BibleUserComponent>(args.User))
             {
-                _popupSystem.PopupEntity(Loc.GetString("bible-sizzle"), args.User, args.User);
+                _popupSystem.PopupEntity(Loc.GetString("bible-sizzle", ("bible", uid)), args.User, args.User); // Goob - Fix (missing loc argument)
 
                 _audio.PlayPvs(component.SizzleSoundPath, args.User);
-                _damageableSystem.TryChangeDamage(args.User, component.DamageOnUntrainedUse, true, origin: uid, targetPart: TargetBodyPart.All, ignoreBlockers: true);
+                _damageableSystem.TryChangeDamage(args.User, component.DamageOnUntrainedUse, true, origin: uid, targetPart: TargetBodyPart.All, ignoreBlockers: true); // Goob - shitmed targeting
                 _delay.TryResetDelay((uid, useDelay));
 
                 return;
             }
 
-            // Goobstation - Wraith - Start
-            var ev = new BibleSmiteUsed();
+            // Goob start - Wraith
+            var ev = new BibleSmiteUsed(args.User);
             RaiseLocalEvent(args.Target.Value, ref ev);
-            // Goobstation - Wraith - End
+            // Goob end
+
+            var userEnt = Identity.Entity(args.User, EntityManager);
+            var targetEnt = Identity.Entity(args.Target.Value, EntityManager);
 
             // This only has a chance to fail if the target is not wearing anything on their head and is not a familiar.
-            if (!_invSystem.TryGetSlotEntity(args.Target.Value, "head", out var _) && !HasComp<FamiliarComponent>(args.Target.Value))
+            if (!_invSystem.TryGetSlotEntity(args.Target.Value, "head", out _) && !HasComp<FamiliarComponent>(args.Target.Value))
             {
                 if (_random.Prob(component.FailChance))
                 {
                     var othersFailMessage = Loc.GetString(component.LocPrefix + "-heal-fail-others", ("user", Identity.Entity(args.User, EntityManager)), ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", uid));
                     _popupSystem.PopupEntity(othersFailMessage, args.User, Filter.PvsExcept(args.User), true, PopupType.SmallCaution);
 
-                    var selfFailMessage = Loc.GetString(component.LocPrefix + "-heal-fail-self", ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", uid));
+                    var selfFailMessage = Loc.GetString(component.LocPrefix + "-heal-fail-self", ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", Identity.Entity(args.Target.Value, EntityManager)));
                     _popupSystem.PopupEntity(selfFailMessage, args.User, args.User, PopupType.MediumCaution);
 
                     _audio.PlayPvs(component.BibleHitSound, args.User);
@@ -175,32 +146,26 @@ namespace Content.Server.Bible
                 }
             }
 
-            var damage = _damageableSystem.TryChangeDamage(args.Target.Value,
-                component.Damage,
-                true,
-                origin: uid,
-                targetPart: TargetBodyPart.All,
-                ignoreBlockers: true,
-                splitDamage: SplitDamageBehavior.SplitEnsureAll);
+            string othersMessage;
+            string selfMessage;
 
-            if (damage == null || damage.Empty)
+            if (_damageableSystem.TryChangeDamage(args.Target.Value, component.Damage, true, origin: uid,
+                targetPart: TargetBodyPart.All, ignoreBlockers: true, splitDamage: SplitDamageBehavior.SplitEnsureAll)) // Woundmed
             {
-                var othersMessage = Loc.GetString(component.LocPrefix + "-heal-success-none-others", ("user", Identity.Entity(args.User, EntityManager)), ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", uid));
-                _popupSystem.PopupEntity(othersMessage, args.User, Filter.PvsExcept(args.User), true, PopupType.Medium);
+                othersMessage = Loc.GetString(component.LocPrefix + "-heal-success-others", ("user", userEnt), ("target", targetEnt), ("bible", uid));
+                selfMessage = Loc.GetString(component.LocPrefix + "-heal-success-self", ("target", targetEnt), ("bible", uid));
 
-                var selfMessage = Loc.GetString(component.LocPrefix + "-heal-success-none-self", ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", uid));
-                _popupSystem.PopupEntity(selfMessage, args.User, args.User, PopupType.Large);
-            }
-            else
-            {
-                var othersMessage = Loc.GetString(component.LocPrefix + "-heal-success-others", ("user", Identity.Entity(args.User, EntityManager)), ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", uid));
-                _popupSystem.PopupEntity(othersMessage, args.User, Filter.PvsExcept(args.User), true, PopupType.Medium);
-
-                var selfMessage = Loc.GetString(component.LocPrefix + "-heal-success-self", ("target", Identity.Entity(args.Target.Value, EntityManager)), ("bible", uid));
-                _popupSystem.PopupEntity(selfMessage, args.User, args.User, PopupType.Large);
                 _audio.PlayPvs(component.HealSoundPath, args.User);
                 _delay.TryResetDelay((uid, useDelay));
             }
+            else
+            {
+                othersMessage = Loc.GetString(component.LocPrefix + "-heal-success-none-others", ("user", userEnt), ("target", targetEnt), ("bible", uid));
+                selfMessage = Loc.GetString(component.LocPrefix + "-heal-success-none-self", ("target", targetEnt), ("bible", uid));
+            }
+
+            _popupSystem.PopupEntity(othersMessage, args.User, Filter.PvsExcept(args.User), true, PopupType.Medium);
+            _popupSystem.PopupEntity(selfMessage, args.User, args.User, PopupType.Large);
         }
 
         private void AddSummonVerb(EntityUid uid, SummonableComponent component, GetVerbsEvent<AlternativeVerb> args)

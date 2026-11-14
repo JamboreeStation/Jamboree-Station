@@ -10,3 +10,18 @@
   - type: ConditionalSpawner
     prototypes:
     - MobGoidaBot
+
+# Jamboree
+- type: entity
+  parent: MarkerBase
+  id: SpawnNukeGunBot
+  name: syndicate gunbot spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: nukebot
+      sprite: _Goobstation/Mobs/Silicon/Bots/gunbot.rsi
+  - type: ConditionalSpawner
+    prototypes:
+    - NukeBot

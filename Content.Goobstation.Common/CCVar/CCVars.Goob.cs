@@ -126,6 +126,12 @@ public sealed partial class GoobCVars
     public static readonly CVarDef<float> HighpopThreshold =
         CVarDef.Create("game.players.highpop_threshold", 50f, CVar.SERVERONLY);
 
+    public static readonly CVarDef<bool> RemoveClumsyOnAntag =
+        CVarDef.Create("game.antag.gain.remove_clumsy", false, CVar.SERVERONLY);
+
+    public static readonly CVarDef<string> DisabledGamePresets =
+        CVarDef.Create("game.disabled_presets", "", CVar.SERVERONLY);
+
     /// <summary>
     ///     Is ore silo enabled.
     /// </summary>
@@ -137,6 +143,37 @@ public sealed partial class GoobCVars
     /// </summary>
     public static readonly CVarDef<float> MaxDrunkTime =
         CVarDef.Create("goob.max_drunk_time", 1500f, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Whether the no EORG popup is enabled.
+    /// </summary>
+    public static readonly CVarDef<bool> RoundEndNoEorgPopup =
+        CVarDef.Create("game.round_end_eorg_popup_enabled", false, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// How long until the next EORG popup can be shown after previous one.
+    /// </summary>
+    public static readonly CVarDef<int> AskRoundEndNoEorgPopup =
+        CVarDef.Create("game.ask_read_end_eorg_popup", 14, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Set the last shown of EORG popup to client current time.
+    /// </summary>
+    public static readonly CVarDef<string> LastReadRoundEndNoEorgPopup =
+        CVarDef.Create("game.last_read_end_eorg_popup_time", "", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// How long to display the EORG popup for.
+    /// </summary>
+    public static readonly CVarDef<float> RoundEndNoEorgPopupTime =
+        CVarDef.Create("game.round_end_eorg_popup_time", 5f, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    ///     DEBUG Cvar - Should pathfinding be disabled globally. For SpawnAndDirty cause we need the mem.
+    /// </summary>
+    public static readonly CVarDef<bool> DisablePathfinding =
+        CVarDef.Create("goob.disable_pathfinding", false, CVar.SERVER | CVar.SERVERONLY);
+
 
     #region Player Listener
 
@@ -250,12 +287,6 @@ public sealed partial class GoobCVars
         CVarDef.Create("silicon.npcupdatetime", 1.5f, CVar.SERVERONLY);
 
     /// <summary>
-    ///     Should the player automatically get up after being knocked down
-    /// </summary>
-    public static readonly CVarDef<bool> AutoGetUp =
-        CVarDef.Create("white.auto_get_up", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED); // WD EDIT
-
-    /// <summary>
     ///     Sets the size of the hitbox where projectile/laser will hit any entity regardless of crawling
     /// </summary>
     public static readonly CVarDef<float> CrawlHitzoneSize =
@@ -285,22 +316,28 @@ public sealed partial class GoobCVars
 
     #region RMC
 
-    public static readonly CVarDef<int> RMCPatronLobbyMessageTimeSeconds =
-        CVarDef.Create("rmc.patron_lobby_message_time_seconds", 30, CVar.REPLICATED | CVar.SERVER);
-
-    public static readonly CVarDef<int> RMCPatronLobbyMessageInitialDelaySeconds =
-        CVarDef.Create("rmc.patron_lobby_message_initial_delay_seconds", 5, CVar.REPLICATED | CVar.SERVER);
-
     public static readonly CVarDef<string> RMCDiscordAccountLinkingMessageLink =
         CVarDef.Create("rmc.discord_account_linking_message_link", "", CVar.REPLICATED | CVar.SERVER);
 
     #endregion
 
-    public static readonly CVarDef<string> PatronSupportLastShown =
-        CVarDef.Create("patron.support_last_shown", "", CVar.CLIENTONLY | CVar.ARCHIVE);
+    public static readonly CVarDef<string> NewsPinned =
+        CVarDef.Create("news.pinned", "", CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE, "Comma-separated newsEntry IDs pinned to the top of the lobby news feed, in order.");
 
-    public static readonly CVarDef<int> PatronAskSupport =
-        CVarDef.Create("patron.ask_support", 7, CVar.REPLICATED | CVar.SERVER);
+    public static readonly CVarDef<string> NewsRead =
+        CVarDef.Create("news.read", "", CVar.CLIENTONLY | CVar.ARCHIVE, "Comma-separated newsEntry IDs this client has opened.");
+
+    public static readonly CVarDef<string> NewsPopupState =
+        CVarDef.Create("news.popup_state", "", CVar.CLIENTONLY | CVar.ARCHIVE, "When each news popup was last shown, as id=timestamp pairs separated by semicolons. A value of never means don't show again.");
+
+    public static readonly CVarDef<string> MarkingFavourites =
+        CVarDef.Create("humanoid.marking_favourites", "", CVar.CLIENTONLY | CVar.ARCHIVE, "Comma-separated marking IDs starred in the character editor.");
+
+    public static readonly CVarDef<bool> FacialHairMatchesHair =
+        CVarDef.Create("humanoid.facial_hair_matches_hair", true, CVar.CLIENTONLY | CVar.ARCHIVE, "Changing hair color in the character editor also recolors facial hair.");
+
+    public static readonly CVarDef<string> WindowTitle =
+        CVarDef.Create("goob.window_title", "", CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE, "Shown in the client's window title instead of the hostname when set.");
 
     #region Xenobiology
 
@@ -467,60 +504,6 @@ public sealed partial class GoobCVars
 
     #endregion
 
-    #region Voicechat
-
-    /// <summary>
-    /// Controls whether the Lidgren voice chat server is enabled and running.
-    /// </summary>
-    public static readonly CVarDef<bool> VoiceChatEnabled =
-        CVarDef.Create("voice.enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE, "Is the voice chat server enabled?");
-
-    /// <summary>
-    /// The UDP port the Lidgren voice chat server will listen on.
-    /// </summary>
-    public static readonly CVarDef<int> VoiceChatPort =
-        CVarDef.Create("voice.vc_server_port", 1213, CVar.SERVER | CVar.REPLICATED, "Port for the voice chat server.");
-
-    public static readonly CVarDef<float> VoiceChatVolume =
-        CVarDef.Create("voice.volume", 5f, CVar.CLIENTONLY | CVar.ARCHIVE);
-
-    /// <summary>
-    /// Multiplier for the adaptive buffer target size calculation.
-    /// </summary>
-    public static readonly CVarDef<float> VoiceChatBufferTargetMultiplier =
-        CVarDef.Create("voice.buffer_target_multiplier", 1.0f, CVar.CLIENTONLY | CVar.ARCHIVE, "Multiplier for adaptive buffer target size calculation.");
-
-    /// <summary>
-    /// Minimum buffer size for voice chat, regardless of network conditions.
-    /// </summary>
-    public static readonly CVarDef<int> VoiceChatMinBufferSize =
-        CVarDef.Create("voice.min_buffer_size", 10, CVar.CLIENTONLY | CVar.ARCHIVE, "Minimum buffer size for voice chat.");
-
-    /// <summary>
-    /// Maximum buffer size for voice chat to prevent excessive memory usage.
-    /// </summary>
-    public static readonly CVarDef<int> VoiceChatMaxBufferSize =
-        CVarDef.Create("voice.max_buffer_size", 50, CVar.CLIENTONLY | CVar.ARCHIVE, "Maximum buffer size for voice chat.");
-
-    /// <summary>
-    /// Enable advanced time-stretching algorithms for better audio quality.
-    /// </summary>
-    public static readonly CVarDef<bool> VoiceChatAdvancedTimeStretch =
-        CVarDef.Create("voice.advanced_time_stretch", true, CVar.CLIENTONLY | CVar.ARCHIVE, "Enable advanced time-stretching for voice chat.");
-
-    /// <summary>
-    /// Enable debug logging for voice chat buffer management.
-    /// </summary>
-    public static readonly CVarDef<bool> VoiceChatDebugLogging =
-        CVarDef.Create("voice.debug_logging", false, CVar.CLIENTONLY | CVar.ARCHIVE, "Enable debug logging for voice chat buffer management.");
-
-    /// <summary>
-    /// Whether to hear audio from your own entity (useful for testing).
-    /// </summary>
-    public static readonly CVarDef<bool> VoiceChatHearSelf =
-        CVarDef.Create("voice.hear_self", false, CVar.CLIENTONLY | CVar.ARCHIVE, "Whether to hear audio from your own entity.");
-
-    #endregion
 
     #region Queue
 
@@ -532,10 +515,11 @@ public sealed partial class GoobCVars
         CVarDef.Create("queue.enabled", false, CVar.SERVERONLY);
 
     /// <summary>
-    ///     If enabled patrons will be sent to the front of the queue.
+    ///     How long in seconds to hold a queue position for a disconnected player.
+    ///     If they reconnect within this window, they are placed at the front of the queue.
     /// </summary>
-    public static readonly CVarDef<bool> PatreonSkip =
-        CVarDef.Create("queue.patreon_skip", true, CVar.SERVERONLY);
+    public static readonly CVarDef<int> QueueReconnectGraceSeconds =
+        CVarDef.Create("queue.reconnect_grace_seconds", 120, CVar.SERVERONLY);
 
     #endregion
 
@@ -605,7 +589,19 @@ public sealed partial class GoobCVars
     /// Applies to Brute and Burn damage
     /// </summary>
     public static readonly CVarDef<float> ExplosionWoundMultiplier =
-        CVarDef.Create("explosion.wounding_multiplier", 8f, CVar.SERVERONLY);
+        CVarDef.Create("explosion.wounding_multiplier", 4f, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Explosion damage multiplied on vital parts.
+    /// </summary>
+    public static readonly CVarDef<float> ExplosionVitalMultiplier =
+        CVarDef.Create("explosion.vital_multiplier", 1.5f, CVar.SERVER | CVar.REPLICATED, "Multiplier of explosion damage done on vital parts due to woundmed stuff.");
+
+    /// <summary>
+    /// Explosion damage multiplied on non-vital parts.
+    /// </summary>
+    public static readonly CVarDef<float> ExplosionNonVitalMultiplier =
+        CVarDef.Create("explosion.non_vital_multiplier", 1f, CVar.SERVER | CVar.REPLICATED, "Multiplier of explosion damage done on non-vital parts due to woundmed stuff.");
 
     #endregion
 
@@ -671,11 +667,11 @@ public sealed partial class GoobCVars
     public static readonly CVarDef<bool> SpaceWhaleSpawn =
         CVarDef.Create("misc.space_whale_spawn", true, CVar.SERVER);
 
-    /// <summary>
+    /// <summary>s
     /// The distance to spawn a space whale from the station
     /// </summary>
     public static readonly CVarDef<int> SpaceWhaleSpawnDistance =
-        CVarDef.Create("misc.space_whale_spawn_distance", 1965, CVar.SERVER);
+        CVarDef.Create("misc.space_whale_spawn_distance", 3000, CVar.SERVER);
 
     #endregion
     /// <summary>
@@ -689,4 +685,89 @@ public sealed partial class GoobCVars
     /// </summary>
     public static readonly CVarDef<float> GpsUpdateRate =
         CVarDef.Create("gps.update_rate", 1f, CVar.SERVER | CVar.REPLICATED);
+
+    #region Particles
+
+    /// <summary>
+    /// Controls particle effect quality.
+    /// 0 = Off, 1 = Low, 2 = Medium, 3 = High
+    /// Low:    25% of maxCount per emitter
+    /// Medium: 50% of maxCount per emitter
+    /// High:   100% of maxCount per emitter
+    ///
+    /// Note: Particles with IgnoreQualitySettings = true always render at full quality.
+    /// </summary>
+    public static readonly CVarDef<int> ParticleQuality =
+        CVarDef.Create("particles.quality", 3, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Maximum total number of live particles allowed on screen at once across all emitters.
+    /// Emitters will reduce their emission rate once the budget is exhausted.
+    /// Overridden by ParticleQuality presets but can be set manually when quality is High.
+    /// </summary>
+    public static readonly CVarDef<int> ParticleGlobalBudget =
+        CVarDef.Create("particles.global_budget", 8000, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<bool> InteractionParticlesEnabled =
+        CVarDef.Create("particles.interaction_enabled", true, CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
+    /// Starfall: per-client visibility filter for interaction particles.
+    /// The server-replicated cvar above remains the master switch; this lets
+    /// an individual client hide them without changing what other players see.
+    /// </summary>
+    public static readonly CVarDef<bool> InteractionParticlesVisible =
+        CVarDef.Create("particles.interaction_visible", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<float> InHandInteractionParticleScale =
+        CVarDef.Create("particles.inhand_interaction_scale", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    #endregion
+
+    #region Runechat
+
+    /// <summary>
+    /// Whether speech bubbles are drawn SS13 runechat style
+    /// </summary>
+    public static readonly CVarDef<bool> ChatRunechat =
+        CVarDef.Create("chat.runechat", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    #endregion
+
+    #region Radio Channel Colors
+
+    public static readonly CVarDef<bool> UseCustomRadioChannelColors =
+        CVarDef.Create("radio.use_custom_channel_colors", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Per-channel color overrides, formatted as "ChannelId=#RRGGBB;OtherChannel=#RRGGBB".
+    /// </summary>
+    public static readonly CVarDef<string> RadioChannelColors =
+        CVarDef.Create("radio.channel_colors", "", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    #endregion
+
+    #region Interaction Outline
+
+    public static readonly CVarDef<bool> UseCustomInteractionOutlineColors =
+        CVarDef.Create("interaction_outline.use_custom_colors", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<string> ValidInteractionOutlineColor =
+        CVarDef.Create("interaction_outline.in_range_color", "#00FF0055", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<string> InvalidInteractionOutlineColor =
+        CVarDef.Create("interaction_outline.out_of_range_color", "#FF000055", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    #endregion
+
+    #region Gun Prediction
+
+    /// <summary>
+    ///     Distance between a projectile and a target's lag-compensated position that counts as a hit.
+    ///     Lets players with high ping hit what they actually saw when shooting.
+    /// </summary>
+    public static readonly CVarDef<float> GunLagCompRange =
+        CVarDef.Create("gun.lag_comp_range", 0.6f, CVar.SERVER | CVar.SERVERONLY);
+
+    #endregion
 }

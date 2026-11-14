@@ -1,0 +1,124 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Shirts Start
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterSuitShirtIan
+  name: ian shirt
+  description: An old and worn shirt bearing the image of the station's lovable corgi, Ian. It's rumored that the funds from the sale of this shirt went towards the creation of more Ian's.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Misc/ian_shirt.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Misc/ian_shirt.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterSuitShirtNerd
+  name: nerd shirt
+  description: An old and worn shirt which bears the visage of a purple rodentia once known as the quickest thing around. Nowadays they just speedrun video games.
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Misc/nerd_shirt.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Misc/nerd_shirt.rsi
+# Shirt End
+
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterSuitDracula
+  name: vampire coat
+  description: Bleh bleh bleh!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/dracula.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/dracula.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterSuitFlash
+  name: flash suit
+  description: "You are now... the flashest thing alive..."
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/flash_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/flash_suit.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterSuitPharoh #Intended to be a part of the initial Jamboween updated but I missed it...
+  name: pharoh suit
+  description: Blessing of Set!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/pharoh_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/pharoh_suit.rsi
+
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterSuitBunny
+  name: bunny suit
+  description: Hippity hoppity!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/bunny_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/bunny_suit.rsi
+  - type: ProtectedFromStepTriggers
+    slots: WITHOUT_POCKET
+  - type: HideClothingLayerClothing # Goobstation
+    hiddenSlots:
+    - jumpsuit
+
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterSuitGorilla
+  name: gorilla suit
+  description: Ook ook ook!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/gorilla_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/gorilla_suit.rsi
+  - type: ProtectedFromStepTriggers
+    slots: WITHOUT_POCKET
+  - type: HideClothingLayerClothing # Goobstation
+    hiddenSlots:
+    - jumpsuit
+
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterSuitSnowman
+  name: snowman suit
+  description: I'M MELTING!!! HELP!!!
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/snowman_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/snowman_suit.rsi
+  - type: ProtectedFromStepTriggers
+    slots: WITHOUT_POCKET
+  - type: HideClothingLayerClothing # Goobstation
+    hiddenSlots:
+    - jumpsuit
+
+- type: entity
+  parent: ClothingOuterBase
+  id: JamboreeClothingOuterSuitXeno
+  name: xeno suit
+  description: Now it's just a matter of getting into the walls...
+  components:
+  - type: Sprite
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/xeno_suit.rsi
+  - type: Clothing
+    sprite: _Jamboree/Clothing/OuterClothing/Costume/xeno_suit.rsi
+  - type: ProtectedFromStepTriggers
+    slots: WITHOUT_POCKET
+  - type: HideClothingLayerClothing # Goobstation
+    hiddenSlots:
+    - jumpsuit

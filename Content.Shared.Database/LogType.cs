@@ -202,9 +202,9 @@ public enum LogType
     ChemicalReaction = 17,
 
     /// <summary>
-    /// Reagent effects related interactions.
+    /// EntityEffect related interactions.
     /// </summary>
-    ReagentEffect = 18,
+    EntityEffect = 18,
 
     /// <summary>
     /// Canister valve was opened or closed.
@@ -611,6 +611,13 @@ public enum LogType
     Instrument = 105, // Jamboree
 
     /// <summary>
+    /// Events related to players connecting/disconnecting.
+    /// </summary>
+    Connection = 106, // Jamboree: preserve existing persisted log type IDs (103-105).
+
+    // Goob start
+
+    /// <summary>
     /// SecretPlus related game interactions.
     /// </summary>
     SecretPlus = 10001, // Goobstation
@@ -629,4 +636,11 @@ public enum LogType
     /// Antag objective info.
     /// </summary>
     AntagObjective = 10004, // Goobstation
+
+    /// <summary>
+    /// Silicon law changes.
+    /// </summary>
+    SiliconLaws = 10005, // Goobstation
+
+    Paint = 10006, // Goobstation
 }

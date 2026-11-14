@@ -12,7 +12,7 @@
 # SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
 # SPDX-FileCopyrightText: 2025 Simon <63975668+Simyon264@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 SpeltIncorrectyl <66873282+SpeltIncorrectyl@users.noreply.github.com>
-#
+# SPDX-FileCopyrightText: 2026 PureBreadBagel
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 
@@ -27,6 +27,9 @@ paper-component-examine-detail-stamped-by = {CAPITALIZE(THE($paper))} {CONJUGATE
 paper-component-illiterate = You are unable to write.
 paper-component-illiterate-mime = Your vow forbids you from writing.
 
+# JAMBOREE - Shown when trying to edit a paper written in a language you do not understand!
+paper-component-foreign-language = You cannot read this, so you cannot write on it.
+
 paper-component-action-stamp-paper-other = {CAPITALIZE(THE($user))} stamps {THE($target)} with {THE($stamp)}.
 paper-component-action-stamp-paper-self = You stamp {THE($target)} with {THE($stamp)}.
 
@@ -34,5 +37,8 @@ paper-component-action-stamp-paper-self = You stamp {THE($target)} with {THE($st
 paper-ui-fill-level = {$currentLength}/{$maxLength}
 
 paper-ui-save-button = Save ({$keybind})
+
+# Indicator showing the language the paper was written in
+paper-ui-written-language = Written in: {$language}
 
 paper-tamper-proof-modified-message = This page was written using tamper-proof ink.

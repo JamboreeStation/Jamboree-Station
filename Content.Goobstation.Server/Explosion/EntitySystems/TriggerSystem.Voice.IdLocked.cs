@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Server.Explosion.Components;
@@ -12,16 +7,18 @@ using Content.Server.Speech;
 using Content.Shared.Access.Systems;
 using Content.Shared.Database;
 using Content.Shared.Hands;
+using Content.Shared.Speech;
+using Content.Shared.Trigger.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Goobstation.Server.Explosion.EntitySystems
 {
-    public sealed class VoiceTriggerSystem : EntitySystem
+    public sealed partial class VoiceTriggerSystem : EntitySystem
     {
-        [Dependency] private readonly AccessReaderSystem _accessReader = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly TriggerSystem _triggerSystem = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
+        [Dependency] private AccessReaderSystem _accessReader = default!;
+        [Dependency] private IAdminLogManager _adminLogger = default!;
+        [Dependency] private TriggerSystem _triggerSystem = default!;
+        [Dependency] private IGameTiming _timing = default!;
 
         public override void Initialize()
         {

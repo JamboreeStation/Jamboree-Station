@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2021 ike709 <ike709@github.com>
-// SPDX-FileCopyrightText: 2021 ike709 <ike709@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Kot <1192090+koteq@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Globalization;
@@ -30,6 +21,20 @@ namespace Content.Client.Atmos.UI
         public event Action? ToggleStatusButtonPressed;
         public event Action<string>? PumpTransferRateChanged;
 
+        public float MaxTransferRate // JAMBOREE - ACTUALLY get the max cap, instead of it being hardcoded to 200.
+        {
+            get => _maxTransferRate;
+            set
+            {
+                _maxTransferRate = value;
+
+                if (float.TryParse(PumpTransferRateInput.Text, CultureInfo.CurrentCulture, out var current))
+                    PumpTransferRateInput.Text = MathF.Min(value, current).ToString(CultureInfo.CurrentCulture);
+            } // JAMBOREE - Basically actually find its value on what it can maximully go to or whatever.
+        }
+
+        private float _maxTransferRate = Atmospherics.MaxTransferRate;
+
         public GasVolumePumpWindow()
         {
             RobustXamlLoader.Load(this);
@@ -46,7 +51,7 @@ namespace Content.Client.Atmos.UI
 
             SetMaxRateButton.OnPressed += _ =>
             {
-                PumpTransferRateInput.Text = Atmospherics.MaxTransferRate.ToString(CultureInfo.CurrentCulture);
+                PumpTransferRateInput.Text = _maxTransferRate.ToString(CultureInfo.CurrentCulture);
                 SetTransferRateButton.Disabled = false;
             };
         }

@@ -1,17 +1,21 @@
-﻿- type: entity
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
   id: MagazineRailgun
   name: "capacitor (railgun)"
   parent: [ BaseItem, BaseCommandContraband ]
   components:
   - type: Item
     size: Small
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: LaserRailgun
     fireCost: 700
   - type: Sprite
-    sprite: _DV/Objects/Weapons/Guns/SMGs/typewriter.rsi
+    sprite: _Jamboree/Objects/Weapons/Guns/SMGs/railguncapacitor.rsi
     layers:
-    - state: mag-0
+    - state: capacitor
       map: ["enum.GunVisualLayers.Base"]
   - type: Appearance
   - type: Tag

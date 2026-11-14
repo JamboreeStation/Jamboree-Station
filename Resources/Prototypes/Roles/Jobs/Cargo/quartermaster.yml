@@ -136,10 +136,10 @@
   requirements:
     - !type:RoleTimeRequirement
       role: JobCargoTechnician
-      time: 18000 #5 hrs
+      time: 5h
     - !type:RoleTimeRequirement
       role: JobSalvageSpecialist
-      time: 9000 #2.5 hrs
+      time: 2.5h
     - !type:DepartmentTimeRequirement
       department: Cargo
       time: 36000 #10 hours
@@ -175,8 +175,8 @@
   id: QuartermasterGear
   equipment:
     id: QuartermasterPDA
+    belt: BoxFolderClipboardThreePapers
     ears: ClothingHeadsetAltCargo # Goobstation
-    belt: BoxFolderClipboard
     pocket1: AppraisalTool
   storage:
     back:

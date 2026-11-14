@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Sprited by belay5 (Discord) | equipped-MASK-vox sprited by PuroSlavKing (Github)",
+  "copyright": "Sprited by belay5 (Discord) | equipped-MASK-vox sprited by PuroSlavKing (Github). anom state added by ATDoop for Impstation",
   "size": {
     "x": 32,
     "y": 32
@@ -22,6 +22,10 @@
       "name": "equipped-MASK-reptilian",
       "directions": 4
     },
+      {
+          "name": "equipped-MASK-anomalocarid",
+          "directions": 4
+      },
     {
       "name": "inhand-left",
       "directions": 4
@@ -33,6 +37,7 @@
     {
       "name": "equipped-MASK-vulpkanin",
       "directions": 4
-    }
+    },
+    {"name": "equipped-MASK-feroxi", "directions": 4}
   ]
 }

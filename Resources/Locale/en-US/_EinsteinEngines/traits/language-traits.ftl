@@ -21,23 +21,22 @@ trait-language-signlanguage-desc =
 
 trait-language-solcommon-name = Sol Common
 trait-language-solcommon-desc =
-    With its roots in Mandarin Chinese - Common evolved as the official language of the Sol Alliance - with officials working to tie it together with a common tongue.
-    It's spoken by state officials - taught in schools - and spoken by those who either feel a sense of national pride in the Alliance or otherwise fell sway to the culture.
+    With its roots in Mandarin Chinese - Sol Common evolved as the official language of Terra - with officials working to tie it together with a common tongue.
+    This language is typically spoken by Humans.
 
 trait-language-tradeband-name = Tradeband
 trait-language-tradeband-desc =
-    Descended from latin and romance languages of old Earth - Tradeband remains the main tongue of the upper class of humanity.
+    Descended from latin and romance languages of Terra - Tradeband remains the main tongue of the upper class of humanity.
     The language sounds elegant and well structured to most ears. It remains in popular use with traders - diplomats - and those seeking to hold onto a piece of a romantic past.
 
 trait-language-freespeak-name = Freespeak
 trait-language-freespeak-desc =
-    A language of renegades and frontiersmen descending from various languages from Earth like Hindi combined into a multi-rooted jumble that sounds incoherent or even barbarian to non-native speakers.
+    A language of renegades and frontiersmen descending from various languages from Earth like Hindi combined into a multi-rooted jumble that sounds incoherent to non-native speakers.
     This language is the only common cultural identity for humans in the frontier. Speaking this language in itself boldly declares the speaker a free spirit.
-    Often called 'Gutter' by Alliance citizens.
 
 trait-language-elyran-name = Elyran
 trait-language-elyran-desc =
-    Elyran Standard is the official tongue of the Republic of Elyra.
+    Elyran Standard is the official tongue of the Planetary Kingdom of Elyra, once known as the planet Jupiter. It was coined by the Elyran Royal family after they formed a fondness for Earth.
     Constructed using elements of Farsi - Arabic - and Turkish - influence from all three of these languages can be seen throughout its grammar and vocabulary.
 
 trait-language-valyrianstandard-name = Valyrian Standard
@@ -50,9 +49,4 @@ trait-language-novunederic-name = Novu-Nederic
 trait-language-novunederic-desc =
     Once the language of seafarers and merchants, now the voice of spacers, terraformers, and pioneers.
     Spoken in the New-Netherlands, this direct and pragmatic trade language carries the sharp consonants and clipped vowels of its old-world roots.
-    Built on centuries of seafaring, land reclamation, and commerce, it thrives among those who shape entire worlds — just as their ancestors shaped the land from the sea.
-
-trait-language-azaziba-name = Sinta'Azaziba
-trait-language-azaziba-desc =
-    A language of Moghes consisting of a combination of spoken word and gesticulation.
-    While waning since Moghes entered the galactic stage - it enjoys popular use by Unathi that never fell to the Hegemony's cultural dominance.
+    This language is typically spoken by Dwarves.

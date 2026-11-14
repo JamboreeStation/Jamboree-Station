@@ -1,9 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Fishbait <Fishbait@git.ml>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 fishbait <gnesse@gmail.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Vehicles.Clowncar;
@@ -12,9 +6,9 @@ using Robust.Client.GameObjects;
 
 namespace Content.Goobstation.Client.Vehicles.Clowncar;
 
-public sealed class ClowncarSystem : SharedClowncarSystem
+public sealed partial class ClowncarSystem : SharedClowncarSystem
 {
-    [Dependency] private readonly AnimationPlayerSystem _animationPlayer = default!;
+    [Dependency] private AnimationPlayerSystem _animationPlayer = default!;
 
     public override void Initialize()
     {

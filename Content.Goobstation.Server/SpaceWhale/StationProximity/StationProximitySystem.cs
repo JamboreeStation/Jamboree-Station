@@ -20,13 +20,13 @@ namespace Content.Goobstation.Server.SpaceWhale.StationProximity;
 
 // used by space whales so think twice beofre using it for yourself somewhere else
 // also half of this was taken from wizden #30436 and redone for whale purposes
-public sealed class StationProximitySystem : EntitySystem
+public sealed partial class StationProximitySystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
     private static readonly TimeSpan CheckInterval = TimeSpan.FromSeconds(60); // le hardcode major
     private TimeSpan _nextCheck = TimeSpan.Zero;
@@ -166,8 +166,9 @@ public sealed class StationProximitySystem : EntitySystem
         var mobCaller = EnsureComp<MobCallerComponent>(dummy); // assign the goidacaller to the dummy
 
         mobCaller.SpawnProto = "SpaceLeviathanDespawn";
-        mobCaller.MaxAlive = 1; // nuh uh
-        mobCaller.MinDistance = 100f; // should be far away
+        mobCaller.MaxAlive = 1;
+        mobCaller.MinDistance = 400f;
+        mobCaller.MaxDistance = 500f;
         mobCaller.NeedAnchored = false;
         mobCaller.NeedPower = false;
         mobCaller.SpawnSpacing = TimeSpan.FromSeconds(65); // to give the guy some time to get back to the station + prevent him from like, QSI-ing to the station to summon the worm in the station lmao, also bru these 5 seconds are really important

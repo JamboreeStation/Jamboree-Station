@@ -3061,7 +3061,7 @@ entities:
     - type: Transform
       pos: 31.5,9.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 3151
 - proto: AnomalyScanner
   entities:
@@ -8861,7 +8861,7 @@ entities:
     - type: Transform
       pos: 26.5,-4.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 3151
 - proto: CarpetBlue
   entities:
@@ -12023,7 +12023,7 @@ entities:
     - type: Transform
       pos: 20.5,-12.5
       parent: 2
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 3151
 - proto: ExtinguisherCabinetFilled
   entities:
@@ -22344,6 +22344,13 @@ entities:
         1824:
         - - MaterialSilo
           - MaterialSiloUtilizer
+    - type: OreSilo
+      clients:
+      - 160
+      - 1284
+      - 1824
+      - 3490
+      - 3493
 - proto: MedalCase
   entities:
   - uid: 3152
@@ -24270,7 +24277,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 3151
 - proto: SecurityTechFabCircuitboard
   entities:
@@ -24299,7 +24306,7 @@ entities:
       - Arsenal
       - Experimental
       - CivilianServices
-    - type: SiloUtilizer
+    - type: OreSiloClient
       silo: 3151
 - proto: SheetGlass
   entities:

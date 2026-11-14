@@ -4,7 +4,6 @@
   suffix: Goblin Made
   abstract: true
   components:
-  - type: Timer
   - type: TimedSpawner
     prototypes:
     - SpawnGoblinMadeToolMalfunction
@@ -79,7 +78,7 @@
   - type: SmokeOnTrigger
     duration: 3
     spreadAmount: 1
-  - type: SoundOnTrigger
+  - type: EmitSoundOnTrigger
     sound: /Audio/Effects/smoke.ogg
   - type: TimerTriggerVisuals
     primingSound:

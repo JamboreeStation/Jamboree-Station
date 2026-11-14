@@ -1,21 +1,3 @@
-# SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2024 AstroDogeDX <48888500+AstroDogeDX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2024 Kira Bridgeton <161087999+Verbalase@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 CerberusWolfie <wb.johnb.willis@gmail.com>
-# SPDX-FileCopyrightText: 2025 CometVoid <cometsstrile@gmail.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Piras314 <p1r4s@proton.me>
-# SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-# SPDX-FileCopyrightText: 2025 Theodore Lukin <66275205+pheenty@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 deltanedas <39013340+deltanedas@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 deltanedas <@deltanedas:kde.org>
-# SPDX-FileCopyrightText: 2025 loltart <159829224+loltart@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 loltart <lo1tartyt@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 # species
 - type: emoteSounds
@@ -28,11 +10,11 @@
     Laugh:
       collection: HarpyLaugh
     Sneeze:
-      collection: MaleSneezes
+      collection: FemaleSneezes # Goob - harpy emotes fix
     Cough:
-      collection: MaleCoughs
+      collection: FemaleCoughs # Goob - harpy emotes fix
     Sigh:
-      collection: MaleSigh
+      collection: HarpySigh # Goob - harpy emotes fix
     Crying:
       collection: HarpyCry
     Whistle:
@@ -57,8 +39,8 @@
       collection: HarpyBeeps
     Rev:
       collection: HarpyRevs
-#    Click:
-#      collection: HarpyClicks
+    Click:
+      collection: HarpyClicks
     Chitter:
       collection: HarpyChitter
     Squeak:
@@ -109,6 +91,25 @@
       collection: ResomiCalls
     Squawk: # Omu, give harpy more emotes
       collection: ResomiSquawk
+    Belch: # Frontier
+      collection: Belch # Frontier
+# Goobstation start
+    Yawn:
+      collection: HarpyYawn
+    Bagawk:
+      path: /Audio/_Mono/Voice/bagawk.ogg
+    Flap:
+      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+    Hoot:
+      path: /Audio/_Goobstation/Voice/Harpy/owl_hoot.ogg
+    Hew:
+      collection: Hew
+# Goobstation end
+
+    Quack: # Goob
+      collection: HarpyQuacks
+    Snore: # Goob
+      collection: Snores
 
 - type: emoteSounds
   id: SoundsHarpyMale
@@ -124,7 +125,7 @@
     Cough:
       collection: MaleCoughs
     Sigh:
-      collection: MaleSigh
+      collection: HarpySigh # Goob - harpy emotes fix
     Crying:
       collection: HarpyCry
     Whistle:
@@ -149,8 +150,8 @@
       collection: HarpyBeeps
     Rev:
       collection: HarpyRevs
-#    Click:
-#      collection: HarpyClicks
+    Click:
+      collection: HarpyClicks
     Chitter:
       collection: HarpyChitter
     Squeak:
@@ -201,6 +202,26 @@
       collection: ResomiCalls
     Squawk: # Omu, give harpy more emotes
       collection: ResomiSquawk
+    Belch: # Frontier
+      collection: Belch # Frontier
+# Goobstation start
+    Yawn:
+      collection: HarpyYawn
+    Bagawk:
+      path: /Audio/_Mono/Voice/bagawk.ogg
+    Flap:
+      path: /Audio/_Goobstation/Voice/Moth/moth_flap.ogg
+    Hoot:
+      path: /Audio/_Goobstation/Voice/Harpy/owl_hoot.ogg
+    Hew:
+      collection: Hew
+# Goobstation End
+
+
+    Quack: # Goob
+      collection: HarpyQuacks
+    Snore: # Goob
+      collection: Snores
 
 - type: emoteSounds
   id: FemaleVulpkanin
@@ -251,6 +272,16 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Hew: # Goob
+      collection: Hew
+    Gekker: # Goob
+      path: /Audio/_Floofstation/Voice/Vulpkanin/gekker.ogg
+    Yap: # Goob
+      path: /Audio/_Floofstation/Voice/Vulpkanin/yap.ogg
+    Squeak: # Goob
+      path: /Audio/_DV/Voice/Kitsune/fox_squeal1.ogg
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -303,6 +334,16 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Hew: # Goob
+      collection: Hew
+    Gekker: # Goob
+      path: /Audio/_Floofstation/Voice/Vulpkanin/gekker.ogg
+    Yap: # Goob
+      path: /Audio/_Floofstation/Voice/Vulpkanin/yap.ogg
+    Squeak: # Goob
+      path: /Audio/_DV/Voice/Kitsune/fox_squeal1.ogg
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -363,6 +404,14 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Hew: # Goob
+      collection: Hew
+    Snort: # Goob
+      collection: LagomorphSnorts
+    Squee: # Goob
+      collection: LagomorphSqueaks
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 
@@ -405,6 +454,14 @@
       path: /Audio/_Goobstation/Voice/gulpexotic.ogg
     Surprised: # Goob
       path: /Audio/_Goobstation/Voice/surprised.ogg
+    Belch: # Frontier
+      collection: Belch # Frontier
+    Hew: # Goob
+      collection: Hew
+    Snort: # Goob
+      collection: LagomorphSnorts
+    Squee: # Goob
+      collection: LagomorphSqueaks
     Mars: # jamboree - juice that makes you mar
       path: /Audio/_EinsteinEngines/Voice/Shadowkin/mar.ogg
 

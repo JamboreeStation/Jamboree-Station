@@ -1,4 +1,8 @@
-﻿- type: entity
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
   id: MagazineQuarter
   name: "magazine (quarter)"
   parent: [ BaseItem, BaseCommandContraband ]
@@ -19,7 +23,7 @@
     containers:
       ballistic-ammo: !type:Container
   - type: Sprite
-    sprite: _DV/Objects/Weapons/Guns/SMGs/typewriter.rsi
+    sprite: _DV/Objects/Weapons/Guns/SMGs/typewritermagazine.rsi
     layers:
     - state: mag-0
       map: ["enum.GunVisualLayers.Base"]

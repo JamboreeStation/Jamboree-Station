@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client.Effects;
@@ -38,7 +33,7 @@ public sealed class ChameleonProjectorSystem : SharedChameleonProjectorSystem
 
     private void OnHandleState(Entity<ChameleonDisguiseComponent> ent, ref AfterAutoHandleStateEvent args)
     {
-        CopyComp<SpriteComponent>(ent);
+        CopySprite(ent);
         CopyComp<GenericVisualizerComponent>(ent);
         CopyComp<SolutionContainerVisualsComponent>(ent);
         CopyComp<BurnStateVisualsComponent>(ent);
@@ -46,6 +41,18 @@ public sealed class ChameleonProjectorSystem : SharedChameleonProjectorSystem
         // reload appearance to hopefully prevent any invisible layers
         if (_appearanceQuery.TryComp(ent, out var appearance))
             _appearance.QueueUpdate(ent, appearance);
+    }
+
+    /// <summary>
+    /// Copies the source entity/prototype's sprite onto the disguise.
+    /// </summary>
+    private void CopySprite(Entity<ChameleonDisguiseComponent> ent)
+    {
+        if (!GetSrcEntity<SpriteComponent>(ent.Comp, out var src))
+            return;
+
+        var dest = EnsureComp<SpriteComponent>(ent);
+        _sprite.CopySprite(src, (ent.Owner, dest));
     }
 
     private void OnStartup(Entity<ChameleonDisguisedComponent> ent, ref ComponentStartup args)

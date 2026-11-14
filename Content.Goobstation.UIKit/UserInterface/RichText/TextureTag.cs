@@ -9,9 +9,9 @@ using Robust.Shared.Utility;
 
 namespace Content.Goobstation.UIKit.UserInterface.RichText;
 
-public sealed class TextureTag : BaseTextureTag, IMarkupTagHandler
+public sealed partial class TextureTag : BaseTextureTag, IMarkupTagHandler
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     public string Name => "tex";
 
@@ -58,14 +58,10 @@ public sealed class TextureTag : BaseTextureTag, IMarkupTagHandler
             tex = EntitySystemManager.GetEntitySystem<SpriteSystem>().Frame0(sprite);
         }
 
-        if (!TryDrawIcon(tex,
-                scaleValue.Value,
-                new Vector2((float) x, (float) y),
-                tooltip,
-                out var texture))
-            return false;
-
-        control = texture;
+        control = DrawIcon(tex,
+            scaleValue.Value,
+            new Vector2((float) x, (float) y),
+            tooltip);
         return true;
     }
 }

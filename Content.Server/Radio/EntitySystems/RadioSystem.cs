@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2020 Bright <nsmoak10@yahoo.com>
+﻿// SPDX-FileCopyrightText: 2020 Bright <nsmoak10@yahoo.com>
 // SPDX-FileCopyrightText: 2020 Bright0 <55061890+Bright0@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2020 Swept <jamesurquhartwebb@gmail.com>
-// SPDX-FileCopyrightText: 2020 Víctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2020 V├¡ctor Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2021 Acruid <shatter66@gmail.com>
 // SPDX-FileCopyrightText: 2021 Metal Gear Sloth <metalgearsloth@gmail.com>
 // SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
@@ -46,7 +46,6 @@ using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server._EinsteinEngines.Language;
 using Content.Server.Power.Components;
-using Content.Server.Radio.Components;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared._EinsteinEngines.Language;
@@ -162,7 +161,7 @@ public sealed partial class RadioSystem : EntitySystem
         if (language == null)
             language = _language.GetLanguage(messageSource);
 
-        if (!language.SpeechOverride.AllowRadio)
+        if (!language.SpeechOverride.AllowRadio && !LanguageRadioOverride(messageSource, ref language)) // Goob
             return;
         // Einstein Engines - Language end
 
@@ -187,7 +186,7 @@ public sealed partial class RadioSystem : EntitySystem
         name = FormattedMessage.EscapeText(name);
 
         SpeechVerbPrototype speech;
-        if (evt.SpeechVerb != null && _prototype.TryIndex(evt.SpeechVerb, out var evntProto))
+        if (evt.SpeechVerb != null && _prototype.Resolve(evt.SpeechVerb, out var evntProto))
             speech = evntProto;
         else
             speech = _chat.GetSpeechVerb(messageSource, message);
@@ -237,22 +236,26 @@ public sealed partial class RadioSystem : EntitySystem
         var hasActiveServer = HasActiveServer(sourceMapId, channel.ID);
         var sourceServerExempt = _exemptQuery.HasComp(radioSource);
 
+        // Jamboree - relay tower: relay on the same map boosts all channels to LongRange
+        var isRelayActive = IsAnyRelayActive(sourceMapId);
+        var isLongRange = channel.LongRange || isRelayActive;
+
         var radioQuery = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
         while (canSend && radioQuery.MoveNext(out var receiver, out var radio, out var transform))
         {
             if (!radio.ReceiveAllChannels)
             {
                 if (!radio.Channels.Contains(channel.ID) || (TryComp<IntercomComponent>(receiver, out var intercom) &&
-                                                             !intercom.SupportedChannels.Contains(channel.ID)))
+                                                              !intercom.SupportedChannels.Contains(channel.ID)))
                     continue;
             }
 
-            if (!channel.LongRange && transform.MapID != sourceMapId && !radio.GlobalReceive
+            if (!isLongRange && transform.MapID != sourceMapId && !radio.GlobalReceive
                 && !(HasActiveTransmitter(transform.MapID) && HasActiveTransmitter(sourceMapId))) // goob - intermap transmitters
                 continue;
 
             // don't need telecom server for long range channels or handheld radios and intercoms
-            var needServer = !channel.LongRange && !sourceServerExempt;
+            var needServer = !isLongRange && !sourceServerExempt;
             if (needServer && !hasActiveServer)
                 continue;
 
@@ -299,9 +302,7 @@ public sealed partial class RadioSystem : EntitySystem
         if (language.SpeechOverride.Color is { } colorOverride)
             languageColor = Color.InterpolateBetween(Color.White, colorOverride, colorOverride.A); // Changed first param to Color.White so it shows color correctly.
 
-        var languageDisplay = language.IsVisibleLanguage
-            ? Loc.GetString("chat-manager-language-prefix", ("language", language.ChatName))
-            : "";
+        var languageDisplay = string.Empty; // Language name hidden - icon is shown instead (Starlight port)
 
         // goob start - loudspeakers
 
@@ -342,6 +343,46 @@ public sealed partial class RadioSystem : EntitySystem
     }
     // Einstein Engines - Language end
 
+    // Goobstation - Voice chat
+    public void GetVoiceReceivers(EntityUid radioSource, RadioChannelPrototype channel, List<EntityUid> receivers)
+    {
+        var sendAttemptEv = new RadioSendAttemptEvent(channel, radioSource);
+        RaiseLocalEvent(ref sendAttemptEv);
+        RaiseLocalEvent(radioSource, ref sendAttemptEv);
+        if (sendAttemptEv.Cancelled)
+            return;
+
+        var sourceMapId = Transform(radioSource).MapID;
+        var hasActiveServer = HasActiveServer(sourceMapId, channel.ID);
+        var sourceServerExempt = _exemptQuery.HasComp(radioSource);
+
+        var radioQuery = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
+        while (radioQuery.MoveNext(out var receiver, out var radio, out var transform))
+        {
+            if (!radio.ReceiveAllChannels)
+            {
+                if (!radio.Channels.Contains(channel.ID) || (TryComp<IntercomComponent>(receiver, out var intercom) &&
+                                                             !intercom.SupportedChannels.Contains(channel.ID)))
+                    continue;
+            }
+
+            if (!channel.LongRange && transform.MapID != sourceMapId && !radio.GlobalReceive
+                && !(HasActiveTransmitter(transform.MapID) && HasActiveTransmitter(sourceMapId)))
+                continue;
+
+            if (!channel.LongRange && !sourceServerExempt && !hasActiveServer)
+                continue;
+
+            var attemptEv = new RadioReceiveAttemptEvent(channel, radioSource, receiver);
+            RaiseLocalEvent(ref attemptEv);
+            RaiseLocalEvent(receiver, ref attemptEv);
+            if (attemptEv.Cancelled)
+                continue;
+
+            receivers.Add(receiver);
+        }
+    }
+
     /// <inheritdoc cref="TelecomServerComponent"/>
     private bool HasActiveServer(MapId mapId, string channelId)
     {
@@ -365,4 +406,18 @@ public sealed partial class RadioSystem : EntitySystem
             .Any(server => server.Item3.MapID == mapId && server.Item2.Powered);
     }
     // goob end
+
+    // Jamboree - relay tower
+    private bool IsAnyRelayActive(MapId mapId)
+    {
+        var relays = EntityQuery<RelayComponent, TransformComponent>();
+        foreach (var (relay, transform) in relays)
+        {
+            if (transform.MapID == mapId && relay.IsActive)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

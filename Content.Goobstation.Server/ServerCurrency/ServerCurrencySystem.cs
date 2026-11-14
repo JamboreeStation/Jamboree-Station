@@ -1,18 +1,7 @@
-// SPDX-FileCopyrightText: 2024 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Milon <milonpl.git@proton.me>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Tim <timfalken@hotmail.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Common.CCVar;
 using Content.Goobstation.Common.ServerCurrency;
-using Content.Server._RMC14.LinkAccount;
 using Content.Server.GameTicking;
 using Content.Server.Popups;
 using Content.Shared.Humanoid;
@@ -29,16 +18,15 @@ namespace Content.Goobstation.Server.ServerCurrency
     /// <summary>
     /// Connects <see cref="ServerCurrencyManager"/> to the simulation state.
     /// </summary>
-    public sealed class ServerCurrencySystem : EntitySystem
+    public sealed partial class ServerCurrencySystem : EntitySystem
     {
-        [Dependency] private readonly ICommonCurrencyManager _currencyMan = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly SharedMindSystem _mind = default!;
-        [Dependency] private readonly SharedJobSystem _jobs = default!;
-        [Dependency] private readonly IPlayerManager _players = default!;
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
-        [Dependency] private readonly LinkAccountManager _linkAccount = default!;
-        [Dependency] private readonly GameTicker _gameTicker = default!;
+        [Dependency] private ICommonCurrencyManager _currencyMan = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private SharedMindSystem _mind = default!;
+        [Dependency] private SharedJobSystem _jobs = default!;
+        [Dependency] private IPlayerManager _players = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
+        [Dependency] private GameTicker _gameTicker = default!;
 
         private int _goobcoinsPerPlayer = 10;
         private int _goobcoinsNonAntagMultiplier = 1;
@@ -109,9 +97,6 @@ namespace Content.Goobstation.Server.ServerCurrency
 
                         if (_goobcoinsServerMultiplier != 1)
                             money *= _goobcoinsServerMultiplier;
-
-                        if (session != null && _linkAccount.GetPatron(session)?.Tier != null)
-                            money *= 2;
 
                         if (_goobcoinsUseShortRoundPenalty)
                         {

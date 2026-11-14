@@ -1,35 +1,3 @@
-// SPDX-FileCopyrightText: 2021 20kdc <asdd2808@gmail.com>
-// SPDX-FileCopyrightText: 2021 E F R <602406+Efruit@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2021 Paul Ritter <ritter.paul1@googlemail.com>
-// SPDX-FileCopyrightText: 2021 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2021 Vera Aguilera Puerto <gradientvera@outlook.com>
-// SPDX-FileCopyrightText: 2021 ike709 <ike709@github.com>
-// SPDX-FileCopyrightText: 2021 ike709 <ike709@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Moony <moonheart08@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Vordenburg <114301317+Vordenburg@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 theashtronaut <112137107+theashtronaut@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Chief-Engineer <119664036+Chief-Engineer@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Kara <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2023 Kevin Zheng <kevinz5000@gmail.com>
-// SPDX-FileCopyrightText: 2023 faint <46868845+ficcialfaint@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 LordCarve <27449516+LordCarve@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Piras314 <p1r4s@proton.me>
-// SPDX-FileCopyrightText: 2024 Plykiya <58439124+Plykiya@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 themias <89101928+themias@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Ilya246 <ilyukarno@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Administration.Logs;
@@ -89,7 +57,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
             if (!filter.Enabled
                 || !_nodeContainer.TryGetNodes(uid, filter.InletName, filter.FilterName, filter.OutletName, out PipeNode? inletNode, out PipeNode? filterNode, out PipeNode? outletNode)
                 || inletNode != outletNode // Goobstation - ignore pressure if we're inline
-                    && outletNode.Air.Pressure >= Atmospherics.MaxOutputPressure)
+                    && outletNode.Air.Pressure >= filter.MaxPressure) // JAMBOREE make it actually go to its true max pressure it can produce.
             {
                 _ambientSoundSystem.SetAmbience(uid, false);
                 return;
@@ -113,7 +81,7 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
                 filteredOut.SetMoles(filter.FilteredGas.Value, removed.GetMoles(filter.FilteredGas.Value));
                 removed.SetMoles(filter.FilteredGas.Value, 0f);
 
-                var target = filterNode.Air.Pressure < Atmospherics.MaxOutputPressure ? filterNode : inletNode;
+                var target = filterNode.Air.Pressure < filter.MaxPressure ? filterNode : inletNode; // JAMBOREE - because of the new pipe port.
                 _atmosphereSystem.Merge(target.Air, filteredOut);
                 _ambientSoundSystem.SetAmbience(uid, filteredOut.TotalMoles > 0f);
             }
@@ -190,18 +158,18 @@ namespace Content.Server.Atmos.Piping.Trinary.EntitySystems
 
         private void OnSelectGasMessage(EntityUid uid, GasFilterComponent filter, GasFilterSelectGasMessage args)
         {
-            if (args.ID.HasValue)
+            if (args.Gas.HasValue)
             {
-                if (Enum.TryParse<Gas>(args.ID.ToString(), true, out var parsedGas))
+                if (Enum.IsDefined(typeof(Gas), args.Gas))
                 {
-                    filter.FilteredGas = parsedGas;
+                    filter.FilteredGas = args.Gas;
                     _adminLogger.Add(LogType.AtmosFilterChanged, LogImpact.Medium,
-                        $"{ToPrettyString(args.Actor):player} set the filter on {ToPrettyString(uid):device} to {parsedGas.ToString()}");
+                        $"{ToPrettyString(args.Actor):player} set the filter on {ToPrettyString(uid):device} to {args.Gas.ToString()}");
                     DirtyUI(uid, filter);
                 }
                 else
                 {
-                    Log.Warning($"{ToPrettyString(uid)} received GasFilterSelectGasMessage with an invalid ID: {args.ID}");
+                    Log.Warning($"{ToPrettyString(uid)} received GasFilterSelectGasMessage with an invalid ID: {args.Gas}");
                 }
             }
             else

@@ -1,8 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
-// SPDX-FileCopyrightText: 2025 gus <august.eymann@gmail.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -49,16 +44,15 @@ public sealed class TrailOverlay : Overlay
         var handle = args.WorldHandle;
         var bounds = args.WorldAABB;
 
-        var xformQuery = _entManager.GetEntityQuery<TransformComponent>();
         var spriteQuery = _entManager.GetEntityQuery<SpriteComponent>();
 
         var query = _entManager.EntityQueryEnumerator<TrailComponent, TransformComponent>();
-        while (query.MoveNext(out _, out var trail, out var xform))
+        while (query.MoveNext(out var uid, out var trail, out var xform))
         {
             if (trail.TrailData.Count == 0)
                 continue;
 
-            var (position, rotation) = _transform.GetWorldPositionRotation(xform, xformQuery);
+            var (position, rotation) = _transform.GetWorldPositionRotation(xform);
 
             if (trail.Shader != null && _protoMan.TryIndex<ShaderPrototype>(trail.Shader, out var shaderProto))
             {

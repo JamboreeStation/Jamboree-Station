@@ -1,18 +1,8 @@
-// SPDX-FileCopyrightText: 2023 AJCM <AJCM@tutanota.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Slava0135 <40753025+Slava0135@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Content.Server.StationEvents.Events;
 using Content.Shared.Radio;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server.StationEvents.Components;
 
@@ -31,8 +21,8 @@ public sealed partial class SolarFlareRuleComponent : Component
     /// <summary>
     ///     Channels that will be disabled for a duration of event
     /// </summary>
-    [DataField("affectedChannels", customTypeSerializer: typeof(PrototypeIdHashSetSerializer<RadioChannelPrototype>))]
-    public HashSet<string> AffectedChannels = new();
+    [DataField("affectedChannels")]
+    public HashSet<ProtoId<RadioChannelPrototype>> AffectedChannels = new();
 
     /// <summary>
     ///     List of extra channels that can be random disabled on top of the starting channels.

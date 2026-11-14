@@ -1,0 +1,124 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: OrganAntBrain
+  parent: OrganHumanBrain
+  name: ant brain
+  description: "Thousands of sugars, sweets, and treats are simulated every second in this organ."
+  components:
+  - type: Sprite
+    state: brain
+    scale: 0.3, 0.3
+    color: "#221e1c"
+  - type: Tag # goob edit
+    tags:
+    - Meat
+    - Organ
+    - Brain
+
+- type: entity
+  id: OrganAntEyes
+  parent: OrganHumanEyes
+  name: ant eyes
+  description: "I see you!"
+  components:
+  - type: Sprite
+    scale: 0.3, 0.3
+    color: "#221e1c"
+    layers:
+      - state: eyeball-l
+      - state: eyeball-r
+  - type: Tag # goob edit
+    tags:
+    - Meat
+    - Organ
+    - Eyes
+
+- type: entity
+  id: OrganAntLungs
+  parent: OrganHumanLungs
+  name: ant lungs
+  description: "Filters oxygen from an atmosphere, which is then sent into the bloodstream to be used as an electron carrier."
+  components:
+  - type: Sprite
+    scale: 0.3, 0.3
+    color: "#221e1c"
+    layers:
+      - state: lung-l
+      - state: lung-r
+  - type: Organ
+    onAdd:
+    - type: BreathingImmunity
+  - type: Tag # goob edit
+    tags:
+    - Meat
+    - Organ
+    - Lungs
+
+- type: entity
+  id: OrganAntHeart
+  parent: OrganHumanHeart
+  name: ant heart
+  description: "Hill is where the ant heart is."
+  components:
+  - type: Sprite
+    state: heart-on
+    scale: 0.3, 0.3
+    color: "#221e1c"
+  - type: Tag # goob edit
+    tags:
+    - Meat
+    - Organ
+    - Heart
+
+- type: entity
+  id: OrganAntStomach
+  parent: OrganHumanStomach
+  name: ant stomach
+  description: "Can hold maybe 1 or 2 crumbs."
+  components:
+  - type: Sprite
+    state: stomach
+    scale: 0.3, 0.3
+    color: "#221e1c"
+  - type: Tag # goob edit
+    tags:
+      - Meat
+      - Organ
+      - Stomach
+
+- type: entity
+  id: OrganAntLiver
+  parent: OrganHumanLiver
+  name: ant liver
+  description: "Pairing suggestion: chianti and fava beans."
+  components:
+  - type: Sprite
+    state: liver
+    scale: 0.3, 0.3
+    color: "#221e1c"
+  - type: Tag # goob edit
+    tags:
+    - Meat
+    - Organ
+    - Liver
+
+- type: entity
+  id: OrganAntKidneys
+  parent: OrganHumanKidneys
+  name: ant kidneys
+  description: "Filters toxins from the bloodstream."
+  components:
+  - type: Sprite
+    scale: 0.3, 0.3
+    color: "#221e1c"
+    layers:
+      - state: kidney-l
+      - state: kidney-r
+  - type: Tag # goob edit
+    tags:
+    - Meat
+    - Organ
+    - Kidneys

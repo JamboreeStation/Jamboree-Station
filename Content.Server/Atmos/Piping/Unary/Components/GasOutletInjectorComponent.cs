@@ -1,12 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2022 Vera Aguilera Puerto <6766154+Zumorica@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2022 mirrorcult <lunarautomaton6@gmail.com>
-// SPDX-FileCopyrightText: 2022 wrexbe <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 ArtisticRoomba <145879011+ArtisticRoomba@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Atmos.Piping.Binary.Components;
@@ -25,9 +16,11 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         [ViewVariables(VVAccess.ReadWrite)]
         public bool Enabled = true;
 
-        /// <summary>
-        ///     Target volume to transfer. If <see cref="WideNet"/> is enabled, actual transfer rate will be much higher.
-        /// </summary>
+        [DataField] // JAMBOREE - Because of the new pipes, made it so it actually reports its maxtransferrate instead of hardcoded ones.
+        public float MaxTransferRate = Atmospherics.MaxTransferRate;
+
+
+        [DataField]
         [ViewVariables(VVAccess.ReadWrite)]
         public float TransferRate
         {
@@ -36,9 +29,6 @@ namespace Content.Server.Atmos.Piping.Unary.Components
         }
 
         private float _transferRate = 50;
-
-        [DataField]
-        public float MaxTransferRate = Atmospherics.MaxTransferRate;
 
         [DataField]
         [GuidebookData]

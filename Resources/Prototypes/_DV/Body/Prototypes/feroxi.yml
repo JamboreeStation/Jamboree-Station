@@ -1,7 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aidenkrz <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 AstroDogeDX <48888500+AstroDogeDX@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: body
@@ -35,6 +31,7 @@
         stomach: OrganFeroxiStomach
         liver: OrganAnimalLiver
         kidneys: OrganHumanKidneys
+        butt: Butt # Goob
     right arm:
       part: RightArmFeroxi
       connections:

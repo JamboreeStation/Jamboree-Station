@@ -4,16 +4,15 @@ chat-language-Bubblish-name = Bubblish
 chat-language-RootSpeak-name = Rootspeak
 chat-language-Nekomimetic-name = Neko
 chat-language-Draconic-name = Sinta'Unathi
-chat-language-Azaziba-name = Sinta'Azaziba
 chat-language-SolCommon-name = Sol Common
 chat-language-NovuNederic-name = Novu-Nederic
-chat-language-TauCetiBasic-name = Basic
+chat-language-TauCetiBasic-name = Tau Ceti Basic
 chat-language-Tradeband-name = Tradeband
 chat-language-Freespeak-name = Freespeak
 chat-language-Elyran-name = Elyran
 chat-language-Canilunzt-name = Canilunzt
 chat-language-Moffic-name = Moffic
-chat-language-RobotTalk-name = Binary
+chat-language-RobotTalk-name = RobotTalk
 chat-language-Calcic-name = Calcic
 chat-language-ValyrianStandard-name = Valyrian
 chat-language-Sign-name = Sign
@@ -29,11 +28,7 @@ chat-language-NewKinPidgin-name = Ka'rakk
 
 # Additional languges
 
-chat-language-NalRasan-name = Nal'rasan
-chat-language-SiikTajr-name = Siik'tajr
 chat-language-SiikMaas-name = Siik'maas
-chat-language-YaSsa-name = Ya'ssa
-chat-language-Delvahii-name = Delvahii
 chat-language-Shadowmind-name = Shadowmind
 chat-language-Qiilour-name = Qiilour
 
@@ -42,7 +37,7 @@ chat-language-Qiilour-name = Qiilour
 chat-language-Cat-name = Cat
 chat-language-Chicken-name = Chicken
 chat-language-Cow-name = Cow
-chat-language-Crab-name = Crab
+chat-language-Crab-name = Crabbish
 chat-language-Deer-name = Deer
 chat-language-Dog-name = Dog
 chat-language-Duck-name = Duck

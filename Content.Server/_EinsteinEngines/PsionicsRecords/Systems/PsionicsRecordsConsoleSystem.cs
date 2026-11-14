@@ -12,6 +12,7 @@ using Content.Shared.StationRecords;
 using Robust.Server.GameObjects;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.IdentityManagement;
+using Content.Shared.IdentityManagement.Components;
 using Content.Shared._EinsteinEngines.Psionics.Components;
 
 /// <summary>
@@ -36,6 +37,8 @@ public sealed class PsionicsRecordsConsoleSystem : SharedPsionicsRecordsConsoleS
 
     public override void Initialize()
     {
+        base.Initialize();
+        SubscribeLocalEvent<IdentityComponent, IdentityChangedEvent>(OnIdentityChanged);
         SubscribeLocalEvent<PsionicsRecordsConsoleComponent, RecordModifiedEvent>(UpdateUserInterface);
         SubscribeLocalEvent<PsionicsRecordsConsoleComponent, AfterGeneralRecordCreatedEvent>(UpdateUserInterface);
 
@@ -46,6 +49,11 @@ public sealed class PsionicsRecordsConsoleSystem : SharedPsionicsRecordsConsoleS
             subs.Event<SetStationRecordFilter>(OnFiltersChanged);
             subs.Event<PsionicsRecordChangeStatus>(OnChangeStatus);
         });
+    }
+
+    private void OnIdentityChanged(Entity<IdentityComponent> ent, ref IdentityChangedEvent args)
+    {
+        CheckNewIdentity(ent.Owner);
     }
 
     private void UpdateUserInterface<T>(Entity<PsionicsRecordsConsoleComponent> ent, ref T args)

@@ -41,6 +41,18 @@
       "directions": 4
     },
     {
+      "name": "equipped-EYES-anomalocarid",
+      "directions": 4
+    },
+    {
+      "name": "alt-equipped-EYES-anomalocarid",
+      "directions": 4
+    },
+    {
+      "name": "mecha-equipped-EYES-anomalocarid",
+      "directions": 4
+    },
+    {
       "name": "inhand-left",
       "directions": 4
     },

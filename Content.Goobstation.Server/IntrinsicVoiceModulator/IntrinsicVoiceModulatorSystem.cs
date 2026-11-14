@@ -1,6 +1,3 @@
-// SPDX-FileCopyrightText: 2025 GabyChangelog <agentepanela2@gmail.com>
-// SPDX-FileCopyrightText: 2025 Kyoth25f <kyoth25f@gmail.com>
-//
 // SPDX-License-Identifier: MIT
 
 using Content.Goobstation.Shared.IntrinsicVoiceModulator; // Goobstation
@@ -20,12 +17,12 @@ namespace Content.Goobstation.Server.IntrinsicVoiceModulator;
 
 public sealed partial class IntrinsicVoiceModulatorSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private readonly SharedJobSystem _job = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private ISharedAdminLogManager _adminLog = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private SharedJobSystem _job = default!;
 
     private int _maxNameLenght;
 

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Goob Station Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   id: TapeDeck
   name: tape deck
@@ -16,6 +20,15 @@
   - type: Machine
     board: TapeDeckCircuitboard
   - type: TapeRecorder
+    understoodLanguages:
+    - TauCetiBasic
+    - SolCommon
+    - Tradeband
+    - Freespeak
+    - Elyran
+    - NovuNederic
+    - Gruntish
+    - YowKriol
   - type: ActiveListener
     range: 4
   - type: UseDelay

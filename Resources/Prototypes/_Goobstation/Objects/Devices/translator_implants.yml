@@ -1,8 +1,3 @@
-# SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-# SPDX-FileCopyrightText: 2025 Orion-416 <cliveocelot@gmail.com>
-# SPDX-FileCopyrightText: 2025 ImWeax <59857479+ImWeax@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 TaserTheFox <TaserTheFox@gmail.com>
-#
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: entity
@@ -20,6 +15,9 @@
       - Freespeak
       - NovuNederic
       - Tradeband
+      - Spessnish #jamboree
+      - Sovblov #jamboree
+      - Hegemonic #jamboree
       - Sign
       - SpaceItalian # Job Specific -
       - Bubblish # Slime Language
@@ -40,25 +38,15 @@
       - Schechi # Avali Language
       - ValyrianStandard # Harpy Language
       - YowKriol # Yowie Language
-#      - Azaziba # Depricated Languages -
-#      - Delvahii
-      - Eldritch # Eventually Cthulhoid Language
-#      - NalRasan
-#      - SiikTajr
-      - BieselEckeckyik
+      - Eldritch # Cthulhoid Language
+      - Xeeplian # Abductor Language
       - Eckeckyik # Thaven Language
-      - Xeeplian # Abductor/Xeeplian Language
-#      - YaSsa
-      - Cheval # Animal Languages -
-      - Carptongue
-      - Deer
-      - Duck
-      - Kangaroo
-      - Pig
-      - Mouse
-      - Monkey
-      - Kobold
-
+      - BieselEckeckyik # Bieselized Thaven Language
+      - Crab # Anomalocarid Language
+      - Mouse # Rodentia Language
+      - Umamese #Jamboree, Gingerbread language
+      - Bruin #Jamboree, Ursine Language
+      - Bureaucratic # Jamboree, CC Language
 
     understood:
       - TauCetiBasic # Common Languages -
@@ -67,6 +55,9 @@
       - Freespeak
       - NovuNederic
       - Tradeband
+      - Spessnish #jamboree
+      - Sovblov #jamboree
+      - Hegemonic #jamboree
       - Sign
       - SpaceItalian # Job Specific -
       - Bubblish # Slime Language
@@ -87,24 +78,77 @@
       - Schechi # Avali Language
       - ValyrianStandard # Harpy Language
       - YowKriol # Yowie Language
-#      - Azaziba # Depricated Languages -
-#      - Delvahii
-      - Eldritch # Eventually Cthulhoid Language
-#      - NalRasan
-#      - SiikTajr
-      - BieselEckeckyik
+      - Eldritch # Cthulhoid Language
+      - Xeeplian # Abductor Language
       - Eckeckyik # Thaven Language
-      - Xeeplian # Abductor/Xeeplian Language
-#      - YaSsa
-      - Cheval # Animal Languages -
-      - Carptongue
+      - BieselEckeckyik # Bieselized Thaven Language
+      - Crab # Anomalocarid Language
+      - Mouse # Rodentia Language
+      - Umamese #Jamboree, Gingerbread language
+      - Bruin #Jamboree, Ursine Language
+      - Bureaucratic # Jamboree, CC Language
+
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: ZookeeperTranslatorImplant
+  name: zookeeper translator implant
+  description: An implant giving the ability to understand and speak every animal language.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TranslatorImplant
+    spoken:
+      - Carptongue # Animals -
+      - Cat
+      - Cheval
+      - Chicken
+      - Cow
+      - Crab
       - Deer
+      - Dog
       - Duck
+      - FloorGoblin
+      - Fox
+      - Hissing
       - Kangaroo
-      - Pig
-      - Mouse
-      - Monkey
       - Kobold
+      - Monkey
+      - Mouse
+      - Penguin
+      - Pig
+      - Sheep
+      - Xeno
+    understood:
+      - Carptongue # Animals -
+      - Cat
+      - Cheval
+      - Chicken
+      - Cow
+      - Crab
+      - Deer
+      - Dog
+      - Duck
+      - FloorGoblin
+      - Fox
+      - Hissing
+      - Kangaroo
+      - Kobold
+      - Monkey
+      - Mouse
+      - Penguin
+      - Pig
+      - Sheep
+      - Xeno
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: CentcommTranslatorImplant
+  name: central command translator implant
+  description: An implant granting the ability to understand and speak any language. Issued to high-ranking Central Command personnel.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TranslatorImplant
+    universalLanguageSpeaker: true
 
 
 
@@ -159,6 +203,19 @@
     - YowKriol
     requires:
     - TauCetiBasic
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: BureaucraticTranslatorImplant
+  name: Bureaucratic translator implant
+  description: An implant giving the ability to understand and speak Bureaucratic, the tongue of the NanoTrasen boardroom.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: TranslatorImplant
+    spoken:
+    - Bureaucratic
+    understood:
+    - Bureaucratic
 
 - type: entity
   parent: BaseSubdermalImplant

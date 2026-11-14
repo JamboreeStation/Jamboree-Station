@@ -111,7 +111,7 @@
             #service
             Captain: [ 1, 1 ]
             NanotrasenRepresentative: [ 1, 1 ]
-#            BlueshieldOfficer: [ 1, 1 ]
+ #           NanotrasenCareerTrainer: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
             Bartender: [ 2, 2 ]
             Botanist: [ 3, 3 ]
@@ -149,6 +149,7 @@
             #supply
             Quartermaster: [ 1, 1 ]
             SalvageSpecialist: [ 3, 3 ]
+            ShaftMiner: [ 4, 4 ]
             CargoTechnician: [ 3, 3 ]
             #civilian
             Passenger: [ -1, -1 ]

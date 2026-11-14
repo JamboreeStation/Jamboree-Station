@@ -1,5 +1,7 @@
 - type: language
   id: XenoHivemind
+  isVisibleLanguage: true
+  icon: LanguageIconXenoHivemind
   speech:
     requireSpeech: false
     color: '#8c3986'

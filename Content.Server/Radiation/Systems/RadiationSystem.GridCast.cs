@@ -1,17 +1,3 @@
-// SPDX-FileCopyrightText: 2022 Alex Evgrashin <aevgrashin@yandex.ru>
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 chromiumboy <50505512+chromiumboy@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 root <root@DESKTOP-HJPF29C>
-// SPDX-FileCopyrightText: 2024 eoineoineoin <github@eoinrul.es>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Thomas <87614336+Aeshus@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 yavuz <58685802+yahay505@users.noreply.github.com>
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -37,8 +23,11 @@ public partial class RadiationSystem
         Vector2 WorldPosition)
     {
         public EntityUid? GridUid => Entity.Comp2.GridUid;
-        public float Slope => Entity.Comp1.Slope;
         public TransformComponent Transform => Entity.Comp2;
+
+        // goobstation
+        public float TerminalDecaySlope => Entity.Comp1.TerminalDecaySlope;
+        public float TerminalDecayDistance => Entity.Comp1.TerminalDecayDistance;
     }
 
     private void UpdateGridcast()
@@ -75,7 +64,7 @@ public partial class RadiationSystem
         }
 
         var debugRays = debug ? new List<DebugRadiationRay>() : null;
-        var receiversTotalRads = new ValueList<(Entity<RadiationReceiverComponent>, float)>();
+        var receiversTotalRads = new ValueList<(Entity<RadiationReceiverComponent>, float, List<EntityUid>?)>();
 
         // TODO RADIATION Parallelize
         // Would need to give receiversTotalRads a fixed size.
@@ -87,6 +76,7 @@ public partial class RadiationSystem
             var destWorld = _transform.GetWorldPosition(destTrs);
 
             var rads = 0f;
+            List<EntityUid>? sourceUids = null;
             foreach (var source in _sources)
             {
                 // send ray towards destination entity
@@ -95,7 +85,11 @@ public partial class RadiationSystem
 
                 // add rads to total rad exposure
                 if (ray.ReachedDestination)
+                {
                     rads += ray.Rads;
+                    sourceUids ??= [];
+                    sourceUids.Add(source.Entity.Owner);
+                }
 
                 if (!debug)
                     continue;
@@ -114,7 +108,7 @@ public partial class RadiationSystem
             // Apply modifier if the destination entity is hidden within a radiation blocking container
             rads = GetAdjustedRadiationIntensity(destUid, rads);
 
-            receiversTotalRads.Add(((destUid, dest), rads));
+            receiversTotalRads.Add(((destUid, dest), rads, sourceUids));
         }
 
         // update information for debug overlay
@@ -124,7 +118,7 @@ public partial class RadiationSystem
         UpdateGridcastDebugOverlay(elapsedTime, totalSources, totalReceivers, debugRays);
 
         // send rads to each entity
-        foreach (var (receiver, rads) in receiversTotalRads)
+        foreach (var (receiver, rads, sourceUids) in receiversTotalRads)
         {
             // update radiation value of receiver
             // if no radiation rays reached target, that will set it to 0
@@ -132,7 +126,7 @@ public partial class RadiationSystem
 
             // also send an event with combination of total rad
             if (rads > 0)
-                IrradiateEntity(receiver, rads, GridcastUpdateRate);
+                IrradiateEntity(receiver, rads, GridcastUpdateRate, sourceUids);
         }
 
         // raise broadcast event that radiation system has updated
@@ -154,10 +148,17 @@ public partial class RadiationSystem
         // Goobstation Start - Radiation Overhaul
         // get direction from rad source to destination and its distance
         var dir = destWorld - source.WorldPosition;
-        var dist = Math.Max(dir.Length(),0.5f);
+        var dist = Math.Max(dir.Length(), 0.5f);
         if (TryComp(source.Entity.Owner, out EventHorizonComponent? horizon)) // if we have a horizon emit radiation from the horizon,
             dist = Math.Max(dist - horizon.Radius, 0.5f);
-        var rads = source.Intensity / (dist );
+
+        // Ray enters terminal decay if the distance between source->receiver >TerminalDecayDistance.
+        // Decays at an additional linear rate of TerminalDecaySlope rads per tile past TerminalDecayDistance ontop of the existing hyperbolic function.
+        // Hyperbolic function
+        var rads = source.Intensity / (dist)
+        // Terminal decay function
+        - (dist - source.TerminalDecayDistance > 0 ? (source.TerminalDecaySlope * (dist - source.TerminalDecayDistance)) : 0);
+
         if (rads < 0.01)
             return null;
         // Goobstation End - Radiation Overhaul
@@ -187,7 +188,7 @@ public partial class RadiationSystem
         // Avoids having to do a lookup per source*receiver.
         var box = Box2.FromTwoPoints(source.WorldPosition, destWorld);
         _grids.Clear();
-        _mapManager.FindGridsIntersecting(mapId, box, ref _grids, true);
+        _mapSystem.FindGridsIntersecting(mapId, box, ref _grids, true);
 
         // gridcast through each grid and try to hit some radiation blockers
         // the ray will be updated with each grid that has some blockers
@@ -324,7 +325,6 @@ public partial class RadiationSystem
             if (resistanceMap.TryGetValue(point, out var resData))
             {
                 var passRatioFromRadResistance = (1 / (resData > 2 ? (resData / 2) : 1));
-
                 var passthroughRatio = MathF.Pow(passRatioFromRadResistance, dist);
                 ray.Rads *= passthroughRatio;
 

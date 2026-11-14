@@ -9,7 +9,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 03/30/2026 06:44:57
-  entityCount: 25117
+  entityCount: 25120
 maps:
 - 1
 grids:
@@ -159847,5 +159847,22 @@ entities:
     components:
     - type: Transform
       pos: -37.497158,-28.338654
+      parent: 2
+- proto: SpawnPointShaftMiner
+  entities:
+  - uid: 25118
+    components:
+    - type: Transform
+      pos: 37.5,0.5
+      parent: 2
+  - uid: 25119
+    components:
+    - type: Transform
+      pos: 37.5,1.5
+      parent: 2
+  - uid: 25120
+    components:
+    - type: Transform
+      pos: 37.5,-0.5
       parent: 2
 ...

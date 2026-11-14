@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-//
 // SPDX-License-Identifier: MIT
 
 using System.Linq;
@@ -142,7 +138,7 @@ public sealed partial class TegNodeGenerator : Node
         if (!xform.Anchored || grid == null)
             yield break;
 
-        var gridIndex = grid.TileIndicesFor(xform.Coordinates);
+        var gridIndex = entMan.System<SharedMapSystem>().TileIndicesFor(grid.Owner, grid, xform.Coordinates);
 
         var dir = xform.LocalRotation.GetDir();
         var a = FindCirculator(dir);
@@ -194,7 +190,7 @@ public sealed partial class TegNodeCirculator : Node
         if (!xform.Anchored || grid == null)
             yield break;
 
-        var gridIndex = grid.TileIndicesFor(xform.Coordinates);
+        var gridIndex = entMan.System<SharedMapSystem>().TileIndicesFor(grid.Owner, grid, xform.Coordinates);
 
         var dir = xform.LocalRotation.GetDir();
         var searchDir = dir.GetClockwise90Degrees();

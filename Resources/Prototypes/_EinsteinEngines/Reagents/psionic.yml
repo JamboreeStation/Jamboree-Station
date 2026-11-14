@@ -23,7 +23,7 @@
         factor: -3
       - !type:SatiateHunger
         factor: -3
-      - !type:ModifyBleedAmount
+      - !type:ModifyBleed
         amount: -1
       - !type:ModifyBloodLevel
         amount: 2
@@ -58,7 +58,7 @@
             Toxin: 2
       - !type:ChemRemovePsionic
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: SoulbreakerToxin
           min: 5
 
@@ -79,11 +79,10 @@
         component: SeeingRainbows
         type: Add
         time: 5
-        refresh: false
       - !type:ChemRerollPsionic
         bonusMultiplier: 4
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: LotophagoiOil
           min: 20
       - !type:GenericStatusEffect
@@ -93,7 +92,7 @@
         key: SlurredSpeech
         component: TelepathicRepeater
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
           reagent: LotophagoiOil
           min: 5
 
@@ -111,7 +110,7 @@
       effects:
         - !type:ChemRestorePsionicReroll
           conditions:
-            - !type:ReagentThreshold
+            - !type:ReagentCondition
               reagent: OusianaDust
               min: 5
         - !type:GenericStatusEffect
@@ -139,10 +138,10 @@
               Burn: 5
         - !type:Drunk
           boozePower: 50
-        - !type:Paralyze
-          paralyzeTime: 10 #too much reagent needed for arrows to be toooo powerful with this, but still useful for tratiors or robust CMOs that want a long stun and are friends with Epi
+        - !type:ModifyParalysis
+          time: 10 #too much reagent needed for arrows to be toooo powerful with this, but still useful for tratiors or robust CMOs that want a long stun and are friends with Epi
           conditions:
-            - !type:ReagentThreshold
+            - !type:ReagentCondition
               reagent: OusianaDust
               min: 5
         - !type:Jitter
@@ -158,14 +157,14 @@
             - "chem-potential-regained-ousiana-3"
             - "chem-potential-regained-ousiana-4"
           conditions:
-          - !type:ReagentThreshold
+          - !type:ReagentCondition
             reagent: OusianaDust
             min: 5
         - !type:AdjustReagent
           reagent: OusianaDust
           amount: -10
           conditions:
-            - !type:ReagentThreshold
+            - !type:ReagentCondition
               reagent: OusianaDust
               min: 5
 

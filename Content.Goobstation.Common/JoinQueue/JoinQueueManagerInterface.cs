@@ -1,5 +1,4 @@
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -16,7 +15,12 @@ public interface IJoinQueueManager
     void Initialize();
 
     /// <summary>
-    /// Gets the total number of players currently waiting in any queue (patron or regular).
+    /// Called each server tick to periodically refresh queue info.
+    /// </summary>
+    void Update(float frameTime);
+
+    /// <summary>
+    /// Gets the total number of players currently waiting in the queue.
     /// </summary>
     int PlayerInQueueCount { get; }
 
