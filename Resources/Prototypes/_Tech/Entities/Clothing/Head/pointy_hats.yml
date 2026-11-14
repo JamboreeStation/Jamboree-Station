@@ -34,7 +34,6 @@
     color: "#991919"
   - type: Clothing
     sprite: Clothing/Head/Hats/chefhat.rsi
-    color: "#991919"
 
 - type: entity
   parent: ClothingBaseHeadHatPointy
@@ -46,7 +45,6 @@
     color: "#2a55b2"
   - type: Clothing
     sprite: Clothing/Head/Hats/chefhat.rsi
-    color: "#2a55b2"
 
 - type: entity
   parent: ClothingBaseHeadHatPointy
@@ -58,4 +56,3 @@
     color: "#249e13"
   - type: Clothing
     sprite: Clothing/Head/Hats/chefhat.rsi
-    color: "#249e13"
