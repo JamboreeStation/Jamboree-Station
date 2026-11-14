@@ -71,8 +71,12 @@ public sealed partial class LayeredTextureControl : Control
         var i = 0;
         foreach (var spriteLayer in sprite.AllLayers)
         {
-            if (spriteLayer.Visible && GetTexture(spriteLayer) is { } texture)
+            if (spriteLayer.Visible
+                && spriteLayer is not SpriteComponent.Layer { CopyToShaderParameters: not null }
+                && GetTexture(spriteLayer) is { } texture)
+            {
                 DrawTexture(handle, texture, spriteLayer.Color * sprite.Color, scale);
+            }
 
             if (_inserts.TryGetValue(i, out var inserted))
             {
