@@ -279,7 +279,16 @@ namespace Content.Shared.Preferences
             {
                 Species = species,
                 Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species),
+                BarkVoice = SpeciesBarkVoice(species) ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice, // Jamboree~
             };
+        }
+
+        // Jamboree~ the voice a species starts with, if it has its own
+        private static ProtoId<BarkPrototype>? SpeciesBarkVoice(string species)
+        {
+            return IoCManager.Resolve<IPrototypeManager>().TryIndex<SpeciesPrototype>(species, out var proto)
+                ? proto.DefaultBarkVoice
+                : null;
         }
 
         // TODO: This should eventually not be a visual change only.
@@ -317,7 +326,7 @@ namespace Content.Shared.Preferences
             }
 
             // Goob Station - Barks Start
-            var barkvoiceId = random.Pick(prototypeManager
+            var barkvoiceId = SpeciesBarkVoice(species) ?? random.Pick(prototypeManager // Jamboree~ species voice first
                 .EnumeratePrototypes<BarkPrototype>()
                 .Where(o => o.RoundStart && (o.SpeciesWhitelist is null || o.SpeciesWhitelist.Contains(species)))
                 .ToArray()
@@ -380,7 +389,8 @@ namespace Content.Shared.Preferences
 
         public HumanoidCharacterProfile WithSpecies(string species)
         {
-            return new(this) { Species = species };
+            // Jamboree~ switching to a species with its own voice picks that voice
+            return new(this) { Species = species, BarkVoice = SpeciesBarkVoice(species) ?? BarkVoice };
         }
 
         // begin Goobstation: port EE height/width sliders

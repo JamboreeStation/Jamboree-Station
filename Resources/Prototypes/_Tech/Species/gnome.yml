@@ -17,6 +17,7 @@
   femaleFirstNames: NamesGnomeFirstFemale
   lastNames: NamesGnomeLast
   naming: FirstLast
+  defaultBarkVoice: Gnome
   # TODO
   sprites: MobHumanSprites
   markingLimits: MobHumanMarkingLimits
