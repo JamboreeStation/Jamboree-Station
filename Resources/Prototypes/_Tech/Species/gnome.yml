@@ -18,10 +18,10 @@
   markingLimits: MobHumanMarkingLimits
   skinColoration: HumanToned
   # TODO
-  sizeRatio: 0.95 # ???
-  minHeight: 0.71
-  defaultHeight: 0.8
-  maxHeight: 1.41
-  minWidth: 0.34
-  defaultWidth: 0.4
-  maxWidth: 1.46
+  sizeRatio: 1.5
+  minHeight: 0.6
+  defaultHeight: 0.7
+  maxHeight: 0.8
+  minWidth: 0.8
+  defaultWidth: 0.9
+  maxWidth: 1.1
