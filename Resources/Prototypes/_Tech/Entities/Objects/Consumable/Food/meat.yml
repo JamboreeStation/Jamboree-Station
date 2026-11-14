@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: FoodMeatHuman
+  id: FoodMeatGnome
+  name: raw gnome meat
+  description: Smells faintly of candy. All that sugar has to go somewhere.
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - sweet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 6
+        - ReagentId: Sugar
+          Quantity: 3

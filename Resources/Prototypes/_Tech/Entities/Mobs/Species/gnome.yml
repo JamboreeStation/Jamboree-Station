@@ -32,7 +32,7 @@
   # Damage
   - type: Damageable
     damageContainer: Biological
-    damageModifierSet: Drawbacks
+    damageModifierSet: Gnome
   - type: Hunger
   - type: Thirst
   - type: Respirator
@@ -59,8 +59,8 @@
   - type: Butcherable
     butcheringType: Spike
     spawned:
-    - id: FoodMeatHuman
-      amount: 5
+    - id: FoodMeatGnome
+      amount: 3
   - type: Vocal
     sounds:
       Male: UnisexGnome

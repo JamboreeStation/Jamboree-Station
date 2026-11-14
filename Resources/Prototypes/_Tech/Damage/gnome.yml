@@ -6,7 +6,7 @@
 # 15% Increased Asphyxiation Damage
 
 - type: damageModifierSet
-  id: Drawbacks
+  id: Gnome
   coefficients:
     Blunt: 1.2
     Slash: 1.2
