@@ -80,7 +80,7 @@
     - SolCommon
     - Gnomish
   - type: HumanoidAppearance
-    species: Dwarf
+    species: Gnome
     hideLayersOnEquip:
     - Hair
     - Snout
