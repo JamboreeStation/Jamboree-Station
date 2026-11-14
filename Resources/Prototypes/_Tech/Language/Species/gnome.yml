@@ -8,6 +8,7 @@
   isVisibleLanguage: true
   speech:
     color: "#cd8a3edd"
+    fontId: BoxRound
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
