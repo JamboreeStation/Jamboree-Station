@@ -42,7 +42,9 @@
 using System.Linq;  // goob - intermap transmitters
 using Content.Goobstation.Shared.Communications; // goob - intermap transmitters
 using Content.Goobstation.Shared.Loudspeaker.Events; // goob - loudspeakers
+using Content.Server._Jamboree.CustomRadio;
 using Content.Server.Administration.Logs;
+using Content.Server.Administration.Managers;
 using Content.Server.Chat.Systems;
 using Content.Server._EinsteinEngines.Language;
 using Content.Server.Power.Components;
@@ -75,6 +77,8 @@ public sealed partial class RadioSystem : EntitySystem
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly IReplayRecordingManager _replay = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly IAdminManager _adminManager = default!;
+    [Dependency] private readonly CustomRadioChannelSystem _customRadio = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
@@ -112,16 +116,20 @@ public sealed partial class RadioSystem : EntitySystem
     {
         if (TryComp(uid, out ActorComponent? actor))
         {
-            // Einstein Engines - Languages begin
-            var listener = component.Owner;
-            var msg = args.OriginalChatMsg;
-
-            if (listener != null && !_language.CanUnderstand(listener, args.Language.ID))
-                msg = args.LanguageObfuscatedChatMsg;
-
-            _netMan.ServerSendMessage(new MsgChatMessage { Message = msg }, actor.PlayerSession.Channel);
-            // Einstein Engines - Languages end
+            SendRadioChatMessage(uid, actor.PlayerSession, args);
         }
+    }
+
+    public void SendRadioChatMessage(EntityUid listener, ICommonSession recipient, in RadioReceiveEvent args)
+    {
+        // Active admins get one readable custom-channel copy from SendRadioMessage instead.
+        if (_customRadio.IsCustomChannel(args.Channel.ID) && _adminManager.IsAdmin(recipient))
+            return;
+
+        var message = _language.CanUnderstand(listener, args.Language.ID)
+            ? args.OriginalChatMsg
+            : args.LanguageObfuscatedChatMsg;
+        _netMan.ServerSendMessage(new MsgChatMessage { Message = message }, recipient.Channel);
     }
 
     // Goobstation - Whitelisted radio channels
@@ -268,6 +276,15 @@ public sealed partial class RadioSystem : EntitySystem
 
             // send the message
             RaiseLocalEvent(receiver, ref ev);
+        }
+
+        // Custom channels need an admin monitoring copy even without a matching radio.
+        if (_customRadio.IsCustomChannel(channel.ID))
+        {
+            foreach (var admin in _adminManager.ActiveAdmins)
+            {
+                _netMan.ServerSendMessage(new MsgChatMessage { Message = msg }, admin.Channel);
+            }
         }
 
         if (name != Name(messageSource))
