@@ -7,7 +7,10 @@
   result: EncryptionKeyBlank
   categories:
   - Tools
-  completetime: 2
+  completetime: 10
   materials:
-    Steel: 150
+    Steel: 300
     Plastic: 150
+    Diamond: 100
+    Gold: 300
+
