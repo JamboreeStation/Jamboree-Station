@@ -7,29 +7,31 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   NanoTrasen employs a variety of sapient species.
 
+  <!-- Jamboree~ sorted alphabetically, rows kept short so wide sprites don't push others off the page -->
   <Box>
     <GuideEntityEmbed Entity="MobAnomalocarid" Caption="Anomalocarid"/> <!-- Impstation -->
     <GuideEntityEmbed Entity="MobArachnid" Caption="Arachnid"/>
     <GuideEntityEmbed Entity="MobAvali" Caption="Avali"/> <!-- Starlight -->
     <GuideEntityEmbed Entity="MobChitinid" Caption="Chitinid"/> <!-- Jamboree, doing this so it isn't being cut off -->
-    <GuideEntityEmbed Entity="MobDiona" Caption="Diona"/>
-    <GuideEntityEmbed Entity="MobDwarf" Caption="Dwarf"/>
-  </Box>
-  <Box>
-    <GuideEntityEmbed Entity="MobShadowkin" Caption="Shadowkin"/>
   </Box>
 
   <Box>
+    <GuideEntityEmbed Entity="MobDiona" Caption="Diona"/>
+    <GuideEntityEmbed Entity="MobDwarf" Caption="Dwarf"/>
     <GuideEntityEmbed Entity="MobFeroxi" Caption="Feroxi"/>
     <GuideEntityEmbed Entity="MobGingerbread" Caption="Gingerbread"/>
+    <GuideEntityEmbed Entity="MobGnome" Caption="Gnome"/> <!-- Gnome -->
+  </Box>
+
+  <Box>
     <GuideEntityEmbed Entity="MobGoblin" Caption="Goblin"/> <!-- Frontier specific species -->
     <GuideEntityEmbed Entity="MobHarpy" Caption="Harpy"/>
     <GuideEntityEmbed Entity="MobHuman" Caption="Human"/>
     <GuideEntityEmbed Entity="MobIPCDummy" Caption="IPC"/>
+    <GuideEntityEmbed Entity="MobMoth" Caption="Moth Person"/>
   </Box>
 
   <Box>
-    <GuideEntityEmbed Entity="MobMoth" Caption="Moth Person"/>
     <GuideEntityEmbed Entity="MobOni" Caption="Oni"/>
     <GuideEntityEmbed Entity="MobPlasmaman" Caption="Plasmaman"/> <!-- Jamboree, doing this cause it was left out of the crew -->
     <GuideEntityEmbed Entity="MobReptilian" Caption="Reptilian"/>

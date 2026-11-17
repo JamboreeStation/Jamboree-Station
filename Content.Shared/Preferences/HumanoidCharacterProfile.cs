@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 // SPDX-FileCopyrightText: 2019 Pieter-Jan Briers <pieterjan.briers@gmail.com>
 // SPDX-FileCopyrightText: 2020 20kdc <asdd2808@gmail.com>
 // SPDX-FileCopyrightText: 2020 DamianX <DamianX@users.noreply.github.com>
@@ -43,10 +47,11 @@
 // SPDX-FileCopyrightText: 2025 MarkerWicker <markerWicker@proton.me>
 // SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
 // SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
 // SPDX-FileCopyrightText: 2025 Zekins <zekins3366@gmail.com>
+// SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+// SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
+// SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
 //
 
 using System.Linq;
@@ -279,7 +284,16 @@ namespace Content.Shared.Preferences
             {
                 Species = species,
                 Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species),
+                BarkVoice = SpeciesBarkVoice(species) ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice, // Jamboree~
             };
+        }
+
+        // Jamboree~ the voice a species starts with, if it has its own
+        private static ProtoId<BarkPrototype>? SpeciesBarkVoice(string species)
+        {
+            return IoCManager.Resolve<IPrototypeManager>().TryIndex<SpeciesPrototype>(species, out var proto)
+                ? proto.DefaultBarkVoice
+                : null;
         }
 
         // TODO: This should eventually not be a visual change only.
@@ -317,7 +331,7 @@ namespace Content.Shared.Preferences
             }
 
             // Goob Station - Barks Start
-            var barkvoiceId = random.Pick(prototypeManager
+            var barkvoiceId = SpeciesBarkVoice(species) ?? random.Pick(prototypeManager // Jamboree~ species voice first
                 .EnumeratePrototypes<BarkPrototype>()
                 .Where(o => o.RoundStart && (o.SpeciesWhitelist is null || o.SpeciesWhitelist.Contains(species)))
                 .ToArray()
@@ -380,7 +394,8 @@ namespace Content.Shared.Preferences
 
         public HumanoidCharacterProfile WithSpecies(string species)
         {
-            return new(this) { Species = species };
+            // Jamboree~ switching to a species with its own voice picks that voice
+            return new(this) { Species = species, BarkVoice = SpeciesBarkVoice(species) ?? BarkVoice };
         }
 
         // begin Goobstation: port EE height/width sliders

@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by Bibble for Jamboree",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "head",
+            "directions": 4
+        },
+        {
+            "name": "eyes",
+            "directions": 4
+        }
+    ]
+}
