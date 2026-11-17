@@ -122,14 +122,11 @@ public sealed partial class RadioSystem : EntitySystem
 
     public void SendRadioChatMessage(EntityUid listener, ICommonSession recipient, in RadioReceiveEvent args)
     {
-        // Active admins get one readable custom-channel copy from SendRadioMessage instead.
-        if (_customRadio.IsCustomChannel(args.Channel.ID) && _adminManager.IsAdmin(recipient))
-            return;
-
         var message = _language.CanUnderstand(listener, args.Language.ID)
             ? args.OriginalChatMsg
             : args.LanguageObfuscatedChatMsg;
         _netMan.ServerSendMessage(new MsgChatMessage { Message = message }, recipient.Channel);
+        args.Recipients.Add(recipient);
     }
 
     // Goobstation - Whitelisted radio channels
@@ -281,9 +278,19 @@ public sealed partial class RadioSystem : EntitySystem
         // Custom channels need an admin monitoring copy even without a matching radio.
         if (_customRadio.IsCustomChannel(channel.ID))
         {
+            var adminWrappedMessage = Loc.GetString("custom-radio-chat-wrap-message-admin",
+                ("channel", channel.LocalizedName),
+                ("source", messageSource),
+                ("message", content));
+            var adminMessage = new ChatMessage(ChatChannel.Radio, content, adminWrappedMessage,
+                GetNetEntity(messageSource), null, colorOverride: channel.Color);
+
             foreach (var admin in _adminManager.ActiveAdmins)
             {
-                _netMan.ServerSendMessage(new MsgChatMessage { Message = msg }, admin.Channel);
+                if (ev.Recipients.Contains(admin))
+                    continue;
+
+                _netMan.ServerSendMessage(new MsgChatMessage { Message = adminMessage }, admin.Channel);
             }
         }
 

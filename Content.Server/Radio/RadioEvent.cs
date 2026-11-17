@@ -3,6 +3,7 @@
 using Content.Shared.Chat;
 using Content.Shared._EinsteinEngines.Language;
 using Content.Shared.Radio;
+using Robust.Shared.Player;
 
 namespace Content.Server.Radio;
 
@@ -19,7 +20,11 @@ public readonly record struct RadioReceiveEvent(
     ChatMessage LanguageObfuscatedChatMsg,
     LanguagePrototype Language,
     EntityUid RadioSource
-    );
+    )
+{
+    // Shared by receiver-event copies to avoid duplicating normal delivery with admin monitoring.
+    public HashSet<ICommonSession> Recipients { get; } = new();
+}
 // Einstein Engines - Language end
 
 /// <summary>

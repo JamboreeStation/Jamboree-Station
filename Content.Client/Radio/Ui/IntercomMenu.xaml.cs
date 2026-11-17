@@ -47,7 +47,7 @@ public sealed partial class IntercomMenu : FancyWindow
                 continue;
 
             _channels.Add(channel);
-            ChannelOptions.AddItem(Loc.GetString(prototype.Name), i);
+            ChannelOptions.AddItem(prototype.LocalizedName, i);
 
             if (channel == entity.Comp.CurrentChannel)
                 ChannelOptions.Select(i);

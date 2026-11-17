@@ -10,6 +10,8 @@ custom-radio-error-key = Prefixes must be 2-6 letters (a-z).
 custom-radio-error-key-taken = Another channel already uses that prefix.
 custom-radio-error-color = That channel color is too dark.
 
+custom-radio-chat-wrap-message-admin = [bold]\[ADMIN|{$channel}\]: {$source}[/bold]: {$message}
+
 custom-key-window-title = Set up encryption key
 custom-key-window-name = Channel name
 custom-key-window-prefix = Prefix (type :#prefix)

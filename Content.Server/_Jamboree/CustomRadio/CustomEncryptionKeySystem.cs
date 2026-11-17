@@ -6,6 +6,7 @@ using Content.Shared._Jamboree.CustomRadio;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Radio.Components;
+using Content.Shared.Radio.EntitySystems;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Radio;
 using Robust.Shared.Prototypes;
@@ -24,6 +25,7 @@ public sealed class CustomEncryptionKeySystem : EntitySystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private readonly EncryptionKeySystem _encryptionKey = default!;
 
     public override void Initialize()
     {
@@ -104,5 +106,17 @@ public sealed class CustomEncryptionKeySystem : EntitySystem
         key.Channels.Clear();
         key.Channels.Add(channelId);
         UpdateKey(ent);
+
+        // Refresh any encryption-key holder containing this key so its ActiveRadioComponent stays in sync.
+        // Without this, a key configured or copied while already inserted into a headset/telecom server
+        // is invisible to receivers until the container is next modified, making custom channels look
+        // admin-only because only the admin monitoring copy bypasses receivers.
+        foreach (var (holderUid, holder) in EntityQueryEnumerator<EncryptionKeyHolderComponent>())
+        {
+            if (holder.KeyContainer is { } container && container.ContainedEntities.Contains(ent.Owner))
+            {
+                _encryptionKey.UpdateChannels(holderUid, holder);
+            }
+        }
     }
 }
