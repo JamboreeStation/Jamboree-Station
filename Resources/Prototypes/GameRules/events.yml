@@ -33,6 +33,8 @@
     - id: MalignRiftSpawn # DeltaV
     - id: FloorGoblinMidRound # Goobstation
     - id: ClownGoblinMigration # Goobstation - New Midrounds
+    - id: NtslRogueScript # Jamboree~ NTSL
+    - id: NtslCentcomFilter # Jamboree~ NTSL
     #- id: SantaClausSpawn # Goobstation, remove after new year
 
 - type: entityTable

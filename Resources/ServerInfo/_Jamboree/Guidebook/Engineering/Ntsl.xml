@@ -1,0 +1,159 @@
+<!--
+SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
+<Document>
+  # NTSL Telecom Scripting
+  NTSL (NanoTrasen Scripting Language) lets you program the station's [color=#a4885c]telecommunication servers[/color]. A script can read every radio message a server operates and change it, reroute it, restyle it, block it, or send new messages.
+
+  <Box>
+    <GuideEntityEmbed Entity="ComputerTelecomTraffic"/>
+    <GuideEntityEmbed Entity="TelecomServer"/>
+  </Box>
+
+  ## Uploading a script
+  - Use a [color=#a4885c]traffic control console[/color] (you will need Engineering access for this) on the same station as the servers. If the station has none, print its board at an engineering or science fabricator.
+  - Pick a server, write your code, then press [bold]Compile and upload[/bold]. Any mistake is shown with their line number, and the old script keeps running.
+  - The [bold]Run scripts[/bold] checkbox turns a server's script on or off. [bold]Clear[/bold] deletes it. [bold]Restore previous[/bold] puts back the script it had before the last upload, handy after a prank or a bad upload.
+  - In the editor, [bold]Tab[/bold] finishes a name you started typing. The line under the editor shows what the function you are typing needs.
+  - A script only sees messages on the channels whose encryption keys are in that server.
+
+  ## The basics
+  Every message runs the function [mono]process_signal[/mono]. It receives the message as [mono]sig[/mono]:
+  - [mono]sig.content[/mono]: the text of the message, as spoken.
+  - [mono]sig.raw[/mono]: the text exactly as it was typed, before accents.
+  - [mono]sig.source[/mono]: the name of the speaker.
+  - [mono]sig.job[/mono]: the speaker's job.
+  - [mono]sig.freq[/mono]: the channel frequency. Set it to move the message to another channel on the same server.
+  - [mono]sig.channel[/mono]: the channel name (read only).
+  - [mono]sig.language[/mono]: the language it was spoken in, like Tau Ceti Basic.
+  - [mono]sig.filters[/mono]: a list of styles for the text, see Filters below.
+  - [mono]sig.pass[/mono]: set it to 0 to block the message.
+
+  [mono]def process_signal(sig) {\n
+  \ \ if (sig.source == "Bob") {\n
+  \ \ \ \ sig.pass = 0;\n
+  \ \ }\n
+  \ \ sig.content = upper(sig.content);\n
+  \ \ return sig;\n
+  }[/mono]
+
+  [mono]return sig;[/mono] sends the message with your changes. [mono]return null;[/mono] blocks it, just like [mono]sig.pass = 0;[/mono]. If the function ends without any return, the message goes through unchanged, so a forgotten line never mutes a channel.
+
+  Code outside of [mono]process_signal[/mono] runs once, when you upload. Variables set there are kept between messages.
+
+  ## Language
+  - Statements end with [mono];[/mono] and blocks use [mono]{ }[/mono]. Comments start with [mono]//[/mono] or go between [mono]/* */[/mono].
+  - Values are numbers, "strings" (or 'strings'), [mono]list(1, 2, "key" = "value")[/mono], [mono]null[/mono], [mono]true[/mono] and [mono]false[/mono].
+  - [mono]if (...) { } elseif (...) { } else { }[/mono], [mono]while (...) { }[/mono] and [mono]for (i = 1; i \<= 10; i += 1) { }[/mono], with [mono]break;[/mono] and [mono]continue;[/mono].
+  - [mono]def name(a, b) { return a + b; }[/mono] makes your own function.
+  - Operators: [mono]+ - * / % ^[/mono], [mono]== != \< \<= \> \>=[/mono], [mono]&& || ![/mono], [mono]= += -=[/mono]. Adding a string to anything joins them as text.
+  - Lists start at 1: [mono]words\[1][/mono], [mono]words.len[/mono], [mono]words += "more"[/mono]. Reading past the end gives [mono]null[/mono] instead of an error.
+  - List methods: [mono]Find(x)[/mono], [mono]Join(sep)[/mono], [mono]Copy(start, end)[/mono], [mono]Cut(start, end)[/mono], [mono]Add(...)[/mono], [mono]Remove(...)[/mono], [mono]Insert(index, ...)[/mono], [mono]Swap(a, b)[/mono]. Ranges stop just before [mono]end[/mono], and 0 means "to the end".
+
+  ## Functions
+  - Text: [mono]length, lower, upper, proper, reverse, repeat, trim, find, substr, replace, explode, implode, tostring, tonum, accent[/mono]. [mono]find[/mono] and [mono]replace[/mono] ignore upper and lower case.
+  - Math: [mono]abs, round, floor, ceil, sqrt, log, sin, cos, tan, asin, acos, atan, min, max, clamp, inrange[/mono]. Angles are in degrees. Constants: [mono]PI, E, SQRT2, NORTH, SOUTH, EAST, WEST[/mono].
+  - Chance: [mono]prob(percent)[/mono], [mono]pick(...)[/mono], [mono]rand()[/mono] for 0 to 1, [mono]rand(n)[/mono] for a whole number from 0 to n, [mono]rand(low, high)[/mono].
+  - [mono]signal(content, freq, source)[/mono] makes a new message and [mono]broadcast(sig)[/mono] sends it. [mono]broadcast(content, freq, source)[/mono] does both at once. Up to 10 per message, and only on channels the server operates: anything else returns 0.
+  - [mono]mem(key)[/mono] reads and [mono]mem(key, value)[/mono] saves a value that survives new uploads. [mono]clearmem()[/mono] empties it.
+  - Commands: [mono]find(sig.raw, "/loud") == 1[/mono] is true for /loud Hello and /loudHello alike, whatever the speaker's accent. [mono]trim(substr(sig.raw, 6))[/mono] then gives the text after the command. Wrap it in [mono]accent(...)[/mono] to give it back the speaker's accent.
+  - [mono]time()[/mono] gives the seconds since the round started. [mono]channels.common[/mono], [mono]channels.medical[/mono] and the other channel names give their frequencies.
+
+  ## Filters
+  Put styles in [mono]sig.filters[/mono], for example [mono]sig.filters = list(filter_types.loud, filter_types.robot);[/mono]
+  - [mono]filter_types.robot[/mono] ("robot"): monospace robot text.
+  - [mono]filter_types.loud[/mono] ("yell"): bold text, like shouting.
+  - [mono]filter_types.emphasis[/mono] ("italics"): italic text.
+  - [mono]filter_types.wacky[/mono] ("sans", or "clown"): comic sans.
+  - [mono]filter_types.commanding[/mono] ("command_headset"): bold and a little bigger.
+  - Robot and wacky text turn bold too when you add loud or commanding.
+
+  ## Limits
+  Each message may run at most 900 statements, 100 rounds per loop and 16 nested function calls. Text is cut at 1024 characters and lists at 256 items. When a script breaks a limit or hits an error, the message goes through unchanged and the error appears in the console's log.
+
+  ## Example scripts
+  Adapted from the classic Yogstation NTSL scripts.
+
+  [bold]Job indicator[/bold]: shows each speaker's job after their name.
+
+  [mono]def process_signal(sig) {\n
+  \ \ if (sig.job != "") {\n
+  \ \ \ \ sig.source += " (" + sig.job + ")";\n
+  \ \ }\n
+  \ \ return sig;\n
+  }[/mono]
+
+  [bold]Anonymous messages[/bold]: start a message with /anon to send it as "Anonymous".
+
+  [mono]def process_signal(sig) {\n
+  \ \ if (find(sig.raw, "/anon") == 1) {\n
+  \ \ \ \ broadcast(trim(substr(sig.raw, 6)), sig.freq, "Anonymous");\n
+  \ \ \ \ return null;\n
+  \ \ }\n
+  \ \ return sig;\n
+  }[/mono]
+
+  [bold]Broadcast to all[/bold]: start a message with /all to send it on every department channel. Terminates-The-Notice may not like it though, so be warned.
+
+  [mono]def process_signal(sig) {\n
+  \ \ if (find(sig.raw, "/all") == 1) {\n
+  \ \ \ \ sig.content = accent(trim(substr(sig.raw, 5)));\n
+  \ \ \ \ freqs = list(channels.common, channels.command, channels.engineering, channels.medical, channels.science, channels.security, channels.service, channels.supply);\n
+  \ \ \ \ for (i = 1; i \<= freqs.len; i += 1) {\n
+  \ \ \ \ \ \ sig.freq = freqs\[i];\n
+  \ \ \ \ \ \ broadcast(sig);\n
+  \ \ \ \ }\n
+  \ \ \ \ return null;\n
+  \ \ }\n
+  \ \ return sig;\n
+  }[/mono]
+
+  [bold]Selective mute[/bold]: listed users can say /mute Full Name to mute or unmute someone.
+
+  [mono]users = list("Your Name");\n
+  def process_signal(sig) {\n
+  \ \ muted = mem("muted");\n
+  \ \ if (muted == null) { muted = list(); }\n
+  \ \ if (find(sig.raw, "/mute") == 1 && users.Find(sig.source)) {\n
+  \ \ \ \ name = trim(substr(sig.raw, 6));\n
+  \ \ \ \ if (muted.Find(name)) { muted.Remove(name); } else { muted.Add(name); }\n
+  \ \ \ \ mem("muted", muted);\n
+  \ \ \ \ return null;\n
+  \ \ }\n
+  \ \ if (muted.Find(sig.source)) { return null; }\n
+  \ \ return sig;\n
+  }[/mono]
+
+  [bold]Magic 8-Ball[/bold]: start a message with /8ball and the ball answers.
+
+  [mono]def process_signal(sig) {\n
+  \ \ if (find(sig.raw, "/8ball") == 1) {\n
+  \ \ \ \ broadcast(pick("It is certain.", "Ask again later.", "Don't count on it.", "Signs point to yes."), sig.freq, "Magic 8-Ball");\n
+  \ \ }\n
+  \ \ return sig;\n
+  }[/mono]
+
+  [bold]No shuttle calls[/bold]: blocks messages with any of these words.
+
+  [mono]blocked = list("shuttle", "call", "rogue", "malf");\n
+  def process_signal(sig) {\n
+  \ \ for (i = 1; i \<= blocked.len; i += 1) {\n
+  \ \ \ \ if (find(sig.raw, blocked\[i])) { return null; }\n
+  \ \ }\n
+  \ \ return sig;\n
+  }[/mono]
+
+  [bold]_ the Hedgehog[/bold]: everyone gotta go fast.
+
+  [mono]def process_signal(sig) {\n
+  \ \ sig.source += " the Hedgehog";\n
+  \ \ sig.content += " Gotta go fast!";\n
+  \ \ sig.filters = list(filter_types.emphasis);\n
+  \ \ return sig;\n
+  }[/mono]
+
+  [color=#ff9900]Scripts are logged. Using them to grief the crew breaks the rules like any other griefing. Special circumstances, however, do apply ; for example if you play as an antagonist.[/color]
+</Document>

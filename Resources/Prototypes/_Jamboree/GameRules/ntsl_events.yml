@@ -1,0 +1,286 @@
+# SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseGameRule
+  id: NtslRogueScript
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-ntsl-rogue-script-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 5
+    duration: 1
+    eventType: Neutral
+  - type: GameRule
+    chaosScore: 30
+  - type: NtslScriptRule
+    header: |
+      /*****************************************************************************
+       *   ____   __   __  _   _   ____    ___    ____      _      _____   _____
+       *  / ___|  \ \ / / | \ | | |  _ \  |_ _|  / ___|    / \    |_   _| | ____|
+       *  \___ \   \ V /  |  \| | | | | |  | |  | |       / _ \     | |   |  _|
+       *   ___) |   | |   | |\  | | |_| |  | |  | |___   / ___ \    | |   | |___
+       *  |____/    |_|   |_| \_| |____/  |___|  \____| /_/   \_\   |_|   |_____|
+       *
+       *  SIGNAL INJECTOR PAYLOAD v0.9.3b
+       *  (C) CYBERSUN INDUSTRIES - ALL RIGHTS RESERVED
+       *  Licensed to: GORLEX MARAUDERS, FIELD OFFICE 7
+       *
+       *  Do not distribute outside Syndicate channels.
+       *  "Every channel is our channel."
+       ****************************************************************************/
+
+      // Payload runtime: rare at first.
+      payload_start = time();
+
+      def escalate() {
+          return prob(clamp(10 + (time() - payload_start) * 0.15, 10, 100));
+      }
+    scripts:
+    - |
+      def process_signal(sig) {
+          if (escalate()) {
+              sig.content = sig.content + " meow";
+          }
+          return sig;
+      }
+    - |
+      def process_signal(sig) {
+          if (escalate()) {
+              sig.content = upper(sig.content);
+              sig.filters = list(filter_types.robot);
+          }
+          return sig;
+      }
+    - |
+      def process_signal(sig) {
+          if (escalate()) {
+              sig.source = reverse(sig.source);
+          }
+          return sig;
+      }
+    - |
+      def process_signal(sig) {
+          if (escalate()) {
+              sig.content = sig.content + " HONK!";
+              sig.filters = list(filter_types.wacky);
+          }
+          return sig;
+      }
+    - |
+      def process_signal(sig) {
+          if (escalate()) {
+              text = sig.content;
+              text = replace(text, "a", "4");
+              text = replace(text, "e", "3");
+              text = replace(text, "i", "1");
+              text = replace(text, "o", "0");
+              text = replace(text, "s", "5");
+              text = replace(text, "t", "7");
+              sig.content = text;
+          }
+          return sig;
+      }
+    - |
+      def process_signal(sig) {
+          if (escalate()) {
+              words = explode(sig.content, " ");
+              noisy = list();
+              for (i = 1; i <= words.len; i += 1) {
+                  noisy += words[i];
+                  if (i < words.len && prob(30)) {
+                      noisy += "-kssht-";
+                  }
+              }
+              sig.content = implode(noisy, " ");
+          }
+          return sig;
+      }
+
+# Central Command puts a filter on every telecom server for a while, then gives the old scripts back.
+- type: entity
+  parent: BaseGameRule
+  id: NtslCentcomFilter
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-ntsl-centcom-filter-start-announcement
+    endAnnouncement: station-event-ntsl-centcom-filter-end-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    weight: 3
+    duration: 600
+    maxDuration: 900
+    eventType: Neutral
+  - type: GameRule
+    chaosScore: 20
+  - type: NtslScriptRule
+    allServers: true
+    restore: true
+    earlyRemovalAnnouncement: station-event-ntsl-centcom-filter-removed-announcement
+    scripts:
+    - |
+      rude = list("fuck", "shit", "damn", "bitch", "bastard");
+
+      def process_signal(sig) {
+          for (i = 1; i <= rude.len; i += 1) {
+              sig.content = replace(sig.content, rude[i], "*beep*");
+          }
+          return sig;
+      }
+    - |
+      def process_signal(sig) {
+          if (find(sig.content, "Glory to Nanotrasen") == 0) {
+              sig.content = sig.content + " -Glory to Nanotrasen!";
+          }
+          return sig;
+      }
+    - |
+      // Nanotrasen Corporate Communications Standard.
+      words = list(
+          "hi" = "greetings, valued colleague",
+          "hello" = "greetings, valued colleague",
+          "hey" = "attention, stakeholder",
+          "bye" = "circling back later",
+          "yes" = "affirmative, fully aligned",
+          "yeah" = "affirmative",
+          "yep" = "affirmative",
+          "no" = "that is not currently on the roadmap",
+          "nope" = "not within scope",
+          "ok" = "acknowledged per protocol",
+          "okay" = "acknowledged per protocol",
+          "thanks" = "your contribution has been logged",
+          "sorry" = "regrettable variance acknowledged",
+          "please" = "at your earliest convenience",
+          "now" = "by end of shift",
+          "asap" = "by close of business",
+          "maybe" = "pending stakeholder review",
+          "why" = "what is the business case",
+          "lol" = "ha ha",
+          "problem" = "growth opportunity",
+          "problems" = "growth opportunities",
+          "broken" = "pre-loved",
+          "fire" = "unplanned thermal event",
+          "emergency" = "high-visibility learning moment",
+          "help" = "requesting synergy",
+          "danger" = "elevated liability",
+          "dangerous" = "liability-forward",
+          "bomb" = "unscheduled restructuring device",
+          "explosion" = "rapid unscheduled restructuring",
+          "breach" = "atmospheric downsizing",
+          "dead" = "permanently offboarded",
+          "died" = "was offboarded",
+          "die" = "offboard",
+          "dying" = "pending offboarding",
+          "kill" = "downsize",
+          "killed" = "downsized",
+          "murder" = "hostile downsizing",
+          "hurt" = "operationally impacted",
+          "injured" = "operationally impacted",
+          "blood" = "red ink",
+          "body" = "former asset",
+          "corpse" = "former asset",
+          "doctor" = "wellness facilitator",
+          "medbay" = "wellness center",
+          "crew" = "human capital",
+          "captain" = "Chief Synergy Officer",
+          "security" = "asset protection",
+          "sec" = "asset protection",
+          "officer" = "compliance associate",
+          "assistant" = "unassigned human capital",
+          "assistants" = "unassigned human capital",
+          "clown" = "morale contractor",
+          "janitor" = "sanitation solutions architect",
+          "chef" = "nutrition fulfillment specialist",
+          "bartender" = "beverage experience curator",
+          "engineer" = "infrastructure stakeholder",
+          "scientist" = "innovation associate",
+          "cargo" = "logistics value stream",
+          "lawyer" = "liability shield",
+          "traitor" = "unaligned stakeholder",
+          "traitors" = "unaligned stakeholders",
+          "syndicate" = "our valued competitors",
+          "syndie" = "valued competitor",
+          "nukies" = "unscheduled auditors",
+          "nuke" = "terminal restructuring device",
+          "cult" = "unofficial team-building group",
+          "changeling" = "flexible staffing solution",
+          "zombie" = "post-wellness associate",
+          "zombies" = "post-wellness associates",
+          "monkey" = "intern",
+          "borg" = "automated associate",
+          "ai" = "automated synergy platform",
+          "dragon" = "large unsolicited visitor",
+          "spiders" = "unregistered tenants",
+          "money" = "shareholder value",
+          "spesos" = "shareholder value",
+          "pay" = "compensation-adjacent experience",
+          "plasma" = "Nanotrasen proprietary revenue",
+          "station" = "profit center",
+          "shuttle" = "relocation solution",
+          "evac" = "relocation event",
+          "meeting" = "synergy summit",
+          "work" = "deliver value",
+          "working" = "delivering value",
+          "job" = "value stream",
+          "fired" = "transitioned to the open market",
+          "gun" = "conflict-resolution tool",
+          "weapon" = "conflict-resolution tool",
+          "weapons" = "conflict-resolution tools",
+          "stunned" = "temporarily paused",
+          "arrest" = "mandatory one-on-one",
+          "arrested" = "scheduled for a one-on-one",
+          "brig" = "reflection suite",
+          "jail" = "reflection suite",
+          "prison" = "reflection suite",
+          "law" = "corporate policy",
+          "laws" = "corporate policies",
+          "steal" = "reallocate",
+          "stolen" = "reallocated",
+          "theft" = "unauthorized asset reallocation",
+          "idea" = "strategic vision",
+          "plan" = "roadmap",
+          "fix" = "remediate",
+          "fixed" = "remediated",
+          "bad" = "suboptimal",
+          "good" = "on-brand",
+          "great" = "best-in-class",
+          "awesome" = "best-in-class",
+          "stupid" = "innovation-resistant",
+          "idiot" = "growth-mindset candidate",
+          "damn" = "suboptimal",
+          "shit" = "non-ideal deliverable",
+          "fuck" = "escalate",
+          "fucking" = "strategically",
+          "hell" = "a challenging environment",
+          "crap" = "low-value output",
+          "bitch" = "difficult stakeholder",
+          "bastard" = "independent contractor"
+      );
+
+      // Swaps one word
+      def corporate(word) {
+          tail = "";
+          while (length(word) > 1 && find(".,!?;:", substr(word, length(word))) > 0) {
+              tail = substr(word, length(word)) + tail;
+              word = substr(word, 1, length(word));
+          }
+          swap = words[lower(word)];
+          if (swap == null) {
+              return word + tail;
+          }
+          if (substr(word, 1, 2) != lower(substr(word, 1, 2))) {
+              swap = proper(swap);
+          }
+          return swap + tail;
+      }
+
+      def process_signal(sig) {
+          parts = explode(sig.content, " ");
+          for (i = 1; i <= parts.len; i += 1) {
+              parts[i] = corporate(parts[i]);
+          }
+          sig.content = implode(parts, " ");
+          return sig;
+      }

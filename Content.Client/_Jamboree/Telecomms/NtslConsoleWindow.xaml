@@ -1,0 +1,35 @@
+<!--
+SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
+<DefaultWindow xmlns="https://spacestation14.io"
+               Title="{Loc 'ntsl-console-window-title'}"
+               MinSize="720 600">
+    <BoxContainer Orientation="Vertical" SeparationOverride="6">
+        <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+            <Label Text="{Loc 'ntsl-console-window-server'}" />
+            <OptionButton Name="ServerSelector" HorizontalExpand="True" />
+            <Button Name="RefreshButton" Text="{Loc 'ntsl-console-window-refresh'}" />
+        </BoxContainer>
+        <Label Name="NoServerLabel" Text="{Loc 'ntsl-console-window-no-server'}" />
+        <BoxContainer Name="ServerPanel" Orientation="Vertical" VerticalExpand="True" SeparationOverride="6"
+                      Visible="False">
+            <CheckBox Name="EnabledCheckBox" Text="{Loc 'ntsl-console-window-enabled'}" />
+            <TextEdit Name="CodeEdit" StyleClasses="NtslCode" VerticalExpand="True" HorizontalExpand="True" MinHeight="280" />
+            <RichTextLabel Name="HintLabel" />
+            <BoxContainer Orientation="Horizontal" SeparationOverride="6">
+                <Button Name="UploadButton" Text="{Loc 'ntsl-console-window-upload'}" />
+                <Button Name="ClearButton" Text="{Loc 'ntsl-console-window-clear'}" />
+                <Button Name="RestoreButton" Text="{Loc 'ntsl-console-window-restore'}"
+                        ToolTip="{Loc 'ntsl-console-window-restore-tooltip'}" />
+            </BoxContainer>
+            <RichTextLabel Name="OutputLabel" />
+            <Label Text="{Loc 'ntsl-console-window-log'}" />
+            <ScrollContainer MinHeight="110" HScrollEnabled="False">
+                <RichTextLabel Name="LogLabel" />
+            </ScrollContainer>
+        </BoxContainer>
+    </BoxContainer>
+</DefaultWindow>
