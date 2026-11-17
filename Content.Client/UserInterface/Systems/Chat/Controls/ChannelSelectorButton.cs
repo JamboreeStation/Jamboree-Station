@@ -77,7 +77,7 @@ public sealed class ChannelSelectorButton : ChatPopupButton<ChannelSelectorPopup
     {
         if (radio != null)
         {
-            Text = Loc.GetString(radio.Name);
+            Text = radio.LocalizedName;
             Modulate = radio?.Color ?? ChannelSelectColor(channel);
         }
         else if (collectiveMind != null)

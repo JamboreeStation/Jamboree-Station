@@ -9,19 +9,23 @@ namespace Content.Shared.Radio;
 public sealed partial class RadioChannelPrototype : IPrototype
 {
     /// <summary>
-    /// Human-readable name for the channel.
+    /// Localization ID or literal custom name for the channel.
     /// </summary>
     [DataField("name")]
     public LocId Name { get; private set; } = string.Empty;
 
     [ViewVariables(VVAccess.ReadOnly)]
-    public string LocalizedName => Loc.GetString(Name);
+    public string LocalizedName => Loc.TryGetString(Name, out var localized) ? localized : Name;
 
     /// <summary>
     /// Single-character prefix to determine what channel a message should be sent to.
     /// </summary>
     [DataField("keycode")]
     public char KeyCode { get; private set; } = '\0';
+
+    // Jamboree~ multi-character radio prefixes made possible (:#name)
+    [DataField]
+    public string? LongKey { get; private set; }
 
     [DataField("frequency")]
     public int Frequency { get; private set; } = 0;

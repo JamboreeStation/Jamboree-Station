@@ -2,12 +2,10 @@
 
 using Content.Server.Chat.Systems;
 using Content.Shared.Radio.Components;
-using Content.Server._EinsteinEngines.Language;
 using Content.Shared.Chat;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
 using Content.Shared.Radio.EntitySystems;
-using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Content.Shared.Whitelist;
 
@@ -15,9 +13,7 @@ namespace Content.Server.Radio.EntitySystems;
 
 public sealed class HeadsetSystem : SharedHeadsetSystem
 {
-    [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
-    [Dependency] private readonly LanguageSystem _language = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation
 
     public override void Initialize()
@@ -121,12 +117,7 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
 
         if (TryComp(parent, out ActorComponent? actor))
         {
-            var canUnderstand = _language.CanUnderstand(parent, args.Language.ID);
-            var msg = new MsgChatMessage
-            {
-                Message = canUnderstand ? args.OriginalChatMsg : args.LanguageObfuscatedChatMsg
-            };
-            _netMan.ServerSendMessage(msg, actor.PlayerSession.Channel);
+            _radio.SendRadioChatMessage(parent, actor.PlayerSession, args);
         }
         // Einstein Engines - Language end
     }

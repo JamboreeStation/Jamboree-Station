@@ -1,0 +1,16 @@
+# SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: latheRecipe
+  id: EncryptionKeyBlank
+  result: EncryptionKeyBlank
+  categories:
+  - Tools
+  completetime: 10
+  materials:
+    Steel: 300
+    Plastic: 150
+    Diamond: 100
+    Gold: 300
+
