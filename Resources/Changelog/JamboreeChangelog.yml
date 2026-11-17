@@ -2472,3 +2472,24 @@ Entries:
         Fortnite! No more Ohio! No more rizz!
   id: 195
   time: '2026-11-11T06:56:52.0000000+00:00'
+- author: Nao-Nauno
+  changes:
+    - type: Add
+      message: >-
+        Blank encryption keys can be printed at the autolathe, use a multitool
+        on one of them to create your own custom radio channel with a name,
+        colour and prefix, then you can talk on it with :#prefix if configured
+        at the telecom server.
+    - type: Add
+      message: Click a blank encryption key with a set-up key to copy it.
+    - type: Add
+      message: >-
+        Click a telecom server to see its custom channels and how many headsets
+        are actively using it, and also you can edit custom channels from there
+        directly.
+    - type: Add
+      message: >-
+        Overall support for long prefixes for radio channels right from the
+        start.
+  id: 196
+  time: '2026-11-17T01:54:12.0000000+00:00'
