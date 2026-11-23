@@ -59,7 +59,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   - Chance: [mono]prob(percent)[/mono], [mono]pick(...)[/mono], [mono]rand()[/mono] for 0 to 1, [mono]rand(n)[/mono] for a whole number from 0 to n, [mono]rand(low, high)[/mono].
   - [mono]signal(content, freq, source)[/mono] makes a new message and [mono]broadcast(sig)[/mono] sends it. [mono]broadcast(content, freq, source)[/mono] does both at once. Up to 10 per message, and only on channels the server operates: anything else returns 0.
   - [mono]mem(key)[/mono] reads and [mono]mem(key, value)[/mono] saves a value that survives new uploads. [mono]clearmem()[/mono] empties it.
-  - Commands: [mono]find(sig.raw, "/loud") == 1[/mono] is true for /loud Hello and /loudHello alike, whatever the speaker's accent. [mono]trim(substr(sig.raw, 6))[/mono] then gives the text after the command. Wrap it in [mono]accent(...)[/mono] to give it back the speaker's accent.
+  - Trigger phrases: scripts react to what people say. [mono]find(sig.raw, "eight ball")[/mono] is true for "Oh Eight Ball, will I get a raise?" whatever the speaker's accent, and [mono]find(...) == 1[/mono] only when the message starts with the phrase. To keep only what coms after a starting phrase, cut it: [mono]trim(substr(sig.raw, 16))[/mono] gives "Bob" from "Telecomms, mute Bob". [mono]accent(...)[/mono] gives cut text back the speaker's accent.
   - [mono]time()[/mono] gives the seconds since the round started. [mono]channels.common[/mono], [mono]channels.medical[/mono] and the other channel names give their frequencies.
 
   ## Filters
@@ -86,21 +86,20 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   \ \ return sig;\n
   }[/mono]
 
-  [bold]Anonymous messages[/bold]: start a message with /anon to send it as "Anonymous".
+  [bold]Anonymous tips[/bold]: start a message with "Anonymous tip" to send it as "Anonymous".
 
   [mono]def process_signal(sig) {\n
-  \ \ if (find(sig.raw, "/anon") == 1) {\n
-  \ \ \ \ broadcast(trim(substr(sig.raw, 6)), sig.freq, "Anonymous");\n
+  \ \ if (find(sig.raw, "anonymous tip") == 1) {\n
+  \ \ \ \ broadcast(sig.content, sig.freq, "Anonymous");\n
   \ \ \ \ return null;\n
   \ \ }\n
   \ \ return sig;\n
   }[/mono]
 
-  [bold]Broadcast to all[/bold]: start a message with /all to send it on every department channel. Terminates-The-Notice may not like it though, so be warned.
+  [bold]Broadcast to all[/bold]: start a message with "Attention all channels" to send it on every department channel. Terminates-The-Notice may not like it though, so be warned.
 
   [mono]def process_signal(sig) {\n
-  \ \ if (find(sig.raw, "/all") == 1) {\n
-  \ \ \ \ sig.content = accent(trim(substr(sig.raw, 5)));\n
+  \ \ if (find(sig.raw, "attention all channels") == 1) {\n
   \ \ \ \ freqs = list(channels.common, channels.command, channels.engineering, channels.medical, channels.science, channels.security, channels.service, channels.supply);\n
   \ \ \ \ for (i = 1; i \<= freqs.len; i += 1) {\n
   \ \ \ \ \ \ sig.freq = freqs\[i];\n
@@ -111,14 +110,14 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   \ \ return sig;\n
   }[/mono]
 
-  [bold]Selective mute[/bold]: listed users can say /mute Full Name to mute or unmute someone.
+  [bold]Selective mute[/bold]: listed users can say "Telecomms, mute Full Name" to mute or unmute someone.
 
   [mono]users = list("Your Name");\n
   def process_signal(sig) {\n
   \ \ muted = mem("muted");\n
   \ \ if (muted == null) { muted = list(); }\n
-  \ \ if (find(sig.raw, "/mute") == 1 && users.Find(sig.source)) {\n
-  \ \ \ \ name = trim(substr(sig.raw, 6));\n
+  \ \ if (find(sig.raw, "telecomms, mute") == 1 && users.Find(sig.source)) {\n
+  \ \ \ \ name = trim(substr(sig.raw, 16));\n
   \ \ \ \ if (muted.Find(name)) { muted.Remove(name); } else { muted.Add(name); }\n
   \ \ \ \ mem("muted", muted);\n
   \ \ \ \ return null;\n
@@ -127,10 +126,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   \ \ return sig;\n
   }[/mono]
 
-  [bold]Magic 8-Ball[/bold]: start a message with /8ball and the ball answers.
+  [bold]Magic 8-Ball[/bold]: ask "Oh Eight Ball, ..." and the ball answers after your question.
 
   [mono]def process_signal(sig) {\n
-  \ \ if (find(sig.raw, "/8ball") == 1) {\n
+  \ \ if (find(sig.raw, "eight ball")) {\n
   \ \ \ \ broadcast(pick("It is certain.", "Ask again later.", "Don't count on it.", "Signs point to yes."), sig.freq, "Magic 8-Ball");\n
   \ \ }\n
   \ \ return sig;\n

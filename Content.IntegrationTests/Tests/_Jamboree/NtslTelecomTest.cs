@@ -38,15 +38,15 @@ public sealed class NtslTelecomTest
 def process_signal(sig) {
     words = explode(sig.content, "" "");
     if (sig.source == ""Bob"") { sig.pass = 0; }
-    if (words[1] == ""/block"") { return null; }
-    if (words[1] == ""/med"") {
-        sig.content = substr(sig.content, 6);
+    if (words[1] == ""block"") { return null; }
+    if (words[1] == ""med"") {
+        sig.content = substr(sig.content, 5);
         sig.freq = channels.medical;
     }
-    if (words[1] == ""/loud"") {
+    if (words[1] == ""loud"") {
         sig.filters = list(filter_types.loud, ""italics"");
     }
-    if (words[1] == ""/all"") {
+    if (words[1] == ""all"") {
         sig.pass = 0;
         sig.content = implode(words - words[1], "" "");
         freqs = list(1459, 1447, 1359, 1357, 1355, 1353, 1351, 1349, 1347);
@@ -58,8 +58,8 @@ def process_signal(sig) {
         mem(""sent"", sent);
     }
     if (sig.raw == ""what I typed"") { sig.content = sig.raw; }
-    if (sig.raw == ""/lang"") { sig.content = sig.language; }
-    if (find(sig.raw, ""/cat"") == 1) { sig.content = accent(trim(substr(sig.raw, 5))) + "" nya""; }
+    if (sig.raw == ""lang"") { sig.content = sig.language; }
+    if (find(sig.raw, ""cat"") == 1) { sig.content = accent(trim(substr(sig.raw, 4))) + "" nya""; }
     sig.source = upper(sig.source);
     return sig;
 }
@@ -111,22 +111,20 @@ def process_signal(sig) {
             string hissedJob = null;
             ntsl.ProcessRadio(speaker, speaker, basic, "what I typed", ref hissedMessage, ref hissedChannel, ref hissedName, ref hissedJob, out _);
 
-            var blocked = Send("/block this", "Alice", out _, out _, out _, out _);
-            var rerouted = Send("/med help me", "Alice", out var medMessage, out var medChannel, out var medName, out _);
-            var loud = Send("/loud HEY", "Alice", out var loudMessage, out _, out _, out var loudFilters);
-            var commandOnly = Send("/loud", "Alice", out _, out _, out _, out _);
-            Send("/nothing hi", "Alice", out var unknownMessage, out _, out _, out _);
-            var all = Send("/all everyone listen", "Alice", out _, out _, out _, out _, draconic);
+            var blocked = Send("block this", "Alice", out _, out _, out _, out _);
+            var rerouted = Send("med help me", "Alice", out var medMessage, out var medChannel, out var medName, out _);
+            var loud = Send("loud HEY", "Alice", out var loudMessage, out _, out _, out var loudFilters);
+            var all = Send("all everyone listen", "Alice", out _, out _, out _, out _, draconic);
             var broadcastLanguages = ntsl.QueuedBroadcastLanguages.ToList();
 
             entMan.AddComponent<LizardAccentComponent>(speaker);
-            Send("/catits so nice", "Alice", out var catMessage, out _, out _, out _);
+            Send("catits so nice", "Alice", out var catMessage, out _, out _, out _);
 
-            var langMessage = "/lang";
+            var langMessage = "lang";
             var langChannel = common;
             var langName = "Alice";
             string langJob = null;
-            ntsl.ProcessRadio(speaker, speaker, draconic, "/lang", ref langMessage, ref langChannel, ref langName, ref langJob, out _);
+            ntsl.ProcessRadio(speaker, speaker, draconic, "lang", ref langMessage, ref langChannel, ref langName, ref langJob, out _);
 
             Assert.Multiple(() =>
             {
@@ -139,17 +137,10 @@ def process_signal(sig) {
                 Assert.That(hissedMessage, Is.EqualTo("what I typed"));
                 Assert.That(loud, Is.True);
                 Assert.That(loudFilters, Is.EqualTo(NtslFilters.Loud | NtslFilters.Italics));
-                Assert.That(loudMessage, Is.EqualTo("HEY"));
-                Assert.That(commandOnly, Is.False);
-                Assert.That(unknownMessage, Is.EqualTo("/nothing hi"));
+                Assert.That(loudMessage, Is.EqualTo("loud HEY"));
                 Assert.That(all, Is.False);
                 Assert.That(catMessage, Is.EqualTo("itsss ssso nice nya"));
                 Assert.That(langMessage, Is.EqualTo(draconic.Name));
-                Assert.That(ntsl.HideCommand(speaker, "/langHi", basic), Is.EqualTo("Hi"));
-                Assert.That(ntsl.HideCommand(speaker, "/CATits so nice", basic), Is.EqualTo("itsss ssso nice"));
-                Assert.That(ntsl.HideCommand(speaker, "/lang", basic), Is.Empty);
-                Assert.That(ntsl.HideCommand(speaker, "/unknown hi", basic), Is.Null);
-                Assert.That(ntsl.HideCommand(speaker, "hello", basic), Is.Null);
                 Assert.That(entMan.GetComponent<NtslServerComponent>(telecom).Memory["sent"], Is.EqualTo(8.0));
                 Assert.That(broadcastLanguages, Has.Count.EqualTo(8).And.All.EqualTo("Draconic"));
                 Assert.That(NtslTelecomSystem.ApplyFilters("hi", NtslFilters.Loud | NtslFilters.Italics), Is.EqualTo("[bolditalic]hi[/bolditalic]"));
@@ -204,12 +195,10 @@ def process_signal(sig) {
         var messages = new[]
         {
             "hello there",
-            "/anon secret plan",
-            "/anonsecret plan",
-            "/all everyone listen",
-            "/alleveryone listen",
-            "/mute Bob",
-            "/8ball will it work?",
+            "Anonymous tip: secret plan",
+            "Attention all channels, everyone listen",
+            "Telecomms, mute Bob",
+            "Oh Eight Ball, will it work?",
             "call the shuttle",
         };
 
