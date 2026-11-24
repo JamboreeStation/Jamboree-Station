@@ -2505,3 +2505,25 @@ Entries:
         heals them.
   id: 197
   time: '2026-11-24T17:05:47.0000000+00:00'
+- author: Nao-Nauno
+  changes:
+    - type: Add
+      message: >-
+        Traffic control console: write NTSL scripts to program the telecom
+        servers during a round.
+    - type: Add
+      message: >-
+        The console's code editor finishes names with Tab and shows what a
+        function needs while you type.
+    - type: Add
+      message: >-
+        New flavour station event: a Syndicate hack gets onto a telecom server
+        and messes with the radio until engineers clear it.
+    - type: Add
+      message: >-
+        New flavour station event: Central Command installs a temporary
+        compliance filter on every telecom server.
+    - type: Add
+      message: New guidebook entry "NTSL Scripting" with example scripts.
+  id: 198
+  time: '2026-11-24T17:11:39.0000000+00:00'
