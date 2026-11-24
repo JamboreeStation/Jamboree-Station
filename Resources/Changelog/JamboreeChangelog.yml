@@ -2493,3 +2493,15 @@ Entries:
         start.
   id: 196
   time: '2026-11-17T01:54:12.0000000+00:00'
+- author: TornadoTechnology, nao-nauno, Bibble
+  changes:
+    - type: Add
+      message: >-
+        Added gnomes! Small, sugar-loving tinkerers with their own language,
+        accent, voice, ...
+    - type: Add
+      message: >-
+        Gnomes work with tools, build and craft 30% faster, and sugar slowly
+        heals them.
+  id: 197
+  time: '2026-11-24T17:05:47.0000000+00:00'
