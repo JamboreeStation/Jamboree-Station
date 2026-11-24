@@ -1,8 +1,0 @@
-# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
-- files: ["gnome_cough_1.ogg", "gnome_cough_2.ogg", "gnome_cry_1.ogg", "gnome_deathgasp_1.ogg", "gnome_gasp_1.ogg", "gnome_gasp_2.ogg", "gnome_laugh_1.ogg", "gnome_laugh_2.ogg", "gnome_laugh_3.ogg", "gnome_scream_1.ogg", "gnome_scream_2.ogg", "gnome_scream_3.ogg", "gnome_sigh_1.ogg", "gnome_sneeze_1.ogg", "gnome_sneeze_2.ogg", "gnome_snore_1.ogg", "gnome_talk.ogg", "gnome_talk_ask.ogg", "gnome_talk_exclaim.ogg", "gnome_yawn_1.ogg"]
-  license: "CC-BY-SA-3.0"
-  copyright: "Recorded by nao-nauno for Jamboree Station"
-  source: "https://github.com/JamboreeStation/Jamboree-Station"

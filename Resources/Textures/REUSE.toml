@@ -1,4 +1,33 @@
+version = 1
 
+# Metadata provenance: https://github.com/Nao-Nauno/Jamboree-Station/blob/40e74dc4942c2c458b42be16dfe89f465a3000a5/Resources/Textures/_Tech/Interface/language_icon.rsi/meta.json
+[[annotations]]
+path = ["_Tech/Interface/language_icon.rsi/gnomish.png"]
+precedence = "closest"
+SPDX-FileCopyrightText = "Made by Bibble for Jamboree"
+SPDX-License-Identifier = "CC-BY-SA-3.0"
+
+# Metadata provenance: https://github.com/Nao-Nauno/Jamboree-Station/blob/40e74dc4942c2c458b42be16dfe89f465a3000a5/Resources/Textures/_Tech/Mobs/Species/Gnome/displacement.rsi/meta.json
+[[annotations]]
+path = [
+    "_Tech/Mobs/Species/Gnome/displacement.rsi/dwarfism.png",
+    "_Tech/Mobs/Species/Gnome/displacement.rsi/dwarfism_hand_left.png",
+    "_Tech/Mobs/Species/Gnome/displacement.rsi/dwarfism_hand_right.png",
+    "_Tech/Mobs/Species/Gnome/displacement.rsi/dwarfism_vertical.png",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = "dwarfism sprites made by SlamBamActionman (Github), taken from space-wizards/space-station-14 at 24485c39eeb41a30e6d7c8ec2a0fe69dfc20e021"
+SPDX-License-Identifier = "CC-BY-SA-3.0"
+
+# Metadata provenance: https://github.com/Nao-Nauno/Jamboree-Station/blob/40e74dc4942c2c458b42be16dfe89f465a3000a5/Resources/Textures/_Tech/Mobs/Species/Gnome/parts.rsi/meta.json
+[[annotations]]
+path = [
+    "_Tech/Mobs/Species/Gnome/parts.rsi/eyes.png",
+    "_Tech/Mobs/Species/Gnome/parts.rsi/head.png",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = "Made by Bibble for Jamboree"
+SPDX-License-Identifier = "CC-BY-SA-3.0"
 
 # Metadata provenance: https://github.com/JamboreeStation/Jamboree-Station/blob/9b11a6589eb16cefee31b0db8e31134f0e37d7b9/Resources/Textures/ADT/Clothing/Back/centcom_backpack.rsi/meta.json
 [[annotations]]
@@ -86403,6 +86432,12 @@ SPDX-License-Identifier = "CC-BY-SA-3.0"
 
 # Metadata provenance: https://github.com/JamboreeStation/Jamboree-Station/blob/9b11a6589eb16cefee31b0db8e31134f0e37d7b9/Resources/Textures/deprecated.rsi/meta.json
 [[annotations]]
+path = [
+    "deprecated.rsi/deprecated.png",
+]
+precedence = "closest"
+SPDX-FileCopyrightText = "Made by Flareguy for Space Station 14"
+SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
 path = ["Resources/Textures/_FarHorizons/Structures/Power/Generation/FissionGenerator/indicator_lamps/amberdim.png"]
@@ -86505,10 +86540,3 @@ path = ["Resources/Textures/_FarHorizons/Structures/Power/Generation/FissionGene
 precedence = "closest"
 SPDX-FileCopyrightText = "Inferred from FH commit 21680b3e6b282 (pre-cutoff original, no upstream license declaration)"
 SPDX-License-Identifier = "LicenseRef-Starlight-MIT"
-
-path = [
-    "deprecated.rsi/deprecated.png",
-]
-precedence = "closest"
-SPDX-FileCopyrightText = "Made by Flareguy for Space Station 14"
-SPDX-License-Identifier = "CC0-1.0"
