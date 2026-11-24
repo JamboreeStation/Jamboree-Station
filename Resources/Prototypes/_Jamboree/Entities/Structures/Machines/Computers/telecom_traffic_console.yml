@@ -1,0 +1,43 @@
+# SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  parent: BaseComputerAiAccess
+  id: ComputerTelecomTraffic
+  name: traffic control console
+  description: Writes NTSL scripts and uploads them to the telecommunication servers on this station.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm_logs
+    - map: ["computerLayerKeys"]
+      state: tech_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: NtslConsole
+  - type: ActivatableUI
+    key: enum.NtslConsoleUiKey.Key
+  - type: ActivatableUIRequiresAccess
+  - type: AccessReader
+    access: [["Engineering"]]
+  - type: UserInterface
+    interfaces:
+      enum.NtslConsoleUiKey.Key:
+        type: NtslConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: Computer
+    board: TelecomTrafficComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#43ccb5"
+  - type: GuideHelp
+    guides:
+    - Ntsl
