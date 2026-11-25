@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Content.Goobstation.Common.DoAfter; // Goobstation
 using Content.Shared._Shitmed.DoAfter; // Shitmed
-using Content.Shared._Tech.Tinkering; // Jamboree~ gnomes
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
@@ -238,11 +237,6 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
             var delayMultiplierEv = new GetDoAfterDelayMultiplierEvent();
             RaiseLocalEvent(args.User, delayMultiplierEv);
             args.Delay *= delayMultiplierEv.Multiplier;
-
-            // Jamboree~ some species work faster at certain jobs, like gnomes with tools and construction
-            var workEv = new GetWorkDelayMultiplierEvent(args.Event);
-            RaiseLocalEvent(args.User, ref workEv);
-            args.Delay *= workEv.Multiplier;
         }
         // Goobstation end
 

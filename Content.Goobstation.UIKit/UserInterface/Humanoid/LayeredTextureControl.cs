@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2026 Goob Station Contributors
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using System.Numerics;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -75,12 +71,8 @@ public sealed partial class LayeredTextureControl : Control
         var i = 0;
         foreach (var spriteLayer in sprite.AllLayers)
         {
-            if (spriteLayer.Visible
-                && spriteLayer is not SpriteComponent.Layer { CopyToShaderParameters: not null }
-                && GetTexture(spriteLayer) is { } texture)
-            {
+            if (spriteLayer.Visible && GetTexture(spriteLayer) is { } texture)
                 DrawTexture(handle, texture, spriteLayer.Color * sprite.Color, scale);
-            }
 
             if (_inserts.TryGetValue(i, out var inserted))
             {

@@ -2,7 +2,6 @@
 
 using System.Numerics;
 using Content.Client.DisplacementMap;
-using Content.Client._Tech.Displacement; // Jamboree~ gnomes
 using Content.Shared.CCVar;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
@@ -76,9 +75,6 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
         // end Goobstation: port EE height/width sliders
 
         sprite[_sprite.LayerMapReserve((entity.Owner, sprite), HumanoidVisualLayers.Eyes)].Color = humanoidAppearance.EyeColor;
-
-        var updated = new HumanoidSpriteUpdatedEvent(); // Jamboree~ gnomes
-        RaiseLocalEvent(entity, ref updated); // Jamboree~ gnomes
     }
 
     private static bool IsHidden(HumanoidAppearanceComponent humanoid, HumanoidVisualLayers layer)
