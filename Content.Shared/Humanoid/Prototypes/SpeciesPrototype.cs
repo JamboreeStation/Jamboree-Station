@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using Content.Goobstation.Common.Barks; // Jamboree~
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Prototypes;
@@ -127,13 +126,6 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int MaxAge = 120;
-
-    /// <summary>
-    ///     Jamboree~ the talking voice new characters of this species start with, like gnomes with the Gnome voice.
-    ///     When null they get the usual default.
-    /// </summary>
-    [DataField]
-    public ProtoId<BarkPrototype>? DefaultBarkVoice;
 
     // begin Goobstation: port EE height/width sliders
 

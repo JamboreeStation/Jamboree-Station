@@ -86,19 +86,15 @@
 # SPDX-FileCopyrightText: 2025 Ted Lukin <66275205+pheenty@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 grub <unalterableness@gmail.com>
-# SPDX-FileCopyrightText: 2025 jvne <juneialduncan21@gmail.com>
 # SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 # SPDX-FileCopyrightText: 2025 shityaml <unalterableness@gmail.com>
-# SPDX-FileCopyrightText: 2026 Tornado Tech <54727692+TornadoTechnology@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
+# SPDX-FileCopyrightText: 2025 jvne <juneialduncan21@gmail.com>
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 - type: roleLoadout
   id: JobNanotrasenRepresentative
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - GroupTankHarness
   - NanotrasenRepresentativeHead
   - NanotrasenRepresentativeJumpsuit
@@ -123,8 +119,6 @@
 - type: roleLoadout
   id: JobBlueshieldOfficer
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - BlueshieldOfficerHead
   - BlueshieldOfficerJumpsuit
   - BlueshieldOfficerBackpack
@@ -147,8 +141,6 @@
 - type: roleLoadout
   id: JobNanotrasenCareerTrainer
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - GroupTankHarness
   - NanotrasenTrainerHead
   - NanotrasenTrainerJumpsuit
@@ -178,8 +170,6 @@
 - type: roleLoadout
   id: JobRoboticist
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - GroupTankHarness
   - RoboticistHead
   - ScientistNeck
@@ -203,8 +193,6 @@
 - type: roleLoadout
   id: JobBrigmedic
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - BrigmedicHead
   - MedicalMask
   - BrigmedicJumpsuit
@@ -230,8 +218,6 @@
   id: JobRadioHost
   canCustomizeName: true
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - RadioHostJumpsuit
   - CommonBackpack
   - Survival
@@ -240,8 +226,6 @@
   - Drip # Jamboree
   - GroupSpeciesBreathTool
   - Glasses
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - GroupTankHarness
   - ServiceWorkerEnvirohelm
   - ServiceWorkerEnvirosuit
@@ -259,8 +243,6 @@
 - type: roleLoadout
   id: JobSecurityClown
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - ClownBackpack
   - SurvivalSecurity
   - GroupSpeciesBreathToolSecurity
@@ -268,8 +250,6 @@
 - type: roleLoadout
   id: JobCommandMaid
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - CommonBackpack
   - Survival
   - GroupSpeciesBreathTool
@@ -277,8 +257,6 @@
 - type: roleLoadout
   id: JobPartyMaker
   groups:
-  - GnomePointyHats # Gnome
-  - GnomeUniforms # Gnome
   - GroupTankHarness
   - CommonBackpack
   - Survival
@@ -287,8 +265,6 @@
 - type: roleLoadout
   id: JobVirologist
   groups:
-   - GnomePointyHats # Gnome
-   - GnomeUniforms # Gnome
    - GroupTankHarness
    - VirologistHead #jamboree
    - VirologistMask #jamboree

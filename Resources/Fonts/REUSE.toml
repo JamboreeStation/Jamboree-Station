@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Jamboree Station Contributors
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-version = 1
 
 [[annotations]]
 path = ["NotoSans/NotoSans-Bold.ttf", "NotoSans/NotoSans-BoldItalic.ttf", "NotoSans/NotoSans-Italic.ttf", "NotoSans/NotoSans-Regular.ttf"]

@@ -47,11 +47,10 @@
 // SPDX-FileCopyrightText: 2025 MarkerWicker <markerWicker@proton.me>
 // SPDX-FileCopyrightText: 2025 Pieter-Jan Briers <pieterjan.briers+git@gmail.com>
 // SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 Zekins <zekins3366@gmail.com>
 // SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 // SPDX-FileCopyrightText: 2025 āda <ss.adasts@gmail.com>
-// SPDX-FileCopyrightText: 2026 nao-nauno <desk.nao@gmail.com>
+// SPDX-FileCopyrightText: 2025 Zekins <zekins3366@gmail.com>
+// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
 //
 
 using System.Linq;
@@ -284,16 +283,7 @@ namespace Content.Shared.Preferences
             {
                 Species = species,
                 Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species),
-                BarkVoice = SpeciesBarkVoice(species) ?? SharedHumanoidAppearanceSystem.DefaultBarkVoice, // Jamboree~
             };
-        }
-
-        // Jamboree~ the voice a species starts with, if it has its own
-        private static ProtoId<BarkPrototype>? SpeciesBarkVoice(string species)
-        {
-            return IoCManager.Resolve<IPrototypeManager>().TryIndex<SpeciesPrototype>(species, out var proto)
-                ? proto.DefaultBarkVoice
-                : null;
         }
 
         // TODO: This should eventually not be a visual change only.
@@ -331,7 +321,7 @@ namespace Content.Shared.Preferences
             }
 
             // Goob Station - Barks Start
-            var barkvoiceId = SpeciesBarkVoice(species) ?? random.Pick(prototypeManager // Jamboree~ species voice first
+            var barkvoiceId = random.Pick(prototypeManager
                 .EnumeratePrototypes<BarkPrototype>()
                 .Where(o => o.RoundStart && (o.SpeciesWhitelist is null || o.SpeciesWhitelist.Contains(species)))
                 .ToArray()
@@ -394,8 +384,7 @@ namespace Content.Shared.Preferences
 
         public HumanoidCharacterProfile WithSpecies(string species)
         {
-            // Jamboree~ switching to a species with its own voice picks that voice
-            return new(this) { Species = species, BarkVoice = SpeciesBarkVoice(species) ?? BarkVoice };
+            return new(this) { Species = species };
         }
 
         // begin Goobstation: port EE height/width sliders

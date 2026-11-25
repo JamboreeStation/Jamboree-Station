@@ -26,10 +26,6 @@ public abstract class SharedStationSpawningSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _xformSystem = default!;
     [Dependency] private readonly InternalEncryptionKeySpawner _internalEncryption = default!; // DeltaV
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Goobstation
-
-    // Jamboree~ starting gear whose slot was already taken during a role loadout, put in the bag at the end
-    private readonly List<EntityUid> _leftoverGear = new();
-    private bool _collectLeftoverGear;
     private EntityQuery<HandsComponent> _handsQuery;
     private EntityQuery<InventoryComponent> _inventoryQuery;
     private EntityQuery<StorageComponent> _storageQuery;
@@ -49,9 +45,6 @@ public abstract class SharedStationSpawningSystem : EntitySystem
     /// </summary>
     public void EquipRoleLoadout(EntityUid entity, RoleLoadout loadout, RoleLoadoutPrototype roleProto)
     {
-        _leftoverGear.Clear(); // Jamboree~
-        _collectLeftoverGear = true; // Jamboree~
-
         // Order loadout selections by the order they appear on the prototype.
         foreach (var group in loadout.SelectedLoadouts.OrderBy(x => roleProto.Groups.FindIndex(e => e == x.Key)))
         {
@@ -67,26 +60,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
             }
         }
 
-        _collectLeftoverGear = false; // Jamboree~
-        StashLeftoverGear(entity); // Jamboree~
-
         EquipRoleName(entity, loadout, roleProto);
-    }
-
-    private void StashLeftoverGear(EntityUid entity)
-    {
-        if (_leftoverGear.Count > 0
-            && InventorySystem.TryGetSlotEntity(entity, "back", out var bag)
-            && _storageQuery.TryComp(bag, out var storage))
-        {
-            foreach (var item in _leftoverGear)
-            {
-                if (!TerminatingOrDeleted(item))
-                    _storage.Insert(bag.Value, item, out _, storageComp: storage, playSound: false);
-            }
-        }
-
-        _leftoverGear.Clear();
     }
 
     /// <summary>
@@ -167,8 +141,7 @@ public abstract class SharedStationSpawningSystem : EntitySystem
                         QueueDel(equipmentEntity);
                         continue;
                     }
-                    if (!InventorySystem.TryEquip(entity, equipmentEntity, slot.Name, silent: true, force: true) && _collectLeftoverGear) // Jamboree~
-                        _leftoverGear.Add(equipmentEntity); // Jamboree~
+                    InventorySystem.TryEquip(entity, equipmentEntity, slot.Name, silent: true, force: true);
                 }
             }
         }

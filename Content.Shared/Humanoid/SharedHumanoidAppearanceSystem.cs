@@ -641,10 +641,6 @@ public abstract partial class SharedHumanoidAppearanceSystem : EntitySystem //go
         {
             voicePrototypeId = barkvoiceId;
         }
-        else if (_proto.TryIndex(humanoid.Species, out var species) && species.DefaultBarkVoice is { } speciesVoice) // Jamboree~
-        {
-            voicePrototypeId = speciesVoice;
-        }
         else
         {
             var barks = _proto.EnumeratePrototypes<BarkPrototype>()
