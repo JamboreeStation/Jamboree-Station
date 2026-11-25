@@ -1,17 +1,94 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using System.Numerics;
 using System.Threading;
 using Content.Server.GameTicking;
 using Content.Server.RoundEnd;
+using Content.Server.Screens.Components;
+using Content.Server.Shuttles.Systems;
 using Content.Shared.CCVar;
+using Content.Shared.TextScreen;
 using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
+using Robust.Shared.Map;
+using Robust.Shared.Timing;
 
 namespace Content.IntegrationTests.Tests
 {
     [TestFixture]
     public sealed class RoundEndTest
     {
+        [TestCase(false)]
+        [TestCase(true)]
+        public async Task CancelPostRoundClearsScreens(bool cancelRestartFirst)
+        {
+            await using var pair = await PoolManager.GetServerClient(new PoolSettings
+            {
+                DummyTicker = false,
+                Map = "Saltern",
+                Dirty = true,
+            });
+
+            var server = pair.Server;
+            var entMan = server.EntMan;
+            var ticker = server.System<GameTicker>();
+            var roundEnd = server.System<RoundEndSystem>();
+            var appearance = server.System<SharedAppearanceSystem>();
+            var timing = server.ResolveDependency<IGameTiming>();
+            EntityUid screen = default;
+
+            await server.WaitAssertion(() =>
+            {
+                server.CfgMan.SetCVar(CCVars.EmergencyShuttleEnabled, true);
+                var shuttle = server.System<EmergencyShuttleSystem>().GetShuttle();
+                Assert.That(shuttle, Is.Not.Null);
+                screen = entMan.SpawnEntity("Screen", new EntityCoordinates(shuttle!.Value, Vector2.Zero));
+                roundEnd.EndRound(TimeSpan.FromSeconds(2));
+            });
+
+            await pair.RunTicksSync(5);
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.That(appearance.TryGetData(screen, TextScreenVisuals.DefaultText, out string text), Is.True);
+                Assert.That(text, Is.EqualTo(ShuttleTimerMasks.Bye));
+                Assert.That(appearance.TryGetData(screen, TextScreenVisuals.TargetTime, out TimeSpan target), Is.True);
+                Assert.That(target, Is.GreaterThan(timing.CurTime));
+
+                if (cancelRestartFirst)
+                    roundEnd.CancelRoundRestartTimer();
+
+                ticker.CancelPostRound();
+                Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.InRound));
+            });
+
+            await pair.RunTicksSync(5);
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.That(appearance.TryGetData(screen, TextScreenVisuals.DefaultText, out string text), Is.True);
+                Assert.That(text, Is.Empty);
+                Assert.That(appearance.TryGetData(screen, TextScreenVisuals.ScreenText, out string label), Is.True);
+                Assert.That(label, Is.Empty);
+                Assert.That(appearance.TryGetData(screen, TextScreenVisuals.TargetTime, out TimeSpan target), Is.True);
+                Assert.That(target, Is.LessThanOrEqualTo(timing.CurTime));
+
+                // A later round end must not be restarted by the old countdown.
+                ticker.EndRound();
+            });
+
+            await pair.RunSeconds(3);
+
+            await server.WaitAssertion(() =>
+            {
+                Assert.That(ticker.RunLevel, Is.EqualTo(GameRunLevel.PostRound));
+                Assert.That(roundEnd.IsRestartTimerActive(), Is.False);
+                server.CfgMan.SetCVar(CCVars.EmergencyShuttleEnabled, false);
+            });
+
+            await pair.CleanReturnAsync();
+        }
+
         private sealed class RoundEndTestSystem : EntitySystem
         {
             public int RoundCount;

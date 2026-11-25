@@ -72,6 +72,7 @@ namespace Content.Server.RoundEnd
         {
             base.Initialize();
             SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Reset());
+            SubscribeLocalEvent<RoundEndCancelMessageEvent>(OnRoundEndCancelled);
             SetAutoCallTime();
         }
 
@@ -396,6 +397,15 @@ namespace Content.Server.RoundEnd
 
         #region Starlight
 
+        private void OnRoundEndCancelled(RoundEndCancelMessageEvent ev)
+        {
+            _restartTokenSource?.Cancel();
+            _restartTokenSource = null;
+
+            // Clear the persistent round-end label even if the restart timer was already cancelled.
+            QueueRestartTimerScreens(TimeSpan.Zero, string.Empty);
+        }
+
         /// <summary>
         /// Cancels the round restart timer, allowing the round to stay in post-round indefinitely.
         /// </summary>
@@ -455,7 +465,7 @@ namespace Content.Server.RoundEnd
                     ("time", time),
                     ("units", Loc.GetString(unitsLocString))));
 
-            QueueRestartTimerScreens(countdownTime.Value);
+            QueueRestartTimerScreens(countdownTime.Value, ShuttleTimerMasks.Bye);
 
             Timer.Spawn(countdownTime.Value, AfterEndRoundRestart, _restartTokenSource.Token);
         }
@@ -465,7 +475,7 @@ namespace Content.Server.RoundEnd
         /// actually see how long they have left. Normally this only happens as a side effect of the
         /// escape shuttle completing FTL, which admin-forced round ends never trigger.
         /// </summary>
-        private void QueueRestartTimerScreens(TimeSpan countdownTime)
+        private void QueueRestartTimerScreens(TimeSpan countdownTime, string text)
         {
             var shuttle = _shuttle.GetShuttle();
             if (shuttle == null || !TryComp<DeviceNetworkComponent>(shuttle, out var net))
@@ -479,7 +489,7 @@ namespace Content.Server.RoundEnd
                 [ShuttleTimerMasks.ShuttleTime] = countdownTime,
                 [ShuttleTimerMasks.SourceTime] = countdownTime,
                 [ShuttleTimerMasks.DestTime] = countdownTime,
-                [ScreenMasks.Text] = ShuttleTimerMasks.Bye,
+                [ScreenMasks.Text] = text,
             };
             _deviceNetworkSystem.QueuePacket(shuttle.Value, null, payload, net.TransmitFrequency);
         }
