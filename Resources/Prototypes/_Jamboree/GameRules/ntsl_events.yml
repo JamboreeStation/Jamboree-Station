@@ -42,7 +42,7 @@
     - |
       def process_signal(sig) {
           if (escalate()) {
-              sig.content = sig.content + " meow";
+              sig.content = sig.content + " " + accent("meow");
           }
           return sig;
       }
@@ -64,7 +64,7 @@
     - |
       def process_signal(sig) {
           if (escalate()) {
-              sig.content = sig.content + " HONK!";
+              sig.content = sig.content + " " + accent("HONK!");
               sig.filters = list(filter_types.wacky);
           }
           return sig;
@@ -131,8 +131,8 @@
       }
     - |
       def process_signal(sig) {
-          if (find(sig.content, "Glory to Nanotrasen") == 0) {
-              sig.content = sig.content + " -Glory to Nanotrasen!";
+          if (find(sig.raw, "Glory to Nanotrasen") == 0 && find(sig.content, "Glory to Nanotrasen") == 0) {
+              sig.content = sig.content + " " + accent("-Glory to Nanotrasen!");
           }
           return sig;
       }
@@ -273,7 +273,7 @@
           if (substr(word, 1, 2) != lower(substr(word, 1, 2))) {
               swap = proper(swap);
           }
-          return swap + tail;
+          return accent(swap) + tail;
       }
 
       def process_signal(sig) {

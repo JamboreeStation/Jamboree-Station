@@ -309,6 +309,30 @@ def process_signal(sig) {
             });
         }
 
+        await server.WaitAssertion(() =>
+        {
+            entMan.AddComponent<LizardAccentComponent>(speaker);
+
+            string Hissed(string marker, string text)
+            {
+                var telecom = servers[scripts.FindIndex(code => code.Contains(marker))];
+                ntsl.SetEnabled(telecom, true, speaker);
+                var message = text;
+                var channel = protoMan.Index(CommonChannel);
+                var name = "Your Name";
+                string job = "Captain";
+                ntsl.ProcessRadio(speaker, speaker, protoMan.Index(BasicLanguage), text, ref message, ref channel, ref name, ref job, out _);
+                ntsl.SetEnabled(telecom, false, speaker);
+                return message;
+            }
+
+            Assert.Multiple(() =>
+            {
+                Assert.That(Hissed("-Glory to Nanotrasen!", "all good"), Is.EqualTo("all good -Glory to Nanotrasssen!"));
+                Assert.That(Hissed("Corporate Communications Standard", "help"), Is.EqualTo("requesssting sssynergy"));
+            });
+        });
+
         await pair.CleanReturnAsync();
     }
 
