@@ -60,6 +60,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
   - [mono]signal(content, freq, source)[/mono] makes a new message and [mono]broadcast(sig)[/mono] sends it. [mono]broadcast(content, freq, source)[/mono] does both at once. Up to 10 per message, and only on channels the server operates: anything else returns 0.
   - [mono]mem(key)[/mono] reads and [mono]mem(key, value)[/mono] saves a value that survives new uploads. [mono]clearmem()[/mono] empties it.
   - Trigger phrases: scripts react to what people say. [mono]find(sig.raw, "eight ball")[/mono] is true for "Oh Eight Ball, will I get a raise?" whatever the speaker's accent, and [mono]find(...) == 1[/mono] only when the message starts with the phrase. To keep only what coms after a starting phrase, cut it: [mono]trim(substr(sig.raw, 16))[/mono] gives "Bob" from "Telecomms, mute Bob". [mono]accent(...)[/mono] gives cut text back the speaker's accent.
+  - Words a script adds to someone's message have no accent of their own. Wrap them in [mono]accent(...)[/mono] so they sound like the speaker too: [mono]sig.content += " " + accent("Yes, sir!");[/mono] makes a lizard end with "Yesss, sssir!".
   - [mono]time()[/mono] gives the seconds since the round started. [mono]channels.common[/mono], [mono]channels.medical[/mono] and the other channel names give their frequencies.
 
   ## Filters
