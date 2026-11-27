@@ -150,7 +150,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
   [mono]def process_signal(sig) {\n
   \ \ sig.source += " the Hedgehog";\n
-  \ \ sig.content += " Gotta go fast!";\n
+  \ \ sig.content += " " + accent("Gotta go fast!");\n
   \ \ sig.filters = list(filter_types.emphasis);\n
   \ \ return sig;\n
   }[/mono]
